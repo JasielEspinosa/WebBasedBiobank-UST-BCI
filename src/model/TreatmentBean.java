@@ -2,7 +2,6 @@ package model;
 
 public class TreatmentBean {
 	private boolean transplant;
-	private int modeOfTreatmentId;
 	private int chemoMedicationId;
 	private String dateStarted;
 	private String otherRegimen;
@@ -17,12 +16,6 @@ public class TreatmentBean {
 	}
 	public void setTransplant(boolean transplant) {
 		this.transplant = transplant;
-	}
-	public int getModeOfTreatmentId() {
-		return modeOfTreatmentId;
-	}
-	public void setModeOfTreatmentId(int modeOfTreatmentId) {
-		this.modeOfTreatmentId = modeOfTreatmentId;
 	}
 	public int getChemoMedicationId() {
 		return chemoMedicationId;

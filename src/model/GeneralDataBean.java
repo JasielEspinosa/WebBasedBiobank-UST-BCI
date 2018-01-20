@@ -7,7 +7,6 @@ public class GeneralDataBean {
 	private int gender;
 	private String dateOfBirth;
 	private String dateOfEntry;
-	private int tissueSpecimenId;
 	
 	public String getLastName() {
 		return lastName;
@@ -44,11 +43,5 @@ public class GeneralDataBean {
 	}
 	public void setDateOfEntry(String dateOfEntry) {
 		this.dateOfEntry = dateOfEntry;
-	}
-	public int getTissueSpecimenId() {
-		return tissueSpecimenId;
-	}
-	public void setTissueSpecimenId(int tissueSpecimenId) {
-		this.tissueSpecimenId = tissueSpecimenId;
 	}
 }

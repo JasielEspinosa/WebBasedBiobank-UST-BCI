@@ -3,10 +3,18 @@ CREATE DATABASE USTHBiobank;
 USE USTHBiobank;
 
 CREATE TABLE DiseaseTable (
-	DiseaseID int NOT NULL AUTO_INCREMENT,
+	DiseaseID int NOT NULL,
 	DiseaseName varchar(100) NOT NULL,
 	PRIMARY KEY (DiseaseID)
 );
+
+INSERT INTO diseasetable VALUES(1,"AAPHSMDS");
+INSERT INTO diseasetable VALUES(2,"COAGULATION DISEASE");
+INSERT INTO diseasetable VALUES(3,"LEUKEMIA");
+INSERT INTO diseasetable VALUES(4,"LYPHOMA");
+INSERT INTO diseasetable VALUES(5,"MYELOPROLIFERATIVE NEOPLASM");
+INSERT INTO diseasetable VALUES(6,"PLASMA CELL DISORDER");
+INSERT INTO diseasetable VALUES(7,"PLATELET DISORDER");
 
 CREATE TABLE PatientTable (
 	PatientID int NOT NULL AUTO_INCREMENT,
@@ -28,19 +36,14 @@ CREATE TABLE GeneralDataTable (
 	FirstName varchar(500) NOT NULL,
 	Gender int NOT NULL,
 	DateOfBirth DATE NOT NULL,
+	DateOfEntry DATE NOT NULL,
 	AddressID int NOT NULL,
 	TissueSpecimenID int,
 	PRIMARY KEY (GeneralDataID)
 );
 
-CREATE TABLE GenderTable (
-	GenderID int NOT NULL AUTO_INCREMENT,
-	GenderName varchar(30) NOT NULL,
-	PRIMARY KEY (GenderID)
-);
-
 CREATE TABLE AddressTable (
-	AddressID int NOT NULL,
+	AddressID int NOT NULL AUTO_INCREMENT,
 	StreetAddress varchar(500) NOT NULL,
 	City varchar(200) NOT NULL,
 	ZIPCode varchar(200) NOT NULL,
@@ -64,7 +67,7 @@ CREATE TABLE ClinicalDataTable (
 	SeverityID int,
 	ChiefComplaint blob,
 	ConstitutionalSymptoms blob,
-	OtherSymptioms blob,
+	OtherSymptoms blob,
 	Combordities blob,
 	SmokingHistory blob,
 	AlcoholIntakeHistory blob,
@@ -185,13 +188,13 @@ CREATE TABLE OtherLaboratoriesTable (
 	SerumIron double,
 	IronbindingCapacity double,
 	SerrumFerritin double,
-	DirectAntiglobulin double,
-	IndirectAntiglobulin double,
+	DirectAntiglobulin varchar(10),
+	IndirectAntiglobulin varchar(10),
 	SGOT double,
 	SGPT double,
 	LDH double,
-	ScreenTestHepatitis double,
-	ScreenTestEBVCytomegalovirusHIV double,
+	ScreenTestHepatitis varchar(10),
+	ScreenTestEBVCytomegalovirusHIV varchar(10),
 	ErythropeitinLevel double,
 	SerumFolicAcid double,
 	SerumB12 double,
@@ -318,7 +321,7 @@ CREATE TABLE TreatmentTable (
 
 CREATE TABLE ModeOfTreatmentTable (
 	ModeOfTreatmentID int NOT NULL AUTO_INCREMENT,
-	NameOfTreatment int NOT NULL,
+	NameOfTreatment varchar(100),
 	PRIMARY KEY (ModeOfTreatmentID)
 );
 
@@ -416,11 +419,9 @@ ALTER TABLE PatientTable ADD CONSTRAINT PatientTable_fk5 FOREIGN KEY (OtherTreat
 
 ALTER TABLE PatientTable ADD CONSTRAINT PatientTable_fk6 FOREIGN KEY (DiseaseStatusID) REFERENCES DiseaseStatusTable(DiseaseStatusID);
 
-ALTER TABLE GeneralDataTable ADD CONSTRAINT GeneralDataTable_fk0 FOREIGN KEY (Gender) REFERENCES GenderTable(GenderID);
+ALTER TABLE GeneralDataTable ADD CONSTRAINT GeneralDataTable_fk0 FOREIGN KEY (AddressID) REFERENCES AddressTable(AddressID);
 
-ALTER TABLE GeneralDataTable ADD CONSTRAINT GeneralDataTable_fk1 FOREIGN KEY (AddressID) REFERENCES AddressTable(AddressID);
-
-ALTER TABLE GeneralDataTable ADD CONSTRAINT GeneralDataTable_fk2 FOREIGN KEY (TissueSpecimenID) REFERENCES TissueSpecimenTable(TissueSpecimenID);
+ALTER TABLE GeneralDataTable ADD CONSTRAINT GeneralDataTable_fk1 FOREIGN KEY (TissueSpecimenID) REFERENCES TissueSpecimenTable(TissueSpecimenID);
 
 ALTER TABLE ClinicalDataTable ADD CONSTRAINT ClinicalDataTable_fk0 FOREIGN KEY (PrognosticRiskScoringID) REFERENCES PrognosticRiskScoringTable(PrognosticRiskScoringID);
 

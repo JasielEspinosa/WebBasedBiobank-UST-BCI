@@ -4,7 +4,6 @@ public class ClinicalDataBean {
 	private String dateOfVisit;
 	private String diagnosis;
 	private int prognosticRiskScoringId;
-	private int riskScoreId;
 	private int classificationId;
 	private int ISSStagingId;
 	private int severityId;
@@ -38,12 +37,6 @@ public class ClinicalDataBean {
 	}
 	public void setPrognosticRiskScoringId(int prognosticRiskScoringId) {
 		this.prognosticRiskScoringId = prognosticRiskScoringId;
-	}
-	public int getRiskScoreId() {
-		return riskScoreId;
-	}
-	public void setRiskScoreId(int riskScoreId) {
-		this.riskScoreId = riskScoreId;
 	}
 	public int getClassificationId() {
 		return classificationId;

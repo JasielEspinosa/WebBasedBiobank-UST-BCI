@@ -83,7 +83,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		//int concomitantMedications = Integer.parseInt(request.getParameter("concomitantMedications"));
 		String genericName = request.getParameter("genericName");
 		double dose = Double.parseDouble(request.getParameter("dose"));
-		String frequency = request.getParameter("frequecy");
+		String frequency = request.getParameter("frequency");
 		//String smokingHistory = request.getParameter("smokingHistory");
 		String smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
 		//String alchoholIntakeHistory = request.getParameter("alchoholIntakeHistory");
