@@ -14,9 +14,6 @@ import model.*;
 import utility.database.SQLOperations;
 import utility.factory.BeanFactory;
 
-/**
- * Servlet implementation class AddLeukemiaBaselineServlet
- */
 @WebServlet("/AddLeukemiaBaselineServlet")
 public class AddLeukemiaBaselineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -34,17 +31,11 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		}
 	}
 	
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
@@ -92,9 +83,9 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		String smokingHistory = request.getParameter("smokingHistory");
 		String smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
 		String alchoholIntakeHistory = request.getParameter("alchoholIntakeHistory");
-		String alchoholIntakeSpecify = request.getParameter("alchoholIntakeSpecify");
+		String alchoholIntakeHistorySpecify = request.getParameter("alchoholIntakeSpecify");
 		String chemicalExposureHistory = request.getParameter("chemicalExposureHistory");
-		String chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
+		String chemicalExposureHistorySpecify = request.getParameter("chemicalExposureSpecify");
 //		String previousInfection = request.getParameter("previousInfection");
 //		String previousInfectionSpecify = request.getParameter("previousInfection");
 //		String previousHematologicDisorder = request.getParameter("previousHematologicDisorder");
@@ -222,7 +213,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		}
 		
 		
-		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, 0, severity, 0, 0, 0, "", chiefComplaint, constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeHistory, chemicalExposureSpecify, "", "", otherFindings);
+		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, 0, severity, 0, 0, 0, "", chiefComplaint, constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeHistory, chemicalExposureHistorySpecify, "", "", otherFindings);
 		if (connection != null) {
 			if (SQLOperations.addClinicalData(cdb, connection, disease)){
 				System.out.println("successful insert");
