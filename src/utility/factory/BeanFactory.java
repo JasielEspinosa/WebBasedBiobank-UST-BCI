@@ -263,21 +263,15 @@ public class BeanFactory {
 
 	public static TreatmentBean getTreatmentBean(
 			boolean transplant,
-			int chemoMedicationId,
 			String dateStarted,
 			String otherRegimen,
-			int regimenId,
-			int maintenanceTherapyId,
 			int cycleNumber,
 			String complications,
 			String regimenText) {
 		TreatmentBean tb = new TreatmentBean();
 		tb.setTransplant(transplant);
-		tb.setChemoMedicationId(chemoMedicationId);
 		tb.setDateStarted(dateStarted);
 		tb.setOtherRegimen(otherRegimen);
-		tb.setRegimenId(regimenId);
-		tb.setMaintenanceTherapyId(maintenanceTherapyId);
 		tb.setCycleNumber(cycleNumber);
 		tb.setComplications(complications);
 		tb.setRegimenText(regimenText);
