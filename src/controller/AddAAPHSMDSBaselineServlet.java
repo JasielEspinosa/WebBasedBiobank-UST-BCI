@@ -218,7 +218,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 
 		AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
 		if (connection != null) {
-			if (SQLOperations.addAddress(ab, connection, disease)) {
+			if (SQLOperations.addAddress(ab, connection)) {
 				System.out.println("Successful insert AddressBean");
 			} else {
 				System.out.println("Failed insert AddressBean");
@@ -412,7 +412,6 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ModeOfTreatmentBean");
 		}
 
-		// id din
 		TreatmentBean tb = BeanFactory.getTreatmentBean(transplantCandidate, dateStarted, "", 0, "", "");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
@@ -435,15 +434,14 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection DiseaseStatusBean");
 		}
 
-		// ADD PATIENT
 		if (connection != null) {
 			if (SQLOperations.addPatient(connection, disease)) {
-				System.out.println("Successful insert AddPatientBean");
+				System.out.println("Successful insert AddPatient");
 			} else {
-				System.out.println("Failed insert AddPatientBean");
+				System.out.println("Failed insert AddPatient");
 			}
 		} else {
-			System.out.println("Invalid connection AddPatientBean");
+			System.out.println("Invalid connection AddPatient");
 		}
 
 	}
