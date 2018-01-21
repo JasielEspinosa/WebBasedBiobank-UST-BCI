@@ -30,47 +30,16 @@ public class SQLOperations implements SQLCommands {
 		return (connection != null) ? connection : getDBConnection();
 	}
 
-	public static boolean addAddress(AddressBean ab, Connection connection, int disease) {
-		switch (disease) {
-		case (1): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_ADDRESS_AAPHSMDS);
-				pstmt.setString(1, ab.getStreetAddress());
-				pstmt.setString(2, ab.getCity());
-				pstmt.setString(3, ab.getZipCode());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addAddress: " + sqle.getMessage());
-				return false;
-			}
-			break;
-		}
-		case (2): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_ADDRESS_COAGULATION);
-				pstmt.setString(1, ab.getStreetAddress());
-				pstmt.setString(2, ab.getCity());
-				pstmt.setString(3, ab.getZipCode());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addAddress: " + sqle.getMessage());
-				return false;
-			}
-			break;
-		}
-		case (3): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_ADDRESS_LEUKEMIA);
-				pstmt.setString(1, ab.getStreetAddress());
-				pstmt.setString(2, ab.getCity());
-				pstmt.setString(3, ab.getZipCode());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addAddress: " + sqle.getMessage());
-				return false;
-			}
-			break;
-		}
+	public static boolean addAddress(AddressBean ab, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(INSERT_ADDRESS);
+			pstmt.setString(1, ab.getStreetAddress());
+			pstmt.setString(2, ab.getCity());
+			pstmt.setString(3, ab.getZipCode());
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- addAddress: " + sqle.getMessage());
+			return false;
 		}
 		return true;
 	}
@@ -153,6 +122,86 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 
+	public static boolean addRiskScore(RiskScoreBean rsb, Connection connection) {
+		try {
+			PreparedStatement psmt = connection.prepareStatement(INSERT_RISK_SCORE_AAPHSMDS);
+			psmt.setString(1, rsb.getRiskScoreName());
+			psmt.executeUpdate();
+		}catch (SQLException sqle) {
+			System.out.println("SQLException -- addFamilyCancer: " + sqle.getMessage());
+			return false;
+		}
+		return true;
+	}
+	
+	//public static boolean addISSStaging
+	
+	public static boolean addSeverity(SeverityBean sb, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(INSERT_SEVERITY_COAGULATION);
+			pstmt.setString(1, sb.severityName);
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+			return false;
+		}
+		return true;
+	}
+	
+	//public static boolean addPrognosticRiskScoring
+	
+	public static boolean addPhysicalExam(PhysicalExamBean peb, Connection connection, int disease) {
+		switch (disease) {
+		case (1): {
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM_AAPHSMDS);
+				pstmt.setDouble(1, peb.getHeight());
+				pstmt.setDouble(2, peb.getWeight());
+				pstmt.setDouble(3, peb.getECOG());
+				pstmt.setString(4, peb.getOtherFindings());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
+		case (2): {
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM_COAGULATION);
+				pstmt.setDouble(1, peb.getHeight());
+				pstmt.setDouble(2, peb.getWeight());
+				pstmt.setBoolean(3, peb.isHemathroses());
+				pstmt.setBoolean(4, peb.isContracturesAndMuscleAtrophy());
+				pstmt.setString(5, peb.getOtherFindings());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
+		case (3): {
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM_LEUKEMIA);
+				pstmt.setDouble(1, peb.getHeight());
+				pstmt.setDouble(2, peb.getWeight());
+				pstmt.setDouble(3, peb.getECOG());
+				pstmt.setDouble(4, peb.getSplenomegaly());
+				pstmt.setDouble(5, peb.getHepatomegaly());
+				pstmt.setDouble(6, peb.getLymphadenopathies());
+				pstmt.setString(7, peb.getOtherFindings());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
+		}
+		return true;
+	}
+	
 	public static boolean addClinicalData(ClinicalDataBean cdb, Connection connection, int disease) {
 		switch (disease) {
 		case (1): {
@@ -230,18 +279,6 @@ public class SQLOperations implements SQLCommands {
 		}
 		return true;
 	}
-	
-	public static boolean addRiskScore(RiskScoreBean rsb, Connection connection) {
-		try {
-			PreparedStatement psmt = connection.prepareStatement(INSERT_RISK_SCORE_AAPHSMDS);
-			psmt.setString(1, rsb.getRiskScoreName());
-			psmt.executeUpdate();
-		}catch (SQLException sqle) {
-			System.out.println("SQLException -- addFamilyCancer: " + sqle.getMessage());
-			return false;
-		}
-		return true;
-	}
 
 	public static boolean addFamilyCancer(FamilyCancerBean fcb, Connection connection, int disease) {
 		switch (disease) {
@@ -253,58 +290,6 @@ public class SQLOperations implements SQLCommands {
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
 				System.out.println("SQLException -- addFamilyCancer: " + sqle.getMessage());
-				return false;
-			}
-			break;
-		}
-		}
-		return true;
-	}
-
-	public static boolean addPhysicalExam(PhysicalExamBean peb, Connection connection, int disease) {
-		switch (disease) {
-		case (1): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM_AAPHSMDS);
-				pstmt.setDouble(1, peb.getHeight());
-				pstmt.setDouble(2, peb.getWeight());
-				pstmt.setDouble(3, peb.getECOG());
-				pstmt.setString(4, peb.getOtherFindings());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
-				return false;
-			}
-			break;
-		}
-		case (2): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM_COAGULATION);
-				pstmt.setDouble(1, peb.getHeight());
-				pstmt.setDouble(2, peb.getWeight());
-				pstmt.setBoolean(3, peb.isHemathroses());
-				pstmt.setBoolean(4, peb.isContracturesAndMuscleAtrophy());
-				pstmt.setString(5, peb.getOtherFindings());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
-				return false;
-			}
-			break;
-		}
-		case (3): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM_LEUKEMIA);
-				pstmt.setDouble(1, peb.getHeight());
-				pstmt.setDouble(2, peb.getWeight());
-				pstmt.setDouble(3, peb.getECOG());
-				pstmt.setDouble(4, peb.getSplenomegaly());
-				pstmt.setDouble(5, peb.getHepatomegaly());
-				pstmt.setDouble(6, peb.getLymphadenopathies());
-				pstmt.setString(7, peb.getOtherFindings());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -587,6 +572,25 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 
+	public static boolean addRegimen(RegimenBean rb, Connection connection, int disease) {
+		switch (disease) {
+		case (3): {
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_REGIMEN_LEUKEMIA);
+				pstmt.setString(1, rb.getRegimenName());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addRegimen: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
+		}
+		return true;
+	}
+	
+	//public static boolean addMaintenanceTherapy
+	
 	public static boolean addTreatment(TreatmentBean tb, Connection connection, int disease) {
 		switch (disease) {
 		case (1): {
@@ -727,23 +731,19 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 
-	public static boolean addRegimen(RegimenBean rb, Connection connection, int disease) {
-		switch (disease) {
-		case (3): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_REGIMEN_LEUKEMIA);
-				pstmt.setString(1, rb.getRegimenName());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addRegimen: " + sqle.getMessage());
-				return false;
-			}
-			break;
-		}
+	public static boolean addDiseaseStatus(DiseaseStatusBean dsb, Connection connection)
+	{
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
+			pstmt.setString(1, dsb.getDiseaseStatus());
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
+			return false;
 		}
 		return true;
 	}
-
+	
 	public static boolean addPatient(Connection connection, int disease) {
 		switch (disease) {
 		case (1): {
@@ -780,19 +780,8 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 	
-	public static boolean addDiseaseStatus(DiseaseStatusBean dsb, Connection connection)
-	{
-		try {
-			PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
-			pstmt.setString(1, dsb.getDiseaseStatus());
-			pstmt.executeUpdate();
-		} catch (SQLException sqle) {
-			System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
-			return false;
-		}
-		return true;
-	}
-
+	//public static boolean addQualityOfResponse
+	
 	public static ResultSet getAAPHSMDSBaselinePatients(Connection connection) {
 		ResultSet rs = null;
 		try {
