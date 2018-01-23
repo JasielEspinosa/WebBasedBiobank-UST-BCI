@@ -146,6 +146,7 @@ CREATE TABLE LaboratoryProfileTable (
 	LaboratoryID int NOT NULL AUTO_INCREMENT,
 	DateOfBloodCollection DATE NOT NULL,
 	HematologyID int,
+	CoagulationTestingID int,
 	BloodChemistryID int,
 	OtherLaboratoriesID int,
 	BoneMarrowAspirateID int,
@@ -312,8 +313,6 @@ CREATE TABLE SerumImmunofixationTable (
 	Result blob NOT NULL,
 	PRIMARY KEY (SerumImmunofixationID)
 );
-
-
 
 CREATE TABLE TreatmentTable (
 	TreatmentID int NOT NULL AUTO_INCREMENT,

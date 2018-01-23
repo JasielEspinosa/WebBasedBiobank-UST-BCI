@@ -152,7 +152,8 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
 
 		// Treatment
-		int treatment = Integer.parseInt(request.getParameter("treatment"));
+		//int treatment = Integer.parseInt(request.getParameter("treatment"));
+		String treatment = request.getParameter("treatment");
 		//String treatmentSpecify = request.getParameter("treatmentSpecify");
 
 		// INSERT VALUES
@@ -195,7 +196,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		
 		SeverityBean sb = BeanFactory.getSeverityBean(severity);
 		if (connection != null) {
-			if (SQLOperations.addSeverity(sb, connection)){
+			if (SQLOperations.addSeverity(sb, connection, disease)){
 				System.out.println("Successful insert DiseaseStatusBean");
 			} else {
 				System.out.println("Failed insert DiseaseStatusBean");
@@ -274,11 +275,19 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection LaboratoryProfileBean");
 		}
+		
+		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(treatment);
+		if (connection != null) {
+			if (SQLOperations.addModeOfTreatment(motb, connection, disease)) {
+				System.out.println("Successful insert ModeOfTreatmentBean");
+			} else {
+				System.out.println("Failed insert ModeOfTreatmentBean");
+			}
+		} else {
+			System.out.println("Invalid connection ModeOfTreatmentBean");
+		}
 
-		// [treatment] int is the cycle number for mode of treatment
-		// "Specify" of treatment not in use; not existed in SQL and
-		// BeanFactory
-		TreatmentBean tb = BeanFactory.getTreatmentBean(true, "", "", treatment, "", "");
+		TreatmentBean tb = BeanFactory.getTreatmentBean(true, "", "", 0, "", "");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");

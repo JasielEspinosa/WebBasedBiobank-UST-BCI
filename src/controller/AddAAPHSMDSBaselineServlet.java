@@ -38,8 +38,6 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 	protected void doPost(
 			HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		
-		//
 
 		int disease = 1;
 
@@ -254,7 +252,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 
 		ClassificationBean csb = BeanFactory.getClassificationBean(severity);
 		if (connection != null) {
-			if (SQLOperations.addClassification(csb, connection)) {
+			if (SQLOperations.addClassification(csb, connection, disease)) {
 				System.out.println("Successful insert ClassificationBean");
 			} else {
 				System.out.println("Failed insert ClassificationBean");
@@ -290,7 +288,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 
 		MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
 		if (connection != null) {
-			if (SQLOperations.addMedications(mb, connection)) {
+			if (SQLOperations.addMedications(mb, connection, disease)) {
 				System.out.println("Successful insert MedicationsBean");
 			} else {
 				System.out.println("Failed insert MedicationsBean");
@@ -405,7 +403,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 
 		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment);
 		if (connection != null) {
-			if (SQLOperations.addModeOfTreatment(motb, connection)) {
+			if (SQLOperations.addModeOfTreatment(motb, connection, disease)) {
 				System.out.println("Successful insert ModeOfTreatmentBean");
 			} else {
 				System.out.println("Failed insert ModeOfTreatmentBean");
@@ -427,7 +425,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 
 		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("");
 		if (connection != null) {
-			if (SQLOperations.addDiseaseStatus(dsb, connection)) {
+			if (SQLOperations.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert DiseaseStatusBean");
 			} else {
 				System.out.println("Failed insert DiseaseStatusBean");
@@ -436,6 +434,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection DiseaseStatusBean");
 		}
 
+		// ADD PATIENT
 		if (connection != null) {
 			if (SQLOperations.addPatient(connection, disease)) {
 				System.out.println("Successful insert AddPatient");
