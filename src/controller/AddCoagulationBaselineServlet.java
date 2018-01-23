@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+//import java.io.PrintWriter;
 import java.sql.Connection;
 
 import javax.servlet.ServletException;
@@ -67,7 +67,9 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 
 		// String diagnosisOthers = request.getParameter("diagnosisOthers");
 
-		int severity = Integer.parseInt(request.getParameter("severity"));
+		String severity = request.getParameter("severity");
+		//int severity = Integer.parseInt(request.getParameter("severity"));
+		
 
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String otherSymptoms = request.getParameter("otherSymptoms");
@@ -187,9 +189,18 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection PhysicalExamBean");
-		}
+		}	
 		
-		// SeverityBean sb = BeanFactory.getSeverityBean(severityName);
+		SeverityBean sb = BeanFactory.getSeverityBean(severity);
+		if (connection != null) {
+			if (SQLOperations.addSeverity(sb, connection)){
+				System.out.println("Successful insert DiseaseStatusBean");
+			} else {
+				System.out.println("Failed insert DiseaseStatusBean");
+			}
+		} else {
+			System.out.println("Invalid connection DiseaseStatusBean");
+		}
 
 		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, "", chiefComplaint, "",
 				otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeHistorySpecify,

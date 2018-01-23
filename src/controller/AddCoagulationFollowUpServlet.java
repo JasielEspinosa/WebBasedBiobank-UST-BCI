@@ -11,9 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import utility.database.SQLOperations;
 
-/**
- * Servlet implementation class AddCoagulationFollowUpServlet
- */
 @WebServlet("/AddCoagulationFollowUpServlet")
 public class AddCoagulationFollowUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,17 +27,10 @@ public class AddCoagulationFollowUpServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String dateOfEntry = request.getParameter("dateOfEntry");

@@ -286,6 +286,15 @@ CREATE TABLE ImmunohistochemistryTable (
 	PRIMARY KEY (ImmunohistochemistryID)
 );
 
+CREATE TABLE CoagulationTestingTable (
+	CoagulationTestingID int NOT NULL AUTO_INCREMENT,
+	FactorVIIILevel double NOT NULL,
+	FactorIXLevel double NOT NULL,
+	InhibitorAssay double NOT NULL,
+	BethesdaUnits  double NOT NULL,
+	PRIMARY KEY (CoagulationTestingID)
+);
+
 CREATE TABLE SerumFreeTable (
 	SerumFreeID int NOT NULL AUTO_INCREMENT,
 	Result blob NOT NULL,
