@@ -197,12 +197,12 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		SeverityBean sb = BeanFactory.getSeverityBean(severity);
 		if (connection != null) {
 			if (SQLOperations.addSeverity(sb, connection, disease)){
-				System.out.println("Successful insert DiseaseStatusBean");
+				System.out.println("Successful insert SeverityBean");
 			} else {
-				System.out.println("Failed insert DiseaseStatusBean");
+				System.out.println("Failed insert SeverityBean");
 			}
 		} else {
-			System.out.println("Invalid connection DiseaseStatusBean");
+			System.out.println("Invalid connection SeverityBean");
 		}
 
 		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, "", chiefComplaint, "",

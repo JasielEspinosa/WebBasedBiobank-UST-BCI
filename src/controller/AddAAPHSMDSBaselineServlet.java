@@ -146,6 +146,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		// Double.parseDouble(request.getParameter("inhibitorAssay"));
 		// double bethesdaUnits =
 		// Double.parseDouble(request.getParameter("bethesdaUnits"));
+		
 		double creatinine = Double.parseDouble(request.getParameter("creatinine"));
 		double uricAcid = Double.parseDouble(request.getParameter("uricAcid"));
 		double reticulocyteCount = Double.parseDouble(request.getParameter("reticulocyteCount"));
