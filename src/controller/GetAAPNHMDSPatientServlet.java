@@ -35,6 +35,8 @@ public class GetAAPNHMDSPatientServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		//
+		
 		int patientId = Integer.parseInt(request.getParameter("patientId"));
 		try {	
 			if (connection != null) {

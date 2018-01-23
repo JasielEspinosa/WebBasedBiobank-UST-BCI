@@ -40,6 +40,8 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 
+		//
+		
 		int disease = 2;
 
 		// GENERAL DATA

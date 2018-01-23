@@ -313,6 +313,8 @@ CREATE TABLE SerumImmunofixationTable (
 	PRIMARY KEY (SerumImmunofixationID)
 );
 
+
+
 CREATE TABLE TreatmentTable (
 	TreatmentID int NOT NULL AUTO_INCREMENT,
 	Transplant bool,

@@ -139,7 +139,7 @@ public class SQLOperations implements SQLCommands {
 	public static boolean addSeverity(SeverityBean sb, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(INSERT_SEVERITY_COAGULATION);
-			pstmt.setString(1, sb.severityName);
+			pstmt.setString(1, sb.getSeverityName());
 			pstmt.executeUpdate();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());

@@ -34,6 +34,9 @@ public class ListLeukemiaPatientsServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//
+		
 		try {	
 			if (connection != null) {
 				ResultSet leukemiaPatientsList = SQLOperations.getLeukemiaBaselinePatients(connection); 			

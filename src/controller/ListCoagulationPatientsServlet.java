@@ -34,6 +34,9 @@ public class ListCoagulationPatientsServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//
+		
 		try {	
 			if (connection != null) {
 				ResultSet coagulationPatientsList = SQLOperations.getCoagulationBaselinePatients(connection); 			

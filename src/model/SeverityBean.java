@@ -2,7 +2,7 @@ package model;
 
 public class SeverityBean {
 
-	public String severityName;
+	private String severityName;
 
 	public String getSeverityName() {
 		return severityName;

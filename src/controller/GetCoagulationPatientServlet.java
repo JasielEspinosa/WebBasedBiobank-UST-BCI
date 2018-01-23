@@ -39,6 +39,9 @@ public class GetCoagulationPatientServlet extends HttpServlet {
 			HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		int patientId = Integer.parseInt(request.getParameter("patientId"));
+		
+		//
+		
 		try {
 			if (connection != null) {
 				ResultSet coagulationPatientsList = SQLOperations.getCoagulationBaselinePatients(connection);

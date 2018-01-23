@@ -34,6 +34,9 @@ public class ListAAPHSMDSBaselinePatientsServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//
+		
 		try {	
 			if (connection != null) {
 				ResultSet aaphsmdsPatientsList = SQLOperations.getAAPHSMDSBaselinePatients(connection); 			
