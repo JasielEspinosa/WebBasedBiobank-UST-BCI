@@ -71,7 +71,6 @@
                <h1 style="text-align: center; background-color: #ffce00;">User Profile</h1>
                <br />
 
-
                <!-- General Tab Content Gray Color -->
                <div class="tab-content">
                   <div id="general" class="tab-pane fade in active">
