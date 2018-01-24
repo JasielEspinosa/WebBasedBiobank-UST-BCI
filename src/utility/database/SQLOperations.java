@@ -140,7 +140,7 @@ public class SQLOperations implements SQLCommands {
 		switch (disease) {
 		case (1): {
 			try {
-				PreparedStatement psmt = connection.prepareStatement(INSERT_RISK_SCORE_AAPHSMDS);
+				PreparedStatement psmt = connection.prepareStatement(INSERT_RISK_SCORE);
 				psmt.setString(1, rsb.getRiskScoreName());
 				psmt.executeUpdate();
 			} catch (SQLException sqle) {
@@ -149,7 +149,16 @@ public class SQLOperations implements SQLCommands {
 			}
 		}
 		case (2): {}
-		case (3): {}
+		case (3): {
+			try {
+				PreparedStatement psmt = connection.prepareStatement(INSERT_RISK_SCORE);
+				psmt.setString(1, rsb.getRiskScoreName());
+				psmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addFamilyCancer: " + sqle.getMessage());
+				return false;
+			}
+		}
 		case (4): {}
 		case (5): {}
 		case (6): {}

@@ -33,11 +33,14 @@ public interface SQLCommands {
 	String GET_BLOOD_CHEMISTRY = "SELECT * FROM BLOODCHEMISTRYTABLE WHERE BLOODCHEMISTRYID = ?";
 	String GET_IMAGING_STUDIES = "SELECT * FROM IMAGINGSTUDIESTABLE WHERE IMAGINGSTUDIESID = ?";
 
+	
 	// GENERAL QUERIES
 	String INSERT_ADDRESS = "INSERT INTO AddressTable VALUES (NULL, ?, ?, ?)";
 	String INSERT_TISSUE_SPECIMEN = "INSERT INTO TissueSpecimenTable VALUES (NULL,?)";
 	String INSERT_DISEASE_STATUS = "INSERT INTO DiseaseStatusTable VALUES (NULL,?)";
+	String INSERT_RISK_SCORE = "INSERT INTO RiskScoreTable VALUES (NULL,?)";
 
+	
 	// AAPHSMDS DISEASE QUERIES
 	String INSERT_GENERAL_DATA_AAPHSMDS = "INSERT INTO GeneralDataTable VALUES(NULL,?,?,?,?,?,?,(SELECT MAX(AddressID) FROM AddressTable),(SELECT MAX(TissueSpecimenName) FROM TissueSpecimenTable))";
 	String INSERT_CLASSIFICATION_AAPPHSMDS = "INSERT INTO ClassificationTable VALUES (NULL,?)";
@@ -55,7 +58,6 @@ public interface SQLCommands {
 	String INSERT_FLOWCYTOMETRY_AAPHSMDS = "INSERT INTO FlowCytometryTable VALUES (NULL,?)";
 	String INSERT_CYTOGENETIC_AAPNH_AAPHSMDS = "INSERT INTO CytogeneticAAPNHTable VALUES (NULL,?)";
 	String INSERT_CYTOGENETIC_MDS_AAPHSMDS = "INSERT INTO CytogeneticMDSTable VALUES (NULL,?)";
-	String INSERT_RISK_SCORE_AAPHSMDS = "INSERT INTO RiskScoreTable VALUES (NULL,?)";
 	String INSERT_CHEMOTHERAPY_MEDICATIONS_AAPHSMDS = "INSERT INTO ChemoMedicationsTable VALUES (NULL, ?);";
 	
 	String INSERT_LABORATORY_PROFILE_AAPHSMDS = "INSERT INTO LaboratoryProfileTable "
@@ -66,6 +68,7 @@ public interface SQLCommands {
 	String INSERT_TREATMENT_AAPHSMDS = "INSERT INTO TreatmentTable (TreatmentID,Transplant,ModeOfTreatmentID,ChemoMedicationID,DateStarted) VALUES (NULL,?,(SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable),(SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable),?)";
 	String INSERT_PATIENT_AAPHSMDS = "INSERT INTO PatientTable VALUES (NULL, 1, (SELECT MAX(GeneralDataID) FROM GeneralDataTable), (SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,1)";
 
+	
 	// COAGUATION DISEASE QUERIES
 	String INSERT_GENERAL_DATA_COAGULATION = "INSERT INTO GeneralDataTable VALUES (NULL,?,?,?,?,?,?,(SELECT MAX(AddressID) FROM AddressTable),(SELECT MAX(TissueSpecimenName) FROM TissueSpecimenTable))";
 	String INSERT_SEVERITY_COAGULATION = "INSERT INTO SeverityTable VALUES (NULL,?)";
@@ -87,17 +90,27 @@ public interface SQLCommands {
 	String INSERT_TREATMENT_COAGULATION = "INSERT INTO TreatmentTable (TreatmentID, ModeOfTreatmentID) VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable))";
 	String INSERT_PATIENT_COAGULATION = "INSERT INTO PatientTable VALUES (NULL, 2, (SELECT MAX(GeneralDataID) FROM GeneralDataTable), (SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,2)";
 
+	
 	// LEUKEMIA QUERIES
-	String INSERT_GENERAL_DATA_LEUKEMIA = "INSERT INTO GeneralDataTable VALUES(NULL,?,?,?,?,?,?,(SELECT MAX(AddressID) FROM AddressTable),?)";
+	String INSERT_GENERAL_DATA_LEUKEMIA = "INSERT INTO GeneralDataTable VALUES(NULL,?,?,?,?,?,?,(SELECT MAX(AddressID) FROM AddressTable),(SELECT MAX(TissueSpecimenName) FROM TissueSpecimenTable))";
 	String INSERT_PHYSICAL_EXAM_LEUKEMIA = "INSERT INTO PhysicalExamTable VALUES (NULL,?,?,?,?,?,?,NULL,NULL,NULL,NULL,?)";
-	String INSERT_CLINICAL_DATA_LEUKEMIA = "INSERT INTO ClinicalDataTable (ClinicalDataID,DateOfVisit,Diagnosis,RiskScoreID,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Combordities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable))";
+	
+	String INSERT_CLINICAL_DATA_LEUKEMIA = "INSERT INTO ClinicalDataTable "
+			+ "(ClinicalDataID,DateOfVisit,Diagnosis,RiskScoreID,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Combordities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID) "
+			+ "VALUES (NULL,?,?,(SELECT MAX(RiskScoreID) FROM RiskScoreTable),?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable))";
+	
 	String INSERT_HEMATOLOGY_LEUKEMIA = "INSERT INTO HematologyTable VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?)";
 	String INSERT_BLOOD_CHEMISTRY_LEUKEMIA = "INSERT INTO BloodChemistryTable(BloodChemistryID,Creatinine,UricAcid,Na,K,SGOT,SGPT,LDH) VALUES (NULL,?,?,?,?,?,?,?)";
 	String INSERT_IMAGING_STUDIES_LEUKEMIA = "INSERT INTO ImagingStudiesTable VALUES (NULL,?)";
 	String INSERT_BONE_MARROW_ASPIRATE_LEUKEMIA = "INSERT INTO BoneMarrowAspirateTable VALUES (NULL,?,?)";
 	String INSERT_FLOWCYTOMETRY_LEUKEMIA = "INSERT INTO FlowCytometryTable VALUES (NULL,?)";
+	
 	String INSERT_CYTOGENETIC_AAPNH_LEUKEMIA = "INSERT INTO CytogeneticAAPNHTable VALUES (NULL,?)";
-	String INSERT_LABORATORY_PROFILE_LEUKEMIA = "INSERT INTO LaboratoryProfileTable(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,FlowCytometry,CytogenicAAPNHID, ImagingStudiesID) VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),(SELECT MAX(CytogenicAAPNHID) FROM CytogeneticAAPNHTable), (SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable))";
+	
+	String INSERT_LABORATORY_PROFILE_LEUKEMIA = "INSERT INTO LaboratoryProfileTable "
+			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,FlowCytometry,CytogenicAAPNHID, ImagingStudiesID) "
+			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),(SELECT MAX(CytogenicAAPNHID) FROM CytogeneticAAPNHTable), (SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable))";
+	
 	String INSERT_REGIMEN_LEUKEMIA = "INSERT INTO RegimenTable VALUES (NULL,?)";
 	String INSERT_CHEMOTHERAPY_MEDICATIONS_LEUKEMIA = "INSERT INTO ChemoMedicationsTable VALUES (NULL,?)";
 	String INSERT_TREATMENT_LEUKEMIA = "INSERT INTO TreatmentTable(TreatmentID, RegimenID,ChemoMedicationID,CycleNumber,DateStarted) VALUES (NULL, (SELECT MAX(RegimenID) FROM RegimenTable), (SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable),?,?)";
