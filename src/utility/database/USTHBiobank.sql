@@ -1,4 +1,4 @@
--- DROP DATABASE usthbiobank;
+DROP DATABASE usthbiobank;
 CREATE DATABASE USTHBiobank;
 USE USTHBiobank;
 
@@ -56,10 +56,19 @@ CREATE TABLE TissueSpecimenTable (
 	PRIMARY KEY (TissueSpecimenID)
 );
 
+CREATE TABLE FamilyCancerTable (
+	FamilyCancerID int NOT NULL AUTO_INCREMENT,
+	ClinicalDataID int NOT NULL,
+	RelationshipToPatient blob NOT NULL,
+	CancerName blob NOT NULL,
+	PRIMARY KEY (FamilyCancerID)
+);
+
 CREATE TABLE ClinicalDataTable (
 	ClinicalDataID int NOT NULL AUTO_INCREMENT,
 	DateOfVisit DATE NOT NULL,
 	Diagnosis blob NOT NULL,
+	OtherDiagnosis blob,
 	PrognosticRiskScoringID int,
 	RiskScoreID int,
 	ClassificationID int,
@@ -110,14 +119,6 @@ CREATE TABLE PhysicalExamTable (
 	PRIMARY KEY (PhysicalExamID)
 );
 
-CREATE TABLE FamilyCancerTable (
-	FamilyCancerID int NOT NULL AUTO_INCREMENT,
-	ClinicalDataID int NOT NULL,
-	RelationshipToPatient blob NOT NULL,
-	CancerName blob NOT NULL,
-	PRIMARY KEY (FamilyCancerID)
-);
-
 CREATE TABLE RiskScoreTable (
 	RiskScoreID int NOT NULL AUTO_INCREMENT,
 	RiskScoreName varchar(500) NOT NULL,
@@ -150,7 +151,7 @@ CREATE TABLE LaboratoryProfileTable (
 	BloodChemistryID int,
 	OtherLaboratoriesID int,
 	BoneMarrowAspirateID int,
-	FlowCytometry int,
+	FlowCytometryID int,
 	CytogenicAAPNHID int,
 	CytogenicMDSID int,
 	ImagingStudiesID int,
@@ -255,7 +256,7 @@ CREATE TABLE CytogeneticMDSTable  (
 
 CREATE TABLE ImagingStudiesTable (
 	ImagingStudiesID int NOT NULL AUTO_INCREMENT,
-	Results int NOT NULL,
+	Results blob NOT NULL,
 	PRIMARY KEY (ImagingStudiesID)
 );
 
@@ -331,6 +332,7 @@ CREATE TABLE TreatmentTable (
 
 CREATE TABLE ModeOfTreatmentTable (
 	ModeOfTreatmentID int NOT NULL AUTO_INCREMENT,
+	ModeOfTreatment varchar(100),
 	NameOfTreatment varchar(100),
 	PRIMARY KEY (ModeOfTreatmentID)
 );
@@ -399,8 +401,8 @@ CREATE TABLE QualityOfResponseTable (
 );
 
 CREATE TABLE AccountTable (
-	Username varchar(1000) NOT NULL,
-	Password varchar(1000) NOT NULL,
+	Username varchar(750) NOT NULL,
+	Password varchar(750) NOT NULL,
 	LastName varchar(500) NOT NULL,
 	FirstName varchar(500) NOT NULL,
 	MiddleName varchar(500),
@@ -457,7 +459,7 @@ ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk2 FOR
 
 ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk3 FOREIGN KEY (BoneMarrowAspirateID) REFERENCES BoneMarrowAspirateTable(BoneMarrowAspirateID);
 
-ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk4 FOREIGN KEY (FlowCytometry) REFERENCES FlowCytometryTable(FlowCytometryID);
+ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk4 FOREIGN KEY (FlowCytometryID) REFERENCES FlowCytometryTable(FlowCytometryID);
 
 ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk5 FOREIGN KEY (CytogenicAAPNHID) REFERENCES CytogeneticAAPNHTable(CytogenicAAPNHID);
 
