@@ -1,7 +1,7 @@
 package controller;
 
 import java.io.IOException;
-//import java.io.PrintWriter;
+// import java.io.PrintWriter;
 import java.sql.Connection;
 
 import javax.servlet.ServletException;
@@ -20,7 +20,8 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 
 	private Connection connection;
 
-	public void init() throws ServletException {
+	public void init()
+			throws ServletException {
 		connection = SQLOperations.getConnection();
 
 		if (connection != null) {
@@ -31,16 +32,15 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		}
 	}
 
-	protected void doGet(
-			HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
 	}
 
-	protected void doPost(
-			HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		//
+		getServletContext().log("AddCoagulationBaselineServlet insert test");
 		
 		int disease = 2;
 
@@ -54,77 +54,55 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		String address = request.getParameter("address");
 		String dateOfEntry = request.getParameter("dateOfEntry");
 
-		System.out.println(patientIDNumber);
+/*		System.out.println(patientIDNumber);
 		System.out.println(lastName);
 		System.out.println(firstName);
 		System.out.println(middleInitial);
 		System.out.println(gender);
 		System.out.println(dateOfBirth);
 		System.out.println(address);
-		System.out.println(dateOfEntry);
+		System.out.println(dateOfEntry);*/
 
 		// CLINICAL DATA
 		String dateOfVisit = request.getParameter("dateOfVisit");
 		String diagnosis = request.getParameter("diagnosis");
-
-		// String diagnosisOthers = request.getParameter("diagnosisOthers");
-
+		String otherDiagnosis = request.getParameter("diagnosisOthers");
 		String severity = request.getParameter("severity");
 		//int severity = Integer.parseInt(request.getParameter("severity"));
-		
-
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String otherSymptoms = request.getParameter("otherSymptoms");
-
-		// String familyHistoryOfBleedingDiathesis =
-		// request.getParameter("familyHistoryOfBleedingDiathesis");
-		// String relationshipToPatient =
-		// request.getParameter("relationshipToPatient");
-		// String otherDiseasesInTheFamily =
-		// request.getParameter("otherDiseasesInTheFamily");
-
+		String relationshipToPatient = request.getParameter("relationshipToPatient");
+		String otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
 		String comorbidities = request.getParameter("comorbidities");
-
-		// int concomitantMedications =
-		// Integer.parseInt(request.getParameter("concomitantMedications"));
-		// String genericName = request.getParameter("genericName");
-		// double dose = Double.parseDouble(request.getParameter("dose"));
-		// String frequency = request.getParameter("frequecy");
-		// String smokingHistory = request.getParameter("smokingHistory");
-
+		String genericName = request.getParameter("genericName");
+		double dose = Double.parseDouble(request.getParameter("dose"));
+		String frequency = request.getParameter("frequency");
 		String smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
-
-		// String alchoholIntakeHistory =
-		// request.getParameter("alchoholIntakeHistory");
-
 		String alchoholIntakeHistorySpecify = request.getParameter("alchoholIntakeHistorySpecify");
-
-		// String chemicalExposureHistory =
-		// request.getParameter("chemicalExposureHistory");
-
 		String chemicalExposureHistorySpecify = request.getParameter("chemicalExposureSpecify");
-
-		// Physical Exam
+		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
+		
 		boolean presenceOfHemarthroses;
 		if (Integer.parseInt(request.getParameter("presenceOfHemarthroses")) != 0) {
 			presenceOfHemarthroses = true;
 		} else {
 			presenceOfHemarthroses = false;
 		}
+		
 		boolean presenceOfContracturesAndMuscleAtrophy;
 		if (Integer.parseInt(request.getParameter("presenceOfContracturesAndMuscleAtrophy")) != 0) {
 			presenceOfContracturesAndMuscleAtrophy = true;
 		} else {
 			presenceOfContracturesAndMuscleAtrophy = false;
 		}
+		
 		String otherFindings = request.getParameter("otherFindings");
 
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
-
-		// Hematology
+		////// Hematology
 		double hemoglobin = Double.parseDouble(request.getParameter("hemoglobin"));
 		double hematocrit = Double.parseDouble(request.getParameter("hematocrit"));
 		double whiteBloodCells = Double.parseDouble(request.getParameter("whiteBloodCells"));
@@ -134,12 +112,12 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		double eosinophils = Double.parseDouble(request.getParameter("eosinophils"));
 		double basophils = Double.parseDouble(request.getParameter("basophils"));
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
-
-		// Coagulation
+		////// Coagulation Testing
 		double factorVIIILevel = Double.parseDouble(request.getParameter("factorVIIILevel"));
 		double factorIXLevel = Double.parseDouble(request.getParameter("factorIXLevel"));
 		double inhibitorAssay = Double.parseDouble(request.getParameter("inhibitorAssay"));
 		double bethesdaUnits = Double.parseDouble(request.getParameter("bethesdaUnits"));
+		////// Blood Chemistry
 		double creatinine = Double.parseDouble(request.getParameter("creatine"));
 		double uricAcid = Double.parseDouble(request.getParameter("uricAcid"));
 		double na = Double.parseDouble(request.getParameter("na"));
@@ -147,21 +125,19 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		double sgot = Double.parseDouble(request.getParameter("sgot"));
 		double sgpt = Double.parseDouble(request.getParameter("sgpt"));
 		double ldh = Double.parseDouble(request.getParameter("ldh"));
-
-		// Imaging Studies
+		//int imagingStudies = Integer.parseInt(request.getParameter("imagingStudies"));
 		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
-
-		// Treatment
-		//int treatment = Integer.parseInt(request.getParameter("treatment"));
+		
+		// TREATMENT / THERAPHY AND RESPONSE
 		String treatment = request.getParameter("treatment");
-		//String treatmentSpecify = request.getParameter("treatmentSpecify");
+		String treatmentSpecify = request.getParameter("treatmentSpecify");
 
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
 
 		AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
 		if (connection != null) {
-			if (SQLOperations.addAddress(ab, connection)) {
+			if (SQLOperations.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert AddressBean");
 			} else {
 				System.out.println("Failed insert AddressBean");
@@ -192,11 +168,11 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection PhysicalExamBean");
-		}	
-		
+		}
+
 		SeverityBean sb = BeanFactory.getSeverityBean(severity);
 		if (connection != null) {
-			if (SQLOperations.addSeverity(sb, connection, disease)){
+			if (SQLOperations.addSeverity(sb, connection, disease)) {
 				System.out.println("Successful insert SeverityBean");
 			} else {
 				System.out.println("Failed insert SeverityBean");
@@ -205,8 +181,8 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection SeverityBean");
 		}
 
-		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, "", chiefComplaint, "",
-				otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeHistorySpecify,
+		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, otherDiagnosis, "",
+				chiefComplaint, "", otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeHistorySpecify,
 				chemicalExposureHistorySpecify, "", "", otherFindings);
 		if (connection != null) {
 			if (SQLOperations.addClinicalData(cdb, connection, disease)) {
@@ -216,6 +192,28 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection ClinicalDataBean");
+		}
+
+		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, otherDiseasesInTheFamily);
+		if (connection != null) {
+			if (SQLOperations.addFamilyCancer(famcb, connection, disease)) {
+				System.out.println("Successful insert FamilyCancerBean");
+			} else {
+				System.out.println("Failed insert FamilyCancerBean");
+			}
+		} else {
+			System.out.println("Invalid connection FamilyCancerBean");
+		}
+
+		MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
+		if (connection != null) {
+			if (SQLOperations.addMedications(mb, connection, disease)) {
+				System.out.println("Successful insert MedicationsBean");
+			} else {
+				System.out.println("Failed insert MedicationsBean");
+			}
+		} else {
+			System.out.println("Invalid connection MedicationsBean");
 		}
 
 		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils,
@@ -275,8 +273,8 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection LaboratoryProfileBean");
 		}
-		
-		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(treatment);
+
+		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(treatment, treatmentSpecify);
 		if (connection != null) {
 			if (SQLOperations.addModeOfTreatment(motb, connection, disease)) {
 				System.out.println("Successful insert ModeOfTreatmentBean");
