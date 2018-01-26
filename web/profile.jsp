@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>USTH-BCI Biobank - AA, PHS, MDS</title>
+<title>Profile</title>
 
 <!-- CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
          <div class="nav-collapse">
             <ul class="nav navbar-nav">
 
-               <li><a href="dashboard.jsp">Dashboard</a></li>
+               <li><a href="dashboard-main.jsp">Dashboard</a></li>
                <li><a href="aaphsmds-baseline.jsp">AA, PHS, MDS</a></li>
                <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                <li><a href="leukemia-baseline.jsp">Leukemia</a></li>

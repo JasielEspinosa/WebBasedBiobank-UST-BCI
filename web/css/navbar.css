@@ -1,0 +1,100 @@
+/* Navbar Style */
+
+/* Navbar */
+.navbar-nav li {
+	text-transform: uppercase;
+    font-size: 13px;  
+    letter-spacing: 0.7px; 
+    font-weight: bold;
+    font-family: Open Sans;
+} 
+/* Navbar Background Color */
+.navbar {
+	background-color: #FFCE00;
+}
+/* Hamburger Icon Customized Color */
+.icon-bar {
+  color: black;
+  border-color: black;
+  background-color: black;
+}
+/* Nav-Item X-Y Hover Effect */
+div.navbar__nav-item--hover a:before, div.navbar__nav-item--hover a:after
+{
+    position: absolute;
+    opacity: 0;
+    width: 0%;
+    height: 2px;
+    content: '';
+    background: #FFF;
+    transition: all 1.0s;
+    color: white;
+}
+
+div.navbar__nav-item--hover a:before
+{
+    left: 0px;
+    top: 0px;
+}
+
+div.navbar__nav-item--hover a:after
+{
+    right: 0px;
+    bottom: 0px;
+}
+div.navbar__nav-item--hover a:hover:before, div.navbar__nav-item--hover a:hover:after
+{
+    opacity: 1;
+    width: 100%;
+}
+.navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #023564;
+    color: #FFF;
+}
+/* End of Navbar */
+
+/* Dropdown Customization */
+.dropdown-menu__text {
+	background-color: #FFCE00;
+	font-weight: bold;
+	color: #337AB7;
+}
+
+/* Navbar Responsiveness */
+	@media ( max-width: 1365px ) {
+		.navbar-header {
+      		float: none;
+  	   }
+	   .navbar-left,.navbar-right {
+	      	float: none !important;
+	   }
+	  .navbar-toggle {
+	      	display: block;
+	   }
+	  .navbar-collapse {
+	      	border-top: 1px solid transparent;
+	        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+	   }
+	  .navbar-fixed-top {
+	      	top: 0;
+	      	border-width: 0 0 1px;
+	   }
+	  .navbar-collapse.collapse {
+	      	display: none!important;
+	   }
+	  .navbar-nav {
+	      	float: none!important;
+	      	margin-top: 7.5px;
+	   }
+	  .navbar-nav>li {
+	      	float: none;
+	   }
+	  .navbar-nav>li>a {
+	      	padding-top: 10px;
+	      	padding-bottom: 10px;
+	   }
+	  .collapse.in{
+	      	display:block !important;
+	   }
+	}
+/* End of Navbar Responsiveness */
