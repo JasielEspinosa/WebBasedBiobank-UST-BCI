@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.Part;
+// import javax.servlet.http.Part;
 
 import model.*;
 import utility.database.SQLOperations;
@@ -20,7 +20,8 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 
 	private Connection connection;
 
-	public void init() throws ServletException {
+	public void init()
+			throws ServletException {
 		connection = SQLOperations.getConnection();
 
 		if (connection != null) {
@@ -31,17 +32,15 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		}
 	}
 
-	protected void doGet(
-			HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
 	}
 
-	protected void doPost(
-			HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		//
+		getServletContext().log("AddLeukemiaBaselineServlet insert test");
 
 		int disease = 3;
 
@@ -54,14 +53,16 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
 		String dateOfEntry = request.getParameter("dateOfEntry");
-		
-		int tissueSpecimentCollected = Integer.parseInt(request.getParameter("tissueSpecimenCollected"));
+
+		// int tissueSpecimentCollected =
+		// Integer.parseInt(request.getParameter("tissueSpecimenCollected"));
 
 		String specimenType = request.getParameter("specimenType");
+
 		// int specimenType =
 		// Integer.parseInt(request.getParameter("specimenType"));
 
-		System.out.println(patientIDNumber);
+/*		System.out.println(patientIDNumber);
 		System.out.println(lastName);
 		System.out.println(firstName);
 		System.out.println(middleInitial);
@@ -69,50 +70,28 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		System.out.println(dateOfBirth);
 		System.out.println(address);
 		System.out.println(dateOfEntry);
-		System.out.println(specimenType);
+		System.out.println(specimenType);*/
 
 		// CLINICAL DATA
 		String dateOfInitialDiagnosis = request.getParameter("dateOfInitialDiagnosis");
-		// String dateOfVisit = request.getParameter("dateOfVisit");
 		String diagnosis = request.getParameter("diagnosis");
-		// String diagnosisOthers = request.getParameter("diagnosisOthers");
-		
 		String severity = request.getParameter("severity");
-		//int severity = Integer.parseInt(request.getParameter("severity"));
-		
+		// int severity = Integer.parseInt(request.getParameter("severity"));
+
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String constitutionalSymptoms = request.getParameter("constitutionalSymptoms");
 		String otherSymptoms = request.getParameter("otherSymptoms");
-		
-		String familyHistoryOfCancer = request.getParameter("familyHistoryOfCancer");
 		String relationshipToPatient = request.getParameter("relationshipToPatient");
 		String otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
-		
+
 		String comorbidities = request.getParameter("comorbidities");
-		
-		int concomitantMedications = Integer.parseInt(request.getParameter("concomitantMedications"));
 		String genericName = request.getParameter("genericName");
 		double dose = Double.parseDouble(request.getParameter("dose"));
-		String frequency = request.getParameter("frequecy");
-		String smokingHistory = request.getParameter("smokingHistory");
-		
+		String frequency = request.getParameter("frequency");
 		String smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
-		String alchoholIntakeHistory = request.getParameter("alchoholIntakeHistory");
-		
 		String alchoholIntakeHistorySpecify = request.getParameter("alchoholIntakeSpecify");
-		String chemicalExposureHistory = request.getParameter("chemicalExposureHistory");
-		
 		String chemicalExposureHistorySpecify = request.getParameter("chemicalExposureSpecify");
-		// String previousInfection =
-		// request.getParameter("previousInfection");
-		// String previousInfectionSpecify =
-		// request.getParameter("previousInfection");
-		// String previousHematologicDisorder =
-		// request.getParameter("previousHematologicDisorder");
-		// String previousHematologicDisorderSpecify =
-		// request.getParameter("previousHematologicDisorderSpecify");
-
-		// Physical Exam
+		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
 		double ecog = Double.parseDouble(request.getParameter("ecog"));
@@ -123,8 +102,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
-
-		// Hematology
+		////// Hematology
 		double hemoglobin = Double.parseDouble(request.getParameter("hemoglobin"));
 		double hematocrit = Double.parseDouble(request.getParameter("hematocrit"));
 		double whiteBloodCells = Double.parseDouble(request.getParameter("whiteBloodCells"));
@@ -137,112 +115,37 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		double metamyelocytes = Double.parseDouble(request.getParameter("metamyelocytes"));
 		double blasts = Double.parseDouble(request.getParameter("blasts"));
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
-
-		// Coagulation
-		// double factorVIIILevel =
-		// Double.parseDouble(request.getParameter("factorVIIILevel"));
-		// double factorIXLevel =
-		// Double.parseDouble(request.getParameter("factorIXLevel"));
-		// double inhibitorAssay =
-		// Double.parseDouble(request.getParameter("inhibitorAssay"));
-		// double bethesdaUnits =
-		// Double.parseDouble(request.getParameter("bethesdaUnits"));
-		
+		////// Blood Chemistry
 		double creatinine = Double.parseDouble(request.getParameter("creatinine"));
 		double uricAcide = Double.parseDouble(request.getParameter("uricAcid"));
 		double na = Double.parseDouble(request.getParameter("na"));
 		double k = Double.parseDouble(request.getParameter("k"));
-		
-		// double reticulocyteCount =
-		// Double.parseDouble(request.getParameter("reticulocyteCount"));
-		// double serumIron =
-		// Double.parseDouble(request.getParameter("serumIron"));
-		// double ironBindingCapacity =
-		// Double.parseDouble(request.getParameter("ironBindingCapacity"));
-		// double serumFerritin =
-		// Double.parseDouble(request.getParameter("serumFerritin"));
-		// double directAntiglobulin =
-		// Double.parseDouble(request.getParameter("directAntiglobulin"));
-		// double indirectAntiglobulin =
-		// Double.parseDouble(request.getParameter("indirectAntiglobulin"));
-		
 		double sgot = Double.parseDouble(request.getParameter("sgot"));
 		double sgpt = Double.parseDouble(request.getParameter("sgpt"));
 		double ldh = Double.parseDouble(request.getParameter("ldh"));
-		
-		// double screeningTestsForHepatitisVirusesABC =
-		// Double.parseDouble(request.getParameter("screeningTestsForHepatitisVirusesABC"));
-		// double screeningTestsForEBVCMVHIV =
-		// Double.parseDouble(request.getParameter("screeningTestsForEBVCMVHIV"));
-		// double erythropoeitinLevel =
-		// Double.parseDouble(request.getParameter("erythropoeitinLevel"));
-		// double serumFolicAcid =
-		// Double.parseDouble(request.getParameter("serumFolicAcid"));
-		// double serumB12 =
-		// Double.parseDouble(request.getParameter("serumB12"));
-		// double tsh = Double.parseDouble(request.getParameter("tsh"));
-		//
-		// Imaging Studies
-		
-		int imagingStudies = Integer.parseInt(request.getParameter("imagingStudies"));
-		
+		//int imagingStudies = Integer.parseInt(request.getParameter("imagingStudies"));
 		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
-
-		int boneMarrowAspirate = Integer.parseInt(request.getParameter("boneMarrowAspirate"));
-		
 		String boneMarrowAspirateDatePerformed = request.getParameter("boneMarrowAspirateDatePerformed");
 		String boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
-		
-		// Part boneMarrowAspirateAttachScannedDocument =
-		// request.getPart("boneMarrowAspirateAttachScannedDocument");
-		
-		int flowCytometry = Integer.parseInt(request.getParameter("flowCytometry"));
+		// Part boneMarrowAspirateAttachScannedDocument = request.getPart("boneMarrowAspirateAttachScannedDocument");
+		// int flowCytometry = Integer.parseInt(request.getParameter("flowCytometry"));
 		String flowCytometryResult = request.getParameter("flowCytometryResult");
-		
-		// Part flowCytometryAttachScannedDocument =
-		// request.getPart("flowCytometryAttachScannedDocument");
-		
-		int cytogeneticAndMolecularAnalysis = Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysis"));
-		
+		// Part flowCytometryAttachScannedDocument = request.getPart("flowCytometryAttachScannedDocument");
 		String cytogeneticAndMolecularAnalysisResult = request.getParameter("cytogeneticAndMolecularAnalysisResult");
-		// Part cytogeneticAndMolecularAnalysisAttachScannedDocument =
-		// request.getPart("cytogeneticAndMolecularAnalysisAttachScannedDocument");
+		// Part cytogeneticAndMolecularAnalysisAttachScannedDocument = request.getPart("cytogeneticAndMolecularAnalysisAttachScannedDocument");
 
-		// int cytogeneticAndMolecularAnalysisAAPNH =
-		// Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisAAPNH"));
-		// String cytogeneticAndMolecularAnalysisAAPNHResult =
-		// request.getParameter("cytogeneticAndMolecularAnalysisAAPNHResult");
-		// Part cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument =
-		// request.getPart("cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument");
-		// int cytogeneticAndMolecularAnalysisMDS =
-		// Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisMDS"));
-		// String cytogeneticAndMolecularAnalysisMDSResult =
-		// request.getParameter("cytogeneticAndMolecularAnalysisMDSResult");
-		// Part cytogeneticAndMolecularAnalysisMDSAttachScannedDocument =
-		// request.getPart("cytogeneticAndMolecularAnalysisMDSAttachScannedDocument");
-		//
-
-		// Treatment
-		// int transplantCandidate =
-		// Integer.parseInt(request.getParameter("transplantCandidate"));
-		// String modeOfTreatment = request.getParameter("modeOfTreatment");
-		// String medications = request.getParameter("medications");
-		String dateStarted = request.getParameter("dateStarted");
-		
-		String treatment = request.getParameter("treatment");
-		
+		// TREATMENT / THERAPHY AND RESPONSE
+		String modeOfTreatment = request.getParameter("treatment");
 		String regimenProtocol = request.getParameter("regimenProtocol");
 		String chemotherapyMedications = request.getParameter("chemotherapyMedications");
-		
 		int cycleNumber = Integer.parseInt(request.getParameter("cycleNumber"));
+		String dateStarted = request.getParameter("dateStarted");
 		String diseaseStatus = request.getParameter("diseaseStatus");
-		
-		// String treatmentSpecify = request.getParameter("treatmentSpecify");
 
 		String addressArray[] = address.split(",");
 		AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
 		if (connection != null) {
-			if (SQLOperations.addAddress(ab, connection)) {
+			if (SQLOperations.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert Address");
 			} else {
 				System.out.println("Failed insert Address");
@@ -253,7 +156,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 
 		TissueSpecimenBean tsb = BeanFactory.getTissueSpecimenBean(specimenType);
 		if (connection != null) {
-			if (SQLOperations.addTissueSpecimenData(tsb, connection)) {
+			if (SQLOperations.addTissueSpecimenData(tsb, connection, disease)) {
 				System.out.println("Successful insert TissueSpecimenBean");
 			} else {
 				System.out.println("Failed insert TissueSpecimenBean");
@@ -297,9 +200,9 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection SeverityBean");
 		}
 
-		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, "", chiefComplaint,
-				constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeHistory,
-				chemicalExposureHistorySpecify, "", "", otherFindings);
+		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, null, "",
+				chiefComplaint, constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify,
+				alchoholIntakeHistorySpecify, chemicalExposureHistorySpecify, "", "", otherFindings);
 		if (connection != null) {
 			if (SQLOperations.addClinicalData(cdb, connection, disease)) {
 				System.out.println("Successful insert ClinicalDataBean");
@@ -308,6 +211,28 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection ClinicalDataBean");
+		}
+
+		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, otherDiseasesInTheFamily);
+		if (connection != null) {
+			if (SQLOperations.addFamilyCancer(famcb, connection, disease)) {
+				System.out.println("Successful insert FamilyCancerBean");
+			} else {
+				System.out.println("Failed insert FamilyCancerBean");
+			}
+		} else {
+			System.out.println("Invalid connection FamilyCancerBean");
+		}
+
+		MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
+		if (connection != null) {
+			if (SQLOperations.addMedications(mb, connection, disease)) {
+				System.out.println("Successful insert MedicationsBean");
+			} else {
+				System.out.println("Failed insert MedicationsBean");
+			}
+		} else {
+			System.out.println("Invalid connection MedicationsBean");
 		}
 
 		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils,
@@ -412,7 +337,18 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ChemotherapyMedicationsBean");
 		}
 
-		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", 0, "", "");
+		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, modeOfTreatment);
+		if (connection != null) {
+			if (SQLOperations.addModeOfTreatment(motb, connection, disease)) {
+				System.out.println("Successful insert ModeOfTreatmentBean");
+			} else {
+				System.out.println("Failed insert ModeOfTreatmentBean");
+			}
+		} else {
+			System.out.println("Invalid connection ModeOfTreatmentBean");
+		}
+
+		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", cycleNumber, "", "");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");
@@ -421,6 +357,17 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection TreatmentBean");
+		}
+
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus);
+		if (connection != null) {
+			if (SQLOperations.addDiseaseStatus(dsb, connection, disease)) {
+				System.out.println("Successful insert DiseaseStatusBean");
+			} else {
+				System.out.println("Failed insert DiseaseStatusBean");
+			}
+		} else {
+			System.out.println("Invalid connection DiseaseStatusBean");
 		}
 
 		// ADD PATIENT
@@ -433,93 +380,6 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection PatientBean");
 		}
-
-		/*OtherLaboratoriesBean olb = BeanFactory.getOtherLaboratoriesBean(creatinine, uricAcid, reticulocyteCount,
-				serumIron, ironBindingCapacity, serumFerritin, directAntiglobulin, indirectAntiglobulin, sgot, sgpt,
-				ldh, screeningTestsForHepatitisVirusesABC, screeningTestsForEBVCMVHIV, erythropoeitinLevel,
-				serumFolicAcid, serumB12, tsh);
-		if (connection != null) {
-			if (SQLOperations.addOtherLaboratories(olb, connection, disease)) {
-				System.out.println("Successful insert OtherLaboratoriesBean");
-			} else {
-				System.out.println("Failed insert OtherLaboratoriesBean");
-			}
-		} else {
-			System.out.println("Invalid connection OtherLaboratoriesBean");
-		}
-		BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed,
-				boneMarrowAspirateDescription);
-		if (connection != null) {
-			if (SQLOperations.addBoneMarrowAspirate(bmab, connection, disease)) {
-				System.out.println("Successful insert BoneMarrowAspirateBean");
-			} else {
-				System.out.println("Failed insert BoneMarrowAspirateBean");
-			}
-		} else {
-			System.out.println("Invalid connection BoneMarrowAspirateBean");
-		}
-		FlowCytometryBean fcb = BeanFactory.getFlowCytometryBean(flowCytometryResult);
-		if (connection != null) {
-			if (SQLOperations.addFlowCytometry(fcb, connection, disease)) {
-				System.out.println("Successful insert FlowCytometryBean");
-			} else {
-				System.out.println("Failed insert FlowCytometryBean");
-			}
-		} else {
-			System.out.println("Invalid connection FlowCytometryBean");
-		}
-		CytogeneticAAPNHBean caapnhb = BeanFactory.getCytogeneticAAPNHBean(cytogeneticAndMolecularAnalysisAAPNHResult);
-		if (connection != null) {
-			if (SQLOperations.addCytogeneticAAPNH(caapnhb, connection, disease)) {
-				System.out.println("Successful insert CytogeneticAAPNHBean");
-			} else {
-				System.out.println("Failed insert CytogeneticAAPNHBean");
-			}
-		} else {
-			System.out.println("Invalid connection CytogeneticAAPNHBean");
-		}
-		CytogeneticMDSBean cmdsb = BeanFactory.getCytogeneticMDSBean(cytogeneticAndMolecularAnalysisMDSResult);
-		if (connection != null) {
-			if (SQLOperations.addCytogeneticMDS(cmdsb, connection, disease)) {
-				System.out.println("Successful insert CytogeneticMDSBean");
-			} else {
-				System.out.println("Failed insert CytogeneticMDSBean");
-			}
-		} else {
-			System.out.println("Invalid connection CytogeneticMDSBean");
-		}
-		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, 0, 0, 0, 0, 0, 0, 0, 0,
-				0, 0, 0, 0, 0, 0, 0, 0, 0);
-		if (connection != null) {
-			if (SQLOperations.addLaboratoryProfile(lpb, connection, disease)) {
-				System.out.println("Successful insert LaboratoryProfileBean");
-			} else {
-				System.out.println("Failed insert LaboratoryProfileBean");
-			}
-		} else {
-			System.out.println("Invalid connection LaboratoryProfileBean");
-		}
-		ChemotherapyMedicationsBean cmb = BeanFactory.getChemotherapyMedicationsBean(medications);
-		if (connection != null) {
-			if (SQLOperations.addChemotherapyMedications(cmb, connection, disease)) {
-				System.out.println("Successful insert ChemotherapyMedicationsBean");
-			} else {
-				System.out.println("Failed insert ChemotherapyMedicationsBean");
-			}
-		} else {
-			System.out.println("Invalid connection ChemotherapyMedicationsBean");
-		}
-		TreatmentBean tb = BeanFactory.getTreatmentBean(transplantCandidate, modeOfTreatment, 0, dateStarted, "", 0, 0,
-				0, "", "");
-		if (connection != null) {
-			if (SQLOperations.addTreatment(tb, connection, disease)) {
-				System.out.println("Successful insert TreatmentBean");
-			} else {
-				System.out.println("Failed insert TreatmentBean");
-			}
-		} else {
-			System.out.println("Invalid connection TreatmentBean");
-		}*/
 
 	}
 

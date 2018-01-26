@@ -95,6 +95,7 @@ public class BeanFactory {
 	public static ClinicalDataBean getClinicalDataBean(
 			String dateOfVisit,
 			String diagnosis,
+			String otherDiagnosis,
 			String stageOfDisease,
 			String chiefComplaint,
 			String constitutionalSymptoms,
@@ -109,6 +110,7 @@ public class BeanFactory {
 		ClinicalDataBean cb = new ClinicalDataBean();
 		cb.setDateOfVisit(dateOfVisit);
 		cb.setDiagnosis(diagnosis);
+		cb.setOtherDiagnosis(otherDiagnosis);
 		cb.setStageOfDisease(stageOfDisease);
 		cb.setChiefComplaint(chiefComplaint);
 		cb.setConstitutionalSymptoms(constitutionalSymptoms);
@@ -237,8 +239,9 @@ public class BeanFactory {
 		return lb;
 	}
 
-	public static ModeOfTreatmentBean getModeOfTreatmentBean(String nameOfTreatment) {
+	public static ModeOfTreatmentBean getModeOfTreatmentBean(String modeOfTreatment, String nameOfTreatment) {
 		ModeOfTreatmentBean motb = new ModeOfTreatmentBean();
+		motb.setModeOfTreatment(modeOfTreatment);
 		motb.setNameOfTreatment(nameOfTreatment);
 		return motb;
 	}
