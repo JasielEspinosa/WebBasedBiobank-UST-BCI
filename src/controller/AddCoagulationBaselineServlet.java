@@ -45,7 +45,6 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		int disease = 2;
 
 		// GENERAL DATA
-		int patientIDNumber = Integer.parseInt(request.getParameter("patientIDNumber"));
 		String lastName = request.getParameter("lastName");
 		String firstName = request.getParameter("firstName");
 		String middleInitial = request.getParameter("middleInitial");
@@ -288,6 +287,17 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		TreatmentBean tb = BeanFactory.getTreatmentBean(true, "", "", 0, "", "");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
+				System.out.println("Successful insert TreatmentBean");
+			} else {
+				System.out.println("Failed insert TreatmentBean");
+			}
+		} else {
+			System.out.println("Invalid connection TreatmentBean");
+		}
+		
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("");
+		if (connection != null) {
+			if (SQLOperations.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");
 			} else {
 				System.out.println("Failed insert TreatmentBean");

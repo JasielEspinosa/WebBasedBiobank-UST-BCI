@@ -29,7 +29,7 @@ public class SQLOperations implements SQLCommands {
 	public static Connection getConnection() {
 		return (connection != null) ? connection : getDBConnection();
 	}
-	
+
 	public static ResultSet login(AccountBean ab, Connection connection) {
 		ResultSet loginSet = null;
 		try {
@@ -37,7 +37,7 @@ public class SQLOperations implements SQLCommands {
 			pstmt.setString(1, ab.getUsername());
 			pstmt.setString(2, ab.getPassword());
 			loginSet = pstmt.executeQuery();
-		}catch(SQLException sqle) {
+		} catch (SQLException sqle) {
 			System.out.println("SQLException -- login: " + sqle.getMessage());
 		}
 		return loginSet;
@@ -935,7 +935,13 @@ public class SQLOperations implements SQLCommands {
 
 	public static boolean addDiseaseStatus(DiseaseStatusBean dsb, Connection connection, int disease) {
 		switch (disease) {
-		case (1): {
+		case (1):
+		case (2):
+		case (3):
+		case (4):
+		case (5):
+		case (6):
+		case (7):
 			try {
 				PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
 				pstmt.setString(1, dsb.getDiseaseStatus());
@@ -945,68 +951,6 @@ public class SQLOperations implements SQLCommands {
 				return false;
 			}
 		}
-		case (2): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
-				pstmt.setString(1, dsb.getDiseaseStatus());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
-				return false;
-			}
-		}
-		case (3): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
-				pstmt.setString(1, dsb.getDiseaseStatus());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
-				return false;
-			}
-		}
-		case (4): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
-				pstmt.setString(1, dsb.getDiseaseStatus());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
-				return false;
-			}
-		}
-		case (5): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
-				pstmt.setString(1, dsb.getDiseaseStatus());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
-				return false;
-			}
-		}
-		case (6): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
-				pstmt.setString(1, dsb.getDiseaseStatus());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
-				return false;
-			}
-		}
-		case (7): {
-			try {
-				PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
-				pstmt.setString(1, dsb.getDiseaseStatus());
-				pstmt.executeUpdate();
-			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
-				return false;
-			}
-		}
-		}
-
 		return true;
 	}
 
