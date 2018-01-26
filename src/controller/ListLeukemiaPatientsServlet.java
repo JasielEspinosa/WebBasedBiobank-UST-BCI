@@ -12,10 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import utility.database.SQLOperations;
 
-/**
- * Servlet implementation class ListLeukemiaPatientsServlet
- */
-@WebServlet("/leukemia-baseline.html")
+@WebServlet("/ListLeukemiaPatientsServlet")
 public class ListLeukemiaPatientsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,19 +28,15 @@ public class ListLeukemiaPatientsServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		//
+		
 		try {	
 			if (connection != null) {
 				ResultSet leukemiaPatientsList = SQLOperations.getLeukemiaBaselinePatients(connection); 			

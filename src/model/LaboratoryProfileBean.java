@@ -7,7 +7,7 @@ public class LaboratoryProfileBean {
 	private int bloodChemistryId;
 	private int otherLaboratoriesId;
 	private int boneMarrowAspirateId;
-	private int flowCytometry;
+	private int flowCytometryId;
 	private int cytogenicAAPNHId;
 	private int cytogenicMDSId;
 	private int imagingStudiesId;
@@ -57,10 +57,10 @@ public class LaboratoryProfileBean {
 		this.boneMarrowAspirateId = boneMarrowAspirateId;
 	}
 	public int getFlowCytometry() {
-		return flowCytometry;
+		return flowCytometryId;
 	}
 	public void setFlowCytometry(int flowCytometry) {
-		this.flowCytometry = flowCytometry;
+		this.flowCytometryId = flowCytometry;
 	}
 	public int getCytogenicAAPNHId() {
 		return cytogenicAAPNHId;

@@ -4,21 +4,27 @@ import model.*;
 
 public class BeanFactory {
 
-	public static AddressBean getAddressBean(String streetAddress, String city, String zipCode){
+	public static AddressBean getAddressBean(String streetAddress, String city, String zipCode) {
 		AddressBean ab = new AddressBean();
 		ab.setStreetAddress(streetAddress);
 		ab.setCity(city);
 		ab.setZipCode(zipCode);
 		return ab;
 	}
-	
-	public static TissueSpecimenBean getTissueSpecimenBean(String tissueSpecimenName){
+
+	public static TissueSpecimenBean getTissueSpecimenBean(String tissueSpecimenName) {
 		TissueSpecimenBean tsb = new TissueSpecimenBean();
 		tsb.setTissueSpecimenName(tissueSpecimenName);
 		return tsb;
 	}
-	
-	public static GeneralDataBean getGeneralDataBean(String lastName, String middleName, String firstName, int gender, String dateOfBirth, String dateOfEntry){
+
+	public static GeneralDataBean getGeneralDataBean(
+			String lastName,
+			String middleName,
+			String firstName,
+			int gender,
+			String dateOfBirth,
+			String dateOfEntry) {
 		GeneralDataBean gb = new GeneralDataBean();
 		gb.setLastName(lastName);
 		gb.setMiddleName(middleName);
@@ -28,14 +34,49 @@ public class BeanFactory {
 		gb.setDateOfEntry(dateOfEntry);
 		return gb;
 	}
-	
+
 	public static ClassificationBean getClassificationBean(String classificationName) {
 		ClassificationBean classbean = new ClassificationBean();
 		classbean.setClassificationName(classificationName);
 		return classbean;
 	}
-	
-	public static PhysicalExamBean getPhysicalExamBean(double height, double weight, double ECOG, double splenomegaly, double hepatomegaly, double lymphadenopathies, boolean hemathroses, boolean contracturesAndMuscleAtrophy, String thrombosisHistory, String skin, String otherFindings){
+
+	public static RiskScoreBean getRiskScoreBean(String riskScoreName) {
+		RiskScoreBean rsb = new RiskScoreBean();
+		rsb.setRiskScoreName(riskScoreName);
+		return rsb;
+	}
+
+	public static ISSStagingBean getISSStagingBean(String issStagingName) {
+		ISSStagingBean isb = new ISSStagingBean();
+		isb.setIssStagingName(issStagingName);
+		return isb;
+	}
+
+	public static SeverityBean getSeverityBean(String severityName) {
+		SeverityBean sb = new SeverityBean();
+		sb.setSeverityName(severityName);
+		return sb;
+	}
+
+	public static PrognosticRiskScoringBean getPrognosticRiskScoringBean(String prognosticRiskScoringName) {
+		PrognosticRiskScoringBean prsb = new PrognosticRiskScoringBean();
+		prsb.setPrognosticRiskScoringName(prognosticRiskScoringName);
+		return prsb;
+	}
+
+	public static PhysicalExamBean getPhysicalExamBean(
+			double height,
+			double weight,
+			double ECOG,
+			double splenomegaly,
+			double hepatomegaly,
+			double lymphadenopathies,
+			boolean hemathroses,
+			boolean contracturesAndMuscleAtrophy,
+			String thrombosisHistory,
+			String skin,
+			String otherFindings) {
 		PhysicalExamBean pb = new PhysicalExamBean();
 		pb.setHeight(height);
 		pb.setWeight(weight);
@@ -51,10 +92,25 @@ public class BeanFactory {
 		return pb;
 	}
 
-	public static ClinicalDataBean getClinicalDataBean(String dateOfVisit, String diagnosis, String stageOfDisease, String chiefComplaint, String constitutionalSymptoms, String otherSymptoms, String comorbidities, String smokingHistory, String alchoholIntakeHistory, String chemicalExposure, String previousInfection, String previousHematologicDisorder, String otherFindings){
+	public static ClinicalDataBean getClinicalDataBean(
+			String dateOfVisit,
+			String diagnosis,
+			String otherDiagnosis,
+			String stageOfDisease,
+			String chiefComplaint,
+			String constitutionalSymptoms,
+			String otherSymptoms,
+			String comorbidities,
+			String smokingHistory,
+			String alchoholIntakeHistory,
+			String chemicalExposure,
+			String previousInfection,
+			String previousHematologicDisorder,
+			String otherFindings) {
 		ClinicalDataBean cb = new ClinicalDataBean();
 		cb.setDateOfVisit(dateOfVisit);
 		cb.setDiagnosis(diagnosis);
+		cb.setOtherDiagnosis(otherDiagnosis);
 		cb.setStageOfDisease(stageOfDisease);
 		cb.setChiefComplaint(chiefComplaint);
 		cb.setConstitutionalSymptoms(constitutionalSymptoms);
@@ -68,23 +124,35 @@ public class BeanFactory {
 		cb.setOtherFindings(otherFindings);
 		return cb;
 	}
-	
-	public static MedicationsBean getMedicationsBean(String genericName,double dose, String frequency) {
-		MedicationsBean mb =  new MedicationsBean();
+
+	public static MedicationsBean getMedicationsBean(String genericName, double dose, String frequency) {
+		MedicationsBean mb = new MedicationsBean();
 		mb.setGenericName(genericName);
 		mb.setDose(dose);
 		mb.setFrequency(frequency);
 		return mb;
 	}
-	
-	public static FamilyCancerBean getFamilyCancerBean(String relationshipToPatient, String cancerName) {	
+
+	public static FamilyCancerBean getFamilyCancerBean(String relationshipToPatient, String cancerName) {
 		FamilyCancerBean fcb = new FamilyCancerBean();
 		fcb.setRelationshipToPatient(relationshipToPatient);
 		fcb.setCancerName(cancerName);
 		return fcb;
 	}
-	
-	public static HematologyBean getHematologyBean(double hemoglobin, double hematocrit, double whiteBloodCells, double neutrophils, double lymphocytes, double monocytes, double eosinophils, double basophils, double myelocytes, double metamyelocytes, double blasts, double plateletCount){
+
+	public static HematologyBean getHematologyBean(
+			double hemoglobin,
+			double hematocrit,
+			double whiteBloodCells,
+			double neutrophils,
+			double lymphocytes,
+			double monocytes,
+			double eosinophils,
+			double basophils,
+			double myelocytes,
+			double metamyelocytes,
+			double blasts,
+			double plateletCount) {
 		HematologyBean hb = new HematologyBean();
 		hb.setHemoglobin(hemoglobin);
 		hb.setHematocrit(hematocrit);
@@ -100,8 +168,25 @@ public class BeanFactory {
 		hb.setPlateletCount(plateletCount);
 		return hb;
 	}
-	
-	public static OtherLaboratoriesBean getOtherLaboratoriesBean(double creatinineOther, double uricAcid, double reticulocyteCount, double serumIron, double ironBindingCapacity, double serumFerritin, String directAntiglobulin, String indirectAntiglobulin, double SGOT, double SGPT, double LDH, String screenTestHepatitis, String screenTestEBVCytomegalovirusHIV, double erythropeitinLevel, double serumFolicAcid, double serumB12, double TSH){
+
+	public static OtherLaboratoriesBean getOtherLaboratoriesBean(
+			double creatinineOther,
+			double uricAcid,
+			double reticulocyteCount,
+			double serumIron,
+			double ironBindingCapacity,
+			double serumFerritin,
+			String directAntiglobulin,
+			String indirectAntiglobulin,
+			double SGOT,
+			double SGPT,
+			double LDH,
+			String screenTestHepatitis,
+			String screenTestEBVCytomegalovirusHIV,
+			double erythropeitinLevel,
+			double serumFolicAcid,
+			double serumB12,
+			double TSH) {
 		OtherLaboratoriesBean ob = new OtherLaboratoriesBean();
 		ob.setCreatinineOther(creatinineOther);
 		ob.setUricAcid(uricAcid);
@@ -122,107 +207,112 @@ public class BeanFactory {
 		ob.setTSH(TSH);
 		return ob;
 	}
-	
-	public static BoneMarrowAspirateBean getBoneMarrowAspirateBean(String datePerformed, String result){
+
+	public static BoneMarrowAspirateBean getBoneMarrowAspirateBean(String datePerformed, String result) {
 		BoneMarrowAspirateBean bb = new BoneMarrowAspirateBean();
 		bb.setDatePerformed(datePerformed);
 		bb.setResult(result);
 		return bb;
 	}
-	
-	public static FlowCytometryBean getFlowCytometryBean(String result){
+
+	public static FlowCytometryBean getFlowCytometryBean(String result) {
 		FlowCytometryBean fb = new FlowCytometryBean();
 		fb.setResult(result);
 		return fb;
 	}
-	
-	public static CytogeneticAAPNHBean getCytogeneticAAPNHBean(String result){
+
+	public static CytogeneticAAPNHBean getCytogeneticAAPNHBean(String result) {
 		CytogeneticAAPNHBean cb = new CytogeneticAAPNHBean();
 		cb.setResult(result);
 		return cb;
 	}
-	
-	public static CytogeneticMDSBean getCytogeneticMDSBean(String result){
+
+	public static CytogeneticMDSBean getCytogeneticMDSBean(String result) {
 		CytogeneticMDSBean cb = new CytogeneticMDSBean();
 		cb.setResult(result);
 		return cb;
 	}
-	
-	public static LaboratoryProfileBean getLaboratoryProfileBean(String dateOfBloodCollection, int hematologyId, int coagulationTestingId, int bloodChemistryId, int otherLaboratoriesId, int boneMarrowAspirateId, int flowCytometry, int cytogenicAAPNHId, int cytogenicMDSId, int imagingStudiesId, int upperGIEndoscopyId, int molecularAnalysisId, int hematopathologyId, int immunoHistochemistryId, int serumFreeId, int serumProteinId, int serumImmunofixationId, int urineProteinId){
+
+	public static LaboratoryProfileBean getLaboratoryProfileBean(String dateOfBloodCollection) {
 		LaboratoryProfileBean lb = new LaboratoryProfileBean();
 		lb.setDateOfBloodCollection(dateOfBloodCollection);
-		lb.setHematologyId(hematologyId);
-		lb.setCoagulationTestingId(coagulationTestingId); 
-		lb.setBloodChemistryId(bloodChemistryId); 
-		lb.setOtherLaboratoriesId(otherLaboratoriesId); 
-		lb.setBoneMarrowAspirateId(boneMarrowAspirateId);
-		lb.setFlowCytometry(flowCytometry);
-		lb.setCytogenicAAPNHId(cytogenicAAPNHId); 
-		lb.setCytogenicMDSId(cytogenicMDSId);
-		lb.setImagingStudiesId(imagingStudiesId); 
-		lb.setUpperGIEndoscopyId(upperGIEndoscopyId); 
-		lb.setMolecularAnalysisId(molecularAnalysisId);
-		lb.setHematopathologyId(hematopathologyId); 
-		lb.setImmunoHistochemistryId(immunoHistochemistryId); 
-		lb.setSerumFreeId(serumFreeId); 
-		lb.setSerumProteinId(serumProteinId); 
-		lb.setSerumImmunofixationId(serumImmunofixationId); 
-		lb.setUrineProteinId(urineProteinId); 
 		return lb;
 	}
-	
-	public static ChemotherapyMedicationsBean getChemotherapyMedicationsBean(String medications){
+
+	public static ModeOfTreatmentBean getModeOfTreatmentBean(String modeOfTreatment, String nameOfTreatment) {
+		ModeOfTreatmentBean motb = new ModeOfTreatmentBean();
+		motb.setModeOfTreatment(modeOfTreatment);
+		motb.setNameOfTreatment(nameOfTreatment);
+		return motb;
+	}
+
+	public static ChemotherapyMedicationsBean getChemotherapyMedicationsBean(String medications) {
 		ChemotherapyMedicationsBean cmb = new ChemotherapyMedicationsBean();
 		cmb.setMedications(medications);
 		return cmb;
 	}
 
-	public static ModeOfTreatmentBean getModeOfTreatmentBean(String nameOfTreatment) {
-		ModeOfTreatmentBean motb = new ModeOfTreatmentBean();
-		motb.setNameOfTreatment(nameOfTreatment);
-		return motb;
+	public static RegimenBean getRegimenBean(String regimen) {
+		RegimenBean rb = new RegimenBean();
+		rb.setRegimenName(regimen);
+		return rb;
 	}
-	
-	public static TreatmentBean getTreatmentBean(boolean transplant, int chemoMedicationId, String dateStarted, String otherRegimen, int regimenId, int maintenanceTherapyId, int cycleNumber, String complications, String regimenText){
+
+	public static MaintenanceTherapyBean getMaintenanceTherapyBean(String maintenanceTherapyName) {
+		MaintenanceTherapyBean mtb = new MaintenanceTherapyBean();
+		mtb.setMaintenanceTherapyName(maintenanceTherapyName);
+		return mtb;
+	}
+
+	public static TreatmentBean getTreatmentBean(
+			boolean transplant,
+			String dateStarted,
+			String otherRegimen,
+			int cycleNumber,
+			String complications,
+			String regimenText) {
 		TreatmentBean tb = new TreatmentBean();
 		tb.setTransplant(transplant);
-		tb.setChemoMedicationId(chemoMedicationId);
 		tb.setDateStarted(dateStarted);
 		tb.setOtherRegimen(otherRegimen);
-		tb.setRegimenId(regimenId);
-		tb.setMaintenanceTherapyId(maintenanceTherapyId);
 		tb.setCycleNumber(cycleNumber);
 		tb.setComplications(complications);
 		tb.setRegimenText(regimenText);
 		return tb;
 	}
-	
+
 	public static DiseaseStatusBean getDiseaseStatusBean(String diseaseStatus) {
 		DiseaseStatusBean dsb = new DiseaseStatusBean();
 		dsb.setDiseaseStatus(diseaseStatus);
 		return dsb;
 	}
-	
-	public static PatientBean getPatientBean(int diseaseId, int generalDataId, int clinicalDataId, int laboratoryId, int treatmentId, int otherTreatmentId, int active, int diseaseStatusId){
+
+	public static PatientBean getPatientBean(
+			int diseaseId,
+			int generalDataId,
+			int clinicalDataId,
+			int laboratoryId,
+			int treatmentId,
+			int otherTreatmentId,
+			int active,
+			int diseaseStatusId) {
 		PatientBean pb = new PatientBean();
 		pb.setDiseaseId(diseaseId);
-		pb.setGeneralDataId(generalDataId); 
+		pb.setGeneralDataId(generalDataId);
 		pb.setClinicalDataId(clinicalDataId);
-		pb.setLaboratoryId(laboratoryId); 
-		pb.setTreatmentId(treatmentId); 
+		pb.setLaboratoryId(laboratoryId);
+		pb.setTreatmentId(treatmentId);
 		pb.setOtherTreatmentId(otherTreatmentId);
 		pb.setActive(active);
 		pb.setDiseaseStatusId(diseaseStatusId);
 		return pb;
 	}
-	
-	public static RiskScoreBean getRiskScoreBean(String riskScoreName) {
-		RiskScoreBean rsb = new RiskScoreBean();
-		rsb.setRiskScoreName(riskScoreName);
-		return rsb;
-	}
-	
-	public static CoagulationTestingBean getCoagulationTestingBean(double factorVIIILevel, double factorIXLevel, double inhibitorAssay, double bethesdaUnits){
+
+	public static CoagulationTestingBean getCoagulationTestingBean(
+			double factorVIIILevel,
+			double factorIXLevel,
+			double inhibitorAssay,
+			double bethesdaUnits) {
 		CoagulationTestingBean cb = new CoagulationTestingBean();
 		cb.setFactorVIIILevel(factorVIIILevel);
 		cb.setFactorIXLevel(factorIXLevel);
@@ -230,8 +320,29 @@ public class BeanFactory {
 		cb.setBethesdaUnits(bethesdaUnits);
 		return cb;
 	}
-	
-	public static BloodChemistryBean getBloodChemistryBean(double BUN, double creatine, double uricAcid, double SGOT, double SGPT, double LDH, double EPOLevel, double Na, double K, double bilirubinTotal, double bilirubinDirect, double bilirubinIndirect, double beta2Microglobulin, double hepatitsBTesting, double ESR, double iCa, double totalProtein, double albumin, double globulin, double ANATiter, double hepatitsCRna){
+
+	public static BloodChemistryBean getBloodChemistryBean(
+			double BUN,
+			double creatine,
+			double uricAcid,
+			double SGOT,
+			double SGPT,
+			double LDH,
+			double EPOLevel,
+			double Na,
+			double K,
+			double bilirubinTotal,
+			double bilirubinDirect,
+			double bilirubinIndirect,
+			double beta2Microglobulin,
+			double hepatitsBTesting,
+			double ESR,
+			double iCa,
+			double totalProtein,
+			double albumin,
+			double globulin,
+			double ANATiter,
+			double hepatitsCRna) {
 		BloodChemistryBean bb = new BloodChemistryBean();
 		bb.setBUN(BUN);
 		bb.setCreatine(creatine);
@@ -256,66 +367,74 @@ public class BeanFactory {
 		bb.setHepatitsCRna(hepatitsCRna);
 		return bb;
 	}
-	
-	public static ImagingStudiesBean getImagingStudiesBean(byte[] result){
+
+	public static ImagingStudiesBean getImagingStudiesBean(byte[] result) {
 		ImagingStudiesBean ib = new ImagingStudiesBean();
 		ib.setResult(result);
 		return ib;
 	}
-	
-	public static UpperGIEndoscopyBean getUpperGIEndoscopyBean(String datePerformed, String description, boolean HOylori){
+
+	public static UpperGIEndoscopyBean getUpperGIEndoscopyBean(
+			String datePerformed,
+			String description,
+			boolean HOylori) {
 		UpperGIEndoscopyBean ub = new UpperGIEndoscopyBean();
 		ub.setDatePerformed(datePerformed);
 		ub.setDescription(description);
 		ub.setHOylori(HOylori);
 		return ub;
 	}
-	
-	public static MolecularAnalysisBean getMolecularAnalysisBean(String results){
+
+	public static MolecularAnalysisBean getMolecularAnalysisBean(String results) {
 		MolecularAnalysisBean mb = new MolecularAnalysisBean();
 		mb.setResults(results);
 		return mb;
 	}
-	
-	public static HematopathologyBean getHematopathologyBean(String datePerformed, String results){
+
+	public static HematopathologyBean getHematopathologyBean(String datePerformed, String results) {
 		HematopathologyBean hb = new HematopathologyBean();
 		hb.setDatePerformed(datePerformed);
 		hb.setResults(results);
 		return hb;
 	}
-	
-	public static ImmunohistochemistryBean getImmunohistochemistryBean(String datePerformed, String results){
+
+	public static ImmunohistochemistryBean getImmunohistochemistryBean(String datePerformed, String results) {
 		ImmunohistochemistryBean ib = new ImmunohistochemistryBean();
 		ib.setDatePerformed(datePerformed);
 		ib.setResults(results);
 		return ib;
 	}
-	
-	public static SerumFreeBean getSerumFreeBean(String results){
+
+	public static SerumFreeBean getSerumFreeBean(String results) {
 		SerumFreeBean sb = new SerumFreeBean();
 		sb.setResults(results);
 		return sb;
 	}
-	
-	public static SerumProteinBean getSerumProteinBean(String results){
+
+	public static SerumProteinBean getSerumProteinBean(String results) {
 		SerumProteinBean sb = new SerumProteinBean();
 		sb.setResults(results);
 		return sb;
 	}
-	
-	public static SerumImmunofixationBean getSerumImmunofixationBean(String results){
+
+	public static SerumImmunofixationBean getSerumImmunofixationBean(String results) {
 		SerumImmunofixationBean sb = new SerumImmunofixationBean();
 		sb.setResults(results);
 		return sb;
 	}
-	
-	public static UrineProteinBean getUrineProteinBean(String results){
+
+	public static UrineProteinBean getUrineProteinBean(String results) {
 		UrineProteinBean ub = new UrineProteinBean();
 		ub.setResults(results);
 		return ub;
 	}
-	
-	public static OtherTreatmentBean getOtherTreatmentBean(String bisphosphonates, String radiotherapy, boolean dialysis, String otherMedications, String complications){
+
+	public static OtherTreatmentBean getOtherTreatmentBean(
+			String bisphosphonates,
+			String radiotherapy,
+			boolean dialysis,
+			String otherMedications,
+			String complications) {
 		OtherTreatmentBean ob = new OtherTreatmentBean();
 		ob.setBisphosphonates(bisphosphonates);
 		ob.setRadiotherapy(radiotherapy);
@@ -324,8 +443,37 @@ public class BeanFactory {
 		ob.setComplications(complications);
 		return ob;
 	}
-	
-	public static FollowUpBean getFollowUpBean(int patientId, String dateOfVisit, int medicalEventsId, int clinicalDataId, int laboratoryId, int qualityofResponseId, int diseaseStatusId, String specialNotes){
+
+	public static MedicalEventsBean getMedicalEventsBean(
+			String newMedicationForHematologicMalignancy,
+			String newConcomitantMedicationForOtherDisease,
+			String undergoAnyProcedure,
+			String complicationForChemotherapy,
+			String selfAdministerFactorConcentrates) {
+		MedicalEventsBean mb = new MedicalEventsBean();
+		mb.setNewMedicationForHematologicMalignancy(newMedicationForHematologicMalignancy);
+		mb.setNewConcomitantMedicationForOtherDisease(newConcomitantMedicationForOtherDisease);
+		mb.setUndergoAnyProcedure(undergoAnyProcedure);
+		mb.setComplicationForChemotherapy(complicationForChemotherapy);
+		mb.setSelfAdministerFactorConcentrates(selfAdministerFactorConcentrates);
+		return mb;
+	}
+
+	public static QualityOfResponseBean getQualityOfResponseBean(String responseName) {
+		QualityOfResponseBean qorb = new QualityOfResponseBean();
+		qorb.setResponseName(responseName);
+		return qorb;
+	}
+
+	public static FollowUpBean getFollowUpBean(
+			int patientId,
+			String dateOfVisit,
+			int medicalEventsId,
+			int clinicalDataId,
+			int laboratoryId,
+			int qualityofResponseId,
+			int diseaseStatusId,
+			String specialNotes) {
 		FollowUpBean fb = new FollowUpBean();
 		fb.setPatientId(patientId);
 		fb.setDateOfVisit(dateOfVisit);
@@ -337,18 +485,14 @@ public class BeanFactory {
 		fb.setSpecialNotes(specialNotes);
 		return fb;
 	}
-	
-	public static MedicalEventsBean getMedicalEventsBean(String newMedicationForHematologicMalignancy, String newConcomitantMedicationForOtherDisease, String undergoAnyProcedure, String complicationForChemotherapy, String selfAdministerFactorConcentrates){
-		MedicalEventsBean mb = new MedicalEventsBean();
-		mb.setNewMedicationForHematologicMalignancy(newMedicationForHematologicMalignancy);
-		mb.setNewConcomitantMedicationForOtherDisease(newConcomitantMedicationForOtherDisease);
-		mb.setUndergoAnyProcedure(undergoAnyProcedure);
-		mb.setComplicationForChemotherapy(complicationForChemotherapy);
-		mb.setSelfAdministerFactorConcentrates(selfAdministerFactorConcentrates);
-		return mb;
-	}
-	
-	public static AccountBean getAccountBean(String username, String password, String lastName, String middleName, String firstName, int roleId){
+
+	public static AccountBean getAccountBean(
+			String username,
+			String password,
+			String lastName,
+			String middleName,
+			String firstName,
+			int roleId) {
 		AccountBean ab = new AccountBean();
 		ab.setUsername(username);
 		ab.setPassword(password);
@@ -358,10 +502,5 @@ public class BeanFactory {
 		ab.setRoleId(roleId);
 		return ab;
 	}
-	
-	public static RegimenBean getRegimenBean(String regimen){
-		RegimenBean rb = new RegimenBean();
-		rb.setRegimenName(regimen);
-		return rb;
-	}
+
 }
