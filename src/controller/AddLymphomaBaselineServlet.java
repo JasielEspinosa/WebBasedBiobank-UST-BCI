@@ -91,6 +91,7 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 		double eosinophils = Double.parseDouble(request.getParameter("eosinophils"));
 		double basophils = Double.parseDouble(request.getParameter("basophils"));
 
+		
 		//wala pang parameters sa JSPs
 		double myelocytes = Double.parseDouble(request.getParameter(""));
 		double metamyelocytes = Double.parseDouble(request.getParameter(""));

@@ -35,6 +35,7 @@ public interface SQLCommands {
 
 	
 	
+	
 	// GENERAL QUERIES
 	String LOGIN = "Select * from AccountTable where Username = ? and Password = ?";
 	String INSERT_ADDRESS = "INSERT INTO AddressTable VALUES (NULL, ?, ?, ?)";

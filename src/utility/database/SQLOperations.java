@@ -6,7 +6,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import model.*;
-import utility.factory.BeanFactory;
 
 public class SQLOperations implements SQLCommands {
 	private static Connection connection;
@@ -44,6 +43,7 @@ public class SQLOperations implements SQLCommands {
 		return loginSet;
 	}
 
+	
 	public static boolean addAddress(AddressBean ab, Connection connection, int disease) {
 		switch (disease) {
 		case (1):

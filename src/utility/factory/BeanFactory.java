@@ -368,6 +368,7 @@ public class BeanFactory {
 		return bb;
 	}
 
+	
 	public static ImagingStudiesBean getImagingStudiesBean(byte[] result) {
 		ImagingStudiesBean ib = new ImagingStudiesBean();
 		ib.setResult(result);

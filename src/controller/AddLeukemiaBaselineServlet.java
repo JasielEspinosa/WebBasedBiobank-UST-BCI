@@ -199,6 +199,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection SeverityBean");
 		}
 
+		
 		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, "", "",
 				chiefComplaint, constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify,
 				alchoholIntakeHistorySpecify, chemicalExposureHistorySpecify, "", "", otherFindings);
