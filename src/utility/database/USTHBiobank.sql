@@ -74,6 +74,7 @@ CREATE TABLE ClinicalDataTable (
 	ClassificationID int,
 	ISSStagingID int,
 	SeverityID int,
+	StageOfDisease blob,
 	ChiefComplaint blob,
 	ConstitutionalSymptoms blob,
 	OtherSymptoms blob,
