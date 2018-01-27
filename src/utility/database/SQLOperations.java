@@ -6,6 +6,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import model.*;
+import utility.factory.BeanFactory;
 
 public class SQLOperations implements SQLCommands {
 	private static Connection connection;
@@ -62,6 +63,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addAddress: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		return true;
 	}
@@ -83,6 +85,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		return true;
 	}
@@ -137,7 +140,22 @@ public class SQLOperations implements SQLCommands {
 			}
 			break;
 		}
-		case (4): {}
+		case (4): {
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_GENERAL_DATA_LYMPHOMA);
+				pstmt.setString(1, gdb.getLastName());
+				pstmt.setString(2, gdb.getMiddleName());
+				pstmt.setString(3, gdb.getFirstName());
+				pstmt.setInt(4, gdb.getGender());
+				pstmt.setString(5, gdb.getDateOfBirth());
+				pstmt.setString(6, gdb.getDateOfEntry());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
 		case (5): {}
 		case (6): {}
 		case (7): {}
@@ -156,6 +174,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addClassification: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		case (2): {}
 		case (3): {}
@@ -178,6 +197,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addFamilyCancer: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		case (2): {}
 		case (3): {
@@ -189,6 +209,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addFamilyCancer: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		case (4): {}
 		case (5): {}
@@ -212,6 +233,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		case (3): {}
 		case (4): {}
@@ -273,7 +295,24 @@ public class SQLOperations implements SQLCommands {
 			}
 			break;
 		}
-		case (4): {}
+		case (4): {
+
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM_LYMPHOMA);
+				pstmt.setDouble(1, peb.getHeight());
+				pstmt.setDouble(2, peb.getWeight());
+				pstmt.setDouble(3, peb.getECOG());
+				pstmt.setDouble(4, peb.getSplenomegaly());
+				pstmt.setDouble(5, peb.getHepatomegaly());
+				pstmt.setDouble(6, peb.getLymphadenopathies());
+				pstmt.setString(7, peb.getOtherFindings());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
 		case (5): {}
 		case (6): {}
 		case (7): {}
@@ -343,7 +382,28 @@ public class SQLOperations implements SQLCommands {
 			}
 			break;
 		}
-		case (4): {}
+		case (4): {
+
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_CLINICAL_DATA_LYMPHOMA);
+				pstmt.setString(1, cdb.getDateOfVisit());
+				pstmt.setString(2, cdb.getDiagnosis());
+				pstmt.setString(3, cdb.getStageOfDisease());
+				pstmt.setString(4, cdb.getChiefComplaint());
+				pstmt.setString(5, cdb.getConstitutionalSymptoms());
+				pstmt.setString(6, cdb.getOtherSymptoms());
+				pstmt.setString(7, cdb.getComorbidities());
+				pstmt.setString(8, cdb.getSmokingHistory());
+				pstmt.setString(9, cdb.getAlchoholIntakeHistory());
+				pstmt.setString(10, cdb.getChemicalExposure());
+				pstmt.setString(11, cdb.getOtherFindings());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
 		case (5): {}
 		case (6): {}
 		case (7): {}
@@ -370,13 +430,20 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addMedications: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		return true;
 	}
 
 	public static boolean addFamilyCancer(FamilyCancerBean fcb, Connection connection, int disease) {
 		switch (disease) {
-		case (1): {
+		case (1):
+		case (2):
+		case (3):
+		case (4):
+		case (5):
+		case (6):
+		case (7):
 			try {
 				PreparedStatement pstmt = connection.prepareStatement(INSERT_FAMILY_CANCER_AAPHSMDS);
 				pstmt.setString(1, fcb.getRelationshipToPatient());
@@ -387,13 +454,6 @@ public class SQLOperations implements SQLCommands {
 				return false;
 			}
 			break;
-		}
-		case (2): {}
-		case (3): {}
-		case (4): {}
-		case (5): {}
-		case (6): {}
-		case (7): {}
 		}
 		return true;
 	}
@@ -640,6 +700,54 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 
+	public static boolean addHematopathology(HematopathologyBean hpb, Connection connection, int disease) {
+		switch (disease) {
+		case (1): {}
+		case (2): {}
+		case (3): {}
+		case (4): {
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_HEMATOPATHOLOGY_LYMPHOMA);
+				pstmt.setString(1, hpb.getDatePerformed());
+				pstmt.setString(2, hpb.getResults());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addLaboratoryProfile: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
+		case (5): {}
+		case (6): {}
+		case (7): {}
+		}
+		return true;
+	}
+
+	public static boolean addImmunohistochemistry(ImmunohistochemistryBean ihcb, Connection connection, int disease) {
+		switch (disease) {
+		case (1): {}
+		case (2): {}
+		case (3): {}
+		case (4): {
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_IMMUNOHISTOCHEMISTRY_LYMPHOMA);
+				pstmt.setString(1, ihcb.getDatePerformed());
+				pstmt.setString(2, ihcb.getResults());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addLaboratoryProfile: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
+		case (5): {}
+		case (6): {}
+		case (7): {}
+		}
+		return true;
+	}
+
 	public static boolean addLaboratoryProfile(LaboratoryProfileBean lpb, Connection connection, int disease) {
 		switch (disease) {
 		case (1): {
@@ -802,6 +910,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addModeOfTreatment: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		case (2): {
 			try {
@@ -813,6 +922,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addModeOfTreatment: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		case (3): {}
 		case (4): {}
@@ -950,6 +1060,7 @@ public class SQLOperations implements SQLCommands {
 				System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
 				return false;
 			}
+			break;
 		}
 		return true;
 	}
