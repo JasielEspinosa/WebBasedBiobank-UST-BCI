@@ -71,6 +71,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String otherSymptoms = request.getParameter("otherSymptoms");
 		String relationshipToPatient = request.getParameter("relationshipToPatient");
+		String cancerName = request.getParameter("specifyCancer");
 		String otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
 		String comorbidities = request.getParameter("comorbidities");
 		String genericName = request.getParameter("genericName");
@@ -219,7 +220,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ClinicalDataBean");
 		}
 
-		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, otherDiseasesInTheFamily);
+		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, cancerName);
 		if (connection != null) {
 			if (SQLOperations.addFamilyCancer(famcb, connection, disease)) {
 				System.out.println("Successful insert FamilyCancerBean");
@@ -228,6 +229,17 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection FamilyCancerBean");
+		}
+		
+		OtherDiseasesBean odb = BeanFactory.getOtherDiseasesBean(otherDiseasesInTheFamily);
+		if (connection != null) {
+			if (SQLOperations.addOtherDiseases(odb, connection, disease)) {
+				System.out.println("Successful insert OtherDiseasesBean");
+			} else {
+				System.out.println("Failed insert OtherDiseasesBean");
+			}
+		} else {
+			System.out.println("Invalid connection OtherDiseasesBean");
 		}
 
 		MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);

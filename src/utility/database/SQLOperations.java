@@ -287,7 +287,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setString(4, peb.getOtherFindings());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+				System.out.println("SQLException -- addPhysicalExamData: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -302,7 +302,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setString(5, peb.getOtherFindings());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+				System.out.println("SQLException -- addPhysicalExamData: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -319,7 +319,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setString(7, peb.getOtherFindings());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+				System.out.println("SQLException -- addPhysicalExamData: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -337,7 +337,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setString(7, peb.getOtherFindings());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+				System.out.println("SQLException -- addPhysicalExamData: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -480,6 +480,28 @@ public class SQLOperations implements SQLCommands {
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
 				System.out.println("SQLException -- addFamilyCancer: " + sqle.getMessage());
+				return false;
+			}
+			break;
+		}
+		return true;
+	}
+	
+	public static boolean addOtherDiseases(OtherDiseasesBean odb, Connection connection, int disease) {
+		switch (disease) {
+		case (1):
+		case (2):
+		case (3):
+		case (4):
+		case (5):
+		case (6):
+		case (7):
+			try {
+				PreparedStatement pstmt = connection.prepareStatement(INSERT_OTHERDISEASES);
+				pstmt.setString(1, odb.getOtherDisease());
+				pstmt.executeUpdate();
+			} catch (SQLException sqle) {
+				System.out.println("SQLException -- addOtherDiseases: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -741,7 +763,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setString(2, hpb.getResults());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addLaboratoryProfile: " + sqle.getMessage());
+				System.out.println("SQLException -- addHematopathology: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -765,7 +787,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setString(2, ihcb.getResults());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addLaboratoryProfile: " + sqle.getMessage());
+				System.out.println("SQLException -- addImmunohistochemistry: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -976,7 +998,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setDouble(4, ctb.getBethesdaUnits());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+				System.out.println("SQLException -- addCoagulationTesting: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -1007,7 +1029,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setDouble(7, bcb.getLDH());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+				System.out.println("SQLException -- addBloodChemistry: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -1024,7 +1046,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setDouble(7, bcb.getLDH());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+				System.out.println("SQLException -- addBloodChemistry: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -1048,7 +1070,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setBytes(1, isb.getResult());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+				System.out.println("SQLException -- addImagingStudies: " + sqle.getMessage());
 				return false;
 			}
 			break;
@@ -1059,7 +1081,7 @@ public class SQLOperations implements SQLCommands {
 				pstmt.setBytes(1, isb.getResult());
 				pstmt.executeUpdate();
 			} catch (SQLException sqle) {
-				System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+				System.out.println("SQLException -- addImagingStudies: " + sqle.getMessage());
 				return false;
 			}
 			break;

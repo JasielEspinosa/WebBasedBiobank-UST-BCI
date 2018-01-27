@@ -139,6 +139,12 @@ public class BeanFactory {
 		fcb.setCancerName(cancerName);
 		return fcb;
 	}
+	
+	public static OtherDiseasesBean getOtherDiseasesBean(String otherDisease) {
+		OtherDiseasesBean odb = new OtherDiseasesBean();
+		odb.setOtherDisease(otherDisease);
+		return odb;
+	}
 
 	public static HematologyBean getHematologyBean(
 			double hemoglobin,
