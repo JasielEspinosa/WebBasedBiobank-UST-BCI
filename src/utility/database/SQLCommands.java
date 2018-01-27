@@ -35,6 +35,9 @@ public interface SQLCommands {
 
 	// GENERAL QUERIES
 	String LOGIN = "Select * from AccountTable where Username = ? and Password = ?";
+	String OLD_PASSWORD = "Select Password from AccountTable where AccountID = ?";
+	String UPDATE_PROFILE = "Update AccountTable set Username = ?, Password = ?, LastName = ?, FirstName = ?, MiddleName = ?"
+			+ " where AccountID = ?";
 	String INSERT_ADDRESS = "INSERT INTO AddressTable VALUES (NULL, ?, ?, ?)";
 	String INSERT_TISSUE_SPECIMEN = "INSERT INTO TissueSpecimenTable VALUES (NULL,?)";
 	String INSERT_DISEASE_STATUS = "INSERT INTO DiseaseStatusTable VALUES (NULL,?)";

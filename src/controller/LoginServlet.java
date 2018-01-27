@@ -4,8 +4,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -64,20 +64,29 @@ public class LoginServlet extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
-		response.setContentType("text/plain"); 
 	    response.setCharacterEncoding("UTF-8"); 
+
 		
 		AccountBean ab = BeanFactory.getAccountBean(username, password, "", "", "", 0);
 		ResultSet rs = SQLOperations.login(ab, connection);
 		if (connection != null) {
 			try {
 				if (rs.next()) {
-					session.setAttribute("username", rs.getString("Username"));
-					session.setAttribute("username", rs.getInt("RoleID"));
-					response.getWriter().write("Success");
+					session.setAttribute("accountID", rs.getString("Username"));
+					session.setAttribute("role", rs.getInt("RoleID"));
+					
+					String redirectURL = "sample-dashboard.jsp";
+
+					Map<String, String> data = new HashMap<>();
+					data.put("redirect", redirectURL);
+					String json = new Gson().toJson(data);
+
+					response.setContentType("application/json");
+					response.getWriter().write(json);
 					System.out.println("Successful login");
+					
 				} else {
+					response.setContentType("text/plain"); 
 				    response.getWriter().write("Failed");
 					System.out.println("Failed login");
 				}

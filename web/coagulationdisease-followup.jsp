@@ -50,11 +50,7 @@
          <!-- Navbar -->
          <div class="nav-collapse">
             <ul class="nav navbar-nav">
-<<<<<<< HEAD
                <li><a href="dashboard-main.jsp">Dashboard</a></li>
-=======
-               <li><a href="dashboard.jsp">Dashboard</a></li>
->>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                <li><a href="aaphsmds-baseline.jsp">AA, PHS, MDS</a></li>
                <li class="active"><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
@@ -92,11 +88,7 @@
                      	while (coagulationPatientsList.next()) {
                      %>
                      <li><a
-<<<<<<< HEAD
-                        href="getcoagulationpatientservlet.html?patientId=<%=coagulationPatientsList.getInt("patientId")%>"><%=coagulationPatientsList.getInt("patientId")%></a></li>
-=======
                         href="GetCoagulationPatientServlet?patientId=<%=coagulationPatientsList.getInt("patientId")%>"><%=coagulationPatientsList.getInt("patientId")%></a></li>
->>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                      <%
                      	}
                      %>
@@ -122,11 +114,7 @@
                <!-- Buttons Container -->
                <div class="row button-container">
                   <div class="col-sm-4">
-<<<<<<< HEAD
-                     <a href="getcoagulationpatientservlet.html?patientId=<%=patientInfo.getInt("patientId")%>"
-=======
                      <a href="GetCoagulationPatientServlet?patientId=<%=patientInfo.getInt("patientId")%>"
->>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                         type="button" class="btn bg-yellow">Baseline</a> <a
                         href="coagulationdisease-followup.jsp?patientId=<%=patientInfo.getInt("patientId")%>"
                         type="button" class="btn bg-yellow">Follow Up</a>

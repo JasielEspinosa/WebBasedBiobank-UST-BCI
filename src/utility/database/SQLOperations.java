@@ -42,6 +42,36 @@ public class SQLOperations implements SQLCommands {
 		}
 		return loginSet;
 	}
+	
+	public static ResultSet getOldPassword(int accountID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(OLD_PASSWORD);
+			pstmt.setInt(1, accountID);
+			rs = pstmt.executeQuery();
+		}catch(SQLException sqle) {
+			System.out.println("SQLException -- get Old Password: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static boolean updateProfile(AccountBean ab, int accountID, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(UPDATE_PROFILE);
+			pstmt.setString(1, ab.getUsername());
+			pstmt.setString(2, ab.getPassword());
+			pstmt.setString(3, ab.getLastName());
+			pstmt.setString(4, ab.getFirstName());
+			pstmt.setString(5, ab.getMiddleName());
+			pstmt.setInt(6, accountID);
+			pstmt.executeUpdate();
+		}catch(SQLException sqle) {
+			System.out.println("SQLException -- updateProfile: " + sqle.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
 
 	public static boolean addAddress(AddressBean ab, Connection connection, int disease) {
 		switch (disease) {

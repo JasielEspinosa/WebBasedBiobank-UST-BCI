@@ -17,11 +17,11 @@ $("#loginForm").submit(function(e) {
 	
 $('#loginForm').submit(function() {
 	assignValues();
-	$('#invalid-login').addClass('in');
 	$.post('LoginServlet', $.param(params), function (response) {
 		alert(response);
-		if(response == 'Success'){
-			$('#invalid-login').addClass('in');
+		if(response.redirect){
+		       window.location = response.redirect;
+		       return;
 		}
 		if(response == "Failed"){
 			$('#invalid-login').addClass('in');

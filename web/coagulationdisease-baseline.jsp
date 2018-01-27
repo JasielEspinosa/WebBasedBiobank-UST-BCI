@@ -44,11 +44,7 @@
          <!-- Navbar -->
          <div class="nav-collapse">
             <ul class="nav navbar-nav">
-<<<<<<< HEAD
                <li><a href="dashboard-main.jsp">Dashboard</a></li>
-=======
-               <li><a href="dashboard.jsp">Dashboard</a></li>
->>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                <li><a href="aaphsmds-baseline.jsp">AA, PHS, MDS</a></li>
                <li class="active"><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
@@ -715,15 +711,9 @@
                                     <label for="severity" class="control-label col-sm-3">Treatment</label>
                                     <div class="col-sm-9">
                                        <select class="form-control" name="treatment">
-<<<<<<< HEAD
                                           <option value="Factor Concentrates">Factor Concentrates</option>
                                           <option value="Blood Component">Blood Component</option>
                                           <option value="Others">Others</option>
-=======
-                                          <option value="8">Factor Concentrates</option>
-                                          <option value="9">Blood Component</option>
-                                          <option value="others">Others</option>
->>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                                        </select>
                                     </div>
                                  </div>

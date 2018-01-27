@@ -15,7 +15,6 @@
 <script src="js/bootstrap.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 
-<<<<<<< HEAD
 <!-- FONT -->
     <link rel="stylesheet" href="fonts/open-sans.css">
 
@@ -48,37 +47,6 @@
          <div class="nav-collapse">
             <ul class="nav navbar-nav">
                <li><a href="dashboard-main.jsp">Dashboard</a></li>
-=======
-</head>
-
-<body>
-
-   <!-- Main container -->
-   <div class="container-fluid main-container">
-
-      <!-- Header -->
-      <div class="navbar navbar-default navbar-fixed-top">
-
-         <!-- Banner -->
-         <div class="row header bg-navyblue">
-            <div class="col-sm-1">
-               <img src="images/usthlogo.png" width="90%">
-            </div>
-            <div class="col-sm-10">
-               <h4>UST-BCI Section of Clinical Hematology</h4>
-               <p>Hematologic Disease Database</p>
-            </div>
-            <div class="col-sm-1">
-               <img src="images/ustlogo.png" width="90%">
-            </div>
-         </div>
-         <!-- End of Banner -->
-
-         <!-- Navbar -->
-         <div class="nav-collapse">
-            <ul class="nav navbar-nav">
-               <li><a href="dashboard.jsp">Dashboard</a></li>
->>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                <li><a href="aaphsmds-baseline.jsp">AA, PHS, MDS</a></li>
                <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                <li class="active"><a href="leukemia-baseline.jsp">Leukemia</a></li>
