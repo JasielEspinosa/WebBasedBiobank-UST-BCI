@@ -513,3 +513,7 @@ ALTER TABLE FollowUpTable ADD CONSTRAINT FollowUpTable_fk4 FOREIGN KEY (QualityO
 ALTER TABLE FollowUpTable ADD CONSTRAINT FollowUpTable_fk5 FOREIGN KEY (DiseaseStatusID) REFERENCES DiseaseStatusTable(DiseaseStatusID);
 
 ALTER TABLE AccountTable ADD CONSTRAINT AccountTable_fk0 FOREIGN KEY (RoleID) REFERENCES RoleTable(RoleID);
+
+INSERT INTO roletable (`RoleID`, `RoleName`) VALUES ('1', 'Admin');
+INSERT INTO roletable (`RoleID`, `RoleName`) VALUES ('2', 'Encoder');
+
