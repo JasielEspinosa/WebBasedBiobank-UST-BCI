@@ -401,6 +401,7 @@ CREATE TABLE QualityOfResponseTable (
 );
 
 CREATE TABLE AccountTable (
+	AccountID int NOT NULL AUTO_INCREMENT,
 	Username varchar(750) NOT NULL,
 	Password varchar(750) NOT NULL,
 	LastName varchar(500) NOT NULL,
@@ -408,7 +409,7 @@ CREATE TABLE AccountTable (
 	MiddleName varchar(500),
 	RoleID int NOT NULL,
     Active int NOT NULL,
-	PRIMARY KEY (Username)
+	PRIMARY KEY (AccountID)
 );
 
 CREATE TABLE RoleTable (
