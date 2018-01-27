@@ -2,7 +2,7 @@
 <html>
 <head>
 
-<title>USTH-BCI Biobank - AA, PHS, MDS</title>
+<title>Profile</title>
 
 <!-- CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -43,7 +43,11 @@
          <div class="nav-collapse">
             <ul class="nav navbar-nav">
 
+<<<<<<< HEAD
+               <li><a href="dashboard-main.jsp">Dashboard</a></li>
+=======
                <li><a href="dashboard.jsp">Dashboard</a></li>
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                <li><a href="aaphsmds-baseline.jsp">AA, PHS, MDS</a></li>
                <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
@@ -70,11 +74,14 @@
 
                <h1 style="text-align: center; background-color: #ffce00;">User Profile</h1>
                <br />
+<<<<<<< HEAD
+=======
 
                <!-- General Tab Content Gray Color -->
                <div class="tab-content">
                   <div id="general" class="tab-pane fade in active">
                      <div class="form-horizontal">
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
 
                         <!-- Patient ID Number -->
                         <div class="form-group">
@@ -84,6 +91,12 @@
                            </div>
                         </div>
 
+<<<<<<< HEAD
+               <!-- General Tab Content Gray Color -->
+               <div class="tab-content">
+                  <div id="general" class="tab-pane fade in active">
+                     <div class="form-horizontal">
+=======
                         <!-- Password -->
                         <div class="form-group">
                            <label class="control-label col-sm-5">Password</label>
@@ -91,23 +104,73 @@
                               <input type="password" class="form-control" name="password">
                            </div>
                         </div>
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
 
+<<<<<<< HEAD
+                        <!-- Patient ID Number -->
+                        <div class="form-group">
+                           <label class="control-label col-sm-5">Username</label>
+                           <div class="col-sm-7">
+                              <input type="text" class="form-control" name="username">
+=======
                         <!-- Confirm Password -->
                         <div class="form-group">
                            <label class="control-label col-sm-5">Confirm Password</label>
                            <div class="col-sm-7">
                               <input type="password" class="form-control" name="confirmPassword">
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                            </div>
                         </div>
 
+<<<<<<< HEAD
+                        <!-- Password -->
+                        <div class="form-group">
+                           <label class="control-label col-sm-5">Password</label>
+                           <div class="col-sm-7">
+                              <input type="password" class="form-control" name="password">
+=======
                         <!-- Last Name -->
                         <div class="form-group">
                            <label class="control-label col-sm-5">Last Name</label>
                            <div class="col-sm-7">
                               <input type="text" class="form-control" name="lastName">
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                            </div>
                         </div>
 
+<<<<<<< HEAD
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                           <label class="control-label col-sm-5">Confirm Password</label>
+                           <div class="col-sm-7">
+                              <input type="password" class="form-control" name="confirmPassword">
+=======
+                        <!-- First Name -->
+                        <div class="form-group">
+                           <label class="control-label col-sm-5">First Name</label>
+                           <div class="col-sm-7">
+                              <input type="text" class="form-control" name="firstName">
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
+                           </div>
+                        </div>
+
+<<<<<<< HEAD
+                        <!-- Last Name -->
+                        <div class="form-group">
+                           <label class="control-label col-sm-5">Last Name</label>
+                           <div class="col-sm-7">
+                              <input type="text" class="form-control" name="lastName">
+=======
+                        <!-- Middle Initial -->
+                        <div class="form-group">
+                           <label class="control-label col-sm-5">Middle Initial</label>
+                           <div class="col-sm-7">
+                              <input type="text" class="form-control" name="middleInitial">
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
+                           </div>
+                        </div>
+
+<<<<<<< HEAD
                         <!-- First Name -->
                         <div class="form-group">
                            <label class="control-label col-sm-5">First Name</label>
@@ -124,6 +187,8 @@
                            </div>
                         </div>
 
+=======
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                         <!-- Gender -->
                         <!-- 										<div class="form-group">
 											<label class="control-label col-sm-5">Gender</label>

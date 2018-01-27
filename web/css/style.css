@@ -1,31 +1,47 @@
-body {
-  background-color: #ebebeb; }
+/* Main CSS*/
 
+/* Body */
+body {
+  background-color: #ebebeb;
+  font-family: Open Sans; }
+
+/* Main Container */
 .main-container {
   width: 100%;
   padding: 0px; }
 
+
+/* Background Color: Grey */
 .bg-grey {
   background-color: #ebebeb; }
 
+/* Background Color: Yellow */
 .bg-yellow {
   background-color: #ffce00; }
 
+/* Background Color: Blue */
 .bg-blue {
   background-color: #0072bc; }
 
+/* Background Color: Navy Blue */
 .bg-navyblue {
   background-color: #023564; }
 
+/* Background Color: Red */
 .bg-red {
   background-color: #ed1c24; }
 
+
+/* Text Align: Center */
 .text-center {
   text-align: center; }
 
+/* Text Align: Right */
 .text-right {
   text-align: right; }
 
+
+/* Button */
 .btn {
   border-radius: 0px;
   text-transform: uppercase;
@@ -35,14 +51,30 @@ body {
 .button-container {
   margin-bottom: 40px; }
 
-.header {
-  padding: 10px 20px;
-  color: white;
-  letter-spacing: 0.6px;
-  margin: 0px; }
-  .header h4 {
-    margin-bottom: 5px; }
 
+/* Banner */
+.header {
+	padding: 10px;
+ 	color: white;
+ 	letter-spacing: 0.6px;
+ 	margin: 0px; 
+ }
+.header h4 {
+	margin-bottom: 5px; 
+}
+.header__logo--size {
+	width: 73px;
+    height: 72px;
+    margin-right: -15px;
+}    
+.header__bannertitle--position {
+	position: absolute;
+	margin-left: 100px;	
+}
+/* End of Banner */   
+    
+
+/* Navbar Old 
 .navbar-nav {
   display: flex;
   justify-content: space-between;
@@ -53,13 +85,14 @@ body {
     color: black;
     font-size: 12px;
     letter-spacing: 0.7px; }
-    .navbar-nav li:hover {
-      background-color: #e9bc00; }
+    /* .navbar-nav li:hover {
+      background-color: #F0F; } 
   .navbar-nav li .active {
     background-color: #e9bc00; }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  background-color: #e9bc00; }
+  background-color: #e9bc00; } 
+ */
 
 .sidebar-container {
   background-color: #023564;
@@ -126,7 +159,8 @@ body {
 
 input[type="submit"] {
   margin-bottom: 50px; }
-
+  
+/* Responsiveness - Old
 @media (min-width: 979px) {
   #midCol.affix-top {
     position: fixed;
@@ -138,6 +172,4 @@ input[type="submit"] {
     width: 100%; } }
 @media (min-width: 767px) {
   .affix, .affix-top {
-    position: fixed; } }
-
-/*# sourceMappingURL=style.css.map */
+    position: fixed; } } */

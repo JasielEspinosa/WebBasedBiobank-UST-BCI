@@ -136,7 +136,11 @@
          <!-- Navbar -->
          <div class="nav-collapse">
             <ul class="nav navbar-nav">
+<<<<<<< HEAD
+               <li><a href="dashboard-main.jsp">Dashboard</a></li>
+=======
                <li><a href="dashboard.jsp">Dashboard</a></li>
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                <li><a href="aaphsmds-baseline.jsp">AA, PHS, MDS</a></li>
                <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                <li class="active"><a href="leukemia-baseline.jsp">Leukemia</a></li>
@@ -174,7 +178,11 @@
                      	while (leukemiaPatientsList.next()) {
                      %>
                      <li><a
+<<<<<<< HEAD
+                        href="getleukemiapatientservlet.html?patientId=<%=leukemiaPatientsList.getInt("patientId")%>"><%=leukemiaPatientsList.getInt("patientId")%></a></li>
+=======
                         href="GetLeukemiaPatientServlet?patientId=<%=leukemiaPatientsList.getInt("patientId")%>"><%=leukemiaPatientsList.getInt("patientId")%></a></li>
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                      <%
                      	}
                      %>

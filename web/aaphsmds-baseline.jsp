@@ -45,7 +45,11 @@
          <!-- Navbar -->
          <div class="nav-collapse">
             <ul class="nav navbar-nav">
+<<<<<<< HEAD
+               <li><a href="dashboard-main.jsp">Dashboard</a></li>
+=======
                <li><a href="dashboard.jsp">Dashboard</a></li>
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                <li class="active"><a href="aaphsmds-baseline.jsp">AA, PHS, MDS</a></li>
                <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
@@ -944,11 +948,19 @@
                                     <label for="severity" class="control-label col-sm-4">Mode of Treatment</label>
                                     <div class="col-sm-8">
                                        <select class="form-control" name="modeOfTreament">
+<<<<<<< HEAD
+                                          <option value="Hematopoietic Stem Cell Transplantation">Hematopoietic Stem Cell Transplantation</option>
+                                          <option value="Pharmacologic Treatment">Pharmacologic Treatment</option>
+                                          <option value="Supportive">Supportive</option>
+                                          <option value="Both Pharmacologic and Supportive">Both Pharmacologic and Supportive</option>
+                                          <option value="Watch and Wait">Watch and Wait</option>
+=======
                                           <option value="1">Hematopoietic Stem Cell Transplantation</option>
                                           <option value="2">Pharmacologic Treatment</option>
                                           <option value="3">Supportive</option>
                                           <option value="4">Both Pharmacologic and Supportive</option>
                                           <option value="10">Watch and Wait</option>
+>>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
                                        </select>
                                     </div>
                                  </div>
