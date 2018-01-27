@@ -43,7 +43,6 @@ public class SQLOperations implements SQLCommands {
 		return loginSet;
 	}
 
-	
 	public static boolean addAddress(AddressBean ab, Connection connection, int disease) {
 		switch (disease) {
 		case (1):
