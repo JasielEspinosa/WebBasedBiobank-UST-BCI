@@ -199,7 +199,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection SeverityBean");
 		}
 
-		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, null, "",
+		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, "", "",
 				chiefComplaint, constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify,
 				alchoholIntakeHistorySpecify, chemicalExposureHistorySpecify, "", "", otherFindings);
 		if (connection != null) {
@@ -314,15 +314,15 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection LaboratoryProfileBean");
 		}
 
-		RegimenBean rb = BeanFactory.getRegimenBean(regimenProtocol);
+		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, modeOfTreatment);
 		if (connection != null) {
-			if (SQLOperations.addRegimen(rb, connection, disease)) {
-				System.out.println("Successful insert RegimenBean");
+			if (SQLOperations.addModeOfTreatment(motb, connection, disease)) {
+				System.out.println("Successful insert ModeOfTreatmentBean");
 			} else {
-				System.out.println("Failed insert RegimenBean");
+				System.out.println("Failed insert ModeOfTreatmentBean");
 			}
 		} else {
-			System.out.println("Invalid connection RegimenBean");
+			System.out.println("Invalid connection ModeOfTreatmentBean");
 		}
 
 		ChemotherapyMedicationsBean cmb = BeanFactory.getChemotherapyMedicationsBean(chemotherapyMedications);
@@ -336,15 +336,15 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ChemotherapyMedicationsBean");
 		}
 
-		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, modeOfTreatment);
+		RegimenBean rb = BeanFactory.getRegimenBean(regimenProtocol);
 		if (connection != null) {
-			if (SQLOperations.addModeOfTreatment(motb, connection, disease)) {
-				System.out.println("Successful insert ModeOfTreatmentBean");
+			if (SQLOperations.addRegimen(rb, connection, disease)) {
+				System.out.println("Successful insert RegimenBean");
 			} else {
-				System.out.println("Failed insert ModeOfTreatmentBean");
+				System.out.println("Failed insert RegimenBean");
 			}
 		} else {
-			System.out.println("Invalid connection ModeOfTreatmentBean");
+			System.out.println("Invalid connection RegimenBean");
 		}
 
 		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", cycleNumber, "", "");

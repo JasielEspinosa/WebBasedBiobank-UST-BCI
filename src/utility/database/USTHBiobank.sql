@@ -67,6 +67,7 @@ CREATE TABLE FamilyCancerTable (
 CREATE TABLE OtherDiseasesTable (
 	OtherDiseasesID int NOT NULL AUTO_INCREMENT,
 	ClinicalDataID int NOT NULL,
+	OtherDisease blob,
 	PRIMARY KEY (OtherDiseaseID)
 );
 

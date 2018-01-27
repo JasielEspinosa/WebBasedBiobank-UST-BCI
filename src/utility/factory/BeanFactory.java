@@ -322,48 +322,48 @@ public class BeanFactory {
 	}
 
 	public static BloodChemistryBean getBloodChemistryBean(
-			double BUN,
+			double bun,
 			double creatine,
 			double uricAcid,
-			double SGOT,
-			double SGPT,
-			double LDH,
-			double EPOLevel,
-			double Na,
-			double K,
+			double sgot,
+			double sgpt,
+			double ldh,
+			double epoLevel,
+			double na,
+			double k,
 			double bilirubinTotal,
 			double bilirubinDirect,
 			double bilirubinIndirect,
 			double beta2Microglobulin,
-			double hepatitsBTesting,
-			double ESR,
+			double hepatitisBTesting,
+			double esr,
 			double iCa,
 			double totalProtein,
 			double albumin,
 			double globulin,
-			double ANATiter,
+			double anaTiter,
 			double hepatitsCRna) {
 		BloodChemistryBean bb = new BloodChemistryBean();
-		bb.setBUN(BUN);
+		bb.setBUN(bun);
 		bb.setCreatine(creatine);
 		bb.setUricAcid(uricAcid);
-		bb.setSGOT(SGOT);
-		bb.setSGPT(SGPT);
-		bb.setLDH(LDH);
-		bb.setEPOLevel(EPOLevel);
-		bb.setNa(Na);
-		bb.setK(K);
+		bb.setSGOT(sgot);
+		bb.setSGPT(sgpt);
+		bb.setLDH(ldh);
+		bb.setEPOLevel(epoLevel);
+		bb.setNa(na);
+		bb.setK(k);
 		bb.setBilirubinTotal(bilirubinTotal);
 		bb.setBilirubinDirect(bilirubinDirect);
 		bb.setBilirubinIndirect(bilirubinIndirect);
 		bb.setBeta2Microglobulin(beta2Microglobulin);
-		bb.setHepatitsBTesting(hepatitsBTesting);
-		bb.setESR(ESR);
+		bb.setHepatitsBTesting(hepatitisBTesting);
+		bb.setESR(esr);
 		bb.setiCa(iCa);
 		bb.setTotalProtein(totalProtein);
 		bb.setAlbumin(albumin);
 		bb.setGlobulin(globulin);
-		bb.setANATiter(ANATiter);
+		bb.setANATiter(anaTiter);
 		bb.setHepatitsCRna(hepatitsCRna);
 		return bb;
 	}
