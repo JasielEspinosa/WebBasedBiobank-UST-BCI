@@ -18,7 +18,6 @@ $("#loginForm").submit(function(e) {
 $('#loginForm').submit(function() {
 	assignValues();
 	$.post('LoginServlet', $.param(params), function (response) {
-		alert(response);
 		if(response.redirect){
 		       window.location = response.redirect;
 		       return;

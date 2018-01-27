@@ -75,7 +75,7 @@ public class LoginServlet extends HttpServlet {
 					session.setAttribute("accountID", rs.getString("Username"));
 					session.setAttribute("role", rs.getInt("RoleID"));
 					
-					String redirectURL = "sample-dashboard.jsp";
+					String redirectURL = "dashboard-main.jsp";
 
 					Map<String, String> data = new HashMap<>();
 					data.put("redirect", redirectURL);
