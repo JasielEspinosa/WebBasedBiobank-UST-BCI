@@ -64,6 +64,12 @@ CREATE TABLE FamilyCancerTable (
 	PRIMARY KEY (FamilyCancerID)
 );
 
+CREATE TABLE OtherDiseasesTable (
+	OtherDiseasesID int NOT NULL AUTO_INCREMENT,
+	ClinicalDataID int NOT NULL,
+	PRIMARY KEY (OtherDiseaseID)
+);
+
 CREATE TABLE ClinicalDataTable (
 	ClinicalDataID int NOT NULL AUTO_INCREMENT,
 	DateOfVisit DATE NOT NULL,
@@ -452,6 +458,8 @@ ALTER TABLE ClinicalDataTable ADD CONSTRAINT ClinicalDataTable_fk5 FOREIGN KEY (
 ALTER TABLE MedicationsTable ADD CONSTRAINT MedicationsTable_fk0 FOREIGN KEY (ClinicalDataID) REFERENCES ClinicalDataTable(ClinicalDataID);
 
 ALTER TABLE FamilyCancerTable ADD CONSTRAINT FamilyCancerTable_fk0 FOREIGN KEY (ClinicalDataID) REFERENCES ClinicalDataTable(ClinicalDataID);
+
+ALTER TABLE OtherDiseasesTable ADD CONSTRAINT OtherDiseasesTable_fk0 FOREIGN KEY (ClinicalDataID) REFERENCES ClinicalDataTable(ClinicalDataID);
 
 ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk0 FOREIGN KEY (HematologyID) REFERENCES HematologyTable(HematologyID);
 
