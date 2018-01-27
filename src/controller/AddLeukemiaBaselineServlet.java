@@ -45,7 +45,6 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		int disease = 3;
 
 		// GENERAL DATA
-		int patientIDNumber = Integer.parseInt(request.getParameter("patientIDNumber"));
 		String lastName = request.getParameter("lastName");
 		String firstName = request.getParameter("firstName");
 		String middleInitial = request.getParameter("middleInitial");

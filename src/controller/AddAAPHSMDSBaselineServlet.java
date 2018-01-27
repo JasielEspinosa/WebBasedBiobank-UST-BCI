@@ -40,11 +40,10 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		getServletContext().log("AddAAPHSMDSBaselineServlet insert test");
-		
+
 		int disease = 1;
 
 		// GENERAL DATA
-		int patientIDNumber = Integer.parseInt(request.getParameter("patientIDNumber"));
 		String lastName = request.getParameter("lastName");
 		String firstName = request.getParameter("firstName");
 		String middleInitial = request.getParameter("middleInitial");
@@ -53,7 +52,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		String address = request.getParameter("address");
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String specimenType = request.getParameter("specimenType");
-		
+
 /*		System.out.println(patientIDNumber);
 		System.out.println(lastName);
 		System.out.println(firstName);
@@ -230,7 +229,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection FamilyCancerBean");
 		}
-		
+
 		MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
 		if (connection != null) {
 			if (SQLOperations.addMedications(mb, connection, disease)) {
@@ -349,6 +348,17 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		TreatmentBean tb = BeanFactory.getTreatmentBean(transplantCandidate, dateStarted, "", 0, "", "");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
+				System.out.println("Successful insert TreatmentBean");
+			} else {
+				System.out.println("Failed insert TreatmentBean");
+			}
+		} else {
+			System.out.println("Invalid connection TreatmentBean");
+		}
+		
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("");
+		if (connection != null) {
+			if (SQLOperations.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");
 			} else {
 				System.out.println("Failed insert TreatmentBean");
