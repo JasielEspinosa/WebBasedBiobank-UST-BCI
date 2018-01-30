@@ -73,7 +73,6 @@ body {
 }
 /* End of Banner */   
     
-
 /* Navbar Old 
 .navbar-nav {
   display: flex;
@@ -103,10 +102,12 @@ body {
   margin-top: 150px; }
 
 .nav-stacked {
+  margin: 0px 5px 0px 5px;	
   background-color: #ebebeb;
   padding: 0px;
   max-height: 300px;
-  margin-bottom: 80px;
+  min-height: 360px;
+  margin-bottom: 80px; 
   overflow-y: scroll; }
   .nav-stacked li > a:hover {
     background-color: #d7d7d7; }
@@ -140,8 +141,14 @@ body {
     padding: 30px; }
 
 .forms {
-  margin-top: 180px;
-  padding: 0px 50px; }
+  margin-top: 25px;
+  padding: 0px 20px; } 
+  
+/* Settings Forms */
+.settings__buttons--position {
+	margin-top: 25px;
+	margin-left: 10px;
+}  
 
 .visit {
   padding: 30px 0px; }
@@ -160,16 +167,53 @@ body {
 input[type="submit"] {
   margin-bottom: 50px; }
   
-/* Responsiveness - Old
-@media (min-width: 979px) {
-  #midCol.affix-top {
-    position: fixed;
-    width: 265px;
-    margin-right: 10px; }
+/* User Management and Archived Patients Table CSS */
+#customers {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
 
-  #midCol.affix {
-    position: static;
-    width: 100%; } }
-@media (min-width: 767px) {
-  .affix, .affix-top {
-    position: fixed; } } */
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+th {
+    cursor: pointer;
+}
+
+/* User Management__Add Encoder Pop Up Attributes */
+.cd-popup {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s 0s, visibility 0s 0.3s;
+}
+ 
+.cd-popup.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s 0s, visibility 0s 0s;
+}
+ 
+.cd-popup-container {
+  transform: translateY(-40px);
+  transition-property: transform;
+  transition-duration: 0.3s;
+}
+ 
+.is-visible .cd-popup-container {
+  transform: translateY(0);
+}
+
+/* Modal Position: Center */
+.centered-modal.in {
+    display: flex !important;
+}
+.centered-modal .modal-dialog {
+    margin: auto;
+}

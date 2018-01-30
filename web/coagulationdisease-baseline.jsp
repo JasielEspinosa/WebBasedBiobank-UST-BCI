@@ -3,20 +3,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<title>USTH-BCI Biobank - Coagulation Disease</title>
+<title>Coag Baseline</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="images/usthlogo.png">
 
 <!-- CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link href="css/responsive.css" rel="stylesheet">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
 
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 <!-- JS -->
-<script src="js/jquery.min.js"></script>
+<!-- <script src="js/jquery.min.js"></script>  -->
 <script src="js/jquery-ui.js"></script>
-<script src="js/bootstrap.js"></script>
+<!-- <script src="js/bootstrap.js"></script>  -->
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="js/jquery.min-2.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Sidebar Javascript -->
+<script src="js/sidebar.js"></script>
+
+<!-- FONT -->
+<link rel="stylesheet" href="fonts/open-sans.css">
+
+<!-- FONT AWESOME ICON -->
+<script defer src="js/fontawesome-all.js"></script>
 </head>
 
 <body>
@@ -24,90 +50,109 @@
    <!-- Main container -->
    <div class="container-fluid main-container">
 
-      <!-- Header -->
-      <div class="navbar navbar-default navbar-fixed-top">
+     <!-- Header -->
+      <div class="navbar-fixed-top">
 
          <!-- Banner -->
          <div class="row header bg-navyblue">
             <div class="col-sm-1">
-               <img src="images/usthlogo.png" width="90%">
+               <img src="images/usthlogo.png" class="header__logo--size header__logo--position">
             </div>
-            <div class="col-sm-10">
+            <div class="col-sm-11 header__bannertitle--visibility header__bannertitle--position header__bannertitle--spacing">
                <h4>UST-BCI Section of Clinical Hematology</h4>
                <p>Hematologic Disease Database</p>
             </div>
-            <div class="col-sm-1">
-               <img src="images/ustlogo.png" width="90%">
-            </div>
          </div>
          <!-- End of Banner -->
+
          <!-- Navbar -->
-         <div class="nav-collapse">
-            <ul class="nav navbar-nav">
-               <li><a href="dashboard-main.jsp">Dashboard</a></li>
-               <li><a href="aaphsmds-baseline.jsp">AA, PHS, MDS</a></li>
-               <li class="active"><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
-               <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
-               <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
-               <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
-               <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-               <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
-            </ul>
-         </div>
-         <!-- End of Navbar -->
+         <nav class="navbar" role="navigation">
+            <div class="container-fluid navbar__nav-item--hover">
+               <!-- Brand and toggle get grouped for better mobile display -->
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                  </button>
+               </div>
+
+               <!-- Collect the nav links, forms, and other content for toggling -->
+               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                     <li><a href="dashboard-main.jsp">Dashboard</a></li>
+                     <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
+                     <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
+                     <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
+                     <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
+                     <li><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
+                     <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
+                     <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
+
+                     <!-- Dropdown -->
+                     <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
+                     </a>
+                        <ul class="dropdown-menu dropdown-menu__text" role="menu">
+                           <li><a href="audittrail.jsp">Audit Trail</a></li>
+                           <li class="divider"></li>
+                           <li><a href="profile.jsp">Profile</a></li>
+                           <li class="divider"></li>
+                           <li><a href="settings.jsp">Settings</a></li>
+                           <li class="divider"></li>
+                           <li><a href="login.jsp">Logout</a></li>
+                        </ul></li>
+                     <!-- End of Dropdown -->
+
+                  </ul>
+               </div>
+               <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+         </nav>
 
       </div>
       <!-- End of header -->
 
       <!-- Main Content -->
-      <div class="container-fluid bg-grey">
-         <!-- Sidebar -->
-         <div class="row affix sidebar-container">
-            <div class="col-sm-12 sidebar">
+      
+        <!-- Sidebar -->
+  <div class="row-offcanvas row-offcanvas-left">
+   <div id="sidebar" class="sidebar-offcanvas">
+    <div class="col-md-12">
+     <!-- Search Box -->
+     <div class="row">
+      <div class="col-sm-12 search-box">
+       <div>
+        <input type="text" placeholder="Search">
+       </div>
+      </div>
+     </div>
+     <!-- End of Search Box -->
+     <ul class="nav nav-pills nav-stacked">
 
-               <!-- Search Box -->
-               <div class="row">
-                  <div class="col-sm-12 search-box">
-                     <div>
-                        <input type="text" placeholder="Search..">
-                     </div>
-                  </div>
-               </div>
-               <!-- End of Search Box -->
+     </ul>
+     <!-- Add box -->
+     <div class="row">
+      <div class="col-sm-12 add-box">
+       <button id="addEncoder" type="button" class="btn bg-yellow" data-toggle="modal" data-target="#usermanagement__popup" data-whatever="@mdo">Add Encoder</button>
+      </div>
+     </div>
+     <!-- End of Add box -->
+    </div>
+   </div>
 
-               <!-- Sidenav -->
-               <div class="row">
-                  <ul id="sidebar" class="nav nav-stacked col-sm-12">
-                     <%--                   <%
-                  	while (coagulationPatientsList.next()) {
-                  %>
-                  <li><a
-<<<<<<< HEAD
-                     href="getcoagulationpatientservlet.html?patientId=<%=coagulationPatientsList.getInt("patientId")%>"><%=coagulationPatientsList.getInt("patientId")%></a></li>
-=======
-                     href="GetCoagulationPatientServlet?patientId=<%=coagulationPatientsList.getInt("patientId")%>"><%=coagulationPatientsList.getInt("patientId")%></a></li>
->>>>>>> branch 'master' of https://github.com/Mnizus/Web-Based-Biobank-for-UST-BCI.git
-                  <%
-                  	}
-                  %> --%>
-                  </ul>
-               </div>
-               <!-- End of Sidenav -->
-
-               <!-- Add box -->
-               <div class="row">
-                  <div class="col-sm-12 add-box">
-                     <button type="button" class="btn bg-yellow">Add Patient</button>
-                  </div>
-               </div>
-               <!-- End of Add box -->
-
-            </div>
-         </div>
-         <!-- End of Sidebar -->
+   <div id="main">
+    <div class="col-md-12">
+     <p class="visible-xs">
+      <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">
+       <i class="glyphicon glyphicon-chevron-left"></i>
+      </button>
+     </p>
+     <!-- End of Sidebar -->
+     
          <!-- Forms Container -->
          <div class="row">
-            <div class="col-sm-10 offset-sm-2 pull-right forms">
+            <div class="col-sm-10 offset-sm-2 forms">
 
                <!-- Buttons Container -->
                <div class="row button-container">
@@ -325,6 +370,14 @@
                                        <input type="text" class="form-control" name="relationshipToPatient">
                                     </div>
                                  </div>
+                                 
+                                  <!-- Specify Cancer-->
+                                   <div class="form-group">
+                                    <label class="control-label col-sm-3">Specify Cancer</label>
+                                    <div class="col-sm-9">
+                                     <input type="text" class="form-control" name="specifyCancer">
+                                    </div>
+                                   </div>
 
                                  <!-- Other Diseases in the Family -->
                                  <div class="form-group">
@@ -676,10 +729,10 @@
                                     <label class="control-label col-sm-4">Imaging Studies</label>
                                     <div class="col-sm-8">
                                        <div class="radio">
-                                          <label><input type="radio" name="imagingStudies" value="yes">Yes</label>
+                                          <label><input type="radio" name="imagingStudies" value="1">Yes</label>
                                        </div>
                                        <div class="radio">
-                                          <label><input type="radio" name="imagingStudies" value="no">No</label>
+                                          <label><input type="radio" name="imagingStudies" value="0">No</label>
                                        </div>
                                        <div class="radio">
                                           <label><input type="radio" name="imagingStudies" value="notApplicable">Not
@@ -738,8 +791,9 @@
                <!-- End of Forms -->
             </div>
          </div>
-      </div>
+
       <!-- End of Main Content -->
+      
    </div>
    <!-- End of main container -->
 </body>

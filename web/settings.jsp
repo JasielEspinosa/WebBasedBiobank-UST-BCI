@@ -97,7 +97,7 @@
 		            <li class="divider"></li>
 		            <li><a href="settings.jsp">Settings</a></li>
 		            <li class="divider"></li>
-		            <li><a href="#">Logout</a></li>
+		            <li><a href="login.jsp">Logout</a></li>
 		          </ul>
 		        </li>
 		        <!-- End of Dropdown -->
@@ -110,51 +110,53 @@
       </div>
       <!-- End of header -->
       
-      <!-- Sidebar -->
-         <div class="row row-offcanvas row-offcanvas-left affix sidebar-container">
-            <div class="col-sm-12 sidebar sidebar-offcanvas" id="sidebar">
-
-               <!-- Search Box -->
+    <!-- Main Content -->  
+     <!-- Sidebar -->
+     <div class="row-offcanvas row-offcanvas-left">
+     <div id="sidebar" class="sidebar-offcanvas">
+      <div class="col-md-12">
+      
+        <!-- Search Box -->
                <div class="row">
                   <div class="col-sm-12 search-box">
                      <div>
-                        <input type="text" placeholder="Search..">
+                        <input type="text" placeholder="Search">
                      </div>
                   </div>
                </div>
-               <!-- End of Search Box -->
+       <!-- End of Search Box -->
+               
+        <ul class="nav nav-pills nav-stacked">
+         
+        </ul>
+      </div>
+  </div>
+   <div id="main">
+      <div class="col-md-12">
+       <p class="visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-left"></i></button>
+       </p>   
+       
+        <!-- Form Container -->
+         <div class="row">
+            <div class="col-sm-10 offset-sm-2 settings__buttons--position">
 
-               <!-- Sidenav -->
-               <div class="row">
-                  <ul id="sidebar" class="nav nav-stacked col-sm-12">
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                     <li><a href="#"></a></li>
-                  </ul>
-               </div>
-               <!-- End of Sidenav -->
-
-               <!-- Add box -->
-               <div class="row">
-                  <div class="col-sm-12 add-box">
-                     <button type="button" class="btn bg-yellow">Add Patient</button>
+               <!-- Buttons Container -->
+               <div class="row button-container">  
+                  <div class="col-sm-8">
+                     <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive">User Management</a> <a
+                        href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive">Archived Patients</a>
                   </div>
                </div>
-               <!-- End of Add box -->
+               <!-- End of buttons container -->
 
             </div>
-         </div>
-         <!-- End of Sidebar -->
+           </div> 
+       
+      </div>
+  </div> 
+</div><!--/row-offcanvas -->
+<!-- End of Main Content -->
      
 	</div>
     <!-- End of main container -->
