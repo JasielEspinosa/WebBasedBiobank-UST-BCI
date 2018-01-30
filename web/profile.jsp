@@ -10,11 +10,9 @@
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
 
 <!-- JS -->
-<script src="js/jquery.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
-<script src="js/profile.js"></script>
 
 </head>
 
@@ -81,7 +79,7 @@
                         <div class="form-group">
                            <label class="control-label col-sm-5">Username</label>
                            <div class="col-sm-7">
-                              <input type="text" class="form-control" name="username">
+                              <input type="text" class="form-control" name="username" id="username">
                            </div>
                         </div>
 						
@@ -89,7 +87,7 @@
                         <div class="form-group">
                            <label class="control-label col-sm-5">Old Password</label>
                            <div class="col-sm-7">
-                              <input type="password" class="form-control" name="oldPassword">
+                              <input type="password" class="form-control" name="oldPassword" id ="oldPassword">
                            </div>
                         </div>
 						
@@ -98,7 +96,7 @@
                         <div class="form-group">
                            <label class="control-label col-sm-5">New Password</label>
                            <div class="col-sm-7">
-                              <input type="password" class="form-control" name="password">
+                              <input type="password" class="form-control" name="password" id="password">
                            </div>
                         </div>
 
@@ -106,7 +104,7 @@
                         <div class="form-group">
                            <label class="control-label col-sm-5">Confirm Password</label>
                            <div class="col-sm-7">
-                              <input type="password" class="form-control" name="confirmPassword">
+                              <input type="password" class="form-control" name="confirmPassword" id="confirmPassword">
                            </div>
                         </div>
 
@@ -114,7 +112,7 @@
                         <div class="form-group">
                            <label class="control-label col-sm-5">Last Name</label>
                            <div class="col-sm-7">
-                              <input type="text" class="form-control" name="lastName">
+                              <input type="text" class="form-control" name="lastName" id = "lastName">
                            </div>
                         </div>
 
@@ -122,7 +120,7 @@
                         <div class="form-group">
                            <label class="control-label col-sm-5">First Name</label>
                            <div class="col-sm-7">
-                              <input type="text" class="form-control" name="firstName">
+                              <input type="text" class="form-control" name="firstName" id= "firstName">
                            </div>
                         </div>
 
@@ -130,7 +128,7 @@
                         <div class="form-group">
                            <label class="control-label col-sm-5">Middle Initial</label>
                            <div class="col-sm-7">
-                              <input type="text" class="form-control" name="middleInitial">
+                              <input type="text" class="form-control" name="middleInitial" id = "middleInitial">
                            </div>
                         </div>
 
@@ -187,6 +185,7 @@
 
    </div>
    <!-- End of main container -->
-
+<script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+<script src="js/profile.js"></script>
 </body>
 </html>
