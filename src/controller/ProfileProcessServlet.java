@@ -73,21 +73,12 @@ public class ProfileProcessServlet extends HttpServlet {
 		
 		if(connection != null) {
 			
-			ResultSet oldPassRs = SQLOperations.getOldPassword((Integer)session.getAttribute("accountID"), connection);
+			ResultSet oldPassRs = SQLOperations.getOldPassword(Integer.parseInt((String) session.getAttribute("accountID")), connection);
 			try {
-				if(oldPassRs.next()) {
-					dbOldPassword = oldPassRs.getString("Password");
-				}
 				
-				if(dbOldPassword.equals(oldPassword)){
-				    response.getWriter().write("Old Password Error");
-					System.out.println("Failed 1");
-				}else if(!password.equals(confirmPassword)) {
-				    response.getWriter().write("Password Match Error");
-					System.out.println("Failed 2");
-				}else {
+				if(oldPassword.equals("") && password.equals("")  && confirmPassword.equals("")) {
 					AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, firstName, middleInitial, 0);
-					if(SQLOperations.updateProfile(ab, (Integer)session.getAttribute("accountID"), connection)) {
+					if(SQLOperations.updateProfileNoPass(ab, Integer.parseInt((String) session.getAttribute("accountID")), connection)) {
 					    response.getWriter().write("Success");
 					    System.out.println("Success");
 						
@@ -95,7 +86,29 @@ public class ProfileProcessServlet extends HttpServlet {
 						 response.getWriter().write("Failed 3");
 						 System.out.println("Failed 3");
 					}
-				}
+				}else {
+					if(oldPassRs.next()) {
+						dbOldPassword = oldPassRs.getString("Password");
+					}
+					
+					if(!dbOldPassword.equals(oldPassword)){
+					    response.getWriter().write("Old Password is incorrect.");
+						System.out.println("Failed 1");
+					}else if(!password.equals(confirmPassword)) {
+					    response.getWriter().write("New Password and confirm password does not match.");
+						System.out.println("Failed 2");
+					}else {
+						AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, firstName, middleInitial, 0);
+						if(SQLOperations.updateProfile(ab, Integer.parseInt((String) session.getAttribute("accountID")), connection)) {
+						    response.getWriter().write("Success");
+						    System.out.println("Success");
+							
+						}else {
+							 response.getWriter().write("Failed 3");
+							 System.out.println("Failed 3");
+						}
+					}
+				}	
 				
 			} catch (SQLException e) {
 				e.printStackTrace();

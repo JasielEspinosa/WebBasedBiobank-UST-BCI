@@ -36,7 +36,10 @@ public interface SQLCommands {
 	// GENERAL QUERIES
 	String LOGIN = "Select * from AccountTable where Username = ? and Password = ?";
 	String OLD_PASSWORD = "Select Password from AccountTable where AccountID = ?";
+	String GET_PROFILE = "Select Username, LastName, FirstName, MiddleName from AccountTable where AccountID = ?";
 	String UPDATE_PROFILE = "Update AccountTable set Username = ?, Password = ?, LastName = ?, FirstName = ?, MiddleName = ?"
+			+ " where AccountID = ?";
+	String UPDATE_PROFILE_NOPASS = "Update AccountTable set Username = ?, LastName = ?, FirstName = ?, MiddleName = ?"
 			+ " where AccountID = ?";
 	String INSERT_ADDRESS = "INSERT INTO AddressTable VALUES (NULL, ?, ?, ?)";
 	String INSERT_OTHERDISEASES = "INSERT INTO OtherDiseasesTable VALUES (NULL, (SELECT MAX(ClinicalDataID) FROM ClinicalDataTable), ?)";

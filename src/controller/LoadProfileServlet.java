@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -16,17 +16,15 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import model.AccountBean;
 import utility.database.SQLOperations;
-import utility.factory.BeanFactory;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class LoadProfileServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/LoadProfileServlet")
+public class LoadProfileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+       
 	private Connection connection;
 
 	public void init() throws ServletException {
@@ -39,10 +37,7 @@ public class LoginServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
+    public LoadProfileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -59,44 +54,32 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(true);
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-	    response.setCharacterEncoding("UTF-8"); 
-
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json"); 
 		
-		AccountBean ab = BeanFactory.getAccountBean(username, password, "", "", "", 0);
-		ResultSet rs = SQLOperations.login(ab, connection);
-		if (connection != null) {
+		
+		if(connection != null) {
+		ResultSet profileInfoRs = SQLOperations.getProfile(Integer.parseInt((String)session.getAttribute("accountID")), connection);	
 			try {
-				if (rs.next()) {
-					session.setAttribute("accountID", rs.getString("AccountID"));
-					session.setAttribute("role", rs.getInt("RoleID"));
-					
-					String redirectURL = "dashboard-main.jsp";
-
-					Map<String, String> data = new HashMap<>();
-					data.put("redirect", redirectURL);
-					String json = new Gson().toJson(data);
-
-					response.setContentType("application/json");
-					response.getWriter().write(json);
-					System.out.println("Successful login");
-					
-				} else {
-					response.setContentType("text/plain"); 
-				    response.getWriter().write("Failed");
-					System.out.println("Failed login");
+				if(profileInfoRs.next()) {
+				    Map<String, String> profile = new LinkedHashMap<>();
+				    profile.put("Username", profileInfoRs.getString("Username"));
+				    profile.put("Lastname", profileInfoRs.getString("Lastname"));
+				    profile.put("Firstname", profileInfoRs.getString("Firstname"));
+				    profile.put("MiddleName", profileInfoRs.getString("MiddleName"));
+				    String json = new Gson().toJson(profile);
+				    response.getWriter().write(json);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else {
-			System.out.println("Invalid connection login");
-		}
 		
+		}else {
+		System.out.println("Invalid connection");
 	}
-
+	
+}
 }

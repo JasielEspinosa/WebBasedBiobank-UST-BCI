@@ -43,6 +43,18 @@ public class SQLOperations implements SQLCommands {
 		return loginSet;
 	}
 	
+	public static ResultSet getProfile(int accountID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_PROFILE);
+			pstmt.setInt(1, accountID);
+			rs = pstmt.executeQuery();
+		}catch(SQLException sqle) {
+			System.out.println("SQLException -- get Old Password: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
 	public static ResultSet getOldPassword(int accountID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -67,6 +79,23 @@ public class SQLOperations implements SQLCommands {
 			pstmt.executeUpdate();
 		}catch(SQLException sqle) {
 			System.out.println("SQLException -- updateProfile: " + sqle.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean updateProfileNoPass(AccountBean ab, int accountID, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(UPDATE_PROFILE_NOPASS);
+			pstmt.setString(1, ab.getUsername());
+			pstmt.setString(2, ab.getLastName());
+			pstmt.setString(3, ab.getFirstName());
+			pstmt.setString(4, ab.getMiddleName());
+			pstmt.setInt(5, accountID);
+			pstmt.executeUpdate();
+		}catch(SQLException sqle) {
+			System.out.println("SQLException -- updateProfileNoPass: " + sqle.getMessage());
 			return false;
 		}
 		
