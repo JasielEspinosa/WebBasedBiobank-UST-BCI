@@ -41,6 +41,9 @@ public interface SQLCommands {
 			+ " where AccountID = ?";
 	String UPDATE_PROFILE_NOPASS = "Update AccountTable set Username = ?, LastName = ?, FirstName = ?, MiddleName = ?"
 			+ " where AccountID = ?";
+	String INSERT_USER = "INSERT INTO AccountTable VALUES (NULL,?,?,?,?,?,?,?)";
+	String GET_USERS = "SELECT * FROM AccountTable";
+	String DELETE_USER = "DELETE FROM AccountTable where AccountID = ?";
 	String INSERT_ADDRESS = "INSERT INTO AddressTable VALUES (NULL, ?, ?, ?)";
 	String INSERT_OTHERDISEASES = "INSERT INTO OtherDiseasesTable VALUES (NULL, (SELECT MAX(ClinicalDataID) FROM ClinicalDataTable), ?)";
 	String INSERT_TISSUE_SPECIMEN = "INSERT INTO TissueSpecimenTable VALUES (NULL,?)";

@@ -1,6 +1,7 @@
 package model;
 
 public class AccountBean {
+	private int accountId;
 	private String username;
 	private String password;
 	private String lastName;
@@ -8,6 +9,32 @@ public class AccountBean {
 	private String firstName;
 	private int roleId;
 	
+	
+	public AccountBean() {
+		super();
+	}
+
+
+	public AccountBean(String username, String lastName, String middleName, String firstName, int roleId) {
+		this.username = username;
+		this.lastName = lastName;
+		this.middleName = middleName;
+		this.firstName = firstName;
+		this.roleId = roleId;
+	}
+	
+	
+	public AccountBean(int accountId, String username, String lastName, String middleName,
+			String firstName, int roleId) {
+		this.accountId = accountId;
+		this.username = username;
+		this.lastName = lastName;
+		this.middleName = middleName;
+		this.firstName = firstName;
+		this.roleId = roleId;
+	}
+
+
 	public String getUsername() {
 		return username;
 	}

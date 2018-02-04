@@ -85,6 +85,39 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 	
+	public static boolean addUser(AccountBean ab,Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(INSERT_USER);
+			System.out.println(ab.getFirstName());
+			pstmt.setString(1, ab.getUsername());
+			pstmt.setString(2, ab.getPassword());
+			pstmt.setString(3, ab.getLastName());
+			pstmt.setString(4, ab.getFirstName());
+			pstmt.setString(5, ab.getMiddleName());
+			pstmt.setInt(6, ab.getRoleId());
+			pstmt.setInt(7, 1);
+			pstmt.executeUpdate();
+		}catch(SQLException sqle) {
+			System.out.println("SQLException -- updateProfile: " + sqle.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
+	public static boolean deleteUser(int accountID, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(DELETE_USER);
+			pstmt.setInt(1, accountID);
+			pstmt.executeUpdate();
+		}catch(SQLException sqle) {
+			System.out.println("SQLException -- deleteUser: " + sqle.getMessage());
+			return false;
+		}
+		
+		return true;
+	}
+	
 	public static boolean updateProfileNoPass(AccountBean ab, int accountID, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(UPDATE_PROFILE_NOPASS);
@@ -101,6 +134,19 @@ public class SQLOperations implements SQLCommands {
 		
 		return true;
 	}
+	
+	public static ResultSet getUsers(Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_USERS);
+			rs = pstmt.executeQuery();
+		}catch(SQLException sqle) {
+			System.out.println("SQLException -- get Old Password: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	
 
 	public static boolean addAddress(AddressBean ab, Connection connection, int disease) {
 		switch (disease) {

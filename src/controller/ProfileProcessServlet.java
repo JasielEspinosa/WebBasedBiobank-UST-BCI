@@ -77,7 +77,7 @@ public class ProfileProcessServlet extends HttpServlet {
 			try {
 				
 				if(oldPassword.equals("") && password.equals("")  && confirmPassword.equals("")) {
-					AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, firstName, middleInitial, 0);
+					AccountBean ab = BeanFactory.getAccountBean(username, password, lastName,middleInitial, firstName, 0);
 					if(SQLOperations.updateProfileNoPass(ab, Integer.parseInt((String) session.getAttribute("accountID")), connection)) {
 					    response.getWriter().write("Success");
 					    System.out.println("Success");
@@ -98,7 +98,7 @@ public class ProfileProcessServlet extends HttpServlet {
 					    response.getWriter().write("New Password and confirm password does not match.");
 						System.out.println("Failed 2");
 					}else {
-						AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, firstName, middleInitial, 0);
+						AccountBean ab = BeanFactory.getAccountBean(username, password, lastName,middleInitial, firstName, 0);
 						if(SQLOperations.updateProfile(ab, Integer.parseInt((String) session.getAttribute("accountID")), connection)) {
 						    response.getWriter().write("Success");
 						    System.out.println("Success");
