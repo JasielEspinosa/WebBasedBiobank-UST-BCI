@@ -1,14 +1,14 @@
 package model;
 
 public class UrineProteinBean {
-	private String results;
+	private String result;
 
-	public String getResults() {
-		return results;
+	public String getResult() {
+		return result;
 	}
 
 	public void setResults(String results) {
-		this.results = results;
+		this.result = result;
 	}
 	
 }

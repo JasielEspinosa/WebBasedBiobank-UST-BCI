@@ -3,7 +3,7 @@ package model;
 public class UpperGIEndoscopyBean {
 	private String datePerformed;
 	private String description;
-	private boolean HOylori;
+	private boolean HPylori;
 	
 	public String getDatePerformed() {
 		return datePerformed;
@@ -17,10 +17,10 @@ public class UpperGIEndoscopyBean {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public boolean isHOylori() {
-		return HOylori;
+	public boolean isHPylori() {
+		return HPylori;
 	}
-	public void setHOylori(boolean hOylori) {
-		HOylori = hOylori;
+	public void setHOylori(boolean hPylori) {
+		HPylori = hPylori;
 	}
 }

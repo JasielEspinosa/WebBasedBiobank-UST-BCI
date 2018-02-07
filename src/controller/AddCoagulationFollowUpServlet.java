@@ -33,10 +33,9 @@ public class AddCoagulationFollowUpServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//
+		//String dateOfEntry = request.getParameter("dateOfEntry");
+		//String dateOfVisit = request.getParameter("dateOfVisit");
 		
-		String dateOfEntry = request.getParameter("dateOfEntry");
-		String dateOfVisit = request.getParameter("dateOfVisit");
 	}
 
 }

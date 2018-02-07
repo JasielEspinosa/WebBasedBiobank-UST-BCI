@@ -66,7 +66,7 @@
                </form>
     
     		   	<div id="invalid-login" class="alert alert-warning alert-block fade">
-      				<button href="leukemia-baseline.jsp" type="button" class="close">&times;</button>
+      				<button href="#" type="button" class="close">&times;</button>
      				<h4></h4>
       				<p>The username or password that you entered is incorrect</p>
     			</div>

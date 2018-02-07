@@ -170,6 +170,28 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 
+	public static boolean addTissueSpecimenData(TissueSpecimenBean tsb, Connection connection, int disease) {
+		switch (disease) {
+			case (1):
+			case (2):
+			case (3):
+			case (4):
+			case (5):
+			case (6):
+			case (7):
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_TISSUE_SPECIMEN);
+					pstmt.setString(1, tsb.getTissueSpecimenName());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
+					return false;
+				}
+				break;
+		}
+		return true;
+	}
+
 	public static boolean addGeneralData(GeneralDataBean gdb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
