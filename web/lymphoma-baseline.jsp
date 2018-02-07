@@ -366,14 +366,14 @@
                                                 <option value="">C83.5 Lymphoblastic (diffuse) lymphoma</option>
                                                 <!--  B-cell precursor lymphoma Lymphoblastic B-cell lymphoma Lymphoblastic lymphoma NOS Lymphoblastic T-cell lymphoma T-cell precursor lymphoma -->
                                                 <option value="">C83.7 Burkitt lymphoma</option>
-                                                <!--  Atypical Burkitt lymphoma “Burkitt-like” lymphoma -->
+                                                <!--  Atypical Burkitt lymphoma "Burkitt-like" lymphoma -->
                                                 <option value="">C83.8 Other non-follicular lymphoma</option>
                                                 <!--  Primary effusion B-cell lymphoma Intravascular large B-cell lymphoma Lymphoid granulomatosis -->
                                                 <option value="">C83.9 Non-follicular (diffuse) lymphoma, unspecified</option>
                                                 <option value="">C84.0 Mycosis fungoides</option>
-                                                <option value="">C84.1 Sézary disease</option>
+                                                <option value="">C84.1 S�zary disease</option>
                                                 <option value="">C84.4 Peripheral T-cell lymphoma, not elsewhere classified</option>
-                                                <!--  Lennert’s lymphoma Lymphoepithelioid lymphoma -->
+                                                <!--  Lennert's lymphoma Lymphoepithelioid lymphoma -->
                                                 <option value="">C84.5 Other mature T/NK-cell lymphomas</option>
                                                 <option value="">C84.6 Anaplastic large cell lymphoma, ALK-positive</option>
                                                 <!--  Anaplastic large cell lymphoma, CD30-positive -->
@@ -404,14 +404,14 @@
                                                 <!--  Lymphomatoid papulosis
                               Primary cutaneous anaplastic large-cell lymphoma
                               Primary cutaneous CD30-positive large T-cell lymphoma -->
-                                                <option value="">C88.0 Waldenström macroglobulinaemia</option>
+                                                <option value="">C88.0 Waldenstr�m macroglobulinaemia</option>
                                                 <!--  Lymphoplasmacytic lymphoma with IgM-production
                               Macroglobulinaemia (primary)(idiopathic)
                               Excl.: small cell B-cell lymphoma (C83.0) -->
                                                 <option value="">C88.2 Other heavy chain disease</option>
                                                 <!--  Franklin disease
                               Gamma heavy chain disease
-                              Mu (µ) heavy chain disease -->
+                              Mu (�) heavy chain disease -->
                                                 <option value="">C88.3 Immunoproliferative small intestinal disease</option>
                                                 <!--  Alpha heavy chain disease
                               Mediterranean lymphoma -->
@@ -842,13 +842,13 @@
                                        <div class="form-group">
                                           <label class="control-label col-sm-4">SGOT (U/L)</label>
                                           <div class="col-lg-4">
-                                             <input type="text" class="form-control" name="SGOT" />
+                                             <input type="text" class="form-control" name="sgot" />
                                           </div>
                                        </div>
                                        <div class="form-group">
                                           <label class="control-label col-sm-4">SGPT (U/L)</label>
                                           <div class="col-lg-4">
-                                             <input type="text" class="form-control" name="SGPT" />
+                                             <input type="text" class="form-control" name="sgpt" />
                                           </div>
                                        </div>
                                        <div class="form-group">
@@ -929,7 +929,7 @@
                                        <div class="form-group">
                                           <label class="control-label col-lg-4">Description</label>
                                           <div class="col-sm-8">
-                                             <input type="text" class="form-control" name="immunohistoChemistryDescription" />
+                                             <input type="text" class="form-control" name="immunohistochemistryDescription" />
                                           </div>
                                        </div>
                                        <div class="form-group">

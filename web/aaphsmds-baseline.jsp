@@ -202,8 +202,7 @@
                                        <div class="form-group">
                                           <label class="control-label col-sm-5">Last Name</label>
                                           <div class="col-sm-7">
-                                             <input type="text" class="form-control" name="lastName" id="lastName">
-                                             <span id="invalidName"></span>
+                                             <input type="text" class="form-control" name="lastName">
                                           </div>
                                        </div>
 
@@ -211,18 +210,16 @@
                                        <div class="form-group">
                                           <label class="control-label col-sm-5">First Name</label>
                                           <div class="col-sm-7">
-                                             <input type="text" class="form-control" name="firstName" id="firstName">
+                                             <input type="text" class="form-control" name="firstName">
                                           </div>
-                                          <span id="invalidName"></span>
                                        </div>
 
                                        <!-- Middle Initial -->
                                        <div class="form-group">
                                           <label class="control-label col-sm-5">Middle Initial</label>
                                           <div class="col-sm-7">
-                                             <input type="text" class="form-control" name="middleInitial" id="middleInitial">
+                                             <input type="text" class="form-control" name="middleInitial">
                                           </div>
-                                          <span id="invalidName"></span>
                                        </div>
 
                                        <!-- Gender -->
@@ -1025,7 +1022,7 @@
                                  <!-- End of Therapy -->
                               </div>
                               <!-- End of CLT Tab Content -->
-                              <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border" onclick="baselineFieldsValidation()">
+                              <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border">
                            </div>
                            <!-- End of CLT -->
                         </div>
