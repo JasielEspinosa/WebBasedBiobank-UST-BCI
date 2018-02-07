@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
+    <title>USTH - Dashboard</title>
     <link rel="icon" href="images/usthlogo.png">
       
     <!-- CSS -->  
@@ -76,7 +76,7 @@
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 		      <ul class="nav navbar-nav">
-		        <li><a href="dashboard-main.jsp">Dashboard</a></li>
+		        <li class="active"><a href="dashboard-main.jsp">Dashboard <span class="sr-only">(current)</span></a></li>
 		        <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
 		        <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
 		        <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
@@ -86,19 +86,18 @@
 		        <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
 		        
 		        <!-- Dropdown -->
-		        <li class="dropdown pull-right">
-		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-		          <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span></a>
-		          <ul class="dropdown-menu dropdown-menu__text" role="menu">
-		            <li><a href="audittrail.jsp">Audit Trail</a></li>
-		            <li class="divider"></li>
-		            <li><a href="profile.jsp">Profile</a></li>
-		            <li class="divider"></li>
-		            <li><a href="settings.jsp">Settings</a></li>
-		            <li class="divider"></li>
-		            <li><a href="login.jsp">Logout</a></li>
-		          </ul>
-		        </li>
+		        <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
+                     </a>
+                        <ul class="dropdown-menu dropdown-menu__text" role="menu">
+                           <li><a style="font-weight: bold;" href="audittrail.jsp"><i class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail</a></li>
+                           <li class="divider" style="background-color: #000000;"></li>
+                           <li><a style="font-weight: bold;" href="profile.jsp"><i class="fas fa-user-md dropdown-icons--margin"></i> Profile</a></li>
+                           <li class="divider" style="background-color: #000000;"></li>
+                           <li><a  style="font-weight: bold;" href="usermanagement.jsp"><i class="fas fa-wrench dropdown-icons--margin"></i> Settings</a></li>
+                           <li class="divider" style="background-color: #000000;"></li>
+                           <li><a  style="font-weight: bold;" href="login.jsp"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout</a></li> 
+                        </ul></li>
 		        <!-- End of Dropdown -->
 		        
 		      </ul>

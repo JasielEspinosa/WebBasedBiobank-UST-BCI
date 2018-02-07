@@ -1,10 +1,17 @@
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+ <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+ <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
 <!doctype html>
 <html lang="en"> 
  <head>   
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Archived Patients</title>
+    <title>USTH - Archived Patients</title>
     <link rel="icon" href="images/usthlogo.png">
       
     <!-- CSS -->  
@@ -13,40 +20,22 @@
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/sidebar.css">
     <link href="css/responsive.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="fonts/open-sans.css">
     <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
- 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
   
     <!-- JS -->
-    <!-- <script src="js/jquery.min.js"></script>  -->
     <script src="js/jquery-ui.js"></script>
-   <!-- <script src="js/bootstrap.js"></script>  --> 
-    <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
-    
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="js/jquery.min-2.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/jquery.min-2.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/sidebar.js"></script>
     <script src="js/modal.js"></script>
-     
-    <!-- FONT -->
-    <link rel="stylesheet" href="fonts/open-sans.css">
-   
-   <!-- FONT AWESOME ICON -->
-   <script defer src="js/fontawesome-all.js"></script>
+    <script defer src="js/fontawesome-all.js"></script>
+    <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
+    <!-- <script src="js/jquery.min.js"></script>  -->
+    <!-- <script src="js/bootstrap.js"></script>  -->
   </head>
   
   <body>
-
-    <!-- Main container -->
-    <div class="container-fluid main-container">
-
       <!-- Header -->
       <div class="navbar-fixed-top">
  
@@ -88,19 +77,18 @@
               <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
               
               <!-- Dropdown -->
-              <li class="dropdown pull-right">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span></a>
-                <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                  <li><a href="audittrail.jsp">Audit Trail</a></li>
-                  <li class="divider"></li>
-                  <li><a href="profile.jsp">Profile</a></li>
-                  <li class="divider"></li>
-                  <li><a href="settings.jsp">Settings</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Logout</a></li>
-                </ul>
-              </li>
+              <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                  aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
+                </a>
+                 <ul class="dropdown-menu dropdown-menu__text" role="menu">
+                  <li><a style="font-weight: bold;" href="audittrail.jsp"><i class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail</a></li>
+                  <li class="divider" style="background-color: #000000;"></li>
+                  <li><a style="font-weight: bold;" href="profile.jsp"><i class="fas fa-user-md dropdown-icons--margin"></i> Profile</a></li>
+                  <li class="divider" style="background-color: #000000;"></li>
+                  <li><a  style="font-weight: bold;" href="usermanagement.jsp"><i class="fas fa-wrench dropdown-icons--margin"></i> Settings</a></li>
+                  <li class="divider" style="background-color: #000000;"></li>
+                  <li><a  style="font-weight: bold;" href="login.jsp"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout</a></li> 
+                </ul></li>
               <!-- End of Dropdown -->
               
             </ul>
@@ -119,12 +107,12 @@
                <div class="row">
                   <div class="col-sm-12 search-box">
                      <div>
-                        <input type="text" placeholder="Search">
+                        <input type="text" placeholder="Search Patient" class="sidebar__searchbox--border" style="font-weight:bold; text-align:center;">
                      </div>
                   </div>
                </div>
                <!-- End of Search Box -->
-        <ul class="nav nav-pills nav-stacked">
+        <ul class="nav nav-pills nav-stacked__archpat sidebar__searchbox--border">
          
         </ul>
         
@@ -144,32 +132,41 @@
                <!-- Buttons Container -->
                <div class="row button-container">  
                   <div class="col-sm-8">
-                     <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive">User Management</a> 
-                     <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive">Archived Patients</a>
+                     <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive button-border">User Management</a> 
+                     <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive button-border">Archived Patients</a>
                   </div>
                </div>
                <!-- End of buttons container -->
                
                 <!-- Table -->
-                <h4 style="background-color: #ffce00; padding: 5px; font-weight: bold;">Archived Patients</h4>
+                <div class="col-md-8 col-md-offset-3">
+                <h3 style="background-color: #ffce00; font-weight: bold;" class="button-border"><i class="fas fa-archive"></i> Archived Patients</h3>
                <table id="customers">
                  <tr>
+                   <th>
+                  </th>
                    <th onclick="sortTable(0)">Patient No.</th>
                    <th onclick="sortTable(1)">Patient Name</th>
                  </tr>
                  <tr>
-                   <td>Carl</td>
-                   <td>Martin</td>
+                   <td>
+                     <a type="button" class="btn bg-yellow edtdelbtn-border" href="#">Restore</a>
+                  </td>
+                   <td></td>
+                   <td></td>
                  </tr>
                  <tr>
-                   <td>Fritz</td>
-                   <td>Fritz</td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
                  </tr>
                  <tr>
-                   <td>Martin</td>
-                   <td>Carl</td>
+                   <td></td>
+                   <td></td>
+                   <td></td>
                  </tr>
                </table><!-- End of Table -->
+               </div>
 
                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                  <div class="modal-dialog">
@@ -215,8 +212,6 @@
       </div>
   </div> 
 </div><!--/row-offcanvas -->
-
-   </div><!-- End of main container -->
     
   </body>
 </html>

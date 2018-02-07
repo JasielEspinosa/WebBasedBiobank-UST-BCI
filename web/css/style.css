@@ -2,7 +2,7 @@
 
 /* Body */
 body {
-  background-color: #ebebeb;
+  background-color: #98AFC7;
   font-family: Open Sans; }
 
 /* Main Container */
@@ -49,7 +49,7 @@ body {
   font-weight: bold; }
 
 .button-container {
-  margin-bottom: 40px; }
+  margin-bottom: 20px; }
 
 
 /* Banner */
@@ -105,19 +105,34 @@ body {
   margin: 0px 5px 0px 5px;	
   background-color: #ebebeb;
   padding: 0px;
-  max-height: 300px;
-  min-height: 360px;
-  margin-bottom: 80px; 
-  overflow-y: scroll; }
+  min-height: 310px;
+  margin-bottom: 20px; 
+  overflow-y: auto; }
   .nav-stacked li > a:hover {
     background-color: #d7d7d7; }
-
+.nav-stacked__usermngmt {
+  margin: 0px 5px 0px 5px;	
+  background-color: #ebebeb;
+  padding: 0px;
+  min-height: 350px;
+  margin-bottom: 20px; 
+  overflow-y: auto; }
+.nav-stacked__archpat {
+  margin: 0px 5px 0px 5px;	
+  background-color: #ebebeb;
+  padding: 0px;
+  min-height: 400px;
+  margin-bottom: 20px; 
+  overflow-y: auto; }  
+/* Add Encoder Button */
 .add-box {
-  position: absolute;
   bottom: 0;
-  z-index: 2; }
+  z-index: 2;
+  padding: 0px 20px 20px 20px;
+   }
+/* Add Encoder Button */   
 
-.search-box, .add-box {
+.search-box {
   padding: 20px; }
   .search-box input, .add-box input {
     width: 100%;
@@ -128,11 +143,13 @@ body {
 
 .nav-tabs {
   text-transform: uppercase;
-  letter-spacing: 0.7px; }
+  letter-spacing: 0.7px;
+  font-weight: bold;  }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
   background-color: #003664;
-  color: white; }
+  color: white; 
+}
 
 .tab-content {
   background-color: #f8f8f8;
@@ -168,26 +185,35 @@ input[type="submit"] {
   margin-bottom: 50px; }
   
 /* User Management and Archived Patients Table CSS */
-#usersTable {
+#customers {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
-#usersTable td, #usersTable th {
-    border: 1px solid #ddd;
+#customers td, #customers th {
+ 	border: 3px solid #98AFC7;
+ 	text-align: center;   
     padding: 8px;
 }
 
-#usersTable tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:nth-child(even){background-color: #f2f2f2;}
 
-#usersTable tr:hover {background-color: #ddd;}
+#customers tr:nth-child(odd){background-color: #f2f2f2;}
 
-th {
+/* #customers tr:hover {background-color: #ddd;} */
+
+tr, th, td {
     cursor: pointer;
 }
 
-/* User Management__Add Encoder Pop Up Attributes */
+/* th Color*/
+th {
+	background-color: #023564;
+	color: #FFF;
+}
+
+/* User Management__Add Encoder Pop Up Attributes */ 
 .cd-popup {
   opacity: 0;
   visibility: hidden;
@@ -204,7 +230,10 @@ th {
   transform: translateY(-40px);
   transition-property: transform;
   transition-duration: 0.3s;
+  background-color: #f2f2f2;
+  
 }
+
  
 .is-visible .cd-popup-container {
   transform: translateY(0);
@@ -215,5 +244,73 @@ th {
     display: flex !important;
 }
 .centered-modal .modal-dialog {
-    margin: auto;
+    margin: auto; 
 }
+
+
+.baseline__buttons-state { /* Initial State of Buttons Before Valid Inputs */
+	visibility: hidden;
+} /* End  */
+
+
+/* Barcode Icon Size */
+.form__barcodeicon--size {
+	width: 30px;
+	height: 30px;
+}
+
+.buttons__firsthalf--position {
+	margin-left: -10px;
+}
+
+.usermanagement__dropdown--size {
+	width: 10px;
+	height: 10px;
+}
+  
+.tab-content__border {
+	border-style: inset;
+	border-color: #ffce00;
+	border-width: 6px;
+}  
+.button-border {
+	border-style: outset;
+	border-color: #ffce00;
+	border-width: 5px;
+}
+.edtdelbtn-border {
+	border-style: outset;
+	border-color: #ffce00;
+	border-width: 2px;
+}
+.form-control {
+	border-style: inset !important;
+	border-color: #ffce00 !important;
+	border-width: 3px;
+	color: #0C090A; 
+}
+.sidebar__searchbox--border {
+	border-style: inset !important;
+	border-color: #ffce00 !important;
+	border-width: 4px;
+	color: #0C090A;
+}
+.sidebar__addptngenrep--border {
+	border-style: outset !important;
+	border-color: #ffce00 !important;
+	border-width: 3px;
+}
+/* Barcode Button */
+.body__barcodebtn--style {
+	 margin-top: 5px;
+	 border-style: inset;
+	 border-color: #ffce00;
+	 border-width: 2px;
+	 padding: 2px;
+}
+
+/* Profile Page Forms Adjustment */
+.forms__profile {
+  margin-top: 150px;
+  padding: 0px 20px; }
+/* End */

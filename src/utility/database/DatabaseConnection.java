@@ -9,7 +9,6 @@ import javax.sql.*;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
-
 public class DatabaseConnection{
 
 	private static Connection connection;

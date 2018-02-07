@@ -50,15 +50,26 @@ div.navbar__nav-item--hover a:hover:before, div.navbar__nav-item--hover a:hover:
 .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     background-color: #023564;
     color: #FFF;
-}
+} 
 /* End of Navbar */
 
 /* Dropdown Customization */
 .dropdown-menu__text {
 	background-color: #FFCE00;
-	font-weight: bold;
-	color: #337AB7;
+	padding: 30px;
 }
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+	background-color: #023564;
+    color: #FFF;
+}
+.dropdown-icons--margin {
+	margin-right: 10px; 
+}
+/* Change Active Color in Nav-Items */
+.active a {
+    background-color: white;
+}
+/* End */
 
 /* Navbar Responsiveness */
 	@media ( max-width: 1365px ) {
