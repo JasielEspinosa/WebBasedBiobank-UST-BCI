@@ -61,6 +61,7 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 		String constitutionalSymptoms = request.getParameter("constitutionalSymptoms");
 		String otherSymptoms = request.getParameter("otherSymptoms");
 		String relationshipToPatient = request.getParameter("relationshipToPatient");
+		String cancerName = request.getParameter("specifyCancer");
 		String otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
 		String comorbidities = request.getParameter("comorbidities");
 		String genericName = request.getParameter("genericName");
@@ -73,10 +74,9 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
 		double ecog = Double.parseDouble(request.getParameter("ecog"));
-		double presenceOfSplenomegaly = Double.parseDouble(request.getParameter("presenceOfSplenomegaly"));
-		double presenceOfHepatomegaly = Double.parseDouble(request.getParameter("presenceOfHepatomegaly"));
-		double presenceOfLymphadenopathies = Double.parseDouble(request.getParameter("presenceOfLymphadenopathies"));
-
+		double splenomegaly = Double.parseDouble(request.getParameter("presenceOfSplenomegaly"));
+		double hepatomegaly = Double.parseDouble(request.getParameter("presenceOfHepatomegaly"));
+		double lymphadenopathies = Double.parseDouble(request.getParameter("presenceOfLymphadenopathies"));
 		String otherFindings = request.getParameter("otherFindings");
 
 		// LABORATORY
@@ -90,47 +90,44 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 		double monocytes = Double.parseDouble(request.getParameter("monocytes"));
 		double eosinophils = Double.parseDouble(request.getParameter("eosinophils"));
 		double basophils = Double.parseDouble(request.getParameter("basophils"));
-
-		//wala pang parameters sa JSPs
-		double myelocytes = Double.parseDouble(request.getParameter(""));
-		double metamyelocytes = Double.parseDouble(request.getParameter(""));
-		double blasts = Double.parseDouble(request.getParameter(""));
-		double plateletCount = Double.parseDouble(request.getParameter(""));
+		double myelocytes = Double.parseDouble(request.getParameter("myelocytes"));
+		double metamyelocytes = Double.parseDouble(request.getParameter("metamyelocytes"));
+		double blasts = Double.parseDouble(request.getParameter("blasts"));
+		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
 
 		////// Other Laboratories
-		//wala pang parameters sa JSPs
-		double creatinine = Double.parseDouble(request.getParameter(""));
-		double uricAcid = Double.parseDouble(request.getParameter(""));
-		double na = Double.parseDouble(request.getParameter(""));
-		double k = Double.parseDouble(request.getParameter(""));
+		double creatinine = Double.parseDouble(request.getParameter("creatinine"));
+		double uricAcid = Double.parseDouble(request.getParameter("uricAcid"));
+		double na = Double.parseDouble(request.getParameter("na"));
+		double k = Double.parseDouble(request.getParameter("k"));
 		//double bilirubin = Double.parseDouble(request.getParameter(""));
-		double bilirubinTotal = Double.parseDouble(request.getParameter(""));
-		double bilirubinDirect = Double.parseDouble(request.getParameter(""));
-		double bilirubinIndirect = Double.parseDouble(request.getParameter(""));
-		double sgot = Double.parseDouble(request.getParameter(""));
-		double sgpt = Double.parseDouble(request.getParameter(""));
-		double microglobulin = Double.parseDouble(request.getParameter(""));
-		double hepatitisBTesting = Double.parseDouble(request.getParameter(""));
-		double ldh = Double.parseDouble(request.getParameter(""));
-		double esr = Double.parseDouble(request.getParameter(""));
+		double bilirubinTotal = Double.parseDouble(request.getParameter("total"));
+		double bilirubinDirect = Double.parseDouble(request.getParameter("direct"));
+		double bilirubinIndirect = Double.parseDouble(request.getParameter("indirect"));
+		double sgot = Double.parseDouble(request.getParameter("sgot"));
+		double sgpt = Double.parseDouble(request.getParameter("sgpt"));
+		double microglobulin = Double.parseDouble(request.getParameter("beta2Microglobulin"));
+		double hepatitisBTesting = Double.parseDouble(request.getParameter("hepatitisBTesting"));
+		double ldh = Double.parseDouble(request.getParameter("ldh"));
+		double esr = Double.parseDouble(request.getParameter("esr"));
 
 		//may duplicate parameters sa JSPs, need revisions
 
-		String hematopathologyDatePerformed = request.getParameter("");
-		String hematopathologyDescription = request.getParameter("");
+		String hematopathologyDatePerformed = request.getParameter("hematopathologyDatePerformed");
+		String hematopathologyDescription = request.getParameter("hematopathologyDescription");
 /*		Part hematopathologAttachScannedDocument = request
 				.getPart("hematopathologAttachScannedDocument");*/
 
-		String immunohistochemistryOfTissueDatePerformed = request.getParameter("");
-		String immunohistochemistryOfTissueDescription = request.getParameter("");
+		String immunohistochemistryOfTissueDatePerformed = request.getParameter("immunohistochemistryDatePerformed");
+		String immunohistochemistryOfTissueDescription = request.getParameter("immunohistochemistryDescription");
 /*		Part immunohistochemistryOfTissueAttachScannedDocument = request
 				.getPart("immunohistochemistryOfTissueAttachScannedDocument");*/
 
 		//int imagingStudies = Integer.parseInt(request.getParameter("imagingStudies"));
-		String imagingStudiesResult = request.getParameter("");
+		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
 
-		String boneMarrowAspirateAndBiopsyOfTissueDatePerformed = request.getParameter("");
-		String boneMarrowAspirateAndBiopsyOfTissueDescription = request.getParameter("");
+		String boneMarrowAspirateAndBiopsyOfTissueDatePerformed = request.getParameter("boneMarrowDatePerformed");
+		String boneMarrowAspirateAndBiopsyOfTissueDescription = request.getParameter("boneMarrowDescription");
 /*		Part boneMarrowAspirateAndBiopsyOfTissueAttachScannedDocument = request
 				.getPart("boneMarrowAspirateAndBiopsyOfTissueAttachScannedDocument");*/
 
@@ -184,8 +181,8 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection GeneralDataBean");
 		}
 
-		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, presenceOfSplenomegaly,
-				presenceOfHepatomegaly, presenceOfLymphadenopathies, false, false, "", "", otherFindings);
+		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, splenomegaly, hepatomegaly,
+				lymphadenopathies, false, false, "", "", otherFindings);
 		if (connection != null) {
 			if (SQLOperations.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");
@@ -209,7 +206,7 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ClinicalDataBean");
 		}
 
-		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, otherDiseasesInTheFamily);
+		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, cancerName);
 		if (connection != null) {
 			if (SQLOperations.addFamilyCancer(famcb, connection, disease)) {
 				System.out.println("Successful insert FamilyCancerBean");
@@ -218,6 +215,17 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection FamilyCancerBean");
+		}
+
+		OtherDiseasesBean odb = BeanFactory.getOtherDiseasesBean(otherDiseasesInTheFamily);
+		if (connection != null) {
+			if (SQLOperations.addOtherDiseases(odb, connection, disease)) {
+				System.out.println("Successful insert OtherDiseasesBean");
+			} else {
+				System.out.println("Failed insert OtherDiseasesBean");
+			}
+		} else {
+			System.out.println("Invalid connection OtherDiseasesBean");
 		}
 
 		MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
@@ -243,9 +251,9 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection HematologyBean");
 		}
 
-		BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0, creatinine, uricAcid, sgot, sgpt, ldh, 0, na, k,
-				bilirubinTotal, bilirubinDirect, bilirubinIndirect, microglobulin, hepatitisBTesting, esr, 0, 0, 0, 0,
-				0, 0);
+		BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, creatinine, uricAcid, sgot, sgpt, ldh, 0.0, na,
+				k, bilirubinTotal, bilirubinDirect, bilirubinIndirect, microglobulin, hepatitisBTesting, esr, 0.0, 0.0,
+				0.0, 0.0, 0.0, 0.0);
 		if (connection != null) {
 			if (SQLOperations.addBloodChemistry(bcb, connection, disease)) {
 				System.out.println("Successful insert BloodChemistryBean");
@@ -314,7 +322,7 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ImmunohistochemistryBean");
 		}
 
-		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection);
+		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 		if (connection != null) {
 			if (SQLOperations.addLaboratoryProfile(lpb, connection, disease)) {
 				System.out.println("Successful insert LaboratoryProfileBean");
@@ -358,7 +366,8 @@ public class AddLymphomaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection RegimenBean");
 		}
 
-		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", cycleNumber, complications, "");
+		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", "", "", "", cycleNumber, complications,
+				"");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");

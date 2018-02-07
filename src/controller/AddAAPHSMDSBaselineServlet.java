@@ -78,7 +78,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		double dose = Double.parseDouble(request.getParameter("dose"));
 		String frequency = request.getParameter("frequency");
 		String smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
-		String alchoholIntakeSpecify = request.getParameter("alchoholIntakeSpecify");
+		String alchoholIntakeSpecify = request.getParameter("alcoholIntakeSpecify");
 		String chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
 		String previousInfectionSpecify = request.getParameter("previousInfectionSpecify");
 		String previousHematologicDisorderSpecify = request.getParameter("previousHematologicDisorderSpecify");
@@ -230,7 +230,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection FamilyCancerBean");
 		}
-		
+
 		OtherDiseasesBean odb = BeanFactory.getOtherDiseasesBean(otherDiseasesInTheFamily);
 		if (connection != null) {
 			if (SQLOperations.addOtherDiseases(odb, connection, disease)) {
@@ -324,7 +324,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection CytogeneticMDSBean");
 		}
 
-		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection);
+		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 		if (connection != null) {
 			if (SQLOperations.addLaboratoryProfile(lpb, connection, disease)) {
 				System.out.println("Successful insert LaboratoryProfileBean");
@@ -357,7 +357,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ModeOfTreatmentBean");
 		}
 
-		TreatmentBean tb = BeanFactory.getTreatmentBean(transplantCandidate, dateStarted, "", 0, "", "");
+		TreatmentBean tb = BeanFactory.getTreatmentBean(transplantCandidate, dateStarted, "", "", "", "", 0, "", "");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");
@@ -367,7 +367,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection TreatmentBean");
 		}
-		
+
 		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("");
 		if (connection != null) {
 			if (SQLOperations.addDiseaseStatus(dsb, connection, disease)) {

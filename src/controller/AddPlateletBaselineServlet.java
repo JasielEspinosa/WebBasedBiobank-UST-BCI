@@ -13,14 +13,13 @@ import model.*;
 import utility.database.SQLOperations;
 import utility.factory.BeanFactory;
 
-@WebServlet("/AddMyeloBaselineServlet")
-public class AddMyeloBaselineServlet extends HttpServlet {
+@WebServlet("/AddPlateletBaselineServlet")
+public class AddPlateletBaselineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
 
-	public void init()
-			throws ServletException {
+	public void init() throws ServletException {
 		connection = SQLOperations.getConnection();
 
 		if (connection != null) {
@@ -39,9 +38,9 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		getServletContext().log("AddMyeloBaselineServlet insert test");
+		getServletContext().log("AddPlateletBaselineServlet insert test");
 
-		int disease = 5;
+		int disease = 7;
 
 		// GENERAL DATA
 		String lastName = request.getParameter("lastName");
@@ -51,40 +50,28 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
 		String dateOfEntry = request.getParameter("dateOfEntry");
-		String specimenType = request.getParameter("specimenType");
 
 		// CLINICAL DATA
-		String dateOfInitialDiagnosis = request.getParameter("dateOfInitialDiagnosis");
+		String dateOfVisit = request.getParameter("dateOfVisit");
 		String diagnosis = request.getParameter("diagnosis");
-		String prognosticRiskScoring = request.getParameter("prognosticRiskScoring");
-		String riskScore = request.getParameter("riskScore");
-
+		String otherDiagnosis = request.getParameter("diagnosisOthers");
 		String chiefComplaint = request.getParameter("chiefComplaint");
-		String constitutionalSymptoms = request.getParameter("constitutionalSymptoms");
 		String otherSymptoms = request.getParameter("otherSymptoms");
-
 		String relationshipToPatient = request.getParameter("relationshipToPatient");
 		String cancerName = request.getParameter("specifyCancer");
 		String otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
-
 		String comorbidities = request.getParameter("comorbidities");
-		String thrombosisHistorySpecify = request.getParameter("thrombosisHistorySpecify");
-
 		String genericName = request.getParameter("genericName");
 		double dose = Double.parseDouble(request.getParameter("dose"));
 		String frequency = request.getParameter("frequency");
-
 		String smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
 		String alchoholIntakeSpecify = request.getParameter("alcoholIntakeSpecify");
 		String chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
-
 		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
-		double ecog = Double.parseDouble(request.getParameter("ecog"));
-		double splenomegaly = Double.parseDouble(request.getParameter("presenceOfSplenomegaly"));
-		double hepatomegaly = Double.parseDouble(request.getParameter("presenceOfHepatomegaly"));
-		double lymphadenopathies = Double.parseDouble(request.getParameter("presenceOfLymphadenopathies"));
+		double presenceOfSplenomegaly = Double.parseDouble(request.getParameter("presenceOfSplenomegaly"));
+
 		String otherFindings = request.getParameter("otherFindings");
 
 		// LABORATORY
@@ -93,33 +80,47 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 		double hemoglobin = Double.parseDouble(request.getParameter("hemoglobin"));
 		double hematocrit = Double.parseDouble(request.getParameter("hematocrit"));
 		double whiteBloodCells = Double.parseDouble(request.getParameter("whiteBloodCells"));
-		double neutrophils = Double.parseDouble(request.getParameter("neutrophil"));
+		double neutrophils = Double.parseDouble(request.getParameter("neutrophils"));
 		double lymphocytes = Double.parseDouble(request.getParameter("lymphocytes"));
 		double monocytes = Double.parseDouble(request.getParameter("monocytes"));
 		double eosinophils = Double.parseDouble(request.getParameter("eosinophils"));
 		double basophils = Double.parseDouble(request.getParameter("basophils"));
-		double myelocytes = Double.parseDouble(request.getParameter("myelocytes"));
-		double metamyelocytes = Double.parseDouble(request.getParameter("metamyelocytes"));
-		double blasts = Double.parseDouble(request.getParameter("blasts"));
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
 
 		////// Other Laboratories
 		double creatinine = Double.parseDouble(request.getParameter("creatinine"));
 		double uricAcid = Double.parseDouble(request.getParameter("uricAcid"));
+		double na = Double.parseDouble(request.getParameter("na"));
+		double k = Double.parseDouble(request.getParameter("k"));
 		double sgot = Double.parseDouble(request.getParameter("sgot"));
 		double sgpt = Double.parseDouble(request.getParameter("sgpt"));
 		double ldh = Double.parseDouble(request.getParameter("ldh"));
-		double epoLevel = Double.parseDouble(request.getParameter("epoLevel"));
-
+		double anaTiter = Double.parseDouble(request.getParameter("anaTiter"));
+		double hepatitsCRna = Double.parseDouble(request.getParameter("hepatitisCRNA"));
+		// int imagingStudies =
+		// Integer.parseInt(request.getParameter("imagingStudies"));
+		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
 		String boneMarrowAspirateDatePerformed = request.getParameter("boneMarrowAspirateDatePerformed");
 		String boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
 
-		String molecularAnalysisResult = request.getParameter("molecularAnalysisResult");
+		String upperGIEndoscopyDatePerformed = request.getParameter("upperGIEndoscopyDatePerformed");
+		String upperGIEndoscopyDescription = request.getParameter("upperGIEndoscopyDescription");
+
+		boolean hPylori;
+		if (Integer.parseInt(request.getParameter("hPylori")) != 0) {
+			hPylori = true;
+		} else {
+			hPylori = false;
+		}
+
+		String itp = request.getParameter("itp");
 
 		// TREATMENT / THERAPHY AND RESPONSE
 		String modeOfTreatment = request.getParameter("treatment");
-		String medications = request.getParameter("medications");
+		String regimenProtocol = request.getParameter("regimenProtocol");
 		String dateStarted = request.getParameter("dateStarted");
+		String complications = request.getParameter("complications");
+		String phaseOfDisease = request.getParameter("phaseOfDisease");
 
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
@@ -135,7 +136,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection AddressBean");
 		}
 
-		TissueSpecimenBean tsb = BeanFactory.getTissueSpecimenBean(specimenType);
+		TissueSpecimenBean tsb = BeanFactory.getTissueSpecimenBean("");
 		if (connection != null) {
 			if (SQLOperations.addTissueSpecimenData(tsb, connection, disease)) {
 				System.out.println("Successful insert TissueSpecimenBean");
@@ -158,19 +159,8 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection GeneralDataBean");
 		}
 
-		PrognosticRiskScoringBean prsb = BeanFactory.getPrognosticRiskScoringBean(prognosticRiskScoring);
-		if (connection != null) {
-			if (SQLOperations.addPrognosticRiskScoring(prsb, connection, disease)) {
-				System.out.println("Successful insert PrognosticRiskScoringBean");
-			} else {
-				System.out.println("Failed insert PrognosticRiskScoringBean");
-			}
-		} else {
-			System.out.println("Invalid connection PrognosticRiskScoringBean");
-		}
-
-		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, splenomegaly, hepatomegaly,
-				lymphadenopathies, false, false, thrombosisHistorySpecify, "", otherFindings);
+		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, 0.0, presenceOfSplenomegaly, 0.0, 0.0,
+				false, false, "", "", otherFindings);
 		if (connection != null) {
 			if (SQLOperations.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");
@@ -181,20 +171,9 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection PhysicalExamBean");
 		}
 
-		RiskScoreBean rsb = BeanFactory.getRiskScoreBean(riskScore);
-		if (connection != null) {
-			if (SQLOperations.addRiskScore(rsb, connection, disease)) {
-				System.out.println("Successful insert LaboratoryProfileBean");
-			} else {
-				System.out.println("Failed insert LaboratoryProfileBean");
-			}
-		} else {
-			System.out.println("Invalid connection LaboratoryProfileBean");
-		}
-
-		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, "", "",
-				chiefComplaint, constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify,
-				alchoholIntakeSpecify, chemicalExposureSpecify, "", "", otherFindings);
+		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, otherDiagnosis, "",
+				chiefComplaint, "", otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeSpecify,
+				chemicalExposureSpecify, "", "", otherFindings);
 		if (connection != null) {
 			if (SQLOperations.addClinicalData(cdb, connection, disease)) {
 				System.out.println("Successful insert ClinicalDataBean");
@@ -238,20 +217,8 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection MedicationsBean");
 		}
 
-		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils,
-				lymphocytes, monocytes, eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
-		if (connection != null) {
-			if (SQLOperations.addHematology(hb, connection, disease)) {
-				System.out.println("Successful insert HematologyBean");
-			} else {
-				System.out.println("Failed insert HematologyBean");
-			}
-		} else {
-			System.out.println("Invalid connection HematologyBean");
-		}
-
-		BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, creatinine, uricAcid, sgot, sgpt, ldh, epoLevel,
-				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+		BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, creatinine, uricAcid, sgot, sgpt, ldh, 0.0, na,
+				k, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, anaTiter, hepatitsCRna);
 		if (connection != null) {
 			if (SQLOperations.addBloodChemistry(bcb, connection, disease)) {
 				System.out.println("Successful insert BloodChemistryBean");
@@ -274,18 +241,42 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection BoneMarrowAspirateBean");
 		}
 
-		MolecularAnalysisBean mab = BeanFactory.getMolecularAnalysisBean(molecularAnalysisResult);
+		ImagingStudiesBean isb = BeanFactory.getImagingStudiesBean(imagingStudiesResult.getBytes());
 		if (connection != null) {
-			if (SQLOperations.addMolecularAnalysis(mab, connection, disease)) {
-				System.out.println("Successful insert MolecularAnalysisBean");
+			if (SQLOperations.addImagingStudies(isb, connection, disease)) {
+				System.out.println("Successful insert ImagingStudiesBean");
 			} else {
-				System.out.println("Failed insert MolecularAnalysisBean");
+				System.out.println("Failed insert ImagingStudiesBean");
 			}
 		} else {
-			System.out.println("Invalid connection MolecularAnalysisBean");
+			System.out.println("Invalid connection ImagingStudiesBean");
 		}
 
-		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
+		UpperGIEndoscopyBean ugeb = BeanFactory.getUpperGIEndoscopyBean(upperGIEndoscopyDatePerformed,
+				upperGIEndoscopyDescription, hPylori);
+		if (connection != null) {
+			if (SQLOperations.addUpperGIEndoscopy(ugeb, connection, disease)) {
+				System.out.println("Successful insert HematologyBean");
+			} else {
+				System.out.println("Failed insert HematologyBean");
+			}
+		} else {
+			System.out.println("Invalid connection HematologyBean");
+		}
+
+		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils,
+				lymphocytes, monocytes, eosinophils, basophils, 0.0, 0.0, 0.0, plateletCount);
+		if (connection != null) {
+			if (SQLOperations.addHematology(hb, connection, disease)) {
+				System.out.println("Successful insert HematologyBean");
+			} else {
+				System.out.println("Failed insert HematologyBean");
+			}
+		} else {
+			System.out.println("Invalid connection HematologyBean");
+		}
+
+		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, itp);
 		if (connection != null) {
 			if (SQLOperations.addLaboratoryProfile(lpb, connection, disease)) {
 				System.out.println("Successful insert LaboratoryProfileBean");
@@ -307,18 +298,18 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ModeOfTreatmentBean");
 		}
 
-		ChemotherapyMedicationsBean cmb = BeanFactory.getChemotherapyMedicationsBean(medications);
+		RegimenBean rb = BeanFactory.getRegimenBean(regimenProtocol);
 		if (connection != null) {
-			if (SQLOperations.addChemotherapyMedications(cmb, connection, disease)) {
-				System.out.println("Successful insert ChemotherapyMedicationsBean");
+			if (SQLOperations.addRegimen(rb, connection, disease)) {
+				System.out.println("Successful insert RegimenBean");
 			} else {
-				System.out.println("Failed insert ChemotherapyMedicationsBean");
+				System.out.println("Failed insert RegimenBean");
 			}
 		} else {
-			System.out.println("Invalid connection ChemotherapyMedicationsBean");
+			System.out.println("Invalid connection RegimenBean");
 		}
 
-		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", "", "", "", 0, "", "");
+		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", "", "", "", 0, complications, "");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");
@@ -329,7 +320,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection TreatmentBean");
 		}
 
-		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("");
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(phaseOfDisease);
 		if (connection != null) {
 			if (SQLOperations.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert DiseaseStatusBean");

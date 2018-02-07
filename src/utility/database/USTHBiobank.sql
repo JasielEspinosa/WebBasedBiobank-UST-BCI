@@ -67,8 +67,8 @@ CREATE TABLE FamilyCancerTable (
 CREATE TABLE OtherDiseasesTable (
 	OtherDiseasesID int NOT NULL AUTO_INCREMENT,
 	ClinicalDataID int NOT NULL,
-	OtherDisease blob,
-	PRIMARY KEY (OtherDiseaseID)
+	OtherDiseases blob,
+	PRIMARY KEY (OtherDiseasesID)
 );
 
 CREATE TABLE ClinicalDataTable (
@@ -162,14 +162,17 @@ CREATE TABLE LaboratoryProfileTable (
 	FlowCytometryID int,
 	CytogenicAAPNHID int,
 	CytogenicMDSID int,
+	CytogenicPlasmaCellID int,
 	ImagingStudiesID int,
 	UpperGIEndoscopyID int,
 	MolecularAnalysisID int,
 	HematopathologyID int,
-	ImmunihistochemistryID int,
+	ImmunohistochemistryID int,
 	SerumFreeID int,
 	SerumProteinID int,
 	SerumImmunofixationID int,
+	UrineProteinID int,
+	ITP varchar(100),
 	PRIMARY KEY (LaboratoryID)
 );
 
@@ -214,6 +217,7 @@ CREATE TABLE OtherLaboratoriesTable (
 
 CREATE TABLE BloodChemistryTable (
 	BloodChemistryID int NOT NULL AUTO_INCREMENT,
+	BloodUreaNitrogen double,
 	Creatinine double,
 	UricAcid double,
 	SGOT double,
@@ -262,9 +266,15 @@ CREATE TABLE CytogeneticMDSTable  (
 	PRIMARY KEY (CytogenicMDSID)
 );
 
+CREATE TABLE CytogeneticPlasmaCellTable  (
+	CytogenicPlasmaCellID int NOT NULL AUTO_INCREMENT,
+	Result blob NOT NULL,
+	PRIMARY KEY (CytogenicPlasmaCellID)
+);
+
 CREATE TABLE ImagingStudiesTable (
 	ImagingStudiesID int NOT NULL AUTO_INCREMENT,
-	Results blob NOT NULL,
+	Result blob NOT NULL,
 	PRIMARY KEY (ImagingStudiesID)
 );
 
@@ -278,21 +288,21 @@ CREATE TABLE UpperGIEndoscopyTable (
 
 CREATE TABLE MolecularAnalysisTable (
 	MolecularAnalysisID int NOT NULL AUTO_INCREMENT,
-	Results blob NOT NULL,
+	Result blob NOT NULL,
 	PRIMARY KEY (MolecularAnalysisID)
 );
 
 CREATE TABLE HematopathologyTable (
 	HematopathologyID int NOT NULL AUTO_INCREMENT,
 	DatePerformed DATE NOT NULL,
-	Results blob NOT NULL,
+	Result blob NOT NULL,
 	PRIMARY KEY (HematopathologyID)
 );
 
 CREATE TABLE ImmunohistochemistryTable (
 	ImmunohistochemistryID int NOT NULL AUTO_INCREMENT,
 	DatePerformed DATE NOT NULL,
-	Results blob NOT NULL,
+	Result blob NOT NULL,
 	PRIMARY KEY (ImmunohistochemistryID)
 );
 
@@ -323,18 +333,29 @@ CREATE TABLE SerumImmunofixationTable (
 	PRIMARY KEY (SerumImmunofixationID)
 );
 
+CREATE TABLE UrineProteinTable  (
+	UrineProteinID int NOT NULL AUTO_INCREMENT,
+	Result blob NOT NULL,
+	PRIMARY KEY (UrineProteinID)
+);
+
 CREATE TABLE TreatmentTable (
 	TreatmentID int NOT NULL AUTO_INCREMENT,
 	Transplant bool,
 	ModeOfTreatmentID int,
 	ChemoMedicationID int,
-	DateStarted DATE,
-	OtherRegimen blob,
-	RegimenID int,
 	MaintenanceTherapyID int,
-	CycleNumber int,
-	Complications blob,
+	RegimenID int,
+	RegimenTransplantID int,
+	RegimenNonTransplantID int,
 	RegimenText blob,
+	OtherRegimen blob,
+	OtherRegimenTransplant blob,
+	OtherRegimenNonTransplant blob,
+	OtherRegimenMaintenanceTherapy blob,
+	CycleNumber int,
+	DateStarted DATE,
+	Complications blob,
 	PRIMARY KEY (TreatmentID)
 );
 
@@ -355,6 +376,18 @@ CREATE TABLE RegimenTable (
 	RegimenID int NOT NULL AUTO_INCREMENT,
 	RegimenName blob NOT NULL,
 	PRIMARY KEY (RegimenID)
+);
+
+CREATE TABLE RegimenTransplantTable (
+	RegimenTransplantID int NOT NULL AUTO_INCREMENT,
+	RegimenName blob NOT NULL,
+	PRIMARY KEY (RegimenTransplantID)
+);
+
+CREATE TABLE RegimenNonTransplantTable (
+	RegimenNonTransplantID int NOT NULL AUTO_INCREMENT,
+	RegimenName blob NOT NULL,
+	PRIMARY KEY (RegimenNonTransplantID)
 );
 
 CREATE TABLE MaintenanceTherapyTable (
@@ -484,7 +517,7 @@ ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk9 FOR
 
 ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk10 FOREIGN KEY (HematopathologyID) REFERENCES HematopathologyTable(HematopathologyID);
 
-ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk11 FOREIGN KEY (ImmunihistochemistryID) REFERENCES ImmunohistochemistryTable(ImmunohistochemistryID);
+ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk11 FOREIGN KEY (ImmunohistochemistryID) REFERENCES ImmunohistochemistryTable(ImmunohistochemistryID);
 
 ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk12 FOREIGN KEY (SerumFreeID) REFERENCES SerumFreeTable(SerumFreeID);
 

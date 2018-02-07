@@ -81,15 +81,15 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 		String constitutionalSymptoms = request.getParameter("constitutionalSymptoms");
 		String otherSymptoms = request.getParameter("otherSymptoms");
 		String relationshipToPatient = request.getParameter("relationshipToPatient");
+		String cancerName = request.getParameter("specifyCancer");
 		String otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
-
 		String comorbidities = request.getParameter("comorbidities");
 		String genericName = request.getParameter("genericName");
 		double dose = Double.parseDouble(request.getParameter("dose"));
 		String frequency = request.getParameter("frequency");
 		String smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
-		String alchoholIntakeHistorySpecify = request.getParameter("alchoholIntakeSpecify");
-		String chemicalExposureHistorySpecify = request.getParameter("chemicalExposureSpecify");
+		String alchoholIntakeSpecify = request.getParameter("alchoholIntakeSpecify");
+		String chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
 		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
@@ -201,7 +201,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 
 		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, "", "",
 				chiefComplaint, constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify,
-				alchoholIntakeHistorySpecify, chemicalExposureHistorySpecify, "", "", otherFindings);
+				alchoholIntakeSpecify, chemicalExposureSpecify, "", "", otherFindings);
 		if (connection != null) {
 			if (SQLOperations.addClinicalData(cdb, connection, disease)) {
 				System.out.println("Successful insert ClinicalDataBean");
@@ -212,7 +212,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ClinicalDataBean");
 		}
 
-		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, otherDiseasesInTheFamily);
+		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, cancerName);
 		if (connection != null) {
 			if (SQLOperations.addFamilyCancer(famcb, connection, disease)) {
 				System.out.println("Successful insert FamilyCancerBean");
@@ -221,6 +221,17 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection FamilyCancerBean");
+		}
+
+		OtherDiseasesBean odb = BeanFactory.getOtherDiseasesBean(otherDiseasesInTheFamily);
+		if (connection != null) {
+			if (SQLOperations.addOtherDiseases(odb, connection, disease)) {
+				System.out.println("Successful insert OtherDiseasesBean");
+			} else {
+				System.out.println("Failed insert OtherDiseasesBean");
+			}
+		} else {
+			System.out.println("Invalid connection OtherDiseasesBean");
 		}
 
 		MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
@@ -303,7 +314,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection CytogeneticAAPNHBean");
 		}
 
-		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection);
+		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 		if (connection != null) {
 			if (SQLOperations.addLaboratoryProfile(lpb, connection, disease)) {
 				System.out.println("Successful insert LaboratoryProfileBean");
@@ -347,7 +358,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection RegimenBean");
 		}
 
-		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", cycleNumber, "", "");
+		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", "", "", "", cycleNumber, "", "");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");

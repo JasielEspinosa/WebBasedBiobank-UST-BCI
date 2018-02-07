@@ -41,7 +41,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		getServletContext().log("AddCoagulationBaselineServlet insert test");
-		
+
 		int disease = 2;
 
 		// GENERAL DATA
@@ -71,6 +71,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String otherSymptoms = request.getParameter("otherSymptoms");
 		String relationshipToPatient = request.getParameter("relationshipToPatient");
+		String cancerName = request.getParameter("specifyCancer");
 		String otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
 		String comorbidities = request.getParameter("comorbidities");
 		String genericName = request.getParameter("genericName");
@@ -82,21 +83,21 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
-		
+
 		boolean presenceOfHemarthroses;
 		if (Integer.parseInt(request.getParameter("presenceOfHemarthroses")) != 0) {
 			presenceOfHemarthroses = true;
 		} else {
 			presenceOfHemarthroses = false;
 		}
-		
+
 		boolean presenceOfContracturesAndMuscleAtrophy;
 		if (Integer.parseInt(request.getParameter("presenceOfContracturesAndMuscleAtrophy")) != 0) {
 			presenceOfContracturesAndMuscleAtrophy = true;
 		} else {
 			presenceOfContracturesAndMuscleAtrophy = false;
 		}
-		
+
 		String otherFindings = request.getParameter("otherFindings");
 
 		// LABORATORY
@@ -126,7 +127,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		double ldh = Double.parseDouble(request.getParameter("ldh"));
 		//int imagingStudies = Integer.parseInt(request.getParameter("imagingStudies"));
 		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
-		
+
 		// TREATMENT / THERAPHY AND RESPONSE
 		String treatment = request.getParameter("treatment");
 		String treatmentSpecify = request.getParameter("treatmentSpecify");
@@ -143,6 +144,17 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection AddressBean");
+		}
+
+		TissueSpecimenBean tsb = BeanFactory.getTissueSpecimenBean("");
+		if (connection != null) {
+			if (SQLOperations.addTissueSpecimenData(tsb, connection, disease)) {
+				System.out.println("Successful insert TissueSpecimenBean");
+			} else {
+				System.out.println("Failed insert TissueSpecimenBean");
+			}
+		} else {
+			System.out.println("Invalid connection TissueSpecimenBean");
 		}
 
 		GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, middleInitial, firstName, gender, dateOfBirth,
@@ -193,7 +205,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ClinicalDataBean");
 		}
 
-		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, otherDiseasesInTheFamily);
+		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, cancerName);
 		if (connection != null) {
 			if (SQLOperations.addFamilyCancer(famcb, connection, disease)) {
 				System.out.println("Successful insert FamilyCancerBean");
@@ -202,6 +214,17 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection FamilyCancerBean");
+		}
+
+		OtherDiseasesBean odb = BeanFactory.getOtherDiseasesBean(otherDiseasesInTheFamily);
+		if (connection != null) {
+			if (SQLOperations.addOtherDiseases(odb, connection, disease)) {
+				System.out.println("Successful insert OtherDiseasesBean");
+			} else {
+				System.out.println("Failed insert OtherDiseasesBean");
+			}
+		} else {
+			System.out.println("Invalid connection OtherDiseasesBean");
 		}
 
 		MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
@@ -262,7 +285,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ImagingStudiesBean");
 		}
 
-		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection);
+		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 		if (connection != null) {
 			if (SQLOperations.addLaboratoryProfile(lpb, connection, disease)) {
 				System.out.println("Successful insert LaboratoryProfileBean");
@@ -284,7 +307,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ModeOfTreatmentBean");
 		}
 
-		TreatmentBean tb = BeanFactory.getTreatmentBean(true, "", "", 0, "", "");
+		TreatmentBean tb = BeanFactory.getTreatmentBean(true, "", "", "", "", "", 0, "", "");
 		if (connection != null) {
 			if (SQLOperations.addTreatment(tb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");
@@ -294,7 +317,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection TreatmentBean");
 		}
-		
+
 		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("");
 		if (connection != null) {
 			if (SQLOperations.addDiseaseStatus(dsb, connection, disease)) {
