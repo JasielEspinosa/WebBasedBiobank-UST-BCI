@@ -191,8 +191,8 @@ public class BeanFactory {
 		return cb;
 	}
 
-	public static CytogenicPlasmaCellBean getCytogenicPlasmaCellBean(String result) {
-		CytogenicPlasmaCellBean cpcb = new CytogenicPlasmaCellBean();
+	public static CytogeneticPlasmaCellBean getCytogeneticPlasmaCellBean(String result) {
+		CytogeneticPlasmaCellBean cpcb = new CytogeneticPlasmaCellBean();
 		cpcb.setResult(result);
 		return cpcb;
 	}

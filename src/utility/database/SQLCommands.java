@@ -210,15 +210,16 @@ public interface SQLCommands {
 			+ "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable), ?, (SELECT MAX(RegimenID) FROM RegimenTable), ?, ?)";
 	String INSERT_TREATMENT_MYELOPROLIFERATIVE = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,ChemoMedicationID,DateStarted) "
 			+ "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable), ?)";
-	String INSERT_TREATMENT_PLASMACELL = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,RegimenID,RegimentTransplantID,RegimentNonTransplantID,OtherRegimen,OtherRegimenTransplant,OtherRegimenNonTransplant,OtherRegimenMaintenanceTherapy,CycleNumber) "
+	String INSERT_TREATMENT_PLASMACELL = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,MaintenanceTherapyID,RegimenID,RegimenTransplantID,RegimenNonTransplantID,DateStarted,OtherRegimen,OtherRegimenTransplant,OtherRegimenNonTransplant,OtherRegimenMaintenanceTherapy,CycleNumber,Complications) "
 			+ "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), "
+			+ "(SELECT MAX(MaintenanceTherapyID) FROM MaintenanceTherapyTable), "
 			+ "(SELECT MAX(RegimenID) FROM RegimenTable), "
-			+ "(SELECT MAX(RegimentTransplantID) FROM RegimentTransplantTable),"
-			+ "(SELECT MAX(RegimentNonTransplantID) FROM RegimentNonTransplantTable),?,?,?,?,?)";
+			+ "(SELECT MAX(RegimenTransplantID) FROM RegimenTransplantTable),"
+			+ "(SELECT MAX(RegimenNonTransplantID) FROM RegimenNonTransplantTable),?,?,?,?,?,?,?)";
 	String INSERT_TREATMENT_PLATELET = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,DateStarted,Complications) "
 			+ "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), ?, ?)";
 
-	String INSERT_OTHERTREATMENT_PLASMACELL = "INSERT INTO TreatmentTable(OtherTreatmentID, Bisphosphonates, Radiotherapy, OtherMedications, Complications) "
+	String INSERT_OTHERTREATMENT_PLASMACELL = "INSERT INTO OtherTreatmentTable(OtherTreatmentID, Bisphosphonates, Radiotherapy, OtherMedications, Complications) "
 			+ "VALUES (NULL, ?, ?, ?, ?)";
 
 	String INSERT_PATIENT_AAPHSMDS = "INSERT INTO PatientTable VALUES (NULL,1,"

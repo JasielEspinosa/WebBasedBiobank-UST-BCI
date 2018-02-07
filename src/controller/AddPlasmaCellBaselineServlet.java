@@ -281,15 +281,15 @@ public class AddPlasmaCellBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection BoneMarrowAspirateBean");
 		}
 
-		CytogenicPlasmaCellBean cpcb = BeanFactory.getCytogenicPlasmaCellBean(cytogeneticAndMolecularAnalysisResult);
+		CytogeneticPlasmaCellBean cpcb = BeanFactory.getCytogeneticPlasmaCellBean(cytogeneticAndMolecularAnalysisResult);
 		if (connection != null) {
-			if (SQLOperations.addCytogenicPlasmaCell(cpcb, connection, disease)) {
-				System.out.println("Successful insert CytogenicPlasmaCellBean");
+			if (SQLOperations.addCytogeneticPlasmaCell(cpcb, connection, disease)) {
+				System.out.println("Successful insert CytogeneticPlasmaCellBean");
 			} else {
-				System.out.println("Failed insert CytogenicPlasmaCellBean");
+				System.out.println("Failed insert CytogeneticPlasmaCellBean");
 			}
 		} else {
-			System.out.println("Invalid connection CytogenicPlasmaCellBean");
+			System.out.println("Invalid connection CytogeneticPlasmaCellBean");
 		}
 
 		ImagingStudiesBean isb = BeanFactory.getImagingStudiesBean(imagingStudiesResult.getBytes());

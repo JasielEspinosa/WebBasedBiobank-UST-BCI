@@ -1239,7 +1239,7 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 
-	public static boolean addCytogenicPlasmaCell(CytogenicPlasmaCellBean cpcb, Connection connection, int disease) {
+	public static boolean addCytogeneticPlasmaCell(CytogeneticPlasmaCellBean cpcb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
 			}
@@ -1257,7 +1257,7 @@ public class SQLOperations implements SQLCommands {
 					pstmt.setString(1, cpcb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addCytogeneticMDS: " + sqle.getMessage());
+					System.out.println("SQLException -- addCytogeneticPlasmaCell: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -1541,7 +1541,7 @@ public class SQLOperations implements SQLCommands {
 					pstmt.setString(1, upb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addCytogeneticMDS: " + sqle.getMessage());
+					System.out.println("SQLException -- addUrineProtein: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -1905,7 +1905,12 @@ public class SQLOperations implements SQLCommands {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_TREATMENT_PLASMACELL);
 					pstmt.setString(1, tb.getDateStarted());
-					pstmt.setString(2, tb.getComplications());
+					pstmt.setString(2, tb.getOtherRegimen());
+					pstmt.setString(3, tb.getOtherRegimenTransplant());
+					pstmt.setString(4, tb.getOtherRegimenNonTransplant());
+					pstmt.setString(5, tb.getOtherRegimenMaintenanceTherapy());
+					pstmt.setInt(6, tb.getCycleNumber());
+					pstmt.setString(7, tb.getComplications());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addTreatment: " + sqle.getMessage());
