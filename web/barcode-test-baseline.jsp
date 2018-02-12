@@ -1,22 +1,18 @@
 <%-- <jsp:useBean id="aaphsmdsPatientsList" type="java.sql.ResultSet" scope="request"/> --%>
-
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>USTH - AA PHS MDS Baseline</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/usthlogo.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <!-- CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
@@ -25,7 +21,6 @@
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="fonts/open-sans.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
-
 <!-- JS -->
 <script src="js/jquery-ui.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
@@ -35,15 +30,12 @@
 <script defer src="js/fontawesome-all.js"></script>
 <script src="js/modal.js"></script>
 <script src="js/JsBarcode.all.min.js"></script>
-
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
-
 </head>
 <body>
    <!-- Header -->
    <div class="navbar-fixed-top">
-
       <!-- Banner -->
       <div class="row header bg-navyblue">
          <div class="col-sm-1">
@@ -56,7 +48,6 @@
          </div>
       </div>
       <!-- End of Banner -->
-
       <!-- Navbar -->
       <nav class="navbar" role="navigation">
          <div class="container-fluid navbar__nav-item--hover">
@@ -68,7 +59,6 @@
                   <span class="icon-bar"></span>
                </button>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
@@ -80,7 +70,6 @@
                   <li class="active"><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
                   <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
-
                   <!-- Dropdown -->
                   <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                      role="button" aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span
@@ -100,19 +89,15 @@
                               class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout</a></li>
                      </ul></li>
                   <!-- End of Dropdown -->
-
                </ul>
             </div>
             <!-- /.navbar-collapse -->
          </div>
          <!-- /.container-fluid -->
       </nav>
-
    </div>
    <!-- End of header -->
-
    <!-- Main Content -->
-
    <!-- Sidebar -->
    <div class="row-offcanvas row-offcanvas-left">
       <div id="sidebar" class="sidebar-offcanvas">
@@ -128,7 +113,6 @@
             </div>
             <!-- End of Search Box -->
             <ul class="nav nav-pills nav-stacked sidebar__searchbox--border">
-
             </ul>
             <!-- Add Patient Button -->
             <div class="row">
@@ -150,7 +134,6 @@
             <!-- End of Generate Report Button -->
          </div>
       </div>
-
       <div id="main">
          <div class="col-md-12">
             <p class="visible-xs">
@@ -159,12 +142,10 @@
                </button>
             </p>
             <!-- End of Sidebar -->
-
             <!-- Forms Container -->
             <form action="AddAAPHSMDSBaselineServlet" method="post">
                <div class="col-md-12">
                   <div class="col-md-12 forms">
-
                      <!-- Buttons Container -->
                      <div class="row button-container buttons__firsthalf--position ">
                         <div class="col-sm-6 buttons__firsthalf-position ">
@@ -180,26 +161,20 @@
                         </div>
                      </div>
                      <!-- End of Buttons Container -->
-
                      <!-- Forms -->
                      <div class="row">
-
                         <!-- General -->
                         <div class="col-md-5">
-
                            <!-- General Tab -->
                            <ul class="nav nav-tabs">
                               <li class="active"><a data-toggle="tab" href="#general">General</a></li>
                            </ul>
                            <!-- End of General Tab -->
-
                            <!-- General Tab Content -->
                            <div class="tab-content tab-content__border">
                               <div id="general" class="tab-pane fade in active">
-
                                  <!-- Form -->
                                  <div class="form-horizontal">
-
                                     <!-- Patient ID Number -->
                                     <div class="form-group">
                                        <div class="col-sm-1">
@@ -208,7 +183,6 @@
                                              class="form__barcodeicon--size body__barcodebtn--style">
                                           </a>
                                        </div>
-
                                        <!-- Barcode Pop-Up -->
                                        <div id="patientBarcode_popup" class="modal fade centered-modal" tabindex="-1"
                                           role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
@@ -216,7 +190,8 @@
                                           <div class="modal-dialog">
                                              <div class="modal-content">
                                                 <div class="modal-header">
-                                                   <button type="button" class="close" data-dismiss="modal" onclick="closeModal()">
+                                                   <button type="button" class="close" data-dismiss="modal"
+                                                      onclick="closeModal()">
                                                       <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                                                    </button>
                                                    <h4 class="modal-title" id="exampleModalLabel">Patient Barcode:</h4>
@@ -234,13 +209,11 @@
                                           </div>
                                        </div>
                                        <!-- End of Barcode Pop-Up -->
-
                                        <label class="control-label col-sm-4">Patient ID Number</label>
                                        <div class="col-sm-7">
                                           <input type="text" class="form-control" name="patientIDNumber">
                                        </div>
                                     </div>
-
                                     <!-- Last Name -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Last Name</label>
@@ -248,7 +221,6 @@
                                           <input type="text" class="form-control" name="lastName">
                                        </div>
                                     </div>
-
                                     <!-- First Name -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">First Name</label>
@@ -256,7 +228,6 @@
                                           <input type="text" class="form-control" name="firstName">
                                        </div>
                                     </div>
-
                                     <!-- Middle Initial -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Middle Initial</label>
@@ -264,7 +235,6 @@
                                           <input type="text" class="form-control" name="middleInitial">
                                        </div>
                                     </div>
-
                                     <!-- Gender -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Gender</label>
@@ -277,7 +247,6 @@
                                           </div>
                                        </div>
                                     </div>
-
                                     <!-- DOB -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Date of Birth</label>
@@ -285,7 +254,6 @@
                                           <input type="date" class="form-control" name="dateOfBirth">
                                        </div>
                                     </div>
-
                                     <!-- Address -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Address</label>
@@ -293,7 +261,6 @@
                                           <input type="text" class="form-control" name="address">
                                        </div>
                                     </div>
-
                                     <!-- Civil Status -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Civil Status</label>
@@ -301,7 +268,6 @@
                                           <input type="text" class="form-control" name="civilStatus">
                                        </div>
                                     </div>
-
                                     <!-- DOE -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Date of Entry</label>
@@ -309,7 +275,6 @@
                                           <input type="date" class="form-control" name="dateOfEntry">
                                        </div>
                                     </div>
-
                                     <!-- Tissue Specimen Collected -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Tissue Specimen Collected</label>
@@ -322,7 +287,6 @@
                                           </div>
                                        </div>
                                     </div>
-
                                     <!-- Specimen Type -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Specimen Type</label>
@@ -334,19 +298,15 @@
                                           </select>
                                        </div>
                                     </div>
-
                                  </div>
                                  <!-- End of form -->
-
                               </div>
                            </div>
                            <!-- End of General Tab Content -->
                         </div>
                         <!-- End of General -->
-
                         <!-- CLT -->
                         <div class="col-md-7">
-
                            <!-- CLT Navtabs-->
                            <ul class="nav nav-tabs">
                               <li class="active"><a data-toggle="tab" href="#clinical">Clinical</a></li>
@@ -354,16 +314,12 @@
                               <li><a data-toggle="tab" href="#therapy">Therapy and Response</a></li>
                            </ul>
                            <!-- End of CLT Navtabs -->
-
                            <!-- CLT Tab Content -->
                            <div class="tab-content tab-content__border">
-
                               <!-- Clinical -->
                               <div id="clinical" class="tab-pane fade in active">
-
                                  <!-- Form -->
                                  <div class="form-horizontal">
-
                                     <!-- Date of Visit -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Date of Visit</label>
@@ -371,7 +327,6 @@
                                           <input type="date" class="form-control" name="dateOfVisit">
                                        </div>
                                     </div>
-
                                     <!-- Diagnosis -->
                                     <div class="form-group">
                                        <label for="diagnosis" class="control-label col-sm-4">Diagnosis</label>
@@ -415,7 +370,6 @@
                                           </select>
                                        </div>
                                     </div>
-
                                     <!-- Severity -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Classification/Risk Statification</label>
@@ -433,7 +387,6 @@
                                           </select>
                                        </div>
                                     </div>
-
                                     <!-- Chief Complaint -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Chief Complaint</label>
@@ -441,7 +394,6 @@
                                           <input type="text" class="form-control" name="chiefComplaint">
                                        </div>
                                     </div>
-
                                     <!-- Other Symptoms -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Other Symptoms</label>
@@ -449,7 +401,6 @@
                                           <input type="text" class="form-control" name="otherSymptoms">
                                        </div>
                                     </div>
-
                                     <!-- Family History of Cancer -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Family History of Cancer</label>
@@ -462,7 +413,6 @@
                                           </div>
                                        </div>
                                     </div>
-
                                     <!-- Relationship to Patient -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Relationship to Patient</label>
@@ -470,7 +420,6 @@
                                           <input type="text" class="form-control" name="relationshipToPatient">
                                        </div>
                                     </div>
-
                                     <!-- Specify Cancer-->
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Specify Cancer</label>
@@ -478,7 +427,6 @@
                                           <input type="text" class="form-control" name="specifyCancer">
                                        </div>
                                     </div>
-
                                     <!-- Other Diseases in the Family -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Other Diseases in the Family</label>
@@ -486,7 +434,6 @@
                                           <input type="text" class="form-control" name="otherDiseasesInTheFamily">
                                        </div>
                                     </div>
-
                                     <!-- Comorbidities -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Comorbidities</label>
@@ -494,7 +441,6 @@
                                           <input type="text" class="form-control" name="comorbidities">
                                        </div>
                                     </div>
-
                                     <!-- Concomitant Medications -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Current/Past Medications</label>
@@ -507,7 +453,6 @@
                                           </div>
                                        </div>
                                     </div>
-
                                     <!-- Concomitant Medications Dynamic Tabs -->
                                     <div class="form-group">
                                        <div class="row">
@@ -529,7 +474,6 @@
                                           </div>
                                        </div>
                                     </div>
-
                                     <!-- Smoking History -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Smoking History</label>
@@ -548,8 +492,6 @@
                                           <input type="text" class="form-control" name="smokingHistorySpecify">
                                        </div>
                                     </div>
-
-
                                     <!-- Alcohol Intake History -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Alcohol intake history </label>
@@ -568,7 +510,6 @@
                                           <input type="text" class="form-control" name="alcoholIntakeSpecify" />
                                        </div>
                                     </div>
-
                                     <!-- Chemical Exposure -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Chemical exposure</label>
@@ -587,7 +528,6 @@
                                           <input type="text" class="form-control" name="chemicalExposureSpecify" />
                                        </div>
                                     </div>
-
                                     <!-- Previous Infection -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Previous Infection</label>
@@ -606,7 +546,6 @@
                                           <input type="text" class="form-control" name="previousInfectionSpecify" />
                                        </div>
                                     </div>
-
                                     <!-- Previous Hematologic Disorder -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Previous Hematologic Disorder</label>
@@ -628,14 +567,11 @@
                                              name="previousHematologicDisorderSpecify" />
                                        </div>
                                     </div>
-
                                     <br />
-
                                     <!-- Physical Exam -->
                                     <h3 class="text-center">
                                        <label class="control-label">Physical Exam</label>
                                     </h3>
-
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Height</label>
                                        <div class="col-sm-8">
@@ -660,18 +596,14 @@
                                           <input type="text" class="form-control" name="otherFindings" />
                                        </div>
                                     </div>
-
                                     <!-- End of form -->
                                  </div>
                               </div>
                               <!-- End of Clinical -->
-
                               <!-- Laboratory -->
                               <div id="laboratory" class="tab-pane fade">
-
                                  <!-- Form -->
                                  <div class="form-horizontal">
-
                                     <!-- Date of Blood Collection -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Date of blood collection</label>
@@ -679,14 +611,11 @@
                                           <input type="date" class="form-control" name="dateOfBloodCollection" />
                                        </div>
                                     </div>
-
                                     <br />
-
                                     <!-- Hematology -->
                                     <h3 class="text-center">
                                        <label class="control-label">Hematology</label>
                                     </h3>
-
                                     <!-- Labels -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Laboratory Parameter</label> <label
@@ -696,7 +625,6 @@
                                        </div>
                                     </div>
                                     <!-- End of Labels -->
-
                                     <!-- Fields -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Hemoglobin (g/L)</label>
@@ -762,7 +690,6 @@
                                        <label class="control-label col-sm-4">Blasts (%)</label>
                                        <div class="col-lg-4">
                                           <input type="text" class="form-control" name="blasts" />
-
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -772,13 +699,10 @@
                                        </div>
                                     </div>
                                     <!-- End of Fields -->
-
-
                                     <!-- Other Lab -->
                                     <h3 class="text-center">
                                        <label class="control-label">Other Laboratories</label>
                                     </h3>
-
                                     <!-- Labels -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Laboratory Parameter</label> <label
@@ -788,7 +712,6 @@
                                        </div>
                                     </div>
                                     <!-- End of labels -->
-
                                     <!-- Fields -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Creatinine (mg/dl)</label>
@@ -899,7 +822,6 @@
                                     </div>
                                     <!-- End of fields -->
                                     <br />
-
                                     <!-- Bone Marrow  -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Bone Marrow Aspirate and Biopsy
@@ -932,7 +854,6 @@
                                              name="boneMarrowAspirateAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                     <!-- Flow cytometry -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Flow Cytometry</label>
@@ -962,7 +883,6 @@
                                              name="flowCytometryAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                     <!-- Cytogenetic and Molecular Analysis if for Aplastic Anemia and PNH -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Cytogenetic and Molecular Analysis
@@ -992,7 +912,6 @@
                                              name="cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                     <!-- Cytogenetic and Molecular Analysis if for MDS -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Cytogenetic and Molecular Analysis
@@ -1022,18 +941,14 @@
                                              name="cytogeneticAndMolecularAnalysisMDSAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                  </div>
                                  <!-- end of form -->
                               </div>
                               <!-- End of Laboratory -->
-
                               <!-- Therapy -->
                               <div id="therapy" class="tab-pane fade">
-
                                  <!-- Form -->
                                  <div class="form-horizontal">
-
                                     <!-- Transplant Candidate -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Transplant Candidate</label>
@@ -1046,7 +961,6 @@
                                           </div>
                                        </div>
                                     </div>
-
                                     <!-- Treatment -->
                                     <div class="form-group">
                                        <label for="severity" class="control-label col-sm-4">Mode of Treatment</label>
@@ -1062,7 +976,6 @@
                                           </select>
                                        </div>
                                     </div>
-
                                     <!-- Medications -->
                                     <div class="form-group">
                                        <label class="control-label col-lg-4">Medications</label>
@@ -1070,7 +983,6 @@
                                           <input type="text" class="form-control" name="medications" />
                                        </div>
                                     </div>
-
                                     <!-- Date Started -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Date Started</label>

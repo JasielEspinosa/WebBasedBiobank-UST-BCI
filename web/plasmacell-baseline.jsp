@@ -27,6 +27,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/sidebar.js"></script>
 <script src="js/radio-showhide.js" type="text/javascript"></script>
+<script src="js/JsBarcode.all.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
@@ -176,11 +177,37 @@
                                     <!-- Patient ID Number -->
                                     <div class="form-group">
                                        <div class="col-sm-1">
-                                          <a alt="Barcode Icon" href="#"> <img alt="Barcode Icon"
-                                             src="images/barcode.png"
+                                          <a id="" data-toggle="modal" data-target="#patientBarcode_popup" href="#"
+                                             alt="Barcode Icon"> <img alt="Barcode Icon" src="images/barcode.png"
                                              class="form__barcodeicon--size body__barcodebtn--style">
                                           </a>
                                        </div>
+                                       <!-- Barcode Pop-Up -->
+                                       <div id="patientBarcode_popup" class="modal fade centered-modal" tabindex="-1"
+                                          role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
+                                          data-backdrop="static">
+                                          <div class="modal-dialog">
+                                             <div class="modal-content">
+                                                <div class="modal-header">
+                                                   <button type="button" class="close" data-dismiss="modal"
+                                                      onclick="closeModal()">
+                                                      <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                                   </button>
+                                                   <h4 class="modal-title" id="exampleModalLabel">Patient Barcode:</h4>
+                                                   <div id="toPrint">
+                                                      <div align="center">
+                                                         <img id="patientBarcode" />
+                                                      </div>
+                                                   </div>
+                                                   <a href="#" onclick="printBarcode('toPrint')">PRINT</a>
+                                                </div>
+                                                <div class="modal-footer">
+                                                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!-- End of Barcode Pop-Up -->
                                        <label class="control-label col-sm-4">Patient ID Number</label>
                                        <div class="col-sm-7">
                                           <input type="text" class="form-control" name="patientIDNumber">
@@ -851,7 +878,8 @@
                                           <input type="text" class="form-control" name="urineProteinResult" />
                                        </div>
                                     </div>
-                                    <div class="form-group" id="urineProteinAttachScannedDocument" style="display: none;">
+                                    <div class="form-group" id="urineProteinAttachScannedDocument"
+                                       style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
                                           <input type="file" class="form-control"
@@ -872,14 +900,16 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group" id="cytogeneticAndMolecularAnalysisResult" style="display: none;">
+                                    <div class="form-group" id="cytogeneticAndMolecularAnalysisResult"
+                                       style="display: none;">
                                        <label class="control-label col-lg-4">Result</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control"
                                              name="cytogeneticAndMolecularAnalysisResult" />
                                        </div>
                                     </div>
-                                    <div class="form-group" id="cytogeneticAndMolecularAnalysisAttachScannedDocument" style="display: none;">
+                                    <div class="form-group" id="cytogeneticAndMolecularAnalysisAttachScannedDocument"
+                                       style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
                                           <input type="file" class="form-control"
@@ -1109,5 +1139,6 @@
          </div>
       </div>
    </div>
+   <script src="js/JsBarcode.barcodePrint.js"></script>
 </body>
 </html>
