@@ -1,6 +1,6 @@
 package model;
 
-public class CytogeneticMDSBean {
+public class CytogeneticMolecularMDSBean {
 	private String result;
 
 	public String getResult() {

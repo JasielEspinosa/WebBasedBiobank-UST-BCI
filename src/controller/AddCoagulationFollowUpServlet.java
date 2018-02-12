@@ -9,17 +9,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utility.database.SQLOperations;
+import model.*;
+import utility.database.SQLOperationsFollowUp;
+import utility.factory.BeanFactory;
 
 @WebServlet("/AddCoagulationFollowUpServlet")
 public class AddCoagulationFollowUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Connection connection;
-	
+
 	public void init() throws ServletException {
-		connection = SQLOperations.getConnection();
-		
+		connection = SQLOperationsFollowUp.getConnection();
+
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
 			System.out.println("connection is READY.");
@@ -28,14 +30,48 @@ public class AddCoagulationFollowUpServlet extends HttpServlet {
 		}
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		getServletContext().log("AddCoagulationFollowUpServlet insert test");
 
-		//String dateOfEntry = request.getParameter("dateOfEntry");
-		//String dateOfVisit = request.getParameter("dateOfVisit");
-		
+		int disease = 2;
+
+		String dateOfEntry = request.getParameter("dateOfEntry");
+		String dateOfVisit = request.getParameter("dateOfVisit");
+		String factorConcentrate = request.getParameter("specifyReasonFactorConcentrate");
+		String factorConcentrateDates = request.getParameter("datesOfAdministrationFactorConcentrate");
+		Double factorConcentrateDose = Double.parseDouble(request.getParameter("doseOfFactorConcentrate"));
+		String procedureIntervention = request.getParameter("specifyProcedure");
+		String notes = request.getParameter("specialNotes");
+
+		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean("", "", factorConcentrate, factorConcentrateDates,
+				factorConcentrateDose, procedureIntervention, "");
+		if (connection != null) {
+			if (SQLOperationsFollowUp.addMedicalEvents(meb, connection, disease)) {
+				System.out.println("Successful insert MedicalEventsBean");
+			} else {
+				System.out.println("Failed insert MedicalEventsBean");
+			}
+		} else {
+			System.out.println("Invalid connection MedicalEventsBean");
+		}
+
+		FollowUpBean fub = BeanFactory.getFollowUpBean(dateOfEntry, dateOfVisit, notes);
+		if (connection != null) {
+			if (SQLOperationsFollowUp.addFollowUp(fub, connection, disease)) {
+				System.out.println("Successful insert FollowUpBean");
+			} else {
+				System.out.println("Failed insert FollowUpBean");
+			}
+		} else {
+			System.out.println("Invalid connection FollowUpBean");
+		}
+
 	}
 
 }

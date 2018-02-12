@@ -10,12 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.*;
-import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
 
-@WebServlet("/AddAAPHSMDSFollowUpServlet")
-public class AddAAPHSMDSFollowUpServlet extends HttpServlet {
+@WebServlet("/AddLeukemiaFollowUpServlet")
+public class AddLeukemiaFollowUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
@@ -38,14 +37,14 @@ public class AddAAPHSMDSFollowUpServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		getServletContext().log("AddAAPHSMDSFollowUpServlet insert test");
+		getServletContext().log("AddLeukemiaFollowUpServlet insert test");
 
-		int disease = 1;
+		int disease = 3;
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
 		String hematologicMalignancy = request.getParameter("specifyHematologicMalignancy");
-		String otherDiseaseMedication = request.getParameter("otherDiseaseMedication");
+		String otherDiseaseMedication = request.getParameter("specifyOtherDiseaseMedication");
 		String procedureIntervention = request.getParameter("specifyProcedure");
 		String chemotherapyComplication = request.getParameter("specifyChemotherapy");
 
@@ -71,15 +70,10 @@ public class AddAAPHSMDSFollowUpServlet extends HttpServlet {
 		double metamyelocytes = Double.parseDouble(request.getParameter("metamyelocytes"));
 		double blasts = Double.parseDouble(request.getParameter("blasts"));
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
-		////// Other Laboratories
-		double reticulocyteCount = Double.parseDouble(request.getParameter("reticulocyteCount"));
-		double ldh = Double.parseDouble(request.getParameter("ldh"));
-		double serumFerritin = Double.parseDouble(request.getParameter("serumFerritin"));
-		double creatinine = Double.parseDouble(request.getParameter("creatinine"));
 		String boneMarrowAspirateDatePerformed = request.getParameter("boneMarrowAspirateDatePerformed");
 		String boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
 		String flowCytometryResult = request.getParameter("flowCytometryResult");
-		String cytogeneticAndMolecularAnalysisResult = request.getParameter("cytogeneticAndMolecularAnalysisResult");
+		String cytogeneticAndMolecularAnalysisResult = request.getParameter("molecularAnalysisResult");
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
 		String otherDisease = request.getParameter("otherDisease");
@@ -109,8 +103,8 @@ public class AddAAPHSMDSFollowUpServlet extends HttpServlet {
 			System.out.println("Invalid connection PhysicalExamBean");
 		}
 
-		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean("", "", "", "", "", currentSymptoms, "", "", "", "", "",
-				"", "", "", "");
+		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, "", "", "", "", currentSymptoms, "", "", "",
+				"", "", "", "", "", "");
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addClinicalData(cdb, connection, disease)) {
 				System.out.println("Successful insert ClinicalDataBean");
@@ -131,18 +125,6 @@ public class AddAAPHSMDSFollowUpServlet extends HttpServlet {
 			}
 		} else {
 			System.out.println("Invalid connection HematologyBean");
-		}
-
-		OtherLaboratoriesBean olb = BeanFactory.getOtherLaboratoriesBean(creatinine, 0.0, reticulocyteCount, 0.0, 0.0,
-				serumFerritin, "", "", 0.0, 0.0, ldh, "", "", 0.0, 0.0, 0.0, 0.0);
-		if (connection != null) {
-			if (SQLOperationsBaseline.addOtherLaboratories(olb, connection, disease)) {
-				System.out.println("Successful insert OtherLaboratoriesBean");
-			} else {
-				System.out.println("Failed insert OtherLaboratoriesBean");
-			}
-		} else {
-			System.out.println("Invalid connection OtherLaboratoriesBean");
 		}
 
 		BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed,
@@ -171,12 +153,12 @@ public class AddAAPHSMDSFollowUpServlet extends HttpServlet {
 		CytogeneticMolecularBean cmb = BeanFactory.getCytogeneticMolecularBean(cytogeneticAndMolecularAnalysisResult);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addCytogeneticMolecular(cmb, connection, disease)) {
-				System.out.println("Successful insert CytogeneticMolecularBean");
+				System.out.println("Successful insert CytogeneticAAPNHBean");
 			} else {
-				System.out.println("Failed insert CytogeneticMolecularBean");
+				System.out.println("Failed insert CytogeneticAAPNHBean");
 			}
 		} else {
-			System.out.println("Invalid connection CytogeneticMolecularBean");
+			System.out.println("Invalid connection CytogeneticAAPNHBean");
 		}
 
 		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
@@ -200,7 +182,7 @@ public class AddAAPHSMDSFollowUpServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection DiseaseStatusBean");
 		}
-
+		
 		FollowUpBean fub = BeanFactory.getFollowUpBean(dateOfEntry, dateOfVisit, notes);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addFollowUp(fub, connection, disease)) {
@@ -211,5 +193,6 @@ public class AddAAPHSMDSFollowUpServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection FollowUpBean");
 		}
+
 	}
 }

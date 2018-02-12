@@ -10,6 +10,7 @@ public class ClinicalDataBean {
 	private int severityId;
 	private String stageOfDisease;
 	private String chiefComplaint;
+	private String currentSymptoms;
 	private String constitutionalSymptoms;
 	private String otherSymptoms;
 	private String FamilyHistoryOfCancer;
@@ -93,6 +94,14 @@ public class ClinicalDataBean {
 
 	public void setChiefComplaint(String chiefComplaint) {
 		this.chiefComplaint = chiefComplaint;
+	}
+
+	public String getCurrentSymptoms() {
+		return currentSymptoms;
+	}
+
+	public void setCurrentSymptoms(String currentSymptoms) {
+		this.currentSymptoms = currentSymptoms;
 	}
 
 	public String getConstitutionalSymptoms() {
