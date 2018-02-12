@@ -140,9 +140,8 @@
 
                       <div class="row">
                         <div class="col-md-3">
-                          <div class="morph pic">
-                            <div id="text">LEUKEMIA</div>
-                            <a data-target="#leukemiaModal" data-toggle="modal"> <img
+                          <div class="morph pic">                            
+                          <a data-target="#leukemiaModal" data-toggle="modal"> <img
                               src="images/leukemiavector.png" alt="leukemia">
                             </a>
                           </div>
