@@ -74,7 +74,7 @@ public class AddMyeloFollowUpServlet extends HttpServlet {
 		String boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
-		String otherDisease = request.getParameter("otherDisease");
+		String otherDisease = request.getParameter("diseaseStatusOthers");
 		String notes = request.getParameter("specialNotes");
 
 		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "",

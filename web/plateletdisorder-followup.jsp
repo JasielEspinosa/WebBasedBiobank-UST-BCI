@@ -241,7 +241,7 @@
                                              <label><input type="radio" name="procedure" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="procedure" value="2">No</label>
+                                             <label><input type="radio" name="procedure" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>
@@ -468,10 +468,10 @@
                                           </select>
                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                       <label class="control-label col-lg-5">Others</label>
+                                    <div class="form-group" id="diseaseStatusOthers" style="display: none;">
+                                       <label class="control-label col-lg-5">Other Please Specify</label>
                                        <div class="col-lg-5">
-                                          <input type="text" class="form-control" name="otherDiseaseStatus" />
+                                          <input type="text" class="form-control" name="diseaseStatusOthers" />
                                        </div>
                                     </div>
                                     <div class="form-group">

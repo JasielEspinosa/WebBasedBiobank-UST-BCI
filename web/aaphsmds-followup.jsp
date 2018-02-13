@@ -261,7 +261,7 @@
                                              <label><input type="radio" name="procedure" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="procedure" value="2">No</label>
+                                             <label><input type="radio" name="procedure" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>
@@ -582,13 +582,14 @@
                                              <option value="Stable Disease">Stable Disease</option>
                                              <option value="Relapsed">Relapsed</option>
                                              <option value="Dead">Dead</option>
+                                             <option value="Others">Others</option>
                                           </select>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="diseaseStatusOthers" style="display: none;">
                                        <label class="control-label col-lg-5">Others</label>
                                        <div class="col-lg-5">
-                                          <input type="text" class="form-control" name="otherDisease" />
+                                          <input type="text" class="form-control" name="diseaseStatusOthers" />
                                        </div>
                                     </div>
                                     <div class="form-group">

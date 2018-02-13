@@ -76,7 +76,7 @@ public class AddLymphomaFollowUpServlet extends HttpServlet {
 		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
-		String otherDisease = request.getParameter("otherDisease");
+		String otherDisease = request.getParameter("diseaseStatusOthers");
 		String notes = request.getParameter("specialNotes");
 
 		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "",

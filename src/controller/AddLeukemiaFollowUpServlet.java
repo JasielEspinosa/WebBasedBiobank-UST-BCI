@@ -76,7 +76,7 @@ public class AddLeukemiaFollowUpServlet extends HttpServlet {
 		String cytogeneticAndMolecularAnalysisResult = request.getParameter("molecularAnalysisResult");
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
-		String otherDisease = request.getParameter("otherDisease");
+		String otherDisease = request.getParameter("diseaseStatusOthers");
 		String notes = request.getParameter("specialNotes");
 
 		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "",

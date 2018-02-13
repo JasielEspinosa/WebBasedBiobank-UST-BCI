@@ -70,7 +70,7 @@ public class AddPlateletCellFollowUpServlet extends HttpServlet {
 		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
-		String otherDiseaseStatus = request.getParameter("otherDiseaseStatus");
+		String otherDiseaseStatus = request.getParameter("diseaseStatusOthers");
 		String notes = request.getParameter("specialNotes");
 
 		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, "", "", "", 0.0,

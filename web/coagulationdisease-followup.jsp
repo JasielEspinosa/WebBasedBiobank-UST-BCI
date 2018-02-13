@@ -266,7 +266,7 @@
                                              <label><input type="radio" name="procedure" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="procedure" value="2">No</label>
+                                             <label><input type="radio" name="procedure" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>

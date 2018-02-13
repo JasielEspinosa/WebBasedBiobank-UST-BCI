@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.*;
 import utility.factory.BeanFactory;
+import utility.values.DefaultValues;
 import utility.database.SQLOperationsBaseline;
 
 @WebServlet("/AddAAPHSMDSBaselineServlet")
-public class AddAAPHSMDSBaselineServlet extends HttpServlet {
+public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
@@ -30,13 +31,11 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		}
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		getServletContext().log("AddAAPHSMDSBaselineServlet insert test");
 
@@ -52,16 +51,6 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String specimenType = request.getParameter("specimenType");
 
-/*		System.out.println(patientIDNumber);
-		System.out.println(lastName);
-		System.out.println(firstName);
-		System.out.println(middleInitial);
-		System.out.println(gender);
-		System.out.println(dateOfBirth);
-		System.out.println(address);
-		System.out.println(dateOfEntry);
-		System.out.println(specimenType);*/
-
 		// CLINICAL DATA
 		String dateOfVisit = request.getParameter("dateOfVisit");
 		String diagnosis = request.getParameter("diagnosis");
@@ -69,18 +58,63 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		String severity = request.getParameter("severity");
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String otherSymptoms = request.getParameter("otherSymptoms");
-		String relationshipToPatient = request.getParameter("relationshipToPatient");
-		String cancerName = request.getParameter("specifyCancer");
-		String otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
+
+		String relationshipToPatient = null;
+		String cancerName = null;
+		String otherDiseasesInTheFamily = null;
+		if (Integer.parseInt(request.getParameter("familyHistoryOfCancer")) == 1) {
+			relationshipToPatient = request.getParameter("relationshipToPatient");
+			cancerName = request.getParameter("specifyCancer");
+			otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
+		} else {
+			relationshipToPatient = noValue;
+			cancerName = noValue;
+			otherDiseasesInTheFamily = noValue;
+		}
+
 		String comorbidities = request.getParameter("comorbidities");
-		String genericName = request.getParameter("genericName");
-		double dose = Double.parseDouble(request.getParameter("dose"));
-		String frequency = request.getParameter("frequency");
-		String smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
-		String alchoholIntakeSpecify = request.getParameter("alcoholIntakeSpecify");
-		String chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
+
+		String genericName = null;
+		double dose = 0.0;
+		String frequency = null;
+		if (Integer.parseInt(request.getParameter("familyHistoryOfCancer")) == 1) {
+			genericName = request.getParameter("genericName");
+			dose = Double.parseDouble(request.getParameter("dose"));
+			frequency = request.getParameter("frequency");
+		} else {
+			genericName = noValue;
+			dose = 0.0;
+			frequency = noValue;
+		}
+
+		String smokingHistorySpecify = null;
+		if (Integer.parseInt(request.getParameter("smokingHistory")) == 1) {
+			smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
+		} else {
+			smokingHistorySpecify = noValue;
+		}
+
+		String alchoholIntakeSpecify = null;
+		if (Integer.parseInt(request.getParameter("alcoholIntakeHistory")) == 1) {
+			alchoholIntakeSpecify = request.getParameter("alcoholIntakeSpecify");
+		} else {
+			alchoholIntakeSpecify = noValue;
+		}
+
+		String chemicalExposureSpecify = null;
+		if (Integer.parseInt(request.getParameter("chemicalExposureHistory")) == 1) {
+			chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
+		} else {
+			chemicalExposureSpecify = noValue;
+		}
+
 		String previousInfectionSpecify = request.getParameter("previousInfectionSpecify");
+		
 		String previousHematologicDisorderSpecify = request.getParameter("previousHematologicDisorderSpecify");
+		
+		
+		
+		
 		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
@@ -122,24 +156,16 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 		double tsh = Double.parseDouble(request.getParameter("tsh"));
 		String boneMarrowAspirateDatePerformed = request.getParameter("boneMarrowAspirateDatePerformed");
 		String boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
-		// Part boneMarrowAspirateAttachScannedDocument =
-		// request.getPart("boneMarrowAspirateAttachScannedDocument");
+		// Part boneMarrowAspirateAttachScannedDocument = request.getPart("boneMarrowAspirateAttachScannedDocument");
 		// int flowCytometry = Integer.parseInt(request.getParameter("flowCytometry"));
 		String flowCytometryResult = request.getParameter("flowCytometryResult");
-		// Part flowCytometryAttachScannedDocument =
-		// request.getPart("flowCytometryAttachScannedDocument");
-		// int cytogeneticAndMolecularAnalysisAAPNH =
-		// Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisAAPNH"));
-		String cytogeneticAndMolecularAnalysisAAPNHResult = request
-				.getParameter("cytogeneticAndMolecularAnalysisAAPNHResult");
-		// Part cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument =
-		// request.getPart("cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument");
-		// int cytogeneticAndMolecularAnalysisMDS =
-		// Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisMDS"));
-		String cytogeneticAndMolecularAnalysisMDSResult = request
-				.getParameter("cytogeneticAndMolecularAnalysisMDSResult");
-		// Part cytogeneticAndMolecularAnalysisMDSAttachScannedDocument =
-		// request.getPart("cytogeneticAndMolecularAnalysisMDSAttachScannedDocument");
+		// Part flowCytometryAttachScannedDocument = request.getPart("flowCytometryAttachScannedDocument");
+		// int cytogeneticAndMolecularAnalysisAAPNH =Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisAAPNH"));
+		String cytogeneticAndMolecularAnalysisAAPNHResult = request.getParameter("cytogeneticAndMolecularAnalysisAAPNHResult");
+		// Part cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument = request.getPart("cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument");
+		// int cytogeneticAndMolecularAnalysisMDS = Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisMDS"));
+		String cytogeneticAndMolecularAnalysisMDSResult = request.getParameter("cytogeneticAndMolecularAnalysisMDSResult");
+		// Part cytogeneticAndMolecularAnalysisMDSAttachScannedDocument = request.getPart("cytogeneticAndMolecularAnalysisMDSAttachScannedDocument");
 
 		// TREATMENT / THERAPHY AND RESPONSE
 		boolean transplantCandidate;
@@ -177,8 +203,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection TissueSpecimenBean");
 		}
 
-		GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, middleInitial, firstName, gender, dateOfBirth,
-				dateOfEntry);
+		GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, middleInitial, firstName, gender, dateOfBirth, dateOfEntry);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addGeneralData(gdb, connection, disease)) {
 				System.out.println("Successful insert GeneralDataBean");
@@ -200,8 +225,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ClassificationBean");
 		}
 
-		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, 0.0, 0.0, 0.0, false, false, "",
-				"", otherFindings);
+		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", otherFindings);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");
@@ -212,9 +236,9 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection PhysicalExamBean");
 		}
 
-		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, "", "", chiefComplaint, "", "",
-				otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeSpecify, chemicalExposureSpecify,
-				previousInfectionSpecify, previousHematologicDisorderSpecify, "");
+		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, "", "", chiefComplaint, "", "", otherSymptoms,
+				comorbidities, smokingHistorySpecify, alchoholIntakeSpecify, chemicalExposureSpecify, previousInfectionSpecify,
+				previousHematologicDisorderSpecify, "");
 		if (connection != null) {
 			if (SQLOperationsBaseline.addClinicalData(cdb, connection, disease)) {
 				System.out.println("Successful insert ClinicalDataBean");
@@ -258,8 +282,8 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection MedicationsBean");
 		}
 
-		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils,
-				lymphocytes, monocytes, eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
+		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils, lymphocytes, monocytes,
+				eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addHematology(hb, connection, disease)) {
 				System.out.println("Successful insert HematologyBean");
@@ -270,10 +294,9 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection HematologyBean");
 		}
 
-		OtherLaboratoriesBean olb = BeanFactory.getOtherLaboratoriesBean(creatinine, uricAcid, reticulocyteCount,
-				serumIron, ironBindingCapacity, serumFerritin, directAntiglobulin, indirectAntiglobulin, sgot, sgpt,
-				ldh, screeningTestsForHepatitisVirusesABC, screeningTestsForEBVCMVHIV, erythropoeitinLevel,
-				serumFolicAcid, serumB12, tsh);
+		OtherLaboratoriesBean olb = BeanFactory.getOtherLaboratoriesBean(creatinine, uricAcid, reticulocyteCount, serumIron,
+				ironBindingCapacity, serumFerritin, directAntiglobulin, indirectAntiglobulin, sgot, sgpt, ldh,
+				screeningTestsForHepatitisVirusesABC, screeningTestsForEBVCMVHIV, erythropoeitinLevel, serumFolicAcid, serumB12, tsh);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addOtherLaboratories(olb, connection, disease)) {
 				System.out.println("Successful insert OtherLaboratoriesBean");
@@ -284,8 +307,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection OtherLaboratoriesBean");
 		}
 
-		BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed,
-				boneMarrowAspirateDescription);
+		BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed, boneMarrowAspirateDescription);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addBoneMarrowAspirate(bmab, connection, disease)) {
 				System.out.println("Successful insert BoneMarrowAspirateBean");
@@ -307,8 +329,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection FlowCytometryBean");
 		}
 
-		CytogeneticMolecularAAPNHBean cmaapnhb = BeanFactory
-				.getCytogeneticAAPNHBean(cytogeneticAndMolecularAnalysisAAPNHResult);
+		CytogeneticMolecularAAPNHBean cmaapnhb = BeanFactory.getCytogeneticAAPNHBean(cytogeneticAndMolecularAnalysisAAPNHResult);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addCytogeneticMolecularAAPNH(cmaapnhb, connection, disease)) {
 				System.out.println("Successful insert CytogeneticAAPNHBean");
@@ -319,8 +340,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection CytogeneticAAPNHBean");
 		}
 
-		CytogeneticMolecularMDSBean cmmdsb = BeanFactory
-				.getCytogeneticMDSBean(cytogeneticAndMolecularAnalysisMDSResult);
+		CytogeneticMolecularMDSBean cmmdsb = BeanFactory.getCytogeneticMDSBean(cytogeneticAndMolecularAnalysisMDSResult);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addCytogeneticMolecularMDS(cmmdsb, connection, disease)) {
 				System.out.println("Successful insert CytogeneticMDSBean");
