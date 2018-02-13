@@ -140,58 +140,76 @@
 
                       <div class="row">
                         <div class="col-md-3">
-                          <div class="morph pic">                            
-                          <a data-target="#leukemiaModal" data-toggle="modal"> <img
-                              src="images/leukemiavector.png" alt="leukemia">
-                            </a>
-                          </div>
-                        </div>
+                          <div class=" morph pic">
+                          <a data-target="#leukemiaModal" data-toggle="modal"> 
+                          <img src="images/leukemiavectoredited.png" alt="leukemia" >
+                            </a>                                
+                          </div>               
+                           </div>
 
-                        <div class="col-md-3">
-                          <div class="morph pic">
+                        <div class="col-md-3 dashboard__framecontainer">
+                          <div class="dashboard__images dashboard__images morph pic">
                             <a data-target="#lymphomaModal" data-toggle="modal"> <img
-                              src="images/lymphomavector.png" alt="lymphoma">
+                              src="images/lymphomavectoredited.png" alt="lymphoma">
                             </a>
+                             <div class="middle">
+                              <div class="text">LYMHPHOMA</div>
+                            </div>    
                           </div>
                         </div>
 
-                        <div class="col-md-3">
-                          <div class="morph pic">
+                        <div class="col-md-3 dashboard__framecontainer">
+                          <div class="dashboard__images morph pic">
                             <a data-target="#myeloproliferativeModal" data-toggle="modal"> <img
-                              src="images/myeloproliferativevector.png" alt="myeloproliferative">
+                              src="images/myeloproliferativevectoredited.png" alt="myeloproliferative">
                             </a>
+                             <div class="middle">
+                              <div class="text">MYELOPROLIFERATIVE</div>
+                            </div>    
                           </div>
                         </div>
 
-                        <div class="col-md-3">
-                          <div class="morph pic">
+                        <div class="col-md-3 dashboard__framecontainer">
+                          <div class="dashboard__images morph pic">
                             <a data-target="#plasmaCellModal" data-toggle="modal"> <img
-                              src="images/plasmacellvector.png" alt="plasma">
+                              src="images/plasmacellvectoredited.png" alt="plasma">
                             </a>
+                             <div class="middle">
+                              <div class="text">PLASMA CELL DISORDER</div>
+                            </div>    
                           </div>
                         </div>
                       </div>
 
                       <div class="row col-md-offset-1">
-                        <div class="col-md-4">
-                          <div class="morph pic">
+                        <div class="col-md-4 dashboard__framecontainer">
+                          <div class="dashboard__images morph pic">
                             <a data-target="#aadnsmdsModal" data-toggle="modal"> <img
-                              src="images/aplasticanemiavector.png" alt="aadnsmds">
+                              src="images/aplasticanemiavectoredited.png" alt="aadnsmds">
                             </a>
+                             <div class="middle">
+                              <div class="text">AA DNS MDS</div>
+                            </div>    
                           </div>
                         </div>
-                        <div class="col-md-4">
-                          <div class="morph pic">
+                        <div class="col-md-4 dashboard__framecontainer">
+                          <div class="dashboard__images morph pic">
                             <a data-target="#plateletDisorderModal" data-toggle="modal"> <img
-                              src="images/plateletvector.png" alt="platelet">
+                              src="images/plateletvectoredited.png" alt="platelet">
                             </a>
+                             <div class="middle">
+                              <div class="text">PLATELET DISORDER</div>
+                            </div>    
                           </div>
                         </div>
-                        <div class="col-md-4">
-                          <div class="morph pic">
+                        <div class="col-md-4 dashboard__framecontainer">
+                          <div class="dashboard__images morph pic">
                             <a data-target="#coagulationDiseaseModal" data-toggle="modal"> <img
-                              src="images/coagulationvector.png" alt="coag">
+                              src="images/coagulationvectoredited.png" alt="coag">
                             </a>
+                             <div class="middle">
+                              <div class="text">COAGULATION DISEASE</div>
+                            </div>    
                           </div>
                         </div>
                       </div>
@@ -216,7 +234,9 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Leukemia</div>
+            <div class="modal-header">Leukemia
+             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
             <div class="modal-body">
 
               <div class="row">
@@ -264,7 +284,9 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Lymphoma</div>
+            <div class="modal-header">Lymphoma
+             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
             <div class="modal-body">
 
               <div class="row">
@@ -312,7 +334,9 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Myeloproliferative Neoplasm</div>
+            <div class="modal-header">Myeloproliferative Neoplasm
+             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
             <div class="modal-body">
 
               <div class="row">
@@ -359,7 +383,10 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Plasma Cell Disorder</div>
+            <div class="modal-header">
+            Plasma Cell Disorder
+             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
             <div class="modal-body">
 
               <div class="row">
@@ -406,7 +433,10 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">AA DNS MDS</div>
+            <div class="modal-header">
+            AA DNS MDS
+             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
             <div class="modal-body">
 
               <div class="row">
@@ -452,7 +482,10 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Platelet Disorder</div>
+            <div class="modal-header">
+              Platelet Disorder
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
             <div class="modal-body">
 
               <div class="row">
@@ -498,7 +531,10 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Coagulation Disease</div>
+            <div class="modal-header">
+              Coagulation Disease
+               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
             <div class="modal-body">
 
               <div class="row">

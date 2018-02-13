@@ -202,25 +202,6 @@
                   <div class="form-horizontal" style="text-align: right;">
                     <form role="form">
 
-                      <!-- Disease Type -->
-                      <div class="form-group">
-                        <div class="col-sm-5">
-                          <label for="recipient-name" class="control-label">Disease Type:</label>
-                        </div>
-                        <div class="col-sm-5">
-                          <select class="form-control" name="diagnosis">
-                            <option selected="selected" disabled="disabled">Disease Type</option>
-                            <option value="Leukemia">Leukemia</option>
-                            <option value="Lymphoma">Lymphoma</option>
-                            <option value="Plasma Cell Disorder">Plasma Cell Disorder</option>
-                            <option value="AA DNS MDS">AA DNS MDS</option>
-                            <option value="Platelet Disorder">Platelet Disorder</option>
-                            <option value="Coagulation Disease">Coagulation Disease</option>
-                          </select>
-                        </div>
-                      </div>
-                      <!-- End of Disease Type -->
-
                       <!-- Doctors -->
                       <div class="form-group">
                         <div class="col-sm-5">
