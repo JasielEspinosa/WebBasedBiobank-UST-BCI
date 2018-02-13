@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utility.database.SQLOperations;
+import utility.database.SQLOperationsBaseline;
 
 @WebServlet("/GetAAPNHMDSPatientServlet")
 public class GetAAPNHMDSPatientServlet extends HttpServlet {
@@ -19,7 +19,7 @@ public class GetAAPNHMDSPatientServlet extends HttpServlet {
 	private Connection connection;
 	
 	public void init() throws ServletException {
-		connection = SQLOperations.getConnection();
+		connection = SQLOperationsBaseline.getConnection();
 		
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -40,8 +40,8 @@ public class GetAAPNHMDSPatientServlet extends HttpServlet {
 		int patientId = Integer.parseInt(request.getParameter("patientId"));
 		try {	
 			if (connection != null) {
-				ResultSet aaphsmdsPatientsList = SQLOperations.getAAPHSMDSBaselinePatients(connection); 			
-				ResultSet patientInfo = SQLOperations.getPatient(patientId, connection); 			
+				ResultSet aaphsmdsPatientsList = SQLOperationsBaseline.getAAPHSMDSBaselinePatients(connection); 			
+				ResultSet patientInfo = SQLOperationsBaseline.getPatient(patientId, connection); 			
 				
 				patientInfo.first();
 				int generalDataId = patientInfo.getInt("generalDataId");
@@ -49,19 +49,19 @@ public class GetAAPNHMDSPatientServlet extends HttpServlet {
 				int laboratoryId = patientInfo.getInt("laboratoryId");
 				int treatmentId = patientInfo.getInt("treatmentId");
 				
-				ResultSet generalData = SQLOperations.getGeneralData(generalDataId, connection);
+				ResultSet generalData = SQLOperationsBaseline.getGeneralData(generalDataId, connection);
 				generalData.first();
 				int addressId = generalData.getInt("addressId");
 				
-				ResultSet address = SQLOperations.getAddress(addressId, connection);
+				ResultSet address = SQLOperationsBaseline.getAddress(addressId, connection);
 				
-				ResultSet clinicalData = SQLOperations.getClinicalData(clinicalDataId, connection);
+				ResultSet clinicalData = SQLOperationsBaseline.getClinicalData(clinicalDataId, connection);
 				clinicalData.first();
 				int physicalExamId = clinicalData.getInt("physicalExamId");
 				
-				ResultSet physicalExam = SQLOperations.getPhysicalExam(physicalExamId, connection);
+				ResultSet physicalExam = SQLOperationsBaseline.getPhysicalExam(physicalExamId, connection);
 				
-				ResultSet laboratoryProfile = SQLOperations.getLaboratoryProfile(laboratoryId, connection);
+				ResultSet laboratoryProfile = SQLOperationsBaseline.getLaboratoryProfile(laboratoryId, connection);
 				laboratoryProfile.first();
 				int hematologyId = laboratoryProfile.getInt("hematologyId");
 				int otherLaboratoriesId = laboratoryProfile.getInt("otherLaboratoriesId");
@@ -70,14 +70,14 @@ public class GetAAPNHMDSPatientServlet extends HttpServlet {
 				int cytogeneticAAPNHId = laboratoryProfile.getInt("cytogenicaapnhID");
 				int cytogeneticMDSId = laboratoryProfile.getInt("cytogenicmdsID");
 				
-				ResultSet hematology = SQLOperations.getHematology(hematologyId, connection);
-				ResultSet otherLaboratories = SQLOperations.getOtherLaboratoriesAAPNHMDS(otherLaboratoriesId, connection);
-				ResultSet boneMarrowAspirate = SQLOperations.getBoneMarrowAspirate(boneMarrowAspirateId, connection);
-				ResultSet flowCytometry = SQLOperations.getFlowCytometry(flowCytometryId, connection);
-				ResultSet cytogeneticAAPNH = SQLOperations.getCytogeneticAAPNH(cytogeneticAAPNHId, connection);
-				ResultSet cytogeneticMDS = SQLOperations.getCytogeneticMDSAAPNH(cytogeneticMDSId, connection);
+				ResultSet hematology = SQLOperationsBaseline.getHematology(hematologyId, connection);
+				ResultSet otherLaboratories = SQLOperationsBaseline.getOtherLaboratoriesAAPNHMDS(otherLaboratoriesId, connection);
+				ResultSet boneMarrowAspirate = SQLOperationsBaseline.getBoneMarrowAspirate(boneMarrowAspirateId, connection);
+				ResultSet flowCytometry = SQLOperationsBaseline.getFlowCytometry(flowCytometryId, connection);
+				ResultSet cytogeneticAAPNH = SQLOperationsBaseline.getCytogeneticAAPNH(cytogeneticAAPNHId, connection);
+				ResultSet cytogeneticMDS = SQLOperationsBaseline.getCytogeneticMDSAAPNH(cytogeneticMDSId, connection);
 				
-				ResultSet treatment = SQLOperations.getTreatment(treatmentId, connection);
+				ResultSet treatment = SQLOperationsBaseline.getTreatment(treatmentId, connection);
 				
 				request.setAttribute("aaphsmdsPatientsList", aaphsmdsPatientsList);
 				request.setAttribute("patientInfo", patientInfo);

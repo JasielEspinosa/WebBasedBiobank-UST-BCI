@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utility.database.SQLOperations;
+import utility.database.SQLOperationsBaseline;
 
 @WebServlet("/ListCoagulationFollowUpServlet")
 public class ListCoagulationFollowUpServlet extends HttpServlet {
@@ -19,7 +19,7 @@ public class ListCoagulationFollowUpServlet extends HttpServlet {
 	private Connection connection;
 	
 	public void init() throws ServletException {
-		connection = SQLOperations.getConnection();
+		connection = SQLOperationsBaseline.getConnection();
 		
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -40,8 +40,8 @@ public class ListCoagulationFollowUpServlet extends HttpServlet {
 		int patientId = Integer.parseInt(request.getParameter("patientId"));
 		try {	
 			if (connection != null) {
-				ResultSet coagulationPatientsList = SQLOperations.getCoagulationBaselinePatients(connection); 			
-				ResultSet patientInfo = SQLOperations.getPatient(patientId, connection); 			
+				ResultSet coagulationPatientsList = SQLOperationsBaseline.getCoagulationBaselinePatients(connection); 			
+				ResultSet patientInfo = SQLOperationsBaseline.getPatient(patientId, connection); 			
 				
 				request.setAttribute("coagulationPatientsList", coagulationPatientsList);
 				request.setAttribute("patientInfo", patientInfo);

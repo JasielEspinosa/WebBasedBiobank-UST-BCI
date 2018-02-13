@@ -41,7 +41,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultVa
 
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain");
-		
+
 		int disease = 1;
 
 		// GENERAL DATA
@@ -339,7 +339,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultVa
 			System.out.println("Invalid connection FlowCytometryBean");
 		}
 
-		CytogeneticMolecularAAPNHBean cmaapnhb = BeanFactory.getCytogeneticAAPNHBean(cytogeneticAndMolecularAnalysisAAPNHResult);
+		CytogeneticMolecularAAPNHBean cmaapnhb = BeanFactory.getCytogeneticMolecularAAPNHBean(cytogeneticAndMolecularAnalysisAAPNHResult);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addCytogeneticMolecularAAPNH(cmaapnhb, connection, disease)) {
 				System.out.println("Successful insert CytogeneticAAPNHBean");
@@ -350,7 +350,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultVa
 			System.out.println("Invalid connection CytogeneticAAPNHBean");
 		}
 
-		CytogeneticMolecularMDSBean cmmdsb = BeanFactory.getCytogeneticMDSBean(cytogeneticAndMolecularAnalysisMDSResult);
+		CytogeneticMolecularMDSBean cmmdsb = BeanFactory.getCytogeneticMolecularMDSBean(cytogeneticAndMolecularAnalysisMDSResult);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addCytogeneticMolecularMDS(cmmdsb, connection, disease)) {
 				System.out.println("Successful insert CytogeneticMDSBean");
@@ -426,7 +426,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultVa
 		} else {
 			System.out.println("Invalid connection AddPatient");
 		}
-		
+
 		response.getWriter().write("Success");
 
 	}

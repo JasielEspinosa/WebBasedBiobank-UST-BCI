@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 
-import utility.database.SQLOperations;
+import utility.database.SQLOperationsBaseline;
 
 /**
  * Servlet implementation class LoadAAPHSMDSBaselineServlet
@@ -27,7 +27,7 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 
 	public void init()
 			throws ServletException {
-		connection = SQLOperations.getConnection();
+		connection = SQLOperationsBaseline.getConnection();
 
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -67,7 +67,7 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 			if (connection != null) {		
 				
 				//get patient table
-				ResultSet patientInfo = SQLOperations.getPatient(patientId, connection); 			
+				ResultSet patientInfo = SQLOperationsBaseline.getPatient(patientId, connection); 			
 				patientInfo.first();
 				
 				int generalDataId = patientInfo.getInt("generalDataId");
@@ -77,7 +77,7 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				//end get patient table 	
 				
 				//get general data
-				ResultSet generalData = SQLOperations.getGeneralData(generalDataId, connection);
+				ResultSet generalData = SQLOperationsBaseline.getGeneralData(generalDataId, connection);
 				generalData.first();
 				
 				patientData.put("lastName", generalData.getString("LastName"));
@@ -88,7 +88,7 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				patientData.put("dateOfEntry", generalData.getString("DateOfEntry"));
 				
 				int addressId = generalData.getInt("AddressID");
-				ResultSet address = SQLOperations.getAddress(addressId, connection);
+				ResultSet address = SQLOperationsBaseline.getAddress(addressId, connection);
 				address.first();
 				
 				String StreetAddress = address.getString("StreetAddress");
@@ -97,13 +97,13 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				patientData.put("address", StreetAddress + "," + City +"," +ZIPCode);
 
 				int tissueSpecimenId = generalData.getInt("TissueSpecimenID");
-				ResultSet tissueSpecimen = SQLOperations.getTissueSpecimen(tissueSpecimenId, connection);
+				ResultSet tissueSpecimen = SQLOperationsBaseline.getTissueSpecimen(tissueSpecimenId, connection);
 				tissueSpecimen.first();
 				
 				patientData.put("specimenType", tissueSpecimen.getString("TissueSpecimenName"));
 				
 				//get clinical data
-				ResultSet clinicalData = SQLOperations.getClinicalData(clinicalDataId, connection);
+				ResultSet clinicalData = SQLOperationsBaseline.getClinicalData(clinicalDataId, connection);
 				clinicalData.first();
 				
 				int classificationId = clinicalData.getInt("ClassificationID");
@@ -119,12 +119,12 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				patientData.put("previousInfectionSpecify", clinicalData.getString("PreviousInfection"));
 				patientData.put("previousHematologicDisorderSpecify", clinicalData.getString("PreviousHematologicDisorder"));
 				
-				ResultSet classification = SQLOperations.getClassification(classificationId, connection);
+				ResultSet classification = SQLOperationsBaseline.getClassification(classificationId, connection);
 				classification.first();
 				
 				patientData.put("severity", classification.getString("ClassificationName"));
 				
-				ResultSet physicalExam = SQLOperations.getPhysicalExam(physicalExamId, connection);
+				ResultSet physicalExam = SQLOperationsBaseline.getPhysicalExam(physicalExamId, connection);
 				physicalExam.first();
 				
 				patientData.put("height", physicalExam.getString("Height"));
@@ -133,20 +133,20 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				patientData.put("otherFindings", physicalExam.getString("OtherFindings"));
 				
 				//get family cancer
-				ResultSet familyCancer = SQLOperations.getFamilyCancer(clinicalDataId, connection);
+				ResultSet familyCancer = SQLOperationsBaseline.getFamilyCancer(clinicalDataId, connection);
 				familyCancer.first();
 				
 				patientData.put("relationshipToPatient", familyCancer.getString("RelationshipToPatient"));
 				patientData.put("cancerName", familyCancer.getString("CancerName"));
 				
 				//get other diseases
-				ResultSet otherDiseases = SQLOperations.getOtherDiseases(clinicalDataId, connection);
+				ResultSet otherDiseases = SQLOperationsBaseline.getOtherDiseases(clinicalDataId, connection);
 				otherDiseases.first();
 				
 				patientData.put("otherDiseasesInTheFamily", otherDiseases.getString("OtherDiseases"));
 				
 				//get medications
-				ResultSet medications = SQLOperations.getMedications(clinicalDataId, connection);
+				ResultSet medications = SQLOperationsBaseline.getMedications(clinicalDataId, connection);
 				medications.first();
 				
 				patientData.put("genericName", medications.getString("GenericName"));
@@ -154,7 +154,7 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				patientData.put("frequency", medications.getString("Frequency"));
 				
 				//get laboratory profile
-				ResultSet laboratoryProfile = SQLOperations.getLaboratoryProfile(laboratoryId, connection);
+				ResultSet laboratoryProfile = SQLOperationsBaseline.getLaboratoryProfile(laboratoryId, connection);
 				laboratoryProfile.first();
 				patientData.put("dateOfBloodCollection", laboratoryProfile.getString("DateOfBloodCollection"));
 				
@@ -165,7 +165,7 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				int cytogeneticAAPNHId = laboratoryProfile.getInt("cytogenicaapnhID");
 				int cytogeneticMDSId = laboratoryProfile.getInt("cytogenicmdsID");
 				
-				ResultSet hematology = SQLOperations.getHematology(hematologyId, connection);
+				ResultSet hematology = SQLOperationsBaseline.getHematology(hematologyId, connection);
 				hematology.first();
 				
 				patientData.put("hemoglobin", hematology.getString("Hemoglobin"));
@@ -182,7 +182,7 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				patientData.put("plateletCount", hematology.getString("plateletCount"));
 
 				
-				ResultSet otherLaboratories = SQLOperations.getOtherLaboratoriesAAPNHMDS(otherLaboratoriesId, connection);
+				ResultSet otherLaboratories = SQLOperationsBaseline.getOtherLaboratoriesAAPNHMDS(otherLaboratoriesId, connection);
 				otherLaboratories.first();
 				
 				patientData.put("creatinine", otherLaboratories.getString("Creatinine"));
@@ -203,28 +203,28 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				patientData.put("serumB12", otherLaboratories.getString("SerumB12"));
 				patientData.put("tsh", otherLaboratories.getString("TSH"));
 
-				ResultSet boneMarrowAspirate = SQLOperations.getBoneMarrowAspirate(boneMarrowAspirateId, connection);
+				ResultSet boneMarrowAspirate = SQLOperationsBaseline.getBoneMarrowAspirate(boneMarrowAspirateId, connection);
 				boneMarrowAspirate.first();
 				
 				patientData.put("boneMarrowAspirateDatePerformed", boneMarrowAspirate.getString("DatePerformed"));
 				patientData.put("boneMarrowAspirateDescription", boneMarrowAspirate.getString("Result"));
 
-				ResultSet flowCytometry = SQLOperations.getFlowCytometry(flowCytometryId, connection);
+				ResultSet flowCytometry = SQLOperationsBaseline.getFlowCytometry(flowCytometryId, connection);
 				flowCytometry.first();
 				
 				patientData.put("flowCytometryResult", flowCytometry.getString("Result"));
 	
-				ResultSet cytogeneticAAPNH = SQLOperations.getCytogeneticAAPNH(cytogeneticAAPNHId, connection);
+				ResultSet cytogeneticAAPNH = SQLOperationsBaseline.getCytogeneticAAPNH(cytogeneticAAPNHId, connection);
 				cytogeneticAAPNH.first();
 				
 				patientData.put("cytogeneticAndMolecularAnalysisAAPNHResult", cytogeneticAAPNH.getString("Result"));
 	
-				ResultSet cytogeneticMDS = SQLOperations.getCytogeneticMDSAAPNH(cytogeneticMDSId, connection);
+				ResultSet cytogeneticMDS = SQLOperationsBaseline.getCytogeneticMDSAAPNH(cytogeneticMDSId, connection);
 				cytogeneticMDS.first();
 				
 				patientData.put("cytogeneticAndMolecularAnalysisMDSResult", cytogeneticMDS.getString("Result"));
 	
-				ResultSet treatment = SQLOperations.getTreatment(treatmentId, connection);
+				ResultSet treatment = SQLOperationsBaseline.getTreatment(treatmentId, connection);
 				treatment.first();
 				
 				patientData.put("transplantCandidate", treatment.getString("Transplant"));
@@ -233,12 +233,12 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				int chemoMedicationId = treatment.getInt("ChemoMedicationID");
 				int modeOfTreatmentId = treatment.getInt("ModeOfTreatmentID");
 				
-				ResultSet chemoMedication = SQLOperations.getChemoMedication(chemoMedicationId, connection);
+				ResultSet chemoMedication = SQLOperationsBaseline.getChemoMedication(chemoMedicationId, connection);
 				chemoMedication.first();
 				
 				patientData.put("medications", chemoMedication.getString("MedicationName"));
 				
-				ResultSet modeOfTreatment = SQLOperations.getModeOfTreatment(modeOfTreatmentId, connection);
+				ResultSet modeOfTreatment = SQLOperationsBaseline.getModeOfTreatment(modeOfTreatmentId, connection);
 				modeOfTreatment.first();
 				
 				patientData.put("modeOfTreatment", modeOfTreatment.getString("ModeOfTreatment"));

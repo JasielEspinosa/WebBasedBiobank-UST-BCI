@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utility.database.SQLOperations;
+import utility.database.SQLOperationsBaseline;
 
 @WebServlet("/ListAAPHSMDSBaselinePatientsServlet")
 public class ListAAPHSMDSBaselinePatientsServlet extends HttpServlet {
@@ -19,7 +19,7 @@ public class ListAAPHSMDSBaselinePatientsServlet extends HttpServlet {
 	private Connection connection;
 	
 	public void init() throws ServletException {
-		connection = SQLOperations.getConnection();
+		connection = SQLOperationsBaseline.getConnection();
 		
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -39,7 +39,7 @@ public class ListAAPHSMDSBaselinePatientsServlet extends HttpServlet {
 		
 		try {	
 			if (connection != null) {
-				ResultSet aaphsmdsPatientsList = SQLOperations.getAAPHSMDSBaselinePatients(connection); 			
+				ResultSet aaphsmdsPatientsList = SQLOperationsBaseline.getAAPHSMDSBaselinePatients(connection); 			
 				request.setAttribute("aaphsmdsPatientsList", aaphsmdsPatientsList);
 				getServletContext().getRequestDispatcher("/aaphsmds-baseline.jsp")
 					.forward(request, response);

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utility.database.SQLOperations;
+import utility.database.SQLOperationsBaseline;
 
 @WebServlet("/ListCoagulationPatientsServlet")
 public class ListCoagulationPatientsServlet extends HttpServlet {
@@ -19,7 +19,7 @@ public class ListCoagulationPatientsServlet extends HttpServlet {
 	private Connection connection;
 	
 	public void init() throws ServletException {
-		connection = SQLOperations.getConnection();
+		connection = SQLOperationsBaseline.getConnection();
 		
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -39,7 +39,7 @@ public class ListCoagulationPatientsServlet extends HttpServlet {
 		
 		try {	
 			if (connection != null) {
-				ResultSet coagulationPatientsList = SQLOperations.getCoagulationBaselinePatients(connection); 			
+				ResultSet coagulationPatientsList = SQLOperationsBaseline.getCoagulationBaselinePatients(connection); 			
 				request.setAttribute("coagulationPatientsList", coagulationPatientsList);
 				getServletContext().getRequestDispatcher("/coagulationdisease-baseline.jsp")
 					.forward(request, response);

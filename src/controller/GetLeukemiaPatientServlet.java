@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import utility.database.SQLOperations;
+import utility.database.SQLOperationsBaseline;
 
 @WebServlet("/GetLeukemiaPatientServlet")
 public class GetLeukemiaPatientServlet extends HttpServlet {
@@ -19,7 +19,7 @@ public class GetLeukemiaPatientServlet extends HttpServlet {
 	private Connection connection;
 	
 	public void init() throws ServletException {
-		connection = SQLOperations.getConnection();
+		connection = SQLOperationsBaseline.getConnection();
 		
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -40,27 +40,27 @@ public class GetLeukemiaPatientServlet extends HttpServlet {
 		int patientId = Integer.parseInt(request.getParameter("patientId"));
 		try {	
 			if (connection != null) {
-				ResultSet leukemiaPatientsList = SQLOperations.getLeukemiaBaselinePatients(connection); 			
-				ResultSet patientInfo = SQLOperations.getPatient(patientId, connection); 			
+				ResultSet leukemiaPatientsList = SQLOperationsBaseline.getLeukemiaBaselinePatients(connection); 			
+				ResultSet patientInfo = SQLOperationsBaseline.getPatient(patientId, connection); 			
 				patientInfo.first();
 				int generalDataId = patientInfo.getInt("generalDataId");
 				int clinicalDataId = patientInfo.getInt("clinicalDataId");
 				int laboratoryId = patientInfo.getInt("laboratoryId");
 				int treatmentId = patientInfo.getInt("treatmentId");
 				
-				ResultSet generalData = SQLOperations.getGeneralData(generalDataId, connection);
+				ResultSet generalData = SQLOperationsBaseline.getGeneralData(generalDataId, connection);
 				generalData.first();
 				int addressId = generalData.getInt("addressId");
 				
-				ResultSet address = SQLOperations.getAddress(addressId, connection);
+				ResultSet address = SQLOperationsBaseline.getAddress(addressId, connection);
 				
-				ResultSet clinicalData = SQLOperations.getClinicalData(clinicalDataId, connection);
+				ResultSet clinicalData = SQLOperationsBaseline.getClinicalData(clinicalDataId, connection);
 				clinicalData.first();
 				int physicalExamId = clinicalData.getInt("physicalExamId");
 				
-				ResultSet physicalExam = SQLOperations.getPhysicalExam(physicalExamId, connection);
+				ResultSet physicalExam = SQLOperationsBaseline.getPhysicalExam(physicalExamId, connection);
 				
-				ResultSet laboratoryProfile = SQLOperations.getLaboratoryProfile(laboratoryId, connection);
+				ResultSet laboratoryProfile = SQLOperationsBaseline.getLaboratoryProfile(laboratoryId, connection);
 				laboratoryProfile.first();
 				int hematologyId = laboratoryProfile.getInt("hematologyId");
 				int bloodChemistryId = laboratoryProfile.getInt("bloodChemistryId");
@@ -69,14 +69,14 @@ public class GetLeukemiaPatientServlet extends HttpServlet {
 				int flowCytometryId = laboratoryProfile.getInt("flowCytometry");
 				int cytogeneticAndMolecularAnalysisId = laboratoryProfile.getInt("cytogenicAAPNHId");
 				
-				ResultSet hematology = SQLOperations.getHematology(hematologyId, connection);
-				ResultSet bloodChemistry = SQLOperations.getBloodChemistry(bloodChemistryId, connection);
-				ResultSet imagingStudies = SQLOperations.getImagingStudies(imagingStudiesId, connection);
-				ResultSet boneMarrowAspirate = SQLOperations.getBoneMarrowAspirate(boneMarrowAspirateId, connection);
-				ResultSet flowCytometry = SQLOperations.getFlowCytometry(flowCytometryId, connection);
-				ResultSet cytogeneticAndMolecularAnalysis = SQLOperations.getCytogeneticAAPNH(cytogeneticAndMolecularAnalysisId, connection);
+				ResultSet hematology = SQLOperationsBaseline.getHematology(hematologyId, connection);
+				ResultSet bloodChemistry = SQLOperationsBaseline.getBloodChemistry(bloodChemistryId, connection);
+				ResultSet imagingStudies = SQLOperationsBaseline.getImagingStudies(imagingStudiesId, connection);
+				ResultSet boneMarrowAspirate = SQLOperationsBaseline.getBoneMarrowAspirate(boneMarrowAspirateId, connection);
+				ResultSet flowCytometry = SQLOperationsBaseline.getFlowCytometry(flowCytometryId, connection);
+				ResultSet cytogeneticAndMolecularAnalysis = SQLOperationsBaseline.getCytogeneticAAPNH(cytogeneticAndMolecularAnalysisId, connection);
 				
-				ResultSet therapyAndResponse = SQLOperations.getTreatment(treatmentId, connection);
+				ResultSet therapyAndResponse = SQLOperationsBaseline.getTreatment(treatmentId, connection);
 				therapyAndResponse.first();
 				System.out.println("Mode of treatment: " + therapyAndResponse.getInt("modeOfTreatmentId"));
 				

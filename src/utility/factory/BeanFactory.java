@@ -199,13 +199,13 @@ public class BeanFactory {
 		return cmb;
 	}
 
-	public static CytogeneticMolecularAAPNHBean getCytogeneticAAPNHBean(String result) {
+	public static CytogeneticMolecularAAPNHBean getCytogeneticMolecularAAPNHBean(String result) {
 		CytogeneticMolecularAAPNHBean cb = new CytogeneticMolecularAAPNHBean();
 		cb.setResult(result);
 		return cb;
 	}
 
-	public static CytogeneticMolecularMDSBean getCytogeneticMDSBean(String result) {
+	public static CytogeneticMolecularMDSBean getCytogeneticMolecularMDSBean(String result) {
 		CytogeneticMolecularMDSBean cb = new CytogeneticMolecularMDSBean();
 		cb.setResult(result);
 		return cb;
