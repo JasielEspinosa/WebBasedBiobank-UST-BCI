@@ -444,7 +444,7 @@
                                        </div>
                                     </div>
                                     <!-- Alcohol Intake History -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="alcoholIntakeHistory" style="display: none;">
                                        <label class="control-label col-lg-3">Alcohol intake history </label>
                                        <div class="col-sm-9">
                                           <div class="radio">
@@ -455,7 +455,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="alcoholIntakeSpecify" style="display: none;">
                                        <label class="control-label col-lg-3">Specify</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="alcoholIntakeSpecify" />
@@ -473,7 +473,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="chemicalExposureSpecify" style="display: none;">
                                        <label class="control-label col-lg-3">Specify</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="chemicalExposureSpecify" />
