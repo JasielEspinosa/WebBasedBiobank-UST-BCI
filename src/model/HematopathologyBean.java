@@ -2,20 +2,22 @@ package model;
 
 public class HematopathologyBean {
 	private String datePerformed;
-	private String results;
-	
+	private String result;
+
 	public String getDatePerformed() {
 		return datePerformed;
 	}
+
 	public void setDatePerformed(String datePerformed) {
 		this.datePerformed = datePerformed;
 	}
-	public String getResults() {
-		return results;
+
+	public String getResult() {
+		return result;
 	}
-	public void setResults(String results) {
-		this.results = results;
+
+	public void setResult(String result) {
+		this.result = result;
 	}
-	
-	
+
 }

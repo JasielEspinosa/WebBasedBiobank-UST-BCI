@@ -1,42 +1,68 @@
 package model;
 
 public class MedicalEventsBean {
-	private String newMedicationForHematologicMalignancy;
-	private String newConcomitantMedicationForOtherDisease;
-	private String undergoAnyProcedure;
-	private String complicationForChemotherapy;
-	private String selfAdministerFactorConcentrates;
-	
-	public String getNewMedicationForHematologicMalignancy() {
-		return newMedicationForHematologicMalignancy;
+	private String HematologicMalignancy;
+	private String OtherDiseaseMedication;
+	private String FactorConcentrate;
+	private String FactorConcentrateDates;
+	private double FactorConcentrateDose;
+	private String ProcedureIntervention;
+	private String Chemotherapy;
+
+	public String getHematologicMalignancy() {
+		return HematologicMalignancy;
 	}
-	public void setNewMedicationForHematologicMalignancy(String newMediationForHematologicMalignancy) {
-		this.newMedicationForHematologicMalignancy = newMediationForHematologicMalignancy;
+
+	public void setHematologicMalignancy(String hematologicMalignancy) {
+		HematologicMalignancy = hematologicMalignancy;
 	}
-	public String getNewConcomitantMedicationForOtherDisease() {
-		return newConcomitantMedicationForOtherDisease;
+
+	public String getOtherDiseaseMedication() {
+		return OtherDiseaseMedication;
 	}
-	public void setNewConcomitantMedicationForOtherDisease(String newConcomitantMEdicationForOtherDisease) {
-		this.newConcomitantMedicationForOtherDisease = newConcomitantMEdicationForOtherDisease;
+
+	public void setOtherDiseaseMedication(String otherDiseaseMedication) {
+		OtherDiseaseMedication = otherDiseaseMedication;
 	}
-	public String getUndergoAnyProcedure() {
-		return undergoAnyProcedure;
+
+	public String getFactorConcentrate() {
+		return FactorConcentrate;
 	}
-	public void setUndergoAnyProcedure(String undergoAnyProcedure) {
-		this.undergoAnyProcedure = undergoAnyProcedure;
+
+	public void setFactorConcentrate(String factorConcentrate) {
+		FactorConcentrate = factorConcentrate;
 	}
-	public String getComplicationForChemotherapy() {
-		return complicationForChemotherapy;
+
+	public String getFactorConcentrateDates() {
+		return FactorConcentrateDates;
 	}
-	public void setComplicationForChemotherapy(String complicationForChemotherapy) {
-		this.complicationForChemotherapy = complicationForChemotherapy;
+
+	public void setFactorConcentrateDates(String factorConcentrateDates) {
+		FactorConcentrateDates = factorConcentrateDates;
 	}
-	public String getSelfAdministerFactorConcentrates() {
-		return selfAdministerFactorConcentrates;
+
+	public double getFactorConcentrateDose() {
+		return FactorConcentrateDose;
 	}
-	public void setSelfAdministerFactorConcentrates(String selfAdministerFactorConcentrates) {
-		this.selfAdministerFactorConcentrates = selfAdministerFactorConcentrates;
+
+	public void setFactorConcentrateDose(double factorConcentrateDose) {
+		FactorConcentrateDose = factorConcentrateDose;
 	}
-	
-	
+
+	public String getProcedureIntervention() {
+		return ProcedureIntervention;
+	}
+
+	public void setProcedureIntervention(String procedureIntervention) {
+		ProcedureIntervention = procedureIntervention;
+	}
+
+	public String getChemotherapy() {
+		return Chemotherapy;
+	}
+
+	public void setChemotherapy(String chemotherapy) {
+		Chemotherapy = chemotherapy;
+	}
+
 }

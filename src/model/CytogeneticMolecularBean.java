@@ -1,6 +1,6 @@
 package model;
 
-public class CytogeneticAAPNHBean {
+public class CytogeneticMolecularBean {
 	private String result;
 
 	public String getResult() {
@@ -10,5 +10,6 @@ public class CytogeneticAAPNHBean {
 	public void setResult(String result) {
 		this.result = result;
 	}
+	
 	
 }

@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.*;
-import utility.database.SQLOperations;
+import utility.database.SQLOperationsBaseline;
 import utility.factory.BeanFactory;
 
 @WebServlet("/AddMyeloBaselineServlet")
@@ -19,9 +19,8 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 	private Connection connection;
 
-	public void init()
-			throws ServletException {
-		connection = SQLOperations.getConnection();
+	public void init() throws ServletException {
+		connection = SQLOperationsBaseline.getConnection();
 
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -126,7 +125,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
 		if (connection != null) {
-			if (SQLOperations.addAddress(ab, connection, disease)) {
+			if (SQLOperationsBaseline.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert AddressBean");
 			} else {
 				System.out.println("Failed insert AddressBean");
@@ -137,7 +136,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		TissueSpecimenBean tsb = BeanFactory.getTissueSpecimenBean(specimenType);
 		if (connection != null) {
-			if (SQLOperations.addTissueSpecimenData(tsb, connection, disease)) {
+			if (SQLOperationsBaseline.addTissueSpecimenData(tsb, connection, disease)) {
 				System.out.println("Successful insert TissueSpecimenBean");
 			} else {
 				System.out.println("Failed insert TissueSpecimenBean");
@@ -149,7 +148,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 		GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, middleInitial, firstName, gender, dateOfBirth,
 				dateOfEntry);
 		if (connection != null) {
-			if (SQLOperations.addGeneralData(gdb, connection, disease)) {
+			if (SQLOperationsBaseline.addGeneralData(gdb, connection, disease)) {
 				System.out.println("Successful insert GeneralDataBean");
 			} else {
 				System.out.println("Failed insert GeneralDataBean");
@@ -160,7 +159,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		PrognosticRiskScoringBean prsb = BeanFactory.getPrognosticRiskScoringBean(prognosticRiskScoring);
 		if (connection != null) {
-			if (SQLOperations.addPrognosticRiskScoring(prsb, connection, disease)) {
+			if (SQLOperationsBaseline.addPrognosticRiskScoring(prsb, connection, disease)) {
 				System.out.println("Successful insert PrognosticRiskScoringBean");
 			} else {
 				System.out.println("Failed insert PrognosticRiskScoringBean");
@@ -172,7 +171,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, splenomegaly, hepatomegaly,
 				lymphadenopathies, false, false, thrombosisHistorySpecify, "", otherFindings);
 		if (connection != null) {
-			if (SQLOperations.addPhysicalExam(peb, connection, disease)) {
+			if (SQLOperationsBaseline.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");
 			} else {
 				System.out.println("Failed insert PhysicalExamBean");
@@ -183,7 +182,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		RiskScoreBean rsb = BeanFactory.getRiskScoreBean(riskScore);
 		if (connection != null) {
-			if (SQLOperations.addRiskScore(rsb, connection, disease)) {
+			if (SQLOperationsBaseline.addRiskScore(rsb, connection, disease)) {
 				System.out.println("Successful insert LaboratoryProfileBean");
 			} else {
 				System.out.println("Failed insert LaboratoryProfileBean");
@@ -193,10 +192,10 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 		}
 
 		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, "", "",
-				chiefComplaint, constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify,
+				chiefComplaint, "", constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify,
 				alchoholIntakeSpecify, chemicalExposureSpecify, "", "", otherFindings);
 		if (connection != null) {
-			if (SQLOperations.addClinicalData(cdb, connection, disease)) {
+			if (SQLOperationsBaseline.addClinicalData(cdb, connection, disease)) {
 				System.out.println("Successful insert ClinicalDataBean");
 			} else {
 				System.out.println("Failed insert ClinicalDataBean");
@@ -207,7 +206,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, cancerName);
 		if (connection != null) {
-			if (SQLOperations.addFamilyCancer(famcb, connection, disease)) {
+			if (SQLOperationsBaseline.addFamilyCancer(famcb, connection, disease)) {
 				System.out.println("Successful insert FamilyCancerBean");
 			} else {
 				System.out.println("Failed insert FamilyCancerBean");
@@ -218,7 +217,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		OtherDiseasesBean odb = BeanFactory.getOtherDiseasesBean(otherDiseasesInTheFamily);
 		if (connection != null) {
-			if (SQLOperations.addOtherDiseases(odb, connection, disease)) {
+			if (SQLOperationsBaseline.addOtherDiseases(odb, connection, disease)) {
 				System.out.println("Successful insert OtherDiseasesBean");
 			} else {
 				System.out.println("Failed insert OtherDiseasesBean");
@@ -229,7 +228,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
 		if (connection != null) {
-			if (SQLOperations.addMedications(mb, connection, disease)) {
+			if (SQLOperationsBaseline.addMedications(mb, connection, disease)) {
 				System.out.println("Successful insert MedicationsBean");
 			} else {
 				System.out.println("Failed insert MedicationsBean");
@@ -241,7 +240,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils,
 				lymphocytes, monocytes, eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
 		if (connection != null) {
-			if (SQLOperations.addHematology(hb, connection, disease)) {
+			if (SQLOperationsBaseline.addHematology(hb, connection, disease)) {
 				System.out.println("Successful insert HematologyBean");
 			} else {
 				System.out.println("Failed insert HematologyBean");
@@ -253,7 +252,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 		BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, creatinine, uricAcid, sgot, sgpt, ldh, epoLevel,
 				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
 		if (connection != null) {
-			if (SQLOperations.addBloodChemistry(bcb, connection, disease)) {
+			if (SQLOperationsBaseline.addBloodChemistry(bcb, connection, disease)) {
 				System.out.println("Successful insert BloodChemistryBean");
 			} else {
 				System.out.println("Failed insert BloodChemistryBean");
@@ -265,7 +264,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 		BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed,
 				boneMarrowAspirateDescription);
 		if (connection != null) {
-			if (SQLOperations.addBoneMarrowAspirate(bmab, connection, disease)) {
+			if (SQLOperationsBaseline.addBoneMarrowAspirate(bmab, connection, disease)) {
 				System.out.println("Successful insert BoneMarrowAspirateBean");
 			} else {
 				System.out.println("Failed insert BoneMarrowAspirateBean");
@@ -274,20 +273,20 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection BoneMarrowAspirateBean");
 		}
 
-		MolecularAnalysisBean mab = BeanFactory.getMolecularAnalysisBean(molecularAnalysisResult);
+		CytogeneticMolecularBean cmb = BeanFactory.getCytogeneticMolecularBean(molecularAnalysisResult);
 		if (connection != null) {
-			if (SQLOperations.addMolecularAnalysis(mab, connection, disease)) {
-				System.out.println("Successful insert MolecularAnalysisBean");
+			if (SQLOperationsBaseline.addCytogeneticMolecular(cmb, connection, disease)) {
+				System.out.println("Successful insert CytogeneticMolecularBean");
 			} else {
-				System.out.println("Failed insert MolecularAnalysisBean");
+				System.out.println("Failed insert CytogeneticMolecularBean");
 			}
 		} else {
-			System.out.println("Invalid connection MolecularAnalysisBean");
+			System.out.println("Invalid connection CytogeneticMolecularBean");
 		}
 
 		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 		if (connection != null) {
-			if (SQLOperations.addLaboratoryProfile(lpb, connection, disease)) {
+			if (SQLOperationsBaseline.addLaboratoryProfile(lpb, connection, disease)) {
 				System.out.println("Successful insert LaboratoryProfileBean");
 			} else {
 				System.out.println("Failed insert LaboratoryProfileBean");
@@ -298,7 +297,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, modeOfTreatment);
 		if (connection != null) {
-			if (SQLOperations.addModeOfTreatment(motb, connection, disease)) {
+			if (SQLOperationsBaseline.addModeOfTreatment(motb, connection, disease)) {
 				System.out.println("Successful insert ModeOfTreatmentBean");
 			} else {
 				System.out.println("Failed insert ModeOfTreatmentBean");
@@ -307,9 +306,9 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection ModeOfTreatmentBean");
 		}
 
-		ChemotherapyMedicationsBean cmb = BeanFactory.getChemotherapyMedicationsBean(medications);
+		ChemotherapyMedicationsBean chmb = BeanFactory.getChemotherapyMedicationsBean(medications);
 		if (connection != null) {
-			if (SQLOperations.addChemotherapyMedications(cmb, connection, disease)) {
+			if (SQLOperationsBaseline.addChemotherapyMedications(chmb, connection, disease)) {
 				System.out.println("Successful insert ChemotherapyMedicationsBean");
 			} else {
 				System.out.println("Failed insert ChemotherapyMedicationsBean");
@@ -320,7 +319,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, "", "", "", "", 0, "", "");
 		if (connection != null) {
-			if (SQLOperations.addTreatment(tb, connection, disease)) {
+			if (SQLOperationsBaseline.addTreatment(tb, connection, disease)) {
 				System.out.println("Successful insert TreatmentBean");
 			} else {
 				System.out.println("Failed insert TreatmentBean");
@@ -329,9 +328,9 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 			System.out.println("Invalid connection TreatmentBean");
 		}
 
-		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("");
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("", "", "");
 		if (connection != null) {
-			if (SQLOperations.addDiseaseStatus(dsb, connection, disease)) {
+			if (SQLOperationsBaseline.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert DiseaseStatusBean");
 			} else {
 				System.out.println("Failed insert DiseaseStatusBean");
@@ -342,7 +341,7 @@ public class AddMyeloBaselineServlet extends HttpServlet {
 
 		// ADD PATIENT
 		if (connection != null) {
-			if (SQLOperations.addPatient(connection, disease)) {
+			if (SQLOperationsBaseline.addPatient(connection, disease)) {
 				System.out.println("Successful insert PatientBean");
 			} else {
 				System.out.println("Failed insert PatientBean");

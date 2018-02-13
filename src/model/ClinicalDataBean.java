@@ -4,12 +4,9 @@ public class ClinicalDataBean {
 	private String dateOfVisit;
 	private String diagnosis;
 	private String otherDiagnosis;
-	private int prognosticRiskScoringId;
-	private int classificationId;
-	private int ISSStagingId;
-	private int severityId;
 	private String stageOfDisease;
 	private String chiefComplaint;
+	private String currentSymptoms;
 	private String constitutionalSymptoms;
 	private String otherSymptoms;
 	private String FamilyHistoryOfCancer;
@@ -47,38 +44,6 @@ public class ClinicalDataBean {
 		this.otherDiagnosis = otherDiagnosis;
 	}
 
-	public int getPrognosticRiskScoringId() {
-		return prognosticRiskScoringId;
-	}
-
-	public void setPrognosticRiskScoringId(int prognosticRiskScoringId) {
-		this.prognosticRiskScoringId = prognosticRiskScoringId;
-	}
-
-	public int getClassificationId() {
-		return classificationId;
-	}
-
-	public void setClassificationId(int classificationId) {
-		this.classificationId = classificationId;
-	}
-
-	public int getISSStagingId() {
-		return ISSStagingId;
-	}
-
-	public void setISSStagingId(int iSSStagingId) {
-		ISSStagingId = iSSStagingId;
-	}
-
-	public int getSeverityId() {
-		return severityId;
-	}
-
-	public void setSeverityId(int severityId) {
-		this.severityId = severityId;
-	}
-
 	public String getStageOfDisease() {
 		return stageOfDisease;
 	}
@@ -93,6 +58,14 @@ public class ClinicalDataBean {
 
 	public void setChiefComplaint(String chiefComplaint) {
 		this.chiefComplaint = chiefComplaint;
+	}
+
+	public String getCurrentSymptoms() {
+		return currentSymptoms;
+	}
+
+	public void setCurrentSymptoms(String currentSymptoms) {
+		this.currentSymptoms = currentSymptoms;
 	}
 
 	public String getConstitutionalSymptoms() {

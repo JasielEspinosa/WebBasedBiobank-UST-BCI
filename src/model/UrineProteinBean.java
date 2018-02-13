@@ -7,7 +7,7 @@ public class UrineProteinBean {
 		return result;
 	}
 
-	public void setResults(String result) {
+	public void setResult(String result) {
 		this.result = result;
 	}
 	

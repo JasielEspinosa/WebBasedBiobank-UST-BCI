@@ -4,17 +4,14 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>USTH - Plasma Baseline</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/usthlogo.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <!-- CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link href="css/style.css" rel="stylesheet">
@@ -23,48 +20,42 @@
 <link href="css/responsive.css" rel="stylesheet">
 <link rel="stylesheet" href="fonts/open-sans.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
-
 <!-- JS -->
 <script src="js/jquery-ui.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <script src="js/jquery.min-2.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/sidebar.js"></script>
+<script src="js/radio-showhide.js" type="text/javascript"></script>
+<script src="js/JsBarcode.all.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
-
 </head>
 <body>
-
    <!-- Header -->
    <div class="navbar-fixed-top">
-
       <!-- Banner -->
       <div class="row header bg-navyblue">
          <div class="col-sm-1">
             <img src="images/usthlogo.png" class="header__logo--size header__logo--position">
          </div>
-         <div
-            class="col-sm-11 header__bannertitle--visibility header__bannertitle--position header__bannertitle--spacing">
+         <div class="col-sm-11 header__bannertitle--visibility header__bannertitle--position header__bannertitle--spacing">
             <h4>UST-BCI Section of Clinical Hematology</h4>
             <p>Hematologic Disease Database</p>
          </div>
       </div>
       <!-- End of Banner -->
-
       <!-- Navbar -->
       <nav class="navbar" role="navigation">
          <div class="container-fluid navbar__nav-item--hover">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                  data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                     class="icon-bar"></span>
                </button>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav">
@@ -76,39 +67,33 @@
                   <li><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
                   <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
-
                   <!-- Dropdown -->
-                  <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                     role="button" aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span
-                        class="caret"></span>
+                  <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                     aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
                   </a>
                      <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li><a style="font-weight: bold;" href="audittrail.jsp"><i
-                              class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail</a></li>
+                        <li><a style="font-weight: bold;" href="audittrail.jsp"><i class="fas fa-file-alt dropdown-icons--margin"></i>
+                              Audit Trail</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="profile.jsp"><i
-                              class="fas fa-user-md dropdown-icons--margin"></i> Profile</a></li>
+                        <li><a style="font-weight: bold;" href="profile.jsp"><i class="fas fa-user-md dropdown-icons--margin"></i>
+                              Profile</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="usermanagement.jsp"><i
-                              class="fas fa-wrench dropdown-icons--margin"></i> Settings</a></li>
+                        <li><a style="font-weight: bold;" href="usermanagement.jsp"><i class="fas fa-wrench dropdown-icons--margin"></i>
+                              Settings</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="login.jsp"><i
-                              class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout</a></li>
+                        <li><a style="font-weight: bold;" href="login.jsp"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                              Logout</a></li>
                      </ul></li>
                   <!-- End of Dropdown -->
-
                </ul>
             </div>
             <!-- /.navbar-collapse -->
          </div>
          <!-- /.container-fluid -->
       </nav>
-
    </div>
    <!-- End of header -->
-
    <!-- Main Content -->
-
    <!-- Sidebar -->
    <div class="row-offcanvas row-offcanvas-left">
       <div id="sidebar" class="sidebar-offcanvas">
@@ -124,29 +109,25 @@
             </div>
             <!-- End of Search Box -->
             <ul class="nav nav-pills nav-stacked sidebar__searchbox--border">
-
             </ul>
             <!-- Add Patient Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="addPatientLeukemia" type="button"
-                     class="btn bg-yellow disabled sidebar__addptngenrep--border" data-toggle="modal"
-                     data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
+                  <button id="addPatientLeukemia" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border"
+                     data-toggle="modal" data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
                </div>
             </div>
             <!-- End of Add Patient Button -->
             <!-- Generate Report Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="generateReport" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border"
-                     data-toggle="modal" data-target="#usermanagement__popup" data-whatever="@mdo">Generate
-                     Report</button>
+                  <button id="generateReport" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border" data-toggle="modal"
+                     data-target="#usermanagement__popup" data-whatever="@mdo">Generate Report</button>
                </div>
             </div>
             <!-- End of Generate Report Button -->
          </div>
       </div>
-
       <div id="main">
          <div class="col-md-12">
             <p class="visible-xs">
@@ -154,65 +135,76 @@
                   <i class="glyphicon glyphicon-chevron-left"></i>
                </button>
             </p>
-
-
             <!-- End of Sidebar -->
-
             <form action="AddPlasmaCellBaselineServlet" method="post">
-
                <!-- Forms Container -->
                <div class="col-md-12">
                   <div class="col-md-12 forms">
-
                      <!-- Buttons Container -->
                      <div class="row button-container buttons__firsthalf--position ">
                         <div class="col-sm-6 buttons__firsthalf-position ">
-                           <a href="plasmacell-baseline.jsp" type="button" class="btn bg-yellow button-border"
-                              id="baselineBtn">Baseline</a> <a href="plasmacell-followup.jsp" type="button"
-                              class="btn bg-yellow button-border" id="followUpBtn">Follow Up</a>
+                           <a href="plasmacell-baseline.jsp" type="button" class="btn bg-yellow button-border" id="baselineBtn">Baseline</a>
+                           <a href="plasmacell-followup.jsp" type="button" class="btn bg-yellow button-border" id="followUpBtn">Follow
+                              Up</a>
                         </div>
                         <div class="col-sm-6 text-right btn-toolbar">
-                           <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Patient
-                              Statistics</a> <a href="#" type="button" class="btn bg-yellow button-border"
-                              id="edtPatientBtn">Edit Patient</a> <a href="#" type="button"
-                              class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
+                           <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Patient Statistics</a> <a
+                              href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Edit Patient</a> <a href="#"
+                              type="button" class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
                         </div>
                      </div>
                      <!-- End of Buttons Container -->
-
                      <!-- Forms -->
                      <div class="row">
-
                         <!-- General -->
                         <div class="col-md-5">
-
                            <!-- General Tab -->
                            <ul class="nav nav-tabs">
                               <li class="active"><a data-toggle="tab" href="#general">General</a></li>
                            </ul>
                            <!-- End of General Tab -->
-
                            <!-- General Tab Content -->
                            <div class="tab-content tab-content__border">
                               <div id="general" class="tab-pane fade in active">
-
                                  <!-- Form -->
                                  <div class="form-horizontal">
-
                                     <!-- Patient ID Number -->
                                     <div class="form-group">
                                        <div class="col-sm-1">
-                                          <a alt="Barcode Icon" href="#"> <img alt="Barcode Icon"
-                                             src="images/barcode.png"
+                                          <a id="" data-toggle="modal" data-target="#patientBarcode_popup" href="#" alt="Barcode Icon">
+                                             <img alt="Barcode Icon" src="images/barcode.png"
                                              class="form__barcodeicon--size body__barcodebtn--style">
                                           </a>
                                        </div>
+                                       <!-- Barcode Pop-Up -->
+                                       <div id="patientBarcode_popup" class="modal fade centered-modal" tabindex="-1" role="dialog"
+                                          aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+                                          <div class="modal-dialog">
+                                             <div class="modal-content">
+                                                <div class="modal-header">
+                                                   <button type="button" class="close" data-dismiss="modal" onclick="closeModal()">
+                                                      <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                                                   </button>
+                                                   <h4 class="modal-title" id="exampleModalLabel">Patient Barcode:</h4>
+                                                   <div id="toPrint">
+                                                      <div align="center">
+                                                         <img id="patientBarcode" />
+                                                      </div>
+                                                   </div>
+                                                   <a href="#" onclick="printBarcode('toPrint')">PRINT</a>
+                                                </div>
+                                                <div class="modal-footer">
+                                                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!-- End of Barcode Pop-Up -->
                                        <label class="control-label col-sm-4">Patient ID Number</label>
                                        <div class="col-sm-7">
                                           <input type="text" class="form-control" name="patientIDNumber">
                                        </div>
                                     </div>
-
                                     <!-- Last Name -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Last Name</label>
@@ -220,7 +212,6 @@
                                           <input type="text" class="form-control" name="lastName">
                                        </div>
                                     </div>
-
                                     <!-- First Name -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">First Name</label>
@@ -228,7 +219,6 @@
                                           <input type="text" class="form-control" name="firstName">
                                        </div>
                                     </div>
-
                                     <!-- Middle Initial -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Middle Initial</label>
@@ -236,7 +226,6 @@
                                           <input type="text" class="form-control" name="middleInitial">
                                        </div>
                                     </div>
-
                                     <!-- Gender -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Gender</label>
@@ -249,7 +238,6 @@
                                           </div>
                                        </div>
                                     </div>
-
                                     <!-- DOB -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Date of Birth</label>
@@ -257,7 +245,6 @@
                                           <input type="date" class="form-control" name="dateOfBirth">
                                        </div>
                                     </div>
-
                                     <!-- Address -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Address</label>
@@ -265,7 +252,6 @@
                                           <input type="text" class="form-control" name="address">
                                        </div>
                                     </div>
-
                                     <!-- Civil Status -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Civil Status</label>
@@ -273,7 +259,6 @@
                                           <input type="text" class="form-control" name="civilStatus">
                                        </div>
                                     </div>
-
                                     <!-- DOE -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Date of Entry</label>
@@ -281,7 +266,6 @@
                                           <input type="date" class="form-control" name="dateOfEntry">
                                        </div>
                                     </div>
-
                                     <!-- Tissue Specimen Collected -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Tissue Specimen Collected</label>
@@ -294,9 +278,8 @@
                                           </div>
                                        </div>
                                     </div>
-
                                     <!-- Specimen Type -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="specimenType" style="display: none;">
                                        <label class="control-label col-sm-5">Specimen Type</label>
                                        <div class="col-sm-7">
                                           <select class="form-control" name="specimenType">
@@ -306,15 +289,12 @@
                                           </select>
                                        </div>
                                     </div>
-
                                  </div>
                                  <!-- End of form -->
-
                               </div>
                            </div>
                            <!-- End of General Tab Content -->
                         </div>
-
                         <!-- CLT -->
                         <div class="col-md-7">
                            <!-- form tab -->
@@ -342,27 +322,22 @@
                                        <div class="col-sm-9">
                                           <select class="form-control" name="diagnosis">
                                              <option selected="selected" disabled="disabled">Select</option>
-                                             <option value="C90 Multiple myeloma and malignant plasma cell neoplasms">C90
-                                                Multiple myeloma and malignant plasma cell neoplasms</option>
+                                             <option value="C90 Multiple myeloma and malignant plasma cell neoplasms">C90 Multiple
+                                                myeloma and malignant plasma cell neoplasms</option>
                                              <option value="C90.0 Multiple myeloma">C90.0 Multiple myeloma</option>
-                                             <option value="C90.00 ... not having achieved remission">C90.00
-                                                ... not having achieved remission</option>
-                                             <option value="C90.01 ... in remission">C90.01 ... in
-                                                remission</option>
+                                             <option value="C90.00 ... not having achieved remission">C90.00 ... not having
+                                                achieved remission</option>
+                                             <option value="C90.01 ... in remission">C90.01 ... in remission</option>
                                              <option value="C90.02 ... in relapse">C90.02 ... in relapse</option>
-                                             <option value="C90.2 Extramedullary plasmacytoma">C90.2
-                                                Extramedullary plasmacytoma</option>
-                                             <option value="C90.20 ... not having achieved remission">C90.20
-                                                ... not having achieved remission</option>
-                                             <option value="C90.21 ... in remission">C90.21 ... in
-                                                remission</option>
+                                             <option value="C90.2 Extramedullary plasmacytoma">C90.2 Extramedullary plasmacytoma</option>
+                                             <option value="C90.20 ... not having achieved remission">C90.20 ... not having
+                                                achieved remission</option>
+                                             <option value="C90.21 ... in remission">C90.21 ... in remission</option>
                                              <option value="C90.22 ... in relapse">C90.22 ... in relapse</option>
-                                             <option value="C90.3 Solitary plasmacytoma">C90.3 Solitary
-                                                plasmacytoma</option>
-                                             <option value="C90.30 ... not having achieved remission">C90.30
-                                                ... not having achieved remission</option>
-                                             <option value="C90.31 ... in remission">C90.31 ... in
-                                                remission</option>
+                                             <option value="C90.3 Solitary plasmacytoma">C90.3 Solitary plasmacytoma</option>
+                                             <option value="C90.30 ... not having achieved remission">C90.30 ... not having
+                                                achieved remission</option>
+                                             <option value="C90.31 ... in remission">C90.31 ... in remission</option>
                                              <option value="C90.32 ... in relapse">C90.32 ... in relapse</option>
                                           </select>
                                        </div>
@@ -398,7 +373,6 @@
                                           </select>
                                        </div>
                                     </div>
-
                                     <!-- Other Symptoms -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Other Symptoms</label>
@@ -406,40 +380,35 @@
                                           <input type="text" class="form-control" name="otherSymptoms">
                                        </div>
                                     </div>
-
                                     <!-- Family History of Cancer -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Family History of Cancer</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistory" value="1">Yes</label>
+                                             <label><input type="radio" name="familyHistoryOfCancer" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistory" value="0">No</label>
+                                             <label><input type="radio" name="familyHistoryOfCancer" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>
-
                                     <!-- INSERT HERE THE DYNAMIC PART -->
-
                                     <!-- Relationship to Patient -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="relationshipToPatient" style="display: none;">
                                        <label class="control-label col-sm-3">Relationship to Patient</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="relationshipToPatient">
                                        </div>
                                     </div>
-
                                     <!-- Specify Cancer-->
-                                    <div class="form-group">
+                                    <div class="form-group" id="specifyCancer" style="display: none;">
                                        <label class="control-label col-sm-3">Specify Cancer</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="specifyCancer">
                                        </div>
                                     </div>
-
                                     <!-- Other Diseases in the Family -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="otherDiseasesInTheFamily" style="display: none;">
                                        <label class="control-label col-sm-3">Other Diseases in the Family</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="otherDiseasesInTheFamily">
@@ -464,22 +433,23 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- Generic, Dose and Frequency -->
+                                    <div class="form-group" id="concomitantMedications" style="display: none;">
                                        <div class="row">
                                           <div class="col-sm-3"></div>
-                                          <label class="control-label col-sm-3" style="text-align: left;">Generic
-                                             Name</label> <label class="control-label col-sm-3" style="text-align: left;">Dose</label>
-                                          <label class="control-label col-sm-3" style="text-align: left;">Frequency</label>
+                                          <label class="control-label col-sm-3" style="text-align: left;">Generic Name</label> <label
+                                             class="control-label col-sm-3" style="text-align: left;">Dose</label> <label
+                                             class="control-label col-sm-3" style="text-align: left;">Frequency</label>
                                        </div>
                                        <div class="row">
                                           <div class="col-sm-3"></div>
-                                          <div class="col-sm-3">
+                                          <div class="col-sm-3" id="genericName" style="display: none;">
                                              <input type="text" class="form-control" name="genericName">
                                           </div>
-                                          <div class="col-sm-3">
+                                          <div class="col-sm-3" id="dose" style="display: none;">
                                              <input type="text" class="form-control" name="dose">
                                           </div>
-                                          <div class="col-sm-3">
+                                          <div class="col-sm-3" id="frequency" style="display: none;">
                                              <input type="text" class="form-control" name="frequency">
                                           </div>
                                        </div>
@@ -496,7 +466,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="smokingHistorySpecify" style="display: none;">
                                        <label class="control-label col-sm-3">Specify:</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="smokingHistorySpecify">
@@ -514,7 +484,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="alcoholIntakeSpecify" style="display: none;">
                                        <label class="control-label col-lg-3">Specify</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="alcoholIntakeSpecify" />
@@ -532,18 +502,16 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="chemicalExposureSpecify" style="display: none;">
                                        <label class="control-label col-lg-3">Specify</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="chemicalExposureSpecify" />
                                        </div>
                                     </div>
-
                                     <!-- Physical Exam -->
                                     <h3 class="text-center">
                                        <label class="control-label">Physical Exam</label>
                                     </h3>
-
                                     <div class="form-group">
                                        <label class="control-label col-lg-3">Height</label>
                                        <div class="col-sm-9">
@@ -571,10 +539,8 @@
                                     <!-- End of form -->
                                  </div>
                               </div>
-
                               <!-- laboratory -->
                               <div id="laboratory" class="tab-pane fade">
-
                                  <div class="form-horizontal">
                                     <!-- form -->
                                     <div class="form-group">
@@ -583,15 +549,13 @@
                                           <input type="date" class="form-control" name="dateOfBloodCollection" />
                                        </div>
                                     </div>
-
                                     <!-- Hematology -->
                                     <h3 class="text-center">
                                        <label class="control-label">Hematology</label>
                                     </h3>
-
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label
-                                          class="col-sm-4" style="text-align: left;">Result</label>
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-sm-4"
+                                          style="text-align: left;">Result</label>
                                        <div class="col-sm-4">
                                           <input type="checkbox"> <label>Not done</label>
                                        </div>
@@ -668,15 +632,13 @@
                                           <input type="text" class="form-control" name="plateletCount" />
                                        </div>
                                     </div>
-
                                     <!-- Other Lab -->
                                     <h3 class="text-center">
                                        <label class="control-label">Other Laboratories</label>
                                     </h3>
-
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label
-                                          class="col-lg-4" style="text-align: left;">Result</label>
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-lg-4"
+                                          style="text-align: left;">Result</label>
                                        <div class="col-lg-4">
                                           <input type="checkbox"> <label>Not done</label>
                                        </div>
@@ -700,7 +662,7 @@
                                        </div>
                                     </div>
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">iCa (mg/dl)</label>
+                                       <label class="control-label col-sm-4">Ionized calcium (mg/dl)</label>
                                        <div class="col-lg-4">
                                           <input type="text" class="form-control" name="iCa" />
                                        </div>
@@ -747,7 +709,6 @@
                                           <input type="text" class="form-control" name="ldh" />
                                        </div>
                                     </div>
-
                                     <!-- Imaging Studies -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Imaging Studies</label>
@@ -756,25 +717,19 @@
                                              <label><input type="radio" name="imagingStudies" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="imagingStudies" value="0">No</label>
-                                          </div>
-                                          <div class="radio">
-                                             <label><input type="radio" name="imagingStudies" value="2">Not
-                                                Applicable</label>
+                                             <label><input type="radio" name="imagingStudies" value="0">No / Not Applicable</label>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="imagingStudiesResult" style="display: none;">
                                        <label class="control-label col-lg-4">Result</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="imagingStudiesResult" />
                                        </div>
                                     </div>
-
                                     <!-- Bone Marrow  -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Bone Marrow Aspirate and Biopsy
-                                          result</label>
+                                       <label class="control-label col-sm-4">Bone Marrow Aspirate and Biopsy result</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
                                              <label><input type="radio" name="boneMarrowAspirate" value="1">Yes</label>
@@ -784,90 +739,74 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="boneMarrowAspirateDatePerformed" style="display: none;">
                                        <label class="control-label col-sm-4">Date Performed</label>
                                        <div class="col-lg-8">
                                           <input type="date" class="form-control" name="boneMarrowAspirateDatePerformed" />
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="boneMarrowAspirateDescription" style="display: none;">
                                        <label class="control-label col-lg-4">Description</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="boneMarrowAspirateDescription" />
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="boneMarrowAspirateAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
-                                          <input type="file" class="form-control"
-                                             name="boneMarrowAspirateAttachScannedDocument" />
+                                          <input type="file" class="form-control" name="boneMarrowAspirateAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                     <!-- Serum free light chain assay -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum free light chain assay</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="serumFreeLightChainAsssay"
-                                                value="1">Yes</label>
+                                             <label><input type="radio" name="serumFreeLightChainAsssay" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="serumFreeLightChainAsssay"
-                                                value="0">No</label>
-                                          </div>
-                                          <div class="radio">
-                                             <label><input type="radio" name="serumFreeLightChainAsssay"
-                                                value="2">Not Applicable</label>
+                                             <label><input type="radio" name="serumFreeLightChainAsssay" value="0">No / Not
+                                                Applicable</label>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="serumFreeLightChainAsssayResult" style="display: none;">
                                        <label class="control-label col-lg-4">Result</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="serumFreeLightChainAsssayResult" />
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="serumFreeLightChainAsssayAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
-                                          <input type="file" class="form-control" name="attachScannedDocument" />
+                                          <input type="file" class="form-control" name="serumFreeLightChainAsssayAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                     <!-- Serum protein electrophoresis -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum protein electrophoresis</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="serumProteinElectrophoresis"
-                                                value="1">Yes</label>
+                                             <label><input type="radio" name="serumProteinElectrophoresis" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="serumProteinElectrophoresis"
-                                                value="0">No</label>
-                                          </div>
-                                          <div class="radio">
-                                             <label><input type="radio" name="serumProteinElectrophoresis"
-                                                value="2">Not Applicable</label>
+                                             <label><input type="radio" name="serumProteinElectrophoresis" value="0">No /
+                                                Not Applicable</label>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="serumProteinElectrophoresisResult" style="display: none;">
                                        <label class="control-label col-lg-4">Result</label>
                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control"
-                                             name="serumProteinElectrophoresisResult" />
+                                          <input type="text" class="form-control" name="serumProteinElectrophoresisResult" />
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="serumProteinElectrophoresisAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
-                                          <input type="file" class="form-control"
-                                             name="serumProteinElectrophoresisAttachScannedDocument" />
+                                          <input type="file" class="form-control" name="serumProteinElectrophoresisAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                     <!-- Serum Immunofixation -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum Immunofixation</label>
@@ -876,95 +815,76 @@
                                              <label><input type="radio" name="serumImmunofixation" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="serumImmunofixation" value="0">No</label>
-                                          </div>
-                                          <div class="radio">
-                                             <label><input type="radio" name="serumImmunofixation" value="2">Not
+                                             <label><input type="radio" name="serumImmunofixation" value="0">No / Not
                                                 Applicable</label>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="serumImmunofixationResult" style="display: none;">
                                        <label class="control-label col-lg-4">Result</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="serumImmunofixationResult" />
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="serumImmunofixationAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
-                                          <input type="file" class="form-control"
-                                             name="serumImmunofixationAttachScannedDocument" />
+                                          <input type="file" class="form-control" name="serumImmunofixationAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                     <!-- Urine protein electrophoresis/Immunofixation -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-6">Urine protein
-                                          electrophoresis/Immunofixation</label>
-                                       <div class="col-sm-6">
+                                       <label class="control-label col-sm-4">Urine protein electrophoresis / Immunofixation</label>
+                                       <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio"
-                                                name="urineProteinElectrophoresisImmunofixation" value="1">Yes</label>
+                                             <label><input type="radio" name="urineProtein" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio"
-                                                name="urineProteinElectrophoresisImmunofixation" value="0">No</label>
-                                          </div>
-                                          <div class="radio">
-                                             <label><input type="radio"
-                                                name="urineProteinElectrophoresisImmunofixation" value="2">Not
-                                                Applicable</label>
+                                             <label><input type="radio" name="urineProtein" value="0">No / Not Applicable</label>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="urineProteinResult" style="display: none;">
                                        <label class="control-label col-lg-4">Result</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="urineProteinResult" />
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="urineProteinAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
-                                          <input type="file" class="form-control"
-                                             name="urineProteinAttachScannedDocument" />
+                                          <input type="file" class="form-control" name="urineProteinAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                     <!-- Cytogenetic and Molecular Analysis -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Cytogenetic and Molecular Analysis</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="cytogeneticAndMolecularAnalysis"
-                                                value="1">Yes</label>
+                                             <label><input type="radio" name="cytogeneticAndMolecularAnalysis" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="cytogeneticAndMolecularAnalysis"
-                                                value="0">Not Done</label>
+                                             <label><input type="radio" name="cytogeneticAndMolecularAnalysis" value="0">Not
+                                                Done</label>
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="cytogeneticAndMolecularAnalysisResult" style="display: none;">
                                        <label class="control-label col-lg-4">Result</label>
                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control"
-                                             name="cytogeneticAndMolecularAnalysisResult" />
+                                          <input type="text" class="form-control" name="cytogeneticAndMolecularAnalysisResult" />
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="cytogeneticAndMolecularAnalysisAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
                                           <input type="file" class="form-control"
                                              name="cytogeneticAndMolecularAnalysisAttachScannedDocument" />
                                        </div>
                                     </div>
-
                                     <!-- end of form -->
                                  </div>
                               </div>
-
                               <!-- therapy -->
                               <div id="therapy" class="tab-pane fade">
                                  <div class="form-horizontal">
@@ -986,10 +906,10 @@
                                        <div class="col-sm-8">
                                           <select class="form-control" name="treatment">
                                              <option selected="selected" disabled="disabled">Select</option>
-                                             <option value="Pharmacologic for transplant candidate">Pharmacologic
-                                                for transplant candidate</option>
-                                             <option value="Pharmacologic for non transplant candidate">Pharmacologic
-                                                for non transplant candidate</option>
+                                             <option value="Pharmacologic for transplant candidate">Pharmacologic for transplant
+                                                candidate</option>
+                                             <option value="Pharmacologic for non transplant candidate">Pharmacologic for non
+                                                transplant candidate</option>
                                              <option value="Maintenance">Maintenance</option>
                                              <option value="Radiotherapy">Radiotherapy</option>
                                              <option value="Supportive">Supportive</option>
@@ -999,7 +919,7 @@
                                        </div>
                                     </div>
                                     <!-- Other Regimens -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="otherRegimens" style="display:none;">
                                        <label class="control-label col-lg-4">Other Regimens</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="otherRegimens" />
@@ -1007,8 +927,8 @@
                                     </div>
                                     <!-- Regimen/ Protocol (For transplant candidates) -->
                                     <div class="form-group">
-                                       <label for="severity" class="control-label col-sm-4">Regimen/Protocol
-                                          (For transplant candidates)</label>
+                                       <label for="severity" class="control-label col-sm-4">Regimen/Protocol (For transplant
+                                          candidates)</label>
                                        <div class="col-sm-8">
                                           <select class="form-control" name="regimenProtocolTransplant">
                                              <option selected="selected" disabled="disabled">Select</option>
@@ -1016,38 +936,37 @@
                                              <option value="Bortezomib/Cyclophosphomide/dexamethasone">Bortezomib/Cyclophosphomide/dexamethasone</option>
                                              <option value="Bortezomib/Doxorubicin/dexamethasone">Bortezomib/Doxorubicin/dexamethasone</option>
                                              <option value="Bortezomib/Lenalidomide/dexamethasone">Bortezomib/Lenalidomide/dexamethasone</option>
-                                             <option value="Bortezomib /Thallidomide/ Dexamethasone">Bortezomib
-                                                /Thallidomide/ Dexamethasone</option>
+                                             <option value="Bortezomib /Thallidomide/ Dexamethasone">Bortezomib /Thallidomide/
+                                                Dexamethasone</option>
                                              <option value="Lenalidomide/Dexamethasone">Lenalidomide/Dexamethasone</option>
                                              <option value="Carfilzomib/Lenalidomide/Dexamethasone">Carfilzomib/Lenalidomide/Dexamethasone</option>
                                              <option value="Dexamethasone">Dexamethasone</option>
                                              <option value="Liposomal Doxorubicin/Vincristine/Dexamethason">Liposomal
                                                 Doxorubicin/Vincristine/Dexamethason</option>
                                              <option value="Thallidomide/Dexamethasone">Thallidomide/Dexamethasone</option>
-                                             <option value="Other">Other</option>
+                                             <option value="Others">Others</option>
                                           </select>
                                        </div>
                                     </div>
                                     <!-- Other Regimens -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="otherRegimensTransplant" style="display:none;">
                                        <label class="control-label col-lg-4">Other Regimens</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="otherRegimensTransplant" />
                                        </div>
                                     </div>
-
                                     <!-- Regimen/ Protocol (For nontransplant candidates) -->
                                     <div class="form-group">
-                                       <label for="severity" class="control-label col-sm-4">Regimen/Protocol
-                                          (For nontransplant candidates)</label>
+                                       <label for="severity" class="control-label col-sm-4">Regimen/Protocol (For nontransplant
+                                          candidates)</label>
                                        <div class="col-sm-8">
                                           <select class="form-control" name="regimenProtocolNonTransplant">
                                              <option selected="selected" disabled="disabled">Select</option>
                                              <option value="Bortezomib dexamethasone">Bortezomib dexamethasone</option>
                                              <option value="Bortezomib/Cyclophosphomide/dexamethasone">Bortezomib/Cyclophosphomide/dexamethasone</option>
                                              <option value="Bortezomib/Lenalidomide/dexamethasone">Bortezomib/Lenalidomide/dexamethasone</option>
-                                             <option value="Lenalidomide/low dose Dexamethasone">Lenalidomide/low
-                                                dose Dexamethasone</option>
+                                             <option value="Lenalidomide/low dose Dexamethasone">Lenalidomide/low dose
+                                                Dexamethasone</option>
                                              <option value="Melphalan/Prednisone/Bortezomib">Melphalan/Prednisone/Bortezomib</option>
                                              <option value="Melphalan/Prednisone/Lenalidomide">Melphalan/Prednisone/Lenalidomide</option>
                                              <option value="Melpahlan/Prednisone/Thallidomide">Melpahlan/Prednisone/Thallidomide</option>
@@ -1058,18 +977,17 @@
                                              <option value="Thallidomide/Dexamethasone">Thallidomide/Dexamethasone</option>
                                              <option value="Vincristine /Doxorubicin/dexamethasone">Vincristine
                                                 /Doxorubicin/dexamethasone</option>
-                                             <option value="Other">Other</option>
+                                             <option value="Others">Others</option>
                                           </select>
                                        </div>
                                     </div>
                                     <!-- Other Regimens -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="otherRegimensNonTransplant" style="display:none;">
                                        <label class="control-label col-lg-4">Other Regimens</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="otherRegimensNonTransplant" />
                                        </div>
                                     </div>
-
                                     <!-- Maintenance Therapy -->
                                     <div class="form-group">
                                        <label class="control-label col-lg-4">Maintenance Therapy</label>
@@ -1083,18 +1001,17 @@
                                              <option value="Bortezomib/Thallidomide">Bortezomib/Thallidomide</option>
                                              <option value="Interferon">Interferon</option>
                                              <option value="Thallidomide/Prednisone">Thallidomide/Prednisone</option>
-                                             <option value="Other">Other</option>
+                                             <option value="Others">Others</option>
                                           </select>
                                        </div>
                                     </div>
                                     <!-- Other Regimens -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="otherRegimensMaintenanceTherapy" style="display:none;">
                                        <label class="control-label col-lg-4">Other Regimens</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="otherRegimensMaintenanceTherapy" />
                                        </div>
                                     </div>
-
                                     <!-- Cycle Number -->
                                     <div class="form-group">
                                        <label class="control-label col-lg-4">Cycle Number</label>
@@ -1102,12 +1019,9 @@
                                           <input type="text" class="form-control" name="cycleNumber" />
                                        </div>
                                     </div>
-
                                     <h5 class="text-center">
-                                       <label class="control-label">Other Treatment Modalities/Adjunctive
-                                          treatment</label>
+                                       <label class="control-label">Other Treatment Modalities/Adjunctive treatment</label>
                                     </h5>
-
                                     <!-- Bisphosphonates -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Bisphosphonates</label>
@@ -1120,10 +1034,10 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="bisphosphonatesSpecify" style="display:none">
                                        <label class="control-label col-lg-4">Specify Drug</label>
                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="bisphosphonatesSpecify  " />
+                                          <input type="text" class="form-control" name="bisphosphonatesSpecify" />
                                        </div>
                                     </div>
                                     <!-- Radiotherapy -->
@@ -1138,7 +1052,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="radiotherapyDoseAndFrequency" style="display:none">
                                        <label class="control-label col-lg-4">Specify Dose and Frequency</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="radiotherapyDoseAndFrequency" />
@@ -1157,29 +1071,26 @@
                                        </div>
                                     </div>
                                     <!-- Other Medications -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="otherMedications" style="display:none">
                                        <label class="control-label col-sm-4">Other Medications</label>
                                        <div class="col-lg-8">
                                           <input type="text" class="form-control" name="otherMedications" />
                                        </div>
                                     </div>
-
                                     <!-- Date Started -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="dateOfBloodCollection" style="display:none">
                                        <label class="control-label col-sm-4">Date Started</label>
                                        <div class="col-lg-8">
                                           <input type="date" class="form-control" name="dateOfBloodCollection" />
                                        </div>
                                     </div>
-
                                     <!-- Complications -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="complications" style="display:none">
                                        <label class="control-label col-sm-4">Complications</label>
                                        <div class="col-lg-8">
                                           <input type="text" class="form-control" name="complications" />
                                        </div>
                                     </div>
-
                                  </div>
                               </div>
                            </div>
@@ -1193,5 +1104,6 @@
          </div>
       </div>
    </div>
+   <script src="js/JsBarcode.barcodePrint.js"></script>
 </body>
 </html>
