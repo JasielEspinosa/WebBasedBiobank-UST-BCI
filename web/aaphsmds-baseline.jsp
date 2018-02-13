@@ -107,7 +107,7 @@
                </div>
             </div>
             <!-- End of Search Box -->
-            <ul class="nav nav-pills nav-stacked sidebar__searchbox--border">
+            <ul id ='searchboxfill'class="nav nav-pills nav-stacked sidebar__searchbox--border">
             </ul>
             <!-- Add Patient Button -->
             <div class="row">
