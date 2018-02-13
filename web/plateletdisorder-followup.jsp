@@ -226,10 +226,10 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group" id="specifyHematologicMalignancy" style="display: none;">
+                                    <div class="form-group" id="specifyOtherDiseaseMedication" style="display: none;">
                                        <label class="control-label col-sm-6">Result</label>
                                        <div class="col-sm-6">
-                                          <input type="text" class="form-control" name="specifyHematologicMalignancy">
+                                          <input type="text" class="form-control" name="specifyOtherDiseaseMedication">
                                        </div>
                                     </div>
                                     <br />

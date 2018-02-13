@@ -368,9 +368,13 @@ $(function() {
 		if ($(this).val() === "1") {
 			$("#molecularAnalysisResult").slideDown(200);
 			$("input[name='molecularAnalysisResult']").prop('required', true);
+			$("#molecularAnalysisAttachScannedDocument").slideDown(200);
+			// $("input[name='molecularAnalysisAttachScannedDocument']").prop('required', true);
 		} else if ($(this).val() === "0") {
 			$("#molecularAnalysisResult").slideUp(200);
 			$("input[name='molecularAnalysisResult']").prop('required', false);
+			$("#molecularAnalysisAttachScannedDocument").slideUp(200);
+			$("input[name='molecularAnalysisAttachScannedDocument']").prop('required', false);
 		}
 	});
 

@@ -4,7 +4,7 @@ public interface SQLCommandsFollowUp {
 
 	// FOLLOW UP QUERIES
 
-	String INSERT_MEDICAL_EVENTS = "INSERT INTO MedicalEventsTable(MedicalEventsID, OtherDiseaseMedication, ProcedureIntervention, Chemotherapy) VALUES (NULL, ?, ?, ?, ?)";
+	String INSERT_MEDICAL_EVENTS = "INSERT INTO MedicalEventsTable(MedicalEventsID, HematologicMalignancy, OtherDiseaseMedication, ProcedureIntervention, Chemotherapy) VALUES (NULL, ?, ?, ?, ?)";
 	String INSERT_MEDICAL_EVENTS_COAGULATION = "INSERT INTO MedicalEventsTable(MedicalEventsID, FactorConcentrate, FactorConcentrateDates, FactorConcentrateDose, ProcedureIntervention) VALUES (NULL, ?, ?, ?, ?)";
 	String INSERT_MEDICAL_EVENTS_PLATELETCELL = "INSERT INTO MedicalEventsTable(MedicalEventsID, OtherDiseaseMedication, ProcedureIntervention, Chemotherapy) VALUES (NULL, ?, ?, ?)";
 	String UPDATE_MEDICAL_EVENTS = "UPDATE MedicalEventsTable SET HematologicMalignancy=?, OtherDiseaseMedication=?, ProcedureIntervention=?, Chemotherapy=? WHERE  MedicalEventsID =?";
@@ -25,10 +25,10 @@ public interface SQLCommandsFollowUp {
 	String UPDATE_OTHER_LABORATORIES_AAPHSMDS = "UPDATE OtherLaboratoriesTable SET "
 			+ "CreatinineOther=?, UricAcid=?, ReticulocyteCount=?, SerumIron=?, IronBindingCapacity=?, SerumFerritin=?, DirectAntiglobulin=?, IndirectAntiglobulin=?, SGOT=?, SGPT=?, LDH=?, ScreenTestHepatitis=?,ScreenTestEBVCytomegalovirusHIV=?, ErythropeitinLevel=?, SerumFolicAcid=?, SerumB12=?, TSH=? WHERE OtherLaboratoriesID=?";
 
-	String INSERT_BLOOD_CHEMISTRY_LYMPHOMA = "INSERT INTO BloodChemistryTable(LDH, ESR) VALUES (NULL, ?, ?) ";
+	String INSERT_BLOOD_CHEMISTRY_LYMPHOMA = "INSERT INTO BloodChemistryTable(BloodChemistryID, LDH, ESR) VALUES (NULL, ?, ?) ";
 	String UPDATE_BLOOD_CHEMISTRY_LYMPHOMA = "UPDATE BloodChemistryTable SET LDH=?, ESR=? WHERE BloodChemistryID=?";
 
-	String INSERT_BLOOD_CHEMISTRY_PLASMACELL = "INSERT INTO BloodChemistryTable(Creatinine, iCa, TotalProtein, Albumin,  Globulin) VALUES (NULL, ?, ?, ?, ?, ?) ";
+	String INSERT_BLOOD_CHEMISTRY_PLASMACELL = "INSERT INTO BloodChemistryTable(BloodChemistryID, Creatinine, iCa, TotalProtein, Albumin,  Globulin) VALUES (NULL, ?, ?, ?, ?, ?) ";
 	String UPDATE_BLOOD_CHEMISTRY_PLASMACELL = "UPDATE BloodChemistryTable SET Creatinine=?, iCa=?, TotalProtein=?, Albumin=?, Globulin=? WHERE BloodChemistryID=?";
 
 	String INSERT_BONE_MARROW_ASPIRATE = "INSERT INTO BoneMarrowAspirateTable VALUES (NULL,?,?)  ";
@@ -96,7 +96,6 @@ public interface SQLCommandsFollowUp {
 	String UPDATE_LABORATORY_PROFILE = "UPDATE LaboratoryProfileTable SET DateOfBloodCollection=? WHERE LaboratoryProfileID=?";
 
 	String INSERT_DISEASE_STATUS = "INSERT INTO DiseaseStatusTable VALUES (NULL,?,NULL,?)  ";
-
 	String UPDATE_DISEASE_STATUS = "UPDATE DiseaseStatusTable SET DiseaseStatus=?, OtherDisease=? WHERE DiseaseStatusID=?";
 
 	String INSERT_DISEASE_STATUS_PLASMACELL = "INSERT INTO DiseaseStatusTable VALUES (NULL,?,?,?)  ";

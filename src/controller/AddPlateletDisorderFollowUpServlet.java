@@ -15,7 +15,7 @@ import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
 
 @WebServlet("/AddPlateletCellFollowUpServlet")
-public class AddPlateletCellFollowUpServlet extends HttpServlet {
+public class AddPlateletDisorderFollowUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
@@ -71,7 +71,7 @@ public class AddPlateletCellFollowUpServlet extends HttpServlet {
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
 		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
 
-		String diseaseStatus = request.getParameter("diseaseStatus");
+		String qualityOfResponse = request.getParameter("qualityOfResponse");
 		String otherDiseaseStatus = request.getParameter("diseaseStatusOthers");
 		String notes = request.getParameter("specialNotes");
 
@@ -145,7 +145,7 @@ public class AddPlateletCellFollowUpServlet extends HttpServlet {
 			System.out.println("Invalid connection LaboratoryProfileBean");
 		}
 
-		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, "", otherDiseaseStatus);
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(qualityOfResponse, "", otherDiseaseStatus);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert DiseaseStatusBean");

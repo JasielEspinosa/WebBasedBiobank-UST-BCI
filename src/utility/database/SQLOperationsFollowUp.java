@@ -888,6 +888,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
 					return false;
 				}
+				break;
 			}
 			case (2): {
 			}
@@ -901,6 +902,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
 					return false;
 				}
+				break;
 			}
 			case (4): {
 				try {
@@ -912,6 +914,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
 					return false;
 				}
+				break;
 			}
 			case (5): {
 				try {
@@ -923,6 +926,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
 					return false;
 				}
+				break;
 			}
 			case (6): {
 				try {
@@ -935,7 +939,6 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
 					return false;
 				}
-
 				break;
 			}
 			case (7): {

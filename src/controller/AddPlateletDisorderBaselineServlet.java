@@ -14,7 +14,7 @@ import utility.database.SQLOperationsBaseline;
 import utility.factory.BeanFactory;
 
 @WebServlet("/AddPlateletBaselineServlet")
-public class AddPlateletBaselineServlet extends HttpServlet {
+public class AddPlateletDisorderBaselineServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
