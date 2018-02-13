@@ -102,6 +102,24 @@ $(function() {
 			$("input[name='otherDiseasesInTheFamily']").prop('required', false);
 		}
 	});
+	
+	$("input[name='familyHistoryOfBleedingDiathesis']").click(function() {
+		if ($(this).val() === "1") {
+			$("#relationshipToPatient").slideDown(200);
+			$("input[name='relationshipToPatient']").prop('required', true);
+			$("#specifyCancer").slideDown(200);
+			$("input[name='specifyCancer']").prop('required', true);
+			$("#otherDiseasesInTheFamily").slideDown(200);
+			$("input[name='otherDiseasesInTheFamily']").prop('required', true);
+		} else if ($(this).val() === "0") {
+			$("#relationshipToPatient").slideUp(200);
+			$("input[name='relationshipToPatient']").prop('required', false);
+			$("#specifyCancer").slideUp(200);
+			$("input[name='specifyCancer']").prop('required', false);
+			$("#otherDiseasesInTheFamily").slideUp(200);
+			$("input[name='otherDiseasesInTheFamily']").prop('required', false);
+		}
+	});
 
 	$("input[name='concomitantMedications']").click(function() {
 		if ($(this).val() === "1") {

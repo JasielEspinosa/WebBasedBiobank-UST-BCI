@@ -41,8 +41,7 @@
          <div class="col-sm-1">
             <img src="images/usthlogo.png" class="header__logo--size header__logo--position">
          </div>
-         <div
-            class="col-sm-11 header__bannertitle--visibility header__bannertitle--position header__bannertitle--spacing">
+         <div class="col-sm-11 header__bannertitle--visibility header__bannertitle--position header__bannertitle--spacing">
             <h4>UST-BCI Section of Clinical Hematology</h4>
             <p>Hematologic Disease Database</p>
          </div>
@@ -53,10 +52,9 @@
          <div class="container-fluid navbar__nav-item--hover">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                  data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                     class="icon-bar"></span>
                </button>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,22 +69,21 @@
                   <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li class="active"><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                   <!-- Dropdown -->
-                  <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                     role="button" aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span
-                        class="caret"></span>
+                  <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                     aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
                   </a>
                      <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li><a style="font-weight: bold;" href="audittrail.jsp"><i
-                              class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail</a></li>
+                        <li><a style="font-weight: bold;" href="audittrail.jsp"><i class="fas fa-file-alt dropdown-icons--margin"></i>
+                              Audit Trail</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="profile.jsp"><i
-                              class="fas fa-user-md dropdown-icons--margin"></i> Profile</a></li>
+                        <li><a style="font-weight: bold;" href="profile.jsp"><i class="fas fa-user-md dropdown-icons--margin"></i>
+                              Profile</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="usermanagement.jsp"><i
-                              class="fas fa-wrench dropdown-icons--margin"></i> Settings</a></li>
+                        <li><a style="font-weight: bold;" href="usermanagement.jsp"><i class="fas fa-wrench dropdown-icons--margin"></i>
+                              Settings</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="login.jsp"><i
-                              class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout</a></li>
+                        <li><a style="font-weight: bold;" href="login.jsp"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                              Logout</a></li>
                      </ul></li>
                   <!-- End of Dropdown -->
                </ul>
@@ -117,18 +114,16 @@
             <!-- Add Patient Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="addPatientLeukemia" type="button"
-                     class="btn bg-yellow disabled sidebar__addptngenrep--border" data-toggle="modal"
-                     data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
+                  <button id="addPatientLeukemia" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border"
+                     data-toggle="modal" data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
                </div>
             </div>
             <!-- End of Add Patient Button -->
             <!-- Generate Report Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="generateReport" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border"
-                     data-toggle="modal" data-target="#usermanagement__popup" data-whatever="@mdo">Generate
-                     Report</button>
+                  <button id="generateReport" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border" data-toggle="modal"
+                     data-target="#usermanagement__popup" data-whatever="@mdo">Generate Report</button>
                </div>
             </div>
             <!-- End of Generate Report Button -->
@@ -148,15 +143,14 @@
                   <!-- Buttons Container -->
                   <div class="row button-container buttons__firsthalf--position ">
                      <div class="col-sm-6 buttons__firsthalf-position ">
-                        <a href="coagulationdisease-baseline.jsp" type="button" class="btn bg-yellow button-border"
-                           id="baselineBtn">Baseline</a> <a href="coagulationdisease-followup.jsp" type="button"
-                           class="btn bg-yellow button-border" id="followUpBtn">Follow Up</a>
+                        <a href="coagulationdisease-baseline.jsp" type="button" class="btn bg-yellow button-border" id="baselineBtn">Baseline</a>
+                        <a href="coagulationdisease-followup.jsp" type="button" class="btn bg-yellow button-border" id="followUpBtn">Follow
+                           Up</a>
                      </div>
                      <div class="col-sm-6 text-right btn-toolbar">
-                        <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Patient
-                           Statistics</a> <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Edit
-                           Patient</a> <a href="#" type="button" class="btn bg-yellow button-border" id="archPatientBtn">Archive
-                           Patient</a>
+                        <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Patient Statistics</a> <a href="#"
+                           type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Edit Patient</a> <a href="#" type="button"
+                           class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
                      </div>
                   </div>
                   <!-- End of Buttons Container -->
@@ -179,20 +173,18 @@
                                     <!-- Patient ID Number -->
                                     <div class="form-group">
                                        <div class="col-sm-1">
-                                          <a id="" data-toggle="modal" data-target="#patientBarcode_popup" href="#"
-                                             alt="Barcode Icon"> <img alt="Barcode Icon" src="images/barcode.png"
+                                          <a id="" data-toggle="modal" data-target="#patientBarcode_popup" href="#" alt="Barcode Icon">
+                                             <img alt="Barcode Icon" src="images/barcode.png"
                                              class="form__barcodeicon--size body__barcodebtn--style">
                                           </a>
                                        </div>
                                        <!-- Barcode Pop-Up -->
-                                       <div id="patientBarcode_popup" class="modal fade centered-modal" tabindex="-1"
-                                          role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-                                          data-backdrop="static">
+                                       <div id="patientBarcode_popup" class="modal fade centered-modal" tabindex="-1" role="dialog"
+                                          aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
                                           <div class="modal-dialog">
                                              <div class="modal-content">
                                                 <div class="modal-header">
-                                                   <button type="button" class="close" data-dismiss="modal"
-                                                      onclick="closeModal()">
+                                                   <button type="button" class="close" data-dismiss="modal" onclick="closeModal()">
                                                       <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                                                    </button>
                                                    <h4 class="modal-title" id="exampleModalLabel">Patient Barcode:</h4>
@@ -351,16 +343,13 @@
                                     </div>
                                     <!-- Family History of Bleeding Diathesis -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-3">Family History of Bleeding
-                                          Diathesis</label>
+                                       <label class="control-label col-sm-3">Family History of Bleeding Diathesis</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistoryOfBleedingDiathesis"
-                                                value="1">Yes</label>
+                                             <label><input type="radio" name="familyHistoryOfBleedingDiathesis" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistoryOfBleedingDiathesis"
-                                                value="0">No</label>
+                                             <label><input type="radio" name="familyHistoryOfBleedingDiathesis" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>
@@ -408,9 +397,9 @@
                                     <div class="form-group" id="concomitantMedications" style="display: none;">
                                        <div class="row">
                                           <div class="col-sm-3"></div>
-                                          <label class="control-label col-sm-3" style="text-align: left;">Generic
-                                             Name</label> <label class="control-label col-sm-3" style="text-align: left;">Dose</label>
-                                          <label class="control-label col-sm-3" style="text-align: left;">Frequency</label>
+                                          <label class="control-label col-sm-3" style="text-align: left;">Generic Name</label> <label
+                                             class="control-label col-sm-3" style="text-align: left;">Dose</label> <label
+                                             class="control-label col-sm-3" style="text-align: left;">Frequency</label>
                                        </div>
                                        <div class="row">
                                           <div class="col-sm-3"></div>
@@ -437,14 +426,14 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="smokingHistorySpecify" style="display: none;">
                                        <label class="control-label col-sm-3">Specify:</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="smokingHistorySpecify">
                                        </div>
                                     </div>
                                     <!-- Alcohol Intake History -->
-                                    <div class="form-group" id="alcoholIntakeHistory" style="display: none;">
+                                    <div class="form-group">
                                        <label class="control-label col-lg-3">Alcohol intake history </label>
                                        <div class="col-sm-9">
                                           <div class="radio">
@@ -508,16 +497,13 @@
                                        </div>
                                     </div>
                                     <div class="form-group">
-                                       <label class="control-label col-lg-3">Presence of contractures and muscle
-                                          atrophy</label>
+                                       <label class="control-label col-lg-3">Presence of contractures and muscle atrophy</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio"
-                                                name="presenceOfContracturesAndMuscleAtrophy" value="1">Yes</label>
+                                             <label><input type="radio" name="presenceOfContracturesAndMuscleAtrophy" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio"
-                                                name="presenceOfContracturesAndMuscleAtrophy" value="0">No</label>
+                                             <label><input type="radio" name="presenceOfContracturesAndMuscleAtrophy" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>
@@ -550,8 +536,8 @@
                                     </h3>
                                     <!-- Labels -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label
-                                          class="col-sm-4" style="text-align: left;">Result</label>
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-sm-4"
+                                          style="text-align: left;">Result</label>
                                        <div class="col-sm-4">
                                           <input type="checkbox"> <label>Not done</label>
                                        </div>
@@ -620,8 +606,8 @@
                                     </h3>
                                     <!-- Labels -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label
-                                          class="col-lg-4" style="text-align: left;">Result</label>
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-lg-4"
+                                          style="text-align: left;">Result</label>
                                        <div class="col-lg-4">
                                           <input type="checkbox"> <label>Not done</label>
                                        </div>
@@ -659,8 +645,8 @@
                                     </h3>
                                     <!-- Labels -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label
-                                          class="col-lg-4" style="text-align: left;">Result</label>
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-lg-4"
+                                          style="text-align: left;">Result</label>
                                        <div class="col-lg-4">
                                           <input type="checkbox"> <label>Not done</label>
                                        </div>
@@ -719,11 +705,7 @@
                                              <label><input type="radio" name="imagingStudies" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="imagingStudies" value="0">No</label>
-                                          </div>
-                                          <div class="radio">
-                                             <label><input type="radio" name="imagingStudies"
-                                                value="notApplicable">Not Applicable</label>
+                                             <label><input type="radio" name="imagingStudies" value="0">No / Not Applicable</label>
                                           </div>
                                        </div>
                                     </div>
