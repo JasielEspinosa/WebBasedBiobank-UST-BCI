@@ -12,7 +12,6 @@ $('document').ready(function(){
 	}).fail(function(){
 		});	
 	
-	
 });
 	
 $('#profileForm').submit(function() {

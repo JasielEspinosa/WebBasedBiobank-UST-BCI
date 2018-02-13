@@ -25,7 +25,7 @@
 
 <!-- JS -->
 
-<script src="js/jquery.min.js"></script>
+<script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
@@ -43,7 +43,7 @@
 
 <!-- FONT -->
 <link rel="stylesheet" href="fonts/open-sans.css">
-
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
 </head>
 
 <body>
@@ -186,12 +186,16 @@
                         Management</h4>
                      <form>
                         <table id="usersTable">
+                           <thead>
                            <tr>
                               <th><input type="checkbox" id="select_all" /></th>
                               <th onclick="sortTable(0)">Username</th>
                               <th onclick="sortTable(1)">Name</th>
                               <th onclick="sortTable(1)">Account Type</th>
                            </tr>
+                           </thead>
+                           <tbody>
+                           </tbody>
                         </table>
                      </form>
                      <!-- End of Table -->
@@ -245,7 +249,7 @@
                               <div class="modal-footer">
                                  <button type="button" class="btn btn-primary"
                                     data-target="#confirm-submit" data-toggle="modal"
-                                    id="submitBtn">Add</button>
+                                    id="submitBtn"></button>
                                     
                                  <button type="button" class="btn btn-danger"
                                     data-dismiss="modal">Cancel</button>
@@ -281,7 +285,8 @@
 
                <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>-->
                <!--<script src="js/main.js"></script>-->
-
+				
+				<script type="text/javascript" src="DataTables/datatables.min.js"></script>
                <script src="js/user-management.js"></script>
                <!-- Resource jQuery -->
             </div>

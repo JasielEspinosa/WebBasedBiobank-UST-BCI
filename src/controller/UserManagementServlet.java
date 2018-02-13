@@ -5,7 +5,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -141,6 +143,52 @@ public class UserManagementServlet extends HttpServlet {
 			}	
 		}
 		
+		
+		if(action.equals("editLoad")) {
+			response.setContentType("application/json"); 
+			if(connection != null) {
+				ResultSet profileInfoRs = SQLOperations.getProfile(Integer.parseInt((String)request.getParameter("accountID")), connection);	
+					try {
+						if(profileInfoRs.next()) {
+						    Map<String, String> profile = new LinkedHashMap<>();
+						    profile.put("Username", profileInfoRs.getString("Username"));
+						    profile.put("Lastname", profileInfoRs.getString("Lastname"));
+						    profile.put("Firstname", profileInfoRs.getString("Firstname"));
+						    profile.put("MiddleName", profileInfoRs.getString("MiddleName"));
+						    String json = new Gson().toJson(profile);
+						    response.getWriter().write(json);
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				
+				}else {
+				System.out.println("Invalid connection");
+			}
+		}
+		
+		if(action.equals("edit")) {
+			if(connection != null) {
+				String username = request.getParameter("username");
+				String password = request.getParameter("password");
+				String lastName = request.getParameter("lastName");
+				String firstName = request.getParameter("firstName");
+				String middleName = request.getParameter("middleName");
+				AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleName, firstName, 1);
+				
+				if(SQLOperations.updateProfile(ab, Integer.parseInt((String)request.getParameter("accountID")), connection)) {
+				    response.getWriter().write("Success");
+				    System.out.println("Success Edit profile");
+					
+				}else {
+					 response.getWriter().write("Failed");
+					 System.out.println("Failed");
+				}
+							
+			}else {
+				System.out.println("Invalid connection");
+			}	
+		}
 		
 		
 	}
