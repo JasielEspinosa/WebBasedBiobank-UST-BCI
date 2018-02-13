@@ -349,41 +349,41 @@ public class BeanFactory {
 		return ub;
 	}
 
-	public static HematopathologyBean getHematopathologyBean(String datePerformed, String results) {
+	public static HematopathologyBean getHematopathologyBean(String datePerformed, String result) {
 		HematopathologyBean hb = new HematopathologyBean();
 		hb.setDatePerformed(datePerformed);
-		hb.setResults(results);
+		hb.setResult(result);
 		return hb;
 	}
 
-	public static ImmunohistochemistryBean getImmunohistochemistryBean(String datePerformed, String results) {
+	public static ImmunohistochemistryBean getImmunohistochemistryBean(String datePerformed, String result) {
 		ImmunohistochemistryBean ib = new ImmunohistochemistryBean();
 		ib.setDatePerformed(datePerformed);
-		ib.setResults(results);
+		ib.setResult(result);
 		return ib;
 	}
 
-	public static SerumFreeBean getSerumFreeBean(String results) {
+	public static SerumFreeBean getSerumFreeBean(String result) {
 		SerumFreeBean sb = new SerumFreeBean();
-		sb.setResults(results);
+		sb.setResult(result);
 		return sb;
 	}
 
-	public static SerumProteinBean getSerumProteinBean(String results) {
+	public static SerumProteinBean getSerumProteinBean(String result) {
 		SerumProteinBean sb = new SerumProteinBean();
-		sb.setResults(results);
+		sb.setResult(result);
 		return sb;
 	}
 
-	public static SerumImmunofixationBean getSerumImmunofixationBean(String results) {
+	public static SerumImmunofixationBean getSerumImmunofixationBean(String result) {
 		SerumImmunofixationBean sb = new SerumImmunofixationBean();
-		sb.setResults(results);
+		sb.setResult(result);
 		return sb;
 	}
 
-	public static UrineProteinBean getUrineProteinBean(String results) {
+	public static UrineProteinBean getUrineProteinBean(String result) {
 		UrineProteinBean ub = new UrineProteinBean();
-		ub.setResults(results);
+		ub.setResult(result);
 		return ub;
 	}
 
@@ -418,8 +418,9 @@ public class BeanFactory {
 		return qorb;
 	}
 
-	public static FollowUpBean getFollowUpBean(String dateOfEntry, String dateOfVisit, String notes) {
+	public static FollowUpBean getFollowUpBean(int patientID, String dateOfEntry, String dateOfVisit, String notes) {
 		FollowUpBean fb = new FollowUpBean();
+		fb.setPatientID(patientID);
 		fb.setDateOfEntry(dateOfEntry);
 		fb.setDateOfVisit(dateOfVisit);
 		fb.setNotes(notes);

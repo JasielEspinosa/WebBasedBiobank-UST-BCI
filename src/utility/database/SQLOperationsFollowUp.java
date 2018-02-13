@@ -41,7 +41,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setString(4, meb.getChemotherapy());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addMedicalEvents: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -55,7 +55,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setString(4, meb.getProcedureIntervention());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addMedicalEvents: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -69,7 +69,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setString(4, meb.getChemotherapy());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addMedicalEvents: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -83,7 +83,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setString(4, meb.getChemotherapy());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addMedicalEvents: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -97,7 +97,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setString(4, meb.getChemotherapy());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addMedicalEvents: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -111,21 +111,20 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setString(4, meb.getChemotherapy());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addMedicalEvents: " + sqle.getMessage());
 					return false;
 				}
 				break;
 			}
 			case (7): {
 				try {
-					PreparedStatement pstmt = connection.prepareStatement(INSERT_MEDICAL_EVENTS);
-					pstmt.setString(1, meb.getHematologicMalignancy());
-					pstmt.setString(2, meb.getOtherDiseaseMedication());
-					pstmt.setString(3, meb.getProcedureIntervention());
-					pstmt.setString(4, meb.getChemotherapy());
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_MEDICAL_EVENTS_PLATELETCELL);
+					pstmt.setString(1, meb.getOtherDiseaseMedication());
+					pstmt.setString(2, meb.getProcedureIntervention());
+					pstmt.setString(3, meb.getChemotherapy());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addMedicalEvents: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -143,7 +142,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setDouble(2, peb.getECOG());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -157,7 +156,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setDouble(2, peb.getECOG());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -169,7 +168,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setDouble(2, peb.getECOG());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -181,7 +180,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setDouble(2, peb.getECOG());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -193,7 +192,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setDouble(2, peb.getECOG());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -205,7 +204,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setDouble(2, peb.getECOG());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -222,7 +221,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setString(1, cdb.getCurrentSymptoms());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -235,7 +234,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setString(1, cdb.getCurrentSymptoms());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -279,7 +278,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					pstmt.setString(1, cdb.getCurrentSymptoms());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPatient: " + sqle.getMessage());
+					System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -702,7 +701,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (6): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_SERUMFREE);
-					pstmt.setString(1, sfb.getResults());
+					pstmt.setString(1, sfb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addSerumFree: " + sqle.getMessage());
@@ -731,7 +730,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (6): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_SERUMIMMUNOFIXATION);
-					pstmt.setString(1, sifb.getResults());
+					pstmt.setString(1, sifb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addSerumImmunofixation: " + sqle.getMessage());
@@ -760,7 +759,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (6): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_SERUMPROTEIN);
-					pstmt.setString(1, spb.getResults());
+					pstmt.setString(1, spb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addSerumProtein: " + sqle.getMessage());
@@ -960,9 +959,10 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (1): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_FOLLOWUP_AAPHSMDS);
-					pstmt.setString(1, fub.getDateOfEntry());
-					pstmt.setString(2, fub.getDateOfVisit());
-					pstmt.setString(3, fub.getNotes());
+					pstmt.setInt(1, fub.getPatientID());
+					pstmt.setString(2, fub.getDateOfEntry());
+					pstmt.setString(3, fub.getDateOfVisit());
+					pstmt.setString(4, fub.getNotes());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addFollowUp: " + sqle.getMessage());
@@ -973,9 +973,10 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (2): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_FOLLOWUP_COAGULATION);
-					pstmt.setString(1, fub.getDateOfEntry());
-					pstmt.setString(2, fub.getDateOfVisit());
-					pstmt.setString(3, fub.getNotes());
+					pstmt.setInt(1, fub.getPatientID());
+					pstmt.setString(2, fub.getDateOfEntry());
+					pstmt.setString(3, fub.getDateOfVisit());
+					pstmt.setString(4, fub.getNotes());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addFollowUp: " + sqle.getMessage());
@@ -986,9 +987,10 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (3): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_FOLLOWUP_LEUKEMIA);
-					pstmt.setString(1, fub.getDateOfEntry());
-					pstmt.setString(2, fub.getDateOfVisit());
-					pstmt.setString(3, fub.getNotes());
+					pstmt.setInt(1, fub.getPatientID());
+					pstmt.setString(2, fub.getDateOfEntry());
+					pstmt.setString(3, fub.getDateOfVisit());
+					pstmt.setString(4, fub.getNotes());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addFollowUp: " + sqle.getMessage());
@@ -999,9 +1001,10 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (4): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_FOLLOWUP_LYMPHOMA);
-					pstmt.setString(1, fub.getDateOfEntry());
-					pstmt.setString(2, fub.getDateOfVisit());
-					pstmt.setString(3, fub.getNotes());
+					pstmt.setInt(1, fub.getPatientID());
+					pstmt.setString(2, fub.getDateOfEntry());
+					pstmt.setString(3, fub.getDateOfVisit());
+					pstmt.setString(4, fub.getNotes());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addFollowUp: " + sqle.getMessage());
@@ -1012,9 +1015,10 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (5): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_FOLLOWUP_MYELOPROLIFERATIVE);
-					pstmt.setString(1, fub.getDateOfEntry());
-					pstmt.setString(2, fub.getDateOfVisit());
-					pstmt.setString(3, fub.getNotes());
+					pstmt.setInt(1, fub.getPatientID());
+					pstmt.setString(2, fub.getDateOfEntry());
+					pstmt.setString(3, fub.getDateOfVisit());
+					pstmt.setString(4, fub.getNotes());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addFollowUp: " + sqle.getMessage());
@@ -1025,9 +1029,10 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (6): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_FOLLOWUP_PLASMACELL);
-					pstmt.setString(1, fub.getDateOfEntry());
-					pstmt.setString(2, fub.getDateOfVisit());
-					pstmt.setString(3, fub.getNotes());
+					pstmt.setInt(1, fub.getPatientID());
+					pstmt.setString(2, fub.getDateOfEntry());
+					pstmt.setString(3, fub.getDateOfVisit());
+					pstmt.setString(4, fub.getNotes());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addFollowUp: " + sqle.getMessage());
@@ -1038,9 +1043,10 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			case (7): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_FOLLOWUP_PLATELETCELL);
-					pstmt.setString(1, fub.getDateOfEntry());
-					pstmt.setString(2, fub.getDateOfVisit());
-					pstmt.setString(3, fub.getNotes());
+					pstmt.setInt(1, fub.getPatientID());
+					pstmt.setString(2, fub.getDateOfEntry());
+					pstmt.setString(3, fub.getDateOfVisit());
+					pstmt.setString(4, fub.getNotes());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addFollowUp: " + sqle.getMessage());

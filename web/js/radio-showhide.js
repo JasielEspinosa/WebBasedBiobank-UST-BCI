@@ -413,7 +413,7 @@ $(function() {
 			$("#cytogeneticAndMolecularAnalysisResult").slideDown(200);
 			$("input[name='cytogeneticAndMolecularAnalysisResult']").prop('required', true);
 			$("#cytogeneticAndMolecularAnalysisAttachScannedDocument").slideDown(200);
-			$("input[name='cytogeneticAndMolecularAnalysisAttachScannedDocument']").prop('required', true);
+			//$("input[name='cytogeneticAndMolecularAnalysisAttachScannedDocument']").prop('required', true);
 		} else if ($(this).val() === "0") {
 			$("#cytogeneticAndMolecularAnalysisResult").slideUp(200);
 			$("input[name='cytogeneticAndMolecularAnalysisResult']").prop('required', false);

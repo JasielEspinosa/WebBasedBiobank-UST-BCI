@@ -1,9 +1,19 @@
 package model;
 
 public class FollowUpBean {
+
+	private int patientID;
 	private String dateOfEntry;
 	private String dateOfVisit;
 	private String notes;
+
+	public int getPatientID() {
+		return patientID;
+	}
+
+	public void setPatientID(int patientID) {
+		this.patientID = patientID;
+	}
 
 	public String getDateOfEntry() {
 		return dateOfEntry;

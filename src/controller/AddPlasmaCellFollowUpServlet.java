@@ -41,6 +41,8 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet {
 		getServletContext().log("AddPlasmaCellFollowUpServlet insert test");
 
 		int disease = 6;
+		
+		int patientID = 1;
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
@@ -239,7 +241,7 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet {
 			System.out.println("Invalid connection DiseaseStatusBean");
 		}
 
-		FollowUpBean fub = BeanFactory.getFollowUpBean(dateOfEntry, dateOfVisit, notes);
+		FollowUpBean fub = BeanFactory.getFollowUpBean(patientID, dateOfEntry, dateOfVisit, notes);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addFollowUp(fub, connection, disease)) {
 				System.out.println("Successful insert FollowUpBean");

@@ -142,8 +142,7 @@ public interface SQLCommandsBaseline {
 			+ "(SELECT MAX(SerumFreeID) FROM SerumFreeTable)," + "(SELECT MAX(SerumProteinID) FROM SerumProteinTable),"
 			+ "(SELECT MAX(SerumImmunofixationID) FROM SerumImmunofixationTable),"
 			+ "(SELECT MAX(UrineProteinID) FROM UrineProteinTable))";
-
-	String INSERT_LABORATORY_PROFILE_PLATELETCELL = "INSERT INTO LaboratoryProfileTable(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,ImagingStudiesID,UpperGIEndoscopy,ITP) "
+	String INSERT_LABORATORY_PROFILE_PLATELETCELL = "INSERT INTO LaboratoryProfileTable(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,ImagingStudiesID,UpperGIEndoscopyID,ITP) "
 			+ "VALUES (NULL,?,HematologyID,(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable),(SELECT MAX(UpperGIEndoscopyID) FROM UpperGIEndoscopyTable),?) ";
 
 	String INSERT_MODE_OF_TREATMENT = "INSERT INTO ModeOfTreatmentTable VALUES (NULL,?,?)";

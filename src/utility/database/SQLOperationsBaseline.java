@@ -488,13 +488,13 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setString(1, cdb.getDateOfVisit());
 					pstmt.setString(2, cdb.getDiagnosis());
 					pstmt.setString(3, cdb.getOtherDiagnosis());
-					pstmt.setInt(4, cdb.getSeverityId());
-					pstmt.setString(5, cdb.getChiefComplaint());
-					pstmt.setString(6, cdb.getOtherSymptoms());
-					pstmt.setString(7, cdb.getComorbidities());
-					pstmt.setString(8, cdb.getSmokingHistory());
-					pstmt.setString(9, cdb.getAlchoholIntakeHistory());
-					pstmt.setString(10, cdb.getChemicalExposure());
+					pstmt.setString(4, cdb.getChiefComplaint());
+					pstmt.setString(5, cdb.getOtherSymptoms());
+					pstmt.setString(6, cdb.getComorbidities());
+					pstmt.setString(7, cdb.getSmokingHistory());
+					pstmt.setString(8, cdb.getAlchoholIntakeHistory());
+					pstmt.setString(9, cdb.getChemicalExposure());
+					pstmt.setString(10, cdb.getOtherFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
@@ -809,6 +809,23 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				break;
 			}
 			case (7): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_HEMATOLOGY_PLATELETCELL);
+					pstmt.setDouble(1, hb.getHemoglobin());
+					pstmt.setDouble(2, hb.getHematocrit());
+					pstmt.setDouble(3, hb.getWhiteBloodCells());
+					pstmt.setDouble(4, hb.getNeutrophils());
+					pstmt.setDouble(5, hb.getLymphocytes());
+					pstmt.setDouble(6, hb.getMonocytes());
+					pstmt.setDouble(7, hb.getEosinophils());
+					pstmt.setDouble(8, hb.getBasophils());
+					pstmt.setDouble(9, hb.getPlateletCount());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addHematology: " + sqle.getMessage());
+					return false;
+				}
+				break;
 			}
 		}
 		return true;
@@ -1178,8 +1195,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return true;
 	}
 
-	public static boolean addCytogeneticMolecularAAPNH(CytogeneticMolecularAAPNHBean cmaapnhb, Connection connection,
-			int disease) {
+	public static boolean addCytogeneticMolecularAAPNH(CytogeneticMolecularAAPNHBean cmaapnhb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
 				try {
@@ -1218,8 +1234,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return true;
 	}
 
-	public static boolean addCytogeneticMolecularMDS(CytogeneticMolecularMDSBean cmmdsb, Connection connection,
-			int disease) {
+	public static boolean addCytogeneticMolecularMDS(CytogeneticMolecularMDSBean cmmdsb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
 				try {
@@ -1357,7 +1372,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_HEMATOPATHOLOGY);
 					pstmt.setString(1, hpb.getDatePerformed());
-					pstmt.setString(2, hpb.getResults());
+					pstmt.setString(2, hpb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addHematopathology: " + sqle.getMessage());
@@ -1387,7 +1402,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_IMMUNOHISTOCHEMISTRY);
 					pstmt.setString(1, ihcb.getDatePerformed());
-					pstmt.setString(2, ihcb.getResults());
+					pstmt.setString(2, ihcb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addImmunohistochemistry: " + sqle.getMessage());
@@ -1420,7 +1435,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			case (6): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_SERUMFREE);
-					pstmt.setString(1, sfb.getResults());
+					pstmt.setString(1, sfb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addSerumFree: " + sqle.getMessage());
@@ -1449,7 +1464,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			case (6): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_SERUMIMMUNOFIXATION);
-					pstmt.setString(1, sifb.getResults());
+					pstmt.setString(1, sifb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addSerumImmunofixation: " + sqle.getMessage());
@@ -1478,7 +1493,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			case (6): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_SERUMPROTEIN);
-					pstmt.setString(1, spb.getResults());
+					pstmt.setString(1, spb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addSerumProtein: " + sqle.getMessage());
@@ -1628,8 +1643,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return true;
 	}
 
-	public static boolean addChemotherapyMedications(ChemotherapyMedicationsBean cmb, Connection connection,
-			int disease) {
+	public static boolean addChemotherapyMedications(ChemotherapyMedicationsBean cmb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
 				try {

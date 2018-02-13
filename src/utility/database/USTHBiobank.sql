@@ -52,15 +52,15 @@ CREATE TABLE AddressTable (
 
 CREATE TABLE TissueSpecimenTable (
 	TissueSpecimenID int NOT NULL AUTO_INCREMENT,
-	TissueSpecimenName varchar(150) NOT NULL,
+	TissueSpecimenName varchar(150),
 	PRIMARY KEY (TissueSpecimenID)
 );
 
 CREATE TABLE FamilyCancerTable (
 	FamilyCancerID int NOT NULL AUTO_INCREMENT,
 	ClinicalDataID int NOT NULL,
-	RelationshipToPatient blob NOT NULL,
-	CancerName blob NOT NULL,
+	RelationshipToPatient blob,
+	CancerName blob,
 	PRIMARY KEY (FamilyCancerID)
 );
 
@@ -73,8 +73,8 @@ CREATE TABLE OtherDiseasesTable (
 
 CREATE TABLE ClinicalDataTable (
 	ClinicalDataID int NOT NULL AUTO_INCREMENT,
-	DateOfVisit DATE NOT NULL,
-	Diagnosis blob NOT NULL,
+	DateOfVisit DATE,
+	Diagnosis blob,
 	OtherDiagnosis blob,
 	PrognosticRiskScoringID int,
 	RiskScoreID int,
@@ -83,6 +83,7 @@ CREATE TABLE ClinicalDataTable (
 	SeverityID int,
 	StageOfDisease blob,
 	ChiefComplaint blob,
+	CurrentSymptoms blob,
 	ConstitutionalSymptoms blob,
 	OtherSymptoms blob,
 	Combordities blob,
@@ -105,16 +106,16 @@ CREATE TABLE ClassificationTable (
 CREATE TABLE MedicationsTable (
 	MedicationsID int NOT NULL AUTO_INCREMENT,
 	ClinicalDataID int NOT NULL,
-	GenericName varchar(300) NOT NULL,
-	Dose double NOT NULL,
-	Frequency varchar(300) NOT NULL,
+	GenericName varchar(300),
+	Dose double,
+	Frequency varchar(300),
 	PRIMARY KEY (MedicationsID)
 );
 
 CREATE TABLE PhysicalExamTable (
 	PhysicalExamID int NOT NULL AUTO_INCREMENT,
-	Height double NOT NULL,
-	Weight double NOT NULL,
+	Height double,
+	Weight double,
 	ECOG double,
 	Splenomegaly double,
 	Hepatomegaly double,
@@ -160,9 +161,9 @@ CREATE TABLE LaboratoryProfileTable (
 	OtherLaboratoriesID int,
 	BoneMarrowAspirateID int,
 	FlowCytometryID int,
-	CytogenicAAPNHID int,
-	CytogenicMDSID int,
-	CytogenicPlasmaCellID int,
+	CytogeneticMolecularID int,
+	CytogeneticMolecularAAPNHID int,
+	CytogeneticMolecularMDSID int,
 	ImagingStudiesID int,
 	UpperGIEndoscopyID int,
 	MolecularAnalysisID int,
@@ -243,66 +244,60 @@ CREATE TABLE BloodChemistryTable (
 
 CREATE TABLE BoneMarrowAspirateTable (
 	BoneMarrowAspirateID int NOT NULL AUTO_INCREMENT,
-	DatePerformed DATE NOT NULL,
-	Result blob NOT NULL,
+	DatePerformed blob,
+	Result blob,
 	PRIMARY KEY (BoneMarrowAspirateID)
 );
 
 CREATE TABLE FlowCytometryTable (
 	FlowCytometryID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
+	Result blob,
 	PRIMARY KEY (FlowCytometryID)
 );
 
-CREATE TABLE CytogeneticAAPNHTable (
-	CytogenicAAPNHID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
-	PRIMARY KEY (CytogenicAAPNHID)
+CREATE TABLE CytogeneticMolecularTable (
+	CytogeneticMolecularID int NOT NULL AUTO_INCREMENT,
+	Result blob,
+	PRIMARY KEY (CytogeneticMolecularID)
 );
 
-CREATE TABLE CytogeneticMDSTable  (
-	CytogenicMDSID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
-	PRIMARY KEY (CytogenicMDSID)
+CREATE TABLE CytogeneticMolecularAAPNHTable (
+	CytogeneticMolecularAAPNHID int NOT NULL AUTO_INCREMENT,
+	Result blob,
+	PRIMARY KEY (CytogeneticMolecularAAPNHID)
 );
 
-CREATE TABLE CytogeneticPlasmaCellTable  (
-	CytogenicPlasmaCellID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
-	PRIMARY KEY (CytogenicPlasmaCellID)
+CREATE TABLE CytogeneticMolecularMDSTable  (
+	CytogeneticMolecularMDSID int NOT NULL AUTO_INCREMENT,
+	Result blob,
+	PRIMARY KEY (CytogeneticMolecularMDSID)
 );
 
 CREATE TABLE ImagingStudiesTable (
 	ImagingStudiesID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
+	Result blob,
 	PRIMARY KEY (ImagingStudiesID)
 );
 
 CREATE TABLE UpperGIEndoscopyTable (
 	UpperGIEndoscopyID int NOT NULL AUTO_INCREMENT,
-	DatePerformed DATE NOT NULL,
-	Description blob NOT NULL,
-	HPylori bool NOT NULL,
+	DatePerformed blob,
+	Description blob,
+	HPylori bool,
 	PRIMARY KEY (UpperGIEndoscopyID)
-);
-
-CREATE TABLE MolecularAnalysisTable (
-	MolecularAnalysisID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
-	PRIMARY KEY (MolecularAnalysisID)
 );
 
 CREATE TABLE HematopathologyTable (
 	HematopathologyID int NOT NULL AUTO_INCREMENT,
-	DatePerformed DATE NOT NULL,
-	Result blob NOT NULL,
+	DatePerformed blob,
+	Result blob,
 	PRIMARY KEY (HematopathologyID)
 );
 
 CREATE TABLE ImmunohistochemistryTable (
 	ImmunohistochemistryID int NOT NULL AUTO_INCREMENT,
-	DatePerformed DATE NOT NULL,
-	Result blob NOT NULL,
+	DatePerformed blob,
+	Result blob,
 	PRIMARY KEY (ImmunohistochemistryID)
 );
 
@@ -317,25 +312,25 @@ CREATE TABLE CoagulationTestingTable (
 
 CREATE TABLE SerumFreeTable (
 	SerumFreeID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
+	Result blob,
 	PRIMARY KEY (SerumFreeID)
 );
 
 CREATE TABLE SerumProteinTable (
 	SerumProteinID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
+	Result blob,
 	PRIMARY KEY (SerumProteinID)
 );
 
 CREATE TABLE SerumImmunofixationTable (
 	SerumImmunofixationID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
+	Result blob,
 	PRIMARY KEY (SerumImmunofixationID)
 );
 
 CREATE TABLE UrineProteinTable  (
 	UrineProteinID int NOT NULL AUTO_INCREMENT,
-	Result blob NOT NULL,
+	Result blob,
 	PRIMARY KEY (UrineProteinID)
 );
 
@@ -374,38 +369,39 @@ CREATE TABLE ChemoMedicationsTable (
 
 CREATE TABLE RegimenTable (
 	RegimenID int NOT NULL AUTO_INCREMENT,
-	RegimenName blob NOT NULL,
+	RegimenName blob,
 	PRIMARY KEY (RegimenID)
 );
 
 CREATE TABLE RegimenTransplantTable (
 	RegimenTransplantID int NOT NULL AUTO_INCREMENT,
-	RegimenName blob NOT NULL,
+	RegimenName blob,
 	PRIMARY KEY (RegimenTransplantID)
 );
 
 CREATE TABLE RegimenNonTransplantTable (
 	RegimenNonTransplantID int NOT NULL AUTO_INCREMENT,
-	RegimenName blob NOT NULL,
+	RegimenName blob,
 	PRIMARY KEY (RegimenNonTransplantID)
 );
 
 CREATE TABLE MaintenanceTherapyTable (
 	MaintenanceTherapyID int NOT NULL AUTO_INCREMENT,
-	MaintenanceTherapyName blob NOT NULL,
+	MaintenanceTherapyName blob,
 	PRIMARY KEY (MaintenanceTherapyID)
 );
 
 CREATE TABLE FollowUpTable (
 	FollowUpID int NOT NULL AUTO_INCREMENT,
 	PatientID int,
+	DateOfEntry DATE NOT NULL,
 	DateOfVisit DATE NOT NULL,
 	MedicalEventsID int,
 	ClinicalDataID int,
 	LaboratoryID int,
 	QualityOfResponseID int,
 	DiseaseStatusID int,
-	SpecialNotes blob NOT NULL,
+	Notes blob NOT NULL,
 	PRIMARY KEY (FollowUpID)
 );
 
@@ -422,22 +418,26 @@ CREATE TABLE OtherTreatmentTable (
 CREATE TABLE DiseaseStatusTable (
 	DiseaseStatusID int NOT NULL AUTO_INCREMENT,
 	DiseaseStatus blob NOT NULL,
+	RelapseDisease blob,
+	OtherDisease  blob,
 	PRIMARY KEY (DiseaseStatusID)
 );
 
 CREATE TABLE MedicalEventsTable (
 	MedicalEventsID int NOT NULL AUTO_INCREMENT,
-	NewMedicationForHematologicMalignancy blob,
-	NewConcomitantMedicationForOtherDisease blob,
-	UndergoAnyProcedure blob,
-	ComplicationsFromChemotherapy blob,
-	SelfAdministerFactorConcentrates blob,
+	HematologicMalignancy blob,
+	OtherDiseaseMedication blob,
+	FactorConcentrate blob,
+	FactorConcentrateDates blob,
+	FactorConcentrateDose double,
+	ProcedureIntervention blob,
+	Chemotherapy blob,
 	PRIMARY KEY (MedicalEventsID)
 );
 
 CREATE TABLE QualityOfResponseTable (
 	QualityOfResponseID int NOT NULL AUTO_INCREMENT,
-	ResponseName blob NOT NULL,
+	ResponseName blob,
 	PRIMARY KEY (QualityOfResponseID)
 );
 
@@ -505,15 +505,15 @@ ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk3 FOR
 
 ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk4 FOREIGN KEY (FlowCytometryID) REFERENCES FlowCytometryTable(FlowCytometryID);
 
-ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk5 FOREIGN KEY (CytogenicAAPNHID) REFERENCES CytogeneticAAPNHTable(CytogenicAAPNHID);
+ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk5 FOREIGN KEY (CytogeneticMolecularID) REFERENCES CytogeneticMolecularTable(CytogeneticMolecularID);
 
-ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk6 FOREIGN KEY (CytogenicMDSID) REFERENCES CytogeneticMDSTable (CytogenicMDSID);
+ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk6 FOREIGN KEY (CytogeneticMolecularAAPNHID) REFERENCES CytogeneticMolecularAAPNHTable(CytogeneticMolecularAAPNHID);
 
-ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk7 FOREIGN KEY (ImagingStudiesID) REFERENCES ImagingStudiesTable(ImagingStudiesID);
+ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk7 FOREIGN KEY (CytogeneticMolecularMDSID) REFERENCES CytogeneticMolecularMDSTable(CytogeneticMolecularMDSID);
 
-ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk8 FOREIGN KEY (UpperGIEndoscopyID) REFERENCES UpperGIEndoscopyTable(UpperGIEndoscopyID);
+ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk8 FOREIGN KEY (ImagingStudiesID) REFERENCES ImagingStudiesTable(ImagingStudiesID);
 
-ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk9 FOREIGN KEY (MolecularAnalysisID) REFERENCES MolecularAnalysisTable(MolecularAnalysisID);
+ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk9 FOREIGN KEY (UpperGIEndoscopyID) REFERENCES UpperGIEndoscopyTable(UpperGIEndoscopyID);
 
 ALTER TABLE LaboratoryProfileTable ADD CONSTRAINT LaboratoryProfileTable_fk10 FOREIGN KEY (HematopathologyID) REFERENCES HematopathologyTable(HematopathologyID);
 

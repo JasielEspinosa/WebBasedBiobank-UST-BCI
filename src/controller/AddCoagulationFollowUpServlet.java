@@ -30,16 +30,16 @@ public class AddCoagulationFollowUpServlet extends HttpServlet {
 		}
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getServletContext().log("AddCoagulationFollowUpServlet insert test");
 
 		int disease = 2;
+
+		int patientID = 1;
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
@@ -49,8 +49,8 @@ public class AddCoagulationFollowUpServlet extends HttpServlet {
 		String procedureIntervention = request.getParameter("specifyProcedure");
 		String notes = request.getParameter("specialNotes");
 
-		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean("", "", factorConcentrate, factorConcentrateDates,
-				factorConcentrateDose, procedureIntervention, "");
+		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean("", "", factorConcentrate, factorConcentrateDates, factorConcentrateDose,
+				procedureIntervention, "");
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addMedicalEvents(meb, connection, disease)) {
 				System.out.println("Successful insert MedicalEventsBean");
@@ -61,7 +61,7 @@ public class AddCoagulationFollowUpServlet extends HttpServlet {
 			System.out.println("Invalid connection MedicalEventsBean");
 		}
 
-		FollowUpBean fub = BeanFactory.getFollowUpBean(dateOfEntry, dateOfVisit, notes);
+		FollowUpBean fub = BeanFactory.getFollowUpBean(patientID, dateOfEntry, dateOfVisit, notes);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addFollowUp(fub, connection, disease)) {
 				System.out.println("Successful insert FollowUpBean");

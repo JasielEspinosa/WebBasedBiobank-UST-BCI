@@ -342,7 +342,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Date of blood collection</label>
                                        <div class="col-lg-8">
-                                          <input type="date" class="form-control" name="dateOfCloodCollection" />
+                                          <input type="date" class="form-control" name="dateOfBloodCollection" />
                                        </div>
                                     </div>
                                     <br />

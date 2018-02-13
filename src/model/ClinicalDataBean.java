@@ -4,10 +4,6 @@ public class ClinicalDataBean {
 	private String dateOfVisit;
 	private String diagnosis;
 	private String otherDiagnosis;
-	private int prognosticRiskScoringId;
-	private int classificationId;
-	private int ISSStagingId;
-	private int severityId;
 	private String stageOfDisease;
 	private String chiefComplaint;
 	private String currentSymptoms;
@@ -46,38 +42,6 @@ public class ClinicalDataBean {
 
 	public void setOtherDiagnosis(String otherDiagnosis) {
 		this.otherDiagnosis = otherDiagnosis;
-	}
-
-	public int getPrognosticRiskScoringId() {
-		return prognosticRiskScoringId;
-	}
-
-	public void setPrognosticRiskScoringId(int prognosticRiskScoringId) {
-		this.prognosticRiskScoringId = prognosticRiskScoringId;
-	}
-
-	public int getClassificationId() {
-		return classificationId;
-	}
-
-	public void setClassificationId(int classificationId) {
-		this.classificationId = classificationId;
-	}
-
-	public int getISSStagingId() {
-		return ISSStagingId;
-	}
-
-	public void setISSStagingId(int iSSStagingId) {
-		ISSStagingId = iSSStagingId;
-	}
-
-	public int getSeverityId() {
-		return severityId;
-	}
-
-	public void setSeverityId(int severityId) {
-		this.severityId = severityId;
 	}
 
 	public String getStageOfDisease() {
