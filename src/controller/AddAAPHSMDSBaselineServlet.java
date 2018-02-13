@@ -39,6 +39,9 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultVa
 
 		getServletContext().log("AddAAPHSMDSBaselineServlet insert test");
 
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/plain");
+		
 		int disease = 1;
 
 		// GENERAL DATA
@@ -423,6 +426,8 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultVa
 		} else {
 			System.out.println("Invalid connection AddPatient");
 		}
+		
+		response.getWriter().write("Success");
 
 	}
 
