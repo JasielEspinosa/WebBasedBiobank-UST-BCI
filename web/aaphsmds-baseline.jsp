@@ -101,10 +101,9 @@
             <!-- Search Box -->
             <div class="row">
                <div class="col-sm-12 search-box">
-                  <div>
-                     <input type="text" placeholder="Search Patient" class="sidebar__searchbox--border"
-                        style="font-weight: bold; text-align: center;">
-                  </div>
+                     <div>
+                        <input  id ="searchbox" type="text" placeholder="Search Patient" class="sidebar__searchbox--border" style="font-weight:bold; text-align:center;">
+                     </div>
                </div>
             </div>
             <!-- End of Search Box -->
@@ -137,7 +136,7 @@
             </p>
             <!-- End of Sidebar -->
             <!-- Forms Container -->
-            <form action="AddAAPHSMDSBaselineServlet" method="post">
+            <form action="" method="post" id="AddAAPHSMDSBaseline">
                <div class="col-md-12">
                   <div class="col-md-12 forms">
                      <!-- Buttons Container -->
@@ -147,7 +146,7 @@
                               href="aaphsmds-followup.jsp" type="button" class="btn bg-yellow button-border" id="followUpBtn">Follow Up</a>
                         </div>
                         <div class="col-sm-6 text-right btn-toolbar">
-                           <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Patient Statistics</a> <a
+                           <a href="#" type="button" class="btn bg-yellow button-border" id="patientStatistics">Patient Statistics</a> <a
                               href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Edit Patient</a> <a href="#"
                               type="button" class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
                         </div>
@@ -940,10 +939,11 @@
                                  <!-- End of Form -->
                               </div>
                               <!-- End of Therapy -->
+                              </div>
+                              <!-- End of CLT Tab Content -->
+                              <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitQuery'>
+                              <input type="button" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitCancel' value='Cancel' onclick='cancelEdit()'>
                            </div>
-                           <!-- End of CLT Tab Content -->
-                           <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border" onclick="baselineFieldsValidation()">
-                        </div>
                         <!-- End of CLT -->
                      </div>
                   </div>
@@ -954,5 +954,7 @@
       </div>
    </div>
    <!-- End of Main Content -->
+<script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+<script src="js/aaphsmds.js"></script>
 </body>
 </html>
