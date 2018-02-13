@@ -477,10 +477,10 @@
                                        <label class="control-label col-sm-3">Family History of Cancer</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistory" value="1">Yes</label>
+                                             <label><input type="radio" name="familyHistoryOfCancer" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistory" value="0">No</label>
+                                             <label><input type="radio" name="familyHistoryOfCancer" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>
@@ -564,7 +564,7 @@
                                        </div>
                                     </div>
                                     <!-- Alcohol Intake History -->
-                                    <div class="form-group" id="alcoholIntakeHistory" style="display: none;">
+                                    <div class="form-group">
                                        <label class="control-label col-lg-3">Alcohol intake history </label>
                                        <div class="col-sm-9">
                                           <div class="radio">
@@ -575,7 +575,7 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="alcoholIntakeSpecify" style="display: none;">
                                        <label class="control-label col-lg-3">Specify</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="alcoholIntakeSpecify" />
@@ -879,19 +879,19 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="hematopathologyDatePerformed" style="display:none;">
                                        <label class="control-label col-sm-4">Date Performed</label>
                                        <div class="col-lg-8">
                                           <input type="date" class="form-control" name="hematopathologyDatePerformed" />
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="hematopathologyDescription" style="display:none;">
                                        <label class="control-label col-lg-4">Description</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="hematopathologyDescription" />
                                        </div>
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group" id="hematopathologyAttachScannedDocument" style="display:none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
                                           <input type="file" class="form-control"
@@ -966,22 +966,22 @@
                                           </div>
                                        </div>
                                     </div>
-                                    <div class="form-group" id="boneMarrowDatePerformed" style="display: none;">
+                                    <div class="form-group" id="boneMarrowAspirateDatePerformed" style="display: none;">
                                        <label class="control-label col-sm-4">Date Performed</label>
                                        <div class="col-lg-8">
-                                          <input type="date" class="form-control" name="boneMarrowDatePerformed" />
+                                          <input type="date" class="form-control" name="boneMarrowAspirateDatePerformed" />
                                        </div>
                                     </div>
-                                    <div class="form-group" id="boneMarrowDescription" style="display: none;">
+                                    <div class="form-group" id="boneMarrowAspirateDescription" style="display: none;">
                                        <label class="control-label col-lg-4">Description</label>
                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="boneMarrowDescription" />
+                                          <input type="text" class="form-control" name="boneMarrowAspirateDescription" />
                                        </div>
                                     </div>
-                                    <div class="form-group" id="boneMarrowAttachScannedDocument" style="display: none;">
+                                    <div class="form-group" id="boneMarrowAspirateAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
-                                          <input type="file" class="form-control" name="boneMarrowAttachScannedDocument" />
+                                          <input type="file" class="form-control" name="boneMarrowAspirateAttachScannedDocument" />
                                        </div>
                                     </div>
                                     <!-- Flow cytometry -->

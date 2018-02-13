@@ -1,5 +1,20 @@
 $(function() {
 
+	// GENERAL DATA
+
+	$("input[name='tissueSpecimenCollected']").click(function() {
+		if ($(this).val() === "1") {
+			// $("#smokingHistorySpecify").show();
+			// $("#smokingHistorySpecify").show("fast");
+			$("#specimenType").slideDown(200);
+			$("input[name='specimenType']").prop('required', true);
+		} else if ($(this).val() === "0") {
+			// $("#smokingHistorySpecify").hide("fast");
+			$("#specimenType").slideUp(200);
+			$("input[name='specimenType']").prop('required', false);
+		}
+	});
+
 	// MEDICAL EVENTS
 
 	$("input[name='hematologicMalignancy']").click(function() {
@@ -64,26 +79,92 @@ $(function() {
 			$("#specifyChemotherapy").slideUp(200);
 			$("input[name='specifyChemotherapy']").prop('required', false);
 		}
-	});
-
-	// GENERAL DATA
-
-	$("input[name='tissueSpecimenCollected']").click(function() {
-		if ($(this).val() === "1") {
-			// $("#smokingHistorySpecify").show();
-			// $("#smokingHistorySpecify").show("fast");
-			$("#specimenType").slideDown(200);
-			$("input[name='specimenType']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			// $("#smokingHistorySpecify").hide("fast");
-			$("#specimenType").slideUp(200);
-			$("input[name='specimenType']").prop('required', false);
-		}
-	});
-
-	// MEDICAL EVENTS
+	}); 
 
 	// CLINICAL
+
+	// DROPDOWN
+	$("select[name='diagnosis']").click(function() {
+		if ($(this).val() === "Others") {
+			$("#diagnosisOthers").slideDown(200);
+			$("input[name='diagnosisOthers']").prop('required', true);
+		} else {
+			$("#diagnosisOthers").slideUp(200);
+			$("input[name='diagnosisOthers']").prop('required', false);
+		}
+	});
+	
+	$("select[name='treatment']").click(function() {
+		if ($(this).val() === "Others") {
+			$("#treatmentSpecify").slideDown(200);
+			$("input[name='treatmentSpecify']").prop('required', true);
+		} else {
+			$("#treatmentSpecify").slideUp(200);
+			$("input[name='treatmentSpecify']").prop('required', false);
+		}
+	});
+	
+	$("select[name='treatment']").click(function() {
+		if ($(this).val() === "Others") {
+			$("#otherRegimens").slideDown(200);
+			$("input[name='otherRegimens']").prop('required', true);
+		} else {
+			$("#otherRegimens").slideUp(200);
+			$("input[name='otherRegimens']").prop('required', false);
+		}
+	});
+	
+	$("select[name='regimenProtocolTransplant']").click(function() {
+		if ($(this).val() === "Others") {
+			$("#otherRegimensTransplant").slideDown(200);
+			$("input[name='otherRegimensTransplant']").prop('required', true);
+		} else {
+			$("#otherRegimensTransplant").slideUp(200);
+			$("input[name='otherRegimensTransplant']").prop('required', false);
+		}
+	});
+	
+	$("select[name='regimenProtocolNonTransplant']").click(function() {
+		if ($(this).val() === "Others") {
+			$("#otherRegimensNonTransplant").slideDown(200);
+			$("input[name='otherRegimensNonTransplant']").prop('required', true);
+		} else {
+			$("#otherRegimensNonTransplant").slideUp(200);
+			$("input[name='otherRegimensNonTransplant']").prop('required', false);
+		}
+	});
+	
+	$("select[name='regimenProtocolMaintenanceTherapy']").click(function() {
+		if ($(this).val() === "Others") {
+			$("#otherRegimensMaintenanceTherapy").slideDown(200);
+			$("input[name='otherRegimensMaintenanceTherapy']").prop('required', true);
+		} else {
+			$("#otherRegimensMaintenanceTherapy").slideUp(200);
+			$("input[name='otherRegimensMaintenanceTherapy']").prop('required', false);
+		}
+	});
+	
+	$("select[name='prognosticRiskScoring']").click(function() {
+		if ($(this).val() === "Others") {
+			$("#prognosticRiskScoringothers").slideDown(200);
+			$("input[name='prognosticRiskScoringothers']").prop('required', true);
+		} else {
+			$("#prognosticRiskScoringothers").slideUp(200);
+			$("input[name='prognosticRiskScoringothers']").prop('required', false);
+		}
+	});
+	
+	$("select[name='riskScore']").click(function() {
+		if ($(this).val() === "Others") {
+			$("#riskScoreOthers").slideDown(200);
+			$("input[name='riskScoreOthers']").prop('required', true);
+		} else {
+			$("#riskScoreOthers").slideUp(200);
+			$("input[name='riskScoreOthers']").prop('required', false);
+		}
+	});
+	
+	// END OF DROPDOWN
 
 	$("input[name='familyHistoryOfCancer']").click(function() {
 		if ($(this).val() === "1") {
@@ -102,7 +183,7 @@ $(function() {
 			$("input[name='otherDiseasesInTheFamily']").prop('required', false);
 		}
 	});
-	
+
 	$("input[name='familyHistoryOfBleedingDiathesis']").click(function() {
 		if ($(this).val() === "1") {
 			$("#relationshipToPatient").slideDown(200);
@@ -138,6 +219,19 @@ $(function() {
 			$("input[name='dose']").prop('required', false);
 			$("#frequency").slideUp(200);
 			$("input[name='frequency']").prop('required', false);
+		}
+	});
+	
+	$("input[name='thrombosisHistory']").click(function() {
+		if ($(this).val() === "1") {
+			// $("#smokingHistorySpecify").show();
+			// $("#smokingHistorySpecify").show("fast");
+			$("#thrombosisHistorySpecify").slideDown(200);
+			$("input[name='thrombosisHistorySpecify']").prop('required', true);
+		} else if ($(this).val() === "0") {
+			// $("#smokingHistorySpecify").hide("fast");
+			$("#thrombosisHistorySpecify").slideUp(200);
+			$("input[name='thrombosisHistorySpecify']").prop('required', false);
 		}
 	});
 
@@ -255,6 +349,16 @@ $(function() {
 			$("input[name='cytogeneticAndMolecularAnalysisMDSAttachScannedDocument']").prop('required', false);
 		}
 	});
+	
+	$("input[name='molecularAnalysis']").click(function() {
+		if ($(this).val() === "1") {
+			$("#molecularAnalysisResult").slideDown(200);
+			$("input[name='molecularAnalysisResult']").prop('required', true);
+		} else if ($(this).val() === "0") {
+			$("#molecularAnalysisResult").slideUp(200);
+			$("input[name='molecularAnalysisResult']").prop('required', false);
+		}
+	});
 
 	// THERAPY AND RESPONSE
 
@@ -315,7 +419,7 @@ $(function() {
 			$("#hematopathologyDatePerformed").slideDown(200);
 			$("input[name='hematopathologyDatePerformed']").prop('required', true);
 			$("#hematopathologyDescription").slideDown(200);
-			$("input[hematopathologyDescription='boneMarrowAspirateDescription']").prop('required', true);
+			$("input[name='hematopathologyDescription']").prop('required', true);
 			$("#hematopathologyAttachScannedDocument").slideDown(200);
 			// $("input[name='hematopathologyAttachScannedDocument']").prop('required', true);
 		} else if ($(this).val() === "0") {
@@ -333,7 +437,7 @@ $(function() {
 			$("#immunohistochemistryDatePerformed").slideDown(200);
 			$("input[name='immunohistochemistryDatePerformed']").prop('required', true);
 			$("#immunohistochemistryDescription").slideDown(200);
-			$("input[immunohistochemistryDescription='boneMarrowAspirateDescription']").prop('required', true);
+			$("input[name='immunohistochemistryDescription']").prop('required', true);
 			$("#immunohistochemistryAttachScannedDocument").slideDown(200);
 			// $("input[name='immunohistochemistryAttachScannedDocument']").prop('required', true);
 		} else if ($(this).val() === "0") {
@@ -460,7 +564,7 @@ $(function() {
 
 	$("input[name='dialysis']").click(function() {
 		if ($(this).val() === "1") {
-			$("#urineProteinResult").slideDown(200);
+			$("#otherMedications").slideDown(200);
 			$("input[name='otherMedications']").prop('required', true);
 			$("#dateStarted").slideDown(200);
 			$("input[name='dateStarted']").prop('required', true);
@@ -473,6 +577,16 @@ $(function() {
 			$("input[name='dateStarted']").prop('required', false);
 			$("#complications").slideUp(200);
 			$("input[name='complications']").prop('required', false);
+		}
+	});
+	
+	$("select[name='diseaseStatus']").click(function() {
+		if ($(this).val() === "Others") {
+			$("#diseaseStatusOthers").slideDown(200);
+			$("input[name='diseaseStatusOthers']").prop('required', true);
+		} else {
+			$("#diseaseStatusOthers").slideUp(200);
+			$("input[name='diseaseStatusOthers']").prop('required', false);
 		}
 	});
 

@@ -346,6 +346,13 @@
                                           </select>
                                        </div>
                                     </div>
+                                    <!-- Others -->
+                                    <div class="form-group" id="diagnosisOthers" style="display: none;">
+                                       <label class="control-label col-sm-3">Others Please Specify</label>
+                                       <div class="col-sm-9">
+                                          <input type="text" class="form-control" name="diagnosisOthers">
+                                       </div>
+                                    </div>
                                     <!-- Prognostic Risk Scoring Used -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Prognostic Risk Scoring Used</label>
@@ -356,6 +363,13 @@
                                              <option value="DIPSS risk">DIPSS risk</option>
                                              <option value="Others">Others</option>
                                           </select>
+                                       </div>
+                                    </div>
+                                    <!-- Others -->
+                                    <div class="form-group" id="prognosticRiskScoringothers" style="display: none;">
+                                       <label class="control-label col-sm-3">Others Please Specify</label>
+                                       <div class="col-sm-9">
+                                          <input type="text" class="form-control" name="prognosticRiskScoringothers">
                                        </div>
                                     </div>
                                     <!-- Risk Score -->
@@ -370,6 +384,13 @@
                                              <option value="High Risk">High Risk</option>
                                              <option value="Others">Others</option>
                                           </select>
+                                       </div>
+                                    </div>
+                                    <!-- Others -->
+                                    <div class="form-group" id="riskScoreOthers" style="display: none;">
+                                       <label class="control-label col-sm-3">Others Please Specify</label>
+                                       <div class="col-sm-9">
+                                          <input type="text" class="form-control" name="riskScoreOthers">
                                        </div>
                                     </div>
                                     <!-- Chief Complaint -->
@@ -403,29 +424,29 @@
                                        <label class="control-label col-sm-3">Family History of Cancer</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistory" value="1">Yes</label>
+                                             <label><input type="radio" name="familyHistoryOfCancer" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistory" value="0">No</label>
+                                             <label><input type="radio" name="familyHistoryOfCancer" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>
                                     <!-- Relationship to Patient -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="relationshipToPatient" style="display: none;">
                                        <label class="control-label col-sm-3">Relationship to Patient</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="relationshipToPatient">
                                        </div>
                                     </div>
                                     <!-- Specify Cancer-->
-                                    <div class="form-group">
+                                    <div class="form-group" id="specifyCancer" style="display: none;">
                                        <label class="control-label col-sm-3">Specify Cancer</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="specifyCancer">
                                        </div>
                                     </div>
                                     <!-- Other Diseases in the Family -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="otherDiseasesInTheFamily" style="display: none;">
                                        <label class="control-label col-sm-3">Other Diseases in the Family</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="otherDiseasesInTheFamily">

@@ -305,11 +305,12 @@
                                              <option selected="selected" disabled="disabled">Select</option>
                                              <option value="D66 Hemophilia A">D66 Hemophilia A</option>
                                              <option value="D67 Hemophilia B">D67 Hemophilia B</option>
+                                             <option value="Others">Others</option>
                                           </select>
                                        </div>
                                     </div>
                                     <!-- Others -->
-                                    <div class="form-group">
+                                    <div class="form-group" id="diagnosisOthers" style="display: none;">
                                        <label class="control-label col-sm-3">Others Please Specify</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="diagnosisOthers">
@@ -715,7 +716,7 @@
                                           <input type="text" class="form-control" name="imagingStudiesResult" />
                                        </div>
                                     </div>
-                                    <!-- End of Imaging Studies -->
+                                    <!-- End of Imaging Studies --> 
                                  </div>
                                  <!-- end of form -->
                               </div>
@@ -735,8 +736,8 @@
                                           </select>
                                        </div>
                                     </div>
-                                    <div class="form-group">
-                                       <label class="control-label col-lg-3">Specify</label>
+                                    <div class="form-group" id="treatmentSpecify" style="display: none;">
+                                       <label class="control-label col-lg-3">Others Please Specify</label>
                                        <div class="col-sm-9">
                                           <input type="text" class="form-control" name="treatmentSpecify" />
                                        </div>

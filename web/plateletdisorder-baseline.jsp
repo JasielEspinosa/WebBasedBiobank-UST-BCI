@@ -345,10 +345,10 @@
                                        <label class="control-label col-sm-3">Family History of Cancer</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistory" value="1">Yes</label>
+                                             <label><input type="radio" name="familyHistoryOfCancer" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistory" value="0">No</label>
+                                             <label><input type="radio" name="familyHistoryOfCancer" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>
@@ -774,6 +774,13 @@
                                              <option value="Watch and Wait">Watch and Wait</option>
                                              <option value="Others">Others</option>
                                           </select>
+                                       </div>
+                                    </div>
+                                    <!-- Others Please Specify -->
+                                    <div class="form-group" id="treatmentSpecify" style="display: none;">
+                                       <label class="control-label col-lg-4">Others Please Specify</label>
+                                       <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="treatmentSpecify" />
                                        </div>
                                     </div>
                                     <!-- Regimen/Protocol -->

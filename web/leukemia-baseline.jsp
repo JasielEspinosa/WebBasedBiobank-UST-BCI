@@ -791,10 +791,7 @@
                                              <label><input type="radio" name="imagingStudies" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="imagingStudies" value="0">No</label>
-                                          </div>
-                                          <div class="radio">
-                                             <label><input type="radio" name="imagingStudies" value="2">Not
+                                             <label><input type="radio" name="imagingStudies" value="0">No / Not
                                                 Applicable</label>
                                           </div>
                                        </div>
@@ -917,6 +914,13 @@
                                           </select>
                                        </div>
                                     </div>
+                                     <!-- Others -->
+                                    <div class="form-group" id="treatmentSpecify" style="display: none;">
+                                       <label class="control-label col-sm-3">Others Please Specify</label>
+                                       <div class="col-sm-9">
+                                          <input type="text" class="form-control" name="treatmentSpecify">
+                                       </div>
+                                    </div>
                                     <!-- Regimen/Protocol -->
                                     <div class="form-group">
                                        <label class="control-label col-lg-4">Regimen/Protocol</label>
@@ -968,6 +972,13 @@
                                              <option value="Dead">Dead</option>
                                              <option value="Others">Others</option>
                                           </select>
+                                       </div>
+                                    </div>
+                                   <!-- Others -->
+                                    <div class="form-group" id="diseaseStatusOthers" style="display: none;">
+                                       <label class="control-label col-sm-3">Others Please Specify</label>
+                                       <div class="col-sm-9">
+                                          <input type="text" class="form-control" name="diseaseStatusOthers">
                                        </div>
                                     </div>
                                  </div>
