@@ -507,7 +507,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-lg-5">Special Notes</label>
                                        <div class="col-lg-5">
-                                          <input type="text" class="form-control" name="notes" />
+                                          <input type="text" class="form-control" name="specialNotes" />
                                        </div>
                                     </div>
                                  </div>
