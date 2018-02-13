@@ -145,6 +145,35 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
+	
+	public static ResultSet getPatientList(String action, String search, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_PATIENT_LIST);
+			pstmt.setString(1, search);
+			pstmt.setString(2, search);
+			pstmt.setString(3, search);
+			pstmt.setString(4, search);
+			pstmt.setString(5, action);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static boolean archivePatient(int accountID, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(ARCHIVE_PATIENT);
+			pstmt.setInt(1, accountID);
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- archivePatient: " + sqle.getMessage());
+			return false;
+		}
+
+		return true;
+	}
 
 	public static boolean addAddress(AddressBean ab, Connection connection, int disease) {
 		switch (disease) {
@@ -169,6 +198,31 @@ public class SQLOperations implements SQLCommands {
 		}
 		return true;
 	}
+	
+	public static boolean editAddress(AddressBean ab, Connection connection, int disease, int addressId) {
+		switch (disease) {
+			case (1):
+			case (2):
+			case (3):
+			case (4):
+			case (5):
+			case (6):
+			case (7):
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_ADDRESS);
+					pstmt.setString(1, ab.getStreetAddress());
+					pstmt.setString(2, ab.getCity());
+					pstmt.setString(3, ab.getZipCode());
+					pstmt.setInt(4, addressId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editAddress: " + sqle.getMessage());
+					return false;
+				}
+				break;
+		}
+		return true;
+	}
 
 	public static boolean addTissueSpecimenData(TissueSpecimenBean tsb, Connection connection, int disease) {
 		switch (disease) {
@@ -184,7 +238,30 @@ public class SQLOperations implements SQLCommands {
 					pstmt.setString(1, tsb.getTissueSpecimenName());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
+					System.out.println("SQLException -- addTissueSpecimenData: " + sqle.getMessage());
+					return false;
+				}
+				break;
+		}
+		return true;
+	}
+	
+	public static boolean editTissueSpecimenData(TissueSpecimenBean tsb, Connection connection, int disease, int tissueSpecimenId) {
+		switch (disease) {
+			case (1):
+			case (2):
+			case (3):
+			case (4):
+			case (5):
+			case (6):
+			case (7):
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_TISSUE_SPECIMEN);
+					pstmt.setString(1, tsb.getTissueSpecimenName());
+					pstmt.setInt(2,tissueSpecimenId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editTissueSpecimenData: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -310,6 +387,132 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 
+	
+	public static boolean editGeneralData(GeneralDataBean gdb, Connection connection, int disease,int generalDataId) {
+		switch (disease) {
+			case (1): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
+					pstmt.setString(1, gdb.getLastName());
+					pstmt.setString(2, gdb.getMiddleName());
+					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setInt(4, gdb.getGender());
+					pstmt.setString(5, gdb.getDateOfBirth());
+					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setInt(7, generalDataId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (2): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
+					pstmt.setString(1, gdb.getLastName());
+					pstmt.setString(2, gdb.getMiddleName());
+					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setInt(4, gdb.getGender());
+					pstmt.setString(5, gdb.getDateOfBirth());
+					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setInt(7, generalDataId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (3): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
+					pstmt.setString(1, gdb.getLastName());
+					pstmt.setString(2, gdb.getMiddleName());
+					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setInt(4, gdb.getGender());
+					pstmt.setString(5, gdb.getDateOfBirth());
+					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setInt(7, generalDataId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (4): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
+					pstmt.setString(1, gdb.getLastName());
+					pstmt.setString(2, gdb.getMiddleName());
+					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setInt(4, gdb.getGender());
+					pstmt.setString(5, gdb.getDateOfBirth());
+					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setInt(7, generalDataId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (5): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
+					pstmt.setString(1, gdb.getLastName());
+					pstmt.setString(2, gdb.getMiddleName());
+					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setInt(4, gdb.getGender());
+					pstmt.setString(5, gdb.getDateOfBirth());
+					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setInt(7, generalDataId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (6): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
+					pstmt.setString(1, gdb.getLastName());
+					pstmt.setString(2, gdb.getMiddleName());
+					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setInt(4, gdb.getGender());
+					pstmt.setString(5, gdb.getDateOfBirth());
+					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setInt(7, generalDataId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (7): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
+					pstmt.setString(1, gdb.getLastName());
+					pstmt.setString(2, gdb.getMiddleName());
+					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setInt(4, gdb.getGender());
+					pstmt.setString(5, gdb.getDateOfBirth());
+					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setInt(7, generalDataId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+		}
+		return true;
+	}
+	
 	public static boolean addPrognosticRiskScoring(PrognosticRiskScoringBean prsb, Connection connection, int disease) {
 		switch (disease) {
 			case (1):
@@ -367,6 +570,36 @@ public class SQLOperations implements SQLCommands {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_CLASSIFICATION);
 					pstmt.setString(1, classbean.getClassificationName());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addClassification: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (2): {
+			}
+			case (3): {
+			}
+			case (4): {
+			}
+			case (5): {
+			}
+			case (6): {
+			}
+			case (7): {
+			}
+		}
+		return true;
+	}
+	
+	public static boolean editClassification(ClassificationBean classbean, Connection connection, int disease, int classificationId) {
+		switch (disease) {
+			case (1): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CLASSIFCATION);
+					pstmt.setString(1, classbean.getClassificationName());
+					pstmt.setInt(2, classificationId);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addClassification: " + sqle.getMessage());
@@ -586,13 +819,14 @@ public class SQLOperations implements SQLCommands {
 					pstmt.setString(1, cdb.getDateOfVisit());
 					pstmt.setString(2, cdb.getDiagnosis());
 					pstmt.setString(3, cdb.getOtherDiagnosis());
-					pstmt.setInt(4, cdb.getSeverityId());
-					pstmt.setString(5, cdb.getChiefComplaint());
-					pstmt.setString(6, cdb.getOtherSymptoms());
-					pstmt.setString(7, cdb.getComorbidities());
-					pstmt.setString(8, cdb.getSmokingHistory());
-					pstmt.setString(9, cdb.getAlchoholIntakeHistory());
-					pstmt.setString(10, cdb.getChemicalExposure());
+					pstmt.setString(4, cdb.getChiefComplaint());
+					pstmt.setString(5, cdb.getOtherSymptoms());
+					pstmt.setString(6, cdb.getComorbidities());
+					pstmt.setString(7, cdb.getSmokingHistory());
+					pstmt.setString(8, cdb.getAlchoholIntakeHistory());
+					pstmt.setString(9, cdb.getChemicalExposure());
+					pstmt.setString(10, cdb.getOtherFindings());
+
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
@@ -2140,6 +2374,21 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
+	
+	public static ResultSet getTissueSpecimen(int tissueSpecimenId, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_TISSUESPECIMEN);
+			pstmt.setInt(1, tissueSpecimenId);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getTissueSpecimen: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	
 
 	public static ResultSet getClinicalData(int clinicalDataId, Connection connection) {
 		ResultSet rs = null;
@@ -2153,7 +2402,20 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
+	public static ResultSet getClassification(int classificationId, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_CLASSIFICATION);
+			pstmt.setInt(1, classificationId);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getClassification: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
 	public static ResultSet getPhysicalExam(int physicalExamId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2162,6 +2424,45 @@ public class SQLOperations implements SQLCommands {
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getPhysicalExamAAPNHMDS: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getFamilyCancer(int clinicalDataId, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_FAMILY_CANCER);
+			pstmt.setInt(1, clinicalDataId);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getFamilyCancer: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getOtherDiseases(int clinicalDataId, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_OTHER_DISEASES);
+			pstmt.setInt(1, clinicalDataId);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getOtherDiseases: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getMedications(int clinicalDataId, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_MEDICATIONS);
+			pstmt.setInt(1, clinicalDataId);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getOtherDiseases: " + sqle.getMessage());
 			return rs;
 		}
 		return rs;
@@ -2179,7 +2480,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getHematology(int hematologyId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2258,19 +2559,6 @@ public class SQLOperations implements SQLCommands {
 		return rs;
 	}
 
-	public static ResultSet getTreatment(int treatmentId, Connection connection) {
-		ResultSet rs = null;
-		try {
-			PreparedStatement pstmt = connection.prepareStatement(GET_TREATMENT);
-			pstmt.setInt(1, treatmentId);
-			rs = pstmt.executeQuery();
-		} catch (SQLException sqle) {
-			System.out.println("SQLException - getTreatment: " + sqle.getMessage());
-			return rs;
-		}
-		return rs;
-	}
-
 	public static ResultSet getCoagulationTesting(int coagulationTestingId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2305,6 +2593,45 @@ public class SQLOperations implements SQLCommands {
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getImagingStudies: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getTreatment(int treatmentId, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_TREATMENT);
+			pstmt.setInt(1, treatmentId);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getTreatment: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getChemoMedication(int chemoMedicationId, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_CHEMO_MEDICATIONS);
+			pstmt.setInt(1, chemoMedicationId);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getTreatment: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getModeOfTreatment(int modeOfTreatmentId, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_MODE_OF_TREAMENT);
+			pstmt.setInt(1, modeOfTreatmentId);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getTreatment: " + sqle.getMessage());
 			return rs;
 		}
 		return rs;
