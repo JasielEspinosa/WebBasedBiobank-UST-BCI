@@ -59,62 +59,51 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultVa
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String otherSymptoms = request.getParameter("otherSymptoms");
 
-		String relationshipToPatient = null;
-		String cancerName = null;
-		String otherDiseasesInTheFamily = null;
+		String relationshipToPatient = noValue;
+		String cancerName = noValue;
+		String otherDiseasesInTheFamily = noValue;
 		if (Integer.parseInt(request.getParameter("familyHistoryOfCancer")) == 1) {
 			relationshipToPatient = request.getParameter("relationshipToPatient");
 			cancerName = request.getParameter("specifyCancer");
 			otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
-		} else {
-			relationshipToPatient = noValue;
-			cancerName = noValue;
-			otherDiseasesInTheFamily = noValue;
 		}
 
 		String comorbidities = request.getParameter("comorbidities");
 
-		String genericName = null;
-		double dose = 0.0;
-		String frequency = null;
-		if (Integer.parseInt(request.getParameter("familyHistoryOfCancer")) == 1) {
+		String genericName = noValue;
+		Double dose = 0.0;
+		String frequency = noValue;
+		if (Integer.parseInt(request.getParameter("concomitantMedications")) == 1) {
 			genericName = request.getParameter("genericName");
 			dose = Double.parseDouble(request.getParameter("dose"));
 			frequency = request.getParameter("frequency");
-		} else {
-			genericName = noValue;
-			dose = 0.0;
-			frequency = noValue;
 		}
 
-		String smokingHistorySpecify = null;
+		String smokingHistorySpecify = noValue;
 		if (Integer.parseInt(request.getParameter("smokingHistory")) == 1) {
 			smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
-		} else {
-			smokingHistorySpecify = noValue;
 		}
 
-		String alchoholIntakeSpecify = null;
+		String alchoholIntakeSpecify = noValue;
 		if (Integer.parseInt(request.getParameter("alcoholIntakeHistory")) == 1) {
 			alchoholIntakeSpecify = request.getParameter("alcoholIntakeSpecify");
-		} else {
-			alchoholIntakeSpecify = noValue;
 		}
 
-		String chemicalExposureSpecify = null;
+		String chemicalExposureSpecify = noValue;
 		if (Integer.parseInt(request.getParameter("chemicalExposureHistory")) == 1) {
 			chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
-		} else {
-			chemicalExposureSpecify = noValue;
 		}
 
-		String previousInfectionSpecify = request.getParameter("previousInfectionSpecify");
-		
-		String previousHematologicDisorderSpecify = request.getParameter("previousHematologicDisorderSpecify");
-		
-		
-		
-		
+		String previousInfectionSpecify = noValue;
+		if (Integer.parseInt(request.getParameter("previousInfection")) == 1) {
+			previousInfectionSpecify = request.getParameter("previousInfectionSpecify");
+		}
+
+		String previousHematologicDisorderSpecify = noValue;
+		if (Integer.parseInt(request.getParameter("previousHematologicDisorder")) == 1) {
+			previousHematologicDisorderSpecify = request.getParameter("previousHematologicDisorderSpecify");
+		}
+
 		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
@@ -154,18 +143,36 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultVa
 		double serumFolicAcid = Double.parseDouble(request.getParameter("serumFolicAcid"));
 		double serumB12 = Double.parseDouble(request.getParameter("serumB12"));
 		double tsh = Double.parseDouble(request.getParameter("tsh"));
-		String boneMarrowAspirateDatePerformed = request.getParameter("boneMarrowAspirateDatePerformed");
-		String boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
-		// Part boneMarrowAspirateAttachScannedDocument = request.getPart("boneMarrowAspirateAttachScannedDocument");
-		// int flowCytometry = Integer.parseInt(request.getParameter("flowCytometry"));
-		String flowCytometryResult = request.getParameter("flowCytometryResult");
-		// Part flowCytometryAttachScannedDocument = request.getPart("flowCytometryAttachScannedDocument");
-		// int cytogeneticAndMolecularAnalysisAAPNH =Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisAAPNH"));
-		String cytogeneticAndMolecularAnalysisAAPNHResult = request.getParameter("cytogeneticAndMolecularAnalysisAAPNHResult");
-		// Part cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument = request.getPart("cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument");
-		// int cytogeneticAndMolecularAnalysisMDS = Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisMDS"));
-		String cytogeneticAndMolecularAnalysisMDSResult = request.getParameter("cytogeneticAndMolecularAnalysisMDSResult");
-		// Part cytogeneticAndMolecularAnalysisMDSAttachScannedDocument = request.getPart("cytogeneticAndMolecularAnalysisMDSAttachScannedDocument");
+
+		String boneMarrowAspirateDatePerformed = noValue;
+		String boneMarrowAspirateDescription = noValue;
+		// Part boneMarrowAspirateAttachScannedDocument;
+		if (Integer.parseInt(request.getParameter("boneMarrowAspirate")) == 1) {
+			boneMarrowAspirateDatePerformed = request.getParameter("boneMarrowAspirateDatePerformed");
+			boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
+			//boneMarrowAspirateAttachScannedDocument = request.getPart("boneMarrowAspirateAttachScannedDocument");
+		}
+
+		String flowCytometryResult = noValue;
+		// Part flowCytometryAttachScannedDocument;
+		if (Integer.parseInt(request.getParameter("flowCytometry")) == 1) {
+			flowCytometryResult = request.getParameter("flowCytometryResult");
+			// flowCytometryAttachScannedDocument = request.getPart("flowCytometryAttachScannedDocument");
+		}
+
+		String cytogeneticAndMolecularAnalysisAAPNHResult = noValue;
+		// Part cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument;
+		if (Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisAAPNH")) == 1) {
+			cytogeneticAndMolecularAnalysisAAPNHResult = request.getParameter("cytogeneticAndMolecularAnalysisAAPNHResult");
+			//cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument = request.getPart("cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument");
+		}
+
+		String cytogeneticAndMolecularAnalysisMDSResult = noValue;
+		// Part cytogeneticAndMolecularAnalysisMDSAttachScannedDocument;
+		if (Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysisMDS")) == 1) {
+			cytogeneticAndMolecularAnalysisMDSResult = request.getParameter("cytogeneticAndMolecularAnalysisMDSResult");
+			//cytogeneticAndMolecularAnalysisMDSAttachScannedDocument = request.getPart("cytogeneticAndMolecularAnalysisMDSAttachScannedDocument");
+		}
 
 		// TREATMENT / THERAPHY AND RESPONSE
 		boolean transplantCandidate;
