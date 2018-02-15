@@ -33,8 +33,8 @@ public interface SQLCommandsBaseline {
 	String GET_OTHER_LABORATORIES_AAPNHMDS = "SELECT * FROM OTHERLABORATORIESTABLE WHERE OTHERLABORATORIESID = ?";
 	String GET_BONE_MARROW_ASPIRATE = "SELECT * FROM BONEMARROWASPIRATETABLE WHERE BONEMARROWASPIRATEID = ?";
 	String GET_FLOWCYTOMETRY = "SELECT * FROM FLOWCYTOMETRYTABLE WHERE FLOWCYTOMETRYID = ?";
-	String GET_CYTOGENETIC_AAPNH_AAPNHMDS = "SELECT * FROM cytogeneticaapnhtable WHERE cytogenicaapnhID = ?";
-	String GET_CYTOGENETIC_MDS_AAPNHMDS = "SELECT * FROM cytogeneticmdstable WHERE cytogenicmdsid = ?";
+	String GET_CYTOGENETIC_AAPNH_AAPNHMDS = "SELECT * FROM cytogeneticmolecularaapnhtable WHERE cytogeneticmolecularaapnhID = ?";
+	String GET_CYTOGENETIC_MDS_AAPNHMDS = "SELECT * FROM cytogeneticmolecularmdstable WHERE cytogeneticmolecularmdsid = ?";
 	String GET_COAGULATION_TESTING = "SELECT * FROM COAGULATIONTESTINGTABLE WHERE COAGULATIONTESTINGID = ?";
 	String GET_BLOOD_CHEMISTRY = "SELECT * FROM BLOODCHEMISTRYTABLE WHERE BLOODCHEMISTRYID = ?";
 	String GET_IMAGING_STUDIES = "SELECT * FROM IMAGINGSTUDIESTABLE WHERE IMAGINGSTUDIESID = ?";
@@ -234,7 +234,7 @@ public interface SQLCommandsBaseline {
 
 	// BASELINE UPDATE QUERIES
 
-	String UPDATE_ADDRESS = "Update AddressTable set StreetAdress = ? , City = ? , ZIPCode = ? where AddressID = ?";
+	String UPDATE_ADDRESS = "Update AddressTable set StreetAddress = ? , City = ? , ZIPCode = ? where AddressID = ?";
 	String UPDATE_TISSUE_SPECIMEN = "Update TissueSpecimenTable set TissueSpecimenName = ? where TissueSpecimenID = ?";
 
 	String UPDATE_GENERAL_DATA = "Update GeneralDataTable set LastName = ? , MiddleName = ?, FirstName = ?, Gender = ?, DateOfBirth = ?,"
@@ -246,13 +246,13 @@ public interface SQLCommandsBaseline {
 	String UPDATE_ISSSTAGING = "Update ISSStagingTable set ISSStagingName = ? where ISSStagingID = ? ";
 	String UPDATE_SEVERITY = "Update SeverityTable set SeverityName = ? where SeverityID = ?";
 
-	String UPDATE_PHYSICAL_EXAM_AAPHSMDS = "Update set Height = ?, Weight = ?, ECOG = ? , OtherFindings = ? where PhysicalExamID = ?";
-	String UPDATE_PHYSICAL_EXAM_COAGULATION = "Update set Height = ?, Weight = ?, Hemathroses = ?, ContracturesAndMuscleAtropht = ? , OtherFindings = ? where PhysicalExamID = ?";
-	String UPDATE_PHYSICAL_EXAM_LEUKEMIA = "Update set Height = ?, Weight = ?, ECOG = ?, Splenomegaly = ?, Hepatomegaly = ?, Lymphadenopathies = ? , OtherFindings = ? where PhysicalExamID = ?";
-	String UPDATE_PHYSICAL_EXAM_LYMPHOMA = "Update set Height = ?, Weight = ?, ECOG = ?, Splenomegaly = ?, Hepatomegaly = ?, Lymphadenopathies = ? , OtherFindings = ? where PhysicalExamID = ?";
-	String UPDATE_PHYSICAL_EXAM_MYELOPROLIFERATIVE = "Update set Height = ?, Weight = ?, ECOG = ?, Splenomegaly = ?, Hepatomegaly = ?, Lymphadenopathies = ?, ThrombosisHistory = ?, OtherFindings = ? where PhysicalExamID = ?";
-	String UPDATE_PHYSICAL_EXAM_PLASMACELL = "Update set Height = ?, Weight = ?, ECOG = ?, ThrombosisHistory = ? , OtherFindings = ? where PhysicalExamID = ?";
-	String UPDATE_PHYSICAL_EXAM_PLATELETCELL = "Update set Height = ?, Weight = ?, Splenomegaly = ?, OtherFindings = ? where PhysicalExamID = ?";
+	String UPDATE_PHYSICAL_EXAM_AAPHSMDS = "Update PhysicalExamTable set Height = ?, Weight = ?, ECOG = ? , OtherFindings = ? where PhysicalExamID = ?";
+	String UPDATE_PHYSICAL_EXAM_COAGULATION = "Update PhysicalExamTable set Height = ?, Weight = ?, Hemathroses = ?, ContracturesAndMuscleAtropht = ? , OtherFindings = ? where PhysicalExamID = ?";
+	String UPDATE_PHYSICAL_EXAM_LEUKEMIA = "Update PhysicalExamTable set Height = ?, Weight = ?, ECOG = ?, Splenomegaly = ?, Hepatomegaly = ?, Lymphadenopathies = ? , OtherFindings = ? where PhysicalExamID = ?";
+	String UPDATE_PHYSICAL_EXAM_LYMPHOMA = "Update PhysicalExamTable set Height = ?, Weight = ?, ECOG = ?, Splenomegaly = ?, Hepatomegaly = ?, Lymphadenopathies = ? , OtherFindings = ? where PhysicalExamID = ?";
+	String UPDATE_PHYSICAL_EXAM_MYELOPROLIFERATIVE = "Update PhysicalExamTable set Height = ?, Weight = ?, ECOG = ?, Splenomegaly = ?, Hepatomegaly = ?, Lymphadenopathies = ?, ThrombosisHistory = ?, OtherFindings = ? where PhysicalExamID = ?";
+	String UPDATE_PHYSICAL_EXAM_PLASMACELL = "Update PhysicalExamTable set Height = ?, Weight = ?, ECOG = ?, ThrombosisHistory = ? , OtherFindings = ? where PhysicalExamID = ?";
+	String UPDATE_PHYSICAL_EXAM_PLATELETCELL = "Update PhysicalExamTable set Height = ?, Weight = ?, Splenomegaly = ?, OtherFindings = ? where PhysicalExamID = ?";
 
 	String UPDATE_CLINICAL_DATA_AAPHSMDS = "Update ClinicalDataTable set DateOfVisit = ? , Diagnosis = ?, ChiefComplaint = ?, OtherSymptoms = ?, Combordities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, PreviousInfection= ?, PreviousHematologicDisorder = ? where ClinicalDataID = ? ";
 	String UPDATE_CLINICAL_DATA_COAGULATION = "Update ClinicalDataTable set DateOfVisit = ? , Diagnosis = ?, OtherDiagnosis = ?, ChiefComplaint = ?, OtherSymptoms = ?, Combordities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings = ? where ClinicalDataID = ? ";
@@ -292,18 +292,18 @@ public interface SQLCommandsBaseline {
 			+ "  Beta2Microglobulin = ?, iCa = ?, TotalProtein = ? , Albumin = ? , Globulin = ? where BloodChemistryID = ? ";
 	String UPDATE_BLOOD_CHEMISTRY_PLATELETCELL = "Upddate BloodChemistryTable set Creatine = ?, UricAcid = ?, SGOT = ?, SGPT = ?, LDH = ? , EPOLevel = ? where BloodChemistryID = ? ";
 
-	String UPDATE_OTHER_LABORATORIES_AAPHSMDS = "Update OtherLaboratoriesTable set CreatinineOther = ?, UricAcid = ? , ReticulocyteCount = ?, SerumIron = ? , IronBindingCapacity = ?, "
-			+ "SerumFerritin = ?, DirectAntiglobulin = ?, IndirectAntiglobulin = ?, SGOT = ?, SGPT = ?, LDH = ?, ScreenTestHepatitis = ?, ScreenTestEBVCytomegalovirusHIV = ?, ErythropeitinLevel = ?"
+	String UPDATE_OTHER_LABORATORIES_AAPHSMDS = "Update OtherLaboratoriesTable set Creatinine = ?, UricAcid = ? , ReticulocyteCount = ?, SerumIron = ? , IronBindingCapacity = ?, "
+			+ "SerumFerritin = ?, DirectAntiglobulin = ?, IndirectAntiglobulin = ?, SGOT = ?, SGPT = ?, LDH = ?, ScreenTestHepatitis = ?, ScreenTestEBVCytomegalovirusHIV = ?, ErythropeitinLevel = ?,"
 			+ " SerumFolicAcid = ?, SerumFolicAcid = ?, TSH = ? where OtherLaboratoriesID = ? ";
 
 	String UPDATE_BONE_MARROW_ASPIRATE = "Update BoneMarrowAspirateTable set DatePerformed = ?, Result = ? where BoneMarrowAspirateID = ?";
 
 	String UPDATE_FLOWCYTOMETRY = "Update FlowCytometryTable set Result = ? where FlowCytometryID = ?";
 
-	String UPDATE_CYTOGENETIC_AAPNH_AAPHSMDS = "Update CytogeneticMolecularAAPNNHTable set Result = ? where CytogenicMolecularAAPNHID = ?";
-	String UPDATE_CYTOGENETIC_AAPNH_LEUKEMIA = "Update CytogeneticMolecularAAPNNHTable set Result = ? where CytogenicMolecularAAPNHID = ?";
-	String UPDATE_CYTOGENETIC_MDS_AAPHSMDS = "Update CytogeneticMolecularAAPNNHTable set Result = ? where CytogenicMolecularMDSID = ?";
-	String UPDATE_CYTOGENETIC_MOLECULAR = "Update CytogeneticMolecularTable set Result = ? where CytogenicMolecularID = ?";
+	String UPDATE_CYTOGENETIC_AAPNH_AAPHSMDS = "Update cytogeneticmolecularaapnhtable set Result = ? where CytogeneticMolecularAAPNHID = ?";
+	String UPDATE_CYTOGENETIC_AAPNH_LEUKEMIA = "Update cytogeneticmolecularaapnhtable set Result = ? where CytogeneticMolecularAAPNHID = ?";
+	String UPDATE_CYTOGENETIC_MDS_AAPHSMDS = "Update cytogeneticmolecularaapnhtable set Result = ? where CytogeneticMolecularMDSID = ?";
+	String UPDATE_CYTOGENETIC_MOLECULAR = "Update CytogeneticMolecularTable set Result = ? where CytogeneticMolecularID = ?";
 
 	String UPDATE_IMAGING_STUDIES = "UPDATE ImagingStudiesTable set Result = ? where ImagingStudiesID = ? ";
 	String UPDATE_UPPERGIENDOSCOPY_PLATELET = "UPDATE uppergiendoscopytable set DatePerformed = ?, Description = ? , HPylori = ? where UpperGIEndoscopyID = ? ";
@@ -326,7 +326,7 @@ public interface SQLCommandsBaseline {
 
 	String UPDATE_MODE_OF_TREATMENT = "Update ModeOfTreatmentTable set ModeOfTreatment = ? , NameOfTreatment = ? where ModeOfTreatmentID  =  ?";
 
-	String UPDATE_CHEMOTHERAPY_MEDICATIONS = "Update ChemoMedicationsTable set Medications = ?,  set Medications = ?, set Medications = ?, set Medications = ? where ChemoMedicationID = ?";
+	String UPDATE_CHEMOTHERAPY_MEDICATIONS = "Update ChemoMedicationsTable set Medications = ? where ChemoMedicationID = ?";
 
 	String UPDATE_REGIMEN = "Update RegimenTable set RegimenName = ?, RegimenName = ?, RegimenName = ? where RegimenID = ?";
 	String UPDATE_REGIMEN_TRANSPLANT = "Update RegimenTransplantTable set RegimenName = ? where RegimenTransplantID = ?";

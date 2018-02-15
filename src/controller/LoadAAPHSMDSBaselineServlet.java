@@ -162,8 +162,8 @@ public class LoadAAPHSMDSBaselineServlet extends HttpServlet {
 				int otherLaboratoriesId = laboratoryProfile.getInt("otherLaboratoriesId");
 				int boneMarrowAspirateId = laboratoryProfile.getInt("boneMarrowAspirateId");
 				int flowCytometryId = laboratoryProfile.getInt("FlowCytometryID");
-				int cytogeneticAAPNHId = laboratoryProfile.getInt("cytogenicaapnhID");
-				int cytogeneticMDSId = laboratoryProfile.getInt("cytogenicmdsID");
+				int cytogeneticAAPNHId = laboratoryProfile.getInt("CytogeneticMolecularAAPNHID");
+				int cytogeneticMDSId = laboratoryProfile.getInt("CytogeneticMolecularMDSID");
 				
 				ResultSet hematology = SQLOperationsBaseline.getHematology(hematologyId, connection);
 				hematology.first();

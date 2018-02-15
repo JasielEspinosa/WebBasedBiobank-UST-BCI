@@ -6,14 +6,16 @@ var params = {
 	patientId : ''
 };
 
+var editState = false;
+
 $("#AddAAPHSMDSBaseline").submit(function(e) {
    e.preventDefault();
 	});
 
 $('document').ready(function(){
 	
+	actionBind();
 	unbindEvents();
-	addBind();
     $("#searchbox").on('input',function(){
     	loadPatientList();
     });
@@ -115,10 +117,6 @@ function loadPatientData(id){
 		
 		$("[name='dateStarted']").val(response["dateStarted"])
 		
-		//field and button
-		$("#AddAAPHSMDSBaseline").attr("disabled", true);
-		$('#AddAAPHSMDSBaseline').attr('readonly', 'true');
-		
 		bindEvents();
 		
 	  })
@@ -158,6 +156,8 @@ function unbindEvents(){
 	$("#archPatientBtn").hide().click(function() {
 	});
 	$("#submitCancel").hide();
+	$('#AddAAPHSMDSBaseline').unbind("onsubmit");
+	//$('#AddAAPHSMDSBaseline').removeAttr('onsubmit');
 	addBind();
 };
 
@@ -169,7 +169,9 @@ function bindEvents(){
 	$("#patientStatistics").show().click(function() {
 	});
 	$("#edtPatientBtn").show().click(function() {
+		//$('#AddAAPHSMDSBaseline').removeAttr('onsubmit');
 		editBind();
+		alert('edit triggered')
 	});
 	$("#archPatientBtn").show().click(function() {
 		$.post('ArchivePatientServlet', $.param(params), function (response) {
@@ -177,32 +179,35 @@ function bindEvents(){
 		}).fail(function(){
 			});	
 	});
-	
-	editBind();
-	
 };
 
 //add bind
-function addBind(){
+
+function actionBind(){
 	$('#AddAAPHSMDSBaseline').submit(function() {
 		var $form = $(this);
-		$.post('AddAAPHSMDSBaselineServlet', $form.serialize(), function (response) {
-				alert("Patient added")
-		}).fail(function(){
-			});	
+		if(editState == false){
+			$.post('AddAAPHSMDSBaselineServlet', $form.serialize(), function (response) {
+					alert("Patient added")
+			}).fail(function(){
+				});	
+		}else{
+			$.post('EditAAPHSMDSBaselineServlet', $form.serialize(), function (response) {
+				alert("Patient edited")
+			}).fail(function(){
+				});			
+		}
 	});
+};
+
+function addBind(){
+	editState = false;
 };
 
 //edit bind
 function editBind(){
-	$("#submitCancel").show();
-	$('#AddAAPHSMDSBaseline').submit(function() {
-		var $form = $(this);
-		$.post('EditAAPHSMDSBaselineServlet', $form.serialize(), function (response) {
-				alert("Patient edited")
-		}).fail(function(){
-			});	
-	});
+	$("#submitCancel").show();	
+	editState = true;
 };
 
 function cancelEdit(){

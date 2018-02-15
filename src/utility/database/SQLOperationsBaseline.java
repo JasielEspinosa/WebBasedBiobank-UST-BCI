@@ -3529,6 +3529,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_FLOWCYTOMETRY);
 					pstmt.setString(1, fcb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editFlowCytometry: " + sqle.getMessage());
@@ -3543,6 +3544,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_FLOWCYTOMETRY);
 					pstmt.setString(1, fcb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editFlowCytometry: " + sqle.getMessage());
@@ -3554,6 +3556,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_FLOWCYTOMETRY);
 					pstmt.setString(1, fcb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editFlowCytometry: " + sqle.getMessage());
@@ -3585,6 +3588,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_MOLECULAR);
 					pstmt.setString(1, cmb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editCytogeneticMolecular: " + sqle.getMessage());
@@ -3596,6 +3600,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_MOLECULAR);
 					pstmt.setString(1, cmb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editCytogeneticMolecular: " + sqle.getMessage());
@@ -3616,6 +3621,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_AAPNH_AAPHSMDS);
 					pstmt.setString(1, cmaapnhb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editCytogeneticMolecularAAPNH: " + sqle.getMessage());
@@ -3630,6 +3636,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_AAPNH_LEUKEMIA);
 					pstmt.setString(1, cmaapnhb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editCytogeneticMolecularAAPNH: " + sqle.getMessage());
@@ -3655,6 +3662,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_MDS_AAPHSMDS);
 					pstmt.setString(1, cmmdsb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editCytogeneticMolecularMDS: " + sqle.getMessage());
@@ -3687,6 +3695,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_IMAGING_STUDIES);
 					pstmt.setBytes(1, isb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editImagingStudies: " + sqle.getMessage());
@@ -3698,6 +3707,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_IMAGING_STUDIES);
 					pstmt.setBytes(1, isb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editImagingStudies: " + sqle.getMessage());
@@ -3709,6 +3719,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_IMAGING_STUDIES);
 					pstmt.setBytes(1, isb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editImagingStudies: " + sqle.getMessage());
@@ -3722,6 +3733,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_IMAGING_STUDIES);
 					pstmt.setBytes(1, isb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editImagingStudies: " + sqle.getMessage());
@@ -3733,6 +3745,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_IMAGING_STUDIES);
 					pstmt.setBytes(1, isb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editImagingStudies: " + sqle.getMessage());
@@ -3764,6 +3777,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setString(1, ugeb.getDatePerformed());
 					pstmt.setString(2, ugeb.getDescription());
 					pstmt.setBoolean(3, ugeb.isHPylori());
+					pstmt.setInt(4, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editUpperGIEndoscopy: " + sqle.getMessage());
@@ -3788,6 +3802,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_HEMATOPATHOLOGY);
 					pstmt.setString(1, hpb.getDatePerformed());
 					pstmt.setString(2, hpb.getResult());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editHematopathology: " + sqle.getMessage());
@@ -3818,6 +3833,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_IMMUNOHISTOCHEMISTRY);
 					pstmt.setString(1, ihcb.getDatePerformed());
 					pstmt.setString(2, ihcb.getResult());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editImmunohistochemistry: " + sqle.getMessage());
@@ -3851,6 +3867,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_SERUMFREE);
 					pstmt.setString(1, sfb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editSerumFree: " + sqle.getMessage());
@@ -3880,6 +3897,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_SERUMIMMUNOFIXATION);
 					pstmt.setString(1, sifb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editSerumImmunofixation: " + sqle.getMessage());
@@ -3909,6 +3927,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_SERUMPROTEIN);
 					pstmt.setString(1, spb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editSerumProtein: " + sqle.getMessage());
@@ -3938,6 +3957,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_URINEPROTEIN);
 					pstmt.setString(1, upb.getResult());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editUrineProtein: " + sqle.getMessage());
@@ -3957,6 +3977,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_LABORATORY_PROFILE_AAPHSMDS);
 					pstmt.setString(1, lpb.getDateOfBloodCollection());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editLaboratoryProfile: " + sqle.getMessage());
@@ -3968,6 +3989,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_LABORATORY_PROFILE_COAGULATION);
 					pstmt.setString(1, lpb.getDateOfBloodCollection());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editLaboratoryProfile: " + sqle.getMessage());
@@ -3979,6 +4001,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_LABORATORY_PROFILE_LEUKEMIA);
 					pstmt.setString(1, lpb.getDateOfBloodCollection());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editLaboratoryProfile: " + sqle.getMessage());
@@ -3990,6 +4013,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_LABORATORY_PROFILE_LYMPHOMA);
 					pstmt.setString(1, lpb.getDateOfBloodCollection());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editLaboratoryProfile: " + sqle.getMessage());
@@ -4001,6 +4025,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_LABORATORY_PROFILE_MYELOPROLIFERATIVE);
 					pstmt.setString(1, lpb.getDateOfBloodCollection());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editLaboratoryProfile: " + sqle.getMessage());
@@ -4012,6 +4037,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_LABORATORY_PROFILE_PLASMACELL);
 					pstmt.setString(1, lpb.getDateOfBloodCollection());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editLaboratoryProfile: " + sqle.getMessage());
@@ -4024,6 +4050,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_LABORATORY_PROFILE_PLATELETCELL);
 					pstmt.setString(1, lpb.getDateOfBloodCollection());
 					pstmt.setString(2, lpb.getITP());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editLaboratoryProfile: " + sqle.getMessage());
@@ -4048,6 +4075,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_MODE_OF_TREATMENT);
 					pstmt.setString(1, motb.getModeOfTreatment());
 					pstmt.setString(2, motb.getNameOfTreatment());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editModeOfTreatment: " + sqle.getMessage());
@@ -4064,6 +4092,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CHEMOTHERAPY_MEDICATIONS);
 					pstmt.setString(1, cmb.getMedications());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editChemotherapyMedications: " + sqle.getMessage());
@@ -4078,6 +4107,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CHEMOTHERAPY_MEDICATIONS);
 					pstmt.setString(1, cmb.getMedications());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editChemotherapyMedications: " + sqle.getMessage());
@@ -4089,6 +4119,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CHEMOTHERAPY_MEDICATIONS);
 					pstmt.setString(1, cmb.getMedications());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editChemotherapyMedications: " + sqle.getMessage());
@@ -4100,6 +4131,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CHEMOTHERAPY_MEDICATIONS);
 					pstmt.setString(1, cmb.getMedications());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editChemotherapyMedications: " + sqle.getMessage());
@@ -4125,6 +4157,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN);
 					pstmt.setString(1, rb.getRegimenName());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimen: " + sqle.getMessage());
@@ -4136,6 +4169,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN);
 					pstmt.setString(1, rb.getRegimenName());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimen: " + sqle.getMessage());
@@ -4151,6 +4185,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN);
 					pstmt.setString(1, rb.getRegimenName());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimen: " + sqle.getMessage());
@@ -4178,6 +4213,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN_TRANSPLANT);
 					pstmt.setString(1, rtb.getRegimenName());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimenTransplant: " + sqle.getMessage());
@@ -4207,6 +4243,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN_NONTRANSPLANT);
 					pstmt.setString(1, rntb.getRegimenName());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimenNonTransplant: " + sqle.getMessage());
@@ -4236,6 +4273,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_MAINTENANCE_THERAPY);
 					pstmt.setString(1, mtb.getMaintenanceTherapyName());
+					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editMaintenanceTherapy: " + sqle.getMessage());
@@ -4382,8 +4420,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return true;
 	}
 
-	
-public static boolean editDiseaseStatus(DiseaseStatusBean dsb, Connection connection, int disease, int id) {
+	public static boolean editDiseaseStatus(DiseaseStatusBean dsb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1):
 			case (2):

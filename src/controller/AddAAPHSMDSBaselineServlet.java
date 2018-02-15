@@ -43,7 +43,7 @@ public class AddAAPHSMDSBaselineServlet extends HttpServlet implements DefaultVa
 		response.setContentType("text/plain");
 
 		int disease = 1;
-
+		System.out.println(request.getParameter("gender"));
 		// GENERAL DATA
 		String lastName = request.getParameter("lastName");
 		String firstName = request.getParameter("firstName");
