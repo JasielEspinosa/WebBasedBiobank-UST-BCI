@@ -13,9 +13,10 @@ import model.*;
 import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
+import utility.values.DefaultValues;
 
 @WebServlet("/AddPlasmaCellFollowUpServlet")
-public class AddPlasmaCellFollowUpServlet extends HttpServlet {
+public class AddPlasmaCellFollowUpServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
@@ -31,26 +32,39 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet {
 		}
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		getServletContext().log("AddPlasmaCellFollowUpServlet insert test");
 
 		int disease = 6;
-		
+
 		int patientID = 1;
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
-		String hematologicMalignancy = request.getParameter("specifyHematologicMalignancy");
-		String otherDiseaseMedication = request.getParameter("specifyOtherDiseaseMedication");
-		String procedureIntervention = request.getParameter("specifyProcedure");
-		String chemotherapyComplication = request.getParameter("specifyChemotherapy");
 
+		String hematologicMalignancy = noValue;
+		if (Integer.parseInt(request.getParameter("hematologicMalignancy")) == 1) {
+			hematologicMalignancy = request.getParameter("specifyHematologicMalignancy");
+		}
+
+		String otherDiseaseMedication = noValue;
+		if (Integer.parseInt(request.getParameter("otherDiseaseMedication")) == 1) {
+			otherDiseaseMedication = request.getParameter("specifyOtherDiseaseMedication");
+		}
+
+		String procedureIntervention = noValue;
+		if (Integer.parseInt(request.getParameter("procedure")) == 1) {
+			procedureIntervention = request.getParameter("specifyProcedure");
+		}
+
+		String chemotherapyComplication = noValue;
+		if (Integer.parseInt(request.getParameter("chemotherapy")) == 1) {
+			chemotherapyComplication = request.getParameter("specifyChemotherapy");
+		}
 		// CLINICAL
 		String currentSymptoms = request.getParameter("currentSymptoms");
 		double weight = Double.parseDouble(request.getParameter("weight"));
@@ -88,12 +102,18 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet {
 		String urineProteinResult = request.getParameter("urineProteinResult");
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
-		String relapseDisease = request.getParameter("relapseDisease");
-		String otherDisease = request.getParameter("diseaseStatusOthers");
+		String relapseDisease = noValue;
+		String otherDisease = noValue;
+		if (diseaseStatus == "Others") {
+			otherDisease = request.getParameter("diseaseStatusOthers");
+		} else if (diseaseStatus == "Relapse") {
+			relapseDisease = request.getParameter("relapseDisease");
+		}
+
 		String notes = request.getParameter("specialNotes");
 
-		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "",
-				0.0, procedureIntervention, chemotherapyComplication);
+		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "", 0.0,
+				procedureIntervention, chemotherapyComplication);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addMedicalEvents(meb, connection, disease)) {
 				System.out.println("Successful insert MedicalEventsBean");
@@ -104,8 +124,7 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet {
 			System.out.println("Invalid connection MedicalEventsBean");
 		}
 
-		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "",
-				"");
+		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", "");
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");
@@ -116,8 +135,8 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet {
 			System.out.println("Invalid connection PhysicalExamBean");
 		}
 
-		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, "", "", "", "", currentSymptoms, "", "", "",
-				"", "", "", "", "", "");
+		ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, "", "", "", "", currentSymptoms, "", "", "", "", "", "", "", "",
+				"");
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addClinicalData(cdb, connection, disease)) {
 				System.out.println("Successful insert ClinicalDataBean");
@@ -128,8 +147,8 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet {
 			System.out.println("Invalid connection ClinicalDataBean");
 		}
 
-		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils,
-				lymphocytes, monocytes, eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
+		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils, lymphocytes, monocytes,
+				eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addHematology(hb, connection, disease)) {
 				System.out.println("Successful insert HematologyBean");
@@ -140,8 +159,8 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet {
 			System.out.println("Invalid connection HematologyBean");
 		}
 
-		BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, creatinine, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
-				0.0, 0.0, 0.0, 0.0, 0.0, 0.0, iCa, totalProtein, albumin, globulin, 0.0, 0.0);
+		BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, creatinine, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				0.0, 0.0, iCa, totalProtein, albumin, globulin, 0.0, 0.0);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addBloodChemistry(bcb, connection, disease)) {
 				System.out.println("Successful insert BloodChemistryBean");
@@ -152,8 +171,7 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet {
 			System.out.println("Invalid connection BloodChemistryBean");
 		}
 
-		BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed,
-				boneMarrowAspirateDescription);
+		BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed, boneMarrowAspirateDescription);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addBoneMarrowAspirate(bmab, connection, disease)) {
 				System.out.println("Successful insert BoneMarrowAspirateBean");

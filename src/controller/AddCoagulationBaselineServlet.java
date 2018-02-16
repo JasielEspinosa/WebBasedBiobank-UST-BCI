@@ -62,7 +62,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet implements Defaul
 		String relationshipToPatient = noValue;
 		String cancerName = noValue;
 		String otherDiseasesInTheFamily = noValue;
-		if (Integer.parseInt(request.getParameter("familyHistoryOfCancer")) == 1) {
+		if (Integer.parseInt(request.getParameter("familyHistoryOfBleedingDiathesis")) == 1) {
 			relationshipToPatient = request.getParameter("relationshipToPatient");
 			cancerName = request.getParameter("specifyCancer");
 			otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
