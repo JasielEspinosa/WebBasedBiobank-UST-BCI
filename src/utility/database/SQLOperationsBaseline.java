@@ -84,8 +84,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -100,8 +100,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_GENERAL_DATA_NO_TISSUE);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -116,8 +116,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -132,8 +132,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -148,8 +148,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -164,8 +164,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -180,8 +180,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_GENERAL_DATA_NO_TISSUE);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -210,6 +210,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_PROGNOSTIC_RISK_SCORING);
 					pstmt.setString(1, prsb.getPrognosticRiskScoringName());
+					pstmt.setString(2, prsb.getPrognosticRiskScoringOthers());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addPrognosticRiskScoring: " + sqle.getMessage());
@@ -233,6 +234,16 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			case (2): {
 			}
 			case (3): {
+				try {
+					PreparedStatement psmt = connection.prepareStatement(INSERT_RISK_SCORE);
+					psmt.setString(1, rsb.getRiskScoreName());
+					psmt.setString(2, rsb.getRiskScoreOthers());
+					psmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addRiskScore: " + sqle.getMessage());
+					return false;
+				}
+				break;
 			}
 			case (4): {
 			}
@@ -240,9 +251,10 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement psmt = connection.prepareStatement(INSERT_RISK_SCORE);
 					psmt.setString(1, rsb.getRiskScoreName());
+					psmt.setString(2, rsb.getRiskScoreOthers());
 					psmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addFamilyCancer: " + sqle.getMessage());
+					System.out.println("SQLException -- addRiskScore: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -302,7 +314,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setString(1, issb.getIssStagingName());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addPrognosticRiskScoring: " + sqle.getMessage());
+					System.out.println("SQLException -- addISSStaging: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -324,7 +336,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setString(1, sb.getSeverityName());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
+					System.out.println("SQLException -- addSeverity: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -364,7 +376,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM_COAGULATION);
 					pstmt.setDouble(1, peb.getHeight());
 					pstmt.setDouble(2, peb.getWeight());
-					pstmt.setBoolean(3, peb.isHemathroses());
+					pstmt.setBoolean(3, peb.isHemarthroses());
 					pstmt.setBoolean(4, peb.isContracturesAndMuscleAtrophy());
 					pstmt.setString(5, peb.getOtherFindings());
 					pstmt.executeUpdate();
@@ -432,8 +444,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setDouble(1, peb.getHeight());
 					pstmt.setDouble(2, peb.getWeight());
 					pstmt.setDouble(3, peb.getECOG());
-					pstmt.setString(4, peb.getThrombosisHistory());
-					pstmt.setString(5, peb.getOtherFindings());
+					pstmt.setString(4, peb.getOtherFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addPhysicalExamData: " + sqle.getMessage());
@@ -447,7 +458,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setDouble(1, peb.getHeight());
 					pstmt.setDouble(2, peb.getWeight());
 					pstmt.setDouble(3, peb.getSplenomegaly());
-					pstmt.setString(4, peb.getOtherFindings());
+					pstmt.setString(4, peb.getSkin());
+					pstmt.setString(5, peb.getOtherFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addPhysicalExamData: " + sqle.getMessage());
@@ -549,14 +561,15 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_CLINICAL_DATA_MYELOPROLIFERATIVE);
 					pstmt.setString(1, cdb.getDateOfVisit());
 					pstmt.setString(2, cdb.getDiagnosis());
-					pstmt.setString(3, cdb.getChiefComplaint());
-					pstmt.setString(4, cdb.getConstitutionalSymptoms());
-					pstmt.setString(5, cdb.getOtherSymptoms());
-					pstmt.setString(6, cdb.getComorbidities());
-					pstmt.setString(7, cdb.getSmokingHistory());
-					pstmt.setString(8, cdb.getAlchoholIntakeHistory());
-					pstmt.setString(9, cdb.getChemicalExposure());
-					pstmt.setString(10, cdb.getOtherFindings());
+					pstmt.setString(3, cdb.getOtherDiagnosis());
+					pstmt.setString(4, cdb.getChiefComplaint());
+					pstmt.setString(5, cdb.getConstitutionalSymptoms());
+					pstmt.setString(6, cdb.getOtherSymptoms());
+					pstmt.setString(7, cdb.getComorbidities());
+					pstmt.setString(8, cdb.getSmokingHistory());
+					pstmt.setString(9, cdb.getAlchoholIntakeHistory());
+					pstmt.setString(10, cdb.getChemicalExposure());
+					pstmt.setString(11, cdb.getOtherFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
@@ -591,12 +604,13 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setString(2, cdb.getDiagnosis());
 					pstmt.setString(3, cdb.getOtherDiagnosis());
 					pstmt.setString(4, cdb.getChiefComplaint());
-					pstmt.setString(5, cdb.getOtherSymptoms());
-					pstmt.setString(6, cdb.getComorbidities());
-					pstmt.setString(7, cdb.getSmokingHistory());
-					pstmt.setString(8, cdb.getAlchoholIntakeHistory());
-					pstmt.setString(9, cdb.getChemicalExposure());
-					pstmt.setString(10, cdb.getOtherFindings());
+					pstmt.setString(5, cdb.getConstitutionalSymptoms());
+					pstmt.setString(6, cdb.getOtherSymptoms());
+					pstmt.setString(7, cdb.getComorbidities());
+					pstmt.setString(8, cdb.getSmokingHistory());
+					pstmt.setString(9, cdb.getAlchoholIntakeHistory());
+					pstmt.setString(10, cdb.getChemicalExposure());
+					pstmt.setString(11, cdb.getOtherFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addClinicalData: " + sqle.getMessage());
@@ -971,7 +985,10 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setDouble(3, bcb.getSGOT());
 					pstmt.setDouble(4, bcb.getSGPT());
 					pstmt.setDouble(5, bcb.getLDH());
-					pstmt.setDouble(6, bcb.getEPOLevel());
+					pstmt.setDouble(6, bcb.getNa());
+					pstmt.setDouble(7, bcb.getK());
+					pstmt.setDouble(8, bcb.getANATiter());
+					pstmt.setDouble(9, bcb.getHepatitsCRna());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addBloodChemistry: " + sqle.getMessage());
@@ -1164,6 +1181,15 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			case (2): {
 			}
 			case (3): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_CYTOGENETIC_MOLECULAR);
+					pstmt.setString(1, cmb.getResult());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addCytogeneticMolecular: " + sqle.getMessage());
+					return false;
+				}
+				break;
 			}
 			case (4): {
 			}
@@ -1199,7 +1225,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		switch (disease) {
 			case (1): {
 				try {
-					PreparedStatement pstmt = connection.prepareStatement(INSERT_CYTOGENETIC_AAPNH_AAPHSMDS);
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_CYTOGENETIC_MOLECULAR_AAPNH_AAPHSMDS);
 					pstmt.setString(1, cmaapnhb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
@@ -1213,7 +1239,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 			case (3): {
 				try {
-					PreparedStatement pstmt = connection.prepareStatement(INSERT_CYTOGENETIC_AAPNH_LEUKEMIA);
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_CYTOGENETIC_MOLECULAR_AAPNH_LEUKEMIA);
 					pstmt.setString(1, cmaapnhb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
@@ -1238,7 +1264,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		switch (disease) {
 			case (1): {
 				try {
-					PreparedStatement pstmt = connection.prepareStatement(INSERT_CYTOGENETIC_MDS_AAPHSMDS);
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_CYTOGENETIC_MOLECULAR_MDS_AAPHSMDS);
 					pstmt.setString(1, cmmdsb.getResult());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
@@ -1345,7 +1371,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 			case (7): {
 				try {
-					PreparedStatement pstmt = connection.prepareStatement(INSERT_UPPERGIENDOSCOPY_PLATELET);
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_UPPERGIENDOSCOPY);
 					pstmt.setString(1, ugeb.getDatePerformed());
 					pstmt.setString(2, ugeb.getDescription());
 					pstmt.setBoolean(3, ugeb.isHPylori());
@@ -1710,6 +1736,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_REGIMEN);
 					pstmt.setString(1, rb.getRegimenName());
+					pstmt.setString(2, rb.getOtherRegimen());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addRegimen: " + sqle.getMessage());
@@ -1721,6 +1748,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_REGIMEN);
 					pstmt.setString(1, rb.getRegimenName());
+					pstmt.setString(2, rb.getOtherRegimen());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addRegimen: " + sqle.getMessage());
@@ -1736,6 +1764,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_REGIMEN);
 					pstmt.setString(1, rb.getRegimenName());
+					pstmt.setString(2, rb.getOtherRegimen());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addRegimen: " + sqle.getMessage());
@@ -1763,6 +1792,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_REGIMEN_TRANSPLANT);
 					pstmt.setString(1, rtb.getRegimenName());
+					pstmt.setString(2, rtb.getOtherRegimen());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addRegimenTransplant: " + sqle.getMessage());
@@ -1792,6 +1822,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_REGIMEN_NONTRANSPLANT);
 					pstmt.setString(1, rntb.getRegimenName());
+					pstmt.setString(2, rntb.getOtherRegimen());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addRegimenNonTransplant: " + sqle.getMessage());
@@ -1821,6 +1852,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_MAINTENANCE_THERAPY);
 					pstmt.setString(1, mtb.getMaintenanceTherapyName());
+					pstmt.setString(2, mtb.getOtherMaintenanceTherapy());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addMaintenanceTherapy: " + sqle.getMessage());
@@ -1897,13 +1929,10 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			case (6): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_TREATMENT_PLASMACELL);
-					pstmt.setString(1, tb.getDateStarted());
-					pstmt.setString(2, tb.getOtherRegimen());
-					pstmt.setString(3, tb.getOtherRegimenTransplant());
-					pstmt.setString(4, tb.getOtherRegimenNonTransplant());
-					pstmt.setString(5, tb.getOtherRegimenMaintenanceTherapy());
-					pstmt.setInt(6, tb.getCycleNumber());
-					pstmt.setString(7, tb.getComplications());
+					pstmt.setBoolean(1, tb.isTransplant());
+					pstmt.setString(2, tb.getDateStarted());
+					pstmt.setInt(3, tb.getCycleNumber());
+					pstmt.setString(4, tb.getComplications());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addTreatment: " + sqle.getMessage());
@@ -1961,22 +1990,87 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 
 	public static boolean addDiseaseStatus(DiseaseStatusBean dsb, Connection connection, int disease) {
 		switch (disease) {
-			case (1):
-			case (2):
-			case (3):
-			case (4):
-			case (5):
-			case (6):
-			case (7):
+			case (1): {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
 					pstmt.setString(1, dsb.getDiseaseStatus());
+					pstmt.setString(2, dsb.getRelapseDisease());
+					pstmt.setString(3, dsb.getOtherDisease());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
 					return false;
 				}
 				break;
+			}
+			case (2): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
+					pstmt.setString(1, dsb.getDiseaseStatus());
+					pstmt.setString(2, dsb.getRelapseDisease());
+					pstmt.setString(3, dsb.getOtherDisease());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (3): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
+					pstmt.setString(1, dsb.getDiseaseStatus());
+					pstmt.setString(2, dsb.getRelapseDisease());
+					pstmt.setString(3, dsb.getOtherDisease());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (4): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
+					pstmt.setString(1, dsb.getDiseaseStatus());
+					pstmt.setString(2, dsb.getRelapseDisease());
+					pstmt.setString(3, dsb.getOtherDisease());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (5): {
+			}
+			case (6): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
+					pstmt.setString(1, dsb.getDiseaseStatus());
+					pstmt.setString(2, dsb.getRelapseDisease());
+					pstmt.setString(3, dsb.getOtherDisease());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+			case (7): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
+					pstmt.setString(1, dsb.getDiseaseStatus());
+					pstmt.setString(2, dsb.getRelapseDisease());
+					pstmt.setString(3, dsb.getOtherDisease());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
+					return false;
+				}
+				break;
+			}
+
 		}
 		return true;
 	}
@@ -2094,11 +2188,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getPatient(int patientId, Connection connection) {
+	public static ResultSet getPatient(int patientID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_PATIENT_BASELINE);
-			pstmt.setInt(1, patientId);
+			pstmt.setInt(1, patientID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getPatient: " + sqle.getMessage());
@@ -2107,11 +2201,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getGeneralData(int generalDataId, Connection connection) {
+	public static ResultSet getGeneralData(int generalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_GENERAL_DATA);
-			pstmt.setInt(1, generalDataId);
+			pstmt.setInt(1, generalDataID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getGeneralData: " + sqle.getMessage());
@@ -2120,11 +2214,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getAddress(int addressId, Connection connection) {
+	public static ResultSet getAddress(int addressID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_ADDRESS);
-			pstmt.setInt(1, addressId);
+			pstmt.setInt(1, addressID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getAddress: " + sqle.getMessage());
@@ -2133,11 +2227,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getTissueSpecimen(int tissueSpecimenId, Connection connection) {
+	public static ResultSet getTissueSpecimen(int tissueSpecimenID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_TISSUESPECIMEN);
-			pstmt.setInt(1, tissueSpecimenId);
+			pstmt.setInt(1, tissueSpecimenID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getTissueSpecimen: " + sqle.getMessage());
@@ -2146,11 +2240,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getClinicalData(int clinicalDataId, Connection connection) {
+	public static ResultSet getClinicalData(int clinicalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_CLINICAL_DATA_BASELINE);
-			pstmt.setInt(1, clinicalDataId);
+			pstmt.setInt(1, clinicalDataID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getClinicalData: " + sqle.getMessage());
@@ -2159,11 +2253,37 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getClassification(int classificationId, Connection connection) {
+	public static ResultSet getPrognosticRiskScoring(int prognosticRiskScoringID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_PROGNOSTIC_RISK_SCORING);
+			pstmt.setInt(1, prognosticRiskScoringID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getPrognosticRiskScoring: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getRiskScore(int riskScoreID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_RISK_SCORE);
+			pstmt.setInt(1, riskScoreID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getRiskScore: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getClassification(int classificationID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_CLASSIFICATION);
-			pstmt.setInt(1, classificationId);
+			pstmt.setInt(1, classificationID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getClassification: " + sqle.getMessage());
@@ -2172,11 +2292,37 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getPhysicalExam(int physicalExamId, Connection connection) {
+	public static ResultSet getISSStaging(int issStagingID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_ISSSTAGING);
+			pstmt.setInt(1, issStagingID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getISSStaging: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getSeverity(int severityID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_SEVERITY);
+			pstmt.setInt(1, severityID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getClassification: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getPhysicalExam(int physicalExamID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_PHYSICAL_EXAM);
-			pstmt.setInt(1, physicalExamId);
+			pstmt.setInt(1, physicalExamID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getPhysicalExamAAPNHMDS: " + sqle.getMessage());
@@ -2185,11 +2331,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getFamilyCancer(int clinicalDataId, Connection connection) {
+	public static ResultSet getFamilyCancer(int clinicalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_FAMILY_CANCER);
-			pstmt.setInt(1, clinicalDataId);
+			pstmt.setInt(1, clinicalDataID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getFamilyCancer: " + sqle.getMessage());
@@ -2198,11 +2344,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getOtherDiseases(int clinicalDataId, Connection connection) {
+	public static ResultSet getOtherDiseases(int clinicalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_OTHER_DISEASES);
-			pstmt.setInt(1, clinicalDataId);
+			pstmt.setInt(1, clinicalDataID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getOtherDiseases: " + sqle.getMessage());
@@ -2211,11 +2357,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getMedications(int clinicalDataId, Connection connection) {
+	public static ResultSet getMedications(int clinicalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_MEDICATIONS);
-			pstmt.setInt(1, clinicalDataId);
+			pstmt.setInt(1, clinicalDataID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getOtherDiseases: " + sqle.getMessage());
@@ -2224,11 +2370,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getLaboratoryProfile(int laboratoryId, Connection connection) {
+	public static ResultSet getLaboratoryProfile(int laboratoryID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_LABORATORY_PROFILE);
-			pstmt.setInt(1, laboratoryId);
+			pstmt.setInt(1, laboratoryID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getLaboratoryProfile: " + sqle.getMessage());
@@ -2237,11 +2383,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getHematology(int hematologyId, Connection connection) {
+	public static ResultSet getHematology(int hematologyID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_HEMATOLOGY);
-			pstmt.setInt(1, hematologyId);
+			pstmt.setInt(1, hematologyID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getHematology: " + sqle.getMessage());
@@ -2250,11 +2396,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getOtherLaboratoriesAAPNHMDS(int otherLaboratoriesId, Connection connection) {
+	public static ResultSet getOtherLaboratoriesAAPNHMDS(int otherLaboratoriesID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_OTHER_LABORATORIES_AAPNHMDS);
-			pstmt.setInt(1, otherLaboratoriesId);
+			pstmt.setInt(1, otherLaboratoriesID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getOtherLaboratoriesAAPNHMDS: " + sqle.getMessage());
@@ -2263,11 +2409,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getBoneMarrowAspirate(int boneMarrowAspirateId, Connection connection) {
+	public static ResultSet getBoneMarrowAspirate(int boneMarrowAspirateID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_BONE_MARROW_ASPIRATE);
-			pstmt.setInt(1, boneMarrowAspirateId);
+			pstmt.setInt(1, boneMarrowAspirateID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getBoneMarrowAspirate: " + sqle.getMessage());
@@ -2276,11 +2422,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getFlowCytometry(int flowCytometryId, Connection connection) {
+	public static ResultSet getFlowCytometry(int flowCytometryID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_FLOWCYTOMETRY);
-			pstmt.setInt(1, flowCytometryId);
+			pstmt.setInt(1, flowCytometryID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getFlowCytometry: " + sqle.getMessage());
@@ -2289,37 +2435,102 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getCytogeneticAAPNH(int cytogeneticAAPNHId, Connection connection) {
+	public static ResultSet getSerumFree(int serumFreeID, Connection connection) {
 		ResultSet rs = null;
 		try {
-			PreparedStatement pstmt = connection.prepareStatement(GET_CYTOGENETIC_AAPNH_AAPNHMDS);
-			pstmt.setInt(1, cytogeneticAAPNHId);
+			PreparedStatement pstmt = connection.prepareStatement(GET_SERUMFREE);
+			pstmt.setInt(1, serumFreeID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
-			System.out.println("SQLException - getCytogeneticAAPNH: " + sqle.getMessage());
+			System.out.println("SQLException - getSerumFree: " + sqle.getMessage());
 			return rs;
 		}
 		return rs;
 	}
 
-	public static ResultSet getCytogeneticMDSAAPNH(int cytogeneticMDSId, Connection connection) {
+	public static ResultSet getSerumProtein(int serumProteinID, Connection connection) {
 		ResultSet rs = null;
 		try {
-			PreparedStatement pstmt = connection.prepareStatement(GET_CYTOGENETIC_MDS_AAPNHMDS);
-			pstmt.setInt(1, cytogeneticMDSId);
+			PreparedStatement pstmt = connection.prepareStatement(GET_SERUMPROTEIN);
+			pstmt.setInt(1, serumProteinID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
-			System.out.println("SQLException - getCytogeneticMDSAAPNH: " + sqle.getMessage());
+			System.out.println("SQLException - getSerumProtein: " + sqle.getMessage());
 			return rs;
 		}
 		return rs;
 	}
 
-	public static ResultSet getCoagulationTesting(int coagulationTestingId, Connection connection) {
+	public static ResultSet getSerumImmunofixation(int serumImmunofixationID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_SERUMIMMUNOFIXATION);
+			pstmt.setInt(1, serumImmunofixationID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getSerumImmunofixation: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getUrineProtein(int urineProteinID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_URINEPROTEIN);
+			pstmt.setInt(1, urineProteinID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getUrineProtein: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getCytogeneticMolecular(int cytogeneticMolecularID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_CYTOGENETIC_MOLECULAR);
+			pstmt.setInt(1, cytogeneticMolecularID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getCytogeneticMolecular: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getCytogeneticMolecularAAPNH(int cytogeneticMolecularAAPNHID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_CYTOGENETIC_MOLECULAR_AAPNH_AAPNHMDS);
+			pstmt.setInt(1, cytogeneticMolecularAAPNHID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getCytogeneticMolecularAAPNH: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getCytogeneticMolecularMDSAAPNH(int cytogeneticMolecularMDSID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_CYTOGENETIC_MOLECULAR_MDS_AAPNHMDS);
+			pstmt.setInt(1, cytogeneticMolecularMDSID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getCytogeneticMolecularMDSAAPNH: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getCoagulationTesting(int coagulationTestingID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_COAGULATION_TESTING);
-			pstmt.setInt(1, coagulationTestingId);
+			pstmt.setInt(1, coagulationTestingID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getCoagulationTesting: " + sqle.getMessage());
@@ -2328,11 +2539,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getBloodChemistry(int bloodChemistryId, Connection connection) {
+	public static ResultSet getBloodChemistry(int bloodChemistryID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_BLOOD_CHEMISTRY);
-			pstmt.setInt(1, bloodChemistryId);
+			pstmt.setInt(1, bloodChemistryID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getBloodChemistry: " + sqle.getMessage());
@@ -2341,11 +2552,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getImagingStudies(int imagingStudiesId, Connection connection) {
+	public static ResultSet getImagingStudies(int imagingStudiesID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_IMAGING_STUDIES);
-			pstmt.setInt(1, imagingStudiesId);
+			pstmt.setInt(1, imagingStudiesID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getImagingStudies: " + sqle.getMessage());
@@ -2354,11 +2565,50 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getTreatment(int treatmentId, Connection connection) {
+	public static ResultSet getHematopathology(int hematopathologyID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_HEMATOPATHOLOGY);
+			pstmt.setInt(1, hematopathologyID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getHematopathology: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getImmunohistochemistry(int immunohistochemistryID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_IMMUNOHISTOCHEMISTRY);
+			pstmt.setInt(1, immunohistochemistryID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getImmunohistochemistry: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getUpperGIEndoscopy(int upperGIEndoscopyID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_UPPERGIENDOSCOPY);
+			pstmt.setInt(1, upperGIEndoscopyID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getUpperGIEndoscopy: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getTreatment(int treatmentID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_TREATMENT);
-			pstmt.setInt(1, treatmentId);
+			pstmt.setInt(1, treatmentID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getTreatment: " + sqle.getMessage());
@@ -2367,11 +2617,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getChemoMedication(int chemoMedicationId, Connection connection) {
+	public static ResultSet getChemoMedication(int chemoMedicationID, Connection connection) {
 		ResultSet rs = null;
 		try {
-			PreparedStatement pstmt = connection.prepareStatement(GET_CHEMO_MEDICATIONS);
-			pstmt.setInt(1, chemoMedicationId);
+			PreparedStatement pstmt = connection.prepareStatement(GET_CHEMOTHERAPY_MEDICATIONS);
+			pstmt.setInt(1, chemoMedicationID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getTreatment: " + sqle.getMessage());
@@ -2380,14 +2630,92 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		return rs;
 	}
 
-	public static ResultSet getModeOfTreatment(int modeOfTreatmentId, Connection connection) {
+	public static ResultSet getModeOfTreatment(int modeOfTreatmentID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_MODE_OF_TREAMENT);
-			pstmt.setInt(1, modeOfTreatmentId);
+			pstmt.setInt(1, modeOfTreatmentID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException - getTreatment: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getRegimen(int regimenID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_REGIMEN);
+			pstmt.setInt(1, regimenID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getRegimen: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getRegimenTransplant(int regimenTransplantID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_REGIMEN_TRANSPLANT);
+			pstmt.setInt(1, regimenTransplantID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getRegimenTransplant: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getRegimenNonTransplant(int regimenNonTransplantID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_REGIMEN_NONTRANSPLANT);
+			pstmt.setInt(1, regimenNonTransplantID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getRegimenNonTransplant: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getMaintenanceTherapy(int maintenanceTherapyID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_MAINTENANCE_THERAPY);
+			pstmt.setInt(1, maintenanceTherapyID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getMaintenanceTherapy: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getOtherTreatment(int otherTreatmentID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_OTHERTREATMENT);
+			pstmt.setInt(1, otherTreatmentID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getOtherTreatment: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+
+	public static ResultSet getDiseaseStatus(int diseaseStatusID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_DISEASE_STATUS);
+			pstmt.setInt(1, diseaseStatusID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getDiseaseStatus: " + sqle.getMessage());
 			return rs;
 		}
 		return rs;
@@ -2448,8 +2776,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -2465,8 +2793,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -2482,8 +2810,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -2499,8 +2827,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -2516,8 +2844,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -2533,8 +2861,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -2550,8 +2878,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_GENERAL_DATA);
 					pstmt.setString(1, gdb.getLastName());
-					pstmt.setString(2, gdb.getMiddleName());
-					pstmt.setString(3, gdb.getFirstName());
+					pstmt.setString(2, gdb.getFirstName());
+					pstmt.setString(3, gdb.getMiddleName());
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
@@ -2581,6 +2909,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_PROGNOSTIC_RISK_SCORING);
 					pstmt.setString(1, prsb.getPrognosticRiskScoringName());
+					pstmt.setString(2, prsb.getPrognosticRiskScoringOthers());
 					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
@@ -2605,6 +2934,16 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			case (2): {
 			}
 			case (3): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_RISK_SCORE);
+					pstmt.setString(1, rsb.getRiskScoreName());
+					pstmt.setInt(2, id);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- editRiskScore: " + sqle.getMessage());
+					return false;
+				}
+				break;
 			}
 			case (4): {
 			}
@@ -2612,10 +2951,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_RISK_SCORE);
 					pstmt.setString(1, rsb.getRiskScoreName());
-					pstmt.setInt(2, id);
+					pstmt.setString(2, rsb.getRiskScoreOthers());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- editFamilyCancer: " + sqle.getMessage());
+					System.out.println("SQLException -- editRiskScore: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -2677,7 +3017,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- editPrognosticRiskScoring: " + sqle.getMessage());
+					System.out.println("SQLException -- editISSStaging: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -2700,7 +3040,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
-					System.out.println("SQLException -- editClinicalData: " + sqle.getMessage());
+					System.out.println("SQLException -- editSeverity: " + sqle.getMessage());
 					return false;
 				}
 				break;
@@ -2741,7 +3081,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_PHYSICAL_EXAM_COAGULATION);
 					pstmt.setDouble(1, peb.getHeight());
 					pstmt.setDouble(2, peb.getWeight());
-					pstmt.setBoolean(3, peb.isHemathroses());
+					pstmt.setBoolean(3, peb.isHemarthroses());
 					pstmt.setBoolean(4, peb.isContracturesAndMuscleAtrophy());
 					pstmt.setString(5, peb.getOtherFindings());
 					pstmt.setInt(6, id);
@@ -2829,8 +3169,9 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setDouble(1, peb.getHeight());
 					pstmt.setDouble(2, peb.getWeight());
 					pstmt.setDouble(3, peb.getSplenomegaly());
-					pstmt.setString(4, peb.getOtherFindings());
-					pstmt.setInt(5, id);
+					pstmt.setString(4, peb.getSkin());
+					pstmt.setString(5, peb.getOtherFindings());
+					pstmt.setInt(6, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editPhysicalExamData: " + sqle.getMessage());
@@ -2936,15 +3277,16 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CLINICAL_DATA_MYELOPROLIFERATIVE);
 					pstmt.setString(1, cdb.getDateOfVisit());
 					pstmt.setString(2, cdb.getDiagnosis());
-					pstmt.setString(3, cdb.getChiefComplaint());
-					pstmt.setString(4, cdb.getConstitutionalSymptoms());
-					pstmt.setString(5, cdb.getOtherSymptoms());
-					pstmt.setString(6, cdb.getComorbidities());
-					pstmt.setString(7, cdb.getSmokingHistory());
-					pstmt.setString(8, cdb.getAlchoholIntakeHistory());
-					pstmt.setString(9, cdb.getChemicalExposure());
-					pstmt.setString(10, cdb.getOtherFindings());
-					pstmt.setInt(11, id);
+					pstmt.setString(3, cdb.getOtherDiagnosis());
+					pstmt.setString(4, cdb.getChiefComplaint());
+					pstmt.setString(5, cdb.getConstitutionalSymptoms());
+					pstmt.setString(6, cdb.getOtherSymptoms());
+					pstmt.setString(7, cdb.getComorbidities());
+					pstmt.setString(8, cdb.getSmokingHistory());
+					pstmt.setString(9, cdb.getAlchoholIntakeHistory());
+					pstmt.setString(10, cdb.getChemicalExposure());
+					pstmt.setString(11, cdb.getOtherFindings());
+					pstmt.setInt(12, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editClinicalData: " + sqle.getMessage());
@@ -2980,13 +3322,14 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setString(2, cdb.getDiagnosis());
 					pstmt.setString(3, cdb.getOtherDiagnosis());
 					pstmt.setString(4, cdb.getChiefComplaint());
-					pstmt.setString(5, cdb.getOtherSymptoms());
-					pstmt.setString(6, cdb.getComorbidities());
-					pstmt.setString(7, cdb.getSmokingHistory());
-					pstmt.setString(8, cdb.getAlchoholIntakeHistory());
-					pstmt.setString(9, cdb.getChemicalExposure());
-					pstmt.setString(10, cdb.getOtherFindings());
-					pstmt.setInt(11, id);
+					pstmt.setString(5, cdb.getConstitutionalSymptoms());
+					pstmt.setString(6, cdb.getOtherSymptoms());
+					pstmt.setString(7, cdb.getComorbidities());
+					pstmt.setString(8, cdb.getSmokingHistory());
+					pstmt.setString(9, cdb.getAlchoholIntakeHistory());
+					pstmt.setString(10, cdb.getChemicalExposure());
+					pstmt.setString(11, cdb.getOtherFindings());
+					pstmt.setInt(12, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editClinicalData: " + sqle.getMessage());
@@ -3322,7 +3665,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setDouble(11, bcb.getBeta2Microglobulin());
 					pstmt.setDouble(12, bcb.getHepatitsBTesting());
 					pstmt.setDouble(13, bcb.getESR());
-					pstmt.setInt(12, id);
+					pstmt.setInt(14, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editBloodChemistry: " + sqle.getMessage());
@@ -3619,7 +3962,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		switch (disease) {
 			case (1): {
 				try {
-					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_AAPNH_AAPHSMDS);
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_MOLECULAR_AAPNH_AAPHSMDS);
 					pstmt.setString(1, cmaapnhb.getResult());
 					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
@@ -3634,7 +3977,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 			case (3): {
 				try {
-					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_AAPNH_LEUKEMIA);
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_MOLECULAR_AAPNH_LEUKEMIA);
 					pstmt.setString(1, cmaapnhb.getResult());
 					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
@@ -3660,7 +4003,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		switch (disease) {
 			case (1): {
 				try {
-					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_MDS_AAPHSMDS);
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_CYTOGENETIC_MOLECULAR_MDS_AAPHSMDS);
 					pstmt.setString(1, cmmdsb.getResult());
 					pstmt.setInt(2, id);
 					pstmt.executeUpdate();
@@ -3773,7 +4116,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 			case (7): {
 				try {
-					PreparedStatement pstmt = connection.prepareStatement(UPDATE_UPPERGIENDOSCOPY_PLATELET);
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_UPPERGIENDOSCOPY);
 					pstmt.setString(1, ugeb.getDatePerformed());
 					pstmt.setString(2, ugeb.getDescription());
 					pstmt.setBoolean(3, ugeb.isHPylori());
@@ -4157,7 +4500,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN);
 					pstmt.setString(1, rb.getRegimenName());
-					pstmt.setInt(2, id);
+					pstmt.setString(2, rb.getOtherRegimen());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimen: " + sqle.getMessage());
@@ -4169,7 +4513,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN);
 					pstmt.setString(1, rb.getRegimenName());
-					pstmt.setInt(2, id);
+					pstmt.setString(2, rb.getOtherRegimen());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimen: " + sqle.getMessage());
@@ -4185,7 +4530,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN);
 					pstmt.setString(1, rb.getRegimenName());
-					pstmt.setInt(2, id);
+					pstmt.setString(2, rb.getOtherRegimen());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimen: " + sqle.getMessage());
@@ -4213,7 +4559,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN_TRANSPLANT);
 					pstmt.setString(1, rtb.getRegimenName());
-					pstmt.setInt(2, id);
+					pstmt.setString(2, rtb.getOtherRegimen());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimenTransplant: " + sqle.getMessage());
@@ -4243,7 +4590,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_REGIMEN_NONTRANSPLANT);
 					pstmt.setString(1, rntb.getRegimenName());
-					pstmt.setInt(2, id);
+					pstmt.setString(2, rntb.getOtherRegimen());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editRegimenNonTransplant: " + sqle.getMessage());
@@ -4273,7 +4621,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_MAINTENANCE_THERAPY);
 					pstmt.setString(1, mtb.getMaintenanceTherapyName());
-					pstmt.setInt(2, id);
+					pstmt.setString(2, mtb.getOtherMaintenanceTherapy());
+					pstmt.setInt(3, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editMaintenanceTherapy: " + sqle.getMessage());
@@ -4356,13 +4705,9 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_TREATMENT_PLASMACELL);
 					pstmt.setString(1, tb.getDateStarted());
-					pstmt.setString(2, tb.getOtherRegimen());
-					pstmt.setString(3, tb.getOtherRegimenTransplant());
-					pstmt.setString(4, tb.getOtherRegimenNonTransplant());
-					pstmt.setString(5, tb.getOtherRegimenMaintenanceTherapy());
-					pstmt.setInt(6, tb.getCycleNumber());
-					pstmt.setString(7, tb.getComplications());
-					pstmt.setInt(8, id);
+					pstmt.setInt(2, tb.getCycleNumber());
+					pstmt.setString(3, tb.getComplications());
+					pstmt.setInt(4, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editTreatment: " + sqle.getMessage());
@@ -4432,7 +4777,9 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				try {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_DISEASE_STATUS);
 					pstmt.setString(1, dsb.getDiseaseStatus());
-					pstmt.setInt(2, id);
+					pstmt.setString(2, dsb.getRelapseDisease());
+					pstmt.setString(3, dsb.getOtherDisease());
+					pstmt.setInt(4, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editDiseaseStatus: " + sqle.getMessage());

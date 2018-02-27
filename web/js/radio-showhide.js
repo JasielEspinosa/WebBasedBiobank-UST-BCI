@@ -1,630 +1,1117 @@
-$(function() {
+$(document).ready(function() {
 
 	// GENERAL DATA
 
-	$("input[name='tissueSpecimenCollected']").click(function() {
+	// tissueSpecimenCollected
+	$.tissueSpecimenCollectedChecked = function() {
+		// $("#smokingHistorySpecify").show();
+		// $("#smokingHistorySpecify").show("fast");
+		$("#specimenType").slideDown(200);
+		$("[name='specimenType']").prop('required', true);
+	}
+	$.tissueSpecimenCollectedUnchecked = function() {
+		// $("#smokingHistorySpecify").hide("fast");
+		$("#specimenType").slideUp(200);
+		$("[name='specimenType']").prop('required', false);
+	}
+	$("[name='tissueSpecimenCollected']").click(function() {
 		if ($(this).val() === "1") {
-			// $("#smokingHistorySpecify").show();
-			// $("#smokingHistorySpecify").show("fast");
-			$("#specimenType").slideDown(200);
-			$("input[name='specimenType']").prop('required', true);
+			$.tissueSpecimenCollectedChecked();
 		} else if ($(this).val() === "0") {
-			// $("#smokingHistorySpecify").hide("fast");
-			$("#specimenType").slideUp(200);
-			$("input[name='specimenType']").prop('required', false);
+			$.tissueSpecimenCollectedUnchecked();
 		}
 	});
+	if ($("[name='tissueSpecimenCollected'][value='1']").is(":checked")) {
+		$.tissueSpecimenCollectedChecked();
+	} else if ($("[name='tissueSpecimenCollected'][value='0']").is(":checked")) {
+		$.tissueSpecimenCollectedUnchecked();
+	}
 
 	// MEDICAL EVENTS
 
-	$("input[name='hematologicMalignancy']").click(function() {
+	// hematologicMalignancy
+	$.hematologicMalignancyChecked = function() {
+		$("#specifyHematologicMalignancy").slideDown(200);
+		$("[name='specifyHematologicMalignancy']").prop('required', true);
+	}
+	$.hematologicMalignancyUnchecked = function() {
+		$("#specifyHematologicMalignancy").slideUp(200);
+		$("[name='specifyHematologicMalignancy']").prop('required', false);
+	}
+	$("[name='hematologicMalignancy']").click(function() {
 		if ($(this).val() === "1") {
-			$("#specifyHematologicMalignancy").slideDown(200);
-			$("input[name='specifyHematologicMalignancy']").prop('required', true);
+			$.hematologicMalignancyChecked();
 		} else if ($(this).val() === "0") {
-			$("#specifyHematologicMalignancy").slideUp(200);
-			$("input[name='specifyHematologicMalignancy']").prop('required', false);
+			$.hematologicMalignancyUnchecked();
 		}
 	});
+	if ($("[name='hematologicMalignancy'][value='1']").is(":checked")) {
+		$.hematologicMalignancyChecked();
+	} else if ($("[name='hematologicMalignancy'][value='0']").is(":checked")) {
+		$.hematologicMalignancyUnchecked();
+	}
 
-	$("input[name='otherDiseaseMedication']").click(function() {
+	// otherDiseaseMedication
+	$.otherDiseaseMedicationChecked = function() {
+		$("#specifyOtherDiseaseMedication").slideDown(200);
+		$("[name='specifyOtherDiseaseMedication']").prop('required', true);
+	}
+	$.otherDiseaseMedicationUnchecked = function() {
+		$("#specifyOtherDiseaseMedication").slideUp(200);
+		$("[name='specifyOtherDiseaseMedication']").prop('required', false);
+	}
+	$("[name='otherDiseaseMedication']").click(function() {
 		if ($(this).val() === "1") {
-			$("#specifyOtherDiseaseMedication").slideDown(200);
-			$("input[name='specifyOtherDiseaseMedication']").prop('required', true);
+			$.otherDiseaseMedicationChecked();
 		} else if ($(this).val() === "0") {
-			$("#specifyOtherDiseaseMedication").slideUp(200);
-			$("input[name='specifyOtherDiseaseMedication']").prop('required', false);
+			$.otherDiseaseMedicationUnchecked();
 		}
 	});
+	if ($("[name='otherDiseaseMedication'][value='1']").is(":checked")) {
+		$.otherDiseaseMedicationChecked();
+	} else if ($("[name='otherDiseaseMedication'][value='0']").is(":checked")) {
+		$.otherDiseaseMedicationUnchecked();
+	}
 
-	$("input[name='factorConcentrate']").click(function() {
+	// factorConcentrate
+	$.factorConcentrateChecked = function() {
+		$("#specifyReasonFactorConcentrate").slideDown(200);
+		$("[name='specifyReasonFactorConcentrate']").prop('required', true);
+		$("#datesOfAdministrationFactorConcentrate").slideDown(200);
+		$("[name='datesOfAdministrationFactorConcentrate']").prop('required', true);
+		$("#doseOfFactorConcentrate").slideDown(200);
+		$("[name='doseOfFactorConcentrate']").prop('required', true);
+	}
+	$.factorConcentrateUnchecked = function() {
+		$("#specifyReasonFactorConcentrate").slideUp(200);
+		$("[name='specifyReasonFactorConcentrate']").prop('required', false);
+		$("#datesOfAdministrationFactorConcentrate").slideUp(200);
+		$("[name='datesOfAdministrationFactorConcentrate']").prop('required', false);
+		$("#doseOfFactorConcentrate").slideUp(200);
+		$("[name='doseOfFactorConcentrate']").prop('required', false);
+	}
+	$("[name='factorConcentrate']").click(function() {
 		if ($(this).val() === "1") {
-			$("#specifyReasonFactorConcentrate").slideDown(200);
-			$("input[name='specifyReasonFactorConcentrate']").prop('required', true);
-
-			$("#datesOfAdministrationFactorConcentrate").slideDown(200);
-			$("input[name='datesOfAdministrationFactorConcentrate']").prop('required', true);
-
-			$("#doseOfFactorConcentrate").slideDown(200);
-			$("input[name='doseOfFactorConcentrate']").prop('required', true);
-
+			$.factorConcentrateChecked();
 		} else if ($(this).val() === "0") {
-			$("#specifyReasonFactorConcentrate").slideUp(200);
-			$("input[name='specifyReasonFactorConcentrate']").prop('required', false);
-
-			$("#datesOfAdministrationFactorConcentrate").slideUp(200);
-			$("input[name='datesOfAdministrationFactorConcentrate']").prop('required', false);
-
-			$("#doseOfFactorConcentrate").slideUp(200);
-			$("input[name='doseOfFactorConcentrate']").prop('required', false);
-
+			$.factorConcentrateUnchecked();
 		}
 	});
+	if ($("[name='factorConcentrate'][value='1']").is(":checked")) {
+		$.factorConcentrateChecked();
+	} else if ($("[name='factorConcentrate'][value='0']").is(":checked")) {
+		$.factorConcentrateUnchecked();
+	}
 
-	$("input[name='procedure']").click(function() {
+	// procedure
+	$.procedureChecked = function() {
+		$("#specifyProcedure").slideDown(200);
+		$("[name='specifyProcedure']").prop('required', true);
+	}
+	$.procedureUnchecked = function() {
+		$("#specifyProcedure").slideUp(200);
+		$("[name='specifyProcedure']").prop('required', false);
+	}
+	$("[name='procedure']").click(function() {
 		if ($(this).val() === "1") {
-			$("#specifyProcedure").slideDown(200);
-			$("input[name='specifyProcedure']").prop('required', true);
+			$.procedureChecked();
 		} else if ($(this).val() === "0") {
-			$("#specifyProcedure").slideUp(200);
-			$("input[name='specifyProcedure']").prop('required', false);
+			$.procedureUnchecked();
 		}
 	});
+	if ($("[name='procedure'][value='1']").is(":checked")) {
+		$.procedureChecked();
+	} else if ($("[name='procedure'][value='0']").is(":checked")) {
+		$.procedureUnchecked();
+	}
 
-	$("input[name='chemotherapy']").click(function() {
+	// chemotherapy
+	$.chemotherapyChecked = function() {
+		$("#specifyChemotherapy").slideDown(200);
+		$("[name='specifyChemotherapy']").prop('required', true);
+	}
+	$.chemotherapyUnchecked = function() {
+		$("#specifyChemotherapy").slideUp(200);
+		$("[name='specifyChemotherapy']").prop('required', false);
+	}
+	$("[name='chemotherapy']").click(function() {
 		if ($(this).val() === "1") {
-			$("#specifyChemotherapy").slideDown(200);
-			$("input[name='specifyChemotherapy']").prop('required', true);
+			$.chemotherapyChecked();
 		} else if ($(this).val() === "0") {
-			$("#specifyChemotherapy").slideUp(200);
-			$("input[name='specifyChemotherapy']").prop('required', false);
+			$.chemotherapyUnchecked();
 		}
 	});
+	if ($("[name='chemotherapy'][value='1']").is(":checked")) {
+		$.chemotherapyChecked();
+	} else if ($("[name='chemotherapy'][value='0']").is(":checked")) {
+		$.chemotherapyUnchecked();
+	}
 
 	// CLINICAL
 
-	// DROPDOWN
-	$("select[name='diagnosis']").click(function() {
+	// diagnosis
+	$.diagnosisOthers = function() {
+		$("#diagnosisOthers").slideDown(200);
+		$("[name='diagnosisOthers']").prop('required', true);
+	}
+	$.diagnosisNull = function() {
+		$("#diagnosisOthers").slideUp(200);
+		$("[name='diagnosisOthers']").prop('required', false);
+	}
+	$("[name='diagnosis']").click(function() {
 		if ($(this).val() === "Others") {
-			$("#diagnosisOthers").slideDown(200);
-			$("input[name='diagnosisOthers']").prop('required', true);
+			$.diagnosisOthers();
 		} else {
-			$("#diagnosisOthers").slideUp(200);
-			$("input[name='diagnosisOthers']").prop('required', false);
+			$.diagnosisNull();
 		}
 	});
+	if ($("[name='diagnosis']").val() === "Others") {
+		$.diagnosisOthers();
+	} else {
+		$.diagnosisNull();
+	}
 
-	$("select[name='treatment']").click(function() {
+	// treatment
+	$.treatmentOthers = function() {
+		$("#treatmentSpecify").slideDown(200);
+		$("[name='treatmentSpecify']").prop('required', true);
+		$("#otherRegimens").slideDown(200);
+		$("[name='otherRegimens']").prop('required', true);
+	}
+	$.treatmentNull = function() {
+		$("#treatmentSpecify").slideUp(200);
+		$("[name='treatmentSpecify']").prop('required', false);
+		$("#otherRegimens").slideUp(200);
+		$("[name='otherRegimens']").prop('required', false);
+	}
+	$("[name='treatment']").click(function() {
 		if ($(this).val() === "Others") {
-			$("#treatmentSpecify").slideDown(200);
-			$("input[name='treatmentSpecify']").prop('required', true);
+			$.treatmentOthers();
 		} else {
-			$("#treatmentSpecify").slideUp(200);
-			$("input[name='treatmentSpecify']").prop('required', false);
+			$.treatmentNull();
 		}
 	});
+	if ($("[name='treatment']").val() === "Others") {
+		$.treatmentOthers();
+	} else {
+		$.treatmentNull();
+	}
 
-	$("select[name='treatment']").click(function() {
+	// regimenProtocolTransplant
+	$.regimenProtocolTransplantOthers = function() {
+		$("#otherRegimensTransplant").slideDown(200);
+		$("[name='otherRegimensTransplant']").prop('required', true);
+	}
+	$.regimenProtocolTransplantNull = function() {
+		$("#otherRegimensTransplant").slideUp(200);
+		$("[name='otherRegimensTransplant']").prop('required', false);
+	}
+	$("[name='regimenProtocolTransplant']").click(function() {
 		if ($(this).val() === "Others") {
-			$("#otherRegimens").slideDown(200);
-			$("input[name='otherRegimens']").prop('required', true);
+			$.regimenProtocolTransplantOthers();
 		} else {
-			$("#otherRegimens").slideUp(200);
-			$("input[name='otherRegimens']").prop('required', false);
+			$.regimenProtocolTransplantNull();
 		}
 	});
+	if ($("[name='regimenProtocolTransplant']").val() === "Others") {
+		$.regimenProtocolTransplantOthers();
+	} else {
+		$.regimenProtocolTransplantNull();
+	}
 
-	$("select[name='regimenProtocolTransplant']").click(function() {
+	// regimenProtocolNonTransplant
+	$.regimenProtocolNonTransplantOthers = function() {
+		$("#otherRegimensNonTransplant").slideDown(200);
+		$("[name='otherRegimensNonTransplant']").prop('required', true);
+	}
+	$.regimenProtocolNonTransplantNull = function() {
+		$("#otherRegimensNonTransplant").slideUp(200);
+		$("[name='otherRegimensNonTransplant']").prop('required', false);
+	}
+	$("[name='regimenProtocolNonTransplant']").click(function() {
 		if ($(this).val() === "Others") {
-			$("#otherRegimensTransplant").slideDown(200);
-			$("input[name='otherRegimensTransplant']").prop('required', true);
+			$.regimenProtocolNonTransplantOthers();
 		} else {
-			$("#otherRegimensTransplant").slideUp(200);
-			$("input[name='otherRegimensTransplant']").prop('required', false);
+			$.regimenProtocolNonTransplantNull();
 		}
 	});
+	if ($("[name='regimenProtocolNonTransplant']").val() === "Others") {
+		$.regimenProtocolNonTransplantOthers();
+	} else {
+		$.regimenProtocolNonTransplantNull();
+	}
 
-	$("select[name='regimenProtocolNonTransplant']").click(function() {
+	// regimenProtocolMaintenanceTherapy
+	$.regimenProtocolMaintenanceTherapyOthers = function() {
+		$("#otherRegimensMaintenanceTherapy").slideDown(200);
+		$("[name='otherRegimensMaintenanceTherapy']").prop('required', true);
+	}
+
+	$.regimenProtocolMaintenanceTherapyNull = function() {
+		$("#otherRegimensMaintenanceTherapy").slideUp(200);
+		$("[name='otherRegimensMaintenanceTherapy']").prop('required', false);
+	}
+
+	$("[name='regimenProtocolMaintenanceTherapy']").click(function() {
 		if ($(this).val() === "Others") {
-			$("#otherRegimensNonTransplant").slideDown(200);
-			$("input[name='otherRegimensNonTransplant']").prop('required', true);
+			$.regimenProtocolMaintenanceTherapyOthers();
 		} else {
-			$("#otherRegimensNonTransplant").slideUp(200);
-			$("input[name='otherRegimensNonTransplant']").prop('required', false);
+			$.regimenProtocolMaintenanceTherapyNull();
 		}
 	});
 
-	$("select[name='regimenProtocolMaintenanceTherapy']").click(function() {
+	if ($("[name='regimenProtocolMaintenanceTherapy']").val() === "Others") {
+		$.regimenProtocolMaintenanceTherapyOthers();
+	} else {
+		$.regimenProtocolMaintenanceTherapyNull();
+	}
+
+	// prognosticRiskScoring
+	$.prognosticRiskScoringOthers = function() {
+		$("#prognosticRiskScoringOthers").slideDown(200);
+		$("[name='prognosticRiskScoringOthers']").prop('required', true);
+	}
+
+	$.prognosticRiskScoringNull = function() {
+		$("#prognosticRiskScoringOthers").slideUp(200);
+		$("[name='prognosticRiskScoringOthers']").prop('required', false);
+	}
+
+	$("[name='prognosticRiskScoring']").click(function() {
 		if ($(this).val() === "Others") {
-			$("#otherRegimensMaintenanceTherapy").slideDown(200);
-			$("input[name='otherRegimensMaintenanceTherapy']").prop('required', true);
+			$.prognosticRiskScoringOthers();
 		} else {
-			$("#otherRegimensMaintenanceTherapy").slideUp(200);
-			$("input[name='otherRegimensMaintenanceTherapy']").prop('required', false);
+			$.prognosticRiskScoringNull();
 		}
 	});
 
-	$("select[name='prognosticRiskScoring']").click(function() {
+	if ($("[name='prognosticRiskScoring']").val() === "Others") {
+		$.prognosticRiskScoringOthers();
+	} else {
+		$.prognosticRiskScoringNull();
+	}
+
+	// riskScore
+	$.riskScoreOthers = function() {
+		$("#riskScoreOthers").slideDown(200);
+		$("[name='riskScoreOthers']").prop('required', true);
+	}
+
+	$.riskScoreNull = function() {
+		$("#riskScoreOthers").slideUp(200);
+		$("[name='riskScoreOthers']").prop('required', false);
+	}
+
+	$("[name='riskScore']").click(function() {
 		if ($(this).val() === "Others") {
-			$("#prognosticRiskScoringothers").slideDown(200);
-			$("input[name='prognosticRiskScoringothers']").prop('required', true);
+			$.riskScoreOthers();
 		} else {
-			$("#prognosticRiskScoringothers").slideUp(200);
-			$("input[name='prognosticRiskScoringothers']").prop('required', false);
+			$.riskScoreNull();
 		}
 	});
 
-	$("select[name='riskScore']").click(function() {
-		if ($(this).val() === "Others") {
-			$("#riskScoreOthers").slideDown(200);
-			$("input[name='riskScoreOthers']").prop('required', true);
-		} else {
-			$("#riskScoreOthers").slideUp(200);
-			$("input[name='riskScoreOthers']").prop('required', false);
-		}
-	});
+	if ($("[name='riskScore']").val() === "Others") {
+		$.riskScoreOthers();
+	} else {
+		$.riskScoreNull();
+	}
 
-	// END OF DROPDOWN
-
-	$("input[name='familyHistoryOfCancer']").click(function() {
+	// familyHistoryOfCancer
+	$.familyHistoryOfCancerChecked = function() {
+		$("#relationshipToPatient").slideDown(200);
+		$("[name='relationshipToPatient']").prop('required', true);
+		$("#specifyCancer").slideDown(200);
+		$("[name='specifyCancer']").prop('required', true);
+		$("#otherDiseasesInTheFamily").slideDown(200);
+		$("[name='otherDiseasesInTheFamily']").prop('required', true);
+	}
+	$.familyHistoryOfCancerUnchecked = function() {
+		$("#relationshipToPatient").slideUp(200);
+		$("[name='relationshipToPatient']").prop('required', false);
+		$("#specifyCancer").slideUp(200);
+		$("[name='specifyCancer']").prop('required', false);
+		$("#otherDiseasesInTheFamily").slideUp(200);
+		$("[name='otherDiseasesInTheFamily']").prop('required', false);
+	}
+	$("[name='familyHistoryOfCancer']").click(function() {
 		if ($(this).val() === "1") {
-			$("#relationshipToPatient").slideDown(200);
-			$("input[name='relationshipToPatient']").prop('required', true);
-			$("#specifyCancer").slideDown(200);
-			$("input[name='specifyCancer']").prop('required', true);
-			$("#otherDiseasesInTheFamily").slideDown(200);
-			$("input[name='otherDiseasesInTheFamily']").prop('required', true);
+			$.familyHistoryOfCancerChecked();
 		} else if ($(this).val() === "0") {
-			$("#relationshipToPatient").slideUp(200);
-			$("input[name='relationshipToPatient']").prop('required', false);
-			$("#specifyCancer").slideUp(200);
-			$("input[name='specifyCancer']").prop('required', false);
-			$("#otherDiseasesInTheFamily").slideUp(200);
-			$("input[name='otherDiseasesInTheFamily']").prop('required', false);
+			$.familyHistoryOfCancerUnchecked();
 		}
 	});
+	if ($("[name='familyHistoryOfCancer'][value='1']").is(":checked")) {
+		$.familyHistoryOfCancerChecked();
+	} else if ($("[name='familyHistoryOfCancer'][value='0']").is(":checked")) {
+		$.familyHistoryOfCancerChecked();
+	}
 
-	$("input[name='familyHistoryOfBleedingDiathesis']").click(function() {
+	// familyHistoryOfBleedingDiathesis
+	$.familyHistoryOfBleedingDiathesisChecked = function() {
+		$("#relationshipToPatient").slideDown(200);
+		$("[name='relationshipToPatient']").prop('required', true);
+		$("#specifyCancer").slideDown(200);
+		$("[name='specifyCancer']").prop('required', true);
+		$("#otherDiseasesInTheFamily").slideDown(200);
+		$("[name='otherDiseasesInTheFamily']").prop('required', true);
+	}
+	$.familyHistoryOfBleedingDiathesisUnchecked = function() {
+		$("#relationshipToPatient").slideUp(200);
+		$("[name='relationshipToPatient']").prop('required', false);
+		$("#specifyCancer").slideUp(200);
+		$("[name='specifyCancer']").prop('required', false);
+		$("#otherDiseasesInTheFamily").slideUp(200);
+		$("[name='otherDiseasesInTheFamily']").prop('required', false);
+	}
+	$("[name='familyHistoryOfBleedingDiathesis']").click(function() {
 		if ($(this).val() === "1") {
-			$("#relationshipToPatient").slideDown(200);
-			$("input[name='relationshipToPatient']").prop('required', true);
-			$("#specifyCancer").slideDown(200);
-			$("input[name='specifyCancer']").prop('required', true);
-			$("#otherDiseasesInTheFamily").slideDown(200);
-			$("input[name='otherDiseasesInTheFamily']").prop('required', true);
+			$.familyHistoryOfBleedingDiathesisChecked();
 		} else if ($(this).val() === "0") {
-			$("#relationshipToPatient").slideUp(200);
-			$("input[name='relationshipToPatient']").prop('required', false);
-			$("#specifyCancer").slideUp(200);
-			$("input[name='specifyCancer']").prop('required', false);
-			$("#otherDiseasesInTheFamily").slideUp(200);
-			$("input[name='otherDiseasesInTheFamily']").prop('required', false);
+			$.familyHistoryOfBleedingDiathesisUnchecked();
 		}
 	});
+	if ($("[name='familyHistoryOfBleedingDiathesis'][value='1']").is(":checked")) {
+		$.familyHistoryOfBleedingDiathesisChecked();
+	} else if ($("[name='familyHistoryOfBleedingDiathesis'][value='0']").is(":checked")) {
+		$.familyHistoryOfBleedingDiathesisUnchecked();
+	}
 
-	$("input[name='concomitantMedications']").click(function() {
+	// concomitantMedications
+	$.concomitantMedicationsChecked = function() {
+		$("#concomitantMedications").slideDown(200);
+		$("#genericName").slideDown(200);
+		$("[name='genericName']").prop('required', true);
+		$("#dose").slideDown(200);
+		$("[name='dose']").prop('required', true);
+		$("#frequency").slideDown(200);
+		$("[name='frequency']").prop('required', true);
+	}
+	$.concomitantMedicationsUnchecked = function() {
+		$("#concomitantMedications").slideUp(200);
+		$("#genericName").slideUp(200);
+		$("[name='genericName']").prop('required', false);
+		$("#dose").slideUp(200);
+		$("[name='dose']").prop('required', false);
+		$("#frequency").slideUp(200);
+		$("[name='frequency']").prop('required', false);
+	}
+	$("[name='concomitantMedications']").click(function() {
 		if ($(this).val() === "1") {
-			$("#concomitantMedications").slideDown(200);
-			$("#genericName").slideDown(200);
-			$("input[name='genericName']").prop('required', true);
-			$("#dose").slideDown(200);
-			$("input[name='dose']").prop('required', true);
-			$("#frequency").slideDown(200);
-			$("input[name='frequency']").prop('required', true);
+			$.concomitantMedicationsChecked();
 		} else if ($(this).val() === "0") {
-			$("#concomitantMedications").slideUp(200);
-			$("#genericName").slideUp(200);
-			$("input[name='genericName']").prop('required', false);
-			$("#dose").slideUp(200);
-			$("input[name='dose']").prop('required', false);
-			$("#frequency").slideUp(200);
-			$("input[name='frequency']").prop('required', false);
+			$.concomitantMedicationsUnchecked();
 		}
 	});
+	if ($("[name='concomitantMedications'][value='1']").is(":checked")) {
+		$.concomitantMedicationsChecked();
+	} else if ($("[name='concomitantMedications'][value='0']").is(":checked")) {
+		$.concomitantMedicationsUnchecked();
+	}
 
-	$("input[name='thrombosisHistory']").click(function() {
+	// thrombosisHistory
+	$.thrombosisHistoryChecked = function() {
+		$("#thrombosisHistorySpecify").slideDown(200);
+		$("[name='thrombosisHistorySpecify']").prop('required', true);
+	}
+	$.thrombosisHistoryUnchecked = function() {
+		$("#thrombosisHistorySpecify").slideUp(200);
+		$("[name='thrombosisHistorySpecify']").prop('required', false);
+	}
+	$("[name='thrombosisHistory']").click(function() {
 		if ($(this).val() === "1") {
-			// $("#smokingHistorySpecify").show();
-			// $("#smokingHistorySpecify").show("fast");
-			$("#thrombosisHistorySpecify").slideDown(200);
-			$("input[name='thrombosisHistorySpecify']").prop('required', true);
+			$.thrombosisHistoryChecked();
 		} else if ($(this).val() === "0") {
-			// $("#smokingHistorySpecify").hide("fast");
-			$("#thrombosisHistorySpecify").slideUp(200);
-			$("input[name='thrombosisHistorySpecify']").prop('required', false);
+			$.thrombosisHistoryUnchecked();
 		}
 	});
+	if ($("[name='thrombosisHistory'][value='1']").is(":checked")) {
+		$.thrombosisHistoryChecked();
+	} else if ($("[name='thrombosisHistory'][value='0']").is(":checked")) {
+		$.thrombosisHistoryUnchecked();
+	}
 
-	$("input[name='smokingHistory']").click(function() {
+	// smokingHistory
+	$.smokingHistoryChecked = function() {
+		// $("#smokingHistorySpecify").show();
+		// $("#smokingHistorySpecify").show("fast");
+		$("#smokingHistorySpecify").slideDown(200);
+		$("[name='smokingHistorySpecify']").prop('required', true);
+	}
+	$.smokingHistoryUnchecked = function() {
+		// $("#smokingHistorySpecify").hide("fast");
+		$("#smokingHistorySpecify").slideUp(200);
+		$("[name='smokingHistorySpecify']").prop('required', false);
+	}
+	$("[name='smokingHistory']").click(function() {
 		if ($(this).val() === "1") {
-			// $("#smokingHistorySpecify").show();
-			// $("#smokingHistorySpecify").show("fast");
-			$("#smokingHistorySpecify").slideDown(200);
-			$("input[name='smokingHistorySpecify']").prop('required', true);
+			$.smokingHistoryChecked();
 		} else if ($(this).val() === "0") {
-			// $("#smokingHistorySpecify").hide("fast");
-			$("#smokingHistorySpecify").slideUp(200);
-			$("input[name='smokingHistorySpecify']").prop('required', false);
+			$.smokingHistoryUnchecked();
 		}
 	});
+	if ($("[name='smokingHistory'][value='1']").is(":checked")) {
+		$.smokingHistoryChecked();
+	} else if ($("[name='smokingHistory'][value='0']").is(":checked")) {
+		$.smokingHistoryUnchecked();
+	}
 
-	$("input[name='alcoholIntakeHistory']").click(function() {
+	// alcoholIntakeHistory
+	$.alcoholIntakeHistoryChecked = function() {
+		$("#alcoholIntakeSpecify").slideDown(200);
+		$("[name='alcoholIntakeSpecify']").prop('required', true);
+	}
+	$.alcoholIntakeHistoryUnchecked = function() {
+		$("#alcoholIntakeSpecify").slideUp(200);
+		$("[name='alcoholIntakeSpecify']").prop('required', false);
+	}
+	$("[name='alcoholIntakeHistory']").click(function() {
 		if ($(this).val() === "1") {
-			$("#alcoholIntakeSpecify").slideDown(200);
-			$("input[name='alcoholIntakeSpecify']").prop('required', true);
+			$.alcoholIntakeHistoryChecked();
 		} else if ($(this).val() === "0") {
-			$("#alcoholIntakeSpecify").slideUp(200);
-			$("input[name='alcoholIntakeSpecify']").prop('required', false);
+			$.alcoholIntakeHistoryUnchecked();
 		}
 	});
+	if ($("[name='alcoholIntakeHistory'][value='1']").is(":checked")) {
+		$.alcoholIntakeHistoryChecked();
+	} else if ($("[name='alcoholIntakeHistory'][value='0']").is(":checked")) {
+		$.alcoholIntakeHistoryUnchecked();
+	}
 
-	$("input[name='chemicalExposureHistory']").click(function() {
+	// chemicalExposureHistory
+	$.chemicalExposureHistoryChecked = function() {
+		$("#chemicalExposureSpecify").slideDown(200);
+		$("[name='chemicalExposureSpecify']").prop('required', true);
+	}
+	$.chemicalExposureHistoryUnchecked = function() {
+		$("#chemicalExposureSpecify").slideUp(200);
+		$("[name='chemicalExposureSpecify']").prop('required', false);
+	}
+	$("[name='chemicalExposureHistory']").click(function() {
 		if ($(this).val() === "1") {
-			$("#chemicalExposureSpecify").slideDown(200);
-			$("input[name='chemicalExposureSpecify']").prop('required', true);
+			$.chemicalExposureHistoryChecked();
 		} else if ($(this).val() === "0") {
-			$("#chemicalExposureSpecify").slideUp(200);
-			$("input[name='chemicalExposureSpecify']").prop('required', false);
+			$.chemicalExposureHistoryUnchecked();
 		}
 	});
+	if ($("[name='chemicalExposureHistory'][value='1']").is(":checked")) {
+		$.chemicalExposureHistoryChecked();
+	} else if ($("[name='chemicalExposureHistory'][value='0']").is(":checked")) {
+		$.chemicalExposureHistoryUnchecked();
+	}
 
-	$("input[name='previousInfection']").click(function() {
+	// previousInfection
+	$.previousInfectionChecked = function() {
+		$("#previousInfectionSpecify").slideDown(200);
+		$("[name='previousInfectionSpecify']").prop('required', true);
+	}
+	$.previousInfectionUnchecked = function() {
+		$("#previousInfectionSpecify").slideUp(200);
+		$("[name='previousInfectionSpecify']").prop('required', false);
+	}
+	$("[name='previousInfection']").click(function() {
 		if ($(this).val() === "1") {
-			$("#previousInfectionSpecify").slideDown(200);
-			$("input[name='previousInfectionSpecify']").prop('required', true);
+			$.previousInfectionChecked();
 		} else if ($(this).val() === "0") {
-			$("#previousInfectionSpecify").slideUp(200);
-			$("input[name='previousInfectionSpecify']").prop('required', false);
+			$.previousInfectionUnchecked();
 		}
 	});
+	if ($("[name='previousInfection'][value='1']").is(":checked")) {
+		$.previousInfectionChecked();
+	} else if ($("[name='previousInfection'][value='0']").is(":checked")) {
+		$.previousInfectionUnchecked();
+	}
 
-	$("input[name='previousHematologicDisorder']").click(function() {
+	// previousHematologicDisorder
+	$.previousHematologicDisorderChecked = function() {
+		$("#previousHematologicDisorderSpecify").slideDown(200);
+		$("[name='previousHematologicDisorderSpecify']").prop('required', true);
+	}
+	$.previousHematologicDisorderUnchecked = function() {
+		$("#previousHematologicDisorderSpecify").slideUp(200);
+		$("[name='previousHematologicDisorderSpecify']").prop('required', false);
+	}
+	$("[name='previousHematologicDisorder']").click(function() {
 		if ($(this).val() === "1") {
-			$("#previousHematologicDisorderSpecify").slideDown(200);
-			$("input[name='previousHematologicDisorderSpecify']").prop('required', true);
+			$.previousHematologicDisorderChecked();
 		} else if ($(this).val() === "0") {
-			$("#previousHematologicDisorderSpecify").slideUp(200);
-			$("input[name='previousHematologicDisorderSpecify']").prop('required', false);
+			$.previousHematologicDisorderUnchecked();
 		}
 	});
+	if ($("[name='previousHematologicDisorder'][value='1']").is(":checked")) {
+		$.previousHematologicDisorderChecked();
+	} else if ($("[name='previousHematologicDisorder'][value='0']").is(":checked")) {
+		$.previousHematologicDisorderUnchecked();
+	}
 
 	// LABORATORY
 
-	$("input[name='boneMarrowAspirate']").click(function() {
+	// boneMarrowAspirate
+	$.boneMarrowAspirateChecked = function() {
+		$("#boneMarrowAspirateDatePerformed").slideDown(200);
+		$("[name='boneMarrowAspirateDatePerformed']").prop('required', true);
+		$("#boneMarrowAspirateDescription").slideDown(200);
+		$("[name='boneMarrowAspirateDescription']").prop('required', true);
+		$("#boneMarrowAspirateAttachScannedDocument").slideDown(200);
+		// $("[name='boneMarrowAspirateAttachScannedDocument']").prop('required', true);
+	}
+	$.boneMarrowAspirateUnchecked = function() {
+		$("#boneMarrowAspirateDatePerformed").slideUp(200);
+		$("[name='boneMarrowAspirateDatePerformed']").prop('required', false);
+		$("#boneMarrowAspirateDescription").slideUp(200);
+		$("[name='boneMarrowAspirateDescription']").prop('required', false);
+		$("#boneMarrowAspirateAttachScannedDocument").slideUp(200);
+		$("[name='boneMarrowAspirateAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='boneMarrowAspirate']").click(function() {
 		if ($(this).val() === "1") {
-			$("#boneMarrowAspirateDatePerformed").slideDown(200);
-			$("input[name='boneMarrowAspirateDatePerformed']").prop('required', true);
-			$("#boneMarrowAspirateDescription").slideDown(200);
-			$("input[name='boneMarrowAspirateDescription']").prop('required', true);
-			$("#boneMarrowAspirateAttachScannedDocument").slideDown(200);
-			// $("input[name='boneMarrowAspirateAttachScannedDocument']").prop('required', true);
+			$.boneMarrowAspirateChecked();
 		} else if ($(this).val() === "0") {
-			$("#boneMarrowAspirateDatePerformed").slideUp(200);
-			$("input[name='boneMarrowAspirateDatePerformed']").prop('required', false);
-			$("#boneMarrowAspirateDescription").slideUp(200);
-			$("input[name='boneMarrowAspirateDescription']").prop('required', false);
-			$("#boneMarrowAspirateAttachScannedDocument").slideUp(200);
-			$("input[name='boneMarrowAspirateAttachScannedDocument']").prop('required', false);
+			$.boneMarrowAspirateUnchecked();
+		}
+	});
+	if ($("[name='boneMarrowAspirate'][value='1']").is(":checked")) {
+		$.boneMarrowAspirateChecked();
+	} else if ($("[name='boneMarrowAspirate'][value='0']").is(":checked")) {
+		$.boneMarrowAspirateUnchecked();
+	}
+
+	// flowCytometry
+	$.flowCytometryChecked = function() {
+		$("#flowCytometryResult").slideDown(200);
+		$("[name='flowCytometryResult']").prop('required', true);
+		$("#flowCytometryAttachScannedDocument").slideDown(200);
+		// $("[name='flowCytometryAttachScannedDocument']").prop('required', true);
+	}
+	$.flowCytometryUnchecked = function() {
+		$("#flowCytometryResult").slideUp(200);
+		$("[name='flowCytometryResult']").prop('required', false);
+		$("#flowCytometryAttachScannedDocument").slideUp(200);
+		$("[name='flowCytometryAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='flowCytometry']").click(function() {
+		if ($(this).val() === "1") {
+			$.flowCytometryChecked();
+		} else if ($(this).val() === "0") {
+			$.flowCytometryUnchecked();
+		}
+	});
+	if ($("[name='flowCytometry'][value='1']").is(":checked")) {
+		$.flowCytometryChecked();
+	} else if ($("[name='flowCytometry'][value='0']").is(":checked")) {
+		$.flowCytometryUnchecked();
+	}
+
+	// molecularAnalysis
+	$.molecularAnalysisChecked = function() {
+		$("#molecularAnalysisResult").slideDown(200);
+		$("[name='molecularAnalysisResult']").prop('required', true);
+		$("#molecularAnalysisAttachScannedDocument").slideDown(200);
+		// $("[name='molecularAnalysisAttachScannedDocument']").prop('required', true);
+	}
+	$.molecularAnalysisUnchecked = function() {
+		$("#molecularAnalysisResult").slideUp(200);
+		$("[name='molecularAnalysisResult']").prop('required', false);
+		$("#molecularAnalysisAttachScannedDocument").slideUp(200);
+		$("[name='molecularAnalysisAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='molecularAnalysis']").click(function() {
+		if ($(this).val() === "1") {
+			$.molecularAnalysisChecked();
+		} else if ($(this).val() === "0") {
+			$.molecularAnalysisUnchecked();
+		}
+	});
+	if ($("[name='molecularAnalysis'][value='1']").is(":checked")) {
+		$.molecularAnalysisChecked();
+	} else if ($("[name='molecularAnalysis'][value='0']").is(":checked")) {
+		$.molecularAnalysisUnchecked();
+	}
+
+	// cytogeneticAndMolecularAnalysisAAPNH
+	$.cytogeneticAndMolecularAnalysisAAPNHChecked = function() {
+		$("#cytogeneticAndMolecularAnalysisAAPNHResult").slideDown(200);
+		$("[name='cytogeneticAndMolecularAnalysisAAPNHResult']").prop('required', true);
+		$("#cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument").slideDown(200);
+		// $("[name='cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument']").prop('required', true);
+	}
+	$.cytogeneticAndMolecularAnalysisAAPNHUnchecked = function() {
+		$("#cytogeneticAndMolecularAnalysisAAPNHResult").slideUp(200);
+		$("[name='cytogeneticAndMolecularAnalysisAAPNHResult']").prop('required', false);
+		$("#cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument").slideUp(200);
+		$("[name='cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='cytogeneticAndMolecularAnalysisAAPNH']").click(function() {
+		if ($(this).val() === "1") {
+			$.cytogeneticAndMolecularAnalysisAAPNHChecked();
+		} else if ($(this).val() === "0") {
+			$.cytogeneticAndMolecularAnalysisAAPNHUnchecked();
+		}
+	});
+	if ($("[name='cytogeneticAndMolecularAnalysisAAPNH'][value='1']").is(":checked")) {
+		$.cytogeneticAndMolecularAnalysisAAPNHChecked();
+	} else if ($("[name='cytogeneticAndMolecularAnalysisAAPNH'][value='0']").is(":checked")) {
+		$.cytogeneticAndMolecularAnalysisAAPNHUnchecked();
+	}
+
+	// cytogeneticAndMolecularAnalysisMDS
+	$.cytogeneticAndMolecularAnalysisMDSChecked = function() {
+		$("#cytogeneticAndMolecularAnalysisMDSResult").slideDown(200);
+		$("[name='cytogeneticAndMolecularAnalysisMDSResult']").prop('required', true);
+		$("#cytogeneticAndMolecularAnalysisMDSAttachScannedDocument").slideDown(200);
+		// $("[name='cytogeneticAndMolecularAnalysisMDSAttachScannedDocument']").prop('required', true);
+	}
+	$.cytogeneticAndMolecularAnalysisMDSUnchecked = function() {
+		$("#cytogeneticAndMolecularAnalysisMDSResult").slideUp(200);
+		$("[name='cytogeneticAndMolecularAnalysisMDSResult']").prop('required', false);
+		$("#cytogeneticAndMolecularAnalysisMDSAttachScannedDocument").slideUp(200);
+		$("[name='cytogeneticAndMolecularAnalysisMDSAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='cytogeneticAndMolecularAnalysisMDS']").click(function() {
+		if ($(this).val() === "1") {
+			$.cytogeneticAndMolecularAnalysisMDSChecked();
+		} else if ($(this).val() === "0") {
+			$.cytogeneticAndMolecularAnalysisMDSUnchecked();
+		}
+	});
+	if ($("[name='cytogeneticAndMolecularAnalysisMDS'][value='1']").is(":checked")) {
+		$.cytogeneticAndMolecularAnalysisMDSChecked();
+	} else if ($("[name='cytogeneticAndMolecularAnalysisMDS'][value='0']").is(":checked")) {
+		$.cytogeneticAndMolecularAnalysisMDSUnchecked();
+	}
+
+	// molecularAnalysis
+	$.molecularAnalysisChecked = function() {
+		$("#molecularAnalysisResult").slideDown(200);
+		$("[name='molecularAnalysisResult']").prop('required', true);
+		$("#molecularAnalysisAttachScannedDocument").slideDown(200);
+		// $("[name='molecularAnalysisAttachScannedDocument']").prop('required', true);
+	}
+	$.molecularAnalysisUnchecked = function() {
+		$("#molecularAnalysisResult").slideUp(200);
+		$("[name='molecularAnalysisResult']").prop('required', false);
+		$("#molecularAnalysisAttachScannedDocument").slideUp(200);
+		$("[name='molecularAnalysisAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='molecularAnalysis']").click(function() {
+		if ($(this).val() === "1") {
+			$.molecularAnalysisChecked();
+		} else if ($(this).val() === "0") {
+			$.molecularAnalysisUnchecked();
+		}
+	});
+	if ($("[name='molecularAnalysis'][value='1']").is(":checked")) {
+		$.molecularAnalysisChecked();
+	} else if ($("[name='molecularAnalysis'][value='0']").is(":checked")) {
+		$.molecularAnalysisUnchecked();
+	}
+
+	// imagingStudies
+	$.imagingStudiesChecked = function() {
+		$("#imagingStudiesResult").slideDown(200);
+		$("[name='imagingStudiesResult']").prop('required', true);
+	}
+	$.imagingStudiesUnchecked = function() {
+		$("#imagingStudiesResult").slideUp(200);
+		$("[name='imagingStudiesResult']").prop('required', false);
+	}
+	$("[name='imagingStudies']").click(function() {
+		if ($(this).val() === "1") {
+			$.imagingStudiesChecked();
+		} else if ($(this).val() === "0") {
+			$.imagingStudiesUnchecked();
+		}
+	});
+	if ($("[name='imagingStudies'][value='1']").is(":checked")) {
+		$.imagingStudiesChecked();
+	} else if ($("[name='imagingStudies'][value='0']").is(":checked")) {
+		$.imagingStudiesUnchecked();
+	}
+
+	// cytogeneticAndMolecularAnalysis
+	$.cytogeneticAndMolecularAnalysisChecked = function() {
+		$("#cytogeneticAndMolecularAnalysisResult").slideDown(200);
+		$("[name='cytogeneticAndMolecularAnalysisResult']").prop('required', true);
+		$("#cytogeneticAndMolecularAnalysisAttachScannedDocument").slideDown(200);
+		// $("[name='cytogeneticAndMolecularAnalysisAttachScannedDocument']").prop('required', true);
+	}
+
+	$.cytogeneticAndMolecularAnalysisUnchecked = function() {
+		$("#cytogeneticAndMolecularAnalysisResult").slideUp(200);
+		$("[name='cytogeneticAndMolecularAnalysisResult']").prop('required', false);
+		$("#cytogeneticAndMolecularAnalysisAttachScannedDocument").slideUp(200);
+		$("[name='cytogeneticAndMolecularAnalysisAttachScannedDocument']").prop('required', false);
+	}
+
+	$("[name='cytogeneticAndMolecularAnalysis']").click(function() {
+		if ($(this).val() === "1") {
+			$.cytogeneticAndMolecularAnalysisChecked();
+		} else if ($(this).val() === "0") {
+			$.cytogeneticAndMolecularAnalysisUnchecked();
 		}
 	});
 
-	$("input[name='flowCytometry']").click(function() {
+	if ($("[name='cytogeneticAndMolecularAnalysis'][value='1']").is(":checked")) {
+		$.cytogeneticAndMolecularAnalysisChecked();
+	} else if ($("[name='cytogeneticAndMolecularAnalysis'][value='0']").is(":checked")) {
+		$.cytogeneticAndMolecularAnalysisUnchecked();
+	}
+
+	// hematopathologyReviewOfSlides
+	$.hematopathologyReviewOfSlidesChecked = function() {
+		$("#hematopathologyDatePerformed").slideDown(200);
+		$("[name='hematopathologyDatePerformed']").prop('required', true);
+		$("#hematopathologyDescription").slideDown(200);
+		$("[name='hematopathologyDescription']").prop('required', true);
+		$("#hematopathologyAttachScannedDocument").slideDown(200);
+		// $("[name='hematopathologyAttachScannedDocument']").prop('required', true);
+	}
+	$.hematopathologyReviewOfSlidesUnchecked = function() {
+		$("#hematopathologyDatePerformed").slideUp(200);
+		$("[name='hematopathologyDatePerformed']").prop('required', false);
+		$("#hematopathologyDescription").slideUp(200);
+		$("[name='hematopathologyDescription']").prop('required', false);
+		$("#hematopathologyAttachScannedDocument").slideUp(200);
+		$("[name='hematopathologyAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='hematopathologyReviewOfSlides']").click(function() {
 		if ($(this).val() === "1") {
-			$("#flowCytometryResult").slideDown(200);
-			$("input[name='flowCytometryResult']").prop('required', true);
-			$("#flowCytometryAttachScannedDocument").slideDown(200);
-			// $("input[name='flowCytometryAttachScannedDocument']").prop('required', true);
+			$.hematopathologyReviewOfSlidesChecked();
 		} else if ($(this).val() === "0") {
-			$("#flowCytometryResult").slideUp(200);
-			$("input[name='flowCytometryResult']").prop('required', false);
-			$("#flowCytometryAttachScannedDocument").slideUp(200);
-			$("input[name='flowCytometryAttachScannedDocument']").prop('required', false);
+			$.hematopathologyReviewOfSlidesUnchecked();
+		}
+	});
+	if ($("[name='hematopathologyReviewOfSlides'][value='1']").is(":checked")) {
+		$.hematopathologyReviewOfSlidesChecked();
+	} else if ($("[name='hematopathologyReviewOfSlides'][value='0']").is(":checked")) {
+		$.hematopathologyReviewOfSlidesUnchecked();
+	}
+
+	// immunohistochemistryReviewOfSlides
+	$.immunohistochemistryReviewOfSlidesChecked = function() {
+		$("#immunohistochemistryDatePerformed").slideDown(200);
+		$("[name='immunohistochemistryDatePerformed']").prop('required', true);
+		$("#immunohistochemistryDescription").slideDown(200);
+		$("[name='immunohistochemistryDescription']").prop('required', true);
+		$("#immunohistochemistryAttachScannedDocument").slideDown(200);
+		// $("[name='immunohistochemistryAttachScannedDocument']").prop('required', true);
+	}
+	$.immunohistochemistryReviewOfSlidesUnchecked = function() {
+		$("#immunohistochemistryDatePerformed").slideUp(200);
+		$("[name='immunohistochemistryDatePerformed']").prop('required', false);
+		$("#immunohistochemistryDescription").slideUp(200);
+		$("[name='immunohistochemistryDescription']").prop('required', false);
+		$("#immunohistochemistryAttachScannedDocument").slideUp(200);
+		$("[name='immunohistochemistryAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='immunohistochemistryReviewOfSlides']").click(function() {
+		if ($(this).val() === "1") {
+			$.immunohistochemistryReviewOfSlidesChecked();
+		} else if ($(this).val() === "0") {
+			$.immunohistochemistryReviewOfSlidesUnchecked();
+		}
+	});
+	if ($("[name='immunohistochemistryReviewOfSlides'][value='1']").is(":checked")) {
+		$.immunohistochemistryReviewOfSlidesChecked();
+	} else if ($("[name='immunohistochemistryReviewOfSlides'][value='0']").is(":checked")) {
+		$.immunohistochemistryReviewOfSlidesUnchecked();
+	}
+
+	// serumFreeLightChainAsssay
+	$.serumFreeLightChainAsssayChecked = function() {
+		$("#serumFreeLightChainAsssayResult").slideDown(200);
+		$("[name='serumFreeLightChainAsssayResult']").prop('required', true);
+		$("#serumFreeLightChainAssayAttachScannedDocument").slideDown(200);
+		// $("[name='serumFreeLightChainAssayAttachScannedDocument']").prop('required', true);
+	}
+	$.serumFreeLightChainAsssayUnchecked = function() {
+		$("#serumFreeLightChainAsssayResult").slideUp(200);
+		$("[name='serumFreeLightChainAsssayResult']").prop('required', false);
+		$("#serumFreeLightChainAssayAttachScannedDocument").slideUp(200);
+		$("[name='serumFreeLightChainAssayAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='serumFreeLightChainAsssay']").click(function() {
+		if ($(this).val() === "1") {
+			$.serumFreeLightChainAsssayChecked();
+		} else if ($(this).val() === "0") {
+			$.serumFreeLightChainAsssayUnchecked();
+		}
+	});
+	if ($("[name='serumFreeLightChainAsssay'][value='1']").is(":checked")) {
+		$.serumFreeLightChainAsssayChecked();
+	} else if ($("[name='serumFreeLightChainAsssay'][value='0']").is(":checked")) {
+		$.serumFreeLightChainAsssayUnchecked();
+	}
+
+	// serumProteinElectrophoresis
+	$.serumProteinElectrophoresisChecked = function() {
+		$("#serumProteinElectrophoresisResult").slideDown(200);
+		$("[name='serumProteinElectrophoresisResult']").prop('required', true);
+		$("#serumProteinElectrophoresisAttachScannedDocument").slideDown(200);
+		// $("[name='serumProteinElectrophoresisAttachScannedDocument']").prop('required', true);
+	}
+	$.serumProteinElectrophoresisUnchecked = function() {
+		$("#serumProteinElectrophoresisResult").slideUp(200);
+		$("[name='serumProteinElectrophoresisResult']").prop('required', false);
+		$("#serumProteinElectrophoresisAttachScannedDocument").slideUp(200);
+		$("[name='serumProteinElectrophoresisAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='serumProteinElectrophoresis']").click(function() {
+		if ($(this).val() === "1") {
+			$.serumProteinElectrophoresisChecked();
+		} else if ($(this).val() === "0") {
+			$.serumProteinElectrophoresisUnchecked();
+		}
+	});
+	if ($("[name='serumProteinElectrophoresis'][value='1']").is(":checked")) {
+		$.serumProteinElectrophoresisChecked();
+	} else if ($("[name='serumProteinElectrophoresis'][value='0']").is(":checked")) {
+		$.serumProteinElectrophoresisUnchecked();
+	}
+
+	// serumImmunofixation
+	$.serumImmunofixationChecked = function() {
+		$("#serumImmunofixationResult").slideDown(200);
+		$("[name='serumImmunofixationResult']").prop('required', true);
+		$("#serumImmunofixationAttachScannedDocument").slideDown(200);
+		// $("[name='serumImmunofixationAttachScannedDocument']").prop('required', true);
+	}
+	$.serumImmunofixationUnchecked = function() {
+		$("#serumImmunofixationResult").slideUp(200);
+		$("[name='serumImmunofixationResult']").prop('required', false);
+		$("#serumImmunofixationAttachScannedDocument").slideUp(200);
+		$("[name='serumImmunofixationAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='serumImmunofixation']").click(function() {
+		if ($(this).val() === "1") {
+			$.serumImmunofixationChecked();
+		} else if ($(this).val() === "0") {
+			$.serumImmunofixationUnchecked();
+		}
+	});
+	if ($("[name='serumImmunofixation'][value='1']").is(":checked")) {
+		$.serumImmunofixationChecked();
+	} else if ($("[name='serumImmunofixation'][value='0']").is(":checked")) {
+		$.serumImmunofixationUnchecked();
+	}
+
+	// urineProtein
+	$.urineProteinChecked = function() {
+		$("#urineProteinResult").slideDown(200);
+		$("[name='urineProteinResult']").prop('required', true);
+		$("#urineProteinAttachScannedDocument").slideDown(200);
+		// $("[name='urineProteinAttachScannedDocument']").prop('required', true);
+	}
+	$.urineProteinUnchecked = function() {
+		$("#urineProteinResult").slideUp(200);
+		$("[name='urineProteinResult']").prop('required', false);
+		$("#urineProteinAttachScannedDocument").slideUp(200);
+		$("[name='urineProteinAttachScannedDocument']").prop('required', false);
+	}
+	$("[name='urineProtein']").click(function() {
+		if ($(this).val() === "1") {
+			$.urineProteinChecked();
+		} else if ($(this).val() === "0") {
+			$.urineProteinUnchecked();
+		}
+	});
+	if ($("[name='urineProtein'][value='1']").is(":checked")) {
+		$.urineProteinChecked();
+	} else if ($("[name='urineProtein'][value='0']").is(":checked")) {
+		$.urineProteinUnchecked();
+	}
+
+	// upperGIEndoscopy & hPylori
+	$.upperGIEndoscopyChecked = function() {
+		$("#upperGIEndoscopyDatePerformed").slideDown(200);
+		$("[name='upperGIEndoscopyDatePerformed']").prop('required', true);
+		$("#upperGIEndoscopyDescription").slideDown(200);
+		$("[name='upperGIEndoscopyDescription']").prop('required', true);
+		$("#hPylori").slideDown(200);
+	}
+	$.upperGIEndoscopyUnchecked = function() {
+		$("#upperGIEndoscopyDatePerformed").slideUp(200);
+		$("[name='upperGIEndoscopyDatePerformed']").prop('required', false);
+		$("#upperGIEndoscopyDescription").slideUp(200);
+		$("[name='upperGIEndoscopyDescription']").prop('required', false);
+		// $("[name='hPylori']").prop('checked', false);
+		$("#hPylori").slideUp(200);
+		$("#hPyloriAttachScannedDocument").slideUp(200);
+		$("[name='hPyloriAttachScannedDocument']").prop('required', false);
+	}
+	$.hPyloriChecked = function() {
+		$("#hPyloriAttachScannedDocument").slideDown(200);
+		// $("[name='hPyloriAttachScannedDocument']").prop('required', true);
+	}
+	$.hPyloriUnchecked = function() {
+		$("#hPyloriAttachScannedDocument").slideUp(200);
+		$("[name='hPyloriAttachScannedDocument']").prop('required', false);
+	}
+	
+	$.hPyloriCheckedOverUpperGIEndoscopy = function(){
+		if ($("[name='hPylori'][value='1']").is(":checked")) {
+			$.hPyloriChecked();
+		} else if ($("[name='hPylori'][value='0']").is(":checked")) {
+			$.hPyloriUnchecked();
+		}
+	}
+	
+	$("[name='upperGIEndoscopy']").click(function() {
+		if ($(this).val() === "1") {
+			$.upperGIEndoscopyChecked();
+			$.hPyloriCheckedOverUpperGIEndoscopy();
+		} else if ($(this).val() === "0") {
+			$.upperGIEndoscopyUnchecked();
+		}
+	});
+	if ($("[name='upperGIEndoscopy'][value='1']").is(":checked")) {
+		$.upperGIEndoscopyChecked();
+		$.hPyloriCheckedOverUpperGIEndoscopy();
+	} else if ($("[name='upperGIEndoscopy'][value='0']").is(":checked")) {
+		$.upperGIEndoscopyUnchecked();
+	}
+
+	$("[name='hPylori']").click(function() {
+		if ($(this).val() === "1") {
+			$.hPyloriChecked();
+		} else if ($(this).val() === "0") {
+			$.hPyloriUnchecked();
 		}
 	});
 
-	$("input[name='molecularAnalysis']").click(function() {
-		if ($(this).val() === "1") {
-			$("#molecularAnalysisResult").slideDown(200);
-			$("input[name='molecularAnalysisResult']").prop('required', true);
-			$("#molecularAnalysisAttachScannedDocument").slideDown(200);
-			// $("input[name='molecularAnalysisAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#molecularAnalysisResult").slideUp(200);
-			$("input[name='molecularAnalysisResult']").prop('required', false);
-			$("#molecularAnalysisAttachScannedDocument").slideUp(200);
-			$("input[name='molecularAnalysisAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	$("input[name='cytogeneticAndMolecularAnalysisAAPNH']").click(function() {
-		if ($(this).val() === "1") {
-			$("#cytogeneticAndMolecularAnalysisAAPNHResult").slideDown(200);
-			$("input[name='cytogeneticAndMolecularAnalysisAAPNHResult']").prop('required', true);
-			$("#cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument").slideDown(200);
-			// $("input[name='cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#cytogeneticAndMolecularAnalysisAAPNHResult").slideUp(200);
-			$("input[name='cytogeneticAndMolecularAnalysisAAPNHResult']").prop('required', false);
-			$("#cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument").slideUp(200);
-			$("input[name='cytogeneticAndMolecularAnalysisAAPNHAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	$("input[name='cytogeneticAndMolecularAnalysisMDS']").click(function() {
-		if ($(this).val() === "1") {
-			$("#cytogeneticAndMolecularAnalysisMDSResult").slideDown(200);
-			$("input[name='cytogeneticAndMolecularAnalysisMDSResult']").prop('required', true);
-			$("#cytogeneticAndMolecularAnalysisMDSAttachScannedDocument").slideDown(200);
-			// $("input[name='cytogeneticAndMolecularAnalysisMDSAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#cytogeneticAndMolecularAnalysisMDSResult").slideUp(200);
-			$("input[name='cytogeneticAndMolecularAnalysisMDSResult']").prop('required', false);
-			$("#cytogeneticAndMolecularAnalysisMDSAttachScannedDocument").slideUp(200);
-			$("input[name='cytogeneticAndMolecularAnalysisMDSAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	$("input[name='molecularAnalysis']").click(function() {
-		if ($(this).val() === "1") {
-			$("#molecularAnalysisResult").slideDown(200);
-			$("input[name='molecularAnalysisResult']").prop('required', true);
-			$("#molecularAnalysisAttachScannedDocument").slideDown(200);
-			// $("input[name='molecularAnalysisAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#molecularAnalysisResult").slideUp(200);
-			$("input[name='molecularAnalysisResult']").prop('required', false);
-			$("#molecularAnalysisAttachScannedDocument").slideUp(200);
-			$("input[name='molecularAnalysisAttachScannedDocument']").prop('required', false);
-		}
-	});
+	$.hPyloriCheckedOverUpperGIEndoscopy();
 
 	// THERAPY AND RESPONSE
 
-	$("input[name='transplantCandidate']").click(function() {
+	// bisphosphonates
+	$.bisphosphonatesChecked = function() {
+		$("#bisphosphonatesSpecify").slideDown(200);
+		$("[name='bisphosphonatesSpecify']").prop('required', true);
+	}
+	$.bisphosphonatesUnchecked = function() {
+		$("#bisphosphonatesSpecify").slideUp(200);
+		$("[name='bisphosphonatesSpecify']").prop('required', false);
+	}
+	$("[name='bisphosphonates']").click(function() {
 		if ($(this).val() === "1") {
-			$("#modeOfTreament").slideDown(200);
-			$("input[name='modeOfTreament']").prop('required', true);
-			$("#medications").slideDown(200);
-			$("input[name='medications']").prop('required', true);
-			$("#dateStarted").slideDown(200);
-			$("input[name='dateStarted']").prop('required', true);
+			$.bisphosphonatesChecked();
 		} else if ($(this).val() === "0") {
-			$("#modeOfTreament").slideUp(200);
-			$("input[name='modeOfTreament']").prop('required', false);
-			$("#medications").slideUp(200);
-			$("input[name='medications']").prop('required', false);
-			$("#dateStarted").slideUp(200);
-			$("input[name='dateStarted']").prop('required', false);
+			$.bisphosphonatesUnchecked();
 		}
 	});
+	if ($("[name='bisphosphonates'][value='1']").is(":checked")) {
+		$.bisphosphonatesChecked();
+	} else if ($("[name='bisphosphonates'][value='0']").is(":checked")) {
+		$.bisphosphonatesUnchecked();
+	}
 
-	// LEUKEMIA
-
-	// LABORATORY
-
-	$("input[name='imagingStudies']").click(function() {
+	// radiotherapy
+	$.radiotherapyChecked = function() {
+		$("#radiotherapyDoseAndFrequency").slideDown(200);
+		$("[name='radiotherapyDoseAndFrequency']").prop('required', true);
+	}
+	$.radiotherapyUnchecked = function() {
+		$("#radiotherapyDoseAndFrequency").slideUp(200);
+		$("[name='radiotherapyDoseAndFrequency']").prop('required', false);
+	}
+	$("[name='radiotherapy']").click(function() {
 		if ($(this).val() === "1") {
-			$("#imagingStudiesResult").slideDown(200);
-			$("input[name='imagingStudiesResult']").prop('required', true);
+			$.radiotherapyChecked();
 		} else if ($(this).val() === "0") {
-			$("#imagingStudiesResult").slideUp(200);
-			$("input[name='imagingStudiesResult']").prop('required', false);
+			$.radiotherapyUnchecked();
 		}
 	});
+	if ($("[name='radiotherapy'][value='1']").is(":checked")) {
+		$.radiotherapyChecked();
+	} else if ($("[name='radiotherapy'][value='0']").is(":checked")) {
+		$.radiotherapyUnchecked();
+	}
 
-	$("input[name='cytogeneticAndMolecularAnalysis']").click(function() {
+	// dialysis
+	$.dialysisChecked = function() {
+		$("#otherMedications").slideDown(200);
+		$("[name='otherMedications']").prop('required', true);
+		$("#dateStarted").slideDown(200);
+		$("[name='dateStarted']").prop('required', true);
+		$("#complications").slideDown(200);
+		$("[name='complications']").prop('required', true);
+	}
+	$.dialysisUnchecked = function() {
+		$("#otherMedications").slideUp(200);
+		$("[name='otherMedications']").prop('required', false);
+		$("#dateStarted").slideUp(200);
+		$("[name='dateStarted']").prop('required', false);
+		$("#complications").slideUp(200);
+		$("[name='complications']").prop('required', false);
+	}
+	$("[name='dialysis']").click(function() {
 		if ($(this).val() === "1") {
-			$("#cytogeneticAndMolecularAnalysisResult").slideDown(200);
-			$("input[name='cytogeneticAndMolecularAnalysisResult']").prop('required', true);
-			$("#cytogeneticAndMolecularAnalysisAttachScannedDocument").slideDown(200);
-			//$("input[name='cytogeneticAndMolecularAnalysisAttachScannedDocument']").prop('required', true);
+			$.dialysisChecked();
 		} else if ($(this).val() === "0") {
-			$("#cytogeneticAndMolecularAnalysisResult").slideUp(200);
-			$("input[name='cytogeneticAndMolecularAnalysisResult']").prop('required', false);
-			$("#cytogeneticAndMolecularAnalysisAttachScannedDocument").slideUp(200);
-			$("input[name='cytogeneticAndMolecularAnalysisAttachScannedDocument']").prop('required', false);
+			$.dialysisUnchecked();
 		}
 	});
+	if ($("[name='dialysis'][value='1']").is(":checked")) {
+		$.dialysisChecked();
+	} else if ($("[name='dialysis'][value='0']").is(":checked")) {
+		$.dialysisUnchecked();
+	}
 
-	// LYMPHOMA
-
-	// LABORATORY
-
-	// HEMAPATHOLOGY
-
-	$("input[name='hematopathologyReviewOfSlides']").click(function() {
-		if ($(this).val() === "1") {
-			$("#hematopathologyDatePerformed").slideDown(200);
-			$("input[name='hematopathologyDatePerformed']").prop('required', true);
-			$("#hematopathologyDescription").slideDown(200);
-			$("input[name='hematopathologyDescription']").prop('required', true);
-			$("#hematopathologyAttachScannedDocument").slideDown(200);
-			// $("input[name='hematopathologyAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#hematopathologyDatePerformed").slideUp(200);
-			$("input[name='hematopathologyDatePerformed']").prop('required', false);
-			$("#hematopathologyDescription").slideUp(200);
-			$("input[name='hematopathologyDescription']").prop('required', false);
-			$("#hematopathologyAttachScannedDocument").slideUp(200);
-			$("input[name='hematopathologyAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	$("input[name='immunohistochemistryReviewOfSlides']").click(function() {
-		if ($(this).val() === "1") {
-			$("#immunohistochemistryDatePerformed").slideDown(200);
-			$("input[name='immunohistochemistryDatePerformed']").prop('required', true);
-			$("#immunohistochemistryDescription").slideDown(200);
-			$("input[name='immunohistochemistryDescription']").prop('required', true);
-			$("#immunohistochemistryAttachScannedDocument").slideDown(200);
-			// $("input[name='immunohistochemistryAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#immunohistochemistryDatePerformed").slideUp(200);
-			$("input[name='immunohistochemistryDatePerformed']").prop('required', false);
-			$("#immunohistochemistryDescription").slideUp(200);
-			$("input[name='immunohistochemistryDescription']").prop('required', false);
-			$("#immunohistochemistryAttachScannedDocument").slideUp(200);
-			$("input[name='immunohistochemistryAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	// PLASMA
-
-	// LABORATORY
-
-	$("input[name='serumFreeLightChainAsssay']").click(function() {
-		if ($(this).val() === "1") {
-			$("#serumFreeLightChainAsssayResult").slideDown(200);
-			$("input[name='serumFreeLightChainAsssayResult']").prop('required', true);
-			$("#serumFreeLightChainAssayAttachScannedDocument").slideDown(200);
-			// $("input[name='serumFreeLightChainAssayAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#serumFreeLightChainAsssayResult").slideUp(200);
-			$("input[name='serumFreeLightChainAsssayResult']").prop('required', false);
-			$("#serumFreeLightChainAssayAttachScannedDocument").slideUp(200);
-			$("input[name='serumFreeLightChainAssayAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	$("input[name='serumProteinElectrophoresis']").click(function() {
-		if ($(this).val() === "1") {
-			$("#serumProteinElectrophoresisResult").slideDown(200);
-			$("input[name='serumProteinElectrophoresisResult']").prop('required', true);
-			$("#serumProteinElectrophoresisAttachScannedDocument").slideDown(200);
-			// $("input[name='serumProteinElectrophoresisAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#serumProteinElectrophoresisResult").slideUp(200);
-			$("input[name='serumProteinElectrophoresisResult']").prop('required', false);
-			$("#serumProteinElectrophoresisAttachScannedDocument").slideUp(200);
-			$("input[name='serumProteinElectrophoresisAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	$("input[name='serumImmunofixation']").click(function() {
-		if ($(this).val() === "1") {
-			$("#serumImmunofixationResult").slideDown(200);
-			$("input[name='serumImmunofixationResult']").prop('required', true);
-			$("#serumImmunofixationAttachScannedDocument").slideDown(200);
-			// $("input[name='serumImmunofixationAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#serumImmunofixationResult").slideUp(200);
-			$("input[name='serumImmunofixationResult']").prop('required', false);
-			$("#serumImmunofixationAttachScannedDocument").slideUp(200);
-			$("input[name='serumImmunofixationAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	$("input[name='urineProtein']").click(function() {
-		if ($(this).val() === "1") {
-			$("#urineProteinResult").slideDown(200);
-			$("input[name='urineProteinResult']").prop('required', true);
-			$("#urineProteinAttachScannedDocument").slideDown(200);
-			// $("input[name='urineProteinAttachScannedDocument']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#urineProteinResult").slideUp(200);
-			$("input[name='urineProteinResult']").prop('required', false);
-			$("#urineProteinAttachScannedDocument").slideUp(200);
-			$("input[name='urineProteinAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	$("input[name='upperGIEndoscopy']").click(function() {
-		if ($(this).val() === "1") {
-			$("#upperGIEndoscopyDatePerformed").slideDown(200);
-			$("input[name='upperGIEndoscopyDatePerformed']").prop('required', true);
-			$("#upperGIEndoscopyDescription").slideDown(200);
-			$("input[name='upperGIEndoscopyDescription']").prop('required', true);
-			$("#hPylori").slideDown(200);
-
-			$("input[name='hPylori']").click(function() {
-				if ($(this).val() === "1") {
-					$("#hPyloriAttachScannedDocument").slideDown(200);
-					// $("input[name='hPyloriAttachScannedDocument']").prop('required', true);
-				} else if ($(this).val() === "0") {
-					$("#hPyloriAttachScannedDocument").slideUp(200);
-					$("input[name='hPyloriAttachScannedDocument']").prop('required', false);
-				}
-			});
-
-		} else if ($(this).val() === "0") {
-			$("#upperGIEndoscopyDatePerformed").slideUp(200);
-			$("input[name='upperGIEndoscopyDatePerformed']").prop('required', false);
-			$("#upperGIEndoscopyDescription").slideUp(200);
-			$("input[name='upperGIEndoscopyDescription']").prop('required', false);
-			$("input[name='hPylori']").prop('checked', false);
-			$("#hPylori").slideUp(200);
-			$("#hPyloriAttachScannedDocument").slideUp(200);
-			$("input[name='hPyloriAttachScannedDocument']").prop('required', false);
-		}
-	});
-
-	// THERAPY
-
-	$("input[name='bisphosphonates']").click(function() {
-		if ($(this).val() === "1") {
-			$("#bisphosphonatesSpecify").slideDown(200);
-			$("input[name='bisphosphonatesSpecify']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#bisphosphonatesSpecify").slideUp(200);
-			$("input[name='bisphosphonatesSpecify']").prop('required', false);
-		}
-	});
-
-	$("input[name='radiotherapy']").click(function() {
-		if ($(this).val() === "1") {
-			$("#radiotherapyDoseAndFrequency").slideDown(200);
-			$("input[name='radiotherapyDoseAndFrequency']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#radiotherapyDoseAndFrequency").slideUp(200);
-			$("input[name='radiotherapyDoseAndFrequency']").prop('required', false);
-		}
-	});
-
-	$("input[name='dialysis']").click(function() {
-		if ($(this).val() === "1") {
-			$("#otherMedications").slideDown(200);
-			$("input[name='otherMedications']").prop('required', true);
-			$("#dateStarted").slideDown(200);
-			$("input[name='dateStarted']").prop('required', true);
-			$("#complications").slideDown(200);
-			$("input[name='complications']").prop('required', true);
-		} else if ($(this).val() === "0") {
-			$("#otherMedications").slideUp(200);
-			$("input[name='otherMedications']").prop('required', false);
-			$("#dateStarted").slideUp(200);
-			$("input[name='dateStarted']").prop('required', false);
-			$("#complications").slideUp(200);
-			$("input[name='complications']").prop('required', false);
-		}
-	});
-
-	$("select[name='diseaseStatus']").click(function() {
+	// diseaseStatus
+	$.diseaseStatusOthers = function() {
+		$("#diseaseStatusOthers").slideDown(200);
+		$("[name='diseaseStatusOthers']").prop('required', true);
+		$("#relapseDisease").slideUp(100);
+		$("[name='relapseDisease']").prop('required', false);
+	}
+	$.diseaseStatusRelapse = function() {
+		$("#relapseDisease").slideDown(200);
+		$("[name='relapseDisease']").prop('required', true);
+		$("#diseaseStatusOthers").slideUp(100);
+		$("[name='diseaseStatusOthers']").prop('required', false);
+	}
+	$.diseaseStatusNull = function() {
+		$("#diseaseStatusOthers").slideUp(200);
+		$("[name='diseaseStatusOthers']").prop('required', false);
+		$("#relapseDisease").slideUp(200);
+		$("[name='relapseDisease']").prop('required', false);
+	}
+	$("[name='diseaseStatus']").click(function() {
 		if ($(this).val() === "Others") {
-			$("#diseaseStatusOthers").slideDown(200);
-			$("input[name='diseaseStatusOthers']").prop('required', true);
-			$("#relapseDisease").slideUp(100);
-			$("input[name='relapseDisease']").prop('required', false);
+			$.diseaseStatusOthers();
 		} else if ($(this).val() === "Relapse") {
-			$("#relapseDisease").slideDown(200);
-			$("input[name='relapseDisease']").prop('required', true);
-			$("#diseaseStatusOthers").slideUp(100);
-			$("input[name='diseaseStatusOthers']").prop('required', false);
+			$.diseaseStatusRelapse();
 		} else {
-			$("#diseaseStatusOthers").slideUp(200);
-			$("input[name='diseaseStatusOthers']").prop('required', false);
-			$("#relapseDisease").slideUp(200);
-			$("input[name='relapseDisease']").prop('required', false);
+			$.diseaseStatusNull();
 		}
 	});
+	if ($("[name='diseaseStatus']").val() === "Others") {
+		$.diseaseStatusOthers();
+	} else if ($("[name='diseaseStatus']").val() == "Relapse") {
+		$.diseaseStatusRelapse();
+	} else {
+		$.diseaseStatusNull();
+	}
 
-	$("select[name='qualityOfResponse']").click(function() {
+	// qualityOfResponse
+	$.qualityOfResponseOthers = function() {
+		$("#diseaseStatusOthers").slideDown(200);
+		$("[name='diseaseStatusOthers']").prop('required', true);
+	}
+	$.qualityOfResponseNull = function() {
+		$("#diseaseStatusOthers").slideUp(200);
+		$("[name='diseaseStatusOthers']").prop('required', false);
+	}
+	$("[name='qualityOfResponse']").click(function() {
 		if ($(this).val() === "Others") {
-			$("#diseaseStatusOthers").slideDown(200);
-			$("input[name='diseaseStatusOthers']").prop('required', true);
+			$.qualityOfResponseOthers();
 		} else {
-			$("#diseaseStatusOthers").slideUp(200);
-			$("input[name='diseaseStatusOthers']").prop('required', false);
+			$.qualityOfResponseNull();
 		}
 	});
+	if ($("[name='qualityOfResponse']").val() === "Others") {
+		$.qualityOfResponseOthers();
+	} else {
+		$.qualityOfResponseNull();
+	}
 
 });

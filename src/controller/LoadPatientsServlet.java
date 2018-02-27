@@ -5,9 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,9 +18,6 @@ import com.google.gson.Gson;
 import model.SearchBean;
 import utility.database.SQLOperations;
 
-/**
- * Servlet implementation class LoadPatientsServlet
- */
 @WebServlet("/LoadPatientsServlet")
 public class LoadPatientsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -40,27 +35,16 @@ public class LoadPatientsServlet extends HttpServlet {
 		}
 	}
 	
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
     public LoadPatientsServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json"); 
@@ -71,12 +55,12 @@ public class LoadPatientsServlet extends HttpServlet {
 		String search = request.getParameter("search");
 		
 		if(connection != null) {
-		ResultSet patientListRs = SQLOperations.getPatientList(action,search,connection);	
+		ResultSet patientListRS = SQLOperations.getPatientList(action,search,connection);	
 			try {
-				while(patientListRs.next()) {
+				while(patientListRS.next()) {
 				    
-					SearchBean sb = new SearchBean(patientListRs.getInt("PatientTable.PatientID"), patientListRs.getString("GeneralDataTable.LastName"),
-							patientListRs.getString("GeneralDataTable.FirstName"), patientListRs.getString("GeneralDataTable.MiddleName"));
+					SearchBean sb = new SearchBean(patientListRS.getInt("PatientTable.PatientID"), patientListRS.getString("GeneralDataTable.LastName"),
+							patientListRS.getString("GeneralDataTable.FirstName"), patientListRS.getString("GeneralDataTable.MiddleName"));
 				    
 				    list.add(sb);
 				}

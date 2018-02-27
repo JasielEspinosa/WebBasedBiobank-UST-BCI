@@ -32,8 +32,8 @@ CREATE TABLE PatientTable (
 CREATE TABLE GeneralDataTable (
 	GeneralDataID int NOT NULL AUTO_INCREMENT,
 	LastName varchar(500) NOT NULL,
-	MiddleName varchar(500),
 	FirstName varchar(500) NOT NULL,
+	MiddleName varchar(500),
 	Gender int NOT NULL,
 	DateOfBirth DATE NOT NULL,
 	DateOfEntry DATE NOT NULL,
@@ -86,7 +86,7 @@ CREATE TABLE ClinicalDataTable (
 	CurrentSymptoms blob,
 	ConstitutionalSymptoms blob,
 	OtherSymptoms blob,
-	Combordities blob,
+	Comorbidities blob,
 	SmokingHistory blob,
 	AlcoholIntakeHistory blob,
 	ChemicalExposure blob,
@@ -120,8 +120,8 @@ CREATE TABLE PhysicalExamTable (
 	Splenomegaly double,
 	Hepatomegaly double,
 	Lymphadenopathies double,
-	Hemathroses bool,
-	ContracturesAndMuscleAtropht bool,
+	Hemarthroses bool,
+	ContracturesAndMuscleAtrophy bool,
 	ThrombosisHistory blob,
 	Skin blob,
 	OtherFindings blob,
@@ -131,6 +131,7 @@ CREATE TABLE PhysicalExamTable (
 CREATE TABLE RiskScoreTable (
 	RiskScoreID int NOT NULL AUTO_INCREMENT,
 	RiskScoreName varchar(500) NOT NULL,
+	OtherRiskScore varchar(500),
 	PRIMARY KEY (RiskScoreID)
 );
 
@@ -149,6 +150,7 @@ CREATE TABLE SeverityTable (
 CREATE TABLE PrognosticRiskScoringTable (
 	PrognosticRiskScoringID int NOT NULL AUTO_INCREMENT,
 	PrognosticRiskScoringName varchar(300) NOT NULL,
+	OtherPrognosticRiskScoring varchar(300),
 	PRIMARY KEY (PrognosticRiskScoringID)
 );
 
@@ -201,7 +203,7 @@ CREATE TABLE OtherLaboratoriesTable (
 	ReticulocyteCount double,
 	SerumIron double,
 	IronbindingCapacity double,
-	SerrumFerritin double,
+	SerumFerritin double,
 	DirectAntiglobulin varchar(10),
 	IndirectAntiglobulin varchar(10),
 	SGOT double,
@@ -344,10 +346,6 @@ CREATE TABLE TreatmentTable (
 	RegimenTransplantID int,
 	RegimenNonTransplantID int,
 	RegimenText blob,
-	OtherRegimen blob,
-	OtherRegimenTransplant blob,
-	OtherRegimenNonTransplant blob,
-	OtherRegimenMaintenanceTherapy blob,
 	CycleNumber int,
 	DateStarted DATE,
 	Complications blob,
@@ -370,24 +368,28 @@ CREATE TABLE ChemoMedicationsTable (
 CREATE TABLE RegimenTable (
 	RegimenID int NOT NULL AUTO_INCREMENT,
 	RegimenName blob,
+	OtherRegimen blob,
 	PRIMARY KEY (RegimenID)
 );
 
 CREATE TABLE RegimenTransplantTable (
 	RegimenTransplantID int NOT NULL AUTO_INCREMENT,
 	RegimenName blob,
+	OtherRegimen blob,
 	PRIMARY KEY (RegimenTransplantID)
 );
 
 CREATE TABLE RegimenNonTransplantTable (
 	RegimenNonTransplantID int NOT NULL AUTO_INCREMENT,
 	RegimenName blob,
+	OtherRegimen blob,
 	PRIMARY KEY (RegimenNonTransplantID)
 );
 
 CREATE TABLE MaintenanceTherapyTable (
 	MaintenanceTherapyID int NOT NULL AUTO_INCREMENT,
 	MaintenanceTherapyName blob,
+	OtherMaintenanceTherapy blob,
 	PRIMARY KEY (MaintenanceTherapyID)
 );
 
@@ -531,7 +533,11 @@ ALTER TABLE TreatmentTable ADD CONSTRAINT TreatmentTable_fk1 FOREIGN KEY (ChemoM
 
 ALTER TABLE TreatmentTable ADD CONSTRAINT TreatmentTable_fk2 FOREIGN KEY (RegimenID) REFERENCES RegimenTable(RegimenID);
 
-ALTER TABLE TreatmentTable ADD CONSTRAINT TreatmentTable_fk3 FOREIGN KEY (MaintenanceTherapyID) REFERENCES MaintenanceTherapyTable(MaintenanceTherapyID);
+ALTER TABLE TreatmentTable ADD CONSTRAINT TreatmentTable_fk3 FOREIGN KEY (RegimenTransplantID) REFERENCES RegimenTransplantTable(RegimenTransplantID);
+
+ALTER TABLE TreatmentTable ADD CONSTRAINT TreatmentTable_fk4 FOREIGN KEY (RegimenNonTransplantID) REFERENCES RegimenNonTransplantTable(RegimenNonTransplantID);
+
+ALTER TABLE TreatmentTable ADD CONSTRAINT TreatmentTable_fk5 FOREIGN KEY (MaintenanceTherapyID) REFERENCES MaintenanceTherapyTable(MaintenanceTherapyID);
 
 ALTER TABLE FollowUpTable ADD CONSTRAINT FollowUpTable_fk0 FOREIGN KEY (PatientID) REFERENCES PatientTable(PatientID);
 
