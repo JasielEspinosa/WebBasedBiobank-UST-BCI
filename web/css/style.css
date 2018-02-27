@@ -1,4 +1,4 @@
-/* Main CSS*/
+/* MAIN CSS*/
 
 /* Body */
 body {
@@ -316,7 +316,6 @@ th {
 /* End */
 
 /* AUDIT TRAIL CSS*/
-
 	.auditsettings__buttons--position {
 		padding-top: 180px;
 	}
@@ -382,8 +381,6 @@ th {
 	  -webkit-box-shadow: 5px 5px 5px #111;
 	          box-shadow: 5px 5px 5px #111;  
 	}
-	/* END OF IMAGE BORDER */
-
 	/* MORPH IMAGE */
 	.morph {
 	  -webkit-transition: all 0.5s ease;
@@ -391,8 +388,7 @@ th {
 	       -o-transition: all 0.5s ease;
 	      -ms-transition: all 0.5s ease;
 	          transition: all 0.5s ease;
-	}
-	 
+	}	 
 	.morph:hover {
 	  cursor: pointer;
 	  border-radius: 50%;
@@ -402,8 +398,6 @@ th {
 	      -ms-transform: rotate(360deg);
 	          transform: rotate(360deg);
 	}
-	/* END OF MORPH IMAGE */
-
 	/* BLUR IMAGE */
 	.blur img {
 	  -webkit-transition: all 1s ease;
@@ -415,6 +409,45 @@ th {
 	.blur img:hover {
 	  -webkit-filter: blur(5px);
 	}
-	/* END OF BLUR IMAGE */
-	
+	/* MODAL: CAROUSEL CONTROL */
+.carousel-control.left, .carousel-control.right {
+    background-image: none !important;
+}
+.modal__glyphicon--color {
+	color: #FFCE00;
+}
+.carousel-indicators {
+	bottom: -80px;
+}
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+    text-indent: 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    background-color: #0000ff;
+    box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);    
+}
+.carousel-indicators .active {
+    width: 10px;
+    height: 10px;
+    margin: 10px;
+    background-color: #ffff99;
+}
+.genrepmodal__checkboxgroup--position {
+	margin-top: 7px;
+}
+.carousel-label {
+	text-align: center;
+}
+.genrepmodal__checkboxes {
+	padding-right: 20px;
+}
 /* END OF DASHBOARD CSS */
+
+/* END OF MAIN CSS */
+
+
+
