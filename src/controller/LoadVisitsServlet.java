@@ -2,6 +2,10 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,19 +13,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
+import model.SearchBean;
 import utility.database.SQLOperations;
 
 /**
- * Servlet implementation class ArchivePatientServlet
+ * Servlet implementation class LoadVisitsServlet
  */
-@WebServlet("/ArchivePatientServlet")
-public class ArchivePatientServlet extends HttpServlet {
+@WebServlet("/LoadVisitsServlet")
+public class LoadVisitsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	private Connection connection;
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
 	
-	public void init()
-			throws ServletException {
+	private Connection connection;
+
+	public void init() throws ServletException {
 		connection = SQLOperations.getConnection();
 
 		if (connection != null) {
@@ -32,7 +42,7 @@ public class ArchivePatientServlet extends HttpServlet {
 		}
 	}
 	
-    public ArchivePatientServlet() {
+    public LoadVisitsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,23 +60,30 @@ public class ArchivePatientServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("text/plain");
+		response.setContentType("application/json"); 
+		
+		List<SearchBean> list = new ArrayList<>();
 		
 		int patientId = Integer.parseInt(request.getParameter("patientId"));
 		
-		if (connection != null) {
-			if (SQLOperations.deleteFollowup(patientId, connection)) {
-				System.out.println("Successful delete");
-				response.getWriter().write("Success");
-			} else {
-				System.out.println("Failed delete");
+		if(connection != null) {
+		ResultSet visitsRs = SQLOperations.getVisits(patientId, connection);
+			try {
+				while(visitsRs.next()) {
+				    
+					SearchBean sb = new SearchBean(visitsRs.getInt("FollowUpID"),visitsRs.getString("DateOfVisit"));
+				    list.add(sb);
+				}
+				String json = new Gson().toJson(list);
+			    response.getWriter().write(json);
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
-		} else {
-			System.out.println("Invalid connection delete followup");
-		}
-
+		
+		}else {
+		System.out.println("Invalid connection");
+	}
 	}
 
 }

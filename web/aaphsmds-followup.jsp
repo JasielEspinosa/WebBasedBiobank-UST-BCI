@@ -141,7 +141,8 @@
             </p>
             <!-- End of Sidebar -->
             <!-- Forms Container -->
-            <form action="AddAAPHSMDSFollowUpServlet" method="post">
+            <form action="" method="post" id = "AddAAPHSMDSFollowup">
+            
                <div class="col-md-12">
                   <div class="col-md-12 forms">
                      <!-- Buttons Container -->
@@ -152,10 +153,10 @@
                               class="btn bg-yellow button-border" id="followUpBtn">Follow Up</a>
                         </div>
                         <div class="col-sm-6 text-right btn-toolbar">
-                           <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Patient
+                           <a href="#" type="button" class="btn bg-yellow button-border" id="patientStatistics">Patient
                               Statistics</a> <a href="#" type="button" class="btn bg-yellow button-border"
-                              id="edtPatientBtn">Edit Patient</a> <a href="#" type="button"
-                              class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
+                              id="edtPatientBtn">Edit Followup</a> <a href="#" type="button"
+                              class="btn bg-yellow button-border" id="archPatientBtn">Delete Followup</a>
                         </div>
                      </div>
                      <!-- End of Buttons Container -->
@@ -170,13 +171,8 @@
                            <!-- End of Visit Tab -->
                            <!-- Visit Tab Content -->
                            <div class="tab-content tab-content__border">
-                              <div class="visit">
+                              <div id = "visitFill" class="visit">
                                  <ul>
-                                    <!--                                     <a href="#"><li>02-24-2017</li></a>
-                                    <a href="#"><li>02-24-2017</li></a>
-                                    <a href="#"><li>02-24-2017</li></a>
-                                    <a href="#"><li>02-24-2017</li></a>
-                                    <a href="#"><li>02-24-2017</li></a> -->
                                  </ul>
                               </div>
                            </div>
@@ -604,12 +600,15 @@
                               <!-- End of Disease Status -->
                            </div>
                            <!-- End of Follow Up Tab Content -->
-                           <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border">
+                              <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitQuery'>
+                              <input type="button" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitCancel' value='Cancel' onclick='cancelEdit()'>
                         </div>
                         <!-- End of Follow Up -->
                      </div>
                   </div>
                </div>
+               <input type="hidden" class="form-control" id="patientId" name="patientId" value="">
+               <input type="hidden" class="form-control" id="followupId" name="followupId" value="">
             </form>
             <!-- End of Forms -->
          </div>
@@ -785,6 +784,8 @@
             </div>
           </div>
           <!-- End of Generate Report Modal  -->
-   <!-- End of Main Content -->
+  <!-- End of Main Content -->
+   <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+<script src="js/aaphsmds-followup.js"></script>
 </body>
 </html>

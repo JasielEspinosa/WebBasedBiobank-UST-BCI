@@ -3,6 +3,8 @@ package model;
 public class SearchBean {
 	
 	int patientID;
+	int followupID;
+	private String dateOfVisit;
 	private String lastName;
 	private String middleName;
 	private String firstName;
@@ -13,11 +15,28 @@ public class SearchBean {
 		this.middleName = middleName;
 		this.firstName = firstName;
 	}
+	public SearchBean(int followupID,String dateOfVisit) {
+		this.followupID = followupID;
+		this.dateOfVisit = dateOfVisit;
+	}
+	
 	public int getPatientID() {
 		return patientID;
 	}
 	public void setPatientID(int patientID) {
 		this.patientID = patientID;
+	}
+	public int getFollowupID() {
+		return followupID;
+	}
+	public void setFollowupID(int followupID) {
+		this.followupID = followupID;
+	}
+	public String getDateOfVisit() {
+		return dateOfVisit;
+	}
+	public void setDateOfVisit(String dateOfVisit) {
+		this.dateOfVisit = dateOfVisit;
 	}
 	public String getLastName() {
 		return lastName;

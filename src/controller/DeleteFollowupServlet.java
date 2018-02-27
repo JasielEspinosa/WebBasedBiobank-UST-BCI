@@ -12,12 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import utility.database.SQLOperations;
 
 /**
- * Servlet implementation class ArchivePatientServlet
+ * Servlet implementation class DeleteFollowupServlet
  */
-@WebServlet("/ArchivePatientServlet")
-public class ArchivePatientServlet extends HttpServlet {
+@WebServlet("/DeleteFollowupServlet")
+public class DeleteFollowupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
 	private Connection connection;
 	
 	public void init()
@@ -32,7 +35,7 @@ public class ArchivePatientServlet extends HttpServlet {
 		}
 	}
 	
-    public ArchivePatientServlet() {
+    public DeleteFollowupServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -50,18 +53,17 @@ public class ArchivePatientServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain");
 		
-		int patientId = Integer.parseInt(request.getParameter("patientId"));
+		int followupId = Integer.parseInt(request.getParameter("followupId"));
 		
 		if (connection != null) {
-			if (SQLOperations.deleteFollowup(patientId, connection)) {
-				System.out.println("Successful delete");
+			if (SQLOperations.deleteFollowup(followupId, connection)) {
+				System.out.println("Successful delete followup");
 				response.getWriter().write("Success");
 			} else {
-				System.out.println("Failed delete");
+				System.out.println("delete followup");
 			}
 		} else {
 			System.out.println("Invalid connection delete followup");

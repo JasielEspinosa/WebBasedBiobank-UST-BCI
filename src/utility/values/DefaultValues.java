@@ -2,6 +2,6 @@ package utility.values;
 
 public interface DefaultValues {
 	
-	String noValue = "";
+	public static String noValue = "";
 
 }
