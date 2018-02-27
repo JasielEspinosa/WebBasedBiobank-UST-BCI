@@ -79,7 +79,7 @@
               <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
               <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
               <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-              <li><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
+              <li><a href="aaphsmds-baseline.jsp">AA PNH MDS</a></li>
               <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
               <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
 
@@ -141,20 +141,20 @@
                       <div class="row">
                         <div class="col-md-3">
                           <div class=" morph pic">
-                          <a data-target="#leukemiaModal" data-toggle="modal"> 
-                          <img src="images/leukemiavectoredited.png" alt="leukemia" >
-                            </a>                                
-                          </div>               
-                           </div>
+                            <a data-target="#leukemiaModal" data-toggle="modal"> <img
+                              src="images/leukemiavectoredited.png" alt="leukemia">
+                            </a>
+                          </div>
+                        </div>
 
                         <div class="col-md-3 dashboard__framecontainer">
                           <div class="dashboard__images dashboard__images morph pic">
                             <a data-target="#lymphomaModal" data-toggle="modal"> <img
                               src="images/lymphomavectoredited.png" alt="lymphoma">
                             </a>
-                             <div class="middle">
+                            <div class="middle">
                               <div class="text">LYMHPHOMA</div>
-                            </div>    
+                            </div>
                           </div>
                         </div>
 
@@ -163,9 +163,9 @@
                             <a data-target="#myeloproliferativeModal" data-toggle="modal"> <img
                               src="images/myeloproliferativevectoredited.png" alt="myeloproliferative">
                             </a>
-                             <div class="middle">
+                            <div class="middle">
                               <div class="text">MYELOPROLIFERATIVE</div>
-                            </div>    
+                            </div>
                           </div>
                         </div>
 
@@ -174,9 +174,9 @@
                             <a data-target="#plasmaCellModal" data-toggle="modal"> <img
                               src="images/plasmacellvectoredited.png" alt="plasma">
                             </a>
-                             <div class="middle">
+                            <div class="middle">
                               <div class="text">PLASMA CELL DISORDER</div>
-                            </div>    
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -187,9 +187,9 @@
                             <a data-target="#aadnsmdsModal" data-toggle="modal"> <img
                               src="images/aplasticanemiavectoredited.png" alt="aadnsmds">
                             </a>
-                             <div class="middle">
+                            <div class="middle">
                               <div class="text">AA DNS MDS</div>
-                            </div>    
+                            </div>
                           </div>
                         </div>
                         <div class="col-md-4 dashboard__framecontainer">
@@ -197,9 +197,9 @@
                             <a data-target="#plateletDisorderModal" data-toggle="modal"> <img
                               src="images/plateletvectoredited.png" alt="platelet">
                             </a>
-                             <div class="middle">
+                            <div class="middle">
                               <div class="text">PLATELET DISORDER</div>
-                            </div>    
+                            </div>
                           </div>
                         </div>
                         <div class="col-md-4 dashboard__framecontainer">
@@ -207,9 +207,9 @@
                             <a data-target="#coagulationDiseaseModal" data-toggle="modal"> <img
                               src="images/coagulationvectoredited.png" alt="coag">
                             </a>
-                             <div class="middle">
+                            <div class="middle">
                               <div class="text">COAGULATION DISEASE</div>
-                            </div>    
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -234,8 +234,11 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Leukemia
-             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <div class="modal-header">
+              Leukemia
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
             </div>
             <div class="modal-body">
 
@@ -256,19 +259,72 @@
                 </div>
               </div>
 
-              <br>
+              <!-- General Statistics Carousel -->
+              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                </ol>
 
-              <div class="row">
-                <div class="col-md-4">
-                  <canvas id="leukemiaChart" width="400" height="400"></canvas>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="carousel-label">
+                      <h3><b>Age Statistics</b></h3>
+                    </div>
+                    <div></div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="leukemiaChartAge" width="600" height="350"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Gender Statistics</b></h3>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="leukemiaChartGender" width="600" height="350"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Mode of Treatment Statistics</b></h3>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="leukemiaChartModeOfTreatment" width="600" height="350"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Baseline Statistics</b></h3>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="leukemiaChartDiseaseStatusBaseline" width="600" height="350"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Follow-Up Statistics</b></h3>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="leukemiaChartDiseaseStatusFollowUp" width="600" height="350"></canvas>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-4">
-                  <canvas id="leukemiaChart2" width="400" height="400"></canvas>
-                </div>
-                <div class="col-md-4">
-                  <canvas id="leukemiaChart3" width="400" height="400"></canvas>
-                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span
+                  class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                  class="sr-only">Previous</span>
+                </a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                  class="sr-only">Next</span>
+                </a>
               </div>
+              <!-- End of General Statistics Carousel -->
 
             </div>
             <div class="modal-footer">
@@ -284,8 +340,11 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Lymphoma
-             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <div class="modal-header">
+              Lymphoma
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
             </div>
             <div class="modal-body">
 
@@ -334,8 +393,11 @@
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <div class="modal-header">Myeloproliferative Neoplasm
-             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <div class="modal-header">
+              Myeloproliferative Neoplasm
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
             </div>
             <div class="modal-body">
 
@@ -384,8 +446,10 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-            Plasma Cell Disorder
-             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              Plasma Cell Disorder
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
             </div>
             <div class="modal-body">
 
@@ -428,14 +492,16 @@
       </div>
       <!-- End of Plasma Cell Modal  -->
 
-      <!-- AA DNS MDS Modal  -->
+      <!-- AA PNH MDS Modal  -->
       <div class="modal fade" id="aadnsmdsModal" tabindex="-1" role="dialog" aria-labelledby="plasmaCellLabel"
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-            AA DNS MDS
-             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              AA PNH MDS
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
             </div>
             <div class="modal-body">
 
@@ -446,7 +512,7 @@
                   </div>
                 </div>
                 <div class="col-md-9">
-                  <h3 style="font-weight: bold;">DISEASE NAME: AA DNS MDS</h3>
+                  <h3 style="font-weight: bold;">DISEASE NAME: AA PNH MDS</h3>
                   <p style="text-align: justify;">Aplastic anemia is a rare disease in which the bone marrow and the
                     hematopoietic stem cells that reside there are damaged. This causes a deficiency of all three blood
                     cell types (pancytopenia): red blood cells (anemia), white blood cells (leukopenia), and platelets
@@ -484,7 +550,9 @@
           <div class="modal-content">
             <div class="modal-header">
               Platelet Disorder
-               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
             </div>
             <div class="modal-body">
 
@@ -533,7 +601,9 @@
           <div class="modal-content">
             <div class="modal-header">
               Coagulation Disease
-               <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+              </button>
             </div>
             <div class="modal-body">
 
