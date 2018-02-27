@@ -287,7 +287,7 @@
                <!--<script src="js/main.js"></script>-->
 				
 				<script type="text/javascript" src="DataTables/datatables.min.js"></script>
-               <script src="js/user-management.js"></script>
+                <script src="js/user-management.js"></script>
                <!-- Resource jQuery -->
             </div>
          </div>
