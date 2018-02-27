@@ -5,10 +5,10 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
-<title>USTH - AA PHS MDS Baseline</title>
+<title>USTH | AA DNS MDS Baseline</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/usthlogo.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -120,8 +120,8 @@
             <!-- Generate Report Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="generateReport" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border" data-toggle="modal"
-                     data-target="#usermanagement__popup" data-whatever="@mdo">Generate Report</button>
+                  <button id="generateReport" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border" 
+                     data-target="#genrep" data-toggle="modal">Generate Report</button>
                </div>
             </div>
             <!-- End of Generate Report Button -->
@@ -146,7 +146,8 @@
                               href="aaphsmds-followup.jsp" type="button" class="btn bg-yellow button-border" id="followUpBtn">Follow Up</a>
                         </div>
                         <div class="col-sm-6 text-right btn-toolbar">
-                           <a href="#" type="button" class="btn bg-yellow button-border" id="patientStatistics">Patient Statistics</a> <a
+                           <a href="#" type="button" class="btn bg-yellow button-border" id="patientStatistics"
+                           data-target="#patstats" data-toggle="modal">Patient Statistics</a> <a
                               href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Edit Patient</a> <a href="#"
                               type="button" class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
                         </div>
@@ -169,7 +170,7 @@
                                     <!-- Patient ID Number -->
                                     <div class="form-group">
                                        <div class="col-sm-1">
-                                          <a alt="Barcode Icon" href="#"> <img alt="Barcode Icon" src="images/barcode.png"
+                                          <a  href="#"> <img alt="Barcode Icon" src="images/barcode.png"
                                              class="form__barcodeicon--size body__barcodebtn--style">
                                           </a>
                                        </div>
@@ -908,10 +909,10 @@
                                        </div>
                                     </div>
                                     <!-- Treatment -->
-                                    <div class="form-group" id="modeOfTreament" style="display: none;">
+                                    <div class="form-group" id="modeOfTreatment" style="display: none;">
                                        <label for="severity" class="control-label col-sm-4">Mode of Treatment</label>
                                        <div class="col-sm-8">
-                                          <select class="form-control" name="modeOfTreament">
+                                          <select class="form-control" name="modeOfTreatment">
                                              <option value="Hematopoietic Stem Cell Transplantation">Hematopoietic Stem Cell
                                                 Transplantation</option>
                                              <option value="Pharmacologic Treatment">Pharmacologic Treatment</option>
@@ -954,6 +955,265 @@
       </div>
    </div>
    <!-- End of Main Content -->
+   
+    <!-- Generate Report Modal  -->
+          <div class="modal fade centered-modal" id="genrep" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
+                <div class="modal-header">
+                Generate Report:
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-horizontal" style="text-align: right;">
+                    <form role="form">
+
+                      <!-- Doctors -->
+                      <div class="form-group">
+                        <div class="col-sm-5">
+                          <label for="message-text" class="control-label">Doctor:</label>
+                        </div>
+                        <div class="col-sm-5">
+                          <select class="form-control" name="diagnosis">
+                            <option selected="selected" disabled="disabled">Doctor</option>
+                            <option value="Dr. Mesina">Dr. Mesina</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- End of Doctors -->
+
+                      <!-- From Date  -->
+                      <div class="form-group">
+                        <div class="col-sm-2">
+                          <label for="message-text" class="control-label">From:</label>
+                        </div>
+                        <div class="col-sm-3">
+                          <select class="form-control" name="diagnosis">
+                            <option selected="selected" disabled="disabled">Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <select class="form-control" name="diagnosis">
+                            <option selected="selected" disabled="disabled">Day</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <select class="form-control" name="diagnosis">
+                            <option selected="selected" disabled="disabled">Year</option>
+                            <option value="2018">2018</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- End of From Date  -->
+
+                      <!-- To Date  -->
+                      <div class="form-group">
+                        <div class="col-sm-2">
+                          <label for="message-text" class="control-label">To:</label>
+                        </div>
+                        <div class="col-sm-3">
+                          <select class="form-control" name="diagnosis">
+                            <option selected="selected" disabled="disabled">Month</option>
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <select class="form-control" name="diagnosis">
+                            <option selected="selected" disabled="disabled">Day</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
+                          </select>
+                        </div>
+                        <div class="col-sm-3">
+                          <select class="form-control" name="diagnosis">
+                            <option selected="selected" disabled="disabled">Year</option>
+                            <option value="2018">2018</option>
+                          </select>
+                        </div>
+                      </div>
+                      <!-- End of To Date  -->
+
+                    </form>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-success">Ok</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div> 
+          </div>
+          <!-- End of Generate Report Modal  -->
+          
+            <!-- Patient Statistics Modal  -->
+          <div class="modal fade centered-modal" id="patstats" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                Patient Statistics:
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <div class="modal-body">
+                
+                 <div class="row">
+                <div class="col-md-12">
+                  <canvas id="aaphsmdsChart" width="400" height="400"></canvas>
+                </div>
+              </div>
+                
+                <!-- AA PHS MDS PATIENT STATISTICS CHART -->
+                <script>
+              var ctx = document.getElementById("aaphsmdsPatientChart").getContext('2d');
+              var aaphsmdsPatientChart = new Chart(ctx, {
+                  type: 'line',
+                  data: {
+                      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
+                      datasets: [{
+                          label: 'Baseline | Follow Up',
+                          data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
+                          backgroundColor: [
+                              'rgba(255, 99, 132, 0.2)',
+                              'rgba(54, 162, 235, 0.2)',
+                              'rgba(255, 206, 86, 0.2)',
+                              'rgba(75, 192, 192, 0.2)',
+                              'rgba(153, 102, 255, 0.2)',
+                              'rgba(255, 159, 64, 0.2)',
+                              'rgba(255, 99, 132, 0.2)',
+                              'rgba(54, 162, 235, 0.2)',
+                              'rgba(255, 206, 86, 0.2)',
+                              'rgba(75, 192, 192, 0.2)',
+                              'rgba(153, 102, 255, 0.2)',
+                              'rgba(255, 159, 64, 0.2)'
+                          ],
+                          borderColor: [
+                              'rgba(255,99,132,1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(255, 206, 86, 1)',
+                              'rgba(75, 192, 192, 1)',
+                              'rgba(153, 102, 255, 1)',
+                              'rgba(255, 159, 64, 1)',
+                              'rgba(255,99,132,1)',
+                              'rgba(54, 162, 235, 1)',
+                              'rgba(255, 206, 86, 1)',
+                              'rgba(75, 192, 192, 1)',
+                              'rgba(153, 102, 255, 1)',
+                              'rgba(255, 159, 64, 1)'
+                          ],
+                          borderWidth: 1
+                      }]
+                  },
+                  options: {
+                      scales: {
+                          yAxes: [{
+                              ticks: {
+                                  beginAtZero:true
+                              }
+                          }]
+                      }
+                  }
+              });
+                </script>              
+                              
+                <br>              
+                              
+                Hematologic Malignancy: High
+                Concominany Medications: Medium
+                Chemotherapy Medications: Low
+                
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of Patient Statistics Modal  -->
+   
 <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
 <script src="js/aaphsmds.js"></script>
 </body>

@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>USTH - AA PHS MDS Follow Up</title>
+<title>USTH | AA PNH MDS Follow Up</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/usthlogo.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,6 +28,10 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/sidebar.js"></script>
 <script src="js/radio-showhide.js" type="text/javascript"></script>
+<script src="js/Chart.bundle.js"></script>
+<script src="js/Chart.bundle.min.js"></script>
+<script src="js/Chart.js"></script>
+<script src="js/Chart.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
@@ -66,7 +70,7 @@
                   <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
                   <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
                   <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-                  <li class="active"><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
+                  <li class="active"><a href="aaphsmds-baseline.jsp">AA PNH MDS</a></li>
                   <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                   <!-- Dropdown -->
@@ -125,8 +129,7 @@
             <div class="row">
                <div class="col-sm-12 add-box">
                   <button id="generateReport" type="button" class="btn bg-yellow sidebar__addptngenrep--border"
-                     data-toggle="modal" data-target="#usermanagement__popup" data-whatever="@mdo">Generate
-                     Report</button>
+                     data-target="#genrep" data-toggle="modal">Generate Report</button>
                </div>
             </div>
             <!-- End of Generate Report Button -->
@@ -152,7 +155,7 @@
                               class="btn bg-yellow button-border" id="followUpBtn">Follow Up</a>
                         </div>
                         <div class="col-sm-6 text-right btn-toolbar">
-                           <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Patient
+                           <a href="#" type="button" class="btn bg-yellow button-border" data-target="#patstats" data-toggle="modal">Patient
                               Statistics</a> <a href="#" type="button" class="btn bg-yellow button-border"
                               id="edtPatientBtn">Edit Patient</a> <a href="#" type="button"
                               class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
@@ -172,7 +175,7 @@
                            <div class="tab-content tab-content__border">
                               <div class="visit">
                                  <ul>
-                                    <!--                                     <a href="#"><li>02-24-2017</li></a>
+                                    <!-- <a href="#"><li>02-24-2017</li></a>
                                     <a href="#"><li>02-24-2017</li></a>
                                     <a href="#"><li>02-24-2017</li></a>
                                     <a href="#"><li>02-24-2017</li></a>
@@ -617,11 +620,14 @@
    </div>
    
              <!-- Generate Report Modal  -->
-          <div class="modal fade centered-modal" id="genaudrep" tabindex="-1" role="dialog"
+          <div class="modal fade centered-modal" id="genrep" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
             <div class="modal-dialog modal-md">
               <div class="modal-content">
-                <div class="modal-header">Generate Audit Report</div>
+                <div class="modal-header">
+                Generate Report:
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
                 <div class="modal-body">
                   <div class="form-horizontal" style="text-align: right;">
                     <form role="form">
@@ -776,15 +782,101 @@
 
                     </form>
                   </div>
+                </div> 
+                <div class="modal-footer">
+                  <button type="submit" onclick="" class="btn btn-success">Ok</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div> 
+          </div>
+          <!-- End of Generate Report Modal  -->
+          
+            <!-- Patient Statistics Modal  -->
+          <div class="modal fade centered-modal" id="patstats" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+            <div class="modal-dialog modal-sm">
+              <div class="modal-content">
+                <div class="modal-header">
+                Patient Statistics:
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                </div>
+                <div class="modal-body">
+                
+                 <div class="row">
+                <div class="col-md-12">
+                  <canvas id="aaphsmdsChart" width="200" height="200"></canvas>
+                </div>
+              </div> 
+                
+                <!-- AA PHS MDS PATIENT STATISTICS CHART -->
+                <script>
+            	var ctx = document.getElementById("aaphsmdsPatientChart").getContext('2d');
+            	var aaphsmdsPatientChart = new Chart(ctx, {
+            	    type: 'line',
+            	    data: {
+            	        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"],
+            	        datasets: [{
+            	            label: 'Baseline | Follow Up',
+            	            data: [12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3],
+            	            backgroundColor: [
+            	                'rgba(255, 99, 132, 0.2)',
+            	                'rgba(54, 162, 235, 0.2)',
+            	                'rgba(255, 206, 86, 0.2)',
+            	                'rgba(75, 192, 192, 0.2)',
+            	                'rgba(153, 102, 255, 0.2)',
+            	                'rgba(255, 159, 64, 0.2)',
+            	                'rgba(255, 99, 132, 0.2)',
+            	                'rgba(54, 162, 235, 0.2)',
+            	                'rgba(255, 206, 86, 0.2)',
+            	                'rgba(75, 192, 192, 0.2)',
+            	                'rgba(153, 102, 255, 0.2)',
+            	                'rgba(255, 159, 64, 0.2)'
+            	            ],
+            	            borderColor: [
+            	                'rgba(255,99,132,1)',
+            	                'rgba(54, 162, 235, 1)',
+            	                'rgba(255, 206, 86, 1)',
+            	                'rgba(75, 192, 192, 1)',
+            	                'rgba(153, 102, 255, 1)',
+            	                'rgba(255, 159, 64, 1)',
+            	                'rgba(255,99,132,1)',
+            	                'rgba(54, 162, 235, 1)',
+            	                'rgba(255, 206, 86, 1)',
+            	                'rgba(75, 192, 192, 1)',
+            	                'rgba(153, 102, 255, 1)',
+            	                'rgba(255, 159, 64, 1)'
+            	            ],
+            	            borderWidth: 1
+            	        }]
+            	    },
+            	    options: {
+            	        scales: {
+            	            yAxes: [{
+            	                ticks: {
+            	                    beginAtZero:true
+            	                }
+            	            }]
+            	        }
+            	    }
+            	});
+                </script>              
+                              
+                <br>              
+                              
+                Hematologic Malignancy: High
+                Concominany Medications: Medium
+                Chemotherapy Medications: Low
+                
                 </div>
                 <div class="modal-footer">
-                  <button type="submit" onclick="printDiv()" class="btn btn-success">Ok</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
               </div>
             </div>
           </div>
-          <!-- End of Generate Report Modal  -->
+          <!-- End of Patient Statistics Modal  -->
+          
    <!-- End of Main Content -->
 </body>
 </html>
