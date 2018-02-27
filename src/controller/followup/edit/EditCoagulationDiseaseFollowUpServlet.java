@@ -19,7 +19,7 @@ import utility.values.DefaultValues;
 /**
  * Servlet implementation class EditAAPHSMDSFollowUpServlet
  */
-@WebServlet("/EditAAPHSMDSFollowUpServlet")
+@WebServlet("/EditCoagulationFollowUpServlet")
 public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -20,7 +20,7 @@ import utility.database.SQLOperationsFollowUp;
 /**
  * Servlet implementation class LoadAAPHSMDSFollowupServlet
  */
-@WebServlet("/LoadAAPHSMDSFollowupServlet")
+@WebServlet("/LoadPlateletFollowupServlet")
 public class LoadPlateletDisorderFollowupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

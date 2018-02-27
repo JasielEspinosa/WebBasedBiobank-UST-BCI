@@ -19,7 +19,7 @@ import utility.values.DefaultValues;
 /**
  * Servlet implementation class EditAAPHSMDSFollowUpServlet
  */
-@WebServlet("/EditAAPHSMDSFollowUpServlet")
+@WebServlet("/EditPlasmaFollowUpServlet")
 public class EditPlasmaCellFollowUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

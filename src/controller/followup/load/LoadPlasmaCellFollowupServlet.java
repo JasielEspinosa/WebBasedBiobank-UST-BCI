@@ -20,7 +20,7 @@ import utility.database.SQLOperationsFollowUp;
 /**
  * Servlet implementation class LoadAAPHSMDSFollowupServlet
  */
-@WebServlet("/LoadAAPHSMDSFollowupServlet")
+@WebServlet("/LoadPlasmaFollowupServlet")
 public class LoadPlasmaCellFollowupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
