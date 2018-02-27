@@ -382,15 +382,15 @@ $(function() {
 
 	$("input[name='transplantCandidate']").click(function() {
 		if ($(this).val() === "1") {
-			$("#modeOfTreament").slideDown(200);
-			$("input[name='modeOfTreament']").prop('required', true);
+			$("#modeOfTreatment").slideDown(200);
+			$("input[name='modeOfTreatment']").prop('required', true);
 			$("#medications").slideDown(200);
 			$("input[name='medications']").prop('required', true);
 			$("#dateStarted").slideDown(200);
 			$("input[name='dateStarted']").prop('required', true);
 		} else if ($(this).val() === "0") {
-			$("#modeOfTreament").slideUp(200);
-			$("input[name='modeOfTreament']").prop('required', false);
+			$("#modeOfTreatment").slideUp(200);
+			$("input[name='modeOfTreatment']").prop('required', false);
 			$("#medications").slideUp(200);
 			$("input[name='medications']").prop('required', false);
 			$("#dateStarted").slideUp(200);

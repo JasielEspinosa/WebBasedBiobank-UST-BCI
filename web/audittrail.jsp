@@ -3,7 +3,7 @@
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <![endif]--> 
 
 <!doctype html>
 <html lang="en">
@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>USTH | Audit Trail</title>
-<link rel="icon" href="images/usthlogo.png">
+<link rel="icon" href="images/usthlogo.png"> 
 
 <!-- CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -20,7 +20,7 @@
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="fonts/open-sans.css">
-<link rel="stylesheet" type="text/css" href="datatables/datatables.min.css" />
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
 
 <!-- JS -->
@@ -29,7 +29,8 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/genaudrep.js"></script>
-<script defer src="js/fontawesome-all.js"></script>
+<script src="js/fontawesome-all.js"></script>
+<script src="DataTables/datatables.min.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
@@ -76,7 +77,7 @@
               <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
               <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
               <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-              <li><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
+              <li><a href="aaphsmds-baseline.jsp">AA PNH MDS</a></li>
               <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
               <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
 
@@ -138,7 +139,6 @@
 
               <br>
 
-              <form>
                 <table id="customers" class="table-loader dataTable display">
                   <thead>
                     <tr>
@@ -183,12 +183,10 @@
                     </tr>
                   </tbody>
                 </table>
-              </form>
             </div>
             <!-- End of Table -->
-            <iframe name="print_frame" width="0" height="0" src="about:blank"></iframe>
-
           </div>
+          <!-- End of Inner Form Container -->
 
           <!-- End of Dashboard -->
 

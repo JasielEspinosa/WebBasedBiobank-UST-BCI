@@ -1,0 +1,13 @@
+#charts {
+	min-width: 200px;
+	padding: 16px;
+	flex: 5;
+}
+
+#charts .wrapper {
+	position: relative;
+	max-height: 768px;
+	max-width: 768px;
+	height: 100%;
+}
+
