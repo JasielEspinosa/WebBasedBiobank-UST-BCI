@@ -1,4 +1,4 @@
-package controller;
+package controller.followup.edit;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,7 +20,7 @@ import utility.values.DefaultValues;
  * Servlet implementation class EditAAPHSMDSFollowUpServlet
  */
 @WebServlet("/EditAAPHSMDSFollowUpServlet")
-public class EditLymphomaFollowUpServlet extends HttpServlet {
+public class EditPlasmaCellFollowUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private Connection connection;
@@ -37,7 +37,7 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 		}
 	}
 	
-    public EditLymphomaFollowUpServlet() {
+    public EditPlasmaCellFollowUpServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -58,8 +58,8 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 		
 		String noValue = "";
 		
-		int disease = 4;
-		
+		int disease = 6;
+		System.out.println(request.getParameter("patientId"));
 		int patientID = Integer.parseInt(request.getParameter("patientId"));
 		int followupId = Integer.parseInt(request.getParameter("followupId"));
 
@@ -92,15 +92,25 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 		double metamyelocytes = Double.parseDouble(request.getParameter("metamyelocytes"));
 		double blasts = Double.parseDouble(request.getParameter("blasts"));
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
-		////// Other Laboratories Part
-		double ldh = Double.parseDouble(request.getParameter("ldh"));
-		double esr = Double.parseDouble(request.getParameter("esr"));
+		////// Other Laboratories / Blood Chemistry
+		double creatinine = Double.parseDouble(request.getParameter("creatinine"));
+		double iCa = Double.parseDouble(request.getParameter("iCa"));
+		double totalProtein = Double.parseDouble(request.getParameter("totalProtein"));
+		double albumin = Double.parseDouble(request.getParameter("albumin"));
+		double globulin = Double.parseDouble(request.getParameter("globulin"));
 		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
+		String boneMarrowAspirateDatePerformed = request.getParameter("boneMarrowAspirateDatePerformed");
+		String boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
+		String serumFree = request.getParameter("serumFreeLightChainAsssayResult");
+		String serumProteinElectrophoresisResult = request.getParameter("serumProteinElectrophoresisResult");
+		String serumImmunofixationResult = request.getParameter("serumImmunofixationResult");
+		String urineProteinResult = request.getParameter("urineProteinResult");
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
+		String relapseDisease = request.getParameter("relapseDisease");
 		String otherDisease = request.getParameter("diseaseStatusOthers");
 		String notes = request.getParameter("specialNotes");
-		
+
 		//load
 		try {	
 			if (connection != null) {
@@ -109,7 +119,11 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 				
 				int medicalEventsid =  followup.getInt("MedicalEventsID");
 				int clinicalDataId =  followup.getInt("ClinicalDataID");
-				int laboratoryId =  followup.getInt("LaboratoryID");				int diseaseStatusId =  followup.getInt("DiseaseStatusID");				
+				int laboratoryId =  followup.getInt("LaboratoryID");
+				int qualityOfResponseId =  followup.getInt("QualityOfResponseID");
+				int diseaseStatusId =  followup.getInt("DiseaseStatusID");
+				int patientId = followup.getInt("PatientID");
+				
 				ResultSet clinicalData = SQLOperationsFollowUp.getClinicalData(clinicalDataId, connection);
 				clinicalData.first();
 				
@@ -120,8 +134,13 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 				
 				int hematologyId = laboratoryProfile.getInt("HematologyID");
 				int bloodChemistryId = laboratoryProfile.getInt("BloodChemistryID");
+				int boneMarrowAspirateId = laboratoryProfile.getInt("BoneMarrowAspirateID");
 				int imagingStudiesId = laboratoryProfile.getInt("ImagingStudiesID");
-		
+				int serumFreeId = laboratoryProfile.getInt("SerumFreeID");
+				int serumProteinId = laboratoryProfile.getInt("SerumProteinID");
+				int serumImmunofixationId = laboratoryProfile.getInt("SerumImmunofixationID");
+				int urineProteinId = laboratoryProfile.getInt("UrineProteinID");
+				
 				MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "",
 						0.0, procedureIntervention, chemotherapyComplication);
 				if (connection != null) {
@@ -170,8 +189,8 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 					System.out.println("Invalid connection HematologyBean");
 				}
 
-				BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, 0.0, 0.0, 0.0, 0.0, ldh, 0.0, 0.0, 0.0, 0.0,
-						0.0, 0.0, 0.0, 0.0, esr, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+				BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, creatinine, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+						0.0, 0.0, 0.0, 0.0, 0.0, 0.0, iCa, totalProtein, albumin, globulin, 0.0, 0.0);
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updateBloodChemistry(bcb, connection, disease,bloodChemistryId)) {
 						System.out.println("Successful insert BloodChemistryBean");
@@ -180,6 +199,18 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 					}
 				} else {
 					System.out.println("Invalid connection BloodChemistryBean");
+				}
+
+				BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed,
+						boneMarrowAspirateDescription);
+				if (connection != null) {
+					if (SQLOperationsFollowUp.updateBoneMarrowAspirate(bmab, connection, disease,boneMarrowAspirateId)) {
+						System.out.println("Successful insert BoneMarrowAspirateBean");
+					} else {
+						System.out.println("Failed insert BoneMarrowAspirateBean");
+					}
+				} else {
+					System.out.println("Invalid connection BoneMarrowAspirateBean");
 				}
 
 				ImagingStudiesBean isb = BeanFactory.getImagingStudiesBean(imagingStudiesResult.getBytes());
@@ -193,9 +224,53 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 					System.out.println("Invalid connection ImagingStudiesBean");
 				}
 
+				SerumFreeBean sfb = BeanFactory.getSerumFreeBean(serumFree);
+				if (connection != null) {
+					if (SQLOperationsFollowUp.updateSerumFree(sfb, connection, disease,serumFreeId)) {
+						System.out.println("Successful insert SerumFreeBean");
+					} else {
+						System.out.println("Failed insert SerumFreeBean");
+					}
+				} else {
+					System.out.println("Invalid connection SerumFreeBean");
+				}
+
+				SerumProteinBean spb = BeanFactory.getSerumProteinBean(serumProteinElectrophoresisResult);
+				if (connection != null) {
+					if (SQLOperationsFollowUp.updateSerumProtein(spb, connection, disease,serumProteinId)) {
+						System.out.println("Successful insert SerumProteinBean");
+					} else {
+						System.out.println("Failed insert SerumProteinBean");
+					}
+				} else {
+					System.out.println("Invalid connection SerumProteinBean");
+				}
+
+				SerumImmunofixationBean sifb = BeanFactory.getSerumImmunofixationBean(serumImmunofixationResult);
+				if (connection != null) {
+					if (SQLOperationsFollowUp.updateSerumImmunofixation(sifb, connection, disease,serumImmunofixationId)) {
+						System.out.println("Successful insert SerumImmunofixationBean");
+					} else {
+						System.out.println("Failed insert SerumImmunofixationBean");
+					}
+				} else {
+					System.out.println("Invalid connection SerumImmunofixationBean");
+				}
+
+				UrineProteinBean upb = BeanFactory.getUrineProteinBean(urineProteinResult);
+				if (connection != null) {
+					if (SQLOperationsFollowUp.updateUrineProtein(upb, connection, disease,urineProteinId)) {
+						System.out.println("Successful insert UrineProteinBean");
+					} else {
+						System.out.println("Failed insert UrineProteinBean");
+					}
+				} else {
+					System.out.println("Invalid connection UrineProteinBean");
+				}
+
 				LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 				if (connection != null) {
-					if (SQLOperationsFollowUp.updateLaboratoryProfile(lpb, connection, disease,laboratoryId)) {
+					if (SQLOperationsFollowUp.updateLaboratoryProfile(lpb, connection, diseaseStatusId, laboratoryId)) {
 						System.out.println("Successful insert LaboratoryProfileBean");
 					} else {
 						System.out.println("Failed insert LaboratoryProfileBean");
@@ -204,7 +279,7 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 					System.out.println("Invalid connection LaboratoryProfileBean");
 				}
 
-				DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, "", otherDisease);
+				DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, relapseDisease, otherDisease);
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updateDiseaseStatus(dsb, connection, disease,diseaseStatusId)) {
 						System.out.println("Successful insert DiseaseStatusBean");
@@ -225,7 +300,6 @@ public class EditLymphomaFollowUpServlet extends HttpServlet {
 				} else {
 					System.out.println("Invalid connection FollowUpBean");
 				}
-		
 		
 			} else {
 				System.out.println("Invalid Connection resource");

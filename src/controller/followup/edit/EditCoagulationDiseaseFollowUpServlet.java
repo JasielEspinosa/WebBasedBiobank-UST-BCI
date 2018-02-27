@@ -1,4 +1,4 @@
-package controller;
+package controller.followup.edit;
 
 import java.io.IOException;
 import java.sql.Connection;

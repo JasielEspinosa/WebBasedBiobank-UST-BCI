@@ -1,4 +1,4 @@
-package controller;
+package controller.followup.edit;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,7 +20,7 @@ import utility.values.DefaultValues;
  * Servlet implementation class EditAAPHSMDSFollowUpServlet
  */
 @WebServlet("/EditAAPHSMDSFollowUpServlet")
-public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
+public class EditAAPHSMDSFollowUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	private Connection connection;
@@ -37,7 +37,7 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 		}
 	}
 	
-    public EditPlateletDisorderFollowUpServlet() {
+    public EditAAPHSMDSFollowUpServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -58,16 +58,33 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 		
 		String noValue = "";
 		
-		int disease = 7;
+		int disease = 1;
 		System.out.println(request.getParameter("patientId"));
 		int patientID = Integer.parseInt(request.getParameter("patientId"));
 		int followupId = Integer.parseInt(request.getParameter("followupId"));
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
-		String hematologicMalignancy = request.getParameter("specifyHematologicMalignancy");
-		String procedureIntervention = request.getParameter("specifyProcedure");
-		String chemotherapyComplication = request.getParameter("specifyChemotherapy");
+
+		String hematologicMalignancy = noValue;
+		if (Integer.parseInt(request.getParameter("hematologicMalignancy")) == 1) {
+			hematologicMalignancy = request.getParameter("specifyHematologicMalignancy");
+		}
+
+		String otherDiseaseMedication = noValue;
+		if (Integer.parseInt(request.getParameter("otherDiseaseMedication")) == 1) {
+			otherDiseaseMedication = request.getParameter("specifyOtherDiseaseMedication");
+		}
+
+		String procedureIntervention = noValue;
+		if (Integer.parseInt(request.getParameter("procedure")) == 1) {
+			procedureIntervention = request.getParameter("specifyProcedure");
+		}
+
+		String chemotherapyComplication = noValue;
+		if (Integer.parseInt(request.getParameter("chemotherapy")) == 1) {
+			chemotherapyComplication = request.getParameter("specifyChemotherapy");
+		}
 
 		// CLINICAL
 		String currentSymptoms = request.getParameter("currentSymptoms");
@@ -87,13 +104,41 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 		double monocytes = Double.parseDouble(request.getParameter("monocytes"));
 		double eosinophils = Double.parseDouble(request.getParameter("eosinophils"));
 		double basophils = Double.parseDouble(request.getParameter("basophils"));
+		double myelocytes = Double.parseDouble(request.getParameter("myelocytes"));
+		double metamyelocytes = Double.parseDouble(request.getParameter("metamyelocytes"));
+		double blasts = Double.parseDouble(request.getParameter("blasts"));
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
-		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
+		////// Other Laboratories
+		double reticulocyteCount = Double.parseDouble(request.getParameter("reticulocyteCount"));
+		double ldh = Double.parseDouble(request.getParameter("ldh"));
+		double serumFerritin = Double.parseDouble(request.getParameter("serumFerritin"));
+		double creatinine = Double.parseDouble(request.getParameter("creatinine"));
 
-		String qualityOfResponse = request.getParameter("qualityOfResponse");
-		String otherDiseaseStatus = request.getParameter("diseaseStatusOthers");
+		String boneMarrowAspirateDatePerformed = noValue;
+		String boneMarrowAspirateDescription = noValue;
+		if (Integer.parseInt(request.getParameter("boneMarrowAspirate")) == 1) {
+			boneMarrowAspirateDatePerformed = request.getParameter("boneMarrowAspirateDatePerformed");
+			boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
+		}
+
+		String flowCytometryResult = noValue;
+		if (Integer.parseInt(request.getParameter("flowCytometry")) == 1) {
+			flowCytometryResult = request.getParameter("flowCytometryResult");
+		}
+
+		String cytogeneticAndMolecularAnalysisResult = noValue;
+		if (Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysis")) == 1) {
+			cytogeneticAndMolecularAnalysisResult = request.getParameter("cytogeneticAndMolecularAnalysisResult");
+		}
+		
+		String diseaseStatus = request.getParameter("diseaseStatus");
+		String otherDisease = noValue;
+		if (diseaseStatus == "Others") {
+			otherDisease = request.getParameter("diseaseStatusOthers");
+		}
+		
 		String notes = request.getParameter("specialNotes");
-	
+		
 		//load
 		try {	
 			if (connection != null) {
@@ -103,7 +148,9 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 				int medicalEventsid =  followup.getInt("MedicalEventsID");
 				int clinicalDataId =  followup.getInt("ClinicalDataID");
 				int laboratoryId =  followup.getInt("LaboratoryID");
+				int qualityOfResponseId =  followup.getInt("QualityOfResponseID");
 				int diseaseStatusId =  followup.getInt("DiseaseStatusID");
+				int patientId = followup.getInt("PatientID");
 				
 				ResultSet clinicalData = SQLOperationsFollowUp.getClinicalData(clinicalDataId, connection);
 				clinicalData.first();
@@ -114,9 +161,12 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 				laboratoryProfile.first();
 				
 				int hematologyId = laboratoryProfile.getInt("HematologyID");
-				int imagingStudiesId = laboratoryProfile.getInt("ImagingStudiesID");
-
-				MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, "", "", "", 0.0,
+				int otherLaboratoriesId = laboratoryProfile.getInt("OtherLaboratoriesID");
+				int boneMarrowAspirateId = laboratoryProfile.getInt("BoneMarrowAspirateID");
+				int flowCytometryId = laboratoryProfile.getInt("FlowCytometryID");
+				int cytogeneticMolecularId = laboratoryProfile.getInt("CytogeneticMolecularID");
+				
+				MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "", 0.0,
 						procedureIntervention, chemotherapyComplication);
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updateMedicalEvents(meb, connection, disease,medicalEventsid)) {
@@ -128,8 +178,7 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 					System.out.println("Invalid connection MedicalEventsBean");
 				}
 
-				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "",
-						"");
+				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", "");
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updatePhysicalExam(peb, connection, disease,physicalExamId)) {
 						System.out.println("Successful insert PhysicalExamBean");
@@ -140,8 +189,7 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 					System.out.println("Invalid connection PhysicalExamBean");
 				}
 
-				ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, "", "", "", "", currentSymptoms, "", "", "",
-						"", "", "", "", "", "");
+				ClinicalDataBean cdb = BeanFactory.getClinicalDataBean("", "", "", "", "", currentSymptoms, "", "", "", "", "", "", "", "", "");
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updateClinicalData(cdb, connection, disease,clinicalDataId)) {
 						System.out.println("Successful insert ClinicalDataBean");
@@ -152,8 +200,8 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 					System.out.println("Invalid connection ClinicalDataBean");
 				}
 
-				HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils,
-						lymphocytes, monocytes, eosinophils, basophils, 0.0, 0.0, 0.0, plateletCount);
+				HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils, lymphocytes, monocytes,
+						eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updateHematology(hb, connection, disease,hematologyId)) {
 						System.out.println("Successful insert HematologyBean");
@@ -164,15 +212,49 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 					System.out.println("Invalid connection HematologyBean");
 				}
 
-				ImagingStudiesBean isb = BeanFactory.getImagingStudiesBean(imagingStudiesResult.getBytes());
+				OtherLaboratoriesBean olb = BeanFactory.getOtherLaboratoriesBean(creatinine, 0.0, reticulocyteCount, 0.0, 0.0, serumFerritin, "",
+						"", 0.0, 0.0, ldh, "", "", 0.0, 0.0, 0.0, 0.0);
 				if (connection != null) {
-					if (SQLOperationsFollowUp.updateImagingStudies(isb, connection, disease,imagingStudiesId)) {
-						System.out.println("Successful insert ImagingStudiesBean");
+					if (SQLOperationsFollowUp.updateOtherLaboratories(olb, connection, disease, otherLaboratoriesId)) {
+						System.out.println("Successful insert OtherLaboratoriesBean");
 					} else {
-						System.out.println("Failed insert ImagingStudiesBean");
+						System.out.println("Failed insert OtherLaboratoriesBean");
 					}
 				} else {
-					System.out.println("Invalid connection ImagingStudiesBean");
+					System.out.println("Invalid connection OtherLaboratoriesBean");
+				}
+
+				BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed, boneMarrowAspirateDescription);
+				if (connection != null) {
+					if (SQLOperationsFollowUp.updateBoneMarrowAspirate(bmab, connection, disease,boneMarrowAspirateId)) {
+						System.out.println("Successful insert BoneMarrowAspirateBean");
+					} else {
+						System.out.println("Failed insert BoneMarrowAspirateBean");
+					}
+				} else {
+					System.out.println("Invalid connection BoneMarrowAspirateBean");
+				}
+
+				FlowCytometryBean fcb = BeanFactory.getFlowCytometryBean(flowCytometryResult);
+				if (connection != null) {
+					if (SQLOperationsFollowUp.updateFlowCytometry(fcb, connection, disease,flowCytometryId)) {
+						System.out.println("Successful insert FlowCytometryBean");
+					} else {
+						System.out.println("Failed insert FlowCytometryBean");
+					}
+				} else {
+					System.out.println("Invalid connection FlowCytometryBean");
+				}
+
+				CytogeneticMolecularBean cmb = BeanFactory.getCytogeneticMolecularBean(cytogeneticAndMolecularAnalysisResult);
+				if (connection != null) {
+					if (SQLOperationsFollowUp.updateCytogeneticMolecular(cmb, connection, disease,cytogeneticMolecularId)) {
+						System.out.println("Successful insert CytogeneticMolecularBean");
+					} else {
+						System.out.println("Failed insert CytogeneticMolecularBean");
+					}
+				} else {
+					System.out.println("Invalid connection CytogeneticMolecularBean");
 				}
 
 				LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
@@ -186,7 +268,7 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 					System.out.println("Invalid connection LaboratoryProfileBean");
 				}
 
-				DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(qualityOfResponse, "", otherDiseaseStatus);
+				DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, "", otherDisease);
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updateDiseaseStatus(dsb, connection, disease,diseaseStatusId)) {
 						System.out.println("Successful insert DiseaseStatusBean");
@@ -207,6 +289,8 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet {
 				} else {
 					System.out.println("Invalid connection FollowUpBean");
 				}
+				
+		
 			} else {
 				System.out.println("Invalid Connection resource");
 			}

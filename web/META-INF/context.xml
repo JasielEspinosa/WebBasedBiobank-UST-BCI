@@ -3,9 +3,9 @@
 <Context>
 
   <Resource name="jdbc/BCI-DS" auth="Container"
-            type="javax.sql.DataSource" username="root" password="harambe"
+            type="javax.sql.DataSource" username="root" password=""
             driverClassName="com.mysql.jdbc.Driver" 
-            url="jdbc:mysql://localhost:3306/USTHBiobank"
+            url="jdbc:mysql://localhost:3306/USTHBiobank?useSSL=false"
             maxActive="50" 
             />
 

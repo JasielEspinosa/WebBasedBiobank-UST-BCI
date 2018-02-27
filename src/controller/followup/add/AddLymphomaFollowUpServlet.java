@@ -1,4 +1,4 @@
-package controller;
+package controller.followup.add;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.*;
-import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
-@WebServlet("/AddPlateletCellFollowUpServlet")
-public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements DefaultValues {
+@WebServlet("/AddLymphomaFollowUpServlet")
+public class AddLymphomaFollowUpServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
@@ -37,11 +36,11 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().log("AddPlateletCellFollowUpServlet insert test");
+		getServletContext().log("AddLymphomaFollowUpServlet insert test");
 
-		int disease = 6;
+		int disease = 4;
 
-		int patientID = 1;
+		int patientID = Integer.parseInt(request.getParameter("patientId"));
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
@@ -49,6 +48,11 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 		String hematologicMalignancy = noValue;
 		if (Integer.parseInt(request.getParameter("hematologicMalignancy")) == 1) {
 			hematologicMalignancy = request.getParameter("specifyHematologicMalignancy");
+		}
+
+		String otherDiseaseMedication = noValue;
+		if (Integer.parseInt(request.getParameter("otherDiseaseMedication")) == 1) {
+			otherDiseaseMedication = request.getParameter("specifyOtherDiseaseMedication");
 		}
 
 		String procedureIntervention = noValue;
@@ -60,7 +64,6 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 		if (Integer.parseInt(request.getParameter("chemotherapy")) == 1) {
 			chemotherapyComplication = request.getParameter("specifyChemotherapy");
 		}
-
 		// CLINICAL
 		String currentSymptoms = request.getParameter("currentSymptoms");
 		double weight = Double.parseDouble(request.getParameter("weight"));
@@ -79,19 +82,29 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 		double monocytes = Double.parseDouble(request.getParameter("monocytes"));
 		double eosinophils = Double.parseDouble(request.getParameter("eosinophils"));
 		double basophils = Double.parseDouble(request.getParameter("basophils"));
+		double myelocytes = Double.parseDouble(request.getParameter("myelocytes"));
+		double metamyelocytes = Double.parseDouble(request.getParameter("metamyelocytes"));
+		double blasts = Double.parseDouble(request.getParameter("blasts"));
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
-		String imagingStudiesResult = request.getParameter("imagingStudiesResult");
+		////// Other Laboratories Part
+		double ldh = Double.parseDouble(request.getParameter("ldh"));
+		double esr = Double.parseDouble(request.getParameter("esr"));
 
-		String qualityOfResponse = request.getParameter("qualityOfResponse");
+		String imagingStudiesResult = noValue;
+		if (Integer.parseInt(request.getParameter("imagingStudies")) == 1) {
+			imagingStudiesResult = request.getParameter("imagingStudiesResult");
+		}
+
+		String diseaseStatus = request.getParameter("diseaseStatus");
 		String otherDisease = noValue;
-		if (qualityOfResponse == "Others") {
+		if (diseaseStatus == "Others") {
 			otherDisease = request.getParameter("diseaseStatusOthers");
 		}
 
 		String notes = request.getParameter("specialNotes");
 
-		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, "", "", "", 0.0, procedureIntervention,
-				chemotherapyComplication);
+		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "", 0.0,
+				procedureIntervention, chemotherapyComplication);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addMedicalEvents(meb, connection, disease)) {
 				System.out.println("Successful insert MedicalEventsBean");
@@ -126,9 +139,9 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 		}
 
 		HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils, lymphocytes, monocytes,
-				eosinophils, basophils, 0.0, 0.0, 0.0, plateletCount);
+				eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
 		if (connection != null) {
-			if (SQLOperationsBaseline.addHematology(hb, connection, disease)) {
+			if (SQLOperationsFollowUp.addHematology(hb, connection, disease)) {
 				System.out.println("Successful insert HematologyBean");
 			} else {
 				System.out.println("Failed insert HematologyBean");
@@ -137,9 +150,21 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 			System.out.println("Invalid connection HematologyBean");
 		}
 
+		BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, 0.0, 0.0, 0.0, 0.0, ldh, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				esr, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0);
+		if (connection != null) {
+			if (SQLOperationsFollowUp.addBloodChemistry(bcb, connection, disease)) {
+				System.out.println("Successful insert BloodChemistryBean");
+			} else {
+				System.out.println("Failed insert BloodChemistryBean");
+			}
+		} else {
+			System.out.println("Invalid connection BloodChemistryBean");
+		}
+
 		ImagingStudiesBean isb = BeanFactory.getImagingStudiesBean(imagingStudiesResult.getBytes());
 		if (connection != null) {
-			if (SQLOperationsBaseline.addImagingStudies(isb, connection, disease)) {
+			if (SQLOperationsFollowUp.addImagingStudies(isb, connection, disease)) {
 				System.out.println("Successful insert ImagingStudiesBean");
 			} else {
 				System.out.println("Failed insert ImagingStudiesBean");
@@ -150,7 +175,7 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 
 		LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 		if (connection != null) {
-			if (SQLOperationsBaseline.addLaboratoryProfile(lpb, connection, disease)) {
+			if (SQLOperationsFollowUp.addLaboratoryProfile(lpb, connection, disease)) {
 				System.out.println("Successful insert LaboratoryProfileBean");
 			} else {
 				System.out.println("Failed insert LaboratoryProfileBean");
@@ -159,7 +184,7 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 			System.out.println("Invalid connection LaboratoryProfileBean");
 		}
 
-		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(qualityOfResponse, "", otherDisease);
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, "", otherDisease);
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert DiseaseStatusBean");

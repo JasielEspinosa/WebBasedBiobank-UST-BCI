@@ -1,4 +1,4 @@
-package controller;
+package controller.followup.load;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,7 +21,7 @@ import utility.database.SQLOperationsFollowUp;
  * Servlet implementation class LoadAAPHSMDSFollowupServlet
  */
 @WebServlet("/LoadAAPHSMDSFollowupServlet")
-public class LoadLymphomaFollowupServlet extends HttpServlet {
+public class LoadLeukemiaFollowupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -41,7 +41,7 @@ public class LoadLymphomaFollowupServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-    public LoadLymphomaFollowupServlet() {
+    public LoadLeukemiaFollowupServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -116,10 +116,10 @@ public class LoadLymphomaFollowupServlet extends HttpServlet {
 				followupData.put("dateOfBloodCollection", laboratoryProfile.getString("dateOfBloodCollection"));
 
 				
-				int hematologyId = laboratoryProfile.getInt("HematologyID");
-				int bloodChemistryId = laboratoryProfile.getInt("BloodChemistryID");
-				int imagingStudiesId = laboratoryProfile.getInt("ImagingStudiesID");
-
+				int hematologyId = laboratoryProfile.getInt("HematologyID");				int boneMarrowAspirateId = laboratoryProfile.getInt("BoneMarrowAspirateID");
+				int flowCytometryId = laboratoryProfile.getInt("FlowCytometryID");
+				int cytogeneticMolecularId = laboratoryProfile.getInt("CytogeneticMolecularID");
+				
 				//hematology
 				ResultSet hematology = SQLOperationsFollowUp.getHematology(hematologyId, connection);
 				hematology.first();
@@ -136,18 +136,23 @@ public class LoadLymphomaFollowupServlet extends HttpServlet {
 				followupData.put("metamyelocytes", hematology.getString("metamyelocytes"));
 				followupData.put("blasts", hematology.getString("blasts"));
 				followupData.put("plateletCount", hematology.getString("plateletCount"));
-				
-				ResultSet bloodChemistry = SQLOperationsFollowUp.getBloodChemistry(bloodChemistryId, connection);
-				bloodChemistry.first();
-				
-				followupData.put("ldh", bloodChemistry.getString("LDH"));
-				followupData.put("esr", bloodChemistry.getString("ESR"));
 
-				ResultSet imagingStudies = SQLOperationsFollowUp.getImagingStudies(imagingStudiesId, connection);
-				imagingStudies.first();
+				ResultSet boneMarrowAspirate = SQLOperationsFollowUp.getBoneMarrowAspirate(boneMarrowAspirateId, connection);
+				boneMarrowAspirate.first();
 				
-				followupData.put("imagingStudiesResult", imagingStudies.getString("Result"));
-						
+				followupData.put("boneMarrowAspirateDatePerformed", boneMarrowAspirate.getString("DatePerformed"));
+				followupData.put("boneMarrowAspirateDescription", boneMarrowAspirate.getString("Result"));
+				
+				ResultSet flowCytometry = SQLOperationsFollowUp.getFlowCytometry(flowCytometryId, connection);
+				flowCytometry.first();
+				
+				followupData.put("flowCytometryResult", flowCytometry.getString("Result"));
+				
+				ResultSet cytogeneticMolecular = SQLOperationsFollowUp.getCytogeneticMolecular(cytogeneticMolecularId, connection);
+				cytogeneticMolecular.first();
+				
+				followupData.put("cytogeneticAndMolecularAnalysisResult", cytogeneticMolecular.getString("Result"));
+				
 				ResultSet diseaseStatus = SQLOperationsFollowUp.getDiseaseStatus(diseaseStatusId, connection);
 				diseaseStatus.first();
 				
