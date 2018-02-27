@@ -1,4 +1,4 @@
-package controller;
+package controller.followup.add;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,8 +15,8 @@ import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
-@WebServlet("/AddAAPHSMDSFollowUpServlet")
-public class AddAAPHSMDSFollowUpServlet extends HttpServlet implements DefaultValues {
+@WebServlet("/AddAAPNHMDSFollowUpServlet")
+public class AddAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
@@ -37,11 +37,11 @@ public class AddAAPHSMDSFollowUpServlet extends HttpServlet implements DefaultVa
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		getServletContext().log("AddAAPHSMDSFollowUpServlet insert test");
+		getServletContext().log("AddAAPNHMDSFollowUpServlet insert test");
 
 		int disease = 1;
-
-		int patientID = 1;
+		System.out.println(request.getParameter("patientId"));
+		int patientID = Integer.parseInt(request.getParameter("patientId"));
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
@@ -168,7 +168,7 @@ public class AddAAPHSMDSFollowUpServlet extends HttpServlet implements DefaultVa
 		OtherLaboratoriesBean olb = BeanFactory.getOtherLaboratoriesBean(creatinine, 0.0, reticulocyteCount, 0.0, 0.0, serumFerritin, "",
 				"", 0.0, 0.0, ldh, "", "", 0.0, 0.0, 0.0, 0.0);
 		if (connection != null) {
-			if (SQLOperationsBaseline.addOtherLaboratories(olb, connection, disease)) {
+			if (SQLOperationsFollowUp.addOtherLaboratories(olb, connection, disease)) {
 				System.out.println("Successful insert OtherLaboratoriesBean");
 			} else {
 				System.out.println("Failed insert OtherLaboratoriesBean");

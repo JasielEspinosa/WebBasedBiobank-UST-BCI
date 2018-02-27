@@ -1,4 +1,4 @@
-<%-- <jsp:useBean id="aapnhmdsPatientsList" type="java.sql.ResultSet" scope="request"/> --%>
+<%-- <jsp:useBean id="aaphsmdsPatientsList" type="java.sql.ResultSet" scope="request"/> --%>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>USTH - AA PNH MDS Follow Up</title>
+<title>USTH - AA PHS MDS Follow Up</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/usthlogo.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,6 +28,10 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/sidebar.js"></script>
 <script src="js/radio-showhide.js" type="text/javascript"></script>
+<script src="js/Chart.bundle.js"></script>
+<script src="js/Chart.bundle.min.js"></script>
+<script src="js/Chart.js"></script>
+<script src="js/Chart.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
@@ -66,7 +70,7 @@
                   <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
                   <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
                   <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-                  <li class="active"><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
+                  <li class="active"><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
                   <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                   <!-- Dropdown -->
@@ -141,21 +145,22 @@
             </p>
             <!-- End of Sidebar -->
             <!-- Forms Container -->
-            <form action="AddAAPNHMDSFollowUpServlet" method="post">
+            <form action="" method="post" id = "AddAAPHSMDSFollowup">
+            
                <div class="col-md-12">
                   <div class="col-md-12 forms">
                      <!-- Buttons Container -->
                      <div class="row button-container buttons__firsthalf--position ">
                         <div class="col-sm-6 buttons__firsthalf-position ">
-                           <a href="aapnhmds-baseline.jsp" type="button" class="btn bg-yellow button-border"
-                              id="baselineBtn">Baseline</a> <a href="aapnhmds-followup.jsp" type="button"
+                           <a href="aaphsmds-baseline.jsp" type="button" class="btn bg-yellow button-border"
+                              id="baselineBtn">Baseline</a> <a href="aaphsmds-followup.jsp" type="button"
                               class="btn bg-yellow button-border" id="followUpBtn">Follow Up</a>
                         </div>
                         <div class="col-sm-6 text-right btn-toolbar">
-                           <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Patient
+                           <a href="#" type="button" class="btn bg-yellow button-border" id="patientStatistics">Patient
                               Statistics</a> <a href="#" type="button" class="btn bg-yellow button-border"
-                              id="edtPatientBtn">Edit Patient</a> <a href="#" type="button"
-                              class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
+                              id="edtPatientBtn">Edit Followup</a> <a href="#" type="button"
+                              class="btn bg-yellow button-border" id="archPatientBtn">Delete Followup</a>
                         </div>
                      </div>
                      <!-- End of Buttons Container -->
@@ -170,13 +175,8 @@
                            <!-- End of Visit Tab -->
                            <!-- Visit Tab Content -->
                            <div class="tab-content tab-content__border">
-                              <div class="visit">
+                              <div id = "visitFill" class="visit">
                                  <ul>
-                                    <!--                                     <a href="#"><li>02-24-2017</li></a>
-                                    <a href="#"><li>02-24-2017</li></a>
-                                    <a href="#"><li>02-24-2017</li></a>
-                                    <a href="#"><li>02-24-2017</li></a>
-                                    <a href="#"><li>02-24-2017</li></a> -->
                                  </ul>
                               </div>
                            </div>
@@ -220,7 +220,7 @@
                                           medication for the hematologic malignancy?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="hematologicMalignancy" value="1" required="required">Yes</label>
+                                             <label><input type="radio" name="hematologicMalignancy" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="hematologicMalignancy" value="0">No</label>
@@ -239,7 +239,7 @@
                                           medication for other diseases?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="otherDiseaseMedication" value="1" required="required">Yes</label>
+                                             <label><input type="radio" name="otherDiseaseMedication" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="otherDiseaseMedication" value="0">No</label>
@@ -258,7 +258,7 @@
                                           procedure or intervention?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="procedure" value="1" required="required">Yes</label>
+                                             <label><input type="radio" name="procedure" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="procedure" value="0">No</label>
@@ -277,7 +277,7 @@
                                           chemotherapy?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="chemotherapy" value="1" required="required">Yes</label>
+                                             <label><input type="radio" name="chemotherapy" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="chemotherapy" value="0">No</label>
@@ -325,7 +325,7 @@
                                        <label class="control-label col-sm-4">Pertinent findings</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="pertinentFindings" value="1" required="required">Yes</label>
+                                             <label><input type="radio" name="pertinentFindings" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="pertinentFindings" value="0">No</label>
@@ -481,7 +481,7 @@
                                           result</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="boneMarrowAspirate" value="1" required="required">Yes</label>
+                                             <label><input type="radio" name="boneMarrowAspirate" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="boneMarrowAspirate" value="0">No</label>
@@ -513,7 +513,7 @@
                                        <label class="control-label col-sm-4">Flow Cytometry</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="flowCytometry" value="1" required="required">Yes</label>
+                                             <label><input type="radio" name="flowCytometry" value="1">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="flowCytometry" value="0">No
@@ -604,12 +604,15 @@
                               <!-- End of Disease Status -->
                            </div>
                            <!-- End of Follow Up Tab Content -->
-                           <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border">
+                              <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitQuery'>
+                              <input type="button" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitCancel' value='Cancel' onclick='cancelEdit()'>
                         </div>
                         <!-- End of Follow Up -->
                      </div>
                   </div>
                </div>
+               <input type="hidden" class="form-control" id="patientId" name="patientId" value="">
+               <input type="hidden" class="form-control" id="followupId" name="followupId" value="">
             </form>
             <!-- End of Forms -->
          </div>
@@ -785,6 +788,8 @@
             </div>
           </div>
           <!-- End of Generate Report Modal  -->
-   <!-- End of Main Content -->
+  <!-- End of Main Content -->
+   <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+<script src="js/disease.aaphsmds-followup.js"></script>
 </body>
 </html>

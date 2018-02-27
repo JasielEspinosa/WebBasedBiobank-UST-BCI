@@ -1,4 +1,4 @@
-package controller;
+package controller.followup.add;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -39,7 +39,8 @@ public class AddCoagulationFollowUpServlet extends HttpServlet {
 
 		int disease = 2;
 
-		int patientID = 1;
+		int patientID = Integer.parseInt(request.getParameter("patientId"));
+		
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");

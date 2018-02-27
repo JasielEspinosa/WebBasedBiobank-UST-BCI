@@ -1,4 +1,4 @@
-package controller;
+package controller.followup.add;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -41,7 +41,7 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 
 		int disease = 6;
 
-		int patientID = 1;
+		int patientID = Integer.parseInt(request.getParameter("patientId"));
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");

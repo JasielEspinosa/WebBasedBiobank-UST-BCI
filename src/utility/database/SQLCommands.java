@@ -18,5 +18,6 @@ public interface SQLCommands {
 			+ " where PatientTable.PatientID = ? or GeneralDataTable."
 			+ "LastName = ? or GeneralDataTable.FirstName = ? or GeneralDataTable.MiddleName = ? and PatientTable.DiseaseID = ?";
 	String ARCHIVE_PATIENT = "Update PatientTable set Active = 0 where PatientID = ?";
-
+	String DELETE_FOLLOWUP = "DELETE FROM FollowupTable where FollowUpID = ?";
+	String GET_VISITS = "Select * from FollowupTable where PatientID = ?";
 }

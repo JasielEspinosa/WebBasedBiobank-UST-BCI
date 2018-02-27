@@ -1,6 +1,7 @@
 package model;
 
 public class AccountBean {
+	@SuppressWarnings("unused")
 	private int accountId;
 	private String username;
 	private String password;
