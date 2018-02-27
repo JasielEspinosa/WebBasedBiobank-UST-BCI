@@ -40,7 +40,7 @@ public class AddLeukemiaFollowUpServlet extends HttpServlet implements DefaultVa
 
 		int disease = 3;
 
-		int patientID = 1;
+		int patientID = Integer.parseInt(request.getParameter("patientId"));
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
