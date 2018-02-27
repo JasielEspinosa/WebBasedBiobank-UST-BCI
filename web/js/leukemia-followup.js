@@ -1,35 +1,40 @@
 var responseJson;
-
+var id;
+var followupId;
 var params = {
 	action : '',	
 	search : '',
-	patientId : ''
+	patientId : '',
+	followupId: ''	
 };
 
 var editState = false;
 var upperActionState = false;
 
-$("#AddAAPHSMDSBaseline").submit(function(e) {
+$("#AddLeukemiaFollowup").submit(function(e) {
    e.preventDefault();
 	});
 
 $('document').ready(function(){
-	
+	alert(localStorage.getItem("id3"))
+	params.patientId = localStorage.getItem("id3");
+	$("#patientId").val(localStorage.getItem("id3"));
+
 	actionBind();
 	unbindEvents();
+
     $("#searchbox").on('input',function(){
     	loadPatientList();
     });
     
 	$("#baselineBtn").click(function() {
-		if(upperActionState == true){
-			loadPatientData(params.patientId);
-		}		
+		localStorage.setItem("fromFollowup3","pass");
+		windows.location = ("leukemia-baseline.jsp").redirect();
+		
 	});
 	$("#followUpBtn").click(function() {
-		if(upperActionState == true){
-			windows.location = ("aaphsmds-followup.jsp").redirect();
-		}
+			loadFollowupList();
+			unbindEvents();
 	});
 	$("#patientStatistics").click(function() {
 		if(upperActionState == true){
@@ -44,18 +49,16 @@ $('document').ready(function(){
 	});
 	$("#archPatientBtn").click(function() {
 		if(upperActionState == true){
-			$.post('ArchivePatientServlet', $.param(params), function (response) {
-				alert("Patient Archived")
+			$.post('DeleteFollowupServlet', $.param(params), function (response) {
+				alert("Patient followup deleted")
+				unbindEvents();
 			}).fail(function(){
 			});	
 		}
 	});
-     
-   if(localStorage.getItem("fromFollowup1") != ""){
-    	alert(localStorage.getItem("id1"));
-    	loadPatientData(localStorage.getItem("id1"));
-    	localStorage.setItem("fromFollowup1","");
-    }
+	
+	loadFollowupList();
+	
 	
 });
 
@@ -160,9 +163,75 @@ function loadPatientData(id){
 	
 };
 
+//load followup data
+function loadFollowupData(followupId){
+	
+	params.followupId = followupId;
+	$("#followupId").val(followupId);
+	
+	$.post('LoadLeukemiaFollowupServlet', $.param(params), function (response) {
+		// in order from followup servlet
+		//followup data
+		alert('data loaded')
+		$("[name='dateOfEntry']").val(response["dateOfEntry"])
+		$("[name='dateOfVisit']").val(response["dateOfVisit"])
+		$("[name='specialNotes']").val(response["notes"])
+		
+		//medical events
+		$("[name='specifyHematologicMalignancy']").val(response["hematologicMalignancy"])
+		$("[name='specifyOtherDiseaseMedication']").val(response["otherDiseaseMedication"])
+		$("[name='specifyProcedureIntervention']").val(response["procedureIntervention"])
+		$("[name='specifyChemotherapyComplication']").val(response["chemotherapyComplication"])
+
+		//physical exam	
+		$("[name='weight']").val(response["weight"])
+		$("[name='ecog']").val(response["ecog"])
+		
+		//clinical data
+		$("[name='currentSymptoms']").val(response["currentSymptoms"])
+		
+		// laboratory profile
+		$("[name='dateOfBloodCollection']").val(response["dateOfBloodCollection"])
+		
+		//hematology
+		
+		$("[name='hemoglobin']").val(response["hemoglobin"])
+		$("[name='hematocrit']").val(response["hematocrit"])
+		$("[name='whiteBloodCells']").val(response["whiteBloodCells"])
+		$("[name='neutrophils']").val(response["neutrophils"])
+		$("[name='lymphocytes']").val(response["lymphocytes"])
+		$("[name='monocytes']").val(response["monocytes"])
+		$("[name='eosinophils']").val(response["eosinophils"])
+		$("[name='basophils']").val(response["basophils"])
+		$("[name='myelocytes']").val(response["myelocytes"])
+		$("[name='metamyelocytes']").val(response["metamyelocytes"])
+		$("[name='blasts']").val(response["blasts"])
+		$("[name='plateletCount']").val(response["plateletCount"])
+		
+		//bone marrow
+		$("[name='boneMarrowAspirateDatePerformed']").val(response["boneMarrowAspirateDatePerformed"])
+		$("[name='boneMarrowAspirateDescription']").val(response["boneMarrowAspirateDescription"])
+		
+		//flow cytometry
+		$("[name='flowCytometryResult']").val(response["flowCytometryResult"])
+		
+		//cytogenic
+		$("[name='cytogeneticAndMolecularAnalysisResult']").val(response["cytogeneticAndMolecularAnalysisResult"])
+		
+		//disease status
+		$("[name='diseaseStatus']").val(response["diseaseStatus"])
+		$("[name='otherDisease']").val(response["otherDisease"])
+		
+		bindEvents();
+		
+	  })
+};
+
+
+
 //load patient list to search box
 function loadPatientList(){
-	params.action = '1';
+	params.action = '3';
 	params.search = $("#searchbox").val();
 	$('#searchboxfill').empty();
 	$.post('LoadPatientsServlet', $.param(params), function (responseJson) {
@@ -177,13 +246,26 @@ function loadPatientList(){
 	
 };
 
+//load followup list
+function loadFollowupList(){
+	$('#visitFill').empty();
+	$.post('LoadVisitsServlet', $.param(params), function (responseJson) {
+      $.each(responseJson, function(index, patient) {   
+      $('#visitFill')
+      	.append("<p value='"+patient.followupID +"' onClick=\"loadFollowupData("+patient.followupID +")\"" +
+      			">"+ patient.dateOfVisit +"</p>")   
+  });
+		
+	}).fail(function(){
+	});	
+	
+};
+
+
 //bind functions
 
 //remove button function
 function unbindEvents(){
-	$("#baselineBtn").hide();
-	$("#followUpBtn").hide();
-	$("#patientStatistics").hide();
 	$("#edtPatientBtn").hide();
 	$("#archPatientBtn").hide();
 	$("#submitCancel").hide();
@@ -193,9 +275,6 @@ function unbindEvents(){
 
 function bindEvents(){
 	localStorage.setItem("id1",params.patientId);
-	$("#baselineBtn").show();
-	$("#followUpBtn").show();
-	$("#patientStatistics").show();
 	$("#edtPatientBtn").show();
 	$("#archPatientBtn").show();
 	upperActionState = true;
@@ -204,15 +283,16 @@ function bindEvents(){
 //add bind
 
 function actionBind(){
-	$('#AddAAPHSMDSBaseline').submit(function() {
+	$('#AddLeukemiaFollowup').submit(function() {
+		alert($("#patientId").val());
 		var $form = $(this);
 		if(editState == false){
-			$.post('AddAAPHSMDSBaselineServlet', $form.serialize(), function (response) {
+			$.post('AddAAPHSMDSFollowUpServlet', $form.serialize(), function (response) {
 					alert("Patient added")
 			}).fail(function(){
 				});	
 		}else{
-			$.post('EditAAPHSMDSBaselineServlet', $form.serialize(), function (response) {
+			$.post('EditAAPHSMDSFollowUpServlet', $form.serialize(), function (response) {
 				alert("Patient edited")
 			}).fail(function(){
 				});			

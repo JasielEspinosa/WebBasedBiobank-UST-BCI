@@ -65,7 +65,7 @@
                   <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
                   <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
                   <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-                  <li><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
+                  <li><a href="aaphsmds-baseline.jsp">AA PNH MDS</a></li>
                   <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                   <!-- Dropdown -->
@@ -219,7 +219,7 @@
                                           medication for the hematologic malignancy?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="hematologicMalignancy" value="1">Yes</label>
+                                             <label><input type="radio" name="hematologicMalignancy" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="hematologicMalignancy" value="0">No</label>
@@ -238,7 +238,7 @@
                                           concomitant medications for other disease?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="otherDiseaseMedication" value="1">Yes</label>
+                                             <label><input type="radio" name="otherDiseaseMedication" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="otherDiseaseMedication" value="0">No</label>
@@ -276,7 +276,7 @@
                                           chemotherapy?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="chemotherapy" value="1">Yes</label>
+                                             <label><input type="radio" name="chemotherapy" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="chemotherapy" value="0">No</label>
@@ -324,7 +324,7 @@
                                        <label class="control-label col-sm-4">Pertinent findings</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="pertinentFindings" value="1">Yes</label>
+                                             <label><input type="radio" name="pertinentFindings" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="pertinentFindings" value="0">No</label>
@@ -439,7 +439,7 @@
                                           result</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="boneMarrowAspirate" value="1">Yes</label>
+                                             <label><input type="radio" name="boneMarrowAspirate" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="boneMarrowAspirate" value="0">No</label>
@@ -471,7 +471,7 @@
                                        <label class="control-label col-sm-4">Flow Cytometry</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="flowCytometry" value="1">Yes</label>
+                                             <label><input type="radio" name="flowCytometry" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="flowCytometry" value="0">No
@@ -498,7 +498,7 @@
                                        <label class="control-label col-sm-4">Molecular Analysis</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="molecularAnalysis" value="1">Yes</label>
+                                             <label><input type="radio" name="molecularAnalysis" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="molecularAnalysis" value="0">Not

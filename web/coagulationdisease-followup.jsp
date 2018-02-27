@@ -65,7 +65,7 @@
                   <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
                   <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
                   <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-                  <li><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
+                  <li><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
                   <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li class="active"><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                   <!-- Dropdown -->
@@ -230,7 +230,7 @@
                                           factor concentrates at home from last visit?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="factorConcentrate" value="1">Yes</label>
+                                             <label><input type="radio" name="factorConcentrate" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="factorConcentrate" value="0">No</label>
@@ -263,7 +263,7 @@
                                           procedure or intervention?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="procedure" value="1">Yes</label>
+                                             <label><input type="radio" name="procedure" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="procedure" value="0">No</label>

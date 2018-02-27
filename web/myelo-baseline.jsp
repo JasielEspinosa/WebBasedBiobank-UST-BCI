@@ -14,10 +14,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/sidebar.css">
-<link href="css/responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="fonts/open-sans.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
 <!-- JS -->
@@ -40,8 +40,7 @@
          <div class="col-sm-1">
             <img src="images/usthlogo.png" class="header__logo--size header__logo--position">
          </div>
-         <div
-            class="col-sm-11 header__bannertitle--visibility header__bannertitle--position header__bannertitle--spacing">
+         <div class="col-sm-11 header__bannertitle--visibility header__bannertitle--position header__bannertitle--spacing">
             <h4>UST-BCI Section of Clinical Hematology</h4>
             <p>Hematologic Disease Database</p>
          </div>
@@ -52,10 +51,9 @@
          <div class="container-fluid navbar__nav-item--hover">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                  data-target="#bs-example-navbar-collapse-1">
-                  <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+               <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                  <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                     class="icon-bar"></span>
                </button>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -66,26 +64,25 @@
                   <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
                   <li class="active"><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
                   <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-                  <li><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
+                  <li><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
                   <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                   <!-- Dropdown -->
-                  <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                     role="button" aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span
-                        class="caret"></span>
+                  <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                     aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
                   </a>
                      <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li><a style="font-weight: bold;" href="audittrail.jsp"><i
-                              class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail</a></li>
+                        <li><a style="font-weight: bold;" href="audittrail.jsp"><i class="fas fa-file-alt dropdown-icons--margin"></i>
+                              Audit Trail</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="profile.jsp"><i
-                              class="fas fa-user-md dropdown-icons--margin"></i> Profile</a></li>
+                        <li><a style="font-weight: bold;" href="profile.jsp"><i class="fas fa-user-md dropdown-icons--margin"></i>
+                              Profile</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="usermanagement.jsp"><i
-                              class="fas fa-wrench dropdown-icons--margin"></i> Settings</a></li>
+                        <li><a style="font-weight: bold;" href="usermanagement.jsp"><i class="fas fa-wrench dropdown-icons--margin"></i>
+                              Settings</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="login.jsp"><i
-                              class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout</a></li>
+                        <li><a style="font-weight: bold;" href="login.jsp"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                              Logout</a></li>
                      </ul></li>
                   <!-- End of Dropdown -->
                </ul>
@@ -96,7 +93,6 @@
       </nav>
    </div>
    <!-- End of header -->
-   <!-- Main Content -->
    <!-- Sidebar -->
    <div class="row-offcanvas row-offcanvas-left">
       <div id="sidebar" class="sidebar-offcanvas">
@@ -105,29 +101,27 @@
             <div class="row">
                <div class="col-sm-12 search-box">
                   <div>
-                     <input type="text" placeholder="Search Patient" class="sidebar__searchbox--border"
+                     <input id="searchbox" type="text" placeholder="Search Patient" class="sidebar__searchbox--border"
                         style="font-weight: bold; text-align: center;">
                   </div>
                </div>
             </div>
-            <!-- End of Search Box -->
-            <ul class="nav nav-pills nav-stacked sidebar__searchbox--border">
+            <ul id='searchboxfill' class="nav nav-pills nav-stacked sidebar__searchbox--border">
             </ul>
+            <!-- End of Search Box -->
             <!-- Add Patient Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="addPatientLeukemia" type="button"
-                     class="btn bg-yellow disabled sidebar__addptngenrep--border" data-toggle="modal"
-                     data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
+                  <button id="addPatientLeukemia" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border"
+                     data-toggle="modal" data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
                </div>
             </div>
             <!-- End of Add Patient Butto n -->
             <!-- Generate Report Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="generateReport" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border"
-                     data-toggle="modal" data-target="#usermanagement__popup" data-whatever="@mdo">Generate
-                     Report</button>
+                  <button id="generateReport" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border" data-toggle="modal"
+                     data-target="#usermanagement__popup" data-whatever="@mdo">Generate Report</button>
                </div>
             </div>
             <!-- End of Generate Report Button -->
@@ -141,22 +135,22 @@
                </button>
             </p>
             <!-- End of Sidebar -->
-            <form action="AddMyeloBaselineServlet" method="post">
+            <!-- Main Content -->
+            <!-- Form Container -->
+            <form action="" method="post" id="MyeloBaseline">
                <!-- Forms Container -->
                <div class="col-md-12">
                   <div class="col-md-12 forms">
                      <!-- Buttons Container -->
                      <div class="row button-container buttons__firsthalf--position ">
                         <div class="col-sm-6 buttons__firsthalf-position ">
-                           <a href="myelo-baseline.jsp" type="button" class="btn bg-yellow button-border"
-                              id="baselineBtn">Baseline</a> <a href="myelo-followup.jsp" type="button"
-                              class="btn bg-yellow button-border" id="followUpBtn">Follow Up</a>
+                           <a href="myelo-baseline.jsp" type="button" class="btn bg-yellow button-border" id="baselineBtn">Baseline</a> <a
+                              href="myelo-followup.jsp" type="button" class="btn bg-yellow button-border" id="followUpBtn">Follow Up</a>
                         </div>
                         <div class="col-sm-6 text-right btn-toolbar">
-                           <a href="#" type="button" class="btn bg-yellow button-border" id="edtPatientBtn">Patient
-                              Statistics</a> <a href="#" type="button" class="btn bg-yellow button-border"
-                              id="edtPatientBtn">Edit Patient</a> <a href="#" type="button"
-                              class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
+                           <a href="#" type="button" class="btn bg-yellow button-border" id="patientStatistics">Patient Statistics</a> <a
+                              href="#" type="button" class="btn bg-yellow button-border" id="editPatientBtn">Edit Patient</a> <a href="#"
+                              type="button" class="btn bg-yellow button-border" id="archPatientBtn">Archive Patient</a>
                         </div>
                      </div>
                      <!-- End of Buttons Container -->
@@ -177,20 +171,18 @@
                                     <!-- Patient ID Number -->
                                     <div class="form-group">
                                        <div class="col-sm-1">
-                                          <a id="" data-toggle="modal" data-target="#patientBarcode_popup" href="#"
-                                             alt="Barcode Icon"> <img alt="Barcode Icon" src="images/barcode.png"
+                                          <a id="" data-toggle="modal" data-target="#patientBarcode_popup" href="#" alt="Barcode Icon">
+                                             <img alt="Barcode Icon" src="images/barcode.png"
                                              class="form__barcodeicon--size body__barcodebtn--style">
                                           </a>
                                        </div>
                                        <!-- Barcode Pop-Up -->
-                                       <div id="patientBarcode_popup" class="modal fade centered-modal" tabindex="-1"
-                                          role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
-                                          data-backdrop="static">
+                                       <div id="patientBarcode_popup" class="modal fade centered-modal" tabindex="-1" role="dialog"
+                                          aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
                                           <div class="modal-dialog">
                                              <div class="modal-content">
                                                 <div class="modal-header">
-                                                   <button type="button" class="close" data-dismiss="modal"
-                                                      onclick="closeModal()">
+                                                   <button type="button" class="close" data-dismiss="modal" onclick="closeModal()">
                                                       <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
                                                    </button>
                                                    <h4 class="modal-title" id="exampleModalLabel">Patient Barcode:</h4>
@@ -239,7 +231,7 @@
                                        <label class="control-label col-sm-5">Gender</label>
                                        <div class="col-sm-7">
                                           <div class="radio">
-                                             <label><input type="radio" name="gender" value="1">Male</label>
+                                             <label><input type="radio" name="gender" value="1" required="required">Male</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="gender" value="2">Female</label>
@@ -279,7 +271,7 @@
                                        <label class="control-label col-sm-5">Tissue Specimen Collected</label>
                                        <div class="col-sm-7">
                                           <div class="radio">
-                                             <label><input type="radio" name="tissueSpecimenCollected" value="1">Yes</label>
+                                             <label><input type="radio" name="tissueSpecimenCollected" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="tissueSpecimenCollected" value="0">No</label>
@@ -332,15 +324,12 @@
                                        <div class="col-sm-9">
                                           <select class="form-control" name="diagnosis">
                                              <option selected="selected" disabled="disabled">Select</option>
-                                             <option value="D75.81 Primary Myelofibrosis">D75.81 Primary
-                                                Myelofibrosis</option>
+                                             <option value="D75.81 Primary Myelofibrosis">D75.81 Primary Myelofibrosis</option>
                                              <option value="D45.0 Polycythemia Vera">D45.0 Polycythemia Vera</option>
-                                             <option value="D47.3 Essential Thrombocythemia">D47.3 Essential
-                                                Thrombocythemia</option>
+                                             <option value="D47.3 Essential Thrombocythemia">D47.3 Essential Thrombocythemia</option>
                                              <option value="D75.81 Secondary Myelofibrosis (Post-Polycythemia Vera)">D75.81
                                                 Secondary Myelofibrosis (Post-Polycythemia Vera)</option>
-                                             <option
-                                                value="D75.81 Secondary Myelofibrosis (Post-Essential Thrombocythemia)">D75.81
+                                             <option value="D75.81 Secondary Myelofibrosis (Post-Essential Thrombocythemia)">D75.81
                                                 Secondary Myelofibrosis (Post-Essential Thrombocythemia)</option>
                                              <option value="Others">Others</option>
                                           </select>
@@ -366,10 +355,10 @@
                                        </div>
                                     </div>
                                     <!-- Others -->
-                                    <div class="form-group" id="prognosticRiskScoringothers" style="display: none;">
+                                    <div class="form-group" id="prognosticRiskScoringOthers" style="display: none;">
                                        <label class="control-label col-sm-3">Others Please Specify</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="prognosticRiskScoringothers">
+                                          <input type="text" class="form-control" name="prognosticRiskScoringOthers">
                                        </div>
                                     </div>
                                     <!-- Risk Score -->
@@ -424,7 +413,7 @@
                                        <label class="control-label col-sm-3">Family History of Cancer</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistoryOfCancer" value="1">Yes</label>
+                                             <label><input type="radio" name="familyHistoryOfCancer" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="familyHistoryOfCancer" value="0">No</label>
@@ -464,7 +453,7 @@
                                        <label class="control-label col-sm-3">Thrombosis History</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="thrombosisHistory" value="1">Yes</label>
+                                             <label><input type="radio" name="thrombosisHistory" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="thrombosisHistory" value="0">No</label>
@@ -482,7 +471,7 @@
                                        <label class="control-label col-sm-3">Concomitant Medications</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="concomitantMedications" value="1">Yes</label>
+                                             <label><input type="radio" name="concomitantMedications" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="concomitantMedications" value="0">No</label>
@@ -493,9 +482,9 @@
                                     <div class="form-group" id="concomitantMedications" style="display: none;">
                                        <div class="row">
                                           <div class="col-sm-3"></div>
-                                          <label class="control-label col-sm-3" style="text-align: left;">Generic
-                                             Name</label> <label class="control-label col-sm-3" style="text-align: left;">Dose</label>
-                                          <label class="control-label col-sm-3" style="text-align: left;">Frequency</label>
+                                          <label class="control-label col-sm-3" style="text-align: left;">Generic Name</label> <label
+                                             class="control-label col-sm-3" style="text-align: left;">Dose</label> <label
+                                             class="control-label col-sm-3" style="text-align: left;">Frequency</label>
                                        </div>
                                        <div class="row">
                                           <div class="col-sm-3"></div>
@@ -515,7 +504,7 @@
                                        <label class="control-label col-sm-3">Smoking History</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="smokingHistory" value="1">Yes</label>
+                                             <label><input type="radio" name="smokingHistory" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="smokingHistory" value="0">No</label>
@@ -533,7 +522,7 @@
                                        <label class="control-label col-lg-3">Alcohol intake history </label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="alcoholIntakeHistory" value="1">Yes</label>
+                                             <label><input type="radio" name="alcoholIntakeHistory" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="alcoholIntakeHistory" value="0">No</label>
@@ -551,7 +540,7 @@
                                        <label class="control-label col-lg-3">Chemical exposure</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="chemicalExposureHistory" value="1">Yes</label>
+                                             <label><input type="radio" name="chemicalExposureHistory" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="chemicalExposureHistory" value="0">No</label>
@@ -591,7 +580,7 @@
                                        <label class="control-label col-lg-4">Presence of Splenomegaly</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfSplenomegaly" value="1">Yes</label>
+                                             <label><input type="radio" name="presenceOfSplenomegaly" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="presenceOfSplenomegaly" value="0">No</label>
@@ -602,7 +591,7 @@
                                        <label class="control-label col-lg-4">Presence of Hepatomegaly</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfHepatomegaly" value="1">Yes</label>
+                                             <label><input type="radio" name="presenceOfHepatomegaly" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="presenceOfHepatomegaly" value="0">No</label>
@@ -613,12 +602,10 @@
                                        <label class="control-label col-lg-4">Presence of Lymphadenopathies</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfLymphadenopathies"
-                                                value="1">Yes</label>
+                                             <label><input type="radio" name="presenceOfLymphadenopathies" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfLymphadenopathies"
-                                                value="0">No</label>
+                                             <label><input type="radio" name="presenceOfLymphadenopathies" value="0">No</label>
                                           </div>
                                        </div>
                                     </div>
@@ -651,8 +638,8 @@
                                     </h3>
                                     <!-- Labels -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label
-                                          class="col-sm-4" style="text-align: left;">Result</label>
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-sm-4"
+                                          style="text-align: left;">Result</label>
                                        <div class="col-sm-4">
                                           <input type="checkbox"> <label>Not done</label>
                                        </div>
@@ -680,7 +667,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Neutrophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="text" class="form-control" name="neutrophil" />
+                                          <input type="text" class="form-control" name="neutrophils" />
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -738,8 +725,8 @@
                                        <label class="control-label">Other Laboratories</label>
                                     </h3>
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label
-                                          class="col-lg-4" style="text-align: left;">Result</label>
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-lg-4"
+                                          style="text-align: left;">Result</label>
                                        <div class="col-lg-4">
                                           <input type="checkbox"> <label>Not done</label>
                                        </div>
@@ -782,11 +769,10 @@
                                     </div>
                                     <!-- Bone Marrow  -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Bone Marrow Aspirate and Biopsy
-                                          result</label>
+                                       <label class="control-label col-sm-4">Bone Marrow Aspirate and Biopsy result</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="boneMarrowAspirate" value="1">Yes</label>
+                                             <label><input type="radio" name="boneMarrowAspirate" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="boneMarrowAspirate" value="0">No</label>
@@ -805,12 +791,10 @@
                                           <input type="text" class="form-control" name="boneMarrowAspirateDescription" />
                                        </div>
                                     </div>
-                                    <div class="form-group" id="boneMarrowAspirateAttachScannedDocument"
-                                       style="display: none;">
+                                    <div class="form-group" id="boneMarrowAspirateAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
-                                          <input type="file" class="form-control"
-                                             name="boneMarrowAspirateAttachScannedDocument" />
+                                          <input type="file" class="form-control" name="boneMarrowAspirateAttachScannedDocument" />
                                        </div>
                                     </div>
                                     <!-- Molecular Analysis (Jak 2 assay) -->
@@ -818,11 +802,11 @@
                                        <label class="control-label col-sm-4">Molecular Analysis (Jak 2 assay)</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="molecularAnalysis" value="1">Yes</label>
+                                             <label><input type="radio" name="molecularAnalysis" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="molecularAnalysis" value="0">No
-                                                / Not Applicable</label>
+                                             <label><input type="radio" name="molecularAnalysis" value="0">No / Not
+                                                Applicable</label>
                                           </div>
                                        </div>
                                     </div>
@@ -845,12 +829,11 @@
                                        <label for="severity" class="control-label col-sm-4">Mode of Treatment</label>
                                        <div class="col-sm-8">
                                           <select class="form-control" name="treatment">
-                                             <option value="Hematopoietic Stem Cell Transplantation">Hematopoietic
-                                                Stem Cell Transplantation</option>
+                                             <option value="Hematopoietic Stem Cell Transplantation">Hematopoietic Stem Cell
+                                                Transplantation</option>
                                              <option value="Pharmacologic Treatment">Pharmacologic Treatment</option>
                                              <option value="Supportive">Supportive</option>
-                                             <option value="Both Pharmacologic and Supportive">Both
-                                                Pharmacologic and Supportive</option>
+                                             <option value="Both Pharmacologic and Supportive">Both Pharmacologic and Supportive</option>
                                              <option value="Watch and Wait">Watch and Wait</option>
                                           </select>
                                        </div>
@@ -875,17 +858,23 @@
                               <!-- End of Therapy -->
                            </div>
                            <!-- End of CLT Tab Content -->
-                           <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border">
+                           <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitQuery'> <input
+                              type="button" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitCancel' value='Cancel'
+                              onclick='cancelEdit()'>
                         </div>
                         <!-- End of CLT -->
                      </div>
                   </div>
                </div>
             </form>
+            <!-- End of Forms  -->
          </div>
-         <!-- End of Forms -->
       </div>
       <!-- End of Main Content -->
    </div>
+   <!-- End of Main Container -->
+   <script src="js/JsBarcode.barcodePrint.js"></script>
+   <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+   <script src="js/disease.myelo-baseline.js"></script>
 </body>
 </html>

@@ -164,10 +164,10 @@ public class SQLOperations implements SQLCommands {
 		return rs;
 	}
 
-	public static boolean archivePatient(int accountID, Connection connection) {
+	public static boolean archivePatient(int patientID, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(ARCHIVE_PATIENT);
-			pstmt.setInt(1, accountID);
+			pstmt.setInt(1, patientID);
 			pstmt.executeUpdate();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- archivePatient: " + sqle.getMessage());
@@ -175,6 +175,31 @@ public class SQLOperations implements SQLCommands {
 		}
 
 		return true;
+	}
+	
+	public static boolean deleteFollowup(int followupId, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(DELETE_FOLLOWUP);
+			pstmt.setInt(1, followupId);
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- deleteFollowup: " + sqle.getMessage());
+			return false;
+		}
+
+		return true;
+	}
+	
+	public static ResultSet getVisits(int patientId, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_VISITS);
+			pstmt.setInt(1, patientId);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
 	}
 
 }

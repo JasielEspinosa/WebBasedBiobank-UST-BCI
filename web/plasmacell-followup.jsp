@@ -65,7 +65,7 @@
                   <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
                   <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
                   <li class="active"><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-                  <li><a href="aaphsmds-baseline.jsp">AA DNS MDS</a></li>
+                  <li><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
                   <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                   <!-- Dropdown -->
@@ -219,7 +219,7 @@
                                           medication for the hematologic malignancy?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="hematologicMalignancy" value="1">Yes</label>
+                                             <label><input type="radio" name="hematologicMalignancy" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="hematologicMalignancy" value="0">No</label>
@@ -238,7 +238,7 @@
                                           medication for other diseases?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="otherDiseaseMedication" value="1">Yes</label>
+                                             <label><input type="radio" name="otherDiseaseMedication" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="otherDiseaseMedication" value="0">No</label>
@@ -257,7 +257,7 @@
                                           procedure or intervention?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="procedure" value="1">Yes</label>
+                                             <label><input type="radio" name="procedure" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="procedure" value="0">No</label>
@@ -276,7 +276,7 @@
                                           chemotherapy?</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="chemotherapy" value="1">Yes</label>
+                                             <label><input type="radio" name="chemotherapy" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="chemotherapy" value="0">No</label>
@@ -324,7 +324,7 @@
                                        <label class="control-label col-sm-4">Pertinent findings</label>
                                        <div class="col-sm-6">
                                           <div class="radio">
-                                             <label><input type="radio" name="pertinentFindings" value="1">Yes</label>
+                                             <label><input type="radio" name="pertinentFindings" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="pertinentFindings" value="0">No</label>
@@ -485,7 +485,7 @@
                                        <label class="control-label col-sm-4">Imaging Studies</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="imagingStudies" value="1">Yes</label>
+                                             <label><input type="radio" name="imagingStudies" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="imagingStudies" value="0">No
@@ -505,7 +505,7 @@
                                           result</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="boneMarrowAspirate" value="1">Yes</label>
+                                             <label><input type="radio" name="boneMarrowAspirate" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="boneMarrowAspirate" value="0">No</label>
@@ -538,7 +538,7 @@
                                        <div class="col-sm-8">
                                           <div class="radio">
                                              <label><input type="radio" name="serumFreeLightChainAsssay"
-                                                value="1">Yes</label>
+                                                value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="serumFreeLightChainAsssay"
@@ -566,7 +566,7 @@
                                        <div class="col-sm-8">
                                           <div class="radio">
                                              <label><input type="radio" name="serumProteinElectrophoresis"
-                                                value="1">Yes</label>
+                                                value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="serumProteinElectrophoresis"
@@ -595,7 +595,7 @@
                                        <label class="control-label col-sm-4">Serum Immunofixation</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="serumImmunofixation" value="1">Yes</label>
+                                             <label><input type="radio" name="serumImmunofixation" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="serumImmunofixation" value="0">No
@@ -623,7 +623,7 @@
                                           electrophoresis/Immunofixation</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="urineProtein" value="1">Yes</label>
+                                             <label><input type="radio" name="urineProtein" value="1" required="required">Yes</label>
                                           </div>
                                           <div class="radio">
                                              <label><input type="radio" name="urineProtein" value="0">No
