@@ -126,11 +126,11 @@
             <!-- Add Patient Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="addPatient" type="button" class="btn bg-yellow disabled sidebar__addptngenrep--border" data-toggle="modal"
+                  <button id="addPatient" type="button" class="btn bg-yellow sidebar__addptngenrep--border" data-toggle="modal"
                      data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
                </div>
             </div>
-            <!-- End of Add Patient Butto n -->
+            <!-- End of Add Patient Button -->
             <!-- Generate Report Button -->
             <div class="row">
                <div class="col-sm-12 add-box">

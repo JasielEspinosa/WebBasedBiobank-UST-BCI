@@ -8,7 +8,7 @@ var params = {
 
 var editState = false;
 
-$("#FollowUp").submit(function(e) {
+$("#PlateletBaseline").submit(function(e) {
 	e.preventDefault();
 });
 
