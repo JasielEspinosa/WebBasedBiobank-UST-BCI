@@ -8,11 +8,14 @@
 <link rel="icon" href="images/usthlogo.png">
 
 <!-- CSS -->
+<link rel="stylesheet" href="fonts/open-sans.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link href="css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/sidebar.css">
-<link href="css/responsive.css" rel="stylesheet">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/pure-min.css">
+<link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -86,7 +89,7 @@
               <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
               <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
               <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-              <li><a href="aaphsmds-baseline.jsp">AA PNH MDS</a></li>
+              <li><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
               <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
               <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
 

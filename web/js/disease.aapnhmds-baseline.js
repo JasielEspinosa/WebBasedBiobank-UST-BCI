@@ -1,65 +1,65 @@
 var responseJson;
 
 var params = {
-	action : '',	
+	action : '',
 	search : '',
-	patientId : ''
+	patientID : ''
 };
 
 var editState = false;
 var upperActionState = false;
 
 $("#AAPNHMDSBaseline").submit(function(e) {
-   e.preventDefault();
-	});
+	e.preventDefault();
+});
 
-$('document').ready(function(){
-	
+$('document').ready(function() {
+
 	actionBind();
 	unbindEvents();
-    $("#searchbox").on('input',function(){
-    	loadPatientList();
-    });
-    
+	$("#searchbox").on('input', function() {
+		loadPatientList();
+	});
+
 	$("#baselineBtn").click(function() {
-		if(upperActionState == true){
-			loadPatientData(params.patientId);
-		}		
+		if (upperActionState == true) {
+			loadPatientData(params.patientID);
+		}
 	});
 	$("#followUpBtn").click(function() {
-		if(upperActionState == true){
-			windows.location = ("aaphsmds-followup.jsp").redirect();
+		if (upperActionState == true) {
+			windows.location = ("aapnhmds-followup.jsp").redirect();
 		}
 	});
 	$("#patientStatistics").click(function() {
-		if(upperActionState == true){
-			
+		if (upperActionState == true) {
+
 		}
 	});
-	$("#edtPatientBtn").click(function() {
-		if(upperActionState == true){
+	$("#editPatientBtn").click(function() {
+		if (upperActionState == true) {
 			editBind();
 			alert('edit triggered')
 		}
 	});
 	$("#archPatientBtn").click(function() {
-		if(upperActionState == true){
-			$.post('ArchivePatientServlet', $.param(params), function (response) {
+		if (upperActionState == true) {
+			$.post('ArchivePatientServlet', $.param(params), function(response) {
 				alert("Patient Archived")
-			}).fail(function(){
-			});	
+			}).fail(function() {
+			});
 		}
 	});
-     
-   if(localStorage.getItem("fromFollowup1") != ""){
-    	alert(localStorage.getItem("id1"));
-    	loadPatientData(localStorage.getItem("id1"));
-    	localStorage.setItem("fromFollowup1","");
-    }
-	
+
+	if (localStorage.getItem("fromFollowUp1") != "") {
+		alert(localStorage.getItem("id1"));
+		loadPatientData(localStorage.getItem("id1"));
+		localStorage.setItem("fromFollowUp1", "");
+	}
+
 });
 
-//load patient data
+// load patient data
 function loadPatientData(id) {
 
 	params.patientID = id;
@@ -282,80 +282,82 @@ function loadPatientData(id) {
 	})
 };
 
-//load patient list to search box
-function loadPatientList(){
+// load patient list to search box
+function loadPatientList() {
 	params.action = '1';
 	params.search = $("#searchbox").val();
 	$('#searchboxfill').empty();
-	$.post('LoadPatientsServlet', $.param(params), function (responseJson) {
-      $.each(responseJson, function(index, patient) {   
-      $('#searchboxfill')
-      	.append("<p value='"+patient.patientID +"' onClick=\"loadPatientData("+patient.patientID +")\"" +
-      			">"+ patient.firstName + " " + patient.middleName+ " " + patient.lastName +"</p>")   
-  });
-		
-	}).fail(function(){
-	});	
-	
+	$.post(
+			'LoadPatientsServlet',
+			$.param(params),
+			function(responseJson) {
+				$.each(responseJson, function(index, patient) {
+					$('#searchboxfill').append(
+							"<p value='" + patient.patientID + "' onClick=\"loadPatientData(" + patient.patientID + ")\"" + ">"
+									+ patient.firstName + " " + patient.middleName + " " + patient.lastName + "</p>")
+				});
+
+			}).fail(function() {
+	});
+
 };
 
-//bind functions
+// bind functions
 
-//remove button function
-function unbindEvents(){
+// remove button function
+function unbindEvents() {
 	$("#baselineBtn").hide();
 	$("#followUpBtn").hide();
 	$("#patientStatistics").hide();
-	$("#edtPatientBtn").hide();
+	$("#editPatientBtn").hide();
 	$("#archPatientBtn").hide();
 	$("#submitCancel").hide();
 	upperActionState = false;
 	addBind();
 };
 
-function bindEvents(){
-	localStorage.setItem("id1",params.patientId);
+function bindEvents() {
+	localStorage.setItem("id1", params.patientID);
 	$("#baselineBtn").show();
 	$("#followUpBtn").show();
 	$("#patientStatistics").show();
-	$("#edtPatientBtn").show();
+	$("#editPatientBtn").show();
 	$("#archPatientBtn").show();
 	upperActionState = true;
 };
 
-//add bind
+// add bind
 
-function actionBind(){
+function actionBind() {
 	$('#AAPNHMDSBaseline').submit(function() {
 		var $form = $(this);
-		if(editState == false){
-			$.post('AddAAPNHMDSBaselineServlet', $form.serialize(), function (response) {
-					alert("Patient added")
-			}).fail(function(){
-				});	
-		}else{
-			$.post('EditAAPNHMDSBaselineServlet', $form.serialize(), function (response) {
+		if (editState == false) {
+			$.post('AddAAPNHMDSBaselineServlet', $form.serialize(), function(response) {
+				alert("Patient added")
+			}).fail(function() {
+			});
+		} else {
+			$.post('EditAAPNHMDSBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
-			}).fail(function(){
-				});			
+			}).fail(function() {
+			});
 		}
 	});
 };
 
-function addBind(){
+function addBind() {
 	editState = false;
 };
 
-//edit bind
-function editBind(){
-	$("#submitCancel").show();	
+// edit bind
+function editBind() {
+	$("#submitCancel").show();
 	editState = true;
 };
 
-function cancelEdit(){
-	//make fields uneditable (incomplete)
+function cancelEdit() {
+	// make fields uneditable (incomplete)
 	addBind();
 	$("#submitCancel").hide();
 };
-
 

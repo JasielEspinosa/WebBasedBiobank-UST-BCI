@@ -1,24 +1,24 @@
 var responseJson;
 var id;
-var followupId;
+var followupID;
 var params = {
 	action : '',	
 	search : '',
-	patientId : '',
-	followupId: ''	
+	patientID : '',
+	followupID: ''	
 };
 
 var editState = false;
 var upperActionState = false;
 
-$("#AddPlasmaCellFollowup").submit(function(e) {
+$("#PlasmaCellFollowUp").submit(function(e) {
    e.preventDefault();
 	});
 
 $('document').ready(function(){
 	alert(localStorage.getItem("id6"))
-	params.patientId = localStorage.getItem("id6");
-	$("#patientId").val(localStorage.getItem("id6"));
+	params.patientID = localStorage.getItem("id6");
+	$("#patientID").val(localStorage.getItem("id6"));
 
 	actionBind();
 	unbindEvents();
@@ -28,12 +28,12 @@ $('document').ready(function(){
     });
     
 	$("#baselineBtn").click(function() {
-		localStorage.setItem("fromFollowup6","pass");
+		localStorage.setItem("fromFollowUp6","pass");
 		windows.location = ("plasmacell-baseline.jsp").redirect();
 		
 	});
 	$("#followUpBtn").click(function() {
-			loadFollowupList();
+			loadFollowUpList();
 			unbindEvents();
 	});
 	$("#patientStatistics").click(function() {
@@ -41,7 +41,7 @@ $('document').ready(function(){
 			
 		}
 	});
-	$("#edtPatientBtn").click(function() {
+	$("#editPatientBtn").click(function() {
 		if(upperActionState == true){
 			editBind();
 			alert('edit triggered')
@@ -49,7 +49,7 @@ $('document').ready(function(){
 	});
 	$("#archPatientBtn").click(function() {
 		if(upperActionState == true){
-			$.post('DeleteFollowupServlet', $.param(params), function (response) {
+			$.post('DeleteFollowUpServlet', $.param(params), function (response) {
 				alert("Patient followup deleted")
 				unbindEvents();
 			}).fail(function(){
@@ -57,7 +57,7 @@ $('document').ready(function(){
 		}
 	});
 	
-	loadFollowupList();
+	loadFollowUpList();
 	
 	
 });
@@ -65,7 +65,7 @@ $('document').ready(function(){
 //load patient data
 function loadPatientData(id){
 
-	params.patientId = id;
+	params.patientID = id;
 	$.post('LoadPlasmaCellBaselineServlet', $.param(params), function (response) {
 		// in order from add servlet
 		//general data
@@ -164,12 +164,12 @@ function loadPatientData(id){
 };
 
 //load followup data
-function loadFollowupData(followupId){
+function loadFollowUpData(followupID){
 	
-	params.followupId = followupId;
-	$("#followupId").val(followupId);
+	params.followupID = followupID;
+	$("#followupID").val(followupID);
 	
-	$.post('LoadPlasmaCellFollowupServlet', $.param(params), function (response) {
+	$.post('LoadPlasmaCellFollowUpServlet', $.param(params), function (response) {
 		// in order from followup servlet
 		//followup data
 		alert('data loaded')
@@ -260,12 +260,12 @@ function loadPatientList(){
 };
 
 //load followup list
-function loadFollowupList(){
+function loadFollowUpList(){
 	$('#visitFill').empty();
 	$.post('LoadVisitsServlet', $.param(params), function (responseJson) {
       $.each(responseJson, function(index, patient) {   
       $('#visitFill')
-      	.append("<p value='"+patient.followupID +"' onClick=\"loadFollowupData("+patient.followupID +")\"" +
+      	.append("<p value='"+patient.followupID +"' onClick=\"loadFollowUpData("+patient.followupID +")\"" +
       			">"+ patient.dateOfVisit +"</p>")   
   });
 		
@@ -279,7 +279,7 @@ function loadFollowupList(){
 
 //remove button function
 function unbindEvents(){
-	$("#edtPatientBtn").hide();
+	$("#editPatientBtn").hide();
 	$("#archPatientBtn").hide();
 	$("#submitCancel").hide();
 	upperActionState = false;
@@ -287,8 +287,8 @@ function unbindEvents(){
 };
 
 function bindEvents(){
-	localStorage.setItem("id1",params.patientId);
-	$("#edtPatientBtn").show();
+	localStorage.setItem("id1",params.patientID);
+	$("#editPatientBtn").show();
 	$("#archPatientBtn").show();
 	upperActionState = true;
 };
@@ -296,8 +296,8 @@ function bindEvents(){
 //add bind
 
 function actionBind(){
-	$('#AddPlasmaCellFollowup').submit(function() {
-		alert($("#patientId").val());
+	$('#PlasmaCellFollowUp').submit(function() {
+		alert($("#patientID").val());
 		var $form = $(this);
 		if(editState == false){
 			$.post('AddPlasmaCellFollowUpServlet', $form.serialize(), function (response) {

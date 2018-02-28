@@ -11,16 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import utility.database.SQLOperations;
 
-/**
- * Servlet implementation class DeleteFollowupServlet
- */
-@WebServlet("/DeleteFollowupServlet")
-public class DeleteFollowupServlet extends HttpServlet {
+@WebServlet("/DeleteFollowUpServlet")
+public class DeleteFollowUpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
 	private Connection connection;
 	
 	public void init()
@@ -35,28 +29,19 @@ public class DeleteFollowupServlet extends HttpServlet {
 		}
 	}
 	
-    public DeleteFollowupServlet() {
+    public DeleteFollowUpServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain");
 		
-		int followupId = Integer.parseInt(request.getParameter("followupId"));
+		int followupId = Integer.parseInt(request.getParameter("followupID"));
 		
 		if (connection != null) {
 			if (SQLOperations.deleteFollowup(followupId, connection)) {

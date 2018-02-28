@@ -7,6 +7,7 @@ var params = {
 };
 
 var editState = false;
+var upperActionState = false;
 
 $("#CoagulationBaseline").submit(function(e) {
 	e.preventDefault();
@@ -19,6 +20,43 @@ $('document').ready(function() {
 	$("#searchbox").on('input', function() {
 		loadPatientList();
 	});
+
+	$("#baselineBtn").click(function() {
+		if (upperActionState == true) {
+			loadPatientData(params.patientId);
+		}
+	});
+	$("#followUpBtn").click(function() {
+		if (upperActionState == true) {
+			windows.location = ("coagulation-followup.jsp").redirect();
+		}
+	});
+	$("#patientStatistics").click(function() {
+		if (upperActionState == true) {
+
+		}
+	});
+	$("#editPatientBtn").click(function() {
+		if (upperActionState == true) {
+			editBind();
+			alert('edit triggered')
+		}
+	});
+	$("#archPatientBtn").click(function() {
+		if (upperActionState == true) {
+			$.post('ArchivePatientServlet', $.param(params), function(response) {
+				alert("Patient Archived")
+			}).fail(function() {
+			});
+		}
+	});
+
+	if (localStorage.getItem("fromFollowUp1") != "") {
+		alert(localStorage.getItem("id1"));
+		loadPatientData(localStorage.getItem("id1"));
+		localStorage.setItem("fromFollowUp1", "");
+	}
+
 });
 
 // load patient data
@@ -210,40 +248,24 @@ function loadPatientList() {
 
 // remove button function
 function unbindEvents() {
-	$("#baselineBtn").hide().click(function() {
-	});
-	$("#followUpBtn").hide().click(function() {
-	});
-	$("#patientStatistics").hide().click(function() {
-	});
-	$("#editPatientBtn").hide().click(function() {
-	});
-	$("#archPatientBtn").hide().click(function() {
-	});
+	$("#baselineBtn").hide();
+	$("#followUpBtn").hide();
+	$("#patientStatistics").hide();
+	$("#editPatientBtn").hide();
+	$("#archPatientBtn").hide();
 	$("#submitCancel").hide();
-	$('#CoagulationBaseline').unbind("onsubmit");
-	// $('#CoagulationBaseline').removeAttr('onsubmit');
+	upperActionState = false;
 	addBind();
 };
 
 function bindEvents() {
-	$("#baselineBtn").show().click(function() {
-	});
-	$("#followUpBtn").show().click(function() {
-	});
-	$("#patientStatistics").show().click(function() {
-	});
-	$("#editPatientBtn").show().click(function() {
-		// $('#CoagulationBaseline').removeAttr('onsubmit');
-		editBind();
-		alert('edit triggered')
-	});
-	$("#archPatientBtn").show().click(function() {
-		$.post('ArchivePatientServlet', $.param(params), function(response) {
-			alert("Patient Archived")
-		}).fail(function() {
-		});
-	});
+	localStorage.setItem("id1", params.patientId);
+	$("#baselineBtn").show();
+	$("#followUpBtn").show();
+	$("#patientStatistics").show();
+	$("#editPatientBtn").show();
+	$("#archPatientBtn").show();
+	upperActionState = true;
 };
 
 // add bind

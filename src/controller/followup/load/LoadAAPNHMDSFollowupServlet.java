@@ -17,17 +17,10 @@ import com.google.gson.Gson;
 import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
 
-/**
- * Servlet implementation class LoadAAPHSMDSFollowupServlet
- */
-@WebServlet("/LoadAAPHSMDSFollowupServlet")
-public class LoadAAPHSMDSFollowupServlet extends HttpServlet {
+@WebServlet("/LoadAAPNHMDSFollowUpServlet")
+public class LoadAAPNHMDSFollowupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-	
+
 	private Connection connection;
 
 	public void init()
@@ -41,36 +34,28 @@ public class LoadAAPHSMDSFollowupServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-    public LoadAAPHSMDSFollowupServlet() {
+    public LoadAAPNHMDSFollowupServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json"); 
 	    Map<String, String> followupData = new LinkedHashMap<>();
 		
-		int followupId = Integer.parseInt(request.getParameter("followupId"));
-		followupData.put("followupId", Integer.toString(followupId));
+		int followupID = Integer.parseInt(request.getParameter("followupID"));
+		followupData.put("followupID", Integer.toString(followupID));
 		
 		try {	
 			if (connection != null) {
 				
 				//get followup table
-				ResultSet followup = SQLOperationsFollowUp.getFollowup(followupId, connection);
+				ResultSet followup = SQLOperationsFollowUp.getFollowup(followupID, connection);
 				followup.first();
 				followupData.put("dateOfEntry", followup.getString("dateOfEntry"));
 				followupData.put("dateOfVisit", followup.getString("dateOfVisit"));

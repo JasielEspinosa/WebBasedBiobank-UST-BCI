@@ -11,17 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import utility.database.SQLOperations;
 
-/**
- * Servlet implementation class ArchivePatientServlet
- */
 @WebServlet("/ArchivePatientServlet")
 public class ArchivePatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
 	private Connection connection;
-	
-	public void init()
-			throws ServletException {
+
+	public void init() throws ServletException {
 		connection = SQLOperations.getConnection();
 
 		if (connection != null) {
@@ -31,33 +27,24 @@ public class ArchivePatientServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-	
-    public ArchivePatientServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	public ArchivePatientServlet() {
+		super();
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain");
-		
-		int patientId = Integer.parseInt(request.getParameter("patientId"));
-		
+
+		int patientID = Integer.parseInt(request.getParameter("patientID"));
+
 		if (connection != null) {
-			if (SQLOperations.deleteFollowup(patientId, connection)) {
+			if (SQLOperations.deleteFollowup(patientID, connection)) {
 				System.out.println("Successful delete");
 				response.getWriter().write("Success");
 			} else {

@@ -16,17 +16,13 @@ import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
-/**
- * Servlet implementation class EditAAPHSMDSFollowUpServlet
- */
 @WebServlet("/EditCoagulationFollowUpServlet")
-public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet {
+public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
-       
+
 	private Connection connection;
 
-	public void init()
-			throws ServletException {
+	public void init() throws ServletException {
 		connection = SQLOperationsBaseline.getConnection();
 
 		if (connection != null) {
@@ -36,32 +32,23 @@ public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-	
-    public EditCoagulationDiseaseFollowUpServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	public EditCoagulationDiseaseFollowUpServlet() {
+		super();
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+
 		String noValue = "";
-		
-		int disease = 1;
-		System.out.println(request.getParameter("patientId"));
-		int patientID = Integer.parseInt(request.getParameter("patientId"));
-		int followupId = Integer.parseInt(request.getParameter("followupId"));
+
+		int disease = 2;
+
+		int patientID = Integer.parseInt(request.getParameter("patientID"));
+		int followupId = Integer.parseInt(request.getParameter("followupID"));
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
@@ -72,17 +59,17 @@ public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet {
 		String notes = request.getParameter("specialNotes");
 
 		//load
-		try {	
+		try {
 			if (connection != null) {
 				ResultSet followup = SQLOperationsFollowUp.getFollowup(followupId, connection);
 				followup.first();
-				
-				int medicalEventsid =  followup.getInt("MedicalEventsID");
-	
-				MedicalEventsBean meb = BeanFactory.getMedicalEventsBean("", "", factorConcentrate, factorConcentrateDates, factorConcentrateDose,
-						procedureIntervention, "");
+
+				int medicalEventsid = followup.getInt("MedicalEventsID");
+
+				MedicalEventsBean meb = BeanFactory.getMedicalEventsBean("", "", factorConcentrate, factorConcentrateDates,
+						factorConcentrateDose, procedureIntervention, "");
 				if (connection != null) {
-					if (SQLOperationsFollowUp.updateMedicalEvents(meb, connection, disease,medicalEventsid)) {
+					if (SQLOperationsFollowUp.updateMedicalEvents(meb, connection, disease, medicalEventsid)) {
 						System.out.println("Successful insert MedicalEventsBean");
 					} else {
 						System.out.println("Failed insert MedicalEventsBean");
@@ -93,15 +80,15 @@ public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet {
 
 				FollowUpBean fub = BeanFactory.getFollowUpBean(patientID, dateOfEntry, dateOfVisit, notes);
 				if (connection != null) {
-					if (SQLOperationsFollowUp.updateFollowUp(fub, connection, disease,followupId)) {
+					if (SQLOperationsFollowUp.updateFollowUp(fub, connection, disease, followupId)) {
 						System.out.println("Successful insert FollowUpBean");
 					} else {
 						System.out.println("Failed insert FollowUpBean");
 					}
 				} else {
 					System.out.println("Invalid connection FollowUpBean");
-				}	
-		
+				}
+
 			} else {
 				System.out.println("Invalid Connection resource");
 			}
@@ -109,7 +96,7 @@ public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet {
 			System.err.println("Invalid Connection resource - " + npe.getMessage());
 		} catch (Exception e) {
 			System.err.println("Exception - " + e.getMessage());
-		}		
+		}
 	}
 
 }

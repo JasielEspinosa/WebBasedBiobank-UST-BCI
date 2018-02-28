@@ -15,25 +15,27 @@
 <link rel="icon" href="images/usthlogo.png">
 
 <!-- CSS -->
+<link rel="stylesheet" href="fonts/open-sans.css">
 <link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/dashboard.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/navbar.css">
+<link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/responsive.css">
-<link rel="stylesheet" href="fonts/open-sans.css">
+<link rel="stylesheet" href="css/pure-min.css">
+<link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
 
 <!-- JS -->
+<script src="js/jquery-ui.js"></script>
 <script src="js/jquery.min-2.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script defer src="js/fontawesome-all.js"></script>
-<script src="js/Chart.bundle.js"></script>
-<script src="js/Chart.bundle.min.js"></script>
 <script src="js/Chart.js"></script>
 <script src="js/Chart.min.js"></script>
+<script src="js/Chart.bundle.js"></script>
+<script src="js/Chart.bundle.min.js"></script>
 <script src="js/graph.js" type="text/javascript"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
+<script defer src="js/fontawesome-all.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
 </head>
@@ -79,7 +81,7 @@
               <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
               <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
               <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-              <li><a href="aaphsmds-baseline.jsp">AA PNH MDS</a></li>
+              <li><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
               <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
               <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
 
@@ -184,11 +186,11 @@
                       <div class="row col-md-offset-1">
                         <div class="col-md-4 dashboard__framecontainer">
                           <div class="dashboard__images morph pic">
-                            <a data-target="#aadnsmdsModal" data-toggle="modal"> <img
-                              src="images/aplasticanemiavectoredited.png" alt="aadnsmds">
+                            <a data-target="#aapnhmdsModal" data-toggle="modal"> <img
+                              src="images/aplasticanemiavectoredited.png" alt="aapnhmds">
                             </a>
                             <div class="middle">
-                              <div class="text">AA DNS MDS</div>
+                              <div class="text">AA PNH MDS</div>
                             </div>
                           </div>
                         </div>
@@ -493,7 +495,7 @@
       <!-- End of Plasma Cell Modal  -->
 
       <!-- AA PNH MDS Modal  -->
-      <div class="modal fade" id="aadnsmdsModal" tabindex="-1" role="dialog" aria-labelledby="plasmaCellLabel"
+      <div class="modal fade" id="aapnhmdsModal" tabindex="-1" role="dialog" aria-labelledby="plasmaCellLabel"
         aria-hidden="true" data-backdrop="static">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -508,7 +510,7 @@
               <div class="row">
                 <div class="col-md-3 ">
                   <div class="blur pic">
-                    <img src="images/aplasticanemiavector.png" alt="AA DNS MDS Picture">
+                    <img src="images/aplasticanemiavector.png" alt="AA PNH MDS Picture">
                   </div>
                 </div>
                 <div class="col-md-9">
@@ -524,13 +526,13 @@
 
               <div class="row">
                 <div class="col-md-4">
-                  <canvas id="aadnsmdsChart" width="400" height="400"></canvas>
+                  <canvas id="aapnhmdsChart" width="400" height="400"></canvas>
                 </div>
                 <div class="col-md-4">
-                  <canvas id="aadnsmdsChart2" width="400" height="400"></canvas>
+                  <canvas id="aapnhmdsChart2" width="400" height="400"></canvas>
                 </div>
                 <div class="col-md-4">
-                  <canvas id="aadnsmdsChart3" width="400" height="400"></canvas>
+                  <canvas id="aapnhmdsChart3" width="400" height="400"></canvas>
                 </div>
               </div>
 
@@ -541,7 +543,7 @@
           </div>
         </div>
       </div>
-      <!-- End of AA DNS MDS Modal  -->
+      <!-- End of AA PNH MDS Modal  -->
 
       <!-- Platelet Disorder Modal  -->
       <div class="modal fade" id="plateletDisorderModal" tabindex="-1" role="dialog" aria-labelledby="plasmaCellLabel"

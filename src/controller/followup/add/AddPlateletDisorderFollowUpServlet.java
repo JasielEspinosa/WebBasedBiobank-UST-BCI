@@ -15,7 +15,7 @@ import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
-@WebServlet("/AddPlateletCellFollowUpServlet")
+@WebServlet("/AddPlateletFollowUpServlet")
 public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
 

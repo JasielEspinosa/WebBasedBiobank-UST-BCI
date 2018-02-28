@@ -1,24 +1,24 @@
 var responseJson;
 var id;
-var followupId;
+var followupID;
 var params = {
 	action : '',	
 	search : '',
-	patientId : '',
-	followupId: ''	
+	patientID : '',
+	followupID: ''	
 };
 
 var editState = false;
 var upperActionState = false;
 
-$("#AddPlateletDisorderFollowup").submit(function(e) {
+$("#PlateletFollowUp").submit(function(e) {
    e.preventDefault();
 	});
 
 $('document').ready(function(){
 	alert(localStorage.getItem("id6"))
-	params.patientId = localStorage.getItem("id6");
-	$("#patientId").val(localStorage.getItem("id6"));
+	params.patientID = localStorage.getItem("id6");
+	$("#patientID").val(localStorage.getItem("id6"));
 
 	actionBind();
 	unbindEvents();
@@ -28,12 +28,12 @@ $('document').ready(function(){
     });
     
 	$("#baselineBtn").click(function() {
-		localStorage.setItem("fromFollowup6","pass");
+		localStorage.setItem("fromFollowUp6","pass");
 		windows.location = ("plateletdisorder-baseline.jsp").redirect();
 		
 	});
 	$("#followUpBtn").click(function() {
-			loadFollowupList();
+			loadFollowUpList();
 			unbindEvents();
 	});
 	$("#patientStatistics").click(function() {
@@ -41,7 +41,7 @@ $('document').ready(function(){
 			
 		}
 	});
-	$("#edtPatientBtn").click(function() {
+	$("#editPatientBtn").click(function() {
 		if(upperActionState == true){
 			editBind();
 			alert('edit triggered')
@@ -49,7 +49,7 @@ $('document').ready(function(){
 	});
 	$("#archPatientBtn").click(function() {
 		if(upperActionState == true){
-			$.post('DeleteFollowupServlet', $.param(params), function (response) {
+			$.post('DeleteFollowUpServlet', $.param(params), function (response) {
 				alert("Patient followup deleted")
 				unbindEvents();
 			}).fail(function(){
@@ -57,7 +57,7 @@ $('document').ready(function(){
 		}
 	});
 	
-	loadFollowupList();
+	loadFollowUpList();
 	
 	
 });
@@ -65,8 +65,8 @@ $('document').ready(function(){
 //load patient data
 function loadPatientData(id){
 
-	params.patientId = id;
-	$.post('LoadPlateletDisorderBaselineServlet', $.param(params), function (response) {
+	params.patientID = id;
+	$.post('LoadPlateletBaselineServlet', $.param(params), function (response) {
 		// in order from add servlet
 		//general data
 		alert('data loaded')
@@ -164,12 +164,12 @@ function loadPatientData(id){
 };
 
 //load followup data
-function loadFollowupData(followupId){
+function loadFollowUpData(followupID){
 	
-	params.followupId = followupId;
-	$("#followupId").val(followupId);
+	params.followupID = followupID;
+	$("#followupID").val(followupID);
 	
-	$.post('LoadPlateletDisorderFollowupServlet', $.param(params), function (response) {
+	$.post('LoadPlateletFollowUpServlet', $.param(params), function (response) {
 		// in order from followup servlet
 		//followup data
 		alert('data loaded')
@@ -236,12 +236,12 @@ function loadPatientList(){
 };
 
 //load followup list
-function loadFollowupList(){
+function loadFollowUpList(){
 	$('#visitFill').empty();
 	$.post('LoadVisitsServlet', $.param(params), function (responseJson) {
       $.each(responseJson, function(index, patient) {   
       $('#visitFill')
-      	.append("<p value='"+patient.followupID +"' onClick=\"loadFollowupData("+patient.followupID +")\"" +
+      	.append("<p value='"+patient.followupID +"' onClick=\"loadFollowUpData("+patient.followupID +")\"" +
       			">"+ patient.dateOfVisit +"</p>")   
   });
 		
@@ -255,7 +255,7 @@ function loadFollowupList(){
 
 //remove button function
 function unbindEvents(){
-	$("#edtPatientBtn").hide();
+	$("#editPatientBtn").hide();
 	$("#archPatientBtn").hide();
 	$("#submitCancel").hide();
 	upperActionState = false;
@@ -263,8 +263,8 @@ function unbindEvents(){
 };
 
 function bindEvents(){
-	localStorage.setItem("id1",params.patientId);
-	$("#edtPatientBtn").show();
+	localStorage.setItem("id1",params.patientID);
+	$("#editPatientBtn").show();
 	$("#archPatientBtn").show();
 	upperActionState = true;
 };
@@ -272,16 +272,16 @@ function bindEvents(){
 //add bind
 
 function actionBind(){
-	$('#AddPlateletDisorderFollowup').submit(function() {
-		alert($("#patientId").val());
+	$('#PlateletFollowUp').submit(function() {
+		alert($("#patientID").val());
 		var $form = $(this);
 		if(editState == false){
-			$.post('AddPlateletDisorderFollowUpServlet', $form.serialize(), function (response) {
+			$.post('AddPlateletFollowUpServlet', $form.serialize(), function (response) {
 					alert("Patient added")
 			}).fail(function(){
 				});	
 		}else{
-			$.post('EditPlateletDisorderFollowUpServlet', $form.serialize(), function (response) {
+			$.post('EditPlateletFollowUpServlet', $form.serialize(), function (response) {
 				alert("Patient edited")
 			}).fail(function(){
 				});			
