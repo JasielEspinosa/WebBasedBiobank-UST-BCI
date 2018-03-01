@@ -23,8 +23,7 @@ public class LoadAAPNHMDSFollowupServlet extends HttpServlet {
 
 	private Connection connection;
 
-	public void init()
-			throws ServletException {
+	public void init() throws ServletException {
 		connection = SQLOperationsBaseline.getConnection();
 
 		if (connection != null) {
@@ -34,9 +33,10 @@ public class LoadAAPNHMDSFollowupServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-    public LoadAAPNHMDSFollowupServlet() {
-        super();
-    }
+
+	public LoadAAPNHMDSFollowupServlet() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -45,72 +45,69 @@ public class LoadAAPNHMDSFollowupServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json"); 
-	    Map<String, String> followupData = new LinkedHashMap<>();
-		
+		response.setContentType("application/json");
+		Map<String, String> followupData = new LinkedHashMap<>();
+
 		int followupID = Integer.parseInt(request.getParameter("followupID"));
 		followupData.put("followupID", Integer.toString(followupID));
-		
-		try {	
+
+		try {
 			if (connection != null) {
-				
+
 				//get followup table
 				ResultSet followup = SQLOperationsFollowUp.getFollowup(followupID, connection);
 				followup.first();
 				followupData.put("dateOfEntry", followup.getString("dateOfEntry"));
 				followupData.put("dateOfVisit", followup.getString("dateOfVisit"));
 				followupData.put("notes", followup.getString("notes"));
-				
-				int medicalEventsid =  followup.getInt("MedicalEventsID");
-				int clinicalDataId =  followup.getInt("ClinicalDataID");
-				int laboratoryId =  followup.getInt("LaboratoryID");
-				int qualityOfResponseId =  followup.getInt("QualityOfResponseID");
-				int diseaseStatusId =  followup.getInt("DiseaseStatusID");
-				int patientId = followup.getInt("PatientID");
-				
+
+				//int patientID = followup.getInt("PatientID");
+
 				//medical events
-				ResultSet medicalEvents = SQLOperationsFollowUp.getMedicalEvents(medicalEventsid, connection);
+				int medicalEventsID = followup.getInt("MedicalEventsID");
+
+				ResultSet medicalEvents = SQLOperationsFollowUp.getMedicalEvents(medicalEventsID, connection);
 				medicalEvents.first();
-				
-				followupData.put("hematologicMalignancy", medicalEvents.getString("hematologicMalignancy"));
-				followupData.put("otherDiseaseMedication", medicalEvents.getString("otherDiseaseMedication"));
-				followupData.put("procedureIntervention", medicalEvents.getString("procedureIntervention"));
-				followupData.put("chemotherapyComplication", medicalEvents.getString("Chemotherapy"));
-				
+
+				followupData.put("specifyHematologicMalignancy", medicalEvents.getString("hematologicMalignancy"));
+
+				System.out.println(medicalEvents.getString("hematologicMalignancy"));
+
+				followupData.put("specifyOtherDiseaseMedication", medicalEvents.getString("otherDiseaseMedication"));
+				followupData.put("specifyProcedureIntervention", medicalEvents.getString("procedureIntervention"));
+				followupData.put("specifyChemotherapyComplication", medicalEvents.getString("Chemotherapy"));
+
 				//clinical data
-				ResultSet clinicalData = SQLOperationsFollowUp.getClinicalData(clinicalDataId, connection);
+				int clinicalDataID = followup.getInt("ClinicalDataID");
+
+				ResultSet clinicalData = SQLOperationsFollowUp.getClinicalData(clinicalDataID, connection);
 				clinicalData.first();
-				
+
 				int physicalExamId = clinicalData.getInt("PhysicalExamID");
-				
+
 				followupData.put("currentSymptoms", clinicalData.getString("currentSymptoms"));
-				
+
 				//physical exam
 				ResultSet physicalExam = SQLOperationsFollowUp.getPhysicalExam(physicalExamId, connection);
 				physicalExam.first();
-				
+
 				followupData.put("weight", physicalExam.getString("weight"));
 				followupData.put("ecog", physicalExam.getString("ecog"));
-				
 
-				
 				//laboratory profile
-				ResultSet laboratoryProfile = SQLOperationsFollowUp.getLaboratoryProfile(laboratoryId, connection);
+				int laboratoryID = followup.getInt("LaboratoryID");
+
+				ResultSet laboratoryProfile = SQLOperationsFollowUp.getLaboratoryProfile(laboratoryID, connection);
 				laboratoryProfile.first();
-				
+
 				followupData.put("dateOfBloodCollection", laboratoryProfile.getString("dateOfBloodCollection"));
 
-				
-				int hematologyId = laboratoryProfile.getInt("HematologyID");
-				int otherLaboratoriesId = laboratoryProfile.getInt("OtherLaboratoriesID");
-				int boneMarrowAspirateId = laboratoryProfile.getInt("BoneMarrowAspirateID");
-				int flowCytometryId = laboratoryProfile.getInt("FlowCytometryID");
-				int cytogeneticMolecularId = laboratoryProfile.getInt("CytogeneticMolecularID");
-				
 				//hematology
+
+				int hematologyId = laboratoryProfile.getInt("HematologyID");
 				ResultSet hematology = SQLOperationsFollowUp.getHematology(hematologyId, connection);
 				hematology.first();
-				
+
 				followupData.put("hemoglobin", hematology.getString("hemoglobin"));
 				followupData.put("hematocrit", hematology.getString("hematocrit"));
 				followupData.put("whiteBloodCells", hematology.getString("whiteBloodCells"));
@@ -123,41 +120,48 @@ public class LoadAAPNHMDSFollowupServlet extends HttpServlet {
 				followupData.put("metamyelocytes", hematology.getString("metamyelocytes"));
 				followupData.put("blasts", hematology.getString("blasts"));
 				followupData.put("plateletCount", hematology.getString("plateletCount"));
-				
+
+				int otherLaboratoriesId = laboratoryProfile.getInt("OtherLaboratoriesID");
+
 				ResultSet otherLaboratories = SQLOperationsFollowUp.getOtherLaboratories(otherLaboratoriesId, connection);
 				otherLaboratories.first();
-				
+
 				followupData.put("creatinine", otherLaboratories.getString("creatinine"));
 				followupData.put("reticulocyteCount", otherLaboratories.getString("reticulocyteCount"));
-				followupData.put("serumFerritin", otherLaboratories.getString("SerrumFerritin"));
+				followupData.put("serumFerritin", otherLaboratories.getString("SerumFerritin"));
 				followupData.put("ldh", otherLaboratories.getString("ldh"));
 
+				int boneMarrowAspirateId = laboratoryProfile.getInt("BoneMarrowAspirateID");
 				ResultSet boneMarrowAspirate = SQLOperationsFollowUp.getBoneMarrowAspirate(boneMarrowAspirateId, connection);
 				boneMarrowAspirate.first();
-				
+
 				followupData.put("boneMarrowAspirateDatePerformed", boneMarrowAspirate.getString("DatePerformed"));
 				followupData.put("boneMarrowAspirateDescription", boneMarrowAspirate.getString("Result"));
-				
+
+				int flowCytometryId = laboratoryProfile.getInt("FlowCytometryID");
+
 				ResultSet flowCytometry = SQLOperationsFollowUp.getFlowCytometry(flowCytometryId, connection);
 				flowCytometry.first();
-				
+
 				followupData.put("flowCytometryResult", flowCytometry.getString("Result"));
-				
+
+				int cytogeneticMolecularId = laboratoryProfile.getInt("CytogeneticMolecularID");
 				ResultSet cytogeneticMolecular = SQLOperationsFollowUp.getCytogeneticMolecular(cytogeneticMolecularId, connection);
 				cytogeneticMolecular.first();
-				
+
 				followupData.put("cytogeneticAndMolecularAnalysisResult", cytogeneticMolecular.getString("Result"));
-				
-				ResultSet diseaseStatus = SQLOperationsFollowUp.getDiseaseStatus(diseaseStatusId, connection);
+
+				int diseaseStatusID = followup.getInt("DiseaseStatusID");
+				ResultSet diseaseStatus = SQLOperationsFollowUp.getDiseaseStatus(diseaseStatusID, connection);
 				diseaseStatus.first();
-				
+
 				followupData.put("diseaseStatus", diseaseStatus.getString("diseaseStatus"));
 				followupData.put("otherDisease", diseaseStatus.getString("otherDisease"));
 
 				//return data to js
-			    String json = new Gson().toJson(followupData);
-			    response.getWriter().write(json);
-				
+				String json = new Gson().toJson(followupData);
+				response.getWriter().write(json);
+
 			} else {
 				System.out.println("Invalid Connection resource");
 			}
@@ -165,6 +169,6 @@ public class LoadAAPNHMDSFollowupServlet extends HttpServlet {
 			System.err.println("Invalid Connection resource - " + npe.getMessage());
 		} catch (Exception e) {
 			System.err.println("Exception - " + e.getMessage());
-		}	
+		}
 	}
 }

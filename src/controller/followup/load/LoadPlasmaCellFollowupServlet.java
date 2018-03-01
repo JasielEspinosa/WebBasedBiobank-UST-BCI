@@ -64,7 +64,6 @@ public class LoadPlasmaCellFollowupServlet extends HttpServlet {
 				int medicalEventsid = followup.getInt("MedicalEventsID");
 				int clinicalDataId = followup.getInt("ClinicalDataID");
 				int laboratoryId = followup.getInt("LaboratoryID");
-				int qualityOfResponseId = followup.getInt("QualityOfResponseID");
 				int diseaseStatusId = followup.getInt("DiseaseStatusID");
 				int patientId = followup.getInt("PatientID");
 

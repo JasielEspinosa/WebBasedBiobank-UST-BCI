@@ -961,8 +961,8 @@
                                     </div>
                                     <!-- Others -->
                                     <div class="form-group" id="diseaseStatusOthers" style="display: none;">
-                                       <label class="control-label col-sm-3">Others Please Specify</label>
-                                       <div class="col-sm-9">
+                                       <label class="control-label col-sm-4">Others Please Specify</label>
+                                       <div class="col-sm-8">
                                           <input type="text" class="form-control" name="diseaseStatusOthers">
                                        </div>
                                     </div>

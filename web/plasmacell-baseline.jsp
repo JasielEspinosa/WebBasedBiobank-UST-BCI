@@ -149,8 +149,8 @@
                </button>
             </p>
             <!-- End of Sidebar -->
+            <!-- Forms Container -->
             <form action="" method="post" id="PlasmaCellBaseline">
-               <!-- Forms Container -->
                <div class="col-md-12">
                   <div class="col-md-12 forms">
                      <!-- Buttons Container -->

@@ -249,10 +249,10 @@ public interface SQLCommandsBaseline {
 			+ "(SELECT MAX(CoagulationTestingID) FROM CoagulationTestingTable),"
 			+ "(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable)," + "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable))";
 	String INSERT_LABORATORY_PROFILE_LEUKEMIA = "INSERT INTO LaboratoryProfileTable "
-			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularAAPNHID, ImagingStudiesID) "
+			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularID, ImagingStudiesID) "
 			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable)," + "(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),"
 			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable)," + "(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),"
-			+ "(SELECT MAX(CytogeneticMolecularAAPNHID) FROM CytogeneticMolecularAAPNHTable),"
+			+ "(SELECT MAX(CytogeneticMolecularID) FROM CytogeneticMolecularTable),"
 			+ "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable))";
 	String INSERT_LABORATORY_PROFILE_LYMPHOMA = "INSERT INTO LaboratoryProfileTable "
 			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularAAPNHID,ImagingStudiesID, HematopathologyID, ImmunohistochemistryID) "

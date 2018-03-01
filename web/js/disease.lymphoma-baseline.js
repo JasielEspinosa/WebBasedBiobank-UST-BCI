@@ -50,10 +50,10 @@ $('document').ready(function() {
 		}
 	});
 
-	if (localStorage.getItem("fromFollowUp1") != "") {
-		alert(localStorage.getItem("id1"));
-		loadPatientData(localStorage.getItem("id1"));
-		localStorage.setItem("fromFollowUp1", "");
+	if (localStorage.getItem("fromFollowUp4") != "") {
+		alert(localStorage.getItem("id4"));
+		loadPatientData(localStorage.getItem("id4"));
+		localStorage.setItem("fromFollowUp4", "");
 	}
 
 });
@@ -323,7 +323,7 @@ function unbindEvents() {
 };
 
 function bindEvents() {
-	localStorage.setItem("id1", params.patientId);
+	localStorage.setItem("id4", params.patientId);
 	$("#baselineBtn").show();
 	$("#followUpBtn").show();
 	$("#patientStatistics").show();

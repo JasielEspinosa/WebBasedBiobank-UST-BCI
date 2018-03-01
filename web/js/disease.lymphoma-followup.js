@@ -62,50 +62,149 @@ $('document').ready(function(){
 	
 });
 
-//load patient data
-function loadPatientData(id){
+// load patient data
+function loadPatientData(id) {
 
 	params.patientID = id;
-	$.post('LoadLymphomaBaselineServlet', $.param(params), function (response) {
+	$.post('LoadLymphomaBaselineServlet', $.param(params), function(response) {
+
 		// in order from add servlet
-		//general data
-		alert('data loaded')
-		$("[name='address']").val(response["address"])
-		$("[name='specimenType']").val(response["specimenType"])
+		alert('Data Loaded')
+
+		// general data
+		$("[name='patientIDNumber']").val(response["patientIDNumber"])
+		if ($("[name='patientIDNumber']").val() !== "") {
+			$("[name='patientIDNumber']").prop('readonly', true);
+		}
+
 		$("[name='lastName']").val(response["lastName"])
-		$("[name='middleInitial']").val(response["middleInitial"])
+		if ($("[name='lastName']").val() !== "") {
+			$("[name='lastName']").prop('readonly', true);
+		}
+
 		$("[name='firstName']").val(response["firstName"])
-		$("[name='gender']").val(response["gender"])
+		if ($("[name='firstName']").val() !== "") {
+			$("[name='firstName']").prop('readonly', true);
+		}
+
+		$("[name='middleInitial']").val(response["middleInitial"])
+		if ($("[name='middleInitial']").val() !== "") {
+			$("[name='middleInitial']").prop('readonly', true);
+		}
+
+		if (response["gender"] === "1") {
+			$("[name='gender'][value='1']").prop('checked', true);
+		} else if (response["gender"] === "2") {
+			$("[name='gender'][value='2']").prop('checked', true);
+		}
+
 		$("[name='dateOfBirth']").val(response["dateOfBirth"])
+		$("[name='address']").val(response["address"])
 		$("[name='dateOfEntry']").val(response["dateOfEntry"])
-		
-		//clinical data
-		$("[name='severity']").val(response["severity"])
-		$("[name='height']").val(response["height"])
-		$("[name='weight']").val(response["weight"])
-		$("[name='ecog']").val(response["ecog"])
-		$("[name='otherFindings']").val(response["otherFindings"])
-		
-		$("[name='dateOfVisit']").val(response["dateOfVisit"])
+
+		$("[name='specimenType']").val(response["specimenType"])
+
+		if ($("[name='specimenType']").val() !== "") {
+			$("[name='tissueSpecimenCollected'][value='1']").prop('checked', true);
+			$.tissueSpecimenCollectedChecked();
+		} else {
+			$("[name='tissueSpecimenCollected'][value='0']").prop('checked', true);
+			$.tissueSpecimenCollectedUnchecked();
+		}
+
+		// clinical data
+
+		$("[name='dateOfInitialDiagnosis']").val(response["dateOfInitialDiagnosis"])
 		$("[name='diagnosis']").val(response["diagnosis"])
+		$("[name='stageOfDisease']").val(response["stageOfDisease"])
 		$("[name='chiefComplaint']").val(response["chiefComplaint"])
+		$("[name='constitutionalSymptoms']").val(response["constitutionalSymptoms"])
 		$("[name='otherSymptoms']").val(response["otherSymptoms"])
-		$("[name='comorbidities']").val(response["comorbidities"])
-		$("[name='smokingHistorySpecify']").val(response["smokingHistorySpecify"])
-		$("[name='alchoholIntakeSpecify']").val(response["alchoholIntakeSpecify"])
-		$("[name='chemicalExposureSpecify']").val(response["chemicalExposureSpecify"])
-		$("[name='previousInfectionSpecify']").val(response["previousInfectionSpecify"])
-		$("[name='previousHematologicDisorderSpecify']").val(response["previousHematologicDisorderSpecify"])
-			
+
 		$("[name='relationshipToPatient']").val(response["relationshipToPatient"])
-		$("[name='cancerName']").val(response["cancerName"])
-		
+		$("[name='specifyCancer']").val(response["specifyCancer"])
 		$("[name='otherDiseasesInTheFamily']").val(response["otherDiseasesInTheFamily"])
-		
+
+		if (response["relationshipToPatient"] !== "" || response["specifyCancer"] !== "" || response["otherDiseasesInTheFamily"] !== "") {
+			$("[name='familyHistoryOfCancer'][value='1']").prop('checked', true);
+			$.familyHistoryOfCancerChecked();
+		} else {
+			$("[name='familyHistoryOfCancer'][value='0']").prop('checked', true);
+			$.familyHistoryOfCancerUnchecked();
+		}
+
+		$("[name='comorbidities']").val(response["comorbidities"])
+
 		$("[name='genericName']").val(response["genericName"])
 		$("[name='dose']").val(response["dose"])
 		$("[name='frequency']").val(response["frequency"])
-		
+		if (response["genericName"] !== "" || response["dose"] !== "" || response["frequency"] !== "") {
+			$("[name='concomitantMedications'][value='1']").prop('checked', true);
+			$.concomitantMedicationsChecked();
+		} else {
+			$("[name='concomitantMedications'][value='0']").prop('checked', true);
+			$.concomitantMedicationsUnchecked();
+		}
+
+		$("[name='smokingHistorySpecify']").val(response["smokingHistorySpecify"])
+		if (response["smokingHistorySpecify"] !== "") {
+			$("[name='smokingHistory'][value='1']").prop('checked', true);
+			$.smokingHistoryChecked();
+		} else {
+			$("[name='smokingHistory'][value='0']").prop('checked', true);
+			$.smokingHistoryUnchecked();
+		}
+
+		$("[name='alcoholIntakeSpecify']").val(response["alcoholIntakeSpecify"])
+		if (response["alcoholIntakeSpecify"] !== "") {
+			$("[name='alcoholIntakeHistory'][value='1']").prop('checked', true);
+			$.alcoholIntakeHistoryChecked();
+		} else {
+			$("[name='alcoholIntakeHistory'][value='0']").prop('checked', true);
+			$.alcoholIntakeHistoryUnchecked();
+		}
+
+		$("[name='chemicalExposureSpecify']").val(response["chemicalExposureSpecify"])
+		if (response["chemicalExposureSpecify"] !== "") {
+			$("[name='chemicalExposureHistory'][value='1']").prop('checked', true);
+			$.chemicalExposureHistoryChecked();
+		} else {
+			$("[name='chemicalExposureHistory'][value='0']").prop('checked', true);
+			$.chemicalExposureHistoryUnchecked();
+		}
+
+		$("[name='height']").val(response["height"])
+		$("[name='weight']").val(response["weight"])
+		$("[name='ecog']").val(response["ecog"])
+
+		if (response["presenceOfSplenomegaly"] === "1") {
+			$("[name='presenceOfSplenomegaly'][value='1']").prop('checked', true);
+			$.chemicalExposureHistoryChecked();
+		} else if (response["presenceOfSplenomegaly"] === "0") {
+			$("[name='presenceOfSplenomegaly'][value='0']").prop('checked', true);
+			$.chemicalExposureHistoryUnchecked();
+		}
+
+		if (response["presenceOfHepatomegaly"] === "1") {
+			$("[name='presenceOfHepatomegaly'][value='1']").prop('checked', true);
+			$.chemicalExposureHistoryChecked();
+		} else if (response["presenceOfHepatomegaly"] === "0") {
+			$("[name='presenceOfHepatomegaly'][value='0']").prop('checked', true);
+			$.chemicalExposureHistoryUnchecked();
+		}
+
+		if (response["presenceOfLymphadenopathies"] === "1") {
+			$("[name='presenceOfLymphadenopathies'][value='1']").prop('checked', true);
+			$.chemicalExposureHistoryChecked();
+		} else if (response["presenceOfLymphadenopathies"] === "0") {
+			$("[name='presenceOfLymphadenopathies'][value='0']").prop('checked', true);
+			$.chemicalExposureHistoryUnchecked();
+		}
+
+		$("[name='otherFindings']").val(response["otherFindings"])
+
+		$("[name='dateOfBloodCollection']").val(response["dateOfBloodCollection"])
+
 		$("[name='hemoglobin']").val(response["hemoglobin"])
 		$("[name='hematocrit']").val(response["hematocrit"])
 		$("[name='whiteBloodCells']").val(response["whiteBloodCells"])
@@ -118,49 +217,81 @@ function loadPatientData(id){
 		$("[name='metamyelocytes']").val(response["metamyelocytes"])
 		$("[name='blasts']").val(response["blasts"])
 		$("[name='plateletCount']").val(response["plateletCount"])
-		
+
 		$("[name='creatinine']").val(response["creatinine"])
 		$("[name='uricAcid']").val(response["uricAcid"])
-		$("[name='reticulocyteCount']").val(response["reticulocyteCount"])
-		$("[name='serumIron']").val(response["serumIron"])
-		$("[name='ironBindingCapacity']").val(response["ironBindingCapacity"])
-		$("[name='serumFerritin']").val(response["serumFerritin"])
-		$("[name='directAntiglobulin']").val(response["directAntiglobulin"])
-		$("[name='indirectAntiglobulin']").val(response["indirectAntiglobulin"])
+		$("[name='na']").val(response["na"])
+		$("[name='k']").val(response["k"])
+		$("[name='total']").val(response["total"])
+		$("[name='direct']").val(response["direct"])
+		$("[name='indirect']").val(response["indirect"])
 		$("[name='sgot']").val(response["sgot"])
 		$("[name='sgpt']").val(response["sgpt"])
+		$("[name='beta2Microglobulin']").val(response["beta2Microglobulin"])
+		$("[name='hepatitisBTesting']").val(response["hepatitisBTesting"])
 		$("[name='ldh']").val(response["ldh"])
-		$("[name='screeningTestsForHepatitisVirusesABC']").val(response["screeningTestsForHepatitisVirusesABC"])
-		$("[name='screeningTestsForEBVCMVHIV']").val(response["screeningTestsForEBVCMVHIV"])
-		$("[name='erythropoeitinLevel']").val(response["erythropoeitinLevel"])
-		$("[name='serumFolicAcid']").val(response["serumFolicAcid"])
-		$("[name='serumB12']").val(response["serumB12"])
-		$("[name='tsh']").val(response["tsh"])
-		
+		$("[name='esr']").val(response["esr"])
+
+		$("[name='hematopathologyDatePerformed']").val(response["hematopathologyDatePerformed"])
+		$("[name='hematopathologyDescription']").val(response["hematopathologyDescription"])
+		if (response["hematopathologyDatePerformed"] !== "" || response["hematopathologyDescription"] !== "") {
+			$("[name='hematopathologyReviewOfSlides'][value='1']").prop('checked', true);
+			$.hematopathologyReviewOfSlidesChecked();
+		} else {
+			$("[name='hematopathologyReviewOfSlides'][value='0']").prop('checked', true);
+			$.hematopathologyReviewOfSlidesUnchecked();
+		}
+
+		$("[name='immunohistochemistryDatePerformed']").val(response["immunohistochemistryDatePerformed"])
+		$("[name='immunohistochemistryDescription']").val(response["immunohistochemistryDescription"])
+		if (response["immunohistochemistryDatePerformed"] !== "" || response["immunohistochemistryDescription"] !== "") {
+			$("[name='immunohistochemistryReviewOfSlides'][value='1']").prop('checked', true);
+			$.immunohistochemistryReviewOfSlidesChecked();
+		} else {
+			$("[name='immunohistochemistryReviewOfSlides'][value='0']").prop('checked', true);
+			$.immunohistochemistryReviewOfSlidesUnchecked();
+		}
+
+		$("[name='imagingStudiesResult']").val(response["imagingStudiesResult"])
+		if (response["imagingStudiesResult"] !== "") {
+			$("[name='imagingStudies'][value='1']").prop('checked', true);
+			$.imagingStudiesChecked();
+		} else {
+			$("[name='imagingStudies'][value='0']").prop('checked', true);
+			$.imagingStudiesUnchecked();
+		}
+
 		$("[name='boneMarrowAspirateDatePerformed']").val(response["boneMarrowAspirateDatePerformed"])
 		$("[name='boneMarrowAspirateDescription']").val(response["boneMarrowAspirateDescription"])
-		
+
+		if (response["boneMarrowAspirateDatePerformed"] !== "" || response["boneMarrowAspirateDescription"] !== "") {
+			$("[name='boneMarrowAspirate'][value='1']").prop('checked', true);
+			$.boneMarrowAspirateChecked();
+		} else {
+			$("[name='boneMarrowAspirate'][value='0']").prop('checked', true);
+			$.boneMarrowAspirateUnchecked();
+		}
+
 		$("[name='flowCytometryResult']").val(response["flowCytometryResult"])
-		
-		$("[name='cytogeneticAndMolecularAnalysisAAPNHResult']").val(response["cytogeneticAndMolecularAnalysisAAPNHResult"])
-		
-		$("[name='cytogeneticAndMolecularAnalysisMDSResult']").val(response["cytogeneticAndMolecularAnalysisMDSResult"])
-		
-		$("[name='dateOfBloodCollection']").val(response["dateOfBloodCollection"])
-		
-		$("[name='medications']").val(response["medications"])
-		
-		$("[name='modeOfTreatment']").val(response["modeOfTreatment"])
-		$("[name='modeOfTreatment']").val(response["modeOfTreatment"])
-		
-		$("input[name='transplantCandidate'][value=" + response["transplantCandidate"] + "]").prop('checked', true);
-		
+		if (response["flowCytometryResult"] !== "") {
+			$("[name='flowCytometry'][value='1']").prop('checked', true);
+			$.flowCytometryChecked();
+		} else {
+			$("[name='flowCytometry'][value='0']").prop('checked', true);
+			$.flowCytometryUnchecked();
+		}
+
+		$("[name='treatment']").val(response["treatment"])
+		$("[name='regimenProtocol']").val(response["regimenProtocol"])
+		$("[name='chemotherapyMedications']").val(response["chemotherapyMedications"])
+		$("[name='cycleNumber']").val(response["cycleNumber"])
 		$("[name='dateStarted']").val(response["dateStarted"])
-		
+		$("[name='complications']").val(response["complications"])
+		$("[name='diseaseStatus']").val(response["diseaseStatus"])
+
 		bindEvents();
-		
-	  })
-	
+
+	})
 };
 
 //load followup data
@@ -270,7 +401,7 @@ function unbindEvents(){
 };
 
 function bindEvents(){
-	localStorage.setItem("id1",params.patientID);
+	localStorage.setItem("id4",params.patientID);
 	$("#editPatientBtn").show();
 	$("#archPatientBtn").show();
 	upperActionState = true;

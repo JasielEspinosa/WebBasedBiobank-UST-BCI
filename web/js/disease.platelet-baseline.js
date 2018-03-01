@@ -27,7 +27,7 @@ $('document').ready(function() {
 	});
 	$("#followUpBtn").click(function() {
 		if (upperActionState == true) {
-			windows.location = ("plateletdisorder-followup.jsp").redirect();
+			windows.location = ("plasmacell-followup.jsp").redirect();
 		}
 	});
 	$("#patientStatistics").click(function() {
@@ -50,10 +50,10 @@ $('document').ready(function() {
 		}
 	});
 
-	if (localStorage.getItem("fromFollowup1") != "") {
-		alert(localStorage.getItem("id1"));
-		loadPatientData(localStorage.getItem("id1"));
-		localStorage.setItem("fromFollowup1", "");
+	if (localStorage.getItem("fromFollowUp7") != "") {
+		alert(localStorage.getItem("id7"));
+		loadPatientData(localStorage.getItem("id7"));
+		localStorage.setItem("fromFollowUp7", "");
 	}
 
 });
@@ -62,7 +62,7 @@ $('document').ready(function() {
 function loadPatientData(id) {
 
 	params.patientID = id;
-	$.post('LoadFollowUpServlet', $.param(params), function(response) {
+	$.post('LoadPlateletBaselineServlet', $.param(params), function(response) {
 
 		// in order from add servlet
 		alert('Data Loaded')
@@ -265,7 +265,7 @@ function loadPatientData(id) {
 
 // load patient list to search box
 function loadPatientList() {
-	params.action = '6';
+	params.action = '7';
 	params.search = $("#searchbox").val();
 	$('#searchboxfill').empty();
 	$.post(
@@ -296,7 +296,7 @@ function unbindEvents() {
 };
 
 function bindEvents() {
-	localStorage.setItem("id1", params.patientId);
+	localStorage.setItem("id7", params.patientId);
 	$("#baselineBtn").show();
 	$("#followUpBtn").show();
 	$("#patientStatistics").show();
@@ -307,15 +307,15 @@ function bindEvents() {
 // add bind
 
 function actionBind() {
-	$('#FollowUp').submit(function() {
+	$('#PlateletBaseline').submit(function() {
 		var $form = $(this);
 		if (editState == false) {
-			$.post('AddFollowUpServlet', $form.serialize(), function(response) {
+			$.post('AddPlateletBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient added")
 			}).fail(function() {
 			});
 		} else {
-			$.post('EditFollowUpServlet', $form.serialize(), function(response) {
+			$.post('EditPlateletBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
 			}).fail(function() {
 			});

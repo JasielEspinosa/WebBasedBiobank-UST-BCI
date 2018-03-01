@@ -39,8 +39,8 @@ public class AddAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultVa
 		getServletContext().log("AddAAPNHMDSFollowUpServlet insert test");
 
 		int disease = 1;
-		System.out.println(request.getParameter("patientId"));
-		int patientID = Integer.parseInt(request.getParameter("patientId"));
+		System.out.println(request.getParameter("patientID"));
+		int patientID = Integer.parseInt(request.getParameter("patientID"));
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
