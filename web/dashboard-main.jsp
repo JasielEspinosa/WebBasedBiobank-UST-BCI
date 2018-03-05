@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/pure-min.css">
+<link rel="stylesheet" href="css/dashboard.css">
 <link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
 
@@ -33,7 +34,9 @@
 <script src="js/Chart.min.js"></script>
 <script src="js/Chart.bundle.js"></script>
 <script src="js/Chart.bundle.min.js"></script>
+<script src="js/dashboard-modal.js"></script>
 <script src="js/graph.js" type="text/javascript"></script>
+<script src="js/chart-animation.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
@@ -84,7 +87,6 @@
               <li><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
               <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
               <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
-
               <!-- Dropdown -->
               <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
                 role="button" aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span
@@ -128,7 +130,7 @@
 
           <div class="col-md-10 col-md-offset-1">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12 dashboard-main-content--position">
 
                 <h3 style="background-color: #ffce00; font-weight: bold; text-align: center;" class="button-border">
                   <i class="fas fa-search"></i> DISEASE OVERVIEW
@@ -264,55 +266,163 @@
               <!-- General Statistics Carousel -->
               <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
-                <ol class="carousel-indicators">
-                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-                  <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+                <ol class="carousel-indicators" id="carousel-indicator-1">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"
+                  data-toggle="tooltip" data-placement="left" title="Age Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"
+                  data-toggle="tooltip" data-placement="top" title="Gender Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"
+                  data-toggle="tooltip" data-placement="bottom" title="Mode of Treatment Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="3"
+                  data-toggle="tooltip" data-placement="top" title="Baseline Disease Status Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="4"
+                  data-toggle="tooltip" data-placement="bottom" title="Follow-up Disease Status Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="5"
+                  data-toggle="tooltip" data-placement="top" title="Baseline Summarized Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="6"
+                  data-toggle="tooltip" data-placement="right" title="Followup Summarized Statistics"></li>
                 </ol>
 
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                   <div class="item active">
                     <div class="carousel-label">
-                      <h3><b>Age Statistics</b></h3>
+                      <h3><b>Age Statistics</b></h3><br>
+                     <!-- To Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To Date -->
                     </div>
-                    <div></div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="leukemiaChartAge" width="600" height="350"></canvas>
+                      <canvas id="leukemiaChartAge" width="600" height="500"></canvas>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-label">
-                      <h3><b>Gender Statistics</b></h3>
+                      <h3><b>Gender Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="leukemiaChartGender" width="600" height="350"></canvas>
+                      <canvas id="leukemiaChartGender" width="600" height="500"></canvas>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-label">
-                      <h3><b>Mode of Treatment Statistics</b></h3>
+                      <h3><b>Mode of Treatment Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="leukemiaChartModeOfTreatment" width="600" height="350"></canvas>
+                      <canvas id="leukemiaChartModeOfTreatment" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-label">
-                      <h3><b>Baseline Statistics</b></h3>
+                      <h3><b>Baseline Disease Status Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="leukemiaChartDiseaseStatusBaseline" width="600" height="350"></canvas>
+                      <canvas id="leukemiaChartBaselineDiseaseStatus" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
                     <div class="carousel-label">
-                      <h3><b>Follow-Up Statistics</b></h3>
+                      <h3><b>Follow-Up Disease Status Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="leukemiaChartDiseaseStatusFollowUp" width="600" height="350"></canvas>
+                      <canvas id="leukemiaChartFollowupDiseaseStatus" width="600" height="700"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Baseline Summarized Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="leukemiaSummarizedBaselineStatistics" width="600" height="500"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Follow-up Summarized Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="leukemiaSummarizedFollowupStatistics" width="600" height="500"></canvas>
                     </div>
                   </div>
                 </div>
@@ -367,19 +477,180 @@
                 </div>
               </div>
 
-              <br>
+             <!-- General Statistics Carousel -->
+              <div id="lymphoma-carousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators" id="carousel-indicator-1">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"
+                  data-toggle="tooltip" data-placement="left" title="Age Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"
+                  data-toggle="tooltip" data-placement="top" title="Gender Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"
+                  data-toggle="tooltip" data-placement="bottom" title="Mode of Treatment Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="3"
+                  data-toggle="tooltip" data-placement="top" title="Baseline Disease Status Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="4"
+                  data-toggle="tooltip" data-placement="bottom" title="Follow-up Disease Status Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="5"
+                  data-toggle="tooltip" data-placement="top" title="Baseline Summarized Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="6"
+                  data-toggle="tooltip" data-placement="right" title="Followup Summarized Statistics"></li>
+                </ol>
 
-              <div class="row">
-                <div class="col-md-4">
-                  <canvas id="lymphomaChart" width="400" height="400"></canvas>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="carousel-label">
+                      <h3><b>Age Statistics</b></h3><br>
+                     <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="lymphomaChartAge" width="600" height="500"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Gender Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="lymphomaChartGender" width="600" height="500"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Mode of Treatment Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="lymphomaModeOfTreatment" width="600" height="700"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Baseline Disease Status Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="lymphomaChartBaselineDiseaseStatus" width="600" height="700"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Follow-Up Disease Status Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="lymphomaChartFollowupDiseaseStatus" width="600" height="700"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Baseline Summarized Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="lymphomaSummarizedBaselineStatistics" width="600" height="500"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Follow-up Summarized Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="lymphomaSummarizedFollowupStatistics" width="600" height="500"></canvas>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-4">
-                  <canvas id="lymphomaChart2" width="400" height="400"></canvas>
-                </div>
-                <div class="col-md-4">
-                  <canvas id="lymphomaChart3" width="400" height="400"></canvas>
-                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#lymphoma-carousel" role="button" data-slide="prev"> <span
+                  class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                  class="sr-only">Previous</span>
+                </a> <a class="right carousel-control" href="#lymphoma-carousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                  class="sr-only">Next</span>
+                </a>
               </div>
+              <!-- End of General Statistics Carousel -->
 
             </div>
             <div class="modal-footer">
@@ -419,19 +690,180 @@
                 </div>
               </div>
 
-              <br>
+              <!-- General Statistics Carousel -->
+              <div id="myelo-carousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators" id="carousel-indicator-1">
+                  <li data-target="#carousel-example-generic" data-slide-to="0" class="active"
+                  data-toggle="tooltip" data-placement="left" title="Age Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="1"
+                  data-toggle="tooltip" data-placement="top" title="Gender Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="2"
+                  data-toggle="tooltip" data-placement="bottom" title="Mode of Treatment Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="3"
+                  data-toggle="tooltip" data-placement="top" title="Baseline Disease Status Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="4"
+                  data-toggle="tooltip" data-placement="bottom" title="Follow-up Disease Status Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="5"
+                  data-toggle="tooltip" data-placement="top" title="Baseline Summarized Statistics"></li>
+                  <li data-target="#carousel-example-generic" data-slide-to="6"
+                  data-toggle="tooltip" data-placement="right" title="Followup Summarized Statistics"></li>
+                </ol>
 
-              <div class="row">
-                <div class="col-md-4">
-                  <canvas id="myeproliferativeChart" width="400" height="400"></canvas>
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                  <div class="item active">
+                    <div class="carousel-label">
+                      <h3><b>Age Statistics</b></h3><br>
+                     <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="myeloChartAge" width="600" height="500"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Gender Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="myeloChartGender" width="600" height="500"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Mode of Treatment Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="myeloModeOfTreatment" width="600" height="700"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Baseline Disease Status Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="myeloChartBaselineDiseaseStatus" width="600" height="700"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Follow-Up Disease Status Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="myeloChartFollowupDiseaseStatus" width="600" height="700"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Baseline Summarized Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="myeloSummarizedBaselineStatistics" width="600" height="500"></canvas>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="carousel-label">
+                      <h3><b>Follow-up Summarized Statistics</b></h3><br>
+                      <!-- To and From Date  -->
+                     <div class="form-group col-md-offset-3">
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">From:</label>
+                           <input type="date" class="form-control" name="fromDateAgeStats">
+                        </div>
+                        <div class="col-sm-4">
+                           <label for="message-text" class="control-label">To:</label>
+                           <input type="date" class="form-control" name="toDateAgeStats">
+                        </div>
+                     </div>
+                     <!-- End of To and From Date -->
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                      <canvas id="myeloSummarizedFollowupStatistics" width="600" height="500"></canvas>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-md-4">
-                  <canvas id="myeproliferativeChart2" width="400" height="400"></canvas>
-                </div>
-                <div class="col-md-4">
-                  <canvas id="myeproliferativeChart3" width="400" height="400"></canvas>
-                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#myelo-carousel" role="button" data-slide="prev"> <span
+                  class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                  class="sr-only">Previous</span>
+                </a> <a class="right carousel-control" href="#myelo-carousel" role="button" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                  class="sr-only">Next</span>
+                </a>
               </div>
+              <!-- End of General Statistics Carousel -->
 
             </div>
             <div class="modal-footer">
@@ -471,18 +903,8 @@
                 </div>
               </div>
 
-              <br>
-
-              <div class="row">
-                <div class="col-md-4">
-                  <canvas id="plasmaCellChart" width="400" height="400"></canvas>
-                </div>
-                <div class="col-md-4">
-                  <canvas id="plasmaCellChart2" width="400" height="400"></canvas>
-                </div>
-                <div class="col-md-4">
-                  <canvas id="plasmaCellChart3" width="400" height="400"></canvas>
-                </div>
+              
+              
               </div>
 
             </div>

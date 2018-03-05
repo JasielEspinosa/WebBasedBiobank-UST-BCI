@@ -368,7 +368,5 @@
   </div>
   <!-- End of main container -->
 
-  <script type="text/javascript" src="datatables/datatables.min.js"></script>
-
 </body>
 </html>

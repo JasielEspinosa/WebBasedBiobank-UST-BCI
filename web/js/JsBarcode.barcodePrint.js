@@ -1,4 +1,4 @@
-JsBarcode("#patientBarcode", "Carl Eslabon", {
+JsBarcode("#patientBarcode", "C P 0 0 0 1", {
 	format : "CODE128"
 });
 

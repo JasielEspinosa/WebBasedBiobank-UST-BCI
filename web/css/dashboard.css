@@ -1,6 +1,10 @@
 body {
 	background-color: #023564 !important; 
 }
+.dashboard-main-content--position {
+	margin-top: -140px;
+	padding-bottom: 30px;
+}
 
 
 
