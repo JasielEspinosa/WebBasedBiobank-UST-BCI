@@ -103,7 +103,7 @@ public interface SQLCommandsBaseline {
 	String INSERT_FAMILY_CANCER = "INSERT INTO FamilyCancerTable VALUES (NULL, (SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),?,?)";
 	String GET_FAMILY_CANCER = "SELECT * FROM FamilyCancerTable WHERE CLINICALDATAID = ?";
 	String UPDATE_FAMILY_CANCER = "UPDATE FamilyCancerTable SET RelationshipToPatient = ?, CancerName = ? WHERE ClinicalDataID = ?";
-
+	
 	//OTHER DISEASES
 	String INSERT_OTHERDISEASES = "INSERT INTO OtherDiseasesTable VALUES (NULL, (SELECT MAX(ClinicalDataID) FROM ClinicalDataTable), ?)";
 	String GET_OTHER_DISEASES = "SELECT * FROM OTHERDISEASESTABLE WHERE CLINICALDATAID = ?";

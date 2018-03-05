@@ -24,8 +24,11 @@
 <link rel="stylesheet" href="css/pure-min.css">
 <link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
+
 
 <!-- JS -->
+<script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery.min-2.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -70,33 +73,62 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <li><a href="dashboard-main.jsp">Dashboard</a></li>
-            <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
-            <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
-            <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
-            <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-            <li><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
-            <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
-            <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
+            <li>
+              <a href="dashboard-main.jsp">Dashboard</a>
+            </li>
+            <li>
+              <a href="leukemia-baseline.jsp">Leukemia</a>
+            </li>
+            <li>
+              <a href="lymphoma-baseline.jsp">Lymphoma</a>
+            </li>
+            <li>
+              <a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a>
+            </li>
+            <li>
+              <a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a>
+            </li>
+            <li>
+              <a href="aapnhmds-baseline.jsp">AA PNH MDS</a>
+            </li>
+            <li>
+              <a href="plateletdisorder-baseline.jsp">Platelet Disorder</a>
+            </li>
+            <li>
+              <a href="coagulationdisease-baseline.jsp">Coagulation Disease</a>
+            </li>
 
             <!-- Dropdown -->
-            <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-              role="button" aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span
-                class="caret"></span>
-            </a>
+            <li class="dropdown pull-right">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
+              </a>
               <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                <li><a style="font-weight: bold;" href="audittrail.jsp"><i
-                    class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail</a></li>
+                <li>
+                  <a style="font-weight: bold;" href="audittrail.jsp">
+                    <i class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail
+                  </a>
+                </li>
                 <li class="divider" style="background-color: #000000;"></li>
-                <li><a style="font-weight: bold;" href="profile.jsp"><i
-                    class="fas fa-user-md dropdown-icons--margin"></i> Profile</a></li>
+                <li>
+                  <a style="font-weight: bold;" href="profile.jsp">
+                    <i class="fas fa-user-md dropdown-icons--margin"></i> Profile
+                  </a>
+                </li>
                 <li class="divider" style="background-color: #000000;"></li>
-                <li><a style="font-weight: bold;" href="usermanagement.jsp"><i
-                    class="fas fa-wrench dropdown-icons--margin"></i> Settings</a></li>
+                <li>
+                  <a style="font-weight: bold;" href="usermanagement.jsp">
+                    <i class="fas fa-wrench dropdown-icons--margin"></i> Settings
+                  </a>
+                </li>
                 <li class="divider" style="background-color: #000000;"></li>
-                <li><a style="font-weight: bold;" href="login.jsp"><i
-                    class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout</a></li>
-              </ul></li>
+                <li>
+                  <a style="font-weight: bold;" href="login.jsp">
+                    <i class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout
+                  </a>
+                </li>
+              </ul>
+            </li>
             <!-- End of Dropdown -->
 
           </ul>
@@ -146,8 +178,9 @@
             <div class="row button-container">
               <div class="col-sm-8">
                 <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive button-border">User
-                  Management</a> <a href="archivedpatients.jsp" type="button"
-                  class="btn bg-yellow btn-responsive button-border">Archived Patients</a>
+                  Management</a>
+                <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive button-border">Archived
+                  Patients</a>
               </div>
             </div>
             <!-- End of buttons container -->
@@ -157,37 +190,37 @@
               <h3 style="background-color: #ffce00; font-weight: bold;" class="button-border">
                 <i class="fas fa-archive"></i> Archived Patients
               </h3>
-              <table id="customers" class="table-loader dataTable display">
-               <thead>
-                <tr>
-                  <th></th>
-                  <th>Patient No.</th>
-                  <th>Patient Name</th>
-                </tr>
+              <table id="archivedPatientsTable" class="table-loader dataTable display">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>Patient No.</th>
+                    <th>Patient Name</th>
+                  </tr>
                 </thead>
                 <tfoot>
-                <tr>
-                  <th></th>
-                  <th>Patient No.</th>
-                  <th>Patient Name</th>
-                </tr>
+                  <tr>
+                    <th></th>
+                    <th>Patient No.</th>
+                    <th>Patient Name</th>
+                  </tr>
                 </tfoot>
                 <tbody>
-                <tr>
-                  <td><a type="button" class="btn bg-yellow edtdelbtn-border" href="#">Restore</a></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                  <tr>
+                    <td><a type="button" class="btn bg-yellow edtdelbtn-border" href="#">Restore</a></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
                 </tbody>
               </table>
               <!-- End of Table -->
@@ -206,8 +239,8 @@
                   <div class="modal-body">
                     <form role="form">
                       <div class="form-group">
-                        <label for="recipient-name" class="control-label">Username:</label> <input type="text"
-                          class="form-control" id="username">
+                        <label for="recipient-name" class="control-label">Username:</label>
+                        <input type="text" class="form-control" id="username">
                       </div>
                       <div class="form-group">
                         <label for="message-text" class="control-label">Password:</label>
@@ -234,13 +267,26 @@
                 </div>
               </div>
             </div>
-
+            <div class="modal fade centered-modal" id="confirm-submit" tabindex="-1" role="dialog"
+              aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+              <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                  <div class="modal-header" id="modalHeader">Confirm restore</div>
+                  <div class="modal-body" id="modalBody">Restore Patient</div>
+                  <div class="modal-footer">
+                    <a href="#" id="submitAction" class="btn btn-success success">Yes</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   <!--/row-offcanvas -->
-
+  <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+  <script src="js/archived-patients.js"></script>
 </body>
 </html>

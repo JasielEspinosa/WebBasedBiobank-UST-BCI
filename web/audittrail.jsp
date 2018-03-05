@@ -3,7 +3,7 @@
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]--> 
+    <![endif]-->
 
 <!doctype html>
 <html lang="en">
@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>USTH | Audit Trail</title>
-<link rel="icon" href="images/usthlogo.png"> 
+<link rel="icon" href="images/usthlogo.png">
 
 <!-- CSS -->
 <link rel="stylesheet" href="fonts/open-sans.css">
@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="css/pure-min.css">
 <link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
-
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
 <!-- JS -->
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery.min-2.js"></script>
@@ -32,7 +32,6 @@
 <script src="js/main.js"></script>
 <script src="js/genaudrep.js"></script>
 <script src="js/fontawesome-all.js"></script>
-<script src="DataTables/datatables.min.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
@@ -74,33 +73,62 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="dashboard-main.jsp">Dashboard</a></li>
-              <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
-              <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
-              <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
-              <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
-              <li><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
-              <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
-              <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
+              <li>
+                <a href="dashboard-main.jsp">Dashboard</a>
+              </li>
+              <li>
+                <a href="leukemia-baseline.jsp">Leukemia</a>
+              </li>
+              <li>
+                <a href="lymphoma-baseline.jsp">Lymphoma</a>
+              </li>
+              <li>
+                <a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a>
+              </li>
+              <li>
+                <a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a>
+              </li>
+              <li>
+                <a href="aapnhmds-baseline.jsp">AA PNH MDS</a>
+              </li>
+              <li>
+                <a href="plateletdisorder-baseline.jsp">Platelet Disorder</a>
+              </li>
+              <li>
+                <a href="coagulationdisease-baseline.jsp">Coagulation Disease</a>
+              </li>
 
               <!-- Dropdown -->
-              <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                role="button" aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span
-                  class="caret"></span>
-              </a>
+              <li class="dropdown pull-right">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                  <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
+                </a>
                 <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                  <li><a style="font-weight: bold;" href="audittrail.jsp"><i
-                      class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail</a></li>
+                  <li>
+                    <a style="font-weight: bold;" href="audittrail.jsp">
+                      <i class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail
+                    </a>
+                  </li>
                   <li class="divider" style="background-color: #000000;"></li>
-                  <li><a style="font-weight: bold;" href="profile.jsp"><i
-                      class="fas fa-user-md dropdown-icons--margin"></i> Profile</a></li>
+                  <li>
+                    <a style="font-weight: bold;" href="profile.jsp">
+                      <i class="fas fa-user-md dropdown-icons--margin"></i> Profile
+                    </a>
+                  </li>
                   <li class="divider" style="background-color: #000000;"></li>
-                  <li><a style="font-weight: bold;" href="usermanagement.jsp"><i
-                      class="fas fa-wrench dropdown-icons--margin"></i> Settings</a></li>
+                  <li>
+                    <a style="font-weight: bold;" href="usermanagement.jsp">
+                      <i class="fas fa-wrench dropdown-icons--margin"></i> Settings
+                    </a>
+                  </li>
                   <li class="divider" style="background-color: #000000;"></li>
-                  <li><a style="font-weight: bold;" href="login.jsp"><i
-                      class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout</a></li>
-                </ul></li>
+                  <li>
+                    <a style="font-weight: bold;" href="login.jsp">
+                      <i class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout
+                    </a>
+                  </li>
+                </ul>
+              </li>
               <!-- End of Dropdown -->
 
             </ul>
@@ -133,58 +161,30 @@
 
               <!-- General Tab -->
               <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#events">Events</a></li>
-                <li><button class="genrepbtn--style" data-target="#genaudrep" data-toggle="modal">GENERATE
-                    AUDIT REPORT</button></li>
+                <li class="active">
+                  <a data-toggle="tab" href="#events">Events</a>
+                </li>
+                <li>
+                  <button class="genrepbtn--style" data-target="#genaudrep" data-toggle="modal">GENERATE AUDIT
+                    REPORT</button>
+                </li>
               </ul>
               <!-- End of General Tab -->
 
               <br>
 
-                <table id="customers" class="table-loader dataTable display">
-                  <thead>
-                    <tr>
-                      <th>ACTION</th>
-                      <th>PERFORMED ON</th>
-                      <th>PERFORMED BY</th>
-                      <th>EVENT DATE</th>
-                    </tr>
-                  </thead>
-                  <tfoot>
-                    <tr>
-                      <th>ACTION</th>
-                      <th>PERFORMED ON</th>
-                      <th>PERFORMED BY</th>
-                      <th>EVENT DATE</th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-                      <td>Junior Technical Author</td>
-                      <td>San Francisco</td>
-                      <td>66</td>
-                    </tr>
-                    <tr>
-                      <td>Cedric Kelly</td>
-                      <td>Senior Javascript Developer</td>
-                      <td>Edinburgh</td>
-                      <td>22</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <table id="auditTable">
+                <thead>
+                  <tr>
+                    <th>ACTION</th>
+                    <th>PERFORMED ON</th>
+                    <th>PERFORMED BY</th>
+                    <th>EVENT DATE</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
             </div>
             <!-- End of Table -->
           </div>
@@ -367,6 +367,9 @@
     </div>
   </div>
   <!-- End of main container -->
+
+  <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+  <script src="js/audit.js"></script>
 
 </body>
 </html>

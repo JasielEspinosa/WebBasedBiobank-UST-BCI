@@ -44,7 +44,7 @@ public class ArchivePatientServlet extends HttpServlet {
 		int patientID = Integer.parseInt(request.getParameter("patientID"));
 
 		if (connection != null) {
-			if (SQLOperations.deleteFollowup(patientID, connection)) {
+			if (SQLOperations.archivePatient(patientID, connection)) {
 				System.out.println("Successful delete");
 				response.getWriter().write("Success");
 			} else {

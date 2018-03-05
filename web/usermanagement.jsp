@@ -151,7 +151,8 @@
                         <table id="usersTable">
                            <thead>
                               <tr>
-                                 <th><input type="checkbox" id="select_all" /></th>
+                                 <th></th>
+                                 <th></th>
                                  <th onclick="sortTable(0)">Username</th>
                                  <th onclick="sortTable(1)">Name</th>
                                  <th onclick="sortTable(1)">Account Type</th>
@@ -198,6 +199,16 @@
                                     <div class="form-group">
                                        <label for="message-text" class="control-label">Middle Name:</label> <input type="text"
                                           class="form-control" id="middleName">
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Role:</label>
+                                       <div class="col-sm-8">
+                                          <select class="form-control" name="role" id="role">
+                                             <option selected="selected" disabled="disabled" value=''>Select</option>
+                                             <option value="1">Admin</option>
+                                             <option value="2">Encoder</option>
+                                          </select>
+                                       </div>
                                     </div>
                                  </form>
                               </div>

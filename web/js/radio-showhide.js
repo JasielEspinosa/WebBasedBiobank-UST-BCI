@@ -390,6 +390,42 @@ $(document)
 							.is(":checked")) {
 						$.familyHistoryOfCancerChecked();
 					}
+					
+					// familyHistoryOfThalassemia
+					$.familyHistoryOfThalassemiaChecked = function() {
+						$("#relationshipToPatient").slideDown(200);
+						$("[name='relationshipToPatient']").prop('required',
+								true);
+						$("#specifyCancer").slideDown(200);
+						$("[name='specifyCancer']").prop('required', true);
+						$("#otherDiseasesInTheFamily").slideDown(200);
+						$("[name='otherDiseasesInTheFamily']").prop('required',
+								true);
+					}
+					$.familyHistoryOfThalassemiaUnchecked = function() {
+						$("#relationshipToPatient").slideUp(200);
+						$("[name='relationshipToPatient']").prop('required',
+								false);
+						$("#specifyCancer").slideUp(200);
+						$("[name='specifyCancer']").prop('required', false);
+						$("#otherDiseasesInTheFamily").slideUp(200);
+						$("[name='otherDiseasesInTheFamily']").prop('required',
+								false);
+					}
+					$("[name='familyHistoryOfThalassemia']").click(function() {
+						if ($(this).val() === "1") {
+							$.familyHistoryOfThalassemiaChecked();
+						} else if ($(this).val() === "0") {
+							$.familyHistoryOfThalassemiaUnchecked();
+						}
+					});
+					if ($("[name='familyHistoryOfThalassemia'][value='1']").is(
+							":checked")) {
+						$.familyHistoryOfThalassemiahecked();
+					} else if ($("[name='familyHistoryOfThalassemia'][value='0']")
+							.is(":checked")) {
+						$.familyHistoryOfThalassemiaChecked();
+					}
 
 					// familyHistoryOfBleedingDiathesis
 					$.familyHistoryOfBleedingDiathesisChecked = function() {
@@ -465,6 +501,40 @@ $(document)
 					} else if ($("[name='concomitantMedications'][value='0']")
 							.is(":checked")) {
 						$.concomitantMedicationsUnchecked();
+					}
+					
+					// currentPastMedications
+					$.currentPastMedicationsChecked = function() {
+						$("#currentPastMedications").slideDown(200);
+						$("#genericName").slideDown(200);
+						$("[name='genericName']").prop('required', true);
+						$("#dose").slideDown(200);
+						$("[name='dose']").prop('required', true);
+						$("#frequency").slideDown(200);
+						$("[name='frequency']").prop('required', true);
+					}
+					$.currentPastMedicationsUnchecked = function() {
+						$("#concomitantMedications").slideUp(200);
+						$("#genericName").slideUp(200);
+						$("[name='genericName']").prop('required', false);
+						$("#dose").slideUp(200);
+						$("[name='dose']").prop('required', false);
+						$("#frequency").slideUp(200);
+						$("[name='frequency']").prop('required', false);
+					}
+					$("[name='currentPastMedications']").click(function() {
+						if ($(this).val() === "1") {
+							$.currentPastMedicationsChecked();
+						} else if ($(this).val() === "0") {
+							$.currentPastMedicationsUnchecked();
+						}
+					});
+					if ($("[name='currentPastMedications'][value='1']").is(
+							":checked")) {
+						$.currentPastMedicationsChecked();
+					} else if ($("[name='currentPastMedications'][value='0']")
+							.is(":checked")) {
+						$.currentPastMedicationsUnchecked();
 					}
 
 					// thrombosisHistory
@@ -881,6 +951,69 @@ $(document)
 							":checked")) {
 						$.imagingStudiesUnchecked();
 					}
+					
+					// hemoglobinElectrophoresis
+					$.hemoglobinElectrophoresisChecked = function() {
+						$("#hemoglobinElectrophoresisDatePerformed").slideDown(200);
+						$("[name='hemoglobinElectrophoresisDatePerformed']").prop('required',
+								true);
+						$("#hemoglobinElectrophoresisDescription").slideDown(200);
+						$("[name='hemoglobinElectrophoresisDescription']").prop('required',
+								true);
+						$("#hemoglobinElectrophoresisAttachScannedDocument").slideDown(
+								200);
+					}
+					$.hemoglobinElectrophoresisUnchecked = function() {
+						$("#hemoglobinElectrophoresisDatePerformed").slideUp(200);
+						$("[name='hemoglobinElectrophoresisDatePerformed']").prop('required',
+								false);
+						$("#hemoglobinElectrophoresisDescription").slideUp(200);
+						$("[name='hemoglobinElectrophoresisDescription']").prop('required',
+								false);
+						$("#hemoglobinElectrophoresisAttachScannedDocument").slideUp(200);
+						$("[name='hemoglobinElectrophoresisAttachScannedDocument']").prop('required',
+								false);
+						
+					}
+					$("[name='hemoglobinElectrophoresis']").click(function() {
+						if ($(this).val() === "1") {
+							$.hemoglobinElectrophoresisChecked();
+						} else if ($(this).val() === "0") {
+							$.hemoglobinElectrophoresisUnchecked();
+						}
+					});
+					if ($("[name='hemoglobinElectrophoresis'][value='1']").is(":checked")) {
+						$.hemoglobinElectrophoresisChecked();
+					} else if ($("[name='hemoglobinElectrophoresis'][value='0']").is(
+							":checked")) {
+						$.hemoglobinElectrophoresisUnchecked();
+					}
+					
+					// pertinentFindings
+					$.pertinentFindingsChecked = function() {
+						$("#pertinentFindingsOthers").slideDown(200);
+						$("[name='pertinentFindingsOthers']").prop('required',
+								true);
+					}
+					$.pertinentFindingsUnchecked = function() {
+						$("#pertinentFindingsOthers").slideUp(200);
+						$("[name='pertinentFindingsOthers']").prop('required',
+								false);
+					}
+					$("[name='pertinentFindings']").click(function() {
+						if ($(this).val() === "1") {
+							$.pertinentFindingsChecked();
+						} else if ($(this).val() === "0") {
+							$.pertinentFindingsUnchecked();
+						}
+					});
+					if ($("[name='pertinentFindings'][value='1']").is(":checked")) {
+						$.pertinentFindingsChecked();
+					} else if ($("[name='pertinentFindings'][value='0']").is(
+							":checked")) {
+						$.pertinentFindingsUnchecked();
+					}
+					
 
 					// cytogeneticAndMolecularAnalysis
 					$.cytogeneticAndMolecularAnalysisChecked = function() {
