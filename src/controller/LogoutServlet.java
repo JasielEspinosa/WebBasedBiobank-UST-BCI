@@ -17,15 +17,14 @@ import javax.servlet.http.HttpSession;
 import com.google.gson.Gson;
 
 import model.AccountBean;
-import model.AuditBean;
 import utility.database.SQLOperations;
 import utility.factory.BeanFactory;
 
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	private Connection connection;
@@ -43,7 +42,7 @@ public class LoginServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -62,45 +61,17 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession(true);
+		session.invalidate();
 		
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-	    response.setCharacterEncoding("UTF-8"); 
+		String redirectURL = "login.jsp";
 
+		Map<String, String> data = new HashMap<>();
+		data.put("redirect", redirectURL);
+		String json = new Gson().toJson(data);
+
+		response.setContentType("application/json");
+		response.getWriter().write(json);
 		
-		AccountBean ab = BeanFactory.getAccountBean(username, password, "", "", "", 0);
-		ResultSet rs = SQLOperations.login(ab, connection);
-		if (connection != null) {
-			try {
-				if (rs.next()) {
-					session.setAttribute("accountID", rs.getString("AccountID"));
-					session.setAttribute("name", rs.getString("FirstName") + " " + rs.getString("FirstName") +  " " + rs.getString("FirstName"));
-					session.setAttribute("role", rs.getInt("RoleID"));
-					
-					String redirectURL = "dashboard-main.jsp";
-
-					Map<String, String> data = new HashMap<>();
-					data.put("redirect", redirectURL);
-					String json = new Gson().toJson(data);
-
-					response.setContentType("application/json");
-					response.getWriter().write(json);
-					System.out.println("Successful login");
-					
-					AuditBean auditBean = new AuditBean("LOGIN", "", (String)session.getAttribute("name"));
-					SQLOperations.addAudit(auditBean, connection);
-					
-				} else {
-					response.setContentType("text/plain"); 
-				    response.getWriter().write("Failed");
-					System.out.println("Failed login");
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		} else {
-			System.out.println("Invalid connection login");
-		}
 		
 	}
 

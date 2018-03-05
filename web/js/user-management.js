@@ -5,6 +5,7 @@ var params = {
 	firstName: '',
 	lastName: '',
 	middleName: '',
+	role: '',
 	action: '',
 	accountID: ''
 };
@@ -16,6 +17,7 @@ function assignValues(){
 	params.firstName = $("#firstName").val();
 	params.lastName = $("#lastName").val();
 	params.middleName = $("#middleName").val();
+	params.role = $("#role").val();
 };
 
 $('document').ready(function(){
@@ -49,6 +51,7 @@ function editUser(id){
 		$("#lastName").val(response["Lastname"])
 		$("#firstName").val(response["Firstname"])
 		$("#middleName").val(response["MiddleName"])
+		$("#role").val(response["Role"])
 		params.action='edit';
 	}).fail(function(){
 		});
@@ -78,6 +81,7 @@ function clearFields(){
 	$("#firstName").val('');
 	$("#lastName").val('');
 	$("#middleName").val('');
+	$("#role").val('');
 };
 
 function closeModal(){
@@ -93,25 +97,31 @@ function loadUsers(){
 	params.action='load';
 	alert("test load");
     $.post("UserManagementServlet",$.param(params),function(responseJson) {
-    	$('#usersTable').dataTable({
-    	    "aaData": responseJson,
-    	    "aoColumns": [
-    	        { "mDataProp": "username" },
-    	        { "mDataProp": "lastName" },
-    	        { "mDataProp": "firstName" }
-    	    ]
-    	});
-//        $.each(responseJson, function(index, user) {   
-//            $("<tr>").appendTo('#usersTable')
-//            	.append("<button type='button' value='"+user.accountId +"' onClick=\"editUser(this.value)\"" +
-//            			"data-toggle=\"modal\" data-target=\"#usermanagement__popup\">Edit</button>")
-//            	.append("<button type='button' value='"+user.accountId +"' onClick=\"deleteUser(this.value)\"" +
-//            			"data-toggle=\"modal\" data-target=\"#confirm-submit\">Delete</button>")
-//            	//.append("<td><input type='checkbox' name='deleteUsers[]' value='"+user.accountId +"'/></td>")
-//                .append($("<td>").text(user.username))        
-//                .append($("<td>").text(user.firstName + " " + user.middleName + " " + user.lastName))
-//                .append($("<td>").text(user.roleId));    
-//        });
+    	
+    	
+    	
+        $.each(responseJson, function(index, user) {
+        	roleVal = ''
+
+        	if(user.roleId == 1){
+        		roleVal = 'Admin'
+        	}
+        	else{
+        		roleVal = 'Encoder'
+        	}
+        	
+        	
+            $("<tr>").appendTo('#usersTable')
+            	.append("<td><button type='button' value='"+user.accountId +"' onClick=\"editUser(this.value)\"" +
+            			"data-toggle=\"modal\" data-target=\"#usermanagement__popup\">Edit</button></td>")
+            	.append("<td><button type='button' value='"+user.accountId +"' onClick=\"deleteUser(this.value)\"" +
+            			"data-toggle=\"modal\" data-target=\"#confirm-submit\">Delete</button></td>")
+            	//.append("<td><input type='checkbox' name='deleteUsers[]' value='"+user.accountId +"'/></td>")
+                .append($("<td>").text(user.username))        
+                .append($("<td>").text(user.firstName + " " + user.middleName + " " + user.lastName))
+                .append($("<td>").text(roleVal));    
+        });
+        $('#usersTable').dataTable({});
     });
 };
 

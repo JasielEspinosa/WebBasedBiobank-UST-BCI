@@ -74,7 +74,8 @@ public class UserManagementServlet extends HttpServlet {
 				String lastName = request.getParameter("lastName");
 				String firstName = request.getParameter("firstName");
 				String middleName = request.getParameter("middleName");
-				AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleName, firstName, 1);
+				int role = Integer.parseInt(request.getParameter("role"));
+				AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleName, firstName, role);
 				
 				if(SQLOperations.addUser(ab,connection)) {
 				    response.getWriter().write("Success");
@@ -155,6 +156,7 @@ public class UserManagementServlet extends HttpServlet {
 						    profile.put("Lastname", profileInfoRs.getString("Lastname"));
 						    profile.put("Firstname", profileInfoRs.getString("Firstname"));
 						    profile.put("MiddleName", profileInfoRs.getString("MiddleName"));
+						    profile.put("Role", Integer.toString(profileInfoRs.getInt("RoleID")));
 						    String json = new Gson().toJson(profile);
 						    response.getWriter().write(json);
 						}
@@ -174,7 +176,9 @@ public class UserManagementServlet extends HttpServlet {
 				String lastName = request.getParameter("lastName");
 				String firstName = request.getParameter("firstName");
 				String middleName = request.getParameter("middleName");
-				AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleName, firstName, 1);
+				int role = Integer.parseInt(request.getParameter("role"));
+
+				AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleName, firstName, role);
 				
 				if(SQLOperations.updateProfile(ab, Integer.parseInt((String)request.getParameter("accountID")), connection)) {
 				    response.getWriter().write("Success");

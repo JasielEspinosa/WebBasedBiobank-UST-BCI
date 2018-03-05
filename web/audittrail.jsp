@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="css/pure-min.css">
 <link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
-
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
 <!-- JS -->
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery.min-2.js"></script>
@@ -32,7 +32,6 @@
 <script src="js/main.js"></script>
 <script src="js/genaudrep.js"></script>
 <script src="js/fontawesome-all.js"></script>
-<script src="DataTables/datatables.min.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
@@ -141,7 +140,7 @@
 
               <br>
 
-                <table id="customers" class="table-loader dataTable display">
+                <table id="auditTable">
                   <thead>
                     <tr>
                       <th>ACTION</th>
@@ -150,39 +149,7 @@
                       <th>EVENT DATE</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>ACTION</th>
-                      <th>PERFORMED ON</th>
-                      <th>PERFORMED BY</th>
-                      <th>EVENT DATE</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                    </tr>
-                    <tr>
-                      <td>Ashton Cox</td>
-                      <td>Junior Technical Author</td>
-                      <td>San Francisco</td>
-                      <td>66</td>
-                    </tr>
-                    <tr>
-                      <td>Cedric Kelly</td>
-                      <td>Senior Javascript Developer</td>
-                      <td>Edinburgh</td>
-                      <td>22</td>
-                    </tr>
                   </tbody>
                 </table>
             </div>
@@ -368,7 +335,8 @@
   </div>
   <!-- End of main container -->
 
-  <script type="text/javascript" src="datatables/datatables.min.js"></script>
+  <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+<script src="js/audit.js"></script>
 
 </body>
 </html>

@@ -24,14 +24,18 @@
 <link rel="stylesheet" href="css/pure-min.css">
 <link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
+
 
 <!-- JS -->
+<script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery.min-2.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/sidebar.js"></script>
 <script src="js/modal.js"></script>
-<script defer src="js/fontawesome-all.js"></script>
+<script src="js/genaudrep.js"></script>
+<script src="js/fontawesome-all.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
@@ -151,31 +155,20 @@
             <!-- End of buttons container -->
 
             <!-- Table -->
-            <div class="col-md-8 col-md-offset-3">
+            <div class="col-md-12 col-md-offset-1">
               <h3 style="background-color: #ffce00; font-weight: bold;" class="button-border">
                 <i class="fas fa-archive"></i> Archived Patients
               </h3>
-              <table id="customers">
-                <tr>
-                  <th></th>
-                  <th onclick="sortTable(0)">Patient No.</th>
-                  <th onclick="sortTable(1)">Patient Name</th>
-                </tr>
-                <tr>
-                  <td><a type="button" class="btn bg-yellow edtdelbtn-border" href="#">Restore</a></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+              <table id="archivedPatientsTable">
+               <thead>
+                  <tr>
+                     <th></th>
+                     <th>Patient No.</th>
+                     <th>Patient Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                </tbody>   
               </table>
               <!-- End of Table -->
             </div>
@@ -221,13 +214,26 @@
                 </div>
               </div>
             </div>
-
+            <div class="modal fade centered-modal" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                        aria-hidden="true" data-backdrop="static">
+               <div class="modal-dialog modal-sm">
+                  <div class="modal-content">
+                     <div class="modal-header" id="modalHeader">Confirm restore</div>
+                     <div class="modal-body" id="modalBody">Restore Patient</div>
+                     <div class="modal-footer">
+                        <a href="#" id="submitAction" class="btn btn-success success">Yes</a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                     </div>
+                  </div>
+               </div>
+            </div>        
           </div>
         </div>
       </div>
     </div>
   </div>
   <!--/row-offcanvas -->
-
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
+<script src="js/archived-patients.js"></script>
 </body>
 </html>

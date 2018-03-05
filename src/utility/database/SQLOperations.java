@@ -163,6 +163,17 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
+	
+	public static ResultSet getArchivedPatientList( Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_ARCHIVED_PATIENT_LIST);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get  Archived Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
 
 	public static boolean archivePatient(int patientID, Connection connection) {
 		try {
@@ -171,6 +182,19 @@ public class SQLOperations implements SQLCommands {
 			pstmt.executeUpdate();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- archivePatient: " + sqle.getMessage());
+			return false;
+		}
+
+		return true;
+	}
+	
+	public static boolean unarchivePatient(int patientID, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(UNARCHIVE_PATIENT);
+			pstmt.setInt(1, patientID);
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- uarchivePatient: " + sqle.getMessage());
 			return false;
 		}
 
@@ -198,6 +222,69 @@ public class SQLOperations implements SQLCommands {
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	//Generate Report
+	public static ResultSet grGetPatients(int diseaseID,String fromDateGenerateReport,String toDateGenerateReport, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GENERATE_REPORT_GET_PATIENTS);
+			pstmt.setInt(1, diseaseID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet grGetPatients(String fromDateGenerateReport,String toDateGenerateReport,Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GENERATE_REPORT_GET_PATIENTS_ALL);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet grGetFollowup(int patientID,String fromDateGenerateReport,String toDateGenerateReport, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GENERATE_REPORT_GET_FOLLOWUP);
+			pstmt.setInt(1, patientID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static boolean addAudit(AuditBean ab, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(AUDIT);
+			pstmt.setString(1, ab.getAction());
+			pstmt.setString(2, ab.getPerformedBy());
+			pstmt.setString(3, ab.getPerformedOn());
+			pstmt.setString(4, ab.getTimeStamp());
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- addAudit: " + sqle.getMessage());
+			return false;
+		}
+
+		return true;
+	}
+	
+	public static ResultSet getAudit(Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_AUDIT);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
 		}
 		return rs;
 	}
