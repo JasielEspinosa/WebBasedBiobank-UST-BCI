@@ -7,6 +7,7 @@ var params = {
 };
 
 var editState = false;
+var upperActionState = false;
 
 $("#LeukemiaBaseline").submit(function(e) {
 	e.preventDefault();
@@ -22,7 +23,7 @@ $('document').ready(function() {
 
 	$("#baselineBtn").click(function() {
 		if (upperActionState == true) {
-			loadPatientData(params.patientId);
+			loadPatientData(params.patientID);
 		}
 	});
 	$("#followUpBtn").click(function() {
@@ -171,7 +172,7 @@ function loadPatientData(id) {
 		$("[name='height']").val(response["height"])
 		$("[name='weight']").val(response["weight"])
 		$("[name='ecog']").val(response["ecog"])
-		
+
 		if (response["presenceOfSplenomegaly"] === "1") {
 			$("[name='presenceOfSplenomegaly'][value='1']").prop('checked', true);
 			$.chemicalExposureHistoryChecked();
@@ -251,7 +252,7 @@ function loadPatientData(id) {
 		}
 
 		$("[name='cytogeneticAndMolecularAnalysisResult']").val(response["cytogeneticAndMolecularAnalysisResult"])
-		
+
 		if (response["cytogeneticAndMolecularAnalysisResult"] !== "") {
 			$("[name='cytogeneticAndMolecularAnalysis'][value='1']").prop('checked', true);
 			$.cytogeneticAndMolecularAnalysisChecked();
@@ -313,7 +314,7 @@ function unbindEvents() {
 };
 
 function bindEvents() {
-	localStorage.setItem("id3", params.patientId);
+	localStorage.setItem("id3", params.patientID);
 	$("#baselineBtn").show();
 	$("#followUpBtn").show();
 	$("#patientStatistics").show();

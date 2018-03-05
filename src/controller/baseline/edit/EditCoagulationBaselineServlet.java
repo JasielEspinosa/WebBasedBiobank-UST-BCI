@@ -155,7 +155,7 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 		String treatment = request.getParameter("treatment");
 		String treatmentSpecify = noValue;
 		System.out.println(treatment);
-		if (treatment.equals("Others")) {
+		if (treatment.equalsIgnoreCase("Others")) {
 			treatmentSpecify = request.getParameter("treatmentSpecify");
 		}
 
@@ -236,7 +236,7 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				}
 
 				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, 0.0, 0.0, 0.0, 0.0, presenceOfHemarthroses,
-						presenceOfContracturesAndMuscleAtrophy, "", "", otherFindings);
+						presenceOfContracturesAndMuscleAtrophy, "", "", false, otherFindings);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editPhysicalExam(peb, connection, disease, physicalExamID)) {
 						System.out.println("Successful insert PhysicalExamBean");

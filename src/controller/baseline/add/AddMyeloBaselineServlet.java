@@ -60,19 +60,19 @@ public class AddMyeloBaselineServlet extends HttpServlet implements DefaultValue
 
 		String diagnosis = request.getParameter("diagnosis");
 		String diagnosisOthers = noValue;
-		if (diagnosis.equals("Others")) {
+		if (diagnosis.equalsIgnoreCase("Others")) {
 			diagnosisOthers = request.getParameter("diagnosisOthers");
 		}
 
 		String prognosticRiskScoring = request.getParameter("prognosticRiskScoring");
 		String prognosticRiskScoringOthers = noValue;
-		if (prognosticRiskScoring.equals("Others")) {
+		if (prognosticRiskScoring.equalsIgnoreCase("Others")) {
 			prognosticRiskScoringOthers = request.getParameter("prognosticRiskScoringOthers");
 		}
 
 		String riskScoreName = request.getParameter("riskScore");
 		String riskScoreOthers = noValue;
-		if (riskScoreName.equals("Others")) {
+		if (riskScoreName.equalsIgnoreCase("Others")) {
 			riskScoreOthers = request.getParameter("riskScoreOthers");
 		}
 
@@ -227,7 +227,7 @@ public class AddMyeloBaselineServlet extends HttpServlet implements DefaultValue
 		}
 
 		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, splenomegaly, hepatomegaly, lymphadenopathies, false,
-				false, thrombosisHistorySpecify, "", otherFindings);
+				false, thrombosisHistorySpecify, "", false, otherFindings);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");

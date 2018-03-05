@@ -224,7 +224,7 @@ public class AddLymphomaBaselineServlet extends HttpServlet implements DefaultVa
 		}
 
 		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, splenomegaly, hepatomegaly, lymphadenopathies, false,
-				false, "", "", otherFindings);
+				false, "", "", false, otherFindings);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");

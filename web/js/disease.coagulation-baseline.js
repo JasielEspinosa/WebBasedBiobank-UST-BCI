@@ -23,12 +23,12 @@ $('document').ready(function() {
 
 	$("#baselineBtn").click(function() {
 		if (upperActionState == true) {
-			loadPatientData(params.patientId);
+			loadPatientData(params.patientID);
 		}
 	});
 	$("#followUpBtn").click(function() {
 		if (upperActionState == true) {
-			windows.location = ("coagulation-followup.jsp").redirect();
+			windows.location = ("coagulationdisease-followup.jsp").redirect();
 		}
 	});
 	$("#patientStatistics").click(function() {
@@ -259,7 +259,7 @@ function unbindEvents() {
 };
 
 function bindEvents() {
-	localStorage.setItem("id2", params.patientId);
+	localStorage.setItem("id2", params.patientID);
 	$("#baselineBtn").show();
 	$("#followUpBtn").show();
 	$("#patientStatistics").show();

@@ -43,6 +43,7 @@ public class LoadLeukemiaFollowupServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
 		Map<String, String> followupData = new LinkedHashMap<>();
@@ -60,37 +61,39 @@ public class LoadLeukemiaFollowupServlet extends HttpServlet {
 				followupData.put("dateOfVisit", followup.getString("dateOfVisit"));
 				followupData.put("notes", followup.getString("notes"));
 
-				int medicalEventsid = followup.getInt("MedicalEventsID");
-				int clinicalDataId = followup.getInt("ClinicalDataID");
-				int laboratoryId = followup.getInt("LaboratoryID");
-				int diseaseStatusId = followup.getInt("DiseaseStatusID");
-				int patientId = followup.getInt("PatientID");
+				//int patientId = followup.getInt("PatientID");
 
 				//medical events
+				int medicalEventsid = followup.getInt("MedicalEventsID");
+
 				ResultSet medicalEvents = SQLOperationsFollowUp.getMedicalEvents(medicalEventsid, connection);
 				medicalEvents.first();
 
-				followupData.put("hematologicMalignancy", medicalEvents.getString("hematologicMalignancy"));
-				followupData.put("otherDiseaseMedication", medicalEvents.getString("otherDiseaseMedication"));
-				followupData.put("procedureIntervention", medicalEvents.getString("procedureIntervention"));
-				followupData.put("chemotherapyComplication", medicalEvents.getString("Chemotherapy"));
+				followupData.put("specifyHematologicMalignancy", medicalEvents.getString("hematologicMalignancy"));
+				followupData.put("specifyOtherDiseaseMedication", medicalEvents.getString("otherDiseaseMedication"));
+				followupData.put("specifyProcedure", medicalEvents.getString("procedureIntervention"));
+				followupData.put("specifyChemotherapy", medicalEvents.getString("Chemotherapy"));
 
 				//clinical data
+				int clinicalDataId = followup.getInt("ClinicalDataID");
+
 				ResultSet clinicalData = SQLOperationsFollowUp.getClinicalData(clinicalDataId, connection);
 				clinicalData.first();
-
-				int physicalExamId = clinicalData.getInt("PhysicalExamID");
 
 				followupData.put("currentSymptoms", clinicalData.getString("currentSymptoms"));
 
 				//physical exam
+				int physicalExamId = clinicalData.getInt("PhysicalExamID");
 				ResultSet physicalExam = SQLOperationsFollowUp.getPhysicalExam(physicalExamId, connection);
 				physicalExam.first();
 
 				followupData.put("weight", physicalExam.getString("weight"));
 				followupData.put("ecog", physicalExam.getString("ecog"));
+				followupData.put("pertinentFindings", physicalExam.getString("pertinentFindings"));
 
 				//laboratory profile
+				int laboratoryId = followup.getInt("LaboratoryID");
+
 				ResultSet laboratoryProfile = SQLOperationsFollowUp.getLaboratoryProfile(laboratoryId, connection);
 				laboratoryProfile.first();
 
@@ -132,13 +135,14 @@ public class LoadLeukemiaFollowupServlet extends HttpServlet {
 				ResultSet cytogeneticMolecular = SQLOperationsFollowUp.getCytogeneticMolecular(cytogeneticMolecularId, connection);
 				cytogeneticMolecular.first();
 
-				followupData.put("cytogeneticAndMolecularAnalysisResult", cytogeneticMolecular.getString("Result"));
+				followupData.put("molecularAnalysisResult", cytogeneticMolecular.getString("Result"));
 
+				int diseaseStatusId = followup.getInt("DiseaseStatusID");
 				ResultSet diseaseStatus = SQLOperationsFollowUp.getDiseaseStatus(diseaseStatusId, connection);
 				diseaseStatus.first();
 
 				followupData.put("diseaseStatus", diseaseStatus.getString("diseaseStatus"));
-				followupData.put("otherDisease", diseaseStatus.getString("otherDisease"));
+				followupData.put("diseaseStatusOthers", diseaseStatus.getString("otherDisease"));
 
 				//return data to js
 				String json = new Gson().toJson(followupData);

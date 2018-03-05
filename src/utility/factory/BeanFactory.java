@@ -77,7 +77,7 @@ public class BeanFactory {
 
 	public static PhysicalExamBean getPhysicalExamBean(double height, double weight, double ecog, double splenomegaly, double hepatomegaly,
 			double lymphadenopathies, boolean hemarthroses, boolean contracturesAndMuscleAtrophy, String thrombosisHistory, String skin,
-			String otherFindings) {
+			boolean pertinentFindings, String otherFindings) {
 		PhysicalExamBean pb = new PhysicalExamBean();
 		pb.setHeight(height);
 		pb.setWeight(weight);
@@ -89,6 +89,7 @@ public class BeanFactory {
 		pb.setContracturesAndMuscleAtrophy(contracturesAndMuscleAtrophy);
 		pb.setThrombosisHistory(thrombosisHistory);
 		pb.setSkin(skin);
+		pb.setPertinentFindings(pertinentFindings);
 		pb.setOtherFindings(otherFindings);
 		return pb;
 	}
@@ -407,12 +408,6 @@ public class BeanFactory {
 		mb.setProcedureIntervention(procedureIntervention);
 		mb.setChemotherapy(chemotherapy);
 		return mb;
-	}
-
-	public static QualityOfResponseBean getQualityOfResponseBean(String responseName) {
-		QualityOfResponseBean qorb = new QualityOfResponseBean();
-		qorb.setResponseName(responseName);
-		return qorb;
 	}
 
 	public static FollowUpBean getFollowUpBean(int patientID, String dateOfEntry, String dateOfVisit, String notes) {

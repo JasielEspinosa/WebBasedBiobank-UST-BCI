@@ -215,21 +215,21 @@
                                        <!-- End of Barcode Pop-Up -->
                                        <label class="control-label col-sm-4">Patient ID Number</label>
                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" name="patientIDNumber">
+                                          <input type="text" class="form-control" name="patientIDNumber" disabled>
                                        </div>
                                     </div>
                                     <!-- Last Name -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Last Name</label>
                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" name="lastName">
+                                          <input type="text" class="form-control" name="lastName" required>
                                        </div>
                                     </div>
                                     <!-- First Name -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">First Name</label>
                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" name="firstName">
+                                          <input type="text" class="form-control" name="firstName" required>
                                        </div>
                                     </div>
                                     <!-- Middle Initial -->
@@ -244,10 +244,12 @@
                                        <label class="control-label col-sm-5">Gender</label>
                                        <div class="col-sm-7">
                                           <div class="radio">
-                                             <label><input type="radio" name="gender" value="1" Required="Required">Male</label>
+                                             <label> <input type="radio" name="gender" value="1" Required="Required"> Male
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="gender" value="2">Female</label>
+                                             <label> <input type="radio" name="gender" value="2"> Female
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -255,7 +257,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Date of Birth</label>
                                        <div class="col-sm-7">
-                                          <input type="date" class="form-control" name="dateOfBirth">
+                                          <input required type="date" class="form-control" name="dateOfBirth">
                                        </div>
                                     </div>
                                     <!-- Address -->
@@ -276,7 +278,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Date of Entry</label>
                                        <div class="col-sm-7">
-                                          <input type="date" class="form-control" name="dateOfEntry">
+                                          <input required type="date" class="form-control" name="dateOfEntry">
                                        </div>
                                     </div>
                                     <!-- Tissue Specimen Collected -->
@@ -284,10 +286,13 @@
                                        <label class="control-label col-sm-5">Tissue Specimen Collected</label>
                                        <div class="col-sm-7">
                                           <div class="radio">
-                                             <label><input type="radio" name="tissueSpecimenCollected" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="tissueSpecimenCollected" value="1"
+                                                Required="Required"> Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="tissueSpecimenCollected" value="0">No</label>
+                                             <label> <input type="radio" name="tissueSpecimenCollected" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -295,7 +300,8 @@
                                     <div class="form-group" id="specimenType" style="display: none;">
                                        <label class="control-label col-sm-5">Specimen Type</label>
                                        <div class="col-sm-7">
-                                          <select class="form-control" name="specimenType">
+                                          <select required class="form-control" name="specimenType">
+                                             <option value="" selected="selected" disabled="disabled">Select</option>
                                              <option value="BMA">BMA</option>
                                              <option value="BB">BB</option>
                                              <option value="LN">LN</option>
@@ -328,15 +334,15 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Date of Initial Diagnosis</label>
                                        <div class="col-sm-9">
-                                          <input type="date" class="form-control" name="dateOfInitialDiagnosis">
+                                          <input required type="date" class="form-control" name="dateOfInitialDiagnosis">
                                        </div>
                                     </div>
                                     <!-- Diagnosis -->
                                     <div class="form-group">
                                        <label for="diagnosis" class="control-label col-sm-3">Diagnosis</label>
                                        <div class="col-sm-9">
-                                          <select class="form-control" name="diagnosis">
-                                             <option selected="selected" disabled="disabled">Select</option>
+                                          <select required class="form-control" name="diagnosis">
+                                             <option value="" selected="selected" disabled="disabled">Select</option>
                                              <option value="D75.81 Primary Myelofibrosis">D75.81 Primary Myelofibrosis</option>
                                              <option value="D45.0 Polycythemia Vera">D45.0 Polycythemia Vera</option>
                                              <option value="D47.3 Essential Thrombocythemia">D47.3 Essential Thrombocythemia</option>
@@ -359,8 +365,8 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Prognostic Risk Scoring Used</label>
                                        <div class="col-sm-9">
-                                          <select class="form-control" name="prognosticRiskScoring">
-                                             <option selected="selected" disabled="disabled">Select</option>
+                                          <select required class="form-control" name="prognosticRiskScoring">
+                                             <option value="" selected="selected" disabled="disabled">Select</option>
                                              <option value="IPSS risk">IPSS risk</option>
                                              <option value="DIPSS risk">DIPSS risk</option>
                                              <option value="Others">Others</option>
@@ -378,8 +384,8 @@
                                     <div class="form-group">
                                        <label class="control-label col-lg-3">Risk Score</label>
                                        <div class="col-lg-9">
-                                          <select class="form-control" name="riskScore">
-                                             <option selected="selected" disabled="disabled">Select</option>
+                                          <select required class="form-control" name="riskScore">
+                                             <option value="" selected="selected" disabled="disabled">Select</option>
                                              <option value="Low Risk">Low Risk</option>
                                              <option value="Intermediate -1 risk">Intermediate -1 risk</option>
                                              <option value="Intermediate -2 risk">Intermediate -2 risk</option>
@@ -406,8 +412,8 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Constitutional Symptoms</label>
                                        <div class="col-sm-9">
-                                          <select class="form-control" name="constitutionalSymptoms">
-                                             <option selected="selected" disabled="disabled">Select</option>
+                                          <select required class="form-control" name="constitutionalSymptoms">
+                                             <option value="" selected="selected" disabled="disabled">Select</option>
                                              <option value="Fever">Fever</option>
                                              <option value="Weigh Loss">Weigh Loss</option>
                                              <option value="Night Sweats">Night Sweats</option>
@@ -426,10 +432,13 @@
                                        <label class="control-label col-sm-3">Family History of Cancer</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistoryOfCancer" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="familyHistoryOfCancer" value="1" Required="Required">
+                                                Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="familyHistoryOfCancer" value="0">No</label>
+                                             <label> <input type="radio" name="familyHistoryOfCancer" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -466,10 +475,13 @@
                                        <label class="control-label col-sm-3">Thrombosis History</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="thrombosisHistory" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="thrombosisHistory" value="1" Required="Required">
+                                                Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="thrombosisHistory" value="0">No</label>
+                                             <label> <input type="radio" name="thrombosisHistory" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -484,10 +496,13 @@
                                        <label class="control-label col-sm-3">Concomitant Medications</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="concomitantMedications" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="concomitantMedications" value="1" Required="Required">
+                                                Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="concomitantMedications" value="0">No</label>
+                                             <label> <input type="radio" name="concomitantMedications" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -517,10 +532,13 @@
                                        <label class="control-label col-sm-3">Smoking History</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="smokingHistory" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="smokingHistory" value="1" Required="Required">
+                                                Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="smokingHistory" value="0">No</label>
+                                             <label> <input type="radio" name="smokingHistory" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -535,10 +553,13 @@
                                        <label class="control-label col-lg-3">Alcohol intake history </label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="alcoholIntakeHistory" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="alcoholIntakeHistory" value="1" Required="Required">
+                                                Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="alcoholIntakeHistory" value="0">No</label>
+                                             <label> <input type="radio" name="alcoholIntakeHistory" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -553,10 +574,13 @@
                                        <label class="control-label col-lg-3">Chemical exposure</label>
                                        <div class="col-sm-9">
                                           <div class="radio">
-                                             <label><input type="radio" name="chemicalExposureHistory" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="chemicalExposureHistory" value="1"
+                                                Required="Required"> Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="chemicalExposureHistory" value="0">No</label>
+                                             <label> <input type="radio" name="chemicalExposureHistory" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -593,10 +617,13 @@
                                        <label class="control-label col-lg-4">Presence of Splenomegaly</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfSplenomegaly" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="presenceOfSplenomegaly" value="1" Required="Required">
+                                                Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfSplenomegaly" value="0">No</label>
+                                             <label> <input type="radio" name="presenceOfSplenomegaly" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -604,10 +631,13 @@
                                        <label class="control-label col-lg-4">Presence of Hepatomegaly</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfHepatomegaly" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="presenceOfHepatomegaly" value="1" Required="Required">
+                                                Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfHepatomegaly" value="0">No</label>
+                                             <label> <input type="radio" name="presenceOfHepatomegaly" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -615,11 +645,13 @@
                                        <label class="control-label col-lg-4">Presence of Lymphadenopathies</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfLymphadenopathies" value="1"
-                                                Required="Required">Yes</label>
+                                             <label> <input type="radio" name="presenceOfLymphadenopathies" value="1"
+                                                Required="Required"> Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="presenceOfLymphadenopathies" value="0">No</label>
+                                             <label> <input type="radio" name="presenceOfLymphadenopathies" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -642,7 +674,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Date of blood collection</label>
                                        <div class="col-lg-8">
-                                          <input type="date" class="form-control" name="dateOfBloodCollection" />
+                                          <input required type="date" class="form-control" name="dateOfBloodCollection" />
                                        </div>
                                     </div>
                                     <br />
@@ -786,17 +818,20 @@
                                        <label class="control-label col-sm-4">Bone Marrow Aspirate and Biopsy result</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="boneMarrowAspirate" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="boneMarrowAspirate" value="1" Required="Required">
+                                                Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="boneMarrowAspirate" value="0">No</label>
+                                             <label> <input type="radio" name="boneMarrowAspirate" value="0"> No
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
                                     <div class="form-group" id="boneMarrowAspirateDatePerformed" style="display: none;">
                                        <label class="control-label col-sm-4">Date Performed</label>
                                        <div class="col-lg-8">
-                                          <input type="date" class="form-control" name="boneMarrowAspirateDatePerformed" />
+                                          <input required type="date" class="form-control" name="boneMarrowAspirateDatePerformed" />
                                        </div>
                                     </div>
                                     <div class="form-group" id="boneMarrowAspirateDescription" style="display: none;">
@@ -816,11 +851,14 @@
                                        <label class="control-label col-sm-4">Molecular Analysis (Jak 2 assay)</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label><input type="radio" name="molecularAnalysis" value="1" Required="Required">Yes</label>
+                                             <label> <input type="radio" name="molecularAnalysis" value="1" Required="Required">
+                                                Yes
+                                             </label>
                                           </div>
                                           <div class="radio">
-                                             <label><input type="radio" name="molecularAnalysis" value="0">No / Not
-                                                Applicable</label>
+                                             <label> <input type="radio" name="molecularAnalysis" value="0"> No / Not
+                                                Applicable
+                                             </label>
                                           </div>
                                        </div>
                                     </div>
@@ -842,7 +880,8 @@
                                     <div class="form-group">
                                        <label for="severity" class="control-label col-sm-4">Mode of Treatment</label>
                                        <div class="col-sm-8">
-                                          <select class="form-control" name="treatment">
+                                          <select required class="form-control" name="treatment">
+                                             <option value="" selected="selected" disabled="disabled">Select</option>
                                              <option value="Hematopoietic Stem Cell Transplantation">Hematopoietic Stem Cell
                                                 Transplantation</option>
                                              <option value="Pharmacologic Treatment">Pharmacologic Treatment</option>
@@ -863,7 +902,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Date Started</label>
                                        <div class="col-lg-8">
-                                          <input type="date" class="form-control" name="dateStarted" />
+                                          <input required type="date" class="form-control" name="dateStarted" />
                                        </div>
                                     </div>
                                  </div>
@@ -887,19 +926,20 @@
    </div>
    <!-- End of Main Content -->
    <!-- Generate Report Modal  -->
-   <div class="modal fade centered-modal" id="genrep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-      data-backdrop="static">
-      <div class="modal-dialog modal-lg">
-         <div class="modal-content">
-            <div class="modal-header">
-               Generate Report:
-               <button type="button" class="close" data-dismiss="modal">
-                  <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-               </button>
-            </div>
-            <div class="modal-body">
-               <div class="form-horizontal" style="text-align: right;">
-                  <form role="form">
+   <form role="form" action="GenerateReportServlet" method="post" id="">
+      <div class="modal fade centered-modal" id="genrep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+         data-backdrop="static">
+         <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+               <div class="modal-header">
+                  Generate Report:
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="form-horizontal" style="text-align: right;">
+                     <!-- <form role="form"> -->
                      <!-- From Date  -->
                      <div class="form-group">
                         <div class="col-sm-2">
@@ -926,16 +966,16 @@
                            <label for="message-text" class="control-label">Disease Type:</label>
                         </div>
                         <div class="col-sm-10">
-                           <select class="form-control" name="diagnosis">
+                           <select class="form-control" name="diseaseType">
                               <option selected="selected" disabled="disabled">Select</option>
+                              <option value="All">All</option>
+                              <option value="AA, PNH, MDS">AA, PNH, MDS</option>
+                              <option value="Coagulation">Coagulation</option>
                               <option value="Leukemia">Leukemia</option>
                               <option value="Lymphoma">Lymphoma</option>
                               <option value="Plasma Cell Disorders">Plasma Cell Disorders</option>
                               <option value="Platelets Disorders">Platelets Disorders</option>
-                              <option value="Coagulation">Coagulation</option>
-                              <option value="AA, PNH, MDS">AA, PNH, MDS</option>
                               <option value="Thalassemia">Thalassemia</option>
-                              <option value="All">All</option>
                            </select>
                         </div>
                      </div>
@@ -946,38 +986,69 @@
                            <label for="message-text" class="control-label">Specific Type:</label>
                         </div>
                         <div class="col-sm-10 genrepmodal__checkboxgroup--position">
-                           <input type="checkbox"> <label class="genrepmodal__checkboxes">Age</label> <input type="checkbox">
-                           <label class="genrepmodal__checkboxes">Gender</label> <input type="checkbox"> <label
-                              class="genrepmodal__checkboxes">Mode of Treatment</label> <input type="checkbox"> <label
-                              class="genrepmodal__checkboxes">Disease Status Baseline</label> <input type="checkbox"> <label
-                              class="genrepmodal__checkboxes">Disease Status Follow-up</label>
+                           <input type="checkbox" name="ageGR" value="ageGR"> <label class="genrepmodal__checkboxes">Age</label> <input
+                              type="checkbox" name="genderGR" value="genderGR"> <label class="genrepmodal__checkboxes">Gender</label>
+                           <input type="checkbox" name="modeOfTreatmentGR" value="modeOfTreatmentGR"> <label
+                              class="genrepmodal__checkboxes">Mode of Treatment</label> <input type="checkbox" name="dsBaselineGR"
+                              value="dsBaselineGR"> <label class="genrepmodal__checkboxes">Disease Status Baseline</label> <input
+                              type="checkbox" name="dsFollowupGR" value="dsFollowupGR"> <label class="genrepmodal__checkboxes">Disease
+                              Status Follow-up</label>
                         </div>
                      </div>
-                  </form>
+                     <!-- Paper Print -->
+                     <div class="form-group">
+                        <div class="col-sm-2">
+                           <label for="message-text" class="control-label">Paper Size:</label>
+                        </div>
+                        <div class="col-sm-3">
+                           <select required class="form-control" name="paperSize">
+                              <option value="" selected="selected" disabled="disabled">Select</option>
+                              <option value="LETTER">Letter</option>
+                              <option value="LEGAL">Legal</option>
+                              <option value="A4">A4</option>
+                           </select>
+                        </div>
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-2">
+                           <label for="message-text" class="control-label">Paper Layout:</label>
+                        </div>
+                        <div class="col-sm-1">
+                           <div class="radio">
+                              <label> <input type="radio" name="paperLayout" value="portrait" Required="Required"> Portrait
+                              </label>
+                           </div>
+                           <div class="radio">
+                              <label> <input type="radio" name="paperLayout" value="landscape"> Landscape
+                              </label>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- End of Paper Print  -->
+                     <!-- </form> -->
+                  </div>
                </div>
-            </div>
-            <div class="modal-footer">
-               <button type="submit" class="btn btn-success">Ok</button>
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+               <div class="modal-footer">
+                  <button type="submit" class="btn btn-success">Ok</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+               </div>
             </div>
          </div>
       </div>
-   </div>
-   <!-- End of Generate Report Modal  -->
-   <!-- Generate Report Modal  -->
-   <div class="modal fade centered-modal" id="genrep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-      data-backdrop="static">
-      <div class="modal-dialog modal-md">
-         <div class="modal-content">
-            <div class="modal-header">
-               Generate Report:
-               <button type="button" class="close" data-dismiss="modal">
-                  <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-               </button>
-            </div>
-            <div class="modal-body">
-               <div class="form-horizontal" style="text-align: right;">
-                  <form role="form">
+      <!-- End of Generate Report Modal  -->
+      <!-- Generate Report Modal  -->
+      <div class="modal fade centered-modal" id="genrep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+         data-backdrop="static">
+         <div class="modal-dialog modal-md">
+            <div class="modal-content">
+               <div class="modal-header">
+                  Generate Report:
+                  <button type="button" class="close" data-dismiss="modal">
+                     <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <div class="form-horizontal" style="text-align: right;">
+                     <!-- <form role="form"> -->
                      <!-- Doctors -->
                      <div class="form-group">
                         <div class="col-sm-5">
@@ -1123,16 +1194,17 @@
                         </div>
                      </div>
                      <!-- End of To Date  -->
-                  </form>
+                     <!-- </form> -->
+                  </div>
                </div>
-            </div>
-            <div class="modal-footer">
-               <button type="submit" onclick="printDiv()" class="btn btn-success">Ok</button>
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+               <div class="modal-footer">
+                  <button type="submit" onclick="printDiv()" class="btn btn-success">Ok</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+               </div>
             </div>
          </div>
       </div>
-   </div>
+   </form>
    <!-- End of Generate Report Modal  -->
    <!-- Patient Statistics Modal  -->
    <div class="modal fade centered-modal" id="patstats" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
@@ -1201,5 +1273,7 @@
    <script src="js/JsBarcode.barcodePrint.js"></script>
    <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
    <script src="js/disease.myelo-baseline.js"></script>
+   <script src="js/inactivity.js"></script>
+   <script src="js/logout.js"></script>
 </body>
 </html>

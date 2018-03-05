@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.*;
-import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
@@ -23,7 +22,7 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 	private Connection connection;
 
 	public void init() throws ServletException {
-		connection = SQLOperationsBaseline.getConnection();
+		connection = SQLOperationsFollowUp.getConnection();
 
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -43,8 +42,6 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String noValue = "";
-
 		int disease = 6;
 
 		int patientID = Integer.parseInt(request.getParameter("patientID"));
@@ -52,17 +49,39 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
-		String hematologicMalignancy = request.getParameter("specifyHematologicMalignancy");
-		String otherDiseaseMedication = request.getParameter("specifyOtherDiseaseMedication");
-		String procedureIntervention = request.getParameter("specifyProcedure");
-		String chemotherapyComplication = request.getParameter("specifyChemotherapy");
 
+		String hematologicMalignancy = noValue;
+		if (Integer.parseInt(request.getParameter("hematologicMalignancy")) == 1) {
+			hematologicMalignancy = request.getParameter("specifyHematologicMalignancy");
+		}
+
+		String otherDiseaseMedication = noValue;
+		if (Integer.parseInt(request.getParameter("otherDiseaseMedication")) == 1) {
+			otherDiseaseMedication = request.getParameter("specifyOtherDiseaseMedication");
+		}
+
+		String procedureIntervention = noValue;
+		if (Integer.parseInt(request.getParameter("procedure")) == 1) {
+			procedureIntervention = request.getParameter("specifyProcedure");
+		}
+
+		String chemotherapyComplication = noValue;
+		if (Integer.parseInt(request.getParameter("chemotherapy")) == 1) {
+			chemotherapyComplication = request.getParameter("specifyChemotherapy");
+		}
 		// CLINICAL
 		String currentSymptoms = request.getParameter("currentSymptoms");
 		double weight = Double.parseDouble(request.getParameter("weight"));
 		double ecog = Double.parseDouble(request.getParameter("ecog"));
 
-		// pertinent findings (not yet added in table), boolean or int?
+		boolean pertinentFindings = false;
+		if (Integer.parseInt(request.getParameter("pertinentFindings")) == 1) {
+			pertinentFindings = true;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		} else if (Integer.parseInt(request.getParameter("pertinentFindings")) == 0) {
+			pertinentFindings = false;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		}
 
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
@@ -94,8 +113,14 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 		String urineProteinResult = request.getParameter("urineProteinResult");
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
-		String relapseDisease = request.getParameter("relapseDisease");
-		String otherDisease = request.getParameter("diseaseStatusOthers");
+		String relapseDisease = noValue;
+		String otherDisease = noValue;
+		if (diseaseStatus.equalsIgnoreCase("Others")) {
+			otherDisease = request.getParameter("diseaseStatusOthers");
+		} else if (diseaseStatus.equalsIgnoreCase("Relapse")) {
+			relapseDisease = request.getParameter("relapseDisease");
+		}
+
 		String notes = request.getParameter("specialNotes");
 
 		//load
@@ -107,9 +132,8 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 				int medicalEventsid = followup.getInt("MedicalEventsID");
 				int clinicalDataId = followup.getInt("ClinicalDataID");
 				int laboratoryId = followup.getInt("LaboratoryID");
-				int qualityOfResponseId = followup.getInt("QualityOfResponseID");
 				int diseaseStatusId = followup.getInt("DiseaseStatusID");
-				int patientId = followup.getInt("PatientID");
+				//int patientId = followup.getInt("PatientID");
 
 				ResultSet clinicalData = SQLOperationsFollowUp.getClinicalData(clinicalDataId, connection);
 				clinicalData.first();
@@ -140,7 +164,7 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 					System.out.println("Invalid connection MedicalEventsBean");
 				}
 
-				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", "");
+				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", pertinentFindings, "");
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updatePhysicalExam(peb, connection, disease, physicalExamId)) {
 						System.out.println("Successful insert PhysicalExamBean");

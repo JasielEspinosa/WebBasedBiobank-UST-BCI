@@ -7,6 +7,7 @@ var params = {
 };
 
 var editState = false;
+var upperActionState = false;
 
 $("#LymphomaBaseline").submit(function(e) {
 	e.preventDefault();
@@ -22,7 +23,7 @@ $('document').ready(function() {
 
 	$("#baselineBtn").click(function() {
 		if (upperActionState == true) {
-			loadPatientData(params.patientId);
+			loadPatientData(params.patientID);
 		}
 	});
 	$("#followUpBtn").click(function() {
@@ -323,7 +324,7 @@ function unbindEvents() {
 };
 
 function bindEvents() {
-	localStorage.setItem("id4", params.patientId);
+	localStorage.setItem("id4", params.patientID);
 	$("#baselineBtn").show();
 	$("#followUpBtn").show();
 	$("#patientStatistics").show();
@@ -331,6 +332,7 @@ function bindEvents() {
 	$("#archPatientBtn").show();
 	upperActionState = true;
 };
+
 // add bind
 
 function actionBind() {

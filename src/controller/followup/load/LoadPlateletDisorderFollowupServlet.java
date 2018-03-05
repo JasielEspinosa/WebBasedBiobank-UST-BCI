@@ -61,22 +61,19 @@ public class LoadPlateletDisorderFollowupServlet extends HttpServlet {
 				followupData.put("dateOfVisit", followup.getString("dateOfVisit"));
 				followupData.put("notes", followup.getString("notes"));
 
-				int medicalEventsid = followup.getInt("MedicalEventsID");
-				int clinicalDataId = followup.getInt("ClinicalDataID");
-				int laboratoryId = followup.getInt("LaboratoryID");
-				int qualityOfResponseId = followup.getInt("QualityOfResponseID");
-				int diseaseStatusId = followup.getInt("DiseaseStatusID");
-				int patientId = followup.getInt("PatientID");
+				//int patientId = followup.getInt("PatientID");
 
 				//medical events
+				int medicalEventsid = followup.getInt("MedicalEventsID");
 				ResultSet medicalEvents = SQLOperationsFollowUp.getMedicalEvents(medicalEventsid, connection);
 				medicalEvents.first();
 
-				followupData.put("hematologicMalignancy", medicalEvents.getString("hematologicMalignancy"));
-				followupData.put("procedureIntervention", medicalEvents.getString("procedureIntervention"));
-				followupData.put("chemotherapyComplication", medicalEvents.getString("Chemotherapy"));
+				followupData.put("specifyOtherDiseaseMedication", medicalEvents.getString("otherDiseaseMedication"));
+				followupData.put("specifyProcedure", medicalEvents.getString("procedureIntervention"));
+				followupData.put("specifyChemotherapy", medicalEvents.getString("Chemotherapy"));
 
 				//clinical data
+				int clinicalDataId = followup.getInt("ClinicalDataID");
 				ResultSet clinicalData = SQLOperationsFollowUp.getClinicalData(clinicalDataId, connection);
 				clinicalData.first();
 
@@ -90,8 +87,10 @@ public class LoadPlateletDisorderFollowupServlet extends HttpServlet {
 
 				followupData.put("weight", physicalExam.getString("weight"));
 				followupData.put("ecog", physicalExam.getString("ecog"));
+				followupData.put("pertinentFindings", physicalExam.getString("pertinentFindings"));
 
 				//laboratory profile
+				int laboratoryId = followup.getInt("LaboratoryID");
 				ResultSet laboratoryProfile = SQLOperationsFollowUp.getLaboratoryProfile(laboratoryId, connection);
 				laboratoryProfile.first();
 
@@ -112,18 +111,22 @@ public class LoadPlateletDisorderFollowupServlet extends HttpServlet {
 				followupData.put("monocytes", hematology.getString("monocytes"));
 				followupData.put("eosinophils", hematology.getString("eosinophils"));
 				followupData.put("basophils", hematology.getString("basophils"));
+				followupData.put("myelocytes", hematology.getString("myelocytes"));
+				followupData.put("metamyelocytes", hematology.getString("metamyelocytes"));
+				followupData.put("blasts", hematology.getString("blasts"));
 				followupData.put("plateletCount", hematology.getString("plateletCount"));
 
 				ResultSet imagingStudies = SQLOperationsFollowUp.getImagingStudies(imagingStudiesId, connection);
 				imagingStudies.first();
 
-				followupData.put("imagingStudiesResult", imagingStudies.getString("imagingStudiesResult"));
+				followupData.put("imagingStudiesResult", imagingStudies.getString("Result"));
 
+				int diseaseStatusId = followup.getInt("DiseaseStatusID");
 				ResultSet diseaseStatus = SQLOperationsFollowUp.getDiseaseStatus(diseaseStatusId, connection);
 				diseaseStatus.first();
 
+				followupData.put("qualityOfResponse", diseaseStatus.getString("diseaseStatus"));
 				followupData.put("diseaseStatusOthers", diseaseStatus.getString("otherDisease"));
-				followupData.put("qualityOfResponse", diseaseStatus.getString("qualityOfResponse")); //revise this
 
 				//return data to js
 				String json = new Gson().toJson(followupData);

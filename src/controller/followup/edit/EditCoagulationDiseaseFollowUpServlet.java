@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.*;
-import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
@@ -23,7 +22,7 @@ public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet implement
 	private Connection connection;
 
 	public void init() throws ServletException {
-		connection = SQLOperationsBaseline.getConnection();
+		connection = SQLOperationsFollowUp.getConnection();
 
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -42,9 +41,7 @@ public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet implement
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String noValue = "";
-
+		
 		int disease = 2;
 
 		int patientID = Integer.parseInt(request.getParameter("patientID"));
@@ -52,10 +49,21 @@ public class EditCoagulationDiseaseFollowUpServlet extends HttpServlet implement
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
-		String factorConcentrate = request.getParameter("specifyReasonFactorConcentrate");
-		String factorConcentrateDates = request.getParameter("datesOfAdministrationFactorConcentrate");
-		Double factorConcentrateDose = Double.parseDouble(request.getParameter("doseOfFactorConcentrate"));
-		String procedureIntervention = request.getParameter("specifyProcedure");
+
+		String factorConcentrate = noValue;
+		String factorConcentrateDates = noValue;
+		Double factorConcentrateDose = 0.0;
+		if (Integer.parseInt(request.getParameter("factorConcentrate")) == 1) {
+			factorConcentrate = request.getParameter("specifyReasonFactorConcentrate");
+			factorConcentrateDates = request.getParameter("datesOfAdministrationFactorConcentrate");
+			factorConcentrateDose = Double.parseDouble(request.getParameter("doseOfFactorConcentrate"));
+		}
+
+		String procedureIntervention = noValue;
+		if (Integer.parseInt(request.getParameter("procedure")) == 1) {
+			procedureIntervention = request.getParameter("specifyProcedure");
+		}
+
 		String notes = request.getParameter("specialNotes");
 
 		//load

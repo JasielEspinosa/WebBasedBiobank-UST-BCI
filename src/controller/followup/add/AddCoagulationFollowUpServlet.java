@@ -12,9 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 import model.*;
 import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
+import utility.values.DefaultValues;
 
 @WebServlet("/AddCoagulationFollowUpServlet")
-public class AddCoagulationFollowUpServlet extends HttpServlet {
+public class AddCoagulationFollowUpServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
 
 	private Connection connection;
@@ -39,15 +40,25 @@ public class AddCoagulationFollowUpServlet extends HttpServlet {
 
 		int disease = 2;
 
-		int patientID = Integer.parseInt(request.getParameter("patientId"));
-		
+		int patientID = Integer.parseInt(request.getParameter("patientID"));
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
-		String factorConcentrate = request.getParameter("specifyReasonFactorConcentrate");
-		String factorConcentrateDates = request.getParameter("datesOfAdministrationFactorConcentrate");
-		Double factorConcentrateDose = Double.parseDouble(request.getParameter("doseOfFactorConcentrate"));
-		String procedureIntervention = request.getParameter("specifyProcedure");
+
+		String factorConcentrate = noValue;
+		String factorConcentrateDates = noValue;
+		Double factorConcentrateDose = 0.0;
+		if (Integer.parseInt(request.getParameter("factorConcentrate")) == 1) {
+			factorConcentrate = request.getParameter("specifyReasonFactorConcentrate");
+			factorConcentrateDates = request.getParameter("datesOfAdministrationFactorConcentrate");
+			factorConcentrateDose = Double.parseDouble(request.getParameter("doseOfFactorConcentrate"));
+		}
+
+		String procedureIntervention = noValue;
+		if (Integer.parseInt(request.getParameter("procedure")) == 1) {
+			procedureIntervention = request.getParameter("specifyProcedure");
+		}
+
 		String notes = request.getParameter("specialNotes");
 
 		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean("", "", factorConcentrate, factorConcentrateDates, factorConcentrateDose,

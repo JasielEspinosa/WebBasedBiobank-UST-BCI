@@ -65,17 +65,12 @@ public class LoadAAPNHMDSFollowupServlet extends HttpServlet {
 
 				//medical events
 				int medicalEventsID = followup.getInt("MedicalEventsID");
-
 				ResultSet medicalEvents = SQLOperationsFollowUp.getMedicalEvents(medicalEventsID, connection);
 				medicalEvents.first();
-
 				followupData.put("specifyHematologicMalignancy", medicalEvents.getString("hematologicMalignancy"));
-
-				System.out.println(medicalEvents.getString("hematologicMalignancy"));
-
 				followupData.put("specifyOtherDiseaseMedication", medicalEvents.getString("otherDiseaseMedication"));
-				followupData.put("specifyProcedureIntervention", medicalEvents.getString("procedureIntervention"));
-				followupData.put("specifyChemotherapyComplication", medicalEvents.getString("Chemotherapy"));
+				followupData.put("specifyProcedure", medicalEvents.getString("procedureIntervention"));
+				followupData.put("specifyChemotherapy", medicalEvents.getString("Chemotherapy"));
 
 				//clinical data
 				int clinicalDataID = followup.getInt("ClinicalDataID");
@@ -93,6 +88,7 @@ public class LoadAAPNHMDSFollowupServlet extends HttpServlet {
 
 				followupData.put("weight", physicalExam.getString("weight"));
 				followupData.put("ecog", physicalExam.getString("ecog"));
+				followupData.put("pertinentFindings", physicalExam.getString("pertinentFindings"));
 
 				//laboratory profile
 				int laboratoryID = followup.getInt("LaboratoryID");
@@ -156,7 +152,7 @@ public class LoadAAPNHMDSFollowupServlet extends HttpServlet {
 				diseaseStatus.first();
 
 				followupData.put("diseaseStatus", diseaseStatus.getString("diseaseStatus"));
-				followupData.put("otherDisease", diseaseStatus.getString("otherDisease"));
+				followupData.put("diseaseStatusOthers", diseaseStatus.getString("otherDisease"));
 
 				//return data to js
 				String json = new Gson().toJson(followupData);

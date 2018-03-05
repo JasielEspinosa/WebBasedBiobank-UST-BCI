@@ -149,7 +149,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet implements Defaul
 
 		String treatment = request.getParameter("treatment");
 		String treatmentSpecify = noValue;
-		if (treatment.equals("Others")) {
+		if (treatment.equalsIgnoreCase("Others")) {
 			treatmentSpecify = request.getParameter("treatmentSpecify");
 		}
 
@@ -190,7 +190,7 @@ public class AddCoagulationBaselineServlet extends HttpServlet implements Defaul
 		}
 
 		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, 0.0, 0.0, 0.0, 0.0, presenceOfHemarthroses,
-				presenceOfContracturesAndMuscleAtrophy, "", "", otherFindings);
+				presenceOfContracturesAndMuscleAtrophy, "", "", false, otherFindings);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");

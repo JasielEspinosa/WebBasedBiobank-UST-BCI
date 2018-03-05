@@ -239,7 +239,7 @@ public class AddAAPNHMDSBaselineServlet extends HttpServlet implements DefaultVa
 			System.out.println("Invalid connection ClassificationBean");
 		}
 
-		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", otherFindings);
+		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", false, otherFindings);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");

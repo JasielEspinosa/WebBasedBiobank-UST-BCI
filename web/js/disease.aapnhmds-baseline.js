@@ -294,12 +294,10 @@ function loadPatientList() {
 				$.each(responseJson, function(index, patient) {
 					$('#searchboxfill').append(
 							"<p value='" + patient.patientID + "' onClick=\"loadPatientData(" + patient.patientID + ")\"" + ">"
-									+ patient.firstName + " " + patient.middleName + " " + patient.lastName + "</p>")
+									+ patient.lastName + ", " + patient.firstName + " " + patient.middleName + "</p>")
 				});
-
 			}).fail(function() {
 	});
-
 };
 
 // bind functions

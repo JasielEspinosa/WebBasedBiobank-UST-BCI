@@ -162,7 +162,7 @@ public class LoadPlasmaCellBaselineServlet extends HttpServlet {
 				patientData.put("totalProtein", bloodChemistryRS.getString("TotalProtein"));
 				patientData.put("albumin", bloodChemistryRS.getString("Albumin"));
 				patientData.put("globulin", bloodChemistryRS.getString("Globulin"));
-				patientData.put("b2Microglobulin", bloodChemistryRS.getString("Beta2Microglobulin"));
+				patientData.put("beta2Microglobulin", bloodChemistryRS.getString("Beta2Microglobulin"));
 				patientData.put("ldh", bloodChemistryRS.getString("LDH"));
 
 				int imagingStudiesID = laboratoryProfileRS.getInt("ImagingStudiesID");

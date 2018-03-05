@@ -21,11 +21,9 @@ import utility.database.SQLOperationsFollowUp;
 public class LoadCoagulationDiseaseFollowupServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	
 	private Connection connection;
 
-	public void init()
-			throws ServletException {
+	public void init() throws ServletException {
 		connection = SQLOperationsBaseline.getConnection();
 
 		if (connection != null) {
@@ -35,9 +33,10 @@ public class LoadCoagulationDiseaseFollowupServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-    public LoadCoagulationDiseaseFollowupServlet() {
-        super();
-    }
+
+	public LoadCoagulationDiseaseFollowupServlet() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -46,38 +45,39 @@ public class LoadCoagulationDiseaseFollowupServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		response.setCharacterEncoding("UTF-8");
-		response.setContentType("application/json"); 
-	    Map<String, String> followupData = new LinkedHashMap<>();
-		
+		response.setContentType("application/json");
+		Map<String, String> followupData = new LinkedHashMap<>();
+
 		int followupID = Integer.parseInt(request.getParameter("followupID"));
 		followupData.put("followupID", Integer.toString(followupID));
-		
-		try {	
+
+		try {
 			if (connection != null) {
-				
+
 				//get followup table
 				ResultSet followup = SQLOperationsFollowUp.getFollowup(followupID, connection);
 				followup.first();
 				followupData.put("dateOfEntry", followup.getString("dateOfEntry"));
 				followupData.put("dateOfVisit", followup.getString("dateOfVisit"));
-				followupData.put("notes", followup.getString("notes"));
-				
-				int medicalEventsid =  followup.getInt("MedicalEventsID");
+
+				int medicalEventsid = followup.getInt("MedicalEventsID");
 
 				//medical events
 				ResultSet medicalEvents = SQLOperationsFollowUp.getMedicalEvents(medicalEventsid, connection);
 				medicalEvents.first();
-				
-				followupData.put("factorConcentrate", medicalEvents.getString("factorConcentrate"));
-				followupData.put("factorConcentrateDates", medicalEvents.getString("factorConcentrateDates"));
-				followupData.put("factorConcentrateDose", medicalEvents.getString("factorConcentrateDose"));
 
-				followupData.put("procedureIntervention", medicalEvents.getString("procedureIntervention"));
-				
+				followupData.put("specifyReasonFactorConcentrate", medicalEvents.getString("factorConcentrate"));
+				followupData.put("datesOfAdministrationFactorConcentrate", medicalEvents.getString("factorConcentrateDates"));
+				followupData.put("doseOfFactorConcentrate", medicalEvents.getString("factorConcentrateDose"));
+
+				followupData.put("specifyProcedure", medicalEvents.getString("procedureIntervention"));
+
+				followupData.put("specialNotes", followup.getString("notes"));
+
 				//return data to js
-			    String json = new Gson().toJson(followupData);
-			    response.getWriter().write(json);
-				
+				String json = new Gson().toJson(followupData);
+				response.getWriter().write(json);
+
 			} else {
 				System.out.println("Invalid Connection resource");
 			}
@@ -85,6 +85,6 @@ public class LoadCoagulationDiseaseFollowupServlet extends HttpServlet {
 			System.err.println("Invalid Connection resource - " + npe.getMessage());
 		} catch (Exception e) {
 			System.err.println("Exception - " + e.getMessage());
-		}	
+		}
 	}
 }

@@ -281,13 +281,43 @@ function loadFollowUpData(followupID) {
 		$("[name='specialNotes']").val(response["notes"])
 
 		// medical events
-		$("[name='specifyHematologicMalignancy']").val(response["hematologicMalignancy"])
-		$("[name='specifyProcedureIntervention']").val(response["procedureIntervention"])
-		$("[name='specifyChemotherapyComplication']").val(response["chemotherapyComplication"])
+		$("[name='specifyOtherDiseaseMedication']").val(response["specifyOtherDiseaseMedication"])
+		if (response["specifyOtherDiseaseMedication"] !== "") {
+			$("[name='otherDiseaseMedication'][value='1']").prop('checked', true);
+			$.otherDiseaseMedicationChecked();
+		} else {
+			$("[name='hematologicMalignancy'][value='0']").prop('checked', true);
+			$.otherDiseaseMedicationUnchecked();
+		}
 
+		$("[name='specifyProcedure']").val(response["specifyProcedure"])
+		if (response["specifyProcedure"] !== "") {
+			$("[name='procedure'][value='1']").prop('checked', true);
+			$.procedureChecked();
+		} else {
+			$("[name='procedure'][value='0']").prop('checked', true);
+			$.procedureUnchecked();
+		}
+
+		$("[name='specifyChemotherapy']").val(response["specifyChemotherapy"])
+		if (response["specifyChemotherapy"] !== "") {
+			$("[name='chemotherapy'][value='1']").prop('checked', true);
+			$.chemotherapyChecked();
+		} else {
+			$("[name='chemotherapy'][value='0']").prop('checked', true);
+			$.chemotherapyUnchecked();
+		}
 		// physical exam
 		$("[name='weight']").val(response["weight"])
 		$("[name='ecog']").val(response["ecog"])
+
+		$("[name='pertinentFindings'][value=" + response["pertinentFindings"] + "]").prop('checked', true);
+
+		if (response["pertinentFindings"] === "1") {
+			$("[name='pertinentFindings'][value='1']").prop('checked', true);
+		} else if (response["pertinentFindings"] === "0") {
+			$("[name='pertinentFindings'][value='0']").prop('checked', true);
+		}
 
 		// clinical data
 		$("[name='currentSymptoms']").val(response["currentSymptoms"])
@@ -305,14 +335,30 @@ function loadFollowUpData(followupID) {
 		$("[name='monocytes']").val(response["monocytes"])
 		$("[name='eosinophils']").val(response["eosinophils"])
 		$("[name='basophils']").val(response["basophils"])
+		$("[name='myelocytes']").val(response["myelocytes"])
+		$("[name='metamyelocytes']").val(response["metamyelocytes"])
+		$("[name='blasts']").val(response["blasts"])
 		$("[name='plateletCount']").val(response["plateletCount"])
 
 		// imaging studies
 		$("[name='imagingStudiesResult']").val(response["imagingStudiesResult"])
+		if (response["imagingStudiesResult"] !== "") {
+			$("[name='imagingStudies'][value='1']").prop('checked', true);
+			$.imagingStudiesChecked();
+		} else {
+			$("[name='imagingStudies'][value='0']").prop('checked', true);
+			$.imagingStudiesUnchecked();
+		}
 
 		// disease status
-		$("[name='diseaseStatusOthers']").val(response["diseaseStatusOthers"])
 		$("[name='qualityOfResponse']").val(response["qualityOfResponse"])
+		$("[name='diseaseStatusOthers']").val(response["diseaseStatusOthers"])
+
+		if (response["qualityOfResponse"] === "Others") {
+			$.diseaseStatusOthers();
+		} else {
+			$.diseaseStatusNull();
+		}
 
 		bindEvents();
 
@@ -331,7 +377,7 @@ function loadPatientList() {
 				$.each(responseJson, function(index, patient) {
 					$('#searchboxfill').append(
 							"<p value='" + patient.patientID + "' onClick=\"loadPatientData(" + patient.patientID + ")\"" + ">"
-									+ patient.firstName + " " + patient.middleName + " " + patient.lastName + "</p>")
+									+ patient.lastName + ", " + patient.firstName + " " + patient.middleName + "</p>")
 				});
 
 			}).fail(function() {

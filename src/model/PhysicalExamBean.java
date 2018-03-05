@@ -11,6 +11,7 @@ public class PhysicalExamBean {
 	private boolean contracturesAndMuscleAtrophy;
 	private String thrombosisHistory;
 	private String skin;
+	private boolean pertinentFindings;
 	private String otherFindings;
 
 	public double getHeight() {
@@ -91,6 +92,14 @@ public class PhysicalExamBean {
 
 	public void setSkin(String skin) {
 		this.skin = skin;
+	}
+
+	public boolean isPertinentFindings() {
+		return pertinentFindings;
+	}
+
+	public void setPertinentFindings(boolean pertinentFindings) {
+		this.pertinentFindings = pertinentFindings;
 	}
 
 	public String getOtherFindings() {

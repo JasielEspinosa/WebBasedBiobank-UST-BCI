@@ -7,6 +7,7 @@ var params = {
 };
 
 var editState = false;
+var upperActionState = false;
 
 $("#PlasmaCellBaseline").submit(function(e) {
 	e.preventDefault();
@@ -22,7 +23,7 @@ $('document').ready(function() {
 
 	$("#baselineBtn").click(function() {
 		if (upperActionState == true) {
-			loadPatientData(params.patientId);
+			loadPatientData(params.patientID);
 		}
 	});
 	$("#followUpBtn").click(function() {
@@ -196,7 +197,7 @@ function loadPatientData(id) {
 		$("[name='totalProtein']").val(response["totalProtein"])
 		$("[name='albumin']").val(response["albumin"])
 		$("[name='globulin']").val(response["globulin"])
-		$("[name='b2Microglobulin']").val(response["b2Microglobulin"])
+		$("[name='beta2Microglobulin']").val(response["beta2Microglobulin"])
 		$("[name='ldh']").val(response["ldh"])
 
 		$("[name='imagingStudiesResult']").val(response["imagingStudiesResult"])
@@ -396,7 +397,7 @@ function unbindEvents() {
 };
 
 function bindEvents() {
-	localStorage.setItem("id6", params.patientId);
+	localStorage.setItem("id6", params.patientID);
 	$("#baselineBtn").show();
 	$("#followUpBtn").show();
 	$("#patientStatistics").show();
@@ -404,6 +405,7 @@ function bindEvents() {
 	$("#archPatientBtn").show();
 	upperActionState = true;
 };
+
 // add bind
 
 function actionBind() {

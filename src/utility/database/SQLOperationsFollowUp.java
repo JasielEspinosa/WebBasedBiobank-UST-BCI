@@ -140,6 +140,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
+					pstmt.setBoolean(3, peb.isPertinentFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
@@ -154,6 +155,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
+					pstmt.setBoolean(3, peb.isPertinentFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
@@ -166,6 +168,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
+					pstmt.setBoolean(3, peb.isPertinentFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
@@ -178,6 +181,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
+					pstmt.setBoolean(3, peb.isPertinentFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
@@ -190,6 +194,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
+					pstmt.setBoolean(3, peb.isPertinentFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
@@ -202,6 +207,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(INSERT_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
+					pstmt.setBoolean(3, peb.isPertinentFindings());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addPhysicalExam: " + sqle.getMessage());
@@ -1080,10 +1086,9 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-	
-	
+
 	//get statements
-	
+
 	public static ResultSet getMedicalEvents(int chemoMedicationId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1096,7 +1101,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getPhysicalExam(int patientId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1109,7 +1114,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getClinicalData(int clinicalDataId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1122,7 +1127,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getHematology(int hematologyId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1135,7 +1140,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getOtherLaboratories(int otherLaboratoriesId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1148,7 +1153,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getBloodChemistry(int bloodChemistryId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1161,7 +1166,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getBoneMarrowAspirate(int boneMarrowAspirateId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1174,7 +1179,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getFlowCytometry(int flowCytometryId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1187,7 +1192,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getCytogeneticMolecular(int cytogeneticMolecularId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1200,7 +1205,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getImagingStudies(int imagingStudiesId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1213,7 +1218,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getSerumFree(int serumFreeId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1226,7 +1231,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getSerumImmunofixation(int serumImmunofixationId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1239,7 +1244,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getSerumProtein(int serumProteinId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1252,7 +1257,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getUrineProtein(int urineProteinId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1265,7 +1270,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getLaboratoryProfile(int laboratoryProfileId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1278,7 +1283,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getDiseaseStatus(int diseaseStatusId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1291,7 +1296,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getFollowup(int followupId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1303,8 +1308,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 			return rs;
 		}
 		return rs;
-	}	
-	
+	}
+
 	//update statements
 	public static boolean updateMedicalEvents(MedicalEventsBean meb, Connection connection, int disease, int medicalEventsId) {
 		switch (disease) {
@@ -1423,7 +1428,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
-					pstmt.setInt(3, physicalExamId);
+					pstmt.setBoolean(3, peb.isPertinentFindings());
+					pstmt.setInt(4, physicalExamId);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- updatePhysicalExam: " + sqle.getMessage());
@@ -1438,7 +1444,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
-					pstmt.setInt(3, physicalExamId);
+					pstmt.setBoolean(3, peb.isPertinentFindings());
+					pstmt.setInt(4, physicalExamId);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- updatePhysicalExam: " + sqle.getMessage());
@@ -1451,7 +1458,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
-					pstmt.setInt(3, physicalExamId);
+					pstmt.setBoolean(3, peb.isPertinentFindings());
+					pstmt.setInt(4, physicalExamId);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- updatePhysicalExam: " + sqle.getMessage());
@@ -1464,7 +1472,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
-					pstmt.setInt(3, physicalExamId);
+					pstmt.setBoolean(3, peb.isPertinentFindings());
+					pstmt.setInt(4, physicalExamId);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- updatePhysicalExam: " + sqle.getMessage());
@@ -1477,7 +1486,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
-					pstmt.setInt(3, physicalExamId);
+					pstmt.setBoolean(3, peb.isPertinentFindings());
+					pstmt.setInt(4, physicalExamId);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- updatePhysicalExam: " + sqle.getMessage());
@@ -1490,7 +1500,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_PHYSICAL_EXAM);
 					pstmt.setDouble(1, peb.getWeight());
 					pstmt.setDouble(2, peb.getECOG());
-					pstmt.setInt(3, physicalExamId);
+					pstmt.setBoolean(3, peb.isPertinentFindings());
+					pstmt.setInt(4, physicalExamId);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- updatePhysicalExam: " + sqle.getMessage());
@@ -1774,7 +1785,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 					PreparedStatement pstmt = connection.prepareStatement(UPDATE_BLOOD_CHEMISTRY_LYMPHOMA);
 					pstmt.setDouble(1, bcb.getLDH());
 					pstmt.setDouble(2, bcb.getESR());
-					pstmt.setInt(3, bloodChemistryId );
+					pstmt.setInt(3, bloodChemistryId);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- updateBloodChemistry: " + sqle.getMessage());
@@ -1806,7 +1817,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		return true;
 	}
 
-	public static boolean updateBoneMarrowAspirate(BoneMarrowAspirateBean bmab, Connection connection, int disease, int boneMarrowAspirateId) {
+	public static boolean updateBoneMarrowAspirate(BoneMarrowAspirateBean bmab, Connection connection, int disease,
+			int boneMarrowAspirateId) {
 		switch (disease) {
 			case (1): {
 				try {
@@ -1911,7 +1923,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		return true;
 	}
 
-	public static boolean updateCytogeneticMolecular(CytogeneticMolecularBean cmb, Connection connection, int disease, int cytogenicMolecularId) {
+	public static boolean updateCytogeneticMolecular(CytogeneticMolecularBean cmb, Connection connection, int disease,
+			int cytogenicMolecularId) {
 		switch (disease) {
 			case (1): {
 				try {
@@ -2031,7 +2044,8 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		return true;
 	}
 
-	public static boolean updateSerumImmunofixation(SerumImmunofixationBean sifb, Connection connection, int disease, int serumImmunofixationId) {
+	public static boolean updateSerumImmunofixation(SerumImmunofixationBean sifb, Connection connection, int disease,
+			int serumImmunofixationId) {
 		switch (disease) {
 			case (1): {
 			}
@@ -2392,5 +2406,4 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		return true;
 	}
 
-	
 }

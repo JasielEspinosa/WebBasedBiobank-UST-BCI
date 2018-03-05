@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.*;
-import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
@@ -23,7 +22,7 @@ public class EditMyeloFollowUpServlet extends HttpServlet implements DefaultValu
 	private Connection connection;
 
 	public void init() throws ServletException {
-		connection = SQLOperationsBaseline.getConnection();
+		connection = SQLOperationsFollowUp.getConnection();
 
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
@@ -78,7 +77,14 @@ public class EditMyeloFollowUpServlet extends HttpServlet implements DefaultValu
 		double weight = Double.parseDouble(request.getParameter("weight"));
 		double ecog = Double.parseDouble(request.getParameter("ecog"));
 
-		// pertinent findings (not yet added in table), boolean or int?
+		boolean pertinentFindings = false;
+		if (Integer.parseInt(request.getParameter("pertinentFindings")) == 1) {
+			pertinentFindings = true;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		} else if (Integer.parseInt(request.getParameter("pertinentFindings")) == 0) {
+			pertinentFindings = false;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		}
 
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
@@ -105,7 +111,7 @@ public class EditMyeloFollowUpServlet extends HttpServlet implements DefaultValu
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
 		String otherDisease = noValue;
-		if (diseaseStatus == "Others") {
+		if (diseaseStatus.equalsIgnoreCase("Others")) {
 			otherDisease = request.getParameter("diseaseStatusOthers");
 		}
 
@@ -145,7 +151,7 @@ public class EditMyeloFollowUpServlet extends HttpServlet implements DefaultValu
 					System.out.println("Invalid connection MedicalEventsBean");
 				}
 
-				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", "");
+				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", pertinentFindings, "");
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updatePhysicalExam(peb, connection, disease, physicalExamId)) {
 						System.out.println("Successful insert PhysicalExamBean");

@@ -166,7 +166,7 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 		// TREATMENT / THERAPHY AND RESPONSE
 		String modeOfTreatment = request.getParameter("treatment");
 		String otherTreatment = noValue;
-		if (modeOfTreatment.equals("Others")) {
+		if (modeOfTreatment.equalsIgnoreCase("Others")) {
 			otherTreatment = request.getParameter("treatmentSpecify");
 		}
 		
@@ -252,7 +252,7 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 				}
 
 				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, 0.0, presenceOfSplenomegaly, 0.0, 0.0, false, false,
-						"", skin, otherFindings);
+						"", skin, false, otherFindings);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editPhysicalExam(peb, connection, disease, physicalExamID)) {
 						System.out.println("Successful insert PhysicalExamBean");

@@ -280,7 +280,7 @@ public class EditAAPNHMDSBaselineServlet extends HttpServlet implements DefaultV
 				}
 
 				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "",
-						otherFindings);
+						false, otherFindings);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editPhysicalExam(peb, connection, disease, physicalExamID)) {
 						System.out.println("Successful insert PhysicalExamBean");

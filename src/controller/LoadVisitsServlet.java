@@ -56,7 +56,7 @@ public class LoadVisitsServlet extends HttpServlet {
 			try {
 				while (visitsRs.next()) {
 
-					SearchBean sb = new SearchBean(visitsRs.getInt("FollowUpID"), visitsRs.getString("DateOfVisit"));
+					SearchBean sb = new SearchBean(visitsRs.getInt("followupID"), visitsRs.getString("DateOfVisit"));
 					list.add(sb);
 				}
 				String json = new Gson().toJson(list);

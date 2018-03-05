@@ -2,20 +2,20 @@ var responseJson;
 var id;
 var followupID;
 var params = {
-	action : '',	
+	action : '',
 	search : '',
 	patientID : '',
-	followupID: ''	
+	followupID : ''
 };
 
 var editState = false;
 var upperActionState = false;
 
 $("#CoagulationDiseaseFollowUp").submit(function(e) {
-   e.preventDefault();
-	});
+	e.preventDefault();
+});
 
-$('document').ready(function(){
+$('document').ready(function() {
 	alert(localStorage.getItem("id2"))
 	params.patientID = localStorage.getItem("id2");
 	$("#patientID").val(localStorage.getItem("id2"));
@@ -23,43 +23,42 @@ $('document').ready(function(){
 	actionBind();
 	unbindEvents();
 
-    $("#searchbox").on('input',function(){
-    	loadPatientList();
-    });
-    
+	$("#searchbox").on('input', function() {
+		loadPatientList();
+	});
+
 	$("#baselineBtn").click(function() {
-		localStorage.setItem("fromFollowUp2","pass");
+		localStorage.setItem("fromFollowUp2", "pass");
 		windows.location = ("coagulationdisease-baseline.jsp").redirect();
-		
+
 	});
 	$("#followUpBtn").click(function() {
-			loadFollowUpList();
-			unbindEvents();
+		loadFollowUpList();
+		unbindEvents();
 	});
 	$("#patientStatistics").click(function() {
-		if(upperActionState == true){
-			
+		if (upperActionState == true) {
+
 		}
 	});
 	$("#editPatientBtn").click(function() {
-		if(upperActionState == true){
+		if (upperActionState == true) {
 			editBind();
 			alert('edit triggered')
 		}
 	});
 	$("#archPatientBtn").click(function() {
-		if(upperActionState == true){
-			$.post('DeleteFollowUpServlet', $.param(params), function (response) {
+		if (upperActionState == true) {
+			$.post('DeleteFollowUpServlet', $.param(params), function(response) {
 				alert("Patient followup deleted")
 				unbindEvents();
-			}).fail(function(){
-			});	
+			}).fail(function() {
+			});
 		}
 	});
-	
+
 	loadFollowUpList();
-	
-	
+
 });
 
 // load patient data
@@ -229,70 +228,92 @@ function loadPatientData(id) {
 	})
 };
 
-//load followup data
-function loadFollowUpData(followupID){
-	
+// load followup data
+function loadFollowUpData(followupID) {
+
 	params.followupID = followupID;
 	$("#followupID").val(followupID);
-	
-	$.post('LoadCoagulationDiseaseFollowUpServlet', $.param(params), function (response) {
+
+	$.post('LoadCoagulationFollowupServlet', $.param(params), function(response) {
 		// in order from followup servlet
-		//followup data
+		// followup data
 		alert('data loaded')
 		$("[name='dateOfEntry']").val(response["dateOfEntry"])
 		$("[name='dateOfVisit']").val(response["dateOfVisit"])
-		$("[name='specialNotes']").val(response["notes"])
-		
-		//medical events
-		$("[name='factorConcentrate']").val(response["factorConcentrate"])
-		$("[name='factorConcentrateDates']").val(response["factorConcentrateDates"])
-		$("[name='factorConcentrateDose']").val(response["factorConcentrateDose"])
-		$("[name='specifyProcedureIntervention']").val(response["procedureIntervention"])
+
+		// medical events
+		$("[name='specifyReasonFactorConcentrate']").val(response["specifyReasonFactorConcentrate"])
+		$("[name='datesOfAdministrationFactorConcentrate']").val(response["datesOfAdministrationFactorConcentrate"])
+		$("[name='doseOfFactorConcentrate']").val(response["doseOfFactorConcentrate"])
+
+		if (response["specifyReasonFactorConcentrate"] !== "" || response["datesOfAdministrationFactorConcentrate"] !== ""
+				|| response["doseOfFactorConcentrate"] === 0) {
+			$("[name='factorConcentrate'][value='1']").prop('checked', true);
+			$.factorConcentrateChecked();
+		} else {
+			$("[name='factorConcentrate'][value='0']").prop('checked', true);
+			$.factorConcentrateUnchecked();
+		}
+
+		$("[name='specifyProcedure']").val(response["specifyProcedure"])
+
+		if ($("[name='specifyProcedure']").val() !== "") {
+			$("[name='procedure'][value='1']").prop('checked', true);
+			$.procedureChecked();
+		} else {
+			$("[name='procedure'][value='0']").prop('checked', true);
+			$.procedureUnchecked();
+		}
+
+		$("[name='specialNotes']").val(response["specialNotes"])
 
 		bindEvents();
-		
-	  })
+
+	})
 };
 
-
-
-//load patient list to search box
-function loadPatientList(){
+// load patient list to search box
+function loadPatientList() {
 	params.action = '2';
 	params.search = $("#searchbox").val();
 	$('#searchboxfill').empty();
-	$.post('LoadPatientsServlet', $.param(params), function (responseJson) {
-      $.each(responseJson, function(index, patient) {   
-      $('#searchboxfill')
-      	.append("<p value='"+patient.patientID +"' onClick=\"loadPatientData("+patient.patientID +")\"" +
-      			">"+ patient.firstName + " " + patient.middleName+ " " + patient.lastName +"</p>")   
-  });
-		
-	}).fail(function(){
-	});	
-	
+	$.post(
+			'LoadPatientsServlet',
+			$.param(params),
+			function(responseJson) {
+				$.each(responseJson, function(index, patient) {
+					$('#searchboxfill').append(
+							"<p value='" + patient.patientID + "' onClick=\"loadPatientData(" + patient.patientID + ")\"" + ">"
+									+ patient.lastName + ", " + patient.firstName + " " + patient.middleName + "</p>")
+				});
+
+			}).fail(function() {
+	});
+
 };
 
-//load followup list
-function loadFollowUpList(){
+// load followup list
+function loadFollowUpList() {
 	$('#visitFill').empty();
-	$.post('LoadVisitsServlet', $.param(params), function (responseJson) {
-      $.each(responseJson, function(index, patient) {   
-      $('#visitFill')
-      	.append("<p value='"+patient.followupID +"' onClick=\"loadFollowUpData("+patient.followupID +")\"" +
-      			">"+ patient.dateOfVisit +"</p>")   
-  });
-		
-	}).fail(function(){
-	});	
-	
+	$.post(
+			'LoadVisitsServlet',
+			$.param(params),
+			function(responseJson) {
+				$.each(responseJson, function(index, patient) {
+					$('#visitFill').append(
+							"<p value='" + patient.followupID + "' onClick=\"loadFollowUpData(" + patient.followupID + ")\"" + ">"
+									+ patient.dateOfVisit + "</p>")
+				});
+
+			}).fail(function() {
+	});
+
 };
 
+// bind functions
 
-//bind functions
-
-//remove button function
-function unbindEvents(){
+// remove button function
+function unbindEvents() {
 	$("#editPatientBtn").hide();
 	$("#archPatientBtn").hide();
 	$("#submitCancel").hide();
@@ -300,47 +321,46 @@ function unbindEvents(){
 	addBind();
 };
 
-function bindEvents(){
-	localStorage.setItem("id2",params.patientID);
+function bindEvents() {
+	localStorage.setItem("id2", params.patientID);
 	$("#editPatientBtn").show();
 	$("#archPatientBtn").show();
 	upperActionState = true;
 };
 
-//add bind
+// add bind
 
-function actionBind(){
+function actionBind() {
 	$('#CoagulationDiseaseFollowUp').submit(function() {
 		alert($("#patientID").val());
 		var $form = $(this);
-		if(editState == false){
-			$.post('AddCoagulationDiseaseFollowUpServlet', $form.serialize(), function (response) {
-					alert("Patient added")
-			}).fail(function(){
-				});	
-		}else{
-			$.post('EditCoagulationDiseaseFollowUpServlet', $form.serialize(), function (response) {
+		if (editState == false) {
+			$.post('AddCoagulationFollowUpServlet', $form.serialize(), function(response) {
+				alert("Patient added")
+			}).fail(function() {
+			});
+		} else {
+			$.post('EditCoagulationFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
-			}).fail(function(){
-				});			
+			}).fail(function() {
+			});
 		}
 	});
 };
 
-function addBind(){
+function addBind() {
 	editState = false;
 };
 
-//edit bind
-function editBind(){
-	$("#submitCancel").show();	
+// edit bind
+function editBind() {
+	$("#submitCancel").show();
 	editState = true;
 };
 
-function cancelEdit(){
-	//make fields uneditable (incomplete)
+function cancelEdit() {
+	// make fields uneditable (incomplete)
 	addBind();
 	$("#submitCancel").hide();
 };
-
 

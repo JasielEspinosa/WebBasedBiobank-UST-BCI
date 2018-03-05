@@ -7,6 +7,7 @@ var params = {
 };
 
 var editState = false;
+var upperActionState = false;
 
 $("#PlateletBaseline").submit(function(e) {
 	e.preventDefault();
@@ -22,7 +23,7 @@ $('document').ready(function() {
 
 	$("#baselineBtn").click(function() {
 		if (upperActionState == true) {
-			loadPatientData(params.patientId);
+			loadPatientData(params.patientID);
 		}
 	});
 	$("#followUpBtn").click(function() {
@@ -103,7 +104,7 @@ function loadPatientData(id) {
 		// clinical data
 
 		$("[name='dateOfVisit']").val(response["dateOfVisit"])
-		
+
 		$("[name='diagnosis']").val(response["diagnosis"])
 		$("[name='diagnosisOthers']").val(response["diagnosisOthers"])
 
@@ -112,7 +113,7 @@ function loadPatientData(id) {
 		} else {
 			$.diagnosisNull();
 		}
-		
+
 		$("[name='chiefComplaint']").val(response["chiefComplaint"])
 		$("[name='constitutionalSymptoms']").val(response["constitutionalSymptoms"])
 		$("[name='otherSymptoms']").val(response["otherSymptoms"])
@@ -177,7 +178,7 @@ function loadPatientData(id) {
 		} else if (response["presenceOfSplenomegaly"] === "2") {
 			$("[name='presenceOfSplenomegaly'][value='2']").prop('checked', true);
 		}
-		
+
 		$("[name='skin']").val(response["skin"])
 		$("[name='otherFindings']").val(response["otherFindings"])
 
@@ -233,7 +234,7 @@ function loadPatientData(id) {
 			$("[name='upperGIEndoscopy'][value='0']").prop('checked', true);
 			$.upperGIEndoscopyUnchecked();
 		}
-		
+
 		if (response["hPylori"] === "1") {
 			$("[name='hPylori'][value='1']").prop('checked', true);
 			$.hPyloriChecked();
@@ -296,7 +297,7 @@ function unbindEvents() {
 };
 
 function bindEvents() {
-	localStorage.setItem("id7", params.patientId);
+	localStorage.setItem("id7", params.patientID);
 	$("#baselineBtn").show();
 	$("#followUpBtn").show();
 	$("#patientStatistics").show();
@@ -304,6 +305,7 @@ function bindEvents() {
 	$("#archPatientBtn").show();
 	upperActionState = true;
 };
+
 // add bind
 
 function actionBind() {

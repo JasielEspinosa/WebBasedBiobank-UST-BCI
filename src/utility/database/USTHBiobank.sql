@@ -124,6 +124,7 @@ CREATE TABLE PhysicalExamTable (
 	ContracturesAndMuscleAtrophy bool,
 	ThrombosisHistory blob,
 	Skin blob,
+	PertinentFindings bool,
 	OtherFindings blob,
 	PRIMARY KEY (PhysicalExamID)
 );
@@ -401,7 +402,6 @@ CREATE TABLE FollowUpTable (
 	MedicalEventsID int,
 	ClinicalDataID int,
 	LaboratoryID int,
-	QualityOfResponseID int,
 	DiseaseStatusID int,
 	Notes blob NOT NULL,
 	PRIMARY KEY (FollowUpID)
@@ -437,12 +437,6 @@ CREATE TABLE MedicalEventsTable (
 	PRIMARY KEY (MedicalEventsID)
 );
 
-CREATE TABLE QualityOfResponseTable (
-	QualityOfResponseID int NOT NULL AUTO_INCREMENT,
-	ResponseName blob,
-	PRIMARY KEY (QualityOfResponseID)
-);
-
 CREATE TABLE AccountTable (
 	AccountID int NOT NULL AUTO_INCREMENT,
 	Username varchar(750) NOT NULL,
@@ -459,6 +453,13 @@ CREATE TABLE RoleTable (
 	RoleID int NOT NULL,
 	RoleName varchar(500) NOT NULL,
 	PRIMARY KEY (RoleID)
+);
+
+CREATE TABLE Audit (
+	Action varchar(300) DEFAULT NULL,
+	PerformedOn varchar(300) DEFAULT NULL,
+	PerformedBy varchar(300) DEFAULT NULL,
+	Timestamp timestamp NULL DEFAULT NULL
 );
 
 ALTER TABLE PatientTable ADD CONSTRAINT PatientTable_fk0 FOREIGN KEY (DiseaseID) REFERENCES DiseaseTable(DiseaseID);
@@ -547,9 +548,7 @@ ALTER TABLE FollowUpTable ADD CONSTRAINT FollowUpTable_fk2 FOREIGN KEY (Clinical
 
 ALTER TABLE FollowUpTable ADD CONSTRAINT FollowUpTable_fk3 FOREIGN KEY (LaboratoryID) REFERENCES LaboratoryProfileTable(LaboratoryID);
 
-ALTER TABLE FollowUpTable ADD CONSTRAINT FollowUpTable_fk4 FOREIGN KEY (QualityOfResponseID) REFERENCES QualityOfResponseTable(QualityOfResponseID);
-
-ALTER TABLE FollowUpTable ADD CONSTRAINT FollowUpTable_fk5 FOREIGN KEY (DiseaseStatusID) REFERENCES DiseaseStatusTable(DiseaseStatusID);
+ALTER TABLE FollowUpTable ADD CONSTRAINT FollowUpTable_fk4 FOREIGN KEY (DiseaseStatusID) REFERENCES DiseaseStatusTable(DiseaseStatusID);
 
 ALTER TABLE AccountTable ADD CONSTRAINT AccountTable_fk0 FOREIGN KEY (RoleID) REFERENCES RoleTable(RoleID);
 

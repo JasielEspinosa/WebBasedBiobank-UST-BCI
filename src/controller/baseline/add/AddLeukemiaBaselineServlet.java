@@ -170,7 +170,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet implements DefaultVa
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
 		String diseaseStatusOthers = noValue;
-		if (diseaseStatus.equals("Others")) {
+		if (diseaseStatus.equalsIgnoreCase("Others")) {
 			diseaseStatusOthers = request.getParameter("diseaseStatusOthers");
 		}
 
@@ -220,7 +220,7 @@ public class AddLeukemiaBaselineServlet extends HttpServlet implements DefaultVa
 		}
 
 		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, splenomegaly, hepatomegaly,
-				lymphadenopathies, false, false, "", "", otherFindings);
+				lymphadenopathies, false, false, "", "", false, otherFindings);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");

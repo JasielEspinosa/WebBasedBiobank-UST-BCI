@@ -43,8 +43,6 @@ public class EditAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultV
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String noValue = "";
-
 		int disease = 1;
 
 		int patientID = Integer.parseInt(request.getParameter("patientID"));
@@ -78,7 +76,14 @@ public class EditAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultV
 		double weight = Double.parseDouble(request.getParameter("weight"));
 		double ecog = Double.parseDouble(request.getParameter("ecog"));
 
-		// pertinent findings (not yet added in table), boolean or int?
+		boolean pertinentFindings = false;
+		if (Integer.parseInt(request.getParameter("pertinentFindings")) == 1) {
+			pertinentFindings = true;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		} else if (Integer.parseInt(request.getParameter("pertinentFindings")) == 0) {
+			pertinentFindings = false;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		}
 
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
@@ -120,7 +125,7 @@ public class EditAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultV
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
 		String otherDisease = noValue;
-		if (diseaseStatus == "Others") {
+		if (diseaseStatus.equalsIgnoreCase("Others")) {
 			otherDisease = request.getParameter("diseaseStatusOthers");
 		}
 
@@ -135,9 +140,8 @@ public class EditAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultV
 				int medicalEventsid = followup.getInt("MedicalEventsID");
 				int clinicalDataId = followup.getInt("ClinicalDataID");
 				int laboratoryId = followup.getInt("LaboratoryID");
-				int qualityOfResponseId = followup.getInt("QualityOfResponseID");
 				int diseaseStatusId = followup.getInt("DiseaseStatusID");
-				int patientId = followup.getInt("PatientID");
+				//int patientId = followup.getInt("PatientID");
 
 				ResultSet clinicalData = SQLOperationsFollowUp.getClinicalData(clinicalDataId, connection);
 				clinicalData.first();
@@ -165,7 +169,7 @@ public class EditAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultV
 					System.out.println("Invalid connection MedicalEventsBean");
 				}
 
-				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", "");
+				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", pertinentFindings, "");
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updatePhysicalExam(peb, connection, disease, physicalExamId)) {
 						System.out.println("Successful insert PhysicalExamBean");
@@ -200,8 +204,8 @@ public class EditAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultV
 					System.out.println("Invalid connection HematologyBean");
 				}
 
-				OtherLaboratoriesBean olb = BeanFactory.getOtherLaboratoriesBean(creatinine, 0.0, reticulocyteCount, 0.0, 0.0,
-						serumFerritin, "", "", 0.0, 0.0, ldh, "", "", 0.0, 0.0, 0.0, 0.0);
+				OtherLaboratoriesBean olb = BeanFactory.getOtherLaboratoriesBean(creatinine, 0.0, reticulocyteCount, 0.0, 0.0, serumFerritin, "",
+						"", 0.0, 0.0, ldh, "", "", 0.0, 0.0, 0.0, 0.0);
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updateOtherLaboratories(olb, connection, disease, otherLaboratoriesId)) {
 						System.out.println("Successful insert OtherLaboratoriesBean");

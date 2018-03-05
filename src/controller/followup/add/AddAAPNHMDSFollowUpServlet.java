@@ -70,7 +70,14 @@ public class AddAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultVa
 		double weight = Double.parseDouble(request.getParameter("weight"));
 		double ecog = Double.parseDouble(request.getParameter("ecog"));
 
-		// pertinent findings (not yet added in table), boolean or int?
+		boolean pertinentFindings = false;
+		if (Integer.parseInt(request.getParameter("pertinentFindings")) == 1) {
+			pertinentFindings = true;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		} else if (Integer.parseInt(request.getParameter("pertinentFindings")) == 0) {
+			pertinentFindings = false;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		}
 
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
@@ -109,13 +116,13 @@ public class AddAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultVa
 		if (Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysis")) == 1) {
 			cytogeneticAndMolecularAnalysisResult = request.getParameter("cytogeneticAndMolecularAnalysisResult");
 		}
-		
+
 		String diseaseStatus = request.getParameter("diseaseStatus");
 		String otherDisease = noValue;
-		if (diseaseStatus == "Others") {
+		if (diseaseStatus.equalsIgnoreCase("Others")) {
 			otherDisease = request.getParameter("diseaseStatusOthers");
 		}
-		
+
 		String notes = request.getParameter("specialNotes");
 
 		MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "", 0.0,
@@ -130,7 +137,7 @@ public class AddAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultVa
 			System.out.println("Invalid connection MedicalEventsBean");
 		}
 
-		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", "");
+		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", pertinentFindings, "");
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");

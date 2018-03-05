@@ -40,7 +40,7 @@ public class AddMyeloFollowUpServlet extends HttpServlet implements DefaultValue
 
 		int disease = 5;
 
-		int patientID = Integer.parseInt(request.getParameter("patientId"));
+		int patientID = Integer.parseInt(request.getParameter("patientID"));
 
 		String dateOfEntry = request.getParameter("dateOfEntry");
 		String dateOfVisit = request.getParameter("dateOfVisit");
@@ -70,7 +70,14 @@ public class AddMyeloFollowUpServlet extends HttpServlet implements DefaultValue
 		double weight = Double.parseDouble(request.getParameter("weight"));
 		double ecog = Double.parseDouble(request.getParameter("ecog"));
 
-		// pertinent findings (not yet added in table), boolean or int?
+		boolean pertinentFindings = false;
+		if (Integer.parseInt(request.getParameter("pertinentFindings")) == 1) {
+			pertinentFindings = true;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		} else if (Integer.parseInt(request.getParameter("pertinentFindings")) == 0) {
+			pertinentFindings = false;
+			System.out.println("Pertinent Findings: " + pertinentFindings);
+		}
 
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
@@ -97,7 +104,7 @@ public class AddMyeloFollowUpServlet extends HttpServlet implements DefaultValue
 
 		String diseaseStatus = request.getParameter("diseaseStatus");
 		String otherDisease = noValue;
-		if (diseaseStatus == "Others") {
+		if (diseaseStatus.equalsIgnoreCase("Others")) {
 			otherDisease = request.getParameter("diseaseStatusOthers");
 		}
 
@@ -115,7 +122,7 @@ public class AddMyeloFollowUpServlet extends HttpServlet implements DefaultValue
 			System.out.println("Invalid connection MedicalEventsBean");
 		}
 
-		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", "");
+		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", pertinentFindings, "");
 		if (connection != null) {
 			if (SQLOperationsFollowUp.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");

@@ -273,7 +273,7 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				}
 
 				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, splenomegaly, hepatomegaly, lymphadenopathies,
-						false, false, "", "", otherFindings);
+						false, false, "", "", false, otherFindings);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editPhysicalExam(peb, connection, disease, physicalExamID)) {
 						System.out.println("Successful insert PhysicalExamBean");

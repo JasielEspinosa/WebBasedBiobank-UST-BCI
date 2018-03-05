@@ -120,7 +120,7 @@ public class AddPlasmaCellBaselineServlet extends HttpServlet implements Default
 		double totalProtein = Double.parseDouble(request.getParameter("totalProtein"));
 		double albumin = Double.parseDouble(request.getParameter("albumin"));
 		double globulin = Double.parseDouble(request.getParameter("globulin"));
-		double beta2Microglobulin = Double.parseDouble(request.getParameter("b2Microglobulin"));
+		double beta2Microglobulin = Double.parseDouble(request.getParameter("beta2Microglobulin"));
 		double ldh = Double.parseDouble(request.getParameter("ldh"));
 
 		String imagingStudiesResult = noValue;
@@ -183,25 +183,25 @@ public class AddPlasmaCellBaselineServlet extends HttpServlet implements Default
 
 		String modeOfTreatment = request.getParameter("treatment");
 		String otherRegimen = noValue;
-		if (modeOfTreatment.equals("Others")) {
+		if (modeOfTreatment.equalsIgnoreCase("Others")) {
 			otherRegimen = request.getParameter("otherRegimens");
 		}
 
 		String regimenTransplant = request.getParameter("regimenProtocolTransplant");
 		String otherRegimenTransplant = noValue;
-		if (regimenTransplant.equals("Others")) {
+		if (regimenTransplant.equalsIgnoreCase("Others")) {
 			otherRegimenTransplant = request.getParameter("otherRegimensTransplant");
 		}
 
 		String regimenNonTransplant = request.getParameter("regimenProtocolNonTransplant");
 		String otherRegimenNonTransplant = noValue;
-		if (regimenNonTransplant.equals("Others")) {
+		if (regimenNonTransplant.equalsIgnoreCase("Others")) {
 			otherRegimenNonTransplant = request.getParameter("otherRegimensNonTransplant");
 		}
 
 		String regimenMaintenanceTherapy = request.getParameter("regimenProtocolMaintenanceTherapy");
 		String otherRegimenMaintenanceTherapy = noValue;
-		if (regimenMaintenanceTherapy.equals("Others")) {
+		if (regimenMaintenanceTherapy.equalsIgnoreCase("Others")) {
 			otherRegimenMaintenanceTherapy = request.getParameter("otherRegimensMaintenanceTherapy");
 		}
 
@@ -261,7 +261,7 @@ public class AddPlasmaCellBaselineServlet extends HttpServlet implements Default
 			System.out.println("Invalid connection ISSStagingBean");
 		}
 
-		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", otherFindings);
+		PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", false, otherFindings);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addPhysicalExam(peb, connection, disease)) {
 				System.out.println("Successful insert PhysicalExamBean");

@@ -2,20 +2,20 @@ var responseJson;
 var id;
 var followupID;
 var params = {
-	action : '',	
+	action : '',
 	search : '',
 	patientID : '',
-	followupID: ''	
+	followupID : ''
 };
 
 var editState = false;
 var upperActionState = false;
 
 $("#LymphomaFollowUp").submit(function(e) {
-   e.preventDefault();
-	});
+	e.preventDefault();
+});
 
-$('document').ready(function(){
+$('document').ready(function() {
 	alert(localStorage.getItem("id4"))
 	params.patientID = localStorage.getItem("id4");
 	$("#patientID").val(localStorage.getItem("id4"));
@@ -23,43 +23,42 @@ $('document').ready(function(){
 	actionBind();
 	unbindEvents();
 
-    $("#searchbox").on('input',function(){
-    	loadPatientList();
-    });
-    
+	$("#searchbox").on('input', function() {
+		loadPatientList();
+	});
+
 	$("#baselineBtn").click(function() {
-		localStorage.setItem("fromFollowUp4","pass");
+		localStorage.setItem("fromFollowUp4", "pass");
 		windows.location = ("lymphoma-baseline.jsp").redirect();
-		
+
 	});
 	$("#followUpBtn").click(function() {
-			loadFollowUpList();
-			unbindEvents();
+		loadFollowUpList();
+		unbindEvents();
 	});
 	$("#patientStatistics").click(function() {
-		if(upperActionState == true){
-			
+		if (upperActionState == true) {
+
 		}
 	});
 	$("#editPatientBtn").click(function() {
-		if(upperActionState == true){
+		if (upperActionState == true) {
 			editBind();
 			alert('edit triggered')
 		}
 	});
 	$("#archPatientBtn").click(function() {
-		if(upperActionState == true){
-			$.post('DeleteFollowUpServlet', $.param(params), function (response) {
+		if (upperActionState == true) {
+			$.post('DeleteFollowUpServlet', $.param(params), function(response) {
 				alert("Patient followup deleted")
 				unbindEvents();
-			}).fail(function(){
-			});	
+			}).fail(function() {
+			});
 		}
 	});
-	
+
 	loadFollowUpList();
-	
-	
+
 });
 
 // load patient data
@@ -294,38 +293,79 @@ function loadPatientData(id) {
 	})
 };
 
-//load followup data
-function loadFollowUpData(followupID){
-	
+// load followup data
+function loadFollowUpData(followupID) {
+
 	params.followupID = followupID;
 	$("#followupID").val(followupID);
-	
-	$.post('LoadLymphomaFollowUpServlet', $.param(params), function (response) {
+
+	$.post('LoadLymphomaFollowUpServlet', $.param(params), function(response) {
 		// in order from followup servlet
-		//followup data
+		// followup data
 		alert('data loaded')
 		$("[name='dateOfEntry']").val(response["dateOfEntry"])
 		$("[name='dateOfVisit']").val(response["dateOfVisit"])
 		$("[name='specialNotes']").val(response["notes"])
-		
-		//medical events
-		$("[name='specifyHematologicMalignancy']").val(response["hematologicMalignancy"])
-		$("[name='specifyOtherDiseaseMedication']").val(response["otherDiseaseMedication"])
-		$("[name='specifyProcedureIntervention']").val(response["procedureIntervention"])
-		$("[name='specifyChemotherapyComplication']").val(response["chemotherapyComplication"])
 
-		//physical exam	
+		// medical events
+
+		$("[name='specifyHematologicMalignancy']").val(response["specifyHematologicMalignancy"])
+
+		if (response["specifyHematologicMalignancy"] !== "") {
+			$("[name='hematologicMalignancy'][value='1']").prop('checked', true);
+			$.hematologicMalignancyChecked();
+		} else {
+			$("[name='hematologicMalignancy'][value='0']").prop('checked', true);
+			$.hematologicMalignancyUnchecked();
+		}
+
+		$("[name='specifyOtherDiseaseMedication']").val(response["specifyOtherDiseaseMedication"])
+		if (response["specifyOtherDiseaseMedication"] !== "") {
+			$("[name='otherDiseaseMedication'][value='1']").prop('checked', true);
+			$.otherDiseaseMedicationChecked();
+		} else {
+			$("[name='hematologicMalignancy'][value='0']").prop('checked', true);
+			$.otherDiseaseMedicationUnchecked();
+		}
+
+		$("[name='specifyProcedure']").val(response["specifyProcedure"])
+		if (response["specifyProcedure"] !== "") {
+			$("[name='procedure'][value='1']").prop('checked', true);
+			$.procedureChecked();
+		} else {
+			$("[name='procedure'][value='0']").prop('checked', true);
+			$.procedureUnchecked();
+		}
+
+		$("[name='specifyChemotherapy']").val(response["specifyChemotherapy"])
+		if (response["specifyChemotherapy"] !== "") {
+			$("[name='chemotherapy'][value='1']").prop('checked', true);
+			$.chemotherapyChecked();
+		} else {
+			$("[name='chemotherapy'][value='0']").prop('checked', true);
+			$.chemotherapyUnchecked();
+		}
+
+		// physical exam
 		$("[name='weight']").val(response["weight"])
 		$("[name='ecog']").val(response["ecog"])
-		
-		//clinical data
+
+		$("[name='pertinentFindings'][value=" + response["pertinentFindings"] + "]").prop('checked', true);
+
+		if (response["pertinentFindings"] === "1") {
+			$("[name='pertinentFindings'][value='1']").prop('checked', true);
+		} else if (response["pertinentFindings"] === "0") {
+			$("[name='pertinentFindings'][value='0']").prop('checked', true);
+		}
+
+		// clinical data
 		$("[name='currentSymptoms']").val(response["currentSymptoms"])
-		
+
 		// laboratory profile
 		$("[name='dateOfBloodCollection']").val(response["dateOfBloodCollection"])
-		
-		//hematology
-		
+
+		// hematology
+
 		$("[name='hemoglobin']").val(response["hemoglobin"])
 		$("[name='hematocrit']").val(response["hematocrit"])
 		$("[name='whiteBloodCells']").val(response["whiteBloodCells"])
@@ -338,61 +378,78 @@ function loadFollowUpData(followupID){
 		$("[name='metamyelocytes']").val(response["metamyelocytes"])
 		$("[name='blasts']").val(response["blasts"])
 		$("[name='plateletCount']").val(response["plateletCount"])
-		
-		//other laboratories
+
+		// other laboratories
 		$("[name='ldh']").val(response["ldh"])
 		$("[name='esr']").val(response["esr"])
-		
-		//imaging studies
+
+		// imaging studies
 		$("[name='imagingStudiesResult']").val(response["imagingStudiesResult"])
-		//disease status
+		if (response["imagingStudiesResult"] !== "") {
+			$("[name='imagingStudies'][value='1']").prop('checked', true);
+			$.imagingStudiesChecked();
+		} else {
+			$("[name='imagingStudies'][value='0']").prop('checked', true);
+			$.imagingStudiesUnchecked();
+		}
+
+		// disease status
 		$("[name='diseaseStatus']").val(response["diseaseStatus"])
-		$("[name='otherDisease']").val(response["otherDisease"])
-		
+		$("[name='diseaseStatusOthers']").val(response["diseaseStatusOthers"])
+
+		if (response["diseaseStatus"] === "Others") {
+			$.diseaseStatusOthers();
+		} else {
+			$.diseaseStatusNull();
+		}
+
 		bindEvents();
-		
-	  })
+
+	})
 };
 
-
-
-//load patient list to search box
-function loadPatientList(){
+// load patient list to search box
+function loadPatientList() {
 	params.action = '4';
 	params.search = $("#searchbox").val();
 	$('#searchboxfill').empty();
-	$.post('LoadPatientsServlet', $.param(params), function (responseJson) {
-      $.each(responseJson, function(index, patient) {   
-      $('#searchboxfill')
-      	.append("<p value='"+patient.patientID +"' onClick=\"loadPatientData("+patient.patientID +")\"" +
-      			">"+ patient.firstName + " " + patient.middleName+ " " + patient.lastName +"</p>")   
-  });
-		
-	}).fail(function(){
-	});	
-	
+	$.post(
+			'LoadPatientsServlet',
+			$.param(params),
+			function(responseJson) {
+				$.each(responseJson, function(index, patient) {
+					$('#searchboxfill').append(
+							"<p value='" + patient.patientID + "' onClick=\"loadPatientData(" + patient.patientID + ")\"" + ">"
+									+ patient.lastName + ", " + patient.firstName + " " + patient.middleName + "</p>")
+				});
+
+			}).fail(function() {
+	});
+
 };
 
-//load followup list
-function loadFollowUpList(){
+// load followup list
+function loadFollowUpList() {
 	$('#visitFill').empty();
-	$.post('LoadVisitsServlet', $.param(params), function (responseJson) {
-      $.each(responseJson, function(index, patient) {   
-      $('#visitFill')
-      	.append("<p value='"+patient.followupID +"' onClick=\"loadFollowUpData("+patient.followupID +")\"" +
-      			">"+ patient.dateOfVisit +"</p>")   
-  });
-		
-	}).fail(function(){
-	});	
-	
+	$.post(
+			'LoadVisitsServlet',
+			$.param(params),
+			function(responseJson) {
+				$.each(responseJson, function(index, patient) {
+					$('#visitFill').append(
+							"<p value='" + patient.followupID + "' onClick=\"loadFollowUpData(" + patient.followupID + ")\"" + ">"
+									+ patient.dateOfVisit + "</p>")
+				});
+
+			}).fail(function() {
+	});
+
 };
 
+// bind functions
 
-//bind functions
-
-//remove button function
-function unbindEvents(){
+// remove button function
+function unbindEvents() {
 	$("#editPatientBtn").hide();
 	$("#archPatientBtn").hide();
 	$("#submitCancel").hide();
@@ -400,47 +457,46 @@ function unbindEvents(){
 	addBind();
 };
 
-function bindEvents(){
-	localStorage.setItem("id4",params.patientID);
+function bindEvents() {
+	localStorage.setItem("id4", params.patientID);
 	$("#editPatientBtn").show();
 	$("#archPatientBtn").show();
 	upperActionState = true;
 };
 
-//add bind
+// add bind
 
-function actionBind(){
+function actionBind() {
 	$('#LymphomaFollowUp').submit(function() {
 		alert($("#patientID").val());
 		var $form = $(this);
-		if(editState == false){
-			$.post('AddLymphomaFollowUpServlet', $form.serialize(), function (response) {
-					alert("Patient added")
-			}).fail(function(){
-				});	
-		}else{
-			$.post('EditLymphomaFollowUpServlet', $form.serialize(), function (response) {
+		if (editState == false) {
+			$.post('AddLymphomaFollowUpServlet', $form.serialize(), function(response) {
+				alert("Patient added")
+			}).fail(function() {
+			});
+		} else {
+			$.post('EditLymphomaFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
-			}).fail(function(){
-				});			
+			}).fail(function() {
+			});
 		}
 	});
 };
 
-function addBind(){
+function addBind() {
 	editState = false;
 };
 
-//edit bind
-function editBind(){
-	$("#submitCancel").show();	
+// edit bind
+function editBind() {
+	$("#submitCancel").show();
 	editState = true;
 };
 
-function cancelEdit(){
-	//make fields uneditable (incomplete)
+function cancelEdit() {
+	// make fields uneditable (incomplete)
 	addBind();
 	$("#submitCancel").hide();
 };
-
 
