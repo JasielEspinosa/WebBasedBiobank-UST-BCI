@@ -30,6 +30,8 @@ public interface SQLCommands {
 	String GENERATE_REPORT_GET_FOLLOWUP = "Select * from FollowupTable where PatientID = ? and DateOfEntry >= ? and DateOfEntry <= ?";
 	
 	//audit
-	String AUDIT = "INSERT INTO audit VALUES (?,?,?,?)";
+	String AUDIT = "INSERT INTO audit VALUES (?,?,?,?,?)";
 	String GET_AUDIT = "Select * from audit";
+	String GET_AUDIT_SELECT = "Select * from audit where UserID = ?";
+	
 }

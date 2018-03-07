@@ -5,16 +5,18 @@ import java.util.Calendar;
 
 public class AuditBean {
 	
+	private int userID;
 	private String action;
 	private String performedOn;
 	private String performedBy;
 	private String timeStamp;
 	
-	public AuditBean(String action, String performedOn, String performedBy) {
+	public AuditBean(String action, String performedOn, String performedBy,int userID) {
 		this.action = action;
 		this.performedOn = performedOn;
 		this.performedBy = performedBy;
 		this.timeStamp =  new SimpleDateFormat("yyyy/MM/dd - HH:mm:ss").format(Calendar.getInstance().getTime());
+		this.userID = userID;
 	}
 	
 	
@@ -60,5 +62,19 @@ public class AuditBean {
 	public void setTimeStamp(String timeStamp) {
 		this.timeStamp = timeStamp;
 	}
+
+
+
+	public int getUserID() {
+		return userID;
+	}
+
+
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+	
+	
 	
 }

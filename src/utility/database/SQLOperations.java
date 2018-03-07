@@ -269,6 +269,7 @@ public class SQLOperations implements SQLCommands {
 			pstmt.setString(2, ab.getPerformedBy());
 			pstmt.setString(3, ab.getPerformedOn());
 			pstmt.setString(4, ab.getTimeStamp());
+			pstmt.setInt(5, ab.getUserID());
 			pstmt.executeUpdate();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- addAudit: " + sqle.getMessage());
@@ -282,6 +283,18 @@ public class SQLOperations implements SQLCommands {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_AUDIT);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getAudit(int userID,Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_AUDIT_SELECT);
+			pstmt.setInt(1, userID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
