@@ -142,31 +142,28 @@
                <!-- End of Inner Form Container -->
                <!-- End of Dashboard -->
                <!-- Generate Audit Report Modal  -->
-               <form role="form" action="GenerateAuditServlet" method="post" id="">
-                  <div class="modal fade centered-modal" id="genaudrep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                     aria-hidden="true" data-backdrop="static">
-                     <div class="modal-dialog modal-md">
-                        <div class="modal-content">
-                           <div class="modal-header">
-                              Generate Audit Report
-                              <button type="button" class="close" data-dismiss="modal">
-                                 <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                              </button>
-                           </div>
-                           <div class="modal-body">
-                              <div class="form-horizontal" style="text-align: right;">
-                                 <!-- <form role="form"> -->
+               <div class="modal fade centered-modal" id="genaudrep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                  aria-hidden="true" data-backdrop="static">
+                  <div class="modal-dialog modal-md">
+                     <div class="modal-content">
+                        <div class="modal-header">
+                           Generate Audit Report
+                           <button type="button" class="close" data-dismiss="modal">
+                              <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                           </button>
+                        </div>
+                        <div class="modal-body">
+                           <div class="form-horizontal" style="text-align: right;">
+                              <form role="form">
                                  <!-- Doctors -->
                                  <div class="form-group">
                                     <div class="col-sm-5">
                                        <label for="message-text" class="control-label">Doctor:</label>
                                     </div>
                                     <div class="col-sm-5">
-                                       <select required class="form-control" name="doctor">
-                                          <option value="" selected="selected" disabled="disabled">Doctor</option>
-                                          <option value="All">All</option>
+                                       <select class="form-control" name="diagnosis">
+                                          <option selected="selected" disabled="disabled">Doctor</option>
                                           <option value="Dr. Mesina">Dr. Mesina</option>
-                                          <option value="Encoder">Encoder</option>
                                        </select>
                                     </div>
                                  </div>
@@ -177,57 +174,26 @@
                                        <label for="message-text" class="control-label">From:</label>
                                     </div>
                                     <div class="col-sm-4">
-                                       <input required type="date" class="form-control" name="fromDateGenerateReport">
+                                       <input required type="date" class="form-control" name="fromDate">
                                     </div>
                                     <div class="col-sm-2">
                                        <label for="message-text" class="control-label">To:</label>
                                     </div>
                                     <div class="col-sm-4">
-                                       <input required type="date" class="form-control" name="toDateGenerateReport">
+                                       <input required type="date" class="form-control" name="toDate">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date  -->
-                                 <!-- Paper Print -->
-                                 <div class="form-group">
-                                    <div class="col-sm-3">
-                                       <label for="message-text" class="control-label">Paper Size:</label>
-                                    </div>
-                                    <div class="col-sm-3">
-                                       <select required class="form-control" name="paperSize">
-                                          <option value="" selected="selected" disabled="disabled">Select</option>
-                                          <option value="LETTER">Letter</option>
-                                          <option value="LEGAL">Legal</option>
-                                          <option value="A4">A4</option>
-                                       </select>
-                                    </div>
-                                    <div class="col-sm-1"></div>
-                                    <div class="col-sm-2">
-                                       <label for="message-text" class="control-label">Paper Layout:</label>
-                                    </div>
-                                    <div class="col-sm-1">
-                                       <div class="radio">
-                                          <label> <input type="radio" name="paperLayout" value="portrait" Required="Required">
-                                             Portrait
-                                          </label>
-                                       </div>
-                                       <div class="radio">
-                                          <label> <input type="radio" name="paperLayout" value="landscape"> Landscape
-                                          </label>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <!-- End of Paper Print  -->
-                                 <!--  </form> -->
-                              </div>
+                              </form>
                            </div>
-                           <div class="modal-footer">
-                              <button type="submit" onclick="printDiv()" class="btn btn-success">Ok</button>
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                           </div>
+                        </div>
+                        <div class="modal-footer">
+                           <button type="submit" onclick="printDiv()" class="btn btn-success">Ok</button>
+                           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                         </div>
                      </div>
                   </div>
-               </form>
+               </div>
                <!-- End of Generate Audit Report Modal  -->
             </div>
          </div>
