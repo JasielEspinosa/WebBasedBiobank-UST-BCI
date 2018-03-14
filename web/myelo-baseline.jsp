@@ -1017,7 +1017,7 @@
                         <div class="form-group">
                           <label for="severity" class="control-label col-sm-4">Disease Status</label>
                           <div class="col-sm-8">
-                            <select required class="form-control" name="treatment">
+                            <select required class="form-control" name="diseaseStatus">
                               <option value="" selected="selected" disabled="disabled">Select</option>
                               <option value="CR (Complete Remission)">CR (Complete Remission)</option>
                               <option value="PR (Partial Response)">PR (Partial Response)</option>
