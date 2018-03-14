@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/pure-min.css">
 <link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -23,22 +24,14 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 <!-- JS -->
-<script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
 <script src="js/jquery-ui.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="js/bootstrap.min.js"></script>
 <script src="js/modal.js"></script>
-<!-- FONT AWESOME ICON -->
 <script defer src="js/fontawesome-all.js"></script>
-<!-- Sidebar Javascript -->
 <script src="js/sidebar.js"></script>
-<!-- FONT -->
-<link rel="stylesheet" href="fonts/open-sans.css">
-<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
 </head>
 <body>
    <!-- Main container -->
@@ -62,8 +55,10 @@
                <!-- Brand and toggle get grouped for better mobile display -->
                <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-                        class="icon-bar"></span>
+                     <span class="sr-only">Toggle navigation</span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
+                     <span class="icon-bar"></span>
                   </button>
                </div>
                <!-- Collect the nav links, forms, and other content for toggling -->
@@ -79,16 +74,25 @@
                      <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                      <!-- Dropdown -->
                      <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                        aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
+                        aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
+                        <span class="caret"></span>
                      </a>
                         <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                           <li><a href="audittrail.jsp">Audit Trail</a></li>
-                           <li class="divider"></li>
-                           <li><a href="profile.jsp">Profile</a></li>
-                           <li class="divider"></li>
-                           <li><a href="settings.jsp">Settings</a></li>
-                           <li class="divider"></li>
-                           <li><a href="#">Logout</a></li>
+                           <li><a style="font-weight: bold;" href="audittrail.jsp"> <i
+                                 class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail
+                           </a></li>
+                           <li class="divider" style="background-color: #000000;"></li>
+                           <li><a style="font-weight: bold;" href="profile.jsp"> <i class="fas fa-user-md dropdown-icons--margin"></i>
+                                 Profile
+                           </a></li>
+                           <li class="divider" style="background-color: #000000;"></li>
+                           <li><a style="font-weight: bold;" href="usermanagement.jsp"> <i
+                                 class="fas fa-wrench dropdown-icons--margin"></i> Settings
+                           </a></li>
+                           <li class="divider" style="background-color: #000000;"></li>
+                           <li><a style="font-weight: bold;" href="login.jsp"> <i
+                                 class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout
+                           </a></li>
                         </ul></li>
                      <!-- End of Dropdown -->
                   </ul>
@@ -113,7 +117,7 @@
                </div>
                <!-- End of Search Box -->
                <ul class="nav nav-pills nav-stacked">
-<!--                   <p>asd</p>
+                  <!--                   <p>asd</p>
                   <p>asd</p> -->
                </ul>
                <!-- Add box -->
@@ -164,37 +168,39 @@
                      </form>
                      <!-- End of Table -->
                      <!-- User Information Pop-Up -->
-                     <div id="usermanagement__popup" class="modal fade centered-modal" tabindex="-1" role="dialog"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
-                        <div class="modal-dialog">
-                           <div class="modal-content">
-                              <div class="modal-header">
-                                 <button type="button" class="close" data-dismiss="modal">
-                                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                                 </button>
-                                 <h4 class="modal-title" id="exampleModalLabel">User Information:</h4>
-                              </div>
-                              <div class="modal-body">
-                                 <form role="form" id="addUser" method="post">
+                     <form role="form" name="addUser" action="" id="addUser" method="post">
+                        <div id="usermanagement__popup" class="modal fade centered-modal" tabindex="-1" role="dialog"
+                           aria-labelledby="exampleModalLabel" aria-hidden="true" data-backdrop="static">
+                           <div class="modal-dialog">
+                              <div class="modal-content">
+                                 <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">
+                                       <span aria-hidden="true">&times;</span>
+                                       <span class="sr-only">Close</span>
+                                    </button>
+                                    <h4 class="modal-title" id="exampleModalLabel">User Information:</h4>
+                                 </div>
+                                 <div class="modal-body">
                                     <div class="form-group">
                                        <label for="recipient-name" class="control-label">Username:</label> <input type="text"
-                                          class="form-control" id="username">
+                                          class="form-control" id="username" required>
                                     </div>
                                     <div class="form-group">
                                        <label for="message-text" class="control-label">Password:</label> <input type="password"
-                                          class="form-control" id="password">
+                                          class="form-control" name="password" id="password" required>
+                                       <span class="hint" id="pwdHint"></span>
                                     </div>
                                     <div class="form-group">
                                        <label for="message-text" class="control-label">Confirm Password:</label> <input type="password"
-                                          class="form-control" id="confirmPassword">
+                                          class="form-control" name="confirmPassword" id="confirmPassword" required>
                                     </div>
                                     <div class="form-group">
                                        <label for="message-text" class="control-label">Last Name:</label> <input type="text"
-                                          class="form-control" id="lastName">
+                                          class="form-control" id="lastName" required>
                                     </div>
                                     <div class="form-group">
                                        <label for="message-text" class="control-label">First Name:</label> <input type="text"
-                                          class="form-control" id="firstName">
+                                          class="form-control" id="firstName" required>
                                     </div>
                                     <div class="form-group">
                                        <label for="message-text" class="control-label">Middle Name:</label> <input type="text"
@@ -203,39 +209,39 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Role:</label>
                                        <div class="col-sm-8">
-                                          <select class="form-control" name="role" id="role">
-                                             <option selected="selected" disabled="disabled" value=''>Select</option>
+                                          <select class="form-control" name="role" id="role" required>
+                                             <option value="" selected="selected" disabled="disabled">Select</option>
                                              <option value="1">Admin</option>
                                              <option value="2">Encoder</option>
                                           </select>
                                        </div>
                                     </div>
-                                 </form>
-                              </div>
-                              <div class="modal-footer">
-                                 <button type="button" class="btn btn-primary" data-target="#confirm-submit" data-toggle="modal"
-                                    id="submitBtn"></button>
-                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- End of User Information Pop-Up -->
-                     <!-- User Information Prompt -->
-                     <div class="modal fade centered-modal" id="confirm-submit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                        aria-hidden="true" data-backdrop="static">
-                        <div class="modal-dialog modal-sm">
-                           <div class="modal-content">
-                              <div class="modal-header" id="modalHeader"></div>
-                              <div class="modal-body" id="modalBody"></div>
-                              <div class="modal-footer">
-                                 <a href="#" id="submitAction" class="btn btn-success success">Yes</a>
-                                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                 </div>
+                                 <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" id="submitBtn"></button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                    <!-- data-target="#confirm-submit"  -->
+                                 </div>
                               </div>
                            </div>
                         </div>
-                     </div>
-                     <!-- End of User Information Prompt -->
+                        <!-- End of User Information Pop-Up -->
+                        <!-- User Information Prompt -->
+                        <div class="modal fade centered-modal" id="confirm-submit" tabindex="-1" role="dialog"
+                           aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+                           <div class="modal-dialog modal-sm">
+                              <div class="modal-content">
+                                 <div class="modal-header" id="modalHeader"></div>
+                                 <div class="modal-body" id="modalBody"></div>
+                                 <div class="modal-footer">
+                                    <a href="#" id="submitAction" class="btn btn-success success">Yes</a>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- End of User Information Prompt -->
+                     </form>
                   </div>
                   <!--/row-offcanvas -->
                </div>

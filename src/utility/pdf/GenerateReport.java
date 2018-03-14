@@ -1,19 +1,18 @@
 package utility.pdf;
 
 public class GenerateReport {
-	
+
 	String fromDateGenerateReport;
 	String toDateGenerateReport;
 
-	int age;
-	int gender;
-	int modeOfTreatment;
-	int diseaseStatusBaseline;
-	int diseaseStatusFollowup;
-	
-	
-	public GenerateReport(String fromDateGenerateReport, String toDateGenerateReport, int age, int gender,
-			int modeOfTreatment, int diseaseStatusBaseline, int diseaseStatusFollowup) {
+	boolean age;
+	boolean gender;
+	boolean modeOfTreatment;
+	boolean diseaseStatusBaseline;
+	boolean diseaseStatusFollowup;
+
+	public GenerateReport(String fromDateGenerateReport, String toDateGenerateReport, boolean age, boolean gender, boolean modeOfTreatment,
+			boolean diseaseStatusBaseline, boolean diseaseStatusFollowup) {
 		super();
 		this.fromDateGenerateReport = fromDateGenerateReport;
 		this.toDateGenerateReport = toDateGenerateReport;

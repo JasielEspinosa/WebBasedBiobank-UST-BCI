@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 
 import utility.database.SQLOperationsBaseline;
+import utility.database.Security;
 
 /** Servlet implementation class LoadAAPHSMDSBaselineServlet */
 @WebServlet("/LoadLymphomaBaselineServlet")
@@ -61,9 +62,9 @@ public class LoadLymphomaBaselineServlet extends HttpServlet {
 				int generalDataID = patientInfoRS.getInt("GeneralDataID");
 				ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 				generalDataRS.first();
-				patientData.put("lastName", generalDataRS.getString("LastName"));
-				patientData.put("firstName", generalDataRS.getString("FirstName"));
-				patientData.put("middleInitial", generalDataRS.getString("MiddleName"));
+				patientData.put("lastName", Security.decrypt(generalDataRS.getString("LastName")));
+				patientData.put("firstName", Security.decrypt(generalDataRS.getString("FirstName")));
+				patientData.put("middleInitial", Security.decrypt(generalDataRS.getString("MiddleName")));
 				patientData.put("gender", generalDataRS.getString("Gender"));
 				patientData.put("dateOfBirth", generalDataRS.getString("DateOfBirth"));
 

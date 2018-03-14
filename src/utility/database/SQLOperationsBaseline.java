@@ -2043,6 +2043,17 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				break;
 			}
 			case (5): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
+					pstmt.setString(1, dsb.getDiseaseStatus());
+					pstmt.setString(2, dsb.getRelapseDisease());
+					pstmt.setString(3, dsb.getOtherDisease());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
+					return false;
+				}
+				break;
 			}
 			case (6): {
 				try {
@@ -2070,6 +2081,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				}
 				break;
 			}
+
 
 		}
 		return true;
@@ -2590,7 +2602,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getUpperGIEndoscopy(int upperGIEndoscopyID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2681,7 +2693,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getMaintenanceTherapy(int maintenanceTherapyID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2694,7 +2706,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getOtherTreatment(int otherTreatmentID, Connection connection) {
 		ResultSet rs = null;
 		try {

@@ -163,7 +163,7 @@
                                     </div>
                                     <div class="col-sm-5">
                                        <select required class="form-control" name="doctor">
-                                          <option value="" selected="selected" disabled="disabled">Doctor</option>
+                                          <option value="" selected="selected" disabled="disabled">Select User</option>
                                           <option value="All">All</option>
                                           <option value="Dr. Mesina">Dr. Mesina</option>
                                           <option value="Encoder">Encoder</option>
@@ -177,13 +177,13 @@
                                        <label for="message-text" class="control-label">From:</label>
                                     </div>
                                     <div class="col-sm-4">
-                                       <input required type="date" class="form-control" name="fromDateGenerateReport">
+                                       <input type="date" class="form-control" name="fromDateGenerateReport">
                                     </div>
                                     <div class="col-sm-2">
                                        <label for="message-text" class="control-label">To:</label>
                                     </div>
                                     <div class="col-sm-4">
-                                       <input required type="date" class="form-control" name="toDateGenerateReport">
+                                       <input type="date" class="form-control" name="toDateGenerateReport">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date  -->

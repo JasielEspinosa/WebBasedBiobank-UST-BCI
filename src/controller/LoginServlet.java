@@ -21,13 +21,11 @@ import model.AuditBean;
 import utility.database.SQLOperations;
 import utility.factory.BeanFactory;
 
-/**
- * Servlet implementation class LoginServlet
- */
+/** Servlet implementation class LoginServlet */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+
 	private Connection connection;
 
 	public void init() throws ServletException {
@@ -40,43 +38,46 @@ public class LoginServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	/** @see HttpServlet#HttpServlet() */
+	public LoginServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/** @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response) */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	/** @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response) */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession(true);
-		
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-	    response.setCharacterEncoding("UTF-8"); 
+		response.setCharacterEncoding("UTF-8");
 
-		
 		AccountBean ab = BeanFactory.getAccountBean(username, password, "", "", "", 0);
 		ResultSet rs = SQLOperations.login(ab, connection);
 		if (connection != null) {
 			try {
 				if (rs.next()) {
+
+					String middleName = rs.getString("MiddleName");
+
+					if (middleName == null) {
+						middleName = "";
+					}
+
 					session.setAttribute("accountID", rs.getString("AccountID"));
-					session.setAttribute("name", rs.getString("FirstName") + " " + rs.getString("FirstName") +  " " + rs.getString("FirstName"));
+					session.setAttribute("name", rs.getString("LastName") + ", " + rs.getString("FirstName") + " " + middleName);
 					session.setAttribute("role", rs.getInt("RoleID"));
-					
+
 					String redirectURL = "dashboard-main.jsp";
 
 					Map<String, String> data = new HashMap<>();
@@ -86,13 +87,14 @@ public class LoginServlet extends HttpServlet {
 					response.setContentType("application/json");
 					response.getWriter().write(json);
 					System.out.println("Successful login");
-					
-					AuditBean auditBean = new AuditBean("LOGIN", "", (String)session.getAttribute("name"),Integer.parseInt((String)session.getAttribute("accountID")));
+
+					AuditBean auditBean = new AuditBean("LOGIN", "", (String) session.getAttribute("name"),
+							Integer.parseInt((String) session.getAttribute("accountID")));
 					SQLOperations.addAudit(auditBean, connection);
-					
+
 				} else {
-					response.setContentType("text/plain"); 
-				    response.getWriter().write("Failed");
+					response.setContentType("text/plain");
+					response.getWriter().write("Failed");
 					System.out.println("Failed login");
 				}
 			} catch (SQLException e) {
@@ -101,7 +103,7 @@ public class LoginServlet extends HttpServlet {
 		} else {
 			System.out.println("Invalid connection login");
 		}
-		
+
 	}
 
 }

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.*;
 import utility.database.SQLOperationsBaseline;
+import utility.database.Security;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
@@ -48,9 +49,9 @@ public class EditMyeloBaselineServlet extends HttpServlet implements DefaultValu
 		int disease = 5;
 
 		// GENERAL DATA
-		String lastName = request.getParameter("lastName");
-		String firstName = request.getParameter("firstName");
-		String middleInitial = request.getParameter("middleInitial");
+		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
+		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
+		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");

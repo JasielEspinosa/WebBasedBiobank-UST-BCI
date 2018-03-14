@@ -39,6 +39,7 @@
 <script src="js/chartjs-plugin-datalabels.js"></script>
 <script src="js/chartjs-plugin-datalabels.min.js"></script>
 <script src="js/radio-showhide.js" type="text/javascript"></script>
+<script src="js/loadEditingFields.js" type="text/javascript"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
@@ -84,17 +85,21 @@
                      aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
                   </a>
                      <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li><a style="font-weight: bold;" href="audittrail.jsp"><i class="fas fa-file-alt dropdown-icons--margin"></i>
-                              Audit Trail</a></li>
+                        <li><a style="font-weight: bold;" href="audittrail.jsp"> <i class="fas fa-file-alt dropdown-icons--margin"></i>
+                              Audit Trail
+                        </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="profile.jsp"><i class="fas fa-user-md dropdown-icons--margin"></i>
-                              Profile</a></li>
+                        <li><a style="font-weight: bold;" href="profile.jsp"> <i class="fas fa-user-md dropdown-icons--margin"></i>
+                              Profile
+                        </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="usermanagement.jsp"><i class="fas fa-wrench dropdown-icons--margin"></i>
-                              Settings</a></li>
+                        <li><a style="font-weight: bold;" href="usermanagement.jsp"> <i
+                              class="fas fa-wrench dropdown-icons--margin"></i> Settings
+                        </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="login.jsp"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
-                              Logout</a></li>
+                        <li><a style="font-weight: bold;" href="login.jsp"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                              Logout
+                        </a></li>
                      </ul></li>
                   <!-- End of Dropdown -->
                </ul>
@@ -125,8 +130,9 @@
             <!-- Add Patient Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="addPatient" type="button" class="btn bg-yellow sidebar__addptngenrep--border" data-toggle="modal"
-                     data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
+                  <a href="plateletdisorder-baseline.jsp"><button id="addPatient" type="button"
+                        class="btn bg-yellow sidebar__addptngenrep--border" data-toggle="modal" data-target="#usermanagement__popup"
+                        data-whatever="@mdo">Add Patient</button></a>
                </div>
             </div>
             <!-- End of Add Patient Button -->
@@ -538,7 +544,7 @@
                            <label for="message-text" class="control-label">From:</label>
                         </div>
                         <div class="col-sm-10">
-                           <input type="date" class="form-control" name="fromDateGenerateReport">
+                           <input type="date" class="form-control" name="fromDateGenerateReport" required="Required">
                         </div>
                      </div>
                      <!-- End of From Date -->
@@ -548,7 +554,7 @@
                            <label for="message-text" class="control-label">To:</label>
                         </div>
                         <div class="col-sm-10">
-                           <input type="date" class="form-control" name="toDateGenerateReport">
+                           <input type="date" class="form-control" name="toDateGenerateReport" required="Required">
                         </div>
                      </div>
                      <!-- End of To Date -->
@@ -558,15 +564,16 @@
                            <label for="message-text" class="control-label">Disease Type:</label>
                         </div>
                         <div class="col-sm-10">
-                           <select class="form-control" name="diseaseType">
-                              <option selected="selected" disabled="disabled">Select</option>
+                           <select required class="form-control" name="diseaseType">
+                              <option value="" selected="selected" disabled="disabled">Select</option>
                               <option value="All">All</option>
                               <option value="AA, PNH, MDS">AA, PNH, MDS</option>
                               <option value="Coagulation">Coagulation</option>
                               <option value="Leukemia">Leukemia</option>
                               <option value="Lymphoma">Lymphoma</option>
-                              <option value="Plasma Cell Disorders">Plasma Cell Disorders</option>
-                              <option value="Platelets Disorders">Platelets Disorders</option>
+                              <option value="Myeloproliferative Neoplasm">Myeloproliferative Neoplasm</option>
+                              <option value="Plasma Cell Disorder">Plasma Cell Disorder</option>
+                              <option value="Platelet Disorder">Platelets Disorder</option>
                               <option value="Thalassemia">Thalassemia</option>
                            </select>
                         </div>
@@ -578,13 +585,13 @@
                            <label for="message-text" class="control-label">Specific Type:</label>
                         </div>
                         <div class="col-sm-10 genrepmodal__checkboxgroup--position">
-                           <input type="checkbox" name="ageGR" value="ageGR"> <label class="genrepmodal__checkboxes">Age</label> <input
-                              type="checkbox" name="genderGR" value="genderGR"> <label class="genrepmodal__checkboxes">Gender</label>
-                           <input type="checkbox" name="modeOfTreatmentGR" value="modeOfTreatmentGR"> <label
+                           <input type="checkbox" name="ageGR" value="ageGR" checked> <label class="genrepmodal__checkboxes">Age</label>
+                           <input type="checkbox" name="genderGR" value="genderGR" checked> <label class="genrepmodal__checkboxes">Gender</label>
+                           <input type="checkbox" name="modeOfTreatmentGR" value="modeOfTreatmentGR" checked> <label
                               class="genrepmodal__checkboxes">Mode of Treatment</label> <input type="checkbox" name="dsBaselineGR"
-                              value="dsBaselineGR"> <label class="genrepmodal__checkboxes">Disease Status Baseline</label> <input
-                              type="checkbox" name="dsFollowupGR" value="dsFollowupGR"> <label class="genrepmodal__checkboxes">Disease
-                              Status Follow-up</label>
+                              value="dsBaselineGR" checked> <label class="genrepmodal__checkboxes">Disease Status Baseline</label> <input
+                              type="checkbox" name="dsFollowupGR" value="dsFollowupGR" checked> <label
+                              class="genrepmodal__checkboxes">Disease Status Follow-up</label>
                         </div>
                      </div>
                      <!-- Paper Print -->
@@ -606,7 +613,7 @@
                         </div>
                         <div class="col-sm-1">
                            <div class="radio">
-                              <label> <input type="radio" name="paperLayout" value="portrait" Required="Required"> Portrait
+                              <label> <input type="radio" name="paperLayout" value="portrait" required="Required"> Portrait
                               </label>
                            </div>
                            <div class="radio">
@@ -621,176 +628,6 @@
                </div>
                <div class="modal-footer">
                   <button type="submit" class="btn btn-success">Ok</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- End of Generate Report Modal  -->
-      <!-- Generate Report Modal  -->
-      <div class="modal fade centered-modal" id="genrep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-         data-backdrop="static">
-         <div class="modal-dialog modal-md">
-            <div class="modal-content">
-               <div class="modal-header">
-                  Generate Report:
-                  <button type="button" class="close" data-dismiss="modal">
-                     <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                  </button>
-               </div>
-               <div class="modal-body">
-                  <div class="form-horizontal" style="text-align: right;">
-                     <!-- <form role="form"> -->
-                     <!-- Doctors -->
-                     <div class="form-group">
-                        <div class="col-sm-5">
-                           <label for="message-text" class="control-label">Doctor:</label>
-                        </div>
-                        <div class="col-sm-5">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Doctor</option>
-                              <option value="Dr. Mesina">Dr. Mesina</option>
-                           </select>
-                        </div>
-                     </div>
-                     <!-- End of Doctors -->
-                     <!-- From Date  -->
-                     <div class="form-group">
-                        <div class="col-sm-2">
-                           <label for="message-text" class="control-label">From:</label>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Month</option>
-                              <option value="January">January</option>
-                              <option value="February">February</option>
-                              <option value="March">March</option>
-                              <option value="April">April</option>
-                              <option value="May">May</option>
-                              <option value="June">June</option>
-                              <option value="July">July</option>
-                              <option value="August">August</option>
-                              <option value="September">September</option>
-                              <option value="October">October</option>
-                              <option value="November">November</option>
-                              <option value="December">December</option>
-                           </select>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Day</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                              <option value="11">11</option>
-                              <option value="12">12</option>
-                              <option value="13">13</option>
-                              <option value="14">14</option>
-                              <option value="15">15</option>
-                              <option value="16">16</option>
-                              <option value="17">17</option>
-                              <option value="18">18</option>
-                              <option value="19">19</option>
-                              <option value="20">20</option>
-                              <option value="21">21</option>
-                              <option value="22">22</option>
-                              <option value="23">23</option>
-                              <option value="24">24</option>
-                              <option value="25">25</option>
-                              <option value="26">26</option>
-                              <option value="27">27</option>
-                              <option value="28">28</option>
-                              <option value="29">29</option>
-                              <option value="30">30</option>
-                              <option value="31">31</option>
-                           </select>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Year</option>
-                              <option value="2018">2018</option>
-                           </select>
-                        </div>
-                     </div>
-                     <!-- End of From Date  -->
-                     <!-- To Date  -->
-                     <div class="form-group">
-                        <div class="col-sm-2">
-                           <label for="message-text" class="control-label">To:</label>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Month</option>
-                              <option value="January">January</option>
-                              <option value="February">February</option>
-                              <option value="March">March</option>
-                              <option value="April">April</option>
-                              <option value="May">May</option>
-                              <option value="June">June</option>
-                              <option value="July">July</option>
-                              <option value="August">August</option>
-                              <option value="September">September</option>
-                              <option value="October">October</option>
-                              <option value="November">November</option>
-                              <option value="December">December</option>
-                           </select>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Day</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                              <option value="11">11</option>
-                              <option value="12">12</option>
-                              <option value="13">13</option>
-                              <option value="14">14</option>
-                              <option value="15">15</option>
-                              <option value="16">16</option>
-                              <option value="17">17</option>
-                              <option value="18">18</option>
-                              <option value="19">19</option>
-                              <option value="20">20</option>
-                              <option value="21">21</option>
-                              <option value="22">22</option>
-                              <option value="23">23</option>
-                              <option value="24">24</option>
-                              <option value="25">25</option>
-                              <option value="26">26</option>
-                              <option value="27">27</option>
-                              <option value="28">28</option>
-                              <option value="29">29</option>
-                              <option value="30">30</option>
-                              <option value="31">31</option>
-                           </select>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Year</option>
-                              <option value="2018">2018</option>
-                           </select>
-                        </div>
-                     </div>
-                     <!-- End of To Date  -->
-                     <!-- </form> -->
-                  </div>
-               </div>
-               <div class="modal-footer">
-                  <button type="submit" onclick="printDiv()" class="btn btn-success">Ok</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                </div>
             </div>

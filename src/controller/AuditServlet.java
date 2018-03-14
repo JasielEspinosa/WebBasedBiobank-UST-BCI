@@ -16,10 +16,8 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import model.ArchivedPatientBean;
 import model.AuditBean;
 import utility.database.SQLOperations;
-import utility.database.SQLOperationsBaseline;
 
 @WebServlet("/AuditServlet")
 public class AuditServlet extends HttpServlet {
@@ -52,25 +50,26 @@ public class AuditServlet extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 
-		if(action.equals("load")) {
+		if (action.equals("load")) {
 			System.out.println("test load");
 			response.setContentType("application/json");
 			List<AuditBean> auditList = new ArrayList<AuditBean>();
-			if(connection !=null){
+			if (connection != null) {
 				try {
-					ResultSet auditRS = SQLOperations.getAudit(connection);
-					while(auditRS.next()) {
+					ResultSet auditRS = SQLOperations.getAuditAll(connection);
+					while (auditRS.next()) {
 						String actionValue = auditRS.getString("action");
 						String performedOn = auditRS.getString("performedOn");
 						String performedBy = auditRS.getString("performedBy");
-						String timeStamp = auditRS.getString("timeStamp");
-						
-						AuditBean ab = new AuditBean(actionValue, performedOn, performedBy, timeStamp);
-						auditList.add(ab);			
+						String date = auditRS.getString("date");
+						String time = auditRS.getString("time");
+
+						AuditBean ab = new AuditBean(actionValue, performedOn, performedBy, date, time);
+						auditList.add(ab);
 					}
-				}catch(SQLException e) {
+				} catch (SQLException e) {
 					e.printStackTrace();
-				}	
+				}
 			}
 			String json = new Gson().toJson(auditList);
 			response.getWriter().write(json);

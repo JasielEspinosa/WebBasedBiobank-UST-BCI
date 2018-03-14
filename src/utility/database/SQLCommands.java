@@ -23,17 +23,35 @@ public interface SQLCommands {
 	String DELETE_FOLLOWUP = "DELETE FROM FollowupTable where FollowUpID = ?";
 	String GET_VISITS = "Select * from FollowupTable where PatientID = ?";
 	
-	
 	//Generate Report
-	String GENERATE_REPORT_GET_PATIENTS = "Select * from PatientTable where DiseaseStatusID = ? and DateOfEntry >= ? and DateOfEntry <= ?";
-	String GENERATE_REPORT_GET_PATIENTS_ALL = "Select * from PatientTable where DateOfEntry >= ? and DateOfEntry <= ? order by DiseaseID asc";
-	String GENERATE_REPORT_GET_FOLLOWUP = "Select * from FollowupTable where PatientID = ? and DateOfEntry >= ? and DateOfEntry <= ?";
-	
+	String GENERATE_REPORT_GET_PATIENTS = "SELECT PT.*, GD.DateOfEntry FROM PatientTable PT "
+			+ "JOIN GeneralDataTable GD ON (GD.GeneralDataID = PT.GeneralDataID) AND (GD.DateOfEntry >= ? AND GD.DateOfEntry <= ?) "
+			+ "WHERE PT.DiseaseID = ? ORDER BY GD.DateOfEntry ASC, PT.PatientID ASC";
+	String GENERATE_REPORT_GET_PATIENTS_ALL = "SELECT PT.*, GD.DateOfEntry FROM PatientTable PT "
+			+ "JOIN GeneralDataTable GD ON (GD.GeneralDataID = PT.GeneralDataID) AND (GD.DateOfEntry >= ? AND GD.DateOfEntry <= ?) "
+			+ "ORDER BY PT.DiseaseID ASC, GD.DateOfEntry ASC, PT.PatientID ASC";
+	String GENERATE_REPORT_GET_FOLLOWUP = "SELECT PT.*, GD.DateOfEntry, FT.* FROM PatientTable PT "
+			+ "JOIN GeneralDataTable GD ON (GD.GeneralDataID = PT.GeneralDataID) AND (GD.DateOfEntry >= ? AND GD.DateOfEntry <= ?) "
+			+ "LEFT JOIN FollowupTable FT ON (PT.PatientID = FT.PatientID) "
+			+ "WHERE PT.PatientID = ? ORDER BY GD.DateOfEntry ASC, FT.DateOfVisit ASC, PT.PatientID ASC";
+
+	String GET_DISEASE_NAME = "SELECT * FROM DiseaseTable WHERE DiseaseID = ?";
+
 	//audit
-	String AUDIT = "INSERT INTO audit VALUES (?,?,?,?,?)";
-	String GET_AUDIT = "Select * from audit";
-	String GET_AUDIT_SELECT = "Select * from audit where UserID = ?";
-	
+	String AUDIT = "INSERT INTO AuditTable VALUES (NULL,?,?,?,?,?,?)";
+
+	String GET_AUDIT = "SELECT * FROM AuditTable WHERE UserID = ? ORDER BY Date ASC";
+
+	String GET_AUDIT_FROM = "SELECT * FROM AuditTable WHERE UserID = ? AND Date >= ? ORDER BY Date ASC";
+	String GET_AUDIT_TO = "SELECT * FROM AuditTable WHERE UserID = ? AND Date <= ? ORDER BY Date ASC";
+	String GET_AUDIT_FROMTO = "SELECT * FROM AuditTable WHERE UserID = ? AND Date >= ? AND Date <= ? ORDER BY Date ASC";
+
+	String GET_AUDIT_ALL = "SELECT * FROM AuditTable ORDER BY Date ASC";
+
+	String GET_AUDIT_ALL_FROM = "SELECT * FROM AuditTable WHERE Date >= ? ORDER BY Date ASC";
+	String GET_AUDIT_ALL_TO = "SELECT * FROM AuditTable WHERE Date <= ? ORDER BY Date ASC";
+	String GET_AUDIT_ALL_FROMTO = "SELECT * FROM AuditTable WHERE Date >= ? AND Date <= ? ORDER BY Date ASC";
+
 	
 	//charts
 	String CHART_GET_PATIENTS = "Select * from PatientTable where DiseaseID = ?";

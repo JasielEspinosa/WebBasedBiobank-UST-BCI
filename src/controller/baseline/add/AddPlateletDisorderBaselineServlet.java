@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.*;
 import utility.database.SQLOperationsBaseline;
+import utility.database.Security;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
@@ -42,9 +43,9 @@ public class AddPlateletDisorderBaselineServlet extends HttpServlet implements D
 		int disease = 7;
 
 		// GENERAL DATA
-		String lastName = request.getParameter("lastName");
-		String firstName = request.getParameter("firstName");
-		String middleInitial = request.getParameter("middleInitial");
+		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
+		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
+		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
@@ -167,7 +168,7 @@ public class AddPlateletDisorderBaselineServlet extends HttpServlet implements D
 		String regimenProtocol = request.getParameter("regimenProtocol");
 		String dateStarted = request.getParameter("dateStarted");
 		String complications = request.getParameter("complications");
-		String phaseOfTheDisease = request.getParameter("phaseOfTheDisease");
+		String diseaseStatus = request.getParameter("diseaseStatus");
 
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
@@ -365,7 +366,7 @@ public class AddPlateletDisorderBaselineServlet extends HttpServlet implements D
 			System.out.println("Invalid connection TreatmentBean");
 		}
 
-		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(phaseOfTheDisease, "", "");
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, "", "");
 		if (connection != null) {
 			if (SQLOperationsBaseline.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert DiseaseStatusBean");

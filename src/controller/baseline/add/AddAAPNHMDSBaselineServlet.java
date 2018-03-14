@@ -13,6 +13,7 @@ import model.*;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 import utility.database.SQLOperationsBaseline;
+import utility.database.Security;
 
 @WebServlet("/AddAAPNHMDSBaselineServlet")
 public class AddAAPNHMDSBaselineServlet extends HttpServlet implements DefaultValues {
@@ -45,9 +46,9 @@ public class AddAAPNHMDSBaselineServlet extends HttpServlet implements DefaultVa
 		int disease = 1;
 
 		// GENERAL DATA
-		String lastName = request.getParameter("lastName");
-		String firstName = request.getParameter("firstName");
-		String middleInitial = request.getParameter("middleInitial");
+		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
+		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
+		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");

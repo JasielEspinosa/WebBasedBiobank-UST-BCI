@@ -20,6 +20,7 @@ import model.AccountBean;
 import model.ArchivedPatientBean;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
+import utility.database.Security;
 import utility.factory.BeanFactory;
 
 @WebServlet("/UnarchivePatientServlet")
@@ -52,8 +53,8 @@ public class UnarchivePatientServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		response.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
-			
-		if(action.equals("restore")) {
+
+		if (action.equals("restore")) {
 			int patientID = Integer.parseInt(request.getParameter("patientID"));
 			if (connection != null) {
 				if (SQLOperations.unarchivePatient(patientID, connection)) {
@@ -64,32 +65,34 @@ public class UnarchivePatientServlet extends HttpServlet {
 				}
 			} else {
 				System.out.println("Invalid connection restore patient");
-			}	
+			}
 		}
-		
-		if(action.equals("load")) {
+
+		if (action.equals("load")) {
 			System.out.println("test load");
 			response.setContentType("application/json");
 			List<ArchivedPatientBean> archivedPatientList = new ArrayList<ArchivedPatientBean>();
-			if(connection !=null){
+			if (connection != null) {
 				try {
 					ResultSet patientsRS = SQLOperations.getArchivedPatientList(connection);
-					while(patientsRS.next()) {
+					while (patientsRS.next()) {
 						int patientID = patientsRS.getInt("PatientID");
 						System.out.println(patientID);
 						int generalDataID = patientsRS.getInt("GeneralDataID");
-						
+
 						ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 						generalDataRS.first();
-						
-						String patientName = generalDataRS.getString("FirstName") + " " + generalDataRS.getString("MiddleName") + " " + generalDataRS.getString("LastName");
-						
+
+						String patientName = Security.decrypt(generalDataRS.getString("FirstName")) + " "
+								+ Security.decrypt(generalDataRS.getString("MiddleName")) + " "
+								+ Security.decrypt(generalDataRS.getString("LastName"));
+
 						ArchivedPatientBean apb = new ArchivedPatientBean(patientID, patientName);
-						archivedPatientList.add(apb);			
+						archivedPatientList.add(apb);
 					}
-				}catch(SQLException e) {
+				} catch (SQLException e) {
 					e.printStackTrace();
-				}	
+				}
 			}
 			String json = new Gson().toJson(archivedPatientList);
 			response.getWriter().write(json);

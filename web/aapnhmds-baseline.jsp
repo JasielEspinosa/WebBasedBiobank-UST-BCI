@@ -41,6 +41,7 @@
 <script src="js/chartjs-plugin-datalabels.min.js"></script>
 <script src="js/JsBarcode.all.min.js"></script>
 <script src="js/radio-showhide.js" type="text/javascript"></script>
+<script src="js/loadEditingFields.js" type="text/javascript"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
@@ -86,17 +87,21 @@
                      aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
                   </a>
                      <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li><a style="font-weight: bold;" href="audittrail.jsp"><i class="fas fa-file-alt dropdown-icons--margin"></i>
-                              Audit Trail</a></li>
+                        <li><a style="font-weight: bold;" href="audittrail.jsp"> <i class="fas fa-file-alt dropdown-icons--margin"></i>
+                              Audit Trail
+                        </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="profile.jsp"><i class="fas fa-user-md dropdown-icons--margin"></i>
-                              Profile</a></li>
+                        <li><a style="font-weight: bold;" href="profile.jsp"> <i class="fas fa-user-md dropdown-icons--margin"></i>
+                              Profile
+                        </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="usermanagement.jsp"><i class="fas fa-wrench dropdown-icons--margin"></i>
-                              Settings</a></li>
+                        <li><a style="font-weight: bold;" href="usermanagement.jsp"> <i
+                              class="fas fa-wrench dropdown-icons--margin"></i> Settings
+                        </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" onclick="logout()"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
-                              Logout</a></li>
+                        <li><a style="font-weight: bold;" href="login.jsp"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                              Logout
+                        </a></li>
                      </ul></li>
                   <!-- End of Dropdown -->
                </ul>
@@ -127,8 +132,9 @@
             <!-- Add Patient Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="addPatient" type="button" class="btn bg-yellow sidebar__addptngenrep--border" data-toggle="modal"
-                     data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
+                  <a href="aapnhmds-baseline.jsp"><button id="addPatient" type="button"
+                        class="btn bg-yellow sidebar__addptngenrep--border" data-toggle="modal" data-target="#usermanagement__popup"
+                        data-whatever="@mdo">Add Patient</button></a>
                </div>
             </div>
             <!-- End of Add Patient Button -->
@@ -216,15 +222,18 @@
                                        <!-- End of Barcode Pop-Up -->
                                        <label class="control-label col-sm-4">Patient ID Number</label>
                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" name="patientIDNumber" disabled>
+                                          <input type="text" class="form-control" name="patientIDNumberDisplay" readonly>
+                                       </div>
+                                       <div class="col-sm-7">
+                                          <input type="text" class="form-control" name="patientIDNumber" readonly hidden="hidden">
                                        </div>
                                     </div>
                                     <!-- Last Name -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Last Name</label>
                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" name="lastName" required id="lastName">
-                                          <span id="invalidName"></span>
+                                          <input type="text" class="form-control" name="lastName" required id="lastName"> <span
+                                             id="invalidName"></span>
                                        </div>
                                     </div>
                                     <!-- First Name -->
@@ -248,15 +257,11 @@
                                        <label class="control-label col-sm-5">Gender</label>
                                        <div class="col-sm-7">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="gender" value="1" Required="Required">
-                                                Male
+                                             <label> <input type="radio" name="gender" value="1" Required="Required"> Male
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="gender" value="2">
-                                                Female
+                                             <label> <input type="radio" name="gender" value="2"> Female
                                              </label>
                                           </div>
                                        </div>
@@ -294,15 +299,12 @@
                                        <label class="control-label col-sm-5">Tissue Specimen Collected</label>
                                        <div class="col-sm-7">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="tissueSpecimenCollected" value="1" Required="Required">
-                                                Yes
+                                             <label> <input type="radio" name="tissueSpecimenCollected" value="1"
+                                                Required="Required"> Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="tissueSpecimenCollected" value="0">
-                                                No
+                                             <label> <input type="radio" name="tissueSpecimenCollected" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -423,15 +425,12 @@
                                        <label class="control-label col-sm-4">Family History of Cancer</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="familyHistoryOfCancer" value="1" Required="Required">
+                                             <label> <input type="radio" name="familyHistoryOfCancer" value="1" Required="Required">
                                                 Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="familyHistoryOfCancer" value="0">
-                                                No
+                                             <label> <input type="radio" name="familyHistoryOfCancer" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -469,15 +468,12 @@
                                        <label class="control-label col-sm-4">Current/Past Medications</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="concomitantMedications" value="1" Required="Required">
+                                             <label> <input type="radio" name="concomitantMedications" value="1" Required="Required">
                                                 Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="concomitantMedications" value="0">
-                                                No
+                                             <label> <input type="radio" name="concomitantMedications" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -486,9 +482,9 @@
                                     <div class="form-group" id="concomitantMedications" style="display: none;">
                                        <div class="row">
                                           <div class="col-sm-4"></div>
-                                          <label class="control-label col-sm-3" style="text-align: left;">Generic Name</label>
-                                          <label class="control-label col-sm-2" style="text-align: left;">Dose</label>
-                                          <label class="control-label col-sm-2" style="text-align: left;">Frequency</label>
+                                          <label class="control-label col-sm-3" style="text-align: left;">Generic Name</label> <label
+                                             class="control-label col-sm-2" style="text-align: left;">Dose</label> <label
+                                             class="control-label col-sm-2" style="text-align: left;">Frequency</label>
                                        </div>
                                        <div class="row">
                                           <div class="col-sm-4"></div>
@@ -508,15 +504,12 @@
                                        <label class="control-label col-sm-4">Smoking History</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="smokingHistory" value="1" Required="Required">
+                                             <label> <input type="radio" name="smokingHistory" value="1" Required="Required">
                                                 Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="smokingHistory" value="0">
-                                                No
+                                             <label> <input type="radio" name="smokingHistory" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -532,15 +525,12 @@
                                        <label class="control-label col-sm-4">Alcohol intake history </label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="alcoholIntakeHistory" value="1" Required="Required">
+                                             <label> <input type="radio" name="alcoholIntakeHistory" value="1" Required="Required">
                                                 Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="alcoholIntakeHistory" value="0">
-                                                No
+                                             <label> <input type="radio" name="alcoholIntakeHistory" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -556,15 +546,12 @@
                                        <label class="control-label col-sm-4">Chemical exposure</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="chemicalExposureHistory" value="1" Required="Required">
-                                                Yes
+                                             <label> <input type="radio" name="chemicalExposureHistory" value="1"
+                                                Required="Required"> Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="chemicalExposureHistory" value="0">
-                                                No
+                                             <label> <input type="radio" name="chemicalExposureHistory" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -580,15 +567,12 @@
                                        <label class="control-label col-sm-4">Previous Infection</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="previousInfection" value="1" Required="Required">
+                                             <label> <input type="radio" name="previousInfection" value="1" Required="Required">
                                                 Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="previousInfection" value="0">
-                                                No
+                                             <label> <input type="radio" name="previousInfection" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -604,15 +588,12 @@
                                        <label class="control-label col-sm-4">Previous Hematologic Disorder</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="previousHematologicDisorder" value="1" Required="Required">
-                                                Yes
+                                             <label> <input type="radio" name="previousHematologicDisorder" value="1"
+                                                Required="Required"> Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="previousHematologicDisorder" value="0">
-                                                No
+                                             <label> <input type="radio" name="previousHematologicDisorder" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -674,11 +655,10 @@
                                     </h3>
                                     <!-- Labels -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Laboratory Parameter</label>
-                                       <label class="col-sm-4" style="text-align: left;">Result</label>
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-sm-4"
+                                          style="text-align: left;">Result</label>
                                        <div class="col-sm-4">
-                                          <input type="checkbox">
-                                          <label>Not done</label>
+                                          <input type="checkbox"> <label>Not done</label>
                                        </div>
                                     </div>
                                     <!-- End of Labels -->
@@ -762,11 +742,10 @@
                                     </h3>
                                     <!-- Labels -->
                                     <div class="form-group">
-                                       <label class="control-label col-sm-4">Laboratory Parameter</label>
-                                       <label class="col-lg-4" style="text-align: left;">Result</label>
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-lg-4"
+                                          style="text-align: left;">Result</label>
                                        <div class="col-lg-4">
-                                          <input type="checkbox">
-                                          <label>Not done</label>
+                                          <input type="checkbox"> <label>Not done</label>
                                        </div>
                                     </div>
                                     <!-- End of labels -->
@@ -881,15 +860,12 @@
                                        <label class="control-label col-sm-4">Bone Marrow Aspirate and Biopsy result</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="boneMarrowAspirate" value="1" Required="Required">
+                                             <label> <input type="radio" name="boneMarrowAspirate" value="1" Required="Required">
                                                 Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="boneMarrowAspirate" value="0">
-                                                No
+                                             <label> <input type="radio" name="boneMarrowAspirate" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -917,15 +893,12 @@
                                        <label class="control-label col-sm-4">Flow Cytometry</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="flowCytometry" value="1" Required="Required">
+                                             <label> <input type="radio" name="flowCytometry" value="1" Required="Required">
                                                 Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="flowCytometry" value="0">
-                                                No / Not Applicable
+                                             <label> <input type="radio" name="flowCytometry" value="0"> No / Not Applicable
                                              </label>
                                           </div>
                                        </div>
@@ -948,15 +921,12 @@
                                           Anemia and PNH</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="cytogeneticAndMolecularAnalysisAAPNH" value="1"
-                                                   Required="Required">
-                                                Yes
+                                             <label> <input type="radio" name="cytogeneticAndMolecularAnalysisAAPNH" value="1"
+                                                Required="Required"> Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="cytogeneticAndMolecularAnalysisAAPNH" value="0">
+                                             <label> <input type="radio" name="cytogeneticAndMolecularAnalysisAAPNH" value="0">
                                                 Not Done
                                              </label>
                                           </div>
@@ -981,14 +951,12 @@
                                        <label class="control-label col-sm-4">Cytogenetic and Molecular Analysis if for MDS</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="cytogeneticAndMolecularAnalysisMDS" value="1" Required="Required">
-                                                Yes
+                                             <label> <input type="radio" name="cytogeneticAndMolecularAnalysisMDS" value="1"
+                                                Required="Required"> Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="cytogeneticAndMolecularAnalysisMDS" value="0">
+                                             <label> <input type="radio" name="cytogeneticAndMolecularAnalysisMDS" value="0">
                                                 Not Done
                                              </label>
                                           </div>
@@ -1021,15 +989,12 @@
                                        <label class="control-label col-sm-4">Transplant Candidate</label>
                                        <div class="col-sm-8">
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="transplantCandidate" value="1" Required="Required">
+                                             <label> <input type="radio" name="transplantCandidate" value="1" Required="Required">
                                                 Yes
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label>
-                                                <input type="radio" name="transplantCandidate" value="0">
-                                                No
+                                             <label> <input type="radio" name="transplantCandidate" value="0"> No
                                              </label>
                                           </div>
                                        </div>
@@ -1068,8 +1033,8 @@
                               <!-- End of Therapy -->
                            </div>
                            <!-- End of CLT Tab Content -->
-                           <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitQuery'>
-                           <input type="button" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitCancel' value='Cancel'
+                           <input type="submit" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitQuery'> <input
+                              type="button" class="btn bg-yellow col-sm-4 pull-right button-border" id='submitCancel' value='Cancel'
                               onclick='cancelEdit()'>
                         </div>
                         <!-- End of CLT -->
@@ -1103,7 +1068,7 @@
                            <label for="message-text" class="control-label">From:</label>
                         </div>
                         <div class="col-sm-10">
-                           <input type="date" class="form-control" name="fromDateGenerateReport">
+                           <input type="date" class="form-control" name="fromDateGenerateReport" required="Required">
                         </div>
                      </div>
                      <!-- End of From Date -->
@@ -1113,7 +1078,7 @@
                            <label for="message-text" class="control-label">To:</label>
                         </div>
                         <div class="col-sm-10">
-                           <input type="date" class="form-control" name="toDateGenerateReport">
+                           <input type="date" class="form-control" name="toDateGenerateReport" required="Required">
                         </div>
                      </div>
                      <!-- End of To Date -->
@@ -1123,15 +1088,16 @@
                            <label for="message-text" class="control-label">Disease Type:</label>
                         </div>
                         <div class="col-sm-10">
-                           <select class="form-control" name="diseaseType">
-                              <option selected="selected" disabled="disabled">Select</option>
+                           <select required class="form-control" name="diseaseType">
+                              <option value="" selected="selected" disabled="disabled">Select</option>
                               <option value="All">All</option>
                               <option value="AA, PNH, MDS">AA, PNH, MDS</option>
                               <option value="Coagulation">Coagulation</option>
                               <option value="Leukemia">Leukemia</option>
                               <option value="Lymphoma">Lymphoma</option>
-                              <option value="Plasma Cell Disorders">Plasma Cell Disorders</option>
-                              <option value="Platelets Disorders">Platelets Disorders</option>
+                              <option value="Myeloproliferative Neoplasm">Myeloproliferative Neoplasm</option>
+                              <option value="Plasma Cell Disorder">Plasma Cell Disorder</option>
+                              <option value="Platelet Disorder">Platelets Disorder</option>
                               <option value="Thalassemia">Thalassemia</option>
                            </select>
                         </div>
@@ -1143,16 +1109,13 @@
                            <label for="message-text" class="control-label">Specific Type:</label>
                         </div>
                         <div class="col-sm-10 genrepmodal__checkboxgroup--position">
-                           <input type="checkbox" name="ageGR" value="ageGR">
-                           <label class="genrepmodal__checkboxes">Age</label>
-                           <input type="checkbox" name="genderGR" value="genderGR">
-                           <label class="genrepmodal__checkboxes">Gender</label>
-                           <input type="checkbox" name="modeOfTreatmentGR" value="modeOfTreatmentGR">
-                           <label class="genrepmodal__checkboxes">Mode of Treatment</label>
-                           <input type="checkbox" name="dsBaselineGR" value="dsBaselineGR">
-                           <label class="genrepmodal__checkboxes">Disease Status Baseline</label>
-                           <input type="checkbox" name="dsFollowupGR" value="dsFollowupGR">
-                           <label class="genrepmodal__checkboxes">Disease Status Follow-up</label>
+                           <input type="checkbox" name="ageGR" value="ageGR" checked> <label class="genrepmodal__checkboxes">Age</label>
+                           <input type="checkbox" name="genderGR" value="genderGR" checked> <label class="genrepmodal__checkboxes">Gender</label>
+                           <input type="checkbox" name="modeOfTreatmentGR" value="modeOfTreatmentGR" checked> <label
+                              class="genrepmodal__checkboxes">Mode of Treatment</label> <input type="checkbox" name="dsBaselineGR"
+                              value="dsBaselineGR" checked> <label class="genrepmodal__checkboxes">Disease Status Baseline</label> <input
+                              type="checkbox" name="dsFollowupGR" value="dsFollowupGR" checked> <label
+                              class="genrepmodal__checkboxes">Disease Status Follow-up</label>
                         </div>
                      </div>
                      <!-- Paper Print -->
@@ -1174,15 +1137,11 @@
                         </div>
                         <div class="col-sm-1">
                            <div class="radio">
-                              <label>
-                                 <input type="radio" name="paperLayout" value="portrait" Required="Required">
-                                 Portrait
+                              <label> <input type="radio" name="paperLayout" value="portrait" required="Required"> Portrait
                               </label>
                            </div>
                            <div class="radio">
-                              <label>
-                                 <input type="radio" name="paperLayout" value="landscape">
-                                 Landscape
+                              <label> <input type="radio" name="paperLayout" value="landscape"> Landscape
                               </label>
                            </div>
                         </div>
@@ -1193,176 +1152,6 @@
                </div>
                <div class="modal-footer">
                   <button type="submit" class="btn btn-success">Ok</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-               </div>
-            </div>
-         </div>
-      </div>
-      <!-- End of Generate Report Modal  -->
-      <!-- Generate Report Modal  -->
-      <div class="modal fade centered-modal" id="genrep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-         data-backdrop="static">
-         <div class="modal-dialog modal-md">
-            <div class="modal-content">
-               <div class="modal-header">
-                  Generate Report:
-                  <button type="button" class="close" data-dismiss="modal">
-                     <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
-                  </button>
-               </div>
-               <div class="modal-body">
-                  <div class="form-horizontal" style="text-align: right;">
-                     <!-- <form role="form"> -->
-                     <!-- Doctors -->
-                     <div class="form-group">
-                        <div class="col-sm-5">
-                           <label for="message-text" class="control-label">Doctor:</label>
-                        </div>
-                        <div class="col-sm-5">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Doctor</option>
-                              <option value="Dr. Mesina">Dr. Mesina</option>
-                           </select>
-                        </div>
-                     </div>
-                     <!-- End of Doctors -->
-                     <!-- From Date  -->
-                     <div class="form-group">
-                        <div class="col-sm-2">
-                           <label for="message-text" class="control-label">From:</label>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Month</option>
-                              <option value="January">January</option>
-                              <option value="February">February</option>
-                              <option value="March">March</option>
-                              <option value="April">April</option>
-                              <option value="May">May</option>
-                              <option value="June">June</option>
-                              <option value="July">July</option>
-                              <option value="August">August</option>
-                              <option value="September">September</option>
-                              <option value="October">October</option>
-                              <option value="November">November</option>
-                              <option value="December">December</option>
-                           </select>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Day</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                              <option value="11">11</option>
-                              <option value="12">12</option>
-                              <option value="13">13</option>
-                              <option value="14">14</option>
-                              <option value="15">15</option>
-                              <option value="16">16</option>
-                              <option value="17">17</option>
-                              <option value="18">18</option>
-                              <option value="19">19</option>
-                              <option value="20">20</option>
-                              <option value="21">21</option>
-                              <option value="22">22</option>
-                              <option value="23">23</option>
-                              <option value="24">24</option>
-                              <option value="25">25</option>
-                              <option value="26">26</option>
-                              <option value="27">27</option>
-                              <option value="28">28</option>
-                              <option value="29">29</option>
-                              <option value="30">30</option>
-                              <option value="31">31</option>
-                           </select>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Year</option>
-                              <option value="2018">2018</option>
-                           </select>
-                        </div>
-                     </div>
-                     <!-- End of From Date  -->
-                     <!-- To Date  -->
-                     <div class="form-group">
-                        <div class="col-sm-2">
-                           <label for="message-text" class="control-label">To:</label>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Month</option>
-                              <option value="January">January</option>
-                              <option value="February">February</option>
-                              <option value="March">March</option>
-                              <option value="April">April</option>
-                              <option value="May">May</option>
-                              <option value="June">June</option>
-                              <option value="July">July</option>
-                              <option value="August">August</option>
-                              <option value="September">September</option>
-                              <option value="October">October</option>
-                              <option value="November">November</option>
-                              <option value="December">December</option>
-                           </select>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Day</option>
-                              <option value="1">1</option>
-                              <option value="2">2</option>
-                              <option value="3">3</option>
-                              <option value="4">4</option>
-                              <option value="5">5</option>
-                              <option value="6">6</option>
-                              <option value="7">7</option>
-                              <option value="8">8</option>
-                              <option value="9">9</option>
-                              <option value="10">10</option>
-                              <option value="11">11</option>
-                              <option value="12">12</option>
-                              <option value="13">13</option>
-                              <option value="14">14</option>
-                              <option value="15">15</option>
-                              <option value="16">16</option>
-                              <option value="17">17</option>
-                              <option value="18">18</option>
-                              <option value="19">19</option>
-                              <option value="20">20</option>
-                              <option value="21">21</option>
-                              <option value="22">22</option>
-                              <option value="23">23</option>
-                              <option value="24">24</option>
-                              <option value="25">25</option>
-                              <option value="26">26</option>
-                              <option value="27">27</option>
-                              <option value="28">28</option>
-                              <option value="29">29</option>
-                              <option value="30">30</option>
-                              <option value="31">31</option>
-                           </select>
-                        </div>
-                        <div class="col-sm-3">
-                           <select class="form-control" name="diagnosis">
-                              <option selected="selected" disabled="disabled">Year</option>
-                              <option value="2018">2018</option>
-                           </select>
-                        </div>
-                     </div>
-                     <!-- End of To Date  -->
-                     <!-- </form> -->
-                  </div>
-               </div>
-               <div class="modal-footer">
-                  <button type="submit" onclick="printDiv()" class="btn btn-success">Ok</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                </div>
             </div>

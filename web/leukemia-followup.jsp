@@ -33,6 +33,7 @@
 <script src="js/chartjs-plugin-datalabels.js"></script>
 <script src="js/chartjs-plugin-datalabels.min.js"></script>
 <script src="js/radio-showhide.js" type="text/javascript"></script>
+<script src="js/loadEditingFields.js" type="text/javascript"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
@@ -78,17 +79,21 @@
                      aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i><span class="caret"></span>
                   </a>
                      <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li><a style="font-weight: bold;" href="audittrail.jsp"><i class="fas fa-file-alt dropdown-icons--margin"></i>
-                              Audit Trail</a></li>
+                        <li><a style="font-weight: bold;" href="audittrail.jsp"> <i class="fas fa-file-alt dropdown-icons--margin"></i>
+                              Audit Trail
+                        </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="profile.jsp"><i class="fas fa-user-md dropdown-icons--margin"></i>
-                              Profile</a></li>
+                        <li><a style="font-weight: bold;" href="profile.jsp"> <i class="fas fa-user-md dropdown-icons--margin"></i>
+                              Profile
+                        </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="usermanagement.jsp"><i class="fas fa-wrench dropdown-icons--margin"></i>
-                              Settings</a></li>
+                        <li><a style="font-weight: bold;" href="usermanagement.jsp"> <i
+                              class="fas fa-wrench dropdown-icons--margin"></i> Settings
+                        </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="login.jsp"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
-                              Logout</a></li>
+                        <li><a style="font-weight: bold;" href="login.jsp"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                              Logout
+                        </a></li>
                      </ul></li>
                   <!-- End of Dropdown -->
                </ul>
@@ -119,8 +124,9 @@
             <!-- Add Patient Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <button id="addPatient" type="button" class="btn bg-yellow sidebar__addptngenrep--border" data-toggle="modal"
-                     data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
+                  <a href="leukemia-baseline.jsp"><button id="addPatient" type="button"
+                        class="btn bg-yellow sidebar__addptngenrep--border" data-toggle="modal" data-target="#usermanagement__popup"
+                        data-whatever="@mdo">Add Patient</button></a>
                </div>
             </div>
             <!-- End of Add Patient Button -->
@@ -469,12 +475,12 @@
                                           <input type="text" class="form-control" name="boneMarrowAspirateDescription" />
                                        </div>
                                     </div>
-                                    <div class="form-group" id="boneMarrowAspirateAttachScannedDocument" style="display: none;">
+                                    <!--                                     <div class="form-group" id="boneMarrowAspirateAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
                                           <input type="file" class="form-control" name="boneMarrowAspirateAttachScannedDocument" />
                                        </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Flow cytometry -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Flow Cytometry</label>
@@ -496,12 +502,12 @@
                                           <input type="text" class="form-control" name="flowCytometryResult" />
                                        </div>
                                     </div>
-                                    <div class="form-group" id="flowCytometryAttachScannedDocument" style="display: none;">
+                                    <!--                                     <div class="form-group" id="flowCytometryAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
                                           <input type="file" class="form-control" name="flowCytometryAttachScannedDocument" />
                                        </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Molecular Analysis -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Molecular Analysis</label>
@@ -523,12 +529,12 @@
                                           <input type="text" class="form-control" name="molecularAnalysisResult" />
                                        </div>
                                     </div>
-                                    <div class="form-group" id="molecularAnalysisAttachScannedDocument" style="display: none;">
+                                    <!--                                     <div class="form-group" id="molecularAnalysisAttachScannedDocument" style="display: none;">
                                        <label class="control-label col-lg-4">Attach scanned document</label>
                                        <div class="col-sm-8">
                                           <input type="file" class="form-control" name="molecularAnalysisAttachScannedDocument" />
                                        </div>
-                                    </div>
+                                    </div> -->
                                  </div>
                                  <!-- End of Form -->
                               </div>
@@ -542,19 +548,19 @@
                                        <div class="col-lg-5">
                                           <select required class="form-control" name="diseaseStatus">
                                              <option value="" selected="selected" disabled="disabled">Select</option>
-                                             <option value="">Relapsed</option>
-                                             <option value="">Refractory Disease</option>
-                                             <option value="">CR (Complete Remission)</option>
-                                             <option value="">nCR (near CR)</option>
-                                             <option value="">PR (Partial Response)</option>
-                                             <option value="">PD (Progressive Disease)</option>
-                                             <option value="">SD Stable Disease)</option>
-                                             <option value="">Complete Hematologic response</option>
-                                             <option value="">Complete Cytogenetic Response</option>
-                                             <option value="">Major Molecular Response</option>
-                                             <option value="">Spleen response</option>
-                                             <option value="">Symptom response</option>
-                                             <option value="">Dead</option>
+                                             <option value="Relapsed">Relapsed</option>
+                                             <option value="Refractory Disease">Refractory Disease</option>
+                                             <option value="CR (Complete Remission)">CR (Complete Remission)</option>
+                                             <option value="nCR (near CR)">nCR (near CR)</option>
+                                             <option value="PR (Partial Response)">PR (Partial Response)</option>
+                                             <option value="PD (Progressive Disease)">PD (Progressive Disease)</option>
+                                             <option value="SD (Stable Disease)">SD (Stable Disease)</option>
+                                             <option value="Complete Hematologic response">Complete Hematologic response</option>
+                                             <option value="Complete Cytogenetic Response">Complete Cytogenetic Response</option>
+                                             <option value="Major Molecular Response">Major Molecular Response</option>
+                                             <option value="Spleen response">Spleen response</option>
+                                             <option value="Symptom response">Symptom response</option>
+                                             <option value="Dead">Dead</option>
                                           </select>
                                        </div>
                                     </div>
@@ -691,15 +697,16 @@
                            <label for="message-text" class="control-label">Disease Type:</label>
                         </div>
                         <div class="col-sm-10">
-                           <select class="form-control" name="diseaseType">
-                              <option selected="selected" disabled="disabled">Select</option>
+                           <select required class="form-control" name="diseaseType">
+                              <option value="" selected="selected" disabled="disabled">Select</option>
                               <option value="All">All</option>
                               <option value="AA, PNH, MDS">AA, PNH, MDS</option>
                               <option value="Coagulation">Coagulation</option>
                               <option value="Leukemia">Leukemia</option>
                               <option value="Lymphoma">Lymphoma</option>
-                              <option value="Plasma Cell Disorders">Plasma Cell Disorders</option>
-                              <option value="Platelets Disorders">Platelets Disorders</option>
+                              <option value="Myeloproliferative Neoplasm">Myeloproliferative Neoplasm</option>
+                              <option value="Plasma Cell Disorder">Plasma Cell Disorder</option>
+                              <option value="Platelet Disorder">Platelets Disorder</option>
                               <option value="Thalassemia">Thalassemia</option>
                            </select>
                         </div>
@@ -711,13 +718,13 @@
                            <label for="message-text" class="control-label">Specific Type:</label>
                         </div>
                         <div class="col-sm-10 genrepmodal__checkboxgroup--position">
-                           <input type="checkbox" name="ageGR" value="ageGR"> <label class="genrepmodal__checkboxes">Age</label> <input
-                              type="checkbox" name="genderGR" value="genderGR"> <label class="genrepmodal__checkboxes">Gender</label>
-                           <input type="checkbox" name="modeOfTreatmentGR" value="modeOfTreatmentGR"> <label
+                           <input type="checkbox" name="ageGR" value="ageGR" checked> <label class="genrepmodal__checkboxes">Age</label>
+                           <input type="checkbox" name="genderGR" value="genderGR" checked> <label class="genrepmodal__checkboxes">Gender</label>
+                           <input type="checkbox" name="modeOfTreatmentGR" value="modeOfTreatmentGR" checked> <label
                               class="genrepmodal__checkboxes">Mode of Treatment</label> <input type="checkbox" name="dsBaselineGR"
-                              value="dsBaselineGR"> <label class="genrepmodal__checkboxes">Disease Status Baseline</label> <input
-                              type="checkbox" name="dsFollowupGR" value="dsFollowupGR"> <label class="genrepmodal__checkboxes">Disease
-                              Status Follow-up</label>
+                              value="dsBaselineGR" checked> <label class="genrepmodal__checkboxes">Disease Status Baseline</label> <input
+                              type="checkbox" name="dsFollowupGR" value="dsFollowupGR" checked> <label
+                              class="genrepmodal__checkboxes">Disease Status Follow-up</label>
                         </div>
                      </div>
                      <!-- Paper Print -->

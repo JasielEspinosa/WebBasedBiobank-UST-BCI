@@ -455,11 +455,15 @@ CREATE TABLE RoleTable (
 	PRIMARY KEY (RoleID)
 );
 
-CREATE TABLE Audit (
+CREATE TABLE AuditTable (
+	AuditID int NOT NULL AUTO_INCREMENT,
 	Action varchar(300) DEFAULT NULL,
 	PerformedOn varchar(300) DEFAULT NULL,
 	PerformedBy varchar(300) DEFAULT NULL,
-	Timestamp timestamp NULL DEFAULT NULL
+	Date varchar(100) DEFAULT NULL,
+	Time varchar(100) DEFAULT NULL,
+	UserID int NOT NULL,
+	PRIMARY KEY (AuditID)
 );
 
 ALTER TABLE PatientTable ADD CONSTRAINT PatientTable_fk0 FOREIGN KEY (DiseaseID) REFERENCES DiseaseTable(DiseaseID);

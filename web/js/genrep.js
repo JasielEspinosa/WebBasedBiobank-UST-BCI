@@ -1,4 +1,4 @@
-function demoFromHTML() {
+/*function demoFromHTML() {
 	
     var pdf = new jsPDF('p', 'pt', 'letter');
     source = $('#customers')[0];
@@ -28,4 +28,14 @@ function demoFromHTML() {
         pdf.save('Generate Report.pdf');
     }, margins);
     
-}
+}*/
+
+/*function openGenRep() {
+	$("[name='fromDateGenerateReport']").prop('required', true);
+	$("[name='toDateGenerateReport']").prop('required', true);
+};
+
+function closeGenRep() {
+	$("[name='fromDateGenerateReport']").prop('required', false);
+	$("[name='toDateGenerateReport']").prop('required', false);
+};*/

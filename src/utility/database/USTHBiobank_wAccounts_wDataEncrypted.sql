@@ -84,13 +84,14 @@ DROP TABLE IF EXISTS `audittable`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `audittable` (
+  `AuditID` int(11) NOT NULL AUTO_INCREMENT,
   `Action` varchar(300) DEFAULT NULL,
   `PerformedOn` varchar(300) DEFAULT NULL,
   `PerformedBy` varchar(300) DEFAULT NULL,
   `Date` varchar(100) DEFAULT NULL,
   `Time` varchar(100) DEFAULT NULL,
   `UserID` int(11) NOT NULL,
-  PRIMARY KEY (`UserID`)
+  PRIMARY KEY (`AuditID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

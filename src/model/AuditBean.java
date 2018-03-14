@@ -4,32 +4,31 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class AuditBean {
-	
+
 	private int userID;
 	private String action;
 	private String performedOn;
 	private String performedBy;
-	private String timeStamp;
-	
-	public AuditBean(String action, String performedOn, String performedBy,int userID) {
+	private String date;
+	private String time;
+
+	public AuditBean(String action, String performedOn, String performedBy, int userID) {
 		this.action = action;
 		this.performedOn = performedOn;
 		this.performedBy = performedBy;
-		this.timeStamp =  new SimpleDateFormat("yyyy/MM/dd - HH:mm:ss").format(Calendar.getInstance().getTime());
+		this.date = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+		this.time = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
 		this.userID = userID;
 	}
-	
-	
 
-	public AuditBean(String action, String performedOn, String performedBy, String timeStamp) {
+	public AuditBean(String action, String performedOn, String performedBy, String date, String time) {
 		super();
 		this.action = action;
 		this.performedOn = performedOn;
 		this.performedBy = performedBy;
-		this.timeStamp = timeStamp;
+		this.date = date;
+		this.time = time;
 	}
-
-
 
 	public String getAction() {
 		return action;
@@ -55,26 +54,28 @@ public class AuditBean {
 		this.performedBy = performedBy;
 	}
 
-	public String getTimeStamp() {
-		return timeStamp;
+	public String getDate() {
+		return date;
 	}
 
-	public void setTimeStamp(String timeStamp) {
-		this.timeStamp = timeStamp;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
+	public String getTime() {
+		return time;
+	}
 
+	public void setTime(String time) {
+		this.time = time;
+	}
 
 	public int getUserID() {
 		return userID;
 	}
 
-
-
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-	
-	
-	
+
 }

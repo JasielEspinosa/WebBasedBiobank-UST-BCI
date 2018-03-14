@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.*;
 import utility.database.SQLOperationsBaseline;
+import utility.database.Security;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
@@ -42,9 +43,9 @@ public class AddMyeloBaselineServlet extends HttpServlet implements DefaultValue
 		int disease = 5;
 
 		// GENERAL DATA
-		String lastName = request.getParameter("lastName");
-		String firstName = request.getParameter("firstName");
-		String middleInitial = request.getParameter("middleInitial");
+		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
+		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
+		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
@@ -372,6 +373,17 @@ public class AddMyeloBaselineServlet extends HttpServlet implements DefaultValue
 			}
 		} else {
 			System.out.println("Invalid connection TreatmentBean");
+		}
+		
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("Stable", "", "");
+		if (connection != null) {
+			if (SQLOperationsBaseline.addDiseaseStatus(dsb, connection, disease)) {
+				System.out.println("Successful insert DiseaseStatusBean");
+			} else {
+				System.out.println("Failed insert DiseaseStatusBean");
+			}
+		} else {
+			System.out.println("Invalid connection DiseaseStatusBean");
 		}
 
 		// ADD PATIENT

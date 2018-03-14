@@ -64,14 +64,21 @@ function loadPatientData(id) {
 
 	params.patientID = id;
 	$.post('LoadPlateletBaselineServlet', $.param(params), function(response) {
+		
+		$.loadUneditableFields();
+		$("#submitQuery").hide();
+		
+		// barcode
+		setBarcode(response["patientIDNumber"])
 
 		// in order from add servlet
 		alert('Data Loaded')
 
 		// general data
+		$("[name='patientIDNumberDisplay']").val(response["patientIDNumber"])
 		$("[name='patientIDNumber']").val(response["patientIDNumber"])
 		if ($("[name='patientIDNumber']").val() !== "") {
-			$("[name='patientIDNumber']").prop('readonly', true);
+			$("[name='patientIDNumberDisplay']").prop('readonly', true);
 		}
 
 		$("[name='lastName']").val(response["lastName"])
@@ -257,7 +264,7 @@ function loadPatientData(id) {
 		$("[name='regimenProtocol']").val(response["regimenProtocol"])
 		$("[name='dateStarted']").val(response["dateStarted"])
 		$("[name='complications']").val(response["complications"])
-		$("[name='phaseOfTheDisease']").val(response["phaseOfTheDisease"])
+		$("[name='diseaseStatus']").val(response["diseaseStatus"])
 
 		bindEvents();
 
@@ -329,15 +336,16 @@ function addBind() {
 	editState = false;
 };
 
-// edit bind
 function editBind() {
+	$.loadEditableFields();
+	$("#submitQuery").show();
 	$("#submitCancel").show();
 	editState = true;
 };
 
 function cancelEdit() {
-	// make fields uneditable (incomplete)
 	addBind();
+	$.loadUneditableFields();
+	$("#submitQuery").hide();
 	$("#submitCancel").hide();
 };
-
