@@ -736,8 +736,8 @@ a.login__forgotpasswordlink:hover {
    z-index: 100;
    width: 100vw;
    height: 100vh;
-   background-color: #FFF;
-   background-image: url("../images/triangles.gif");
+   background-color: #023564;
+   background-image: url("../images/loader.gif");
    background-repeat: no-repeat;
    background-position: center;
 }
