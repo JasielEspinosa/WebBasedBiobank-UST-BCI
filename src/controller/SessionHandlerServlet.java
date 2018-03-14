@@ -23,8 +23,8 @@ import utility.factory.BeanFactory;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/LogoutServlet")
-public class LogoutServlet extends HttpServlet {
+@WebServlet("/SessionHandler")
+public class SessionHandlerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	private Connection connection;
@@ -42,7 +42,7 @@ public class LogoutServlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LogoutServlet() {
+    public SessionHandlerServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -59,22 +59,19 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println("sessionTest");
 		HttpSession session = request.getSession(true);
-		session.invalidate();
-		
-		
-		
-		String redirectURL = "login.jsp";
+		if(session.getAttribute("name") == null) {
+			System.out.println("session is null");
+			String redirectURL = "login.jsp";
 
-		Map<String, String> data = new HashMap<>();
-		data.put("redirect", redirectURL);
-		String json = new Gson().toJson(data);
+			Map<String, String> data = new HashMap<>();
+			data.put("redirect", redirectURL);
+			String json = new Gson().toJson(data);
 
-		response.setContentType("application/json");
-		response.getWriter().write(json);
-		
-		
+			response.setContentType("application/json");
+			response.getWriter().write(json);
+		}	
 	}
 
 }

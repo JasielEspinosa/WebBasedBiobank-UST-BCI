@@ -34,4 +34,8 @@ public interface SQLCommands {
 	String GET_AUDIT = "Select * from audit";
 	String GET_AUDIT_SELECT = "Select * from audit where UserID = ?";
 	
+	
+	//charts
+	String CHART_GET_PATIENTS = "Select * from PatientTable where DiseaseID = ?";
+	String CHART_GET_FOLLOWUP = "Select * from FollowupTable where PatientID = ?";
 }

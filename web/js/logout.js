@@ -9,4 +9,29 @@ $('document').ready(function(){
     	}).fail(function(){
     		});
     });
+    
+    sessionHandler()
+    
 });
+
+
+function logout(){
+	$.post('LogoutServlet', function (response) {
+		if(response.redirect){
+		       window.location = response.redirect;
+		       return;
+		}
+	}).fail(function(){
+		});
+};
+
+
+function sessionHandler(){
+	$.post('SessionHandler', function (response) {
+		if(response.redirect){
+		       window.location = response.redirect;
+		       return;
+		}
+	}).fail(function(){
+		});
+}

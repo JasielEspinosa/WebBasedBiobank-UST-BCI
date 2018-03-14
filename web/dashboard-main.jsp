@@ -57,7 +57,7 @@
          <!-- End of Banner -->
          <!-- Navbar -->
          <nav class="navbar" role="navigation">
-            <div class="container-fluid navbar__nav-item--hover">
+            <div class="navbar__nav-item--hover">
                <!-- Brand and toggle get grouped for better mobile display -->
                <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -122,14 +122,14 @@
                                  <div class="row">
                                     <div class="col-md-3">
                                        <div class=" morph pic">
-                                          <a data-target="#leukemiaModal" data-toggle="modal"> <img
+                                          <a data-target="#leukemiaModal" data-toggle="modal" id="leukemiaImg"> <img
                                              src="images/leukemiavectoredited.png" alt="leukemia">
                                           </a>
                                        </div>
                                     </div>
                                     <div class="col-md-3 dashboard__framecontainer">
                                        <div class="dashboard__images dashboard__images morph pic">
-                                          <a data-target="#lymphomaModal" data-toggle="modal"> <img
+                                          <a data-target="#lymphomaModal" data-toggle="modal" id="lymphomaImg"> <img
                                              src="images/lymphomavectoredited.png" alt="lymphoma">
                                           </a>
                                           <div class="middle">
@@ -139,7 +139,7 @@
                                     </div>
                                     <div class="col-md-3 dashboard__framecontainer">
                                        <div class="dashboard__images morph pic">
-                                          <a data-target="#myeloproliferativeModal" data-toggle="modal"> <img
+                                          <a data-target="#myeloproliferativeModal" data-toggle="modal" id="myeloproliferativeImg"> <img
                                              src="images/myeloproliferativevectoredited.png" alt="myeloproliferative">
                                           </a>
                                           <div class="middle">
@@ -149,7 +149,7 @@
                                     </div>
                                     <div class="col-md-3 dashboard__framecontainer">
                                        <div class="dashboard__images morph pic">
-                                          <a data-target="#plasmaCellModal" data-toggle="modal"> <img
+                                          <a data-target="#plasmaCellModal" data-toggle="modal" id ="plasmaCellImg"> <img
                                              src="images/plasmacellvectoredited.png" alt="plasma">
                                           </a>
                                           <div class="middle">
@@ -161,7 +161,7 @@
                                  <div class="row col-md-offset-1">
                                     <div class="col-md-4 dashboard__framecontainer">
                                        <div class="dashboard__images morph pic">
-                                          <a data-target="#aapnhmdsModal" data-toggle="modal"> <img
+                                          <a data-target="#aapnhmdsModal" data-toggle="modal" id="aapnhmdsImg"> <img
                                              src="images/aplasticanemiavectoredited.png" alt="aapnhmds">
                                           </a>
                                           <div class="middle">
@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="col-md-4 dashboard__framecontainer">
                                        <div class="dashboard__images morph pic">
-                                          <a data-target="#plateletDisorderModal" data-toggle="modal"> <img
+                                          <a data-target="#plateletDisorderModal" data-toggle="modal" id ="plateletDisorderImg"> <img
                                              src="images/plateletvectoredited.png" alt="platelet">
                                           </a>
                                           <div class="middle">
@@ -181,7 +181,7 @@
                                     </div>
                                     <div class="col-md-4 dashboard__framecontainer">
                                        <div class="dashboard__images morph pic">
-                                          <a data-target="#coagulationDiseaseModal" data-toggle="modal"> <img
+                                          <a data-target="#coagulationDiseaseModal" data-toggle="modal" id="coagulationDiseaseImg"> <img
                                              src="images/coagulationvectoredited.png" alt="coag">
                                           </a>
                                           <div class="middle">
@@ -260,11 +260,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="ageStatisticsFromLeukemia">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="ageStatisticsToLeukemia">
                                     </div>
                                  </div>
                                  <!-- End of To Date -->
@@ -283,11 +283,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="genderStatisticsFromLeukemia">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="genderStatisticsToLeukemia">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -306,11 +306,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="modeOfTreatmentStatisticsFromLeukemia">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="modeOfTreatmentStatisticsToLeukemia">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -329,11 +329,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="baselineStatisticsFromLeukemia">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="baselineStatisticsToLeukemia">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -352,11 +352,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="followupStatisticsFromLeukemia">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="followupStatisticsToLeukemia">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -375,11 +375,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="summaryBaselineStatisticsFromLeukemia">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="summaryBaselineStatisticsToLeukemia">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -398,11 +398,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="summaryFollowupStatisticsFromLeukemia">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="summaryFollowupStatisticsToLeukemia">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -459,20 +459,20 @@
                      <!-- General Statistics Carousel -->
                      <div id="lymphoma-carousel" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
-                        <ol class="carousel-indicators" id="carousel-indicator-1">
-                           <li data-target="#carousel-example-generic" data-slide-to="0" class="active" data-toggle="tooltip"
+                        <ol class="carousel-indicators">
+                           <li data-target="#lymphoma-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
                               data-placement="left" title="Age Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="1" data-toggle="tooltip" data-placement="top"
+                           <li data-target="#lymphoma-carousel" data-slide-to="1" data-toggle="tooltip" data-placement="top"
                               title="Gender Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="2" data-toggle="tooltip" data-placement="bottom"
+                           <li data-target="#lymphoma-carousel" data-slide-to="2" data-toggle="tooltip" data-placement="bottom"
                               title="Mode of Treatment Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="3" data-toggle="tooltip" data-placement="top"
+                           <li data-target="#lymphoma-carousel" data-slide-to="3" data-toggle="tooltip" data-placement="top"
                               title="Baseline Disease Status Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="4" data-toggle="tooltip" data-placement="bottom"
+                           <li data-target="#lymphoma-carousel" data-slide-to="4" data-toggle="tooltip" data-placement="bottom"
                               title="Follow-up Disease Status Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="5" data-toggle="tooltip" data-placement="top"
+                           <li data-target="#lymphoma-carousel" data-slide-to="5" data-toggle="tooltip" data-placement="top"
                               title="Baseline Summarized Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="6" data-toggle="tooltip" data-placement="right"
+                           <li data-target="#lymphoma-carousel" data-slide-to="6" data-toggle="tooltip" data-placement="right"
                               title="Followup Summarized Statistics"></li>
                         </ol>
                         <!-- Wrapper for slides -->
@@ -487,11 +487,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="ageStatisticsFromLymphoma">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="ageStatisticsToLymphoma">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -510,11 +510,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="genderStatisticsFromLymphoma">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="genderStatisticsToLymphoma">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -533,11 +533,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="modeOfTreatmentStatisticsFromLymphoma">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="modeOfTreatmentStatisticsToLymphoma">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -556,11 +556,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="baselineStatisticsFromLymphoma">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="baselineStatisticsToLymphoma">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -579,11 +579,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="followupStatisticsFromLymphoma">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="followupStatisticsToLymphoma">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -602,11 +602,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="summaryBaselineStatisticsFromLymphoma">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="summaryBaselineStatisticsToLymphoma">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -625,11 +625,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="summaryFollowupStatisticsFromLymphoma">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="summaryFollowupStatisticsToLymphoma">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -682,23 +682,24 @@
                               bone marrow makes too many red blood cells, platelets, or certain white blood cells.</p>
                         </div>
                      </div>
+                     
                      <!-- General Statistics Carousel -->
                      <div id="myelo-carousel" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
-                        <ol class="carousel-indicators" id="carousel-indicator-1">
-                           <li data-target="#carousel-example-generic" data-slide-to="0" class="active" data-toggle="tooltip"
+                        <ol class="carousel-indicators">
+                           <li data-target="#myelo-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
                               data-placement="left" title="Age Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="1" data-toggle="tooltip" data-placement="top"
+                           <li data-target="#myelo-carousel" data-slide-to="1" data-toggle="tooltip" data-placement="top"
                               title="Gender Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="2" data-toggle="tooltip" data-placement="bottom"
+                           <li data-target="#myelo-carousel" data-slide-to="2" data-toggle="tooltip" data-placement="bottom"
                               title="Mode of Treatment Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="3" data-toggle="tooltip" data-placement="top"
+                           <li data-target="#myelo-carousel" data-slide-to="3" data-toggle="tooltip" data-placement="top"
                               title="Baseline Disease Status Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="4" data-toggle="tooltip" data-placement="bottom"
+                           <li data-target="#myelo-carousel" data-slide-to="4" data-toggle="tooltip" data-placement="bottom"
                               title="Follow-up Disease Status Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="5" data-toggle="tooltip" data-placement="top"
+                           <li data-target="#myelo-carousel" data-slide-to="5" data-toggle="tooltip" data-placement="top"
                               title="Baseline Summarized Statistics"></li>
-                           <li data-target="#carousel-example-generic" data-slide-to="6" data-toggle="tooltip" data-placement="right"
+                           <li data-target="#myelo-carousel" data-slide-to="6" data-toggle="tooltip" data-placement="right"
                               title="Followup Summarized Statistics"></li>
                         </ol>
                         <!-- Wrapper for slides -->
@@ -713,11 +714,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="ageStatisticsFromMyeloproliferative">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="ageStatisticsToMyeloproliferative">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -736,11 +737,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="genderStatisticsFromMyeloproliferative">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="genderStatisticsToMyeloproliferative">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -759,11 +760,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="modeOfTreatmentStatisticsFromMyeloproliferative">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="modeOfTreatmentStatisticsToMyeloproliferative">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -782,11 +783,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" d="baselineStatisticsFromMyeloproliferative">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="baselineStatisticsToMyeloproliferative">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -805,11 +806,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="followupStatisticsFromMyeloproliferative">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="followupStatisticsToMyeloproliferative">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -828,11 +829,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="summaryBaselineStatisticsFromMyeloproliferative">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="summaryBaselineStatisticsToMyeloproliferative">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -851,11 +852,11 @@
                                  <div class="form-group col-md-offset-3">
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                                          name="fromDateAgeStats">
+                                          name="fromDateAgeStats" id="summaryFollowupStatisticsFromMyeloproliferative">
                                     </div>
                                     <div class="col-sm-4">
                                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                                          name="toDateAgeStats">
+                                          name="toDateAgeStats" id="summaryFollowupStatisticsToMyeloproliferative">
                                     </div>
                                  </div>
                                  <!-- End of To and From Date -->
@@ -908,7 +909,203 @@
                               lymphoplasmacytoid cells or B lymphocytes) over-produce and secrete into the blood stream a myeloma protein,
                               i.e. an abnormal monoclonal antibody or portion thereof.</p>
                         </div>
+                        
+                        <!-- General Statistics Carousel -->
+                     <div id="plasmacell-carousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                           <li data-target="#plasmacell-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
+                              data-placement="left" title="Age Statistics"></li>
+                           <li data-target="#plasmacell-carousel" data-slide-to="1" data-toggle="tooltip" data-placement="top"
+                              title="Gender Statistics"></li>
+                           <li data-target="#plasmacell-carousel" data-slide-to="2" data-toggle="tooltip" data-placement="bottom"
+                              title="Mode of Treatment Statistics"></li>
+                           <li data-target="#plasmacell-carousel" data-slide-to="3" data-toggle="tooltip" data-placement="top"
+                              title="Baseline Disease Status Statistics"></li>
+                           <li data-target="#plasmacell-carousel" data-slide-to="4" data-toggle="tooltip" data-placement="bottom"
+                              title="Follow-up Disease Status Statistics"></li>
+                           <li data-target="#plasmacell-carousel" data-slide-to="5" data-toggle="tooltip" data-placement="top"
+                              title="Baseline Summarized Statistics"></li>
+                           <li data-target="#plasmacell-carousel" data-slide-to="6" data-toggle="tooltip" data-placement="right"
+                              title="Followup Summarized Statistics"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                        
+                           <div class="item active">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Age Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="ageStatisticsFromPlasmacell">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="ageStatisticsToPlasmacell">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plasmaCellChartAge" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Gender Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="genderStatisticsFromPlasmacell">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="genderStatisticsToPlasmacell">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plasmaCellChartGender" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Mode of Treatment Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="modeOfTreatmentStatisticsFromPlasmacell">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="modeOfTreatmentStatisticsToPlasmacell">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plasmaCellModeOfTreatment" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Baseline Disease Status Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="baselineStatisticsFromPlasmacell">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="baselineStatisticsToPlasmacell">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plasmaCellBaselineDiseaseStatus" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Follow-Up Disease Status Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="followupStatisticsFromPlasmacell">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="followupStatisticsToPlasmacell">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plasmaCellFollowupDiseaseStatus" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Baseline Summarized Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="summaryBaselineStatisticsFromPlasmacell">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="summaryBaselineStatisticsToPlasmacell">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plasmaCellSummarizedBaselineStatistics" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Follow-up Summarized Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="summaryFollowupStatisticsFromPlasmacell">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="summaryFollowupStatisticsToPlasmacell">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plasmaCellSummarizedFollowupStatistics" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#plasmacell-carousel" role="button" data-slide="prev"> <span
+                           class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+                        </a> <a class="right carousel-control" href="#plasmacell-carousel" role="button" data-slide="next"> <span
+                           class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                           class="sr-only">Next</span>
+                        </a>
                      </div>
+                     <!-- End of General Statistics Carousel -->
+                        
                   </div>
                </div>
                <div class="modal-footer">
@@ -918,6 +1115,7 @@
          </div>
       </div>
       <!-- End of Plasma Cell Modal  -->
+      
       <!-- AA PNH MDS Modal  -->
       <div class="modal fade" id="aapnhmdsModal" tabindex="-1" role="dialog" aria-labelledby="plasmaCellLabel" aria-hidden="true"
          data-backdrop="static">
@@ -943,18 +1141,203 @@
                            red blood cells (anemia), white blood cells (leukopenia), and platelets (thrombocytopenia).</p>
                      </div>
                   </div>
-                  <br>
-                  <div class="row">
-                     <div class="col-md-4">
-                        <canvas id="aapnhmdsChart" width="400" height="400"></canvas>
+                  
+                  <!-- General Statistics Carousel -->
+                     <div id="aapnhmds-carousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                           <li data-target="#aapnhmds-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
+                              data-placement="left" title="Age Statistics"></li>
+                           <li data-target="#aapnhmds-carousel" data-slide-to="1" data-toggle="tooltip" data-placement="top"
+                              title="Gender Statistics"></li>
+                           <li data-target="#aapnhmds-carousel" data-slide-to="2" data-toggle="tooltip" data-placement="bottom"
+                              title="Mode of Treatment Statistics"></li>
+                           <li data-target="#aapnhmds-carousel" data-slide-to="3" data-toggle="tooltip" data-placement="top"
+                              title="Baseline Disease Status Statistics"></li>
+                           <li data-target="#aapnhmds-carousel" data-slide-to="4" data-toggle="tooltip" data-placement="bottom"
+                              title="Follow-up Disease Status Statistics"></li>
+                           <li data-target="#aapnhmds-carousel" data-slide-to="5" data-toggle="tooltip" data-placement="top"
+                              title="Baseline Summarized Statistics"></li>
+                           <li data-target="#aapnhmds-carousel" data-slide-to="6" data-toggle="tooltip" data-placement="right"
+                              title="Followup Summarized Statistics"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                        
+                           <div class="item active">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Age Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="ageStatisticsFromAAPNHMDS">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="aapnhmdsChartAge" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Gender Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="genderStatisticsFromAAPNHMDS">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="genderStatisticsToAAPNHMDS">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="aapnhmdsChartGender" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Mode of Treatment Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="modeOfTreatmentStatisticsFromAAPNHMDS">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="modeOfTreatmentStatisticsToAAPNHMDS">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="aapnhmdsModeOfTreatment" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Baseline Disease Status Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="baselineStatisticsFromAAPNHMDS">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="baselineStatisticsToAAPNHMDS">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="aapnhmdsBaselineDiseaseStatus" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Follow-Up Disease Status Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="followupStatisticsFromAAPNHMDS">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="followupStatisticsToAAPNHMDS">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="aapnhmdsFollowupDiseaseStatus" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Baseline Summarized Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="summaryBaselineStatisticsFromAAPNHMDS">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="summaryBaselineStatisticsToAAPNHMDS">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="aapnhmdsSummarizedBaselineStatistics" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Follow-up Summarized Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="summaryFollowupStatisticsFromAAPNHMDS">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="summaryFollowupStatisticsToAAPNHMDS">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="aapnhmdsSummarizedFollowupStatistics" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#aapnhmds-carousel" role="button" data-slide="prev"> <span
+                           class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+                        </a> <a class="right carousel-control" href="#aapnhmds-carousel" role="button" data-slide="next"> <span
+                           class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                           class="sr-only">Next</span>
+                        </a>
                      </div>
-                     <div class="col-md-4">
-                        <canvas id="aapnhmdsChart2" width="400" height="400"></canvas>
-                     </div>
-                     <div class="col-md-4">
-                        <canvas id="aapnhmdsChart3" width="400" height="400"></canvas>
-                     </div>
-                  </div>
+                     <!-- End of General Statistics Carousel -->
+                  
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -988,18 +1371,203 @@
                            platelets that do not work properly. If your blood has a low number of platelets, it is called thrombocytopenia.</p>
                      </div>
                   </div>
-                  <br>
-                  <div class="row">
-                     <div class="col-md-4">
-                        <canvas id="plateletChart" width="400" height="400"></canvas>
+                  
+                  <!-- General Statistics Carousel -->
+                     <div id="platelet-carousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                           <li data-target="#platelet-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
+                              data-placement="left" title="Age Statistics"></li>
+                           <li data-target="#platelet-carousel" data-slide-to="1" data-toggle="tooltip" data-placement="top"
+                              title="Gender Statistics"></li>
+                           <li data-target="#platelet-carousel" data-slide-to="2" data-toggle="tooltip" data-placement="bottom"
+                              title="Mode of Treatment Statistics"></li>
+                           <li data-target="#platelet-carousel" data-slide-to="3" data-toggle="tooltip" data-placement="top"
+                              title="Baseline Disease Status Statistics"></li>
+                           <li data-target="#platelet-carousel" data-slide-to="4" data-toggle="tooltip" data-placement="bottom"
+                              title="Follow-up Disease Status Statistics"></li>
+                           <li data-target="#platelet-carousel" data-slide-to="5" data-toggle="tooltip" data-placement="top"
+                              title="Baseline Summarized Statistics"></li>
+                           <li data-target="#platelet-carousel" data-slide-to="6" data-toggle="tooltip" data-placement="right"
+                              title="Followup Summarized Statistics"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                        
+                           <div class="item active">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Age Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="ageStatisticsFromPlateletDisorder">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="ageStatisticsToPlateletDisorder">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plateletChartAge" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Gender Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="genderStatisticsFromPlateletDisorder">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="genderStatisticsToPlateletDisorder">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plateletChartGender" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Mode of Treatment Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="modeOfTreatmentStatisticsFromPlateletDisorder">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="modeOfTreatmentStatisticsToPlateletDisorder">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plateletModeOfTreatment" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Baseline Disease Status Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="baselineStatisticsFromPlateletDisorder">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="baselineStatisticsToPlateletDisorder">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plateletBaselineDiseaseStatus" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Follow-Up Disease Status Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="followupStatisticsFromPlateletDisorder">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="followupStatisticsToPlateletDisorder">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plateletFollowupDiseaseStatus" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Baseline Summarized Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="summaryBaselineStatisticsFromPlateletDisorder">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="summaryBaselineStatisticsToPlateletDisorder">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plateletSummarizedBaselineStatistics" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Follow-up Summarized Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="summaryFollowupStatisticsFromPlateletDisorder">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="summaryFollowupStatisticsToPlateletDisorder">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="plateletSummarizedFollowupStatistics" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#platelet-carousel" role="button" data-slide="prev"> <span
+                           class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+                        </a> <a class="right carousel-control" href="#platelet-carousel" role="button" data-slide="next"> <span
+                           class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                           class="sr-only">Next</span>
+                        </a>
                      </div>
-                     <div class="col-md-4">
-                        <canvas id="plateletChart2" width="400" height="400"></canvas>
-                     </div>
-                     <div class="col-md-4">
-                        <canvas id="plateletChart3" width="400" height="400"></canvas>
-                     </div>
-                  </div>
+                     <!-- End of General Statistics Carousel -->
+                  
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -1008,6 +1576,7 @@
          </div>
       </div>
       <!-- End of Platelet Disorder Modal  -->
+      
       <!-- Coagulation Disease Modal  -->
       <div class="modal fade" id="coagulationDiseaseModal" tabindex="-1" role="dialog" aria-labelledby="plasmaCellLabel" aria-hidden="true"
          data-backdrop="static">
@@ -1035,18 +1604,203 @@
                            decreased hepatic synthesis of alpha 2-antiplasmin.</p>
                      </div>
                   </div>
-                  <br>
-                  <div class="row">
-                     <div class="col-md-4">
-                        <canvas id="coagulationChart" width="400" height="400"></canvas>
+                  
+                  <!-- General Statistics Carousel -->
+                     <div id="coagulation-carousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                           <li data-target="#coagulation-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
+                              data-placement="left" title="Age Statistics"></li>
+                           <li data-target="#coagulation-carousel" data-slide-to="1" data-toggle="tooltip" data-placement="top"
+                              title="Gender Statistics"></li>
+                           <li data-target="#coagulation-carousel" data-slide-to="2" data-toggle="tooltip" data-placement="bottom"
+                              title="Mode of Treatment Statistics"></li>
+                           <li data-target="#coagulation-carousel" data-slide-to="3" data-toggle="tooltip" data-placement="top"
+                              title="Baseline Disease Status Statistics"></li>
+                           <li data-target="#coagulation-carousel" data-slide-to="4" data-toggle="tooltip" data-placement="bottom"
+                              title="Follow-up Disease Status Statistics"></li>
+                           <li data-target="#coagulation-carousel" data-slide-to="5" data-toggle="tooltip" data-placement="top"
+                              title="Baseline Summarized Statistics"></li>
+                           <li data-target="#coagulation-carousel" data-slide-to="6" data-toggle="tooltip" data-placement="right"
+                              title="Followup Summarized Statistics"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                        
+                           <div class="item active">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Age Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="ageStatisticsFromCoagulation">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="ageStatisticsToCoagulation">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="coagulationChartAge" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Gender Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="genderStatisticsFromCoagulation">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="genderStatisticsToCoagulation">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="coagulationChartGender" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Mode of Treatment Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="modeOfTreatmentStatisticsFromCoagulation">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="modeOfTreatmentStatisticsToCoagulation">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="coagulationModeOfTreatment" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Baseline Disease Status Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="baselineStatisticsFromCoagulation">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="baselineStatisticsToCoagulation">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="coagulationBaselineDiseaseStatus" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Follow-Up Disease Status Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="followupStatisticsFromCoagulation">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="followupStatisticsToCoagulation">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="coagulationFollowupDiseaseStatus" width="600" height="700"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Baseline Summarized Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="summaryBaselineStatisticsFromCoagulation">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="summaryBaselineStatisticsToCoagulation">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="coagulationSummarizedBaselineStatistics" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                           <div class="item">
+                              <div class="carousel-label">
+                                 <h3>
+                                    <b>Follow-up Summarized Statistics</b>
+                                 </h3>
+                                 <br>
+                                 <!-- To and From Date  -->
+                                 <div class="form-group col-md-offset-3">
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
+                                          name="fromDateAgeStats" id="summaryFollowupStatisticsFromCoagulation">
+                                    </div>
+                                    <div class="col-sm-4">
+                                       <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
+                                          name="toDateAgeStats" id="summaryFollowupStatisticsToCoagulation">
+                                    </div>
+                                 </div>
+                                 <!-- End of To and From Date -->
+                              </div>
+                              <div class="col-md-6 col-md-offset-3">
+                                 <canvas id="coagulationSummarizedFollowupStatistics" width="600" height="500"></canvas>
+                              </div>
+                           </div>
+                        </div>
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#coagulation-carousel" role="button" data-slide="prev"> <span
+                           class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+                        </a> <a class="right carousel-control" href="#coagulation-carousel" role="button" data-slide="next"> <span
+                           class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                           class="sr-only">Next</span>
+                        </a>
                      </div>
-                     <div class="col-md-4">
-                        <canvas id="coagulationChart2" width="400" height="400"></canvas>
-                     </div>
-                     <div class="col-md-4">
-                        <canvas id="coagulationChart3" width="400" height="400"></canvas>
-                     </div>
-                  </div>
+                     <!-- End of General Statistics Carousel -->
+                  
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -1054,10 +1808,12 @@
             </div>
          </div>
       </div>
-      <!-- End of Coagulation DiseaseModal  -->
+      <!-- End of Coagulation Disease Modal  -->
    </div>
    <!-- End of Main Content -->
    <!-- End of Dashboard -->
+   </div>
    <!-- End of main container -->
+<script src="js/dashboard-data.js"></script>   
 </body>
 </html>

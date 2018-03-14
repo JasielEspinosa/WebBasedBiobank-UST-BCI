@@ -95,7 +95,7 @@
                         <li><a style="font-weight: bold;" href="usermanagement.jsp"><i class="fas fa-wrench dropdown-icons--margin"></i>
                               Settings</a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="login.jsp"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                        <li><a style="font-weight: bold;" onclick="logout()"><i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
                               Logout</a></li>
                      </ul></li>
                   <!-- End of Dropdown -->
@@ -1437,7 +1437,7 @@
    <script src="js/JsBarcode.barcodePrint.js"></script>
    <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
    <script src="js/disease.aapnhmds-baseline.js"></script>
-      <script src="js/inactivity.js"></script>
+   <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>
 </body>
 </html>

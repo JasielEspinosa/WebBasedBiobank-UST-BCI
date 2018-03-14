@@ -301,5 +301,29 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
+	
+	public static ResultSet getChartPatients(int diseaseID,Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_PATIENTS);
+			pstmt.setInt(1, diseaseID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getChartFollowup(int patientID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GENERATE_REPORT_GET_FOLLOWUP);
+			pstmt.setInt(1, patientID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
 
 }

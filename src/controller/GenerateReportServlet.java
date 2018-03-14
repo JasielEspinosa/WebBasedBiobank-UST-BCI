@@ -111,7 +111,7 @@ public class GenerateReportServlet extends HttpServlet {
 						
 						//end of age algo
 						
-						int treatmentID = generalDataRS.getInt("TreatmentID");
+						int treatmentID = patientListRS.getInt("TreatmentID");
 						
 						ResultSet treatmentRS = SQLOperationsBaseline.getTreatment(treatmentID, connection);
 						treatmentRS.first();
