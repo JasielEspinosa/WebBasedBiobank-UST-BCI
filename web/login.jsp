@@ -53,14 +53,11 @@
           <a class="login__forgotpasswordlink" data-target="#genaudrep" data-toggle="modal">Forgot Password?</a>
         </form>
 
-        <!-- 
-          <div id="invalid-login" class="alert alert-warning alert-block fade">
-            <button type="button" class="close">&times;</button>
-            <h4></h4>
-            <p>The username or password that you entered is incorrect</p>
-          </div> 
-        -->
-        
+        <div id="invalid-login" class="alert alert-warning alert-block fade">
+          <button type="button" class="close">&times;</button>
+          <h4></h4>
+          <p>The username or password that you entered is incorrect</p>
+        </div>
       </article>
     </div>
   </section>
@@ -85,5 +82,12 @@
     </div>
   </div>
   <!-- END OF PASSWORD MODAL  -->
+  
+  <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+  <script src="css/js/popper.min.js"></script>
+  <script src="css/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/jquery-git.js"></script>
+  <script src="js/login.js"></script>
+  
 </body>
 </html>
