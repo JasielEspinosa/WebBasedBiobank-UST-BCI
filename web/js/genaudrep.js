@@ -1,9 +1,8 @@
 $(document).ready(function() {
-  $('#customers').on('init.dt',function() {
-        $("#customers").removeClass('table-loader').show();
+  $('#auditTable').on('init.dt',function() {
+        $("#auditTable").removeClass('table-loader').show();
       });
   setTimeout(function(){
-    $('#customers').DataTable();
+    $('#auditTable').DataTable();
   }, 3000);
-    
 } );

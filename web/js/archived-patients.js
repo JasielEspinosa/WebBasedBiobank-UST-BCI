@@ -48,3 +48,12 @@ function loadUsers(){
     });
 };
 
+$(document).ready(function() {
+	$('#archivedPatientsTable').on('init.dt', function() {
+		$("#archivedPatientsTable").removeClass('table-loader').show();
+	});
+	setTimeout(function() {
+		$('#archivedPatientsTable').DataTable();
+	}, 3000);
+});
+

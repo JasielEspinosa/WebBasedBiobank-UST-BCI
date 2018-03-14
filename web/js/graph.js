@@ -19,7 +19,7 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      data: [5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+			      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
 			      backgroundColor: [
 		                'rgba(182, 186, 215, 1)',
 		                'rgba(42, 58, 84, 1)',
@@ -36,17 +36,11 @@ $( document ).ready(function() {
 			      ]
 			    }]
 	};
-
 	var ctx = document.getElementById("leukemiaChartAge").getContext("2d");
 	var leukemiaChartAge = new Chart(ctx, {
 			  type: 'doughnut',
 			  data: pieData
 	});
-	
-    var leukemiaChartAgeData = [5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 100000, 1000];
-
-removeData(leukemiaChartAge);
-addData(leukemiaChartAge,leukemiaChartAgeData);
 	//END OF AGE CHART
 
 	// LEUKEMIA GENDER CHART

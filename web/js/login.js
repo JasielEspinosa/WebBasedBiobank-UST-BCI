@@ -13,8 +13,6 @@ $("#loginForm").submit(function(e) {
    e.preventDefault();
 	});
 	
-	
-	
 $('#loginForm').submit(function() {
 	assignValues();
 	$.post('LoginServlet', $.param(params), function (response) {
@@ -23,7 +21,8 @@ $('#loginForm').submit(function() {
 		       return;
 		}
 		if(response == "Failed"){
-			$('#invalid-login').addClass('in');
+			swal("Failed!", "The username or password that you entered is incorrect", "error");
+			//$('#invalid-login').addClass('in');
 		}
 	}).fail(function(){
 		});	
@@ -32,3 +31,7 @@ $('#loginForm').submit(function() {
 $('.close').click(function () {
     $(this).parent().removeClass('in'); 
 });
+
+function sendMail() {
+   swal("Success!", "Reset instructions has been sent to your e-mail address.", "info");
+};

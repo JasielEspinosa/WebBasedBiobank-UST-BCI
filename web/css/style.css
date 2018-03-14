@@ -722,4 +722,24 @@ a.login__forgotpasswordlink:hover {
 	padding: 10px 20px 30px 20px; 
 }
 /* END OF FORGOT PASSWORD MESSAGE */
+
+/* PAGE LOAD */
+#page {
+   display: none;
+}
+
+#loading {
+   display: block;
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 100;
+   width: 100vw;
+   height: 100vh;
+   background-color: #FFF;
+   background-image: url("../images/triangles.gif");
+   background-repeat: no-repeat;
+   background-position: center;
+}
+/* END OF PAGE LOAD */
 /* END OF MAIN CSS */

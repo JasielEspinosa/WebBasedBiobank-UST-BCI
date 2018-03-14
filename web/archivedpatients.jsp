@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
 <link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css" />
-
+<link rel="stylesheet" href="fontawesome-free-5.0.8/web-fonts-with-css/css/fontawesome-all.min.css">
 
 <!-- JS -->
 <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
@@ -145,20 +145,8 @@
   <div class="row-offcanvas row-offcanvas-left">
     <div id="sidebar" class="sidebar-offcanvas">
       <div class="col-md-12">
-        <!-- Search Box -->
-        <div class="row">
-          <div class="col-sm-12 search-box">
-            <div>
-              <input type="text" placeholder="Search Patient" class="sidebar__searchbox--border"
-                style="font-weight: bold; text-align: center;">
-            </div>
-          </div>
-        </div>
-        <!-- End of Search Box -->
         <ul class="nav nav-pills nav-stacked__archpat sidebar__searchbox--border">
-
         </ul>
-
       </div>
     </div>
 
@@ -175,15 +163,17 @@
           <div class="col-sm-10 offset-sm-2 settings__buttons--position">
 
             <!-- Buttons Container -->
-            <div class="row button-container">
-              <div class="col-sm-8">
-                <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive button-border">User
-                  Management</a>
-                <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive button-border">Archived
-                  Patients</a>
+              <div class="row button-container">
+                <div class="col-sm-8">
+                  <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive button-border usrmgmt--text">
+                    <span>User Management</span>
+                  </a>
+                  <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive button-border archpat--text">
+                    <span>Archived Patients</span>
+                  </a>
+                </div>
               </div>
-            </div>
-            <!-- End of buttons container -->
+              <!-- End of buttons container -->
 
             <!-- Table -->
             <div class="col-md-12 col-md-offset-1">

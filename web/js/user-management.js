@@ -182,4 +182,13 @@ function loadUsers() {
 	});
 };
 
+$(document).ready(function() {
+	$('#usersTable').on('init.dt', function() {
+		$("#usersTable").removeClass('table-loader').show();
+	});
+	setTimeout(function() {
+		$('#usersTable').DataTable();
+	}, 3000);
+});
+
 // value='"+user.accountId +"' onClick=\"editUser(this.value)\"

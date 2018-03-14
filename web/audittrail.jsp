@@ -52,7 +52,7 @@
          <!-- End of Banner -->
          <!-- Navbar -->
          <nav class="navbar" role="navigation">
-            <div class="container-fluid navbar__nav-item--hover">
+            <div class="navbar__nav-item--hover">
                <!-- Brand and toggle get grouped for better mobile display -->
                <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
