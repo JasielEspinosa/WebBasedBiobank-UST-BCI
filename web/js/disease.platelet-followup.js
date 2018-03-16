@@ -16,7 +16,7 @@ $("#PlateletFollowUp").submit(function(e) {
 });
 
 $('document').ready(function() {
-	alert(localStorage.getItem("id7"))
+	//alert(localStorage.getItem("id7"))
 	params.patientID = localStorage.getItem("id7");
 	$("#patientID").val(localStorage.getItem("id7"));
 

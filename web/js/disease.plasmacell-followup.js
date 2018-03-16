@@ -16,7 +16,7 @@ $("#PlasmaCellFollowUp").submit(function(e) {
 });
 
 $('document').ready(function() {
-	alert(localStorage.getItem("id6"))
+	//alert(localStorage.getItem("id6"))
 	params.patientID = localStorage.getItem("id6");
 	$("#patientID").val(localStorage.getItem("id6"));
 

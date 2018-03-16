@@ -11,9 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import model.AuditBean;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.Security;
 
@@ -66,21 +69,23 @@ public class LoadCoagulationBaselineServlet extends HttpServlet {
 				patientData.put("firstName", Security.decrypt(generalDataRS.getString("FirstName")));
 				patientData.put("middleInitial", Security.decrypt(generalDataRS.getString("MiddleName")));
 				patientData.put("gender", generalDataRS.getString("Gender"));
-				patientData.put("dateOfBirth", generalDataRS.getString("DateOfBirth"));
+				patientData.put("dateOfBirth", generalDataRS.getString("DateOfBirthDec"));
 
 				int addressID = generalDataRS.getInt("AddressID");
 				ResultSet addressRS = SQLOperationsBaseline.getAddress(addressID, connection);
 				addressRS.first();
-				String StreetAddress = addressRS.getString("StreetAddress");
-				String City = addressRS.getString("City");
-				String ZIPCode = addressRS.getString("ZIPCode");
+
+				String StreetAddress = Security.decrypt(addressRS.getString("StreetAddress"));
+				String City = Security.decrypt(addressRS.getString("City"));
+				String ZIPCode = Security.decrypt(addressRS.getString("ZIPCode"));
 				patientData.put("address", StreetAddress + "," + City + "," + ZIPCode);
-				patientData.put("dateOfEntry", generalDataRS.getString("DateOfEntry"));
+
+				patientData.put("dateOfEntry", generalDataRS.getString("DateOfEntryDec"));
 
 				int clinicalDataID = patientInfoRS.getInt("ClinicalDataID");
 				ResultSet clinicalDataRS = SQLOperationsBaseline.getClinicalData(clinicalDataID, connection);
 				clinicalDataRS.first();
-				patientData.put("dateOfVisit", clinicalDataRS.getString("DateOfVisit"));
+				patientData.put("dateOfVisit", clinicalDataRS.getString("DateOfVisitDec"));
 				patientData.put("diagnosis", clinicalDataRS.getString("Diagnosis"));
 				patientData.put("diagnosisOthers", clinicalDataRS.getString("OtherDiagnosis"));
 
@@ -107,7 +112,11 @@ public class LoadCoagulationBaselineServlet extends HttpServlet {
 				ResultSet medicationsRS = SQLOperationsBaseline.getMedications(clinicalDataID, connection);
 				medicationsRS.first();
 				patientData.put("genericName", medicationsRS.getString("GenericName"));
-				patientData.put("dose", medicationsRS.getString("Dose"));
+				String dose = medicationsRS.getString("Dose");
+				if (dose.equals("0")) {
+					dose = "";
+				}
+				patientData.put("dose", dose);
 				patientData.put("frequency", medicationsRS.getString("Frequency"));
 
 				patientData.put("smokingHistorySpecify", clinicalDataRS.getString("SmokingHistory"));
@@ -175,11 +184,30 @@ public class LoadCoagulationBaselineServlet extends HttpServlet {
 				ResultSet modeOfTreatmentRS = SQLOperationsBaseline.getModeOfTreatment(modeOfTreatmentID, connection);
 				modeOfTreatmentRS.first();
 
-				patientData.put("modeOfTreatment", modeOfTreatmentRS.getString("ModeOfTreatment"));
-				patientData.put("nameOfTreatment", modeOfTreatmentRS.getString("NameOfTreatment"));
+				String modeOfTreatment = modeOfTreatmentRS.getString("ModeOfTreatment");
+				String nameOfTreatment = modeOfTreatmentRS.getString("NameOfTreatment");
 
-				System.out.println(modeOfTreatmentRS.getString("ModeOfTreatment"));
-				System.out.println(modeOfTreatmentRS.getString("NameOfTreatment"));
+				if (modeOfTreatment.contains("&#40;") || modeOfTreatment.contains("&#41;")) {
+					modeOfTreatment = modeOfTreatment.replaceAll("&#40;", "(");
+					modeOfTreatment = modeOfTreatment.replaceAll("&#41;", ")");
+				}
+				
+				if (nameOfTreatment.contains("&#40;") || nameOfTreatment.contains("&#41;")) {
+					nameOfTreatment = nameOfTreatment.replaceAll("&#40;", "(");
+					nameOfTreatment = nameOfTreatment.replaceAll("&#41;", ")");
+				}
+
+				patientData.put("modeOfTreatment", modeOfTreatment);
+				patientData.put("nameOfTreatment", nameOfTreatment);
+				
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Load patient in Coagulation Disease Baseline",
+						Security.decrypt(generalDataRS.getString("LastName")) + ", "
+								+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
+								+ Security.decrypt(generalDataRS.getString("MiddleName")),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 				//return data to js
 				String json = new Gson().toJson(patientData);

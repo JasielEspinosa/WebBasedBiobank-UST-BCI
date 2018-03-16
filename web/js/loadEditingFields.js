@@ -198,6 +198,7 @@ $(document).ready(function() {
 		$("[name='complications']").prop('readonly', true);
 		$("[name='diseaseStatus']").prop('disabled', true);
 		$("[name='diseaseStatusOthers']").prop('readonly', true);
+		$("[name='relapseDisease']").prop('disabled', true);
 
 		$("[name='specialNotes']").prop('readonly', true);
 
@@ -394,6 +395,7 @@ $(document).ready(function() {
 		$("[name='complications']").prop('readonly', false);
 		$("[name='diseaseStatus']").prop('disabled', false);
 		$("[name='diseaseStatusOthers']").prop('readonly', false);
+		$("[name='relapseDisease']").prop('disabled', false);
 
 		$("[name='specialNotes']").prop('readonly', false);
 

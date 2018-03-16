@@ -16,12 +16,11 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import model.AccountBean;
 import model.ArchivedPatientBean;
+import model.AuditBean;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.Security;
-import utility.factory.BeanFactory;
 
 @WebServlet("/UnarchivePatientServlet")
 public class UnarchivePatientServlet extends HttpServlet {
@@ -89,6 +88,14 @@ public class UnarchivePatientServlet extends HttpServlet {
 
 						ArchivedPatientBean apb = new ArchivedPatientBean(patientID, patientName);
 						archivedPatientList.add(apb);
+
+						AuditBean auditBean = new AuditBean("Unarchived patient",
+								Security.decrypt(generalDataRS.getString("LastName")) + ", "
+										+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
+										+ Security.decrypt(generalDataRS.getString("MiddleName")),
+								(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+						SQLOperations.addAudit(auditBean, connection);
+
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();

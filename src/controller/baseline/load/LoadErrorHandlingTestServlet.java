@@ -11,10 +11,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import model.AuditBean;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
+import utility.database.Security;
 
 @WebServlet("/LoadErrorHandlingTestServlet")
 public class LoadErrorHandlingTestServlet extends HttpServlet {
@@ -60,22 +64,22 @@ public class LoadErrorHandlingTestServlet extends HttpServlet {
 				int generalDataID = patientInfoRS.getInt("GeneralDataID");
 				ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 				generalDataRS.first();
-				patientData.put("lastName", generalDataRS.getString("LastName"));
-				patientData.put("firstName", generalDataRS.getString("FirstName"));
-				patientData.put("middleInitial", generalDataRS.getString("MiddleName"));
+				patientData.put("lastName", Security.decrypt(generalDataRS.getString("LastName")));
+				patientData.put("firstName", Security.decrypt(generalDataRS.getString("FirstName")));
+				patientData.put("middleInitial", Security.decrypt(generalDataRS.getString("MiddleName")));
 				patientData.put("gender", generalDataRS.getString("Gender"));
-				patientData.put("dateOfBirth", generalDataRS.getString("DateOfBirth"));
+				patientData.put("dateOfBirth", generalDataRS.getString("DateOfBirthDec"));
 
 				int addressID = generalDataRS.getInt("AddressID");
 				ResultSet addressRS = SQLOperationsBaseline.getAddress(addressID, connection);
 				addressRS.first();
 
-				String StreetAddress = addressRS.getString("StreetAddress");
-				String City = addressRS.getString("City");
-				String ZIPCode = addressRS.getString("ZIPCode");
+				String StreetAddress = Security.decrypt(addressRS.getString("StreetAddress"));
+				String City = Security.decrypt(addressRS.getString("City"));
+				String ZIPCode = Security.decrypt(addressRS.getString("ZIPCode"));
 				patientData.put("address", StreetAddress + "," + City + "," + ZIPCode);
 
-				patientData.put("dateOfEntry", generalDataRS.getString("DateOfEntry"));
+				patientData.put("dateOfEntry", generalDataRS.getString("DateOfEntryDec"));
 
 				int tissueSpecimenID = generalDataRS.getInt("TissueSpecimenID");
 				ResultSet tissueSpecimenRS = SQLOperationsBaseline.getTissueSpecimen(tissueSpecimenID, connection);
@@ -85,7 +89,7 @@ public class LoadErrorHandlingTestServlet extends HttpServlet {
 				int clinicalDataID = patientInfoRS.getInt("ClinicalDataID");
 				ResultSet clinicalDataRS = SQLOperationsBaseline.getClinicalData(clinicalDataID, connection);
 				clinicalDataRS.first();
-				patientData.put("dateOfVisit", clinicalDataRS.getString("DateOfVisit"));
+				patientData.put("dateOfVisit", clinicalDataRS.getString("DateOfVisitDec"));
 				patientData.put("diagnosis", clinicalDataRS.getString("Diagnosis"));
 
 				int classificationID = clinicalDataRS.getInt("ClassificationID");
@@ -97,6 +101,15 @@ public class LoadErrorHandlingTestServlet extends HttpServlet {
 				} else {
 					patientData.put("severity", classificationRS.getString("ClassificationName"));
 				}
+				
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Load Error Test Baseline",
+						Security.decrypt(generalDataRS.getString("LastName")) + ", "
+								+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
+								+ Security.decrypt(generalDataRS.getString("MiddleName")),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 				//return data to js
 				String json = new Gson().toJson(patientData);

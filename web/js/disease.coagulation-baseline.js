@@ -52,7 +52,7 @@ $('document').ready(function() {
 	});
 
 	if (localStorage.getItem("fromFollowUp2") != "") {
-		alert(localStorage.getItem("id2"));
+		//alert(localStorage.getItem("id2"));
 		loadPatientData(localStorage.getItem("id2"));
 		localStorage.setItem("fromFollowUp2", "");
 	}

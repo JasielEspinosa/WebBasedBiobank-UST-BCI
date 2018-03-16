@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.Security;
 import utility.factory.BeanFactory;
@@ -166,10 +168,10 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 
 		// TREATMENT / THERAPHY AND RESPONSE
 		String modeOfTreatment = request.getParameter("treatment");
-		String otherTreatment = noValue;
+/*		String otherTreatment = noValue;
 		if (modeOfTreatment.equalsIgnoreCase("Others")) {
 			otherTreatment = request.getParameter("treatmentSpecify");
-		}
+		}*/
 		
 		String regimenProtocol = request.getParameter("regimenProtocol");
 		String dateStarted = request.getParameter("dateStarted");
@@ -219,7 +221,7 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 				int diseaseID = patientInfo.getInt("DiseaseID");
 
 				//start of edit
-				AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
+				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]), Security.encrypt(addressArray[2]));
 				if (connection != null) {
 					if (SQLOperationsBaseline.editAddress(ab, connection, disease, addressID)) {
 						System.out.println("Successful insert AddressBean");
@@ -380,7 +382,7 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 					System.out.println("Invalid connection LaboratoryProfileBean");
 				}
 
-				ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, otherTreatment);
+				ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, modeOfTreatment);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editModeOfTreatment(motb, connection, disease, modeOfTreatmentID)) {
 						System.out.println("Successful insert ModeOfTreatmentBean");
@@ -423,6 +425,14 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 				} else {
 					System.out.println("Invalid connection DiseaseStatusBean");
 				}
+				
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Add patient in Platelet Disorder Baseline",
+						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
+								+ request.getParameter("middleInitial").trim().toUpperCase(),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 			} else {
 				System.out.println("Invalid Connection resource");

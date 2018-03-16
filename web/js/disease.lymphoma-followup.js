@@ -1,4 +1,4 @@
-var responseJson;
+ var responseJson;
 var id;
 var followupID;
 var params = {
@@ -16,7 +16,7 @@ $("#LymphomaFollowUp").submit(function(e) {
 });
 
 $('document').ready(function() {
-	alert(localStorage.getItem("id4"))
+	//alert(localStorage.getItem("id4"))
 	params.patientID = localStorage.getItem("id4");
 	$("#patientID").val(localStorage.getItem("id4"));
 

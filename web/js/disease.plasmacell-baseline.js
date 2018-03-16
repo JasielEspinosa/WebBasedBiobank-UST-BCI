@@ -52,7 +52,7 @@ $('document').ready(function() {
 	});
 
 	if (localStorage.getItem("fromFollowUp6") != "") {
-		alert(localStorage.getItem("id6"));
+		// alert(localStorage.getItem("id6"));
 		loadPatientData(localStorage.getItem("id6"));
 		localStorage.setItem("fromFollowUp6", "");
 	}
@@ -63,10 +63,10 @@ function loadPatientData(id) {
 
 	params.patientID = id;
 	$.post('LoadPlasmaCellBaselineServlet', $.param(params), function(response) {
-		
+
 		$.loadUneditableFields();
 		$("#submitQuery").hide();
-		
+
 		// barcode
 		setBarcode(response["patientIDNumber"])
 
@@ -121,6 +121,7 @@ function loadPatientData(id) {
 		$("[name='diagnosis']").val(response["diagnosis"])
 		$("[name='issStaging']").val(response["issStaging"])
 		$("[name='chiefComplaint']").val(response["chiefComplaint"])
+		$("[name='constitutionalSymptoms']").val(response["constitutionalSymptoms"])
 		$("[name='otherSymptoms']").val(response["otherSymptoms"])
 
 		$("[name='relationshipToPatient']").val(response["relationshipToPatient"])
@@ -140,7 +141,7 @@ function loadPatientData(id) {
 		$("[name='genericName']").val(response["genericName"])
 		$("[name='dose']").val(response["dose"])
 		$("[name='frequency']").val(response["frequency"])
-		if (response["genericName"] !== "" || response["dose"] !== "" || response["frequency"] !== "") {
+		if (response["genericName"] !== "" || response["dose"] !== ""  || response["frequency"] !== "") {
 			$("[name='concomitantMedications'][value='1']").prop('checked', true);
 			$.concomitantMedicationsChecked();
 		} else {
@@ -365,6 +366,19 @@ function loadPatientData(id) {
 
 		$("[name='dateStarted']").val(response["dateStarted"])
 		$("[name='complications']").val(response["complications"])
+
+		// disease status
+		$("[name='diseaseStatus']").val(response["diseaseStatus"])
+		$("[name='relapseDisease']").val(response["relapseDisease"])
+		$("[name='diseaseStatusOthers']").val(response["diseaseStatusOthers"])
+
+		if (response["diseaseStatus"] === "Others") {
+			$.diseaseStatusOthers();
+		} else if (response["diseaseStatus"] === "Relapse") {
+			$.diseaseStatusRelapse();
+		} else {
+			$.diseaseStatusNull();
+		}
 
 		bindEvents();
 

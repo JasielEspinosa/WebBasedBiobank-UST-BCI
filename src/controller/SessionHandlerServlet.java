@@ -2,8 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,17 +14,12 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import model.AccountBean;
 import utility.database.SQLOperations;
-import utility.factory.BeanFactory;
 
-/**
- * Servlet implementation class LoginServlet
- */
 @WebServlet("/SessionHandler")
 public class SessionHandlerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+
 	private Connection connection;
 
 	public void init() throws ServletException {
@@ -39,29 +32,19 @@ public class SessionHandlerServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public SessionHandlerServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	public SessionHandlerServlet() {
+		super();
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("sessionTest");
 		HttpSession session = request.getSession(true);
-		if(session.getAttribute("name") == null) {
+		if (session.getAttribute("name") == null) {
 			System.out.println("session is null");
 			String redirectURL = "login.jsp";
 
@@ -71,7 +54,7 @@ public class SessionHandlerServlet extends HttpServlet {
 
 			response.setContentType("application/json");
 			response.getWriter().write(json);
-		}	
+		}
 	}
 
 }

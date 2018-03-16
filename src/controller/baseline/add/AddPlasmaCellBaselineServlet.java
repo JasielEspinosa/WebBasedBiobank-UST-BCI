@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.Security;
 import utility.factory.BeanFactory;
@@ -214,11 +216,20 @@ public class AddPlasmaCellBaselineServlet extends HttpServlet implements Default
 		String otherMedications = request.getParameter("otherMedications");
 		String dateStarted = request.getParameter("dateStarted");
 		String complications = request.getParameter("complications");
+		
+		String diseaseStatus = request.getParameter("diseaseStatus");
+		String relapseDisease = noValue;
+		String otherDisease = noValue;
+		if (diseaseStatus.equalsIgnoreCase("Others")) {
+			otherDisease = request.getParameter("diseaseStatusOthers");
+		} else if (diseaseStatus.equalsIgnoreCase("Relapse")) {
+			relapseDisease = request.getParameter("relapseDisease");
+		}
 
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
 
-		AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
+		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]), Security.encrypt(addressArray[2]));
 		if (connection != null) {
 			if (SQLOperationsBaseline.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert AddressBean");
@@ -508,7 +519,7 @@ public class AddPlasmaCellBaselineServlet extends HttpServlet implements Default
 			System.out.println("Invalid connection OtherTreatmentBean");
 		}
 
-		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("Stable", "", "");
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, relapseDisease, otherDisease);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert DiseaseStatusBean");
@@ -529,6 +540,14 @@ public class AddPlasmaCellBaselineServlet extends HttpServlet implements Default
 		} else {
 			System.out.println("Invalid connection PatientBean");
 		}
+		
+		HttpSession session = request.getSession(true);
+
+		AuditBean auditBean = new AuditBean("Add patient in Plasma Cell Baseline",
+				request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
+						+ request.getParameter("middleInitial").trim().toUpperCase(),
+				(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+		SQLOperations.addAudit(auditBean, connection);
 
 	}
 

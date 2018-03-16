@@ -35,8 +35,8 @@ CREATE TABLE GeneralDataTable (
 	FirstName varchar(500) NOT NULL,
 	MiddleName varchar(500),
 	Gender int NOT NULL,
-	DateOfBirth DATE NOT NULL,
-	DateOfEntry DATE NOT NULL,
+	DateOfBirth varchar(500) NULL,
+	DateOfEntry varchar(500) NOT NULL,
 	AddressID int NOT NULL,
 	TissueSpecimenID int,
 	PRIMARY KEY (GeneralDataID)
@@ -73,7 +73,7 @@ CREATE TABLE OtherDiseasesTable (
 
 CREATE TABLE ClinicalDataTable (
 	ClinicalDataID int NOT NULL AUTO_INCREMENT,
-	DateOfVisit DATE,
+	DateOfVisit varchar(500),
 	Diagnosis blob,
 	OtherDiagnosis blob,
 	PrognosticRiskScoringID int,
@@ -397,8 +397,8 @@ CREATE TABLE MaintenanceTherapyTable (
 CREATE TABLE FollowUpTable (
 	FollowUpID int NOT NULL AUTO_INCREMENT,
 	PatientID int,
-	DateOfEntry DATE NOT NULL,
-	DateOfVisit DATE NOT NULL,
+	DateOfEntry varchar(500) NOT NULL,
+	DateOfVisit varchar(500) NOT NULL,
 	MedicalEventsID int,
 	ClinicalDataID int,
 	LaboratoryID int,
@@ -558,4 +558,6 @@ ALTER TABLE AccountTable ADD CONSTRAINT AccountTable_fk0 FOREIGN KEY (RoleID) RE
 
 INSERT INTO roletable (`RoleID`, `RoleName`) VALUES ('1', 'Admin');
 INSERT INTO roletable (`RoleID`, `RoleName`) VALUES ('2', 'Encoder');
+
+INSERT INTO AccountTable VALUES (1,'1','1','LAST NAME','ADMIN','A.',1,1),(2,'2','2','LAST NAME','ENCODER','B.',2,1),(3,'3','3','LAST NAME','ADMIN','C.',1,1);
 

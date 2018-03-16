@@ -52,7 +52,7 @@ $('document').ready(function() {
 	});
 
 	if (localStorage.getItem("fromFollowUp7") != "") {
-		alert(localStorage.getItem("id7"));
+		//alert(localStorage.getItem("id7"));
 		loadPatientData(localStorage.getItem("id7"));
 		localStorage.setItem("fromFollowUp7", "");
 	}
@@ -142,7 +142,7 @@ function loadPatientData(id) {
 		$("[name='genericName']").val(response["genericName"])
 		$("[name='dose']").val(response["dose"])
 		$("[name='frequency']").val(response["frequency"])
-		if (response["genericName"] !== "" || response["dose"] !== "" || response["frequency"] !== "") {
+		if (response["genericName"] !== "" || response["dose"] !== ""  || response["frequency"] !== "") {
 			$("[name='concomitantMedications'][value='1']").prop('checked', true);
 			$.concomitantMedicationsChecked();
 		} else {
@@ -253,13 +253,13 @@ function loadPatientData(id) {
 		$("[name='formOfITP']").val(response["formOfITP"])
 
 		$("[name='treatment']").val(response["treatment"])
-		$("[name='treatmentSpecify']").val(response["treatmentSpecify"])
+/*		$("[name='treatmentSpecify']").val(response["treatmentSpecify"])
 
 		if (response["treatment"] === "Others") {
 			$.treatmentOthers();
 		} else {
 			$.treatmentNull();
-		}
+		}*/
 
 		$("[name='regimenProtocol']").val(response["regimenProtocol"])
 		$("[name='dateStarted']").val(response["dateStarted"])

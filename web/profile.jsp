@@ -46,10 +46,8 @@
                <!-- Brand and toggle get grouped for better mobile display -->
                <div class="navbar-header">
                   <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                     <span class="sr-only">Toggle navigation</span>
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
-                     <span class="icon-bar"></span>
+                     <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
                   </button>
                </div>
                <!-- Collect the nav links, forms, and other content for toggling -->
@@ -65,8 +63,7 @@
                      <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                      <!-- Dropdown -->
                      <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                        aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
-                        <span class="caret"></span>
+                        aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i> <span class="caret"></span>
                      </a>
                         <ul class="dropdown-menu dropdown-menu__text" role="menu">
                            <li><a style="font-weight: bold;" href="audittrail.jsp"> <i
@@ -114,43 +111,43 @@
                                  <div class="form-group">
                                     <label class="control-label col-sm-5">Username</label>
                                     <div class="col-sm-7">
-                                       <input type="text" class="form-control" name="username" id="username" required>
+                                       <input type="text" class="form-control" name="username" id="username">
                                     </div>
                                  </div>
                                  <!--  Old Password -->
                                  <div class="form-group">
                                     <label class="control-label col-sm-5">Old Password</label>
                                     <div class="col-sm-7">
-                                       <input type="password" class="form-control" name="oldPassword" id="oldPassword" required>
+                                       <input type="password" class="form-control" name="oldPassword" id="oldPassword">
                                     </div>
                                  </div>
                                  <!-- Password -->
                                  <div class="form-group">
                                     <label class="control-label col-sm-5">New Password</label>
                                     <div class="col-sm-7">
-                                       <input type="password" class="form-control" name="password" id="password" required>
-                                       <span class="hint" id="pwdHint"></span>
+                                       <input type="password" class="form-control" name="password" id="password"> <span class="hint"
+                                          id="pwdHint"></span>
                                     </div>
                                  </div>
                                  <!-- Confirm Password -->
                                  <div class="form-group">
                                     <label class="control-label col-sm-5">Confirm Password</label>
                                     <div class="col-sm-7">
-                                       <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" required>
+                                       <input type="password" class="form-control" name="confirmPassword" id="confirmPassword">
                                     </div>
                                  </div>
                                  <!-- Last Name -->
                                  <div class="form-group">
                                     <label class="control-label col-sm-5">Last Name</label>
                                     <div class="col-sm-7">
-                                       <input type="text" class="form-control" name="lastName" id="lastName" required>
+                                       <input type="text" class="form-control" name="lastName" id="lastName">
                                     </div>
                                  </div>
                                  <!-- First Name -->
                                  <div class="form-group">
                                     <label class="control-label col-sm-5">First Name</label>
                                     <div class="col-sm-7">
-                                       <input type="text" class="form-control" name="firstName" id="firstName" required>
+                                       <input type="text" class="form-control" name="firstName" id="firstName">
                                     </div>
                                  </div>
                                  <!-- Middle Initial -->

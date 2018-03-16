@@ -88,7 +88,7 @@ public class LoginServlet extends HttpServlet {
 					response.getWriter().write(json);
 					System.out.println("Successful login");
 
-					AuditBean auditBean = new AuditBean("LOGIN", "", (String) session.getAttribute("name"),
+					AuditBean auditBean = new AuditBean("Login", (String) session.getAttribute("name"), (String) session.getAttribute("name"),
 							Integer.parseInt((String) session.getAttribute("accountID")));
 					SQLOperations.addAudit(auditBean, connection);
 

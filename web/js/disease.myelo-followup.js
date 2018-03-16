@@ -16,7 +16,7 @@ $("#MyeloFollowUp").submit(function(e) {
 });
 
 $('document').ready(function() {
-	alert(localStorage.getItem("id5"))
+	//alert(localStorage.getItem("id5"))
 	params.patientID = localStorage.getItem("id5");
 	$("#patientID").val(localStorage.getItem("id5"));
 

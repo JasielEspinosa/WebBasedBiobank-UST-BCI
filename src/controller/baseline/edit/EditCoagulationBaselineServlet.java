@@ -9,8 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.Security;
 import utility.factory.BeanFactory;
@@ -203,7 +205,7 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				int modeOfTreatmentID = treatmentRS.getInt("ModeOfTreatmentID");
 
 				//start of edit
-				AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
+				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]), Security.encrypt(addressArray[2]));
 				if (connection != null) {
 					if (SQLOperationsBaseline.editAddress(ab, connection, disease, addressID)) {
 						System.out.println("Successful insert AddressBean");
@@ -395,6 +397,14 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection DiseaseStatusBean");
 				}
+				
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Edit patient in Coagulation Disease Baseline",
+						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
+								+ request.getParameter("middleInitial").trim().toUpperCase(),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 			} else {
 				System.out.println("Invalid Connection resource");

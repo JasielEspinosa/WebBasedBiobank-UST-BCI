@@ -1,8 +1,6 @@
 package controller;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.text.ParseException;
@@ -18,12 +16,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font.*;
 import com.itextpdf.text.pdf.*;
 
-import model.SearchBean;
+import model.AuditBean;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
@@ -247,13 +246,13 @@ public class GenerateReportServlet extends HttpServlet {
 				//Patient Table
 				ResultSet patientListRS;
 				if (diseaseTypeID != 0) {
-					
+
 					patientListRS = SQLOperations.grGetPatients(diseaseTypeID, fromDateGR, toDateGR, connection);
-					
+
 				} else {
-					
+
 					patientListRS = SQLOperations.grGetPatientsAll(fromDateGR, toDateGR, connection);
-					
+
 				}
 
 				paragraph = new Paragraph();
@@ -266,18 +265,18 @@ public class GenerateReportServlet extends HttpServlet {
 					int generalDataID = patientListRS.getInt("GeneralDataID");
 					ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 
-					float[] tablecol_patient = { 1f, 2f, 1f, 1f, 1f, 1f, 1f, 2f };
+					float[] tablecol_patient = { 1.5f, 2f, 1f, 1f, 1f, 1f, 1f, 2f };
 					PdfPTable table_patient = new PdfPTable(tablecol_patient);
 					table_patient.setWidthPercentage(100f);
 
 					cellSpace.setColspan(8);
-					for (int spacing = 1; spacing < 2; spacing++) {
+					for (int spacing = 1; spacing < 3.5; spacing++) {
 						table_patient.addCell(cellSpace);
 					}
 
 					while (generalDataRS.next()) {
 
-						String dateOfBirth = generalDataRS.getString("DateOfBirth");
+						String dateOfBirth = generalDataRS.getString("DateOfBirthDec");
 
 						DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 						LocalDateTime getLocalTime = LocalDateTime.now();
@@ -373,7 +372,7 @@ public class GenerateReportServlet extends HttpServlet {
 
 							table_baseline.setHeaderRows(2);
 
-							insertTableCell(table_baseline, generalDataRS.getString("DateOfEntry").trim(), Element.ALIGN_CENTER, 1,
+							insertTableCell(table_baseline, generalDataRS.getString("DateOfEntryDec").trim(), Element.ALIGN_CENTER, 1,
 									font_tnr_8);
 
 							int treatmentBaselineID = patientInfoRS.getInt("TreatmentID");
@@ -389,6 +388,10 @@ public class GenerateReportServlet extends HttpServlet {
 							if (modeOfTreatmentBaselineRS.first() != false) {
 								if (modeOfTreatmentBaselineRS.getString("NameOfTreatment") != null) {
 									modeOfTreatmentBaselineValue = modeOfTreatmentBaselineRS.getString("NameOfTreatment");
+									if (modeOfTreatmentBaselineValue.contains("&#40;") || modeOfTreatmentBaselineValue.contains("&#41;")) {
+										modeOfTreatmentBaselineValue = modeOfTreatmentBaselineValue.replaceAll("&#40;", "(");
+										modeOfTreatmentBaselineValue = modeOfTreatmentBaselineValue.replaceAll("&#41;", ")");
+									}
 								}
 							}
 
@@ -402,8 +405,16 @@ public class GenerateReportServlet extends HttpServlet {
 							String diseaseStatusBaselineValue = "N/A";
 							if (diseaseStatusBaselineRS.first() != false) {
 								diseaseStatusBaselineValue = diseaseStatusBaselineRS.getString("OtherDisease");
+								if (diseaseStatusBaselineValue.contains("&#40;") || diseaseStatusBaselineValue.contains("&#41;")) {
+									diseaseStatusBaselineValue = diseaseStatusBaselineValue.replaceAll("&#40;", "(");
+									diseaseStatusBaselineValue = diseaseStatusBaselineValue.replaceAll("&#41;", ")");
+								}
 								if (diseaseStatusBaselineValue == "") {
 									diseaseStatusBaselineValue = diseaseStatusBaselineRS.getString("DiseaseStatus");
+									if (diseaseStatusBaselineValue.contains("&#40;") || diseaseStatusBaselineValue.contains("&#41;")) {
+										diseaseStatusBaselineValue = diseaseStatusBaselineValue.replaceAll("&#40;", "(");
+										diseaseStatusBaselineValue = diseaseStatusBaselineValue.replaceAll("&#41;", ")");
+									}
 								}
 							}
 
@@ -421,7 +432,7 @@ public class GenerateReportServlet extends HttpServlet {
 							insertTableCell(table_baseline, "ENTRY DATE", Element.ALIGN_CENTER, 1, font_tnr_8_b);
 							insertTableCell(table_baseline, "DISEASE STATUS", Element.ALIGN_CENTER, 2, font_tnr_8_b);
 
-							insertTableCell(table_baseline, generalDataRS.getString("DateOfEntry").trim(), Element.ALIGN_CENTER, 1,
+							insertTableCell(table_baseline, generalDataRS.getString("DateOfEntryDec").trim(), Element.ALIGN_CENTER, 1,
 									font_tnr_8);
 
 							int diseaseStatusBaselineID = patientListRS.getInt("DiseaseStatusID");
@@ -431,11 +442,18 @@ public class GenerateReportServlet extends HttpServlet {
 							String diseaseStatusBaselineValue = "N/A";
 							if (diseaseStatusBaselineRS.first() != false) {
 								diseaseStatusBaselineValue = diseaseStatusBaselineRS.getString("OtherDisease");
+								if (diseaseStatusBaselineValue.contains("&#40;") || diseaseStatusBaselineValue.contains("&#41;")) {
+									diseaseStatusBaselineValue = diseaseStatusBaselineValue.replaceAll("&#40;", "(");
+									diseaseStatusBaselineValue = diseaseStatusBaselineValue.replaceAll("&#41;", ")");
+								}
 								if (diseaseStatusBaselineValue == "") {
 									diseaseStatusBaselineValue = diseaseStatusBaselineRS.getString("DiseaseStatus");
+									if (diseaseStatusBaselineValue.contains("&#40;") || diseaseStatusBaselineValue.contains("&#41;")) {
+										diseaseStatusBaselineValue = diseaseStatusBaselineValue.replaceAll("&#40;", "(");
+										diseaseStatusBaselineValue = diseaseStatusBaselineValue.replaceAll("&#41;", ")");
+									}
 								}
 							}
-
 							//Baseline Disease Status
 							insertTableCell(table_baseline, diseaseStatusBaselineValue, Element.ALIGN_CENTER, 2, font_tnr_8);
 
@@ -452,7 +470,7 @@ public class GenerateReportServlet extends HttpServlet {
 							insertTableCell(table_baseline, "ENTRY DATE", Element.ALIGN_CENTER, 1, font_tnr_8_b);
 							insertTableCell(table_baseline, "MODE OF TREATMENT", Element.ALIGN_CENTER, 2, font_tnr_8_b);
 
-							insertTableCell(table_baseline, generalDataRS.getString("DateOfEntry").trim(), Element.ALIGN_CENTER, 1,
+							insertTableCell(table_baseline, generalDataRS.getString("DateOfEntryDec").trim(), Element.ALIGN_CENTER, 1,
 									font_tnr_8);
 
 							int treatmentBaselineID = patientInfoRS.getInt("TreatmentID");
@@ -468,6 +486,10 @@ public class GenerateReportServlet extends HttpServlet {
 							if (modeOfTreatmentBaselineRS.first() != false) {
 								if (modeOfTreatmentBaselineRS.getString("NameOfTreatment") != null) {
 									modeOfTreatmentBaselineValue = modeOfTreatmentBaselineRS.getString("NameOfTreatment");
+									if (modeOfTreatmentBaselineValue.contains("&#40;") || modeOfTreatmentBaselineValue.contains("&#41;")) {
+										modeOfTreatmentBaselineValue = modeOfTreatmentBaselineValue.replaceAll("&#40;", "(");
+										modeOfTreatmentBaselineValue = modeOfTreatmentBaselineValue.replaceAll("&#41;", ")");
+									}
 								}
 							}
 
@@ -509,7 +531,7 @@ public class GenerateReportServlet extends HttpServlet {
 								String dateOfVisitValue = "N/A";
 
 								if (followupRS.first() != false) {
-									dateOfVisitValue = followupRS.getString("DateOfVisit");
+									dateOfVisitValue = followupRS.getString("DateOfVisitDec");
 								}
 
 								insertTableCell(table_followup, dateOfVisitValue, Element.ALIGN_CENTER, 1, font_tnr_8);
@@ -522,8 +544,16 @@ public class GenerateReportServlet extends HttpServlet {
 								String diseaseStatusFollowupValue = "N/A";
 								if (diseaseStatusFollowupRS.first() != false) {
 									diseaseStatusFollowupValue = diseaseStatusFollowupRS.getString("OtherDisease");
+									if (diseaseStatusFollowupValue.contains("&#40;") || diseaseStatusFollowupValue.contains("&#41;")) {
+										diseaseStatusFollowupValue = diseaseStatusFollowupValue.replaceAll("&#40;", "(");
+										diseaseStatusFollowupValue = diseaseStatusFollowupValue.replaceAll("&#41;", ")");
+									}
 									if (diseaseStatusFollowupValue == "") {
 										diseaseStatusFollowupValue = diseaseStatusFollowupRS.getString("DiseaseStatus");
+										if (diseaseStatusFollowupValue.contains("&#40;") || diseaseStatusFollowupValue.contains("&#41;")) {
+											diseaseStatusFollowupValue = diseaseStatusFollowupValue.replaceAll("&#40;", "(");
+											diseaseStatusFollowupValue = diseaseStatusFollowupValue.replaceAll("&#41;", ")");
+										}
 									}
 								}
 
@@ -545,6 +575,12 @@ public class GenerateReportServlet extends HttpServlet {
 				document.add(paragraph);
 
 				document.close();
+				
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Generate Patient Report", (String) session.getAttribute("name"),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 			} else {
 				System.out.println("Invalid Connection resource");

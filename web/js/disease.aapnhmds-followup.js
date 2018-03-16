@@ -16,7 +16,7 @@ $("#AAPNHMDSFollowUp").submit(function(e) {
 });
 
 $('document').ready(function() {
-	alert(localStorage.getItem("id1"))
+	//alert(localStorage.getItem("id1"))
 	params.patientID = localStorage.getItem("id1");
 	$("#patientID").val(localStorage.getItem("id1"));
 

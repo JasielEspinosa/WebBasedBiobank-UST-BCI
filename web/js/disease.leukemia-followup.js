@@ -16,7 +16,7 @@ $("#LeukemiaFollowUp").submit(function(e) {
 });
 
 $('document').ready(function() {
-	alert(localStorage.getItem("id3"))
+	//alert(localStorage.getItem("id3"))
 	params.patientID = localStorage.getItem("id3");
 	$("#patientID").val(localStorage.getItem("id3"));
 

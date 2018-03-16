@@ -16,7 +16,7 @@ $("#CoagulationDiseaseFollowUp").submit(function(e) {
 });
 
 $('document').ready(function() {
-	alert(localStorage.getItem("id2"))
+	//alert(localStorage.getItem("id2"))
 	params.patientID = localStorage.getItem("id2");
 	$("#patientID").val(localStorage.getItem("id2"));
 

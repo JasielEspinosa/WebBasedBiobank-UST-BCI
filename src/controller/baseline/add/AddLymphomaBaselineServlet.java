@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.Security;
 import utility.factory.BeanFactory;
@@ -188,10 +190,16 @@ public class AddLymphomaBaselineServlet extends HttpServlet implements DefaultVa
 		String complications = request.getParameter("complications");
 		String diseaseStatus = request.getParameter("diseaseStatus");
 
+		if (diseaseStatus.contains("(") || diseaseStatus.contains(")")) {
+			diseaseStatus = diseaseStatus.replaceAll("(", "&#40;");
+			diseaseStatus = diseaseStatus.replaceAll(")", "&#41;");
+		}
+
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
 
-		AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
+		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]),
+				Security.encrypt(addressArray[2]));
 		if (connection != null) {
 			if (SQLOperationsBaseline.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert AddressBean");
@@ -438,6 +446,14 @@ public class AddLymphomaBaselineServlet extends HttpServlet implements DefaultVa
 		} else {
 			System.out.println("Invalid connection PatientBean");
 		}
+
+		HttpSession session = request.getSession(true);
+
+		AuditBean auditBean = new AuditBean("Add patient in Lymphoma Baseline",
+				request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
+						+ request.getParameter("middleInitial").trim().toUpperCase(),
+				(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+		SQLOperations.addAudit(auditBean, connection);
 
 	}
 

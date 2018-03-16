@@ -2,8 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,17 +14,13 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import model.AccountBean;
+import model.AuditBean;
 import utility.database.SQLOperations;
-import utility.factory.BeanFactory;
 
-/**
- * Servlet implementation class LoginServlet
- */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    
+
 	private Connection connection;
 
 	public void init() throws ServletException {
@@ -39,32 +33,25 @@ public class LogoutServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LogoutServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	public LogoutServlet() {
+		super();
+	}
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
 		HttpSession session = request.getSession(true);
+
+		AuditBean auditBean = new AuditBean("Logout", (String) session.getAttribute("name"), (String) session.getAttribute("name"),
+				Integer.parseInt((String) session.getAttribute("accountID")));
+		SQLOperations.addAudit(auditBean, connection);
+
 		session.invalidate();
-		
-		
-		
+
 		String redirectURL = "login.jsp";
 
 		Map<String, String> data = new HashMap<>();
@@ -73,8 +60,7 @@ public class LogoutServlet extends HttpServlet {
 
 		response.setContentType("application/json");
 		response.getWriter().write(json);
-		
-		
+
 	}
 
 }

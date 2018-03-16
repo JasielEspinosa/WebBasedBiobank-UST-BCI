@@ -9,9 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
+import utility.database.SQLOperations;
+import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
+import utility.database.Security;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
@@ -310,6 +314,22 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection FollowUpBean");
 				}
+				
+				//int patientID = Integer.parseInt(request.getParameter("patientID"));
+				ResultSet patientInfoRS = SQLOperationsBaseline.getPatient(patientID, connection);
+				patientInfoRS.first();
+
+				int generalDataID = patientInfoRS.getInt("GeneralDataID");
+				ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
+				generalDataRS.first();
+
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Edit Follow Up patient in DISORDER",
+						Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(generalDataRS.getString("FirstName"))
+								+ " " + Security.decrypt(generalDataRS.getString("MiddleName")),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 			} else {
 				System.out.println("Invalid Connection resource");

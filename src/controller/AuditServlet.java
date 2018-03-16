@@ -46,7 +46,6 @@ public class AuditServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		HttpSession session = request.getSession(true);
 		response.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
 
@@ -56,17 +55,27 @@ public class AuditServlet extends HttpServlet {
 			List<AuditBean> auditList = new ArrayList<AuditBean>();
 			if (connection != null) {
 				try {
+
 					ResultSet auditRS = SQLOperations.getAuditAll(connection);
+
 					while (auditRS.next()) {
+
 						String actionValue = auditRS.getString("action");
 						String performedOn = auditRS.getString("performedOn");
 						String performedBy = auditRS.getString("performedBy");
-						String date = auditRS.getString("date");
+						String date = auditRS.getString("dateDec");
 						String time = auditRS.getString("time");
 
 						AuditBean ab = new AuditBean(actionValue, performedOn, performedBy, date, time);
 						auditList.add(ab);
 					}
+
+					HttpSession session = request.getSession(true);
+
+					AuditBean auditBean = new AuditBean("Audit", (String) session.getAttribute("name"),
+							(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+					SQLOperations.addAudit(auditBean, connection);
+
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}

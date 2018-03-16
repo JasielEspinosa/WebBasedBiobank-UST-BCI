@@ -11,9 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import model.AuditBean;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.Security;
 
@@ -66,18 +69,18 @@ public class LoadMyeloBaselineServlet extends HttpServlet {
 				patientData.put("firstName", Security.decrypt(generalDataRS.getString("FirstName")));
 				patientData.put("middleInitial", Security.decrypt(generalDataRS.getString("MiddleName")));
 				patientData.put("gender", generalDataRS.getString("Gender"));
-				patientData.put("dateOfBirth", generalDataRS.getString("DateOfBirth"));
+				patientData.put("dateOfBirth", generalDataRS.getString("DateOfBirthDec"));
 
 				int addressID = generalDataRS.getInt("AddressID");
 				ResultSet addressRS = SQLOperationsBaseline.getAddress(addressID, connection);
 				addressRS.first();
 
-				String StreetAddress = addressRS.getString("StreetAddress");
-				String City = addressRS.getString("City");
-				String ZIPCode = addressRS.getString("ZIPCode");
+				String StreetAddress = Security.decrypt(addressRS.getString("StreetAddress"));
+				String City = Security.decrypt(addressRS.getString("City"));
+				String ZIPCode = Security.decrypt(addressRS.getString("ZIPCode"));
 				patientData.put("address", StreetAddress + "," + City + "," + ZIPCode);
 
-				patientData.put("dateOfEntry", generalDataRS.getString("DateOfEntry"));
+				patientData.put("dateOfEntry", generalDataRS.getString("DateOfEntryDec"));
 
 				int tissueSpecimenID = generalDataRS.getInt("TissueSpecimenID");
 				ResultSet tissueSpecimenRS = SQLOperationsBaseline.getTissueSpecimen(tissueSpecimenID, connection);
@@ -87,7 +90,7 @@ public class LoadMyeloBaselineServlet extends HttpServlet {
 				int clinicalDataID = patientInfoRS.getInt("ClinicalDataID");
 				ResultSet clinicalDataRS = SQLOperationsBaseline.getClinicalData(clinicalDataID, connection);
 				clinicalDataRS.first();
-				patientData.put("dateOfInitialDiagnosis", clinicalDataRS.getString("DateOfVisit"));
+				patientData.put("dateOfInitialDiagnosis", clinicalDataRS.getString("DateOfVisitDec"));
 				patientData.put("diagnosis", clinicalDataRS.getString("Diagnosis"));
 				patientData.put("diagnosisOthers", clinicalDataRS.getString("OtherDiagnosis"));
 
@@ -127,7 +130,11 @@ public class LoadMyeloBaselineServlet extends HttpServlet {
 				medicationsRS.first();
 
 				patientData.put("genericName", medicationsRS.getString("GenericName"));
-				patientData.put("dose", medicationsRS.getString("Dose"));
+				String dose = medicationsRS.getString("Dose");
+				if (dose.equals("0")) {
+					dose = "";
+				}
+				patientData.put("dose", dose);
 				patientData.put("frequency", medicationsRS.getString("Frequency"));
 
 				patientData.put("smokingHistorySpecify", clinicalDataRS.getString("SmokingHistory"));
@@ -192,7 +199,15 @@ public class LoadMyeloBaselineServlet extends HttpServlet {
 				int modeOfTreatmentID = treatmentRS.getInt("ModeOfTreatmentID");
 				ResultSet modeOfTreatmentRS = SQLOperationsBaseline.getModeOfTreatment(modeOfTreatmentID, connection);
 				modeOfTreatmentRS.first();
-				patientData.put("treatment", modeOfTreatmentRS.getString("ModeOfTreatment"));
+
+				String modeOfTreatment = modeOfTreatmentRS.getString("ModeOfTreatment");
+
+				if (modeOfTreatment.contains("&#40;") || modeOfTreatment.contains("&#41;")) {
+					modeOfTreatment = modeOfTreatment.replaceAll("&#40;", "(");
+					modeOfTreatment = modeOfTreatment.replaceAll("&#41;", ")");
+				}
+
+				patientData.put("treatment", modeOfTreatment);
 
 				int chemoMedicationID = treatmentRS.getInt("ChemoMedicationID");
 				ResultSet chemoMedicationRS = SQLOperationsBaseline.getChemoMedication(chemoMedicationID, connection);
@@ -200,6 +215,15 @@ public class LoadMyeloBaselineServlet extends HttpServlet {
 				patientData.put("medications", chemoMedicationRS.getString("MedicationName"));
 
 				patientData.put("dateStarted", treatmentRS.getString("DateStarted"));
+				
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Load patient in Myeloproliferative Neoplasm Baseline",
+						Security.decrypt(generalDataRS.getString("LastName")) + ", "
+								+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
+								+ Security.decrypt(generalDataRS.getString("MiddleName")),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 				//return data to js
 				String json = new Gson().toJson(patientData);

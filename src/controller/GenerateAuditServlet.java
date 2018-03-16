@@ -9,11 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.itextpdf.text.*;
 import com.itextpdf.text.Font.*;
 import com.itextpdf.text.pdf.*;
 
+import model.AuditBean;
 import utility.database.SQLOperations;
 
 @WebServlet("/GenerateAuditServlet")
@@ -218,7 +220,7 @@ public class GenerateAuditServlet extends HttpServlet {
 					String actionValue = auditListRS.getString("action");
 					String performedOn = auditListRS.getString("performedOn");
 					String performedBy = auditListRS.getString("performedBy");
-					String date = auditListRS.getString("date");
+					String date = auditListRS.getString("dateDec");
 					String time = auditListRS.getString("time");
 
 					insertTableCell(table_audit, actionValue, Element.ALIGN_CENTER, 1, font_tnr_8);
@@ -233,6 +235,12 @@ public class GenerateAuditServlet extends HttpServlet {
 				document.add(paragraph);
 
 				document.close();
+				
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Generate Audit Report", (String) session.getAttribute("name"),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 			} else {
 				System.out.println("Invalid Connection resource");

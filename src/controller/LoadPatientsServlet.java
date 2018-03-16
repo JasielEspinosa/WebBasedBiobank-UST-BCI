@@ -12,9 +12,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import model.AuditBean;
 import model.SearchBean;
 import utility.database.SQLOperations;
 import utility.database.Security;
@@ -66,6 +68,13 @@ public class LoadPatientsServlet extends HttpServlet {
 
 					list.add(sb);
 				}
+				
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Load Patients", (String) session.getAttribute("name"),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
+				
 				String json = new Gson().toJson(list);
 				response.getWriter().write(json);
 			} catch (SQLException e) {

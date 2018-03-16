@@ -52,7 +52,7 @@ $('document').ready(function() {
 	});
 
 	if (localStorage.getItem("fromFollowUp4") != "") {
-		alert(localStorage.getItem("id4"));
+		//alert(localStorage.getItem("id4"));
 		loadPatientData(localStorage.getItem("id4"));
 		localStorage.setItem("fromFollowUp4", "");
 	}
@@ -142,7 +142,7 @@ function loadPatientData(id) {
 		$("[name='genericName']").val(response["genericName"])
 		$("[name='dose']").val(response["dose"])
 		$("[name='frequency']").val(response["frequency"])
-		if (response["genericName"] !== "" || response["dose"] !== "" || response["frequency"] !== "") {
+		if (response["genericName"] !== "" || response["dose"] !== ""  || response["frequency"] !== "") {
 			$("[name='concomitantMedications'][value='1']").prop('checked', true);
 			$.concomitantMedicationsChecked();
 		} else {

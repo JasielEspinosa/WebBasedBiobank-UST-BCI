@@ -11,11 +11,15 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import model.AuditBean;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
+import utility.database.Security;
 
 @WebServlet("/LoadCoagulationFollowupServlet")
 public class LoadCoagulationDiseaseFollowupServlet extends HttpServlet {
@@ -57,8 +61,8 @@ public class LoadCoagulationDiseaseFollowupServlet extends HttpServlet {
 				//get followup table
 				ResultSet followup = SQLOperationsFollowUp.getFollowup(followupID, connection);
 				followup.first();
-				followupData.put("dateOfEntry", followup.getString("dateOfEntry"));
-				followupData.put("dateOfVisit", followup.getString("dateOfVisit"));
+				followupData.put("dateOfEntry", followup.getString("DateOfEntryDec"));
+				followupData.put("dateOfVisit", followup.getString("DateOfVisitDec"));
 
 				int medicalEventsid = followup.getInt("MedicalEventsID");
 
@@ -73,6 +77,23 @@ public class LoadCoagulationDiseaseFollowupServlet extends HttpServlet {
 				followupData.put("specifyProcedure", medicalEvents.getString("procedureIntervention"));
 
 				followupData.put("specialNotes", followup.getString("notes"));
+				
+				int patientID = Integer.parseInt(request.getParameter("patientID"));
+				ResultSet patientInfoRS = SQLOperationsBaseline.getPatient(patientID, connection);
+				patientInfoRS.first();
+				
+				int generalDataID = patientInfoRS.getInt("GeneralDataID");
+				ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
+				generalDataRS.first();
+				
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Load patient in Coagulation Follow Up",
+						Security.decrypt(generalDataRS.getString("LastName")) + ", "
+								+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
+								+ Security.decrypt(generalDataRS.getString("MiddleName")),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 				//return data to js
 				String json = new Gson().toJson(followupData);

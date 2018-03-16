@@ -9,9 +9,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
+import utility.database.SQLOperations;
+import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
+import utility.database.Security;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
@@ -138,7 +142,8 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet implements 
 					System.out.println("Invalid connection MedicalEventsBean");
 				}
 
-				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", pertinentFindings, "");
+				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "",
+						pertinentFindings, "");
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updatePhysicalExam(peb, connection, disease, physicalExamId)) {
 						System.out.println("Successful insert PhysicalExamBean");
@@ -161,8 +166,8 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet implements 
 					System.out.println("Invalid connection ClinicalDataBean");
 				}
 
-				HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils, lymphocytes, monocytes,
-						eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
+				HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils, lymphocytes,
+						monocytes, eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updateHematology(hb, connection, disease, hematologyId)) {
 						System.out.println("Successful insert HematologyBean");
@@ -216,6 +221,23 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet implements 
 				} else {
 					System.out.println("Invalid connection FollowUpBean");
 				}
+
+				//int patientID = Integer.parseInt(request.getParameter("patientID"));
+				ResultSet patientInfoRS = SQLOperationsBaseline.getPatient(patientID, connection);
+				patientInfoRS.first();
+
+				int generalDataID = patientInfoRS.getInt("GeneralDataID");
+				ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
+				generalDataRS.first();
+
+				HttpSession session = request.getSession(true);
+
+				AuditBean auditBean = new AuditBean("Edit Follow Up patient in DISORDER",
+						Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(generalDataRS.getString("FirstName"))
+								+ " " + Security.decrypt(generalDataRS.getString("MiddleName")),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
+
 			} else {
 				System.out.println("Invalid Connection resource");
 			}

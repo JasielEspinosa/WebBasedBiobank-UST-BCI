@@ -52,7 +52,7 @@ $('document').ready(function() {
 	});
 
 	if (localStorage.getItem("fromFollowUp1") != "") {
-		alert(localStorage.getItem("id1"));
+		// alert(localStorage.getItem("id1"));
 		loadPatientData(localStorage.getItem("id1"));
 		localStorage.setItem("fromFollowUp1", "");
 	}
@@ -64,7 +64,7 @@ function loadPatientData(id) {
 
 	params.patientID = id;
 	$.post('LoadAAPNHMDSBaselineServlet', $.param(params), function(response) {
-		
+
 		$.loadUneditableFields();
 		$("#submitQuery").hide();
 
@@ -279,10 +279,17 @@ function loadPatientData(id) {
 		}
 
 		$("[name='modeOfTreatment']").val(response["modeOfTreatment"])
-
 		$("[name='medications']").val(response["medications"])
-
 		$("[name='dateStarted']").val(response["dateStarted"])
+
+		$("[name='diseaseStatus']").val(response["diseaseStatus"])
+		$("[name='diseaseStatusOthers']").val(response["diseaseStatusOthers"])
+
+		if (response["diseaseStatus"] === "Others") {
+			$.diseaseStatusOthers();
+		} else {
+			$.diseaseStatusNull();
+		}
 
 		bindEvents();
 

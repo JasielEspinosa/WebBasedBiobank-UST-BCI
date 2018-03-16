@@ -2,6 +2,8 @@ package utility.database;
 
 public interface SQLCommandsFollowUp {
 
+	String key = "il0v3c@nCer4lif3";
+
 	// FOLLOW UP QUERIES
 
 	String INSERT_MEDICAL_EVENTS = "INSERT INTO MedicalEventsTable(MedicalEventsID, HematologicMalignancy, OtherDiseaseMedication, ProcedureIntervention, Chemotherapy) VALUES (NULL, ?, ?, ?, ?)";
@@ -73,18 +75,18 @@ public interface SQLCommandsFollowUp {
 			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,OtherLaboratoriesID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularID) "
 			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),"
 			+ "(SELECT MAX(OtherLaboratoriesID) FROM OtherLaboratoriesTable),"
-			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable)," + "(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),"
+			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),"
 			+ "(SELECT MAX(CytogeneticMolecularID) FROM CytogeneticMolecularTable)) ";
 
 	String INSERT_LABORATORY_PROFILE_LEUKEMIA = "INSERT INTO LaboratoryProfileTable"
 			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularID) "
 			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),"
-			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable)," + "(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),"
+			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),"
 			+ "(SELECT MAX(CytogeneticMolecularID) FROM CytogeneticMolecularTable)) ";
 
 	String INSERT_LABORATORY_PROFILE_LYMPHOMA = "INSERT INTO LaboratoryProfileTable"
 			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,ImagingStudiesID) "
-			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable)," + "(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),"
+			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),"
 			+ "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable)) ";
 
 	String INSERT_LABORATORY_PROFILE_MYELOPROLIFERATIVE = "INSERT INTO LaboratoryProfileTable"
@@ -97,7 +99,7 @@ public interface SQLCommandsFollowUp {
 			+ "VALUES (NULL, ?, (SELECT MAX(HematologyID) FROM HematologyTable),	"
 			+ "(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable), "
 			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable), "
-			+ "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable),	" + "(SELECT MAX(SerumFreeID) FROM SerumFreeTable),	"
+			+ "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable),	(SELECT MAX(SerumFreeID) FROM SerumFreeTable),	"
 			+ "(SELECT MAX(SerumProteinID) FROM SerumProteinTable), "
 			+ "(SELECT MAX(SerumImmunofixationID) FROM SerumImmunofixationTable),	 "
 			+ "(SELECT MAX(UrineProteinID) FROM UrineProteinTable)) ";
@@ -119,40 +121,50 @@ public interface SQLCommandsFollowUp {
 	String GET_DISEASE_STATUS = "Select * from DiseaseStatusTable where DiseaseStatusID = ?";
 
 	String INSERT_FOLLOWUP_AAPHSMDS = "INSERT INTO FollowUpTable(PatientID, FollowUpID, DateOfEntry, DateOfVisit, MedicalEventsID, ClinicalDataID, LaboratoryID, DiseaseStatusID, Notes) "
-			+ "VALUES (?, NULL, ?, ?, (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
+			+ "VALUES (?, NULL, AES_ENCRYPT(?, '" + key + "'), AES_ENCRYPT(?, '" + key
+			+ "'), (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
 			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable), (SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable), "
 			+ "(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable), ?) ";
 
 	String INSERT_FOLLOWUP_COAGULATION = "INSERT INTO FollowUpTable(PatientID, FollowUpID, DateOfEntry, DateOfVisit, MedicalEventsID, Notes) "
-			+ "VALUES (?, NULL, ?, ?, (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), ?) ";
+			+ "VALUES (?, NULL, AES_ENCRYPT(?, '" + key + "'), AES_ENCRYPT(?, '" + key
+			+ "'), (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), ?) ";
 
 	String INSERT_FOLLOWUP_LEUKEMIA = "INSERT INTO FollowUpTable(PatientID, FollowUpID, DateOfEntry, DateOfVisit, MedicalEventsID, ClinicalDataID, LaboratoryID, DiseaseStatusID, Notes) "
-			+ "VALUES (?, NULL, ?, ?, (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
+			+ "VALUES (?, NULL, AES_ENCRYPT(?, '" + key + "'), AES_ENCRYPT(?, '" + key
+			+ "'), (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
 			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable), (SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable), "
 			+ "(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable), ?) ";
 
 	String INSERT_FOLLOWUP_LYMPHOMA = "INSERT INTO FollowUpTable(PatientID, FollowUpID, DateOfEntry, DateOfVisit, MedicalEventsID, ClinicalDataID, LaboratoryID, DiseaseStatusID, Notes) "
-			+ "VALUES (?, NULL, ?, ?, (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
+			+ "VALUES (?, NULL, AES_ENCRYPT(?, '" + key + "'), AES_ENCRYPT(?, '" + key
+			+ "'), (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
 			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable), (SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable), "
 			+ "(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable), ?) ";
 
 	String INSERT_FOLLOWUP_MYELOPROLIFERATIVE = "INSERT INTO FollowUpTable(PatientID, FollowUpID, DateOfEntry, DateOfVisit, MedicalEventsID, ClinicalDataID, LaboratoryID, DiseaseStatusID, Notes) "
-			+ "VALUES (?, NULL, ?, ?, (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
+			+ "VALUES (?, NULL, AES_ENCRYPT(?, '" + key + "'), AES_ENCRYPT(?, '" + key
+			+ "'), (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
 			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable), (SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable), "
 			+ "(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable), ?) ";
 
 	String INSERT_FOLLOWUP_PLASMACELL = "INSERT INTO FollowUpTable(PatientID, FollowUpID, DateOfEntry, DateOfVisit, MedicalEventsID, ClinicalDataID, LaboratoryID, DiseaseStatusID, Notes) "
-			+ "VALUES (?, NULL, ?, ?, (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
+			+ "VALUES (?, NULL, AES_ENCRYPT(?, '" + key + "'), AES_ENCRYPT(?, '" + key
+			+ "'), (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
 			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable), (SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable), "
 			+ "(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable), ?) ";
 
 	String INSERT_FOLLOWUP_PLATELETCELL = "INSERT INTO FollowUpTable(PatientID, FollowUpID, DateOfEntry, DateOfVisit, MedicalEventsID, ClinicalDataID, LaboratoryID, DiseaseStatusID, Notes) "
-			+ "VALUES (?, NULL, ?, ?, (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
+			+ "VALUES (?, NULL, AES_ENCRYPT(?, '" + key + "'), AES_ENCRYPT(?, '" + key
+			+ "'), (SELECT MAX(MedicalEventsID) FROM MedicalEventsTable), "
 			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable), (SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable), "
 			+ "(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable), ?) ";
 
-	String UPDATE_FOLLOWUP = "UPDATE FollowUpTable SET DateOfEntry=?, DateOfVisit=?, Notes=? WHERE FollowUpID=?";
+	String UPDATE_FOLLOWUP = "UPDATE FollowUpTable SET DateOfEntry=AES_ENCRYPT(?, '" + key + "'), DateOfVisit=AES_ENCRYPT(?, '" + key
+			+ "'), Notes=? WHERE FollowUpID=?";
 
-	String GET_FOLLOWUP = "Select * from FollowUpTable where FollowUpID = ?";
+	String GET_FOLLOWUP = "Select *, CONVERT(AES_DECRYPT(DateOfEntry, '" + key
+			+ "'), DATE) as DateOfEntryDec, CONVERT(AES_DECRYPT(DateOfVisit, '" + key
+			+ "'), DATE) as DateOfVisitDec FROM FollowUpTable WHERE FollowUpID = ?";
 
 }

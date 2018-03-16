@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.Security;
 import utility.factory.BeanFactory;
@@ -160,10 +162,10 @@ public class AddPlateletDisorderBaselineServlet extends HttpServlet implements D
 
 		// TREATMENT / THERAPHY AND RESPONSE
 		String modeOfTreatment = request.getParameter("treatment");
-		String otherTreatment = noValue;
+/*		String otherTreatment = noValue;
 		if (modeOfTreatment.equalsIgnoreCase("Others")) {
 			otherTreatment = request.getParameter("treatmentSpecify");
-		}
+		}*/
 
 		String regimenProtocol = request.getParameter("regimenProtocol");
 		String dateStarted = request.getParameter("dateStarted");
@@ -173,7 +175,7 @@ public class AddPlateletDisorderBaselineServlet extends HttpServlet implements D
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
 
-		AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
+		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]), Security.encrypt(addressArray[2]));
 		if (connection != null) {
 			if (SQLOperationsBaseline.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert AddressBean");
@@ -333,7 +335,7 @@ public class AddPlateletDisorderBaselineServlet extends HttpServlet implements D
 			System.out.println("Invalid connection LaboratoryProfileBean");
 		}
 
-		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, otherTreatment);
+		ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, modeOfTreatment);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addModeOfTreatment(motb, connection, disease)) {
 				System.out.println("Successful insert ModeOfTreatmentBean");
@@ -387,6 +389,14 @@ public class AddPlateletDisorderBaselineServlet extends HttpServlet implements D
 		} else {
 			System.out.println("Invalid connection PatientBean");
 		}
+		
+		HttpSession session = request.getSession(true);
+
+		AuditBean auditBean = new AuditBean("Add patient in Platelet Disease Baseline",
+				request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
+						+ request.getParameter("middleInitial").trim().toUpperCase(),
+				(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+		SQLOperations.addAudit(auditBean, connection);
 
 	}
 

@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.*;
+import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.Security;
 import utility.factory.BeanFactory;
@@ -168,11 +170,17 @@ public class AddMyeloBaselineServlet extends HttpServlet implements DefaultValue
 		String modeOfTreatment = request.getParameter("treatment");
 		String medications = request.getParameter("medications");
 		String dateStarted = request.getParameter("dateStarted");
+		
+		String diseaseStatus = request.getParameter("diseaseStatus");
+		String diseaseStatusOthers = noValue;
+		if (diseaseStatus.equalsIgnoreCase("Others")) {
+			diseaseStatusOthers = request.getParameter("diseaseStatusOthers");
+		}
 
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
 
-		AddressBean ab = BeanFactory.getAddressBean(addressArray[0], addressArray[1], addressArray[2]);
+		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]), Security.encrypt(addressArray[2]));
 		if (connection != null) {
 			if (SQLOperationsBaseline.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert AddressBean");
@@ -375,7 +383,7 @@ public class AddMyeloBaselineServlet extends HttpServlet implements DefaultValue
 			System.out.println("Invalid connection TreatmentBean");
 		}
 		
-		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("Stable", "", "");
+		DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, "", diseaseStatusOthers);
 		if (connection != null) {
 			if (SQLOperationsBaseline.addDiseaseStatus(dsb, connection, disease)) {
 				System.out.println("Successful insert DiseaseStatusBean");
@@ -396,6 +404,14 @@ public class AddMyeloBaselineServlet extends HttpServlet implements DefaultValue
 		} else {
 			System.out.println("Invalid connection PatientBean");
 		}
+		
+		HttpSession session = request.getSession(true);
+
+		AuditBean auditBean = new AuditBean("Add patient in Myeloproliferative Neoplasm Baseline",
+				request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
+						+ request.getParameter("middleInitial").trim().toUpperCase(),
+				(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+		SQLOperations.addAudit(auditBean, connection);
 
 	}
 
