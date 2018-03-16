@@ -33,5 +33,5 @@ $('.close').click(function () {
 });
 
 function sendMail() {
-   swal("Success!", "Reset instructions has been sent to your e-mail address.", "info");
+   swal("Success!", "Reset instructions has been sent to your e-mail address.", "success");
 };

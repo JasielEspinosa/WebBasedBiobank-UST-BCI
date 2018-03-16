@@ -14,7 +14,10 @@
   <title>USTH | Reset Password</title>
   
   <!-- CSS -->
+  <!-- LOCAL  
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="fonts/open-sans.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="images/usthlogo.png">
@@ -38,6 +41,9 @@
     </div>
     </body>
   <!-- JS -->
+  <!-- LOCAL 
   <script src="js/bootstrap.min.js"></script>
+  -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <!-- END OF JS -->
 </html>

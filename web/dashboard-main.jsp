@@ -41,8 +41,9 @@
 <!-- <script src="js/bootstrap.js"></script>  -->
 </head>
 <body>
+  <div id="loading"></div>
   <!-- Main container -->
-  <div class="container-fluid main-container">
+  <div class="container-fluid main-container" id="page">
     <!-- Header -->
     <div class="navbar-fixed-top">
       <!-- Banner -->
@@ -64,9 +65,7 @@
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
               data-target="#bs-example-navbar-collapse-1">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+              <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
           </div>
@@ -75,8 +74,7 @@
             <ul class="nav navbar-nav">
               <li class="active">
                 <a href="dashboard-main.jsp">
-                  Dashboard
-                  <span class="sr-only">(current)</span>
+                  Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
               <li>
@@ -103,8 +101,7 @@
               <!-- Dropdown -->
               <li class="dropdown pull-right">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                  <i class="fa fa-cog fa-lg" aria-hidden="true"></i>
-                  <span class="caret"></span>
+                  <i class="fa fa-cog fa-lg" aria-hidden="true"></i> <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu__text" role="menu">
                   <li>
@@ -248,8 +245,7 @@
             <div class="modal-header">
               Leukemia
               <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
+                <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
               </button>
             </div>
             <div class="modal-body">
@@ -270,7 +266,7 @@
                 </div>
               </div>
               <!-- General Statistics Carousel -->
-              <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+              <div id="carousel-example-generic" class="carousel slide" data-interval="false">
                 <!-- Indicators -->
                 <ol class="carousel-indicators" id="carousel-indicator-1">
                   <li data-target="#carousel-example-generic" data-slide-to="0" class="active" data-toggle="tooltip"
@@ -310,6 +306,7 @@
                       <!-- End of To Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
+                      <div id="loadingmodal"></div>
                       <canvas id="leukemiaChartAge" width="600" height="500"></canvas>
                     </div>
                   </div>
@@ -465,12 +462,12 @@
                 </div>
                 <!-- Controls -->
                 <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
+                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Previous</span>
                 </a>
                 <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Next</span>
                 </a>
               </div>
               <!-- End of General Statistics Carousel -->
@@ -490,8 +487,7 @@
             <div class="modal-header">
               Lymphoma
               <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
+                <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
               </button>
             </div>
             <div class="modal-body">
@@ -512,7 +508,7 @@
                 </div>
               </div>
               <!-- General Statistics Carousel -->
-              <div id="lymphoma-carousel" class="carousel slide" data-ride="carousel">
+              <div id="lymphoma-carousel" class="carousel slide" data-interval="false">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                   <li data-target="#lymphoma-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
@@ -552,6 +548,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
+                    <div id="loadingmodal"></div>
                       <canvas id="lymphomaChartAge" width="600" height="500"></canvas>
                     </div>
                   </div>
@@ -707,12 +704,12 @@
                 </div>
                 <!-- Controls -->
                 <a class="left carousel-control" href="#lymphoma-carousel" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
+                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Previous</span>
                 </a>
                 <a class="right carousel-control" href="#lymphoma-carousel" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Next</span>
                 </a>
               </div>
               <!-- End of General Statistics Carousel -->
@@ -732,8 +729,7 @@
             <div class="modal-header">
               Myeloproliferative Neoplasm
               <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
+                <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
               </button>
             </div>
             <div class="modal-body">
@@ -754,7 +750,7 @@
               </div>
 
               <!-- General Statistics Carousel -->
-              <div id="myelo-carousel" class="carousel slide" data-ride="carousel">
+              <div id="myelo-carousel" class="carousel slide" data-interval="false">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                   <li data-target="#myelo-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
@@ -952,12 +948,12 @@
                 </div>
                 <!-- Controls -->
                 <a class="left carousel-control" href="#myelo-carousel" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
+                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Previous</span>
                 </a>
                 <a class="right carousel-control" href="#myelo-carousel" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Next</span>
                 </a>
               </div>
               <!-- End of General Statistics Carousel -->
@@ -977,8 +973,7 @@
             <div class="modal-header">
               Plasma Cell Disorder
               <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
+                <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
               </button>
             </div>
             <div class="modal-body">
@@ -998,7 +993,7 @@
                 </div>
 
                 <!-- General Statistics Carousel -->
-                <div id="plasmacell-carousel" class="carousel slide" data-ride="carousel">
+                <div id="plasmacell-carousel" class="carousel slide" data-interval="false">
                   <!-- Indicators -->
                   <ol class="carousel-indicators">
                     <li data-target="#plasmacell-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
@@ -1198,12 +1193,12 @@
                   </div>
                   <!-- Controls -->
                   <a class="left carousel-control" href="#plasmacell-carousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                      class="sr-only">Previous</span>
                   </a>
                   <a class="right carousel-control" href="#plasmacell-carousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                      class="sr-only">Next</span>
                   </a>
                 </div>
                 <!-- End of General Statistics Carousel -->
@@ -1226,8 +1221,7 @@
             <div class="modal-header">
               AA PNH MDS
               <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
+                <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
               </button>
             </div>
             <div class="modal-body">
@@ -1247,7 +1241,7 @@
               </div>
 
               <!-- General Statistics Carousel -->
-              <div id="aapnhmds-carousel" class="carousel slide" data-ride="carousel">
+              <div id="aapnhmds-carousel" class="carousel slide" data-interval="false">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                   <li data-target="#aapnhmds-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
@@ -1445,12 +1439,12 @@
                 </div>
                 <!-- Controls -->
                 <a class="left carousel-control" href="#aapnhmds-carousel" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
+                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Previous</span>
                 </a>
                 <a class="right carousel-control" href="#aapnhmds-carousel" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Next</span>
                 </a>
               </div>
               <!-- End of General Statistics Carousel -->
@@ -1471,8 +1465,7 @@
             <div class="modal-header">
               Platelet Disorder
               <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
+                <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
               </button>
             </div>
             <div class="modal-body">
@@ -1492,7 +1485,7 @@
               </div>
 
               <!-- General Statistics Carousel -->
-              <div id="platelet-carousel" class="carousel slide" data-ride="carousel">
+              <div id="platelet-carousel" class="carousel slide" data-interval="false">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                   <li data-target="#platelet-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
@@ -1693,12 +1686,12 @@
                 </div>
                 <!-- Controls -->
                 <a class="left carousel-control" href="#platelet-carousel" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
+                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Previous</span>
                 </a>
                 <a class="right carousel-control" href="#platelet-carousel" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Next</span>
                 </a>
               </div>
               <!-- End of General Statistics Carousel -->
@@ -1720,8 +1713,7 @@
             <div class="modal-header">
               Coagulation Disease
               <button type="button" class="close" data-dismiss="modal">
-                <span aria-hidden="true">&times;</span>
-                <span class="sr-only">Close</span>
+                <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
               </button>
             </div>
             <div class="modal-body">
@@ -1743,7 +1735,7 @@
               </div>
 
               <!-- General Statistics Carousel -->
-              <div id="coagulation-carousel" class="carousel slide" data-ride="carousel">
+              <div id="coagulation-carousel" class="carousel slide" data-interval="false">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
                   <li data-target="#coagulation-carousel" data-slide-to="0" class="active" data-toggle="tooltip"
@@ -1943,12 +1935,12 @@
                 </div>
                 <!-- Controls -->
                 <a class="left carousel-control" href="#coagulation-carousel" role="button" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Previous</span>
+                  <span class="glyphicon glyphicon-chevron-left modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Previous</span>
                 </a>
                 <a class="right carousel-control" href="#coagulation-carousel" role="button" data-slide="next">
-                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span>
-                  <span class="sr-only">Next</span>
+                  <span class="glyphicon glyphicon-chevron-right modal__glyphicon--color" aria-hidden="true"></span> <span
+                    class="sr-only">Next</span>
                 </a>
               </div>
               <!-- End of General Statistics Carousel -->

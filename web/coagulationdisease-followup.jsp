@@ -217,10 +217,6 @@
                   </a>
                 </div>
                 <div class="col-sm-6 text-right btn-toolbar">
-                  <a href="#" type="button" class="btn bg-yellow button-border patstatsbtn-text secondhalfbtns-position"
-                    id="patientStatistics" data-target="#patstats" data-toggle="modal">
-                    <span>Patient Statistics</span>
-                  </a>
                   <a href="#" type="button"
                     class="btn bg-yellow button-border editfollowupbtn-text secondhalfbtns-position" id="editPatientBtn">
                     <span>Edit FollowUp</span>
@@ -491,68 +487,6 @@
     </div>
   </form>
   <!-- End of Generate Report Modal  -->
-  <!-- Patient Statistics Modal  -->
-  <div class="modal fade centered-modal" id="patstats" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-header">
-          Patient Statistics:
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-12">
-              <canvas id="aapnhmdsChart" width="400" height="400"></canvas>
-            </div>
-          </div>
-          <script>
-											var ctx = document.getElementById("aapnhmdsChart").getContext('2d');
-											var aapnhmdsChart = new Chart(ctx, {
-												type : 'line',
-												data : {
-													labels : [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct",
-															"Nov", "Dec" ],
-													datasets : [ {
-														label : 'Baseline | Follow Up',
-														data : [ 12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3 ],
-														backgroundColor : [ 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
-																'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)',
-																'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)',
-																'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
-																'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)',
-																'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)' ],
-														borderColor : [ 'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
-																'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)',
-																'rgba(255, 159, 64, 1)', 'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
-																'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)',
-																'rgba(255, 159, 64, 1)' ],
-														borderWidth : 1
-													} ]
-												},
-												options : {
-													scales : {
-														yAxes : [ {
-															ticks : {
-																beginAtZero : true
-															}
-														} ]
-													}
-												}
-											});
-										</script>
-          <br> Hematologic Malignancy: High Concominany Medications: Medium Chemotherapy Medications: Low
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of Patient Statistics Modal  -->
   <!-- End of Main Container -->
   <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
   <script src="js/disease.coagulation-followup.js"></script>

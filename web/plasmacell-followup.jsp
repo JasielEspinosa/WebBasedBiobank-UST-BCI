@@ -204,10 +204,6 @@
                   </a>
                 </div>
                 <div class="col-sm-6 text-right btn-toolbar">
-                  <a href="#" type="button" class="btn bg-yellow button-border patstatsbtn-text secondhalfbtns-position"
-                    id="patientStatistics" data-target="#patstats" data-toggle="modal">
-                    <span>Patient Statistics</span>
-                  </a>
                   <a href="#" type="button"
                     class="btn bg-yellow button-border editfollowupbtn-text secondhalfbtns-position" id="editPatientBtn">
                     <span>Edit FollowUp</span>
@@ -961,88 +957,6 @@
     </div>
   </form>
   <!-- End of Generate Report Modal  -->
-  <!-- Patient Statistics Modal  -->
-  <div class="modal fade centered-modal" id="patstats" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-    aria-hidden="true" data-backdrop="static">
-    <div class="modal-dialog modal-md">
-      <div class="modal-content">
-        <div class="modal-header">
-          Patient Statistics:
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
-            <span class="sr-only">Close</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <h3 style="text-align: center;">
-              <b>Disease Status</b>
-            </h3>
-            <br>
-            <!-- To and From Date  -->
-            <div class="form-group col-md-offset-2">
-              <div class="col-sm-5">
-                <label for="message-text" class="control-label">From:</label>
-                <input type="date" class="form-control" name="fromDateAgeStats">
-              </div>
-              <div class="col-sm-5">
-                <label for="message-text" class="control-label">To:</label>
-                <input type="date" class="form-control" name="toDateAgeStats">
-              </div>
-            </div>
-            <!-- End of To and From Date -->
-            <div class="col-md-10 col-md-offset-1">
-              <canvas id="plasmacellPatStatsChart" width="600" height="500"></canvas>
-            </div>
-          </div>
-          <script>
-											var ctx = document.getElementById("plasmacellPatStatsChart").getContext('2d');
-											var plasmacellPatStatsChart = new Chart(ctx,
-													{
-														type : 'line',
-														data : {
-															datasets : [ {
-																label : 'Plasma Cell Disease Status',
-																data : [ 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 18, 16, 14, 12 ],
-																backgroundColor : 'rgba(6, 124, 209, 1)',
-																fill : false
-															} ],
-															labels : [ 'CR', 'sCR ', 'Immunophenotypic CR', 'Molecular CR', 'VGPR', 'PR',
-																	'MR', 'SD', 'PD', 'Relapse', 'Clinical Relapse', 'Relapse from CR',
-																	'Dead', 'Others' ],
-															borderWidth : 1,
-														},
-														options : {
-															data : {
-																display : false
-															},
-															scales : {
-																stacked : true,
-																yAxes : [ {
-																	ticks : {
-																		min : 0,
-																		max : 30,
-																		stepSize : 5,
-																		beginAtZero : true
-																	}
-																} ],
-																xAxes : [ {
-																	ticks : {
-																		autoSkip : false,
-																	}
-																} ]
-															},
-														}
-													});
-										</script>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- End of Patient Statistics Modal  -->
   <!-- End of Main Container -->
   <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
   <script src="js/disease.plasmacell-followup.js"></script>

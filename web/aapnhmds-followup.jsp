@@ -875,35 +875,42 @@
             </div>
             <!-- End of To and From Date -->
             <div class="col-md-10 col-md-offset-1">
-              <canvas id="aapnhmdsPatStatsChart" width="600" height="500"></canvas>
+              <canvas id="aaFollowupPatStatsChart" width="500" height="400"></canvas>
             </div>
           </div>
           <script>
-											var ctx = document.getElementById("aapnhmdsPatStatsChart").getContext('2d');
-											var aapnhmdsPatStatsChart = new Chart(ctx, {
+											var ctx = document.getElementById("aaFollowupPatStatsChart").getContext('2d');
+											var leukemiaFollowPatStatsChart = new Chart(ctx, {
 												type : 'line',
 												data : {
+													xLabels : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+														'Aug', 'Sept',
+														'Oct', 'Nov', 'Dec' ],
+													yLabels : [ 'Hematologic Response', 'Stable Disease', 'Relapsed', 
+														'Dead', 'Others' ],
 													datasets : [ {
-														label : 'AA PNH MDS Disease Status',
-														data : [ 2, 4, 6, 8, 10 ],
+														label : 'Leukemia Disease Status',
 														backgroundColor : 'rgba(6, 124, 209, 1)',
 														fill : false
 													} ],
-													labels : [ 'Hematologic Response', 'Stable Disease', 'Relapsed', 'Dead', 'Others' ],
+													labels : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+															'Aug', 'Sept',
+															'Oct', 'Nov', 'Dec' ],
 													borderWidth : 1,
 												},
 												options : {
+													responsive: true,
 													data : {
 														display : false
 													},
 													scales : {
 														stacked : true,
 														yAxes : [ {
-															ticks : {
-																min : 0,
-																max : 30,
-																stepSize : 5,
-																beginAtZero : true
+															type: 'category',
+															position: 'left',
+															display: true,
+															ticks: {
+															reverse: true
 															}
 														} ],
 														xAxes : [ {

@@ -16,7 +16,10 @@
 
 <!-- CSS -->
 <link rel="stylesheet" href="fonts/open-sans.css">
+<!-- LOCAL 
 <link rel="stylesheet" href="css/bootstrap.min.css">
+-->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" href="css/responsive.css">
@@ -26,7 +29,10 @@
 <script src="js/jquery-ui.js"></script>
 <script src="js/jquery.min-2.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<!-- LOCAL 
 <script defer src="js/fontawesome-all.js"></script>
+-->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 

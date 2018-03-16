@@ -1113,46 +1113,70 @@
         </div>
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-12">
-              <canvas id="aapnhmdsChart" width="400" height="400"></canvas>
+            <h3 style="text-align: center;">
+              <b>Disease Status</b>
+            </h3>
+            <br>
+            <!-- To and From Date  -->
+            <div class="form-group col-md-offset-2">
+              <div class="col-sm-5">
+                <label for="message-text" class="control-label">From:</label>
+                <input type="date" class="form-control" name="fromDateAgeStats">
+              </div>
+              <div class="col-sm-5">
+                <label for="message-text" class="control-label">To:</label>
+                <input type="date" class="form-control" name="toDateAgeStats">
+              </div>
+            </div>
+            <!-- End of To and From Date -->
+            <div class="col-md-10 col-md-offset-1">
+              <canvas id="plateletBaselinePatStatsChart" width="600" height="500"></canvas>
             </div>
           </div>
           <script>
-											var ctx = document.getElementById("aapnhmdsChart").getContext('2d');
-											var aapnhmdsChart = new Chart(ctx, {
+											var ctx = document.getElementById("plateletBaselinePatStatsChart").getContext('2d');
+											var plateletBaselinePatStatsChart = new Chart(ctx, {
 												type : 'line',
 												data : {
-													labels : [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct",
-															"Nov", "Dec" ],
+													xLabels : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+														'Aug', 'Sept',
+														'Oct', 'Nov', 'Dec' ],
+													yLabels : [ 'Newly Diagnosed ITP', 'Persistent ITP', 'Chronic ITP', 
+														'Severe ITP', 'CR', 'R', 'NR', 'Loss of CR or R', 'Refractory ITP',
+														'Stable Disease', 'Others' ],
 													datasets : [ {
-														label : 'Baseline | Follow Up',
-														data : [ 12, 19, 3, 5, 2, 3, 12, 19, 3, 5, 2, 3 ],
-														backgroundColor : [ 'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
-																'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)',
-																'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)',
-																'rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)',
-																'rgba(255, 206, 86, 0.2)', 'rgba(75, 192, 192, 0.2)',
-																'rgba(153, 102, 255, 0.2)', 'rgba(255, 159, 64, 0.2)' ],
-														borderColor : [ 'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
-																'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)',
-																'rgba(255, 159, 64, 1)', 'rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)',
-																'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)',
-																'rgba(255, 159, 64, 1)' ],
-														borderWidth : 1
-													} ]
+														label : 'Platelet Disorder Disease Status',
+														backgroundColor : 'rgba(6, 124, 209, 1)',
+														fill : false
+													} ],
+													labels : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+															'Aug', 'Sept',
+															'Oct', 'Nov', 'Dec' ],
+													borderWidth : 1,
 												},
 												options : {
+													data : {
+														display : false
+													},
 													scales : {
+														stacked : true,
 														yAxes : [ {
+															type: 'category',
+															position: 'left',
+															display: true,
+															ticks: {
+																reverse: true
+															}
+														} ],
+														xAxes : [ {
 															ticks : {
-																beginAtZero : true
+																autoSkip : false,
 															}
 														} ]
-													}
+													},
 												}
 											});
 										</script>
-          <br> Hematologic Malignancy: High Concominany Medications: Medium Chemotherapy Medications: Low
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
