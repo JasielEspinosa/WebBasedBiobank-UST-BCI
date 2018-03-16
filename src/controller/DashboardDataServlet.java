@@ -3,22 +3,29 @@ package controller;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import model.AuditBean;
+import com.google.gson.Gson;
+
 import model.ChartAge;
+import model.ChartModeOfTreatmentBean;
+import model.ChartModel;
+import model.ChartStatusBaseline;
+import model.ChartStatusFollowup;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 
-/** Servlet implementation class DashboardDataServlet */
 @WebServlet("/DashboardDataServlet")
 public class DashboardDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,109 +45,174 @@ public class DashboardDataServlet extends HttpServlet {
 
 	public DashboardDataServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	/** @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response) */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	/** @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response) */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		// params from js
+		int agePass = Integer.parseInt(request.getParameter("agePass"));
+		int genderPass = Integer.parseInt(request.getParameter("genderPass"));
+		int modeOfTreatmentPass = Integer.parseInt(request.getParameter("modeOfTreatmentPass"));
+		int baselinePass = Integer.parseInt(request.getParameter("baselinePass"));
+		int followupPass = Integer.parseInt(request.getParameter("followupPass"));
+
+		String sortFrom = request.getParameter("sortFrom");
+		String sortTo = request.getParameter("sortTo");
+
+		Boolean sortFromStat = true;
+		Boolean sortToStat = true;
+
+		if (sortFrom.equals("")) {
+			sortFromStat = false;
+		}
+		if (sortTo.equals("")) {
+			sortToStat = false;
+		}
 
 		int action = Integer.parseInt(request.getParameter("action"));
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-		Map<String, String> dashboardData = new LinkedHashMap<>();
-		ResultSet patientListRS;
+
+		ChartModel dashboardData;
+		ResultSet patientListRS = null;
 
 		ChartAge chartAge = new ChartAge();
+		ChartModeOfTreatmentBean chartModeOfTreatmentBean = new ChartModeOfTreatmentBean();
+		ChartStatusBaseline chartStatusBaseline = new ChartStatusBaseline();
+		ChartStatusFollowup chartStatusFollowup = new ChartStatusFollowup();
+
 		int maleChart = 0;
 		int femaleChart = 0;
 
 		try {
 			if (connection != null) {
+				System.out.println(action);
 
-				if (action == 1) {
-					patientListRS = SQLOperations.getChartPatients(1, connection);
-					int patientID = patientListRS.getInt("PatientID");
+				// logic for sort
+				if (sortFromStat && sortToStat) {
+					patientListRS = SQLOperations.getChartPatients(action, connection, sortFrom, sortTo);
+				}
+				if (!sortFromStat && !sortToStat) {
+					patientListRS = SQLOperations.getChartPatientsAll(action, connection);
+				}
+				if (sortFromStat && !sortToStat) {
+					patientListRS = SQLOperations.getChartPatientsFrom(action, connection, sortFrom);
+				}
+				if (!sortFromStat && sortToStat) {
+					patientListRS = SQLOperations.getChartPatientsTo(action, connection, sortTo);
+				}
+
+				System.out.println(patientListRS.getFetchSize());
+
+				int diseaseStatusID;
+				ResultSet diseaseStatusRS = null;
+
+				while (patientListRS.next()) {
+					System.out.println("aaaaaaaaaaaaaaaa");
 					int generalDataID = patientListRS.getInt("GeneralDataID");
-					ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
+
+					ResultSet generalDataRS = SQLOperations.getChartGeneralData(generalDataID, connection);
+
 					while (generalDataRS.next()) {
-						int gender = generalDataRS.getInt("Gender");
-						if (gender == 1) {
-							maleChart += 1;
-						} else {
-							femaleChart += 1;
+
+						if (genderPass == 1) {
+							System.out.println("p0");
+							int gender = generalDataRS.getInt("Gender");
+							if (gender == 1) {
+								maleChart += 1;
+							} else {
+								femaleChart += 1;
+							}
 						}
 
-						//put age algo here jas
-						String dateOfBirth = generalDataRS.getString("DateOfBirthDec");
+						if (agePass == 1) {
+							System.out.println("p1");
+							String dateOfBirth = generalDataRS.getString("DateOfBirth");
 
-						int ageValue = 0;
+							DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+							LocalDateTime getLocalTime = LocalDateTime.now();
 
-						chartAge.setAgeChart(ageValue);
+							Calendar cal1 = new GregorianCalendar();
+							Calendar cal2 = new GregorianCalendar();
 
-						//end of age algo
+							int age = 0;
+							int factor = 0;
+							Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
+							Date date2 = new SimpleDateFormat("yyyy-MM-dd").parse(dateFormat.format(getLocalTime));
+							cal1.setTime(date1);
+							cal2.setTime(date2);
+							if (cal2.get(Calendar.DAY_OF_YEAR) < cal1.get(Calendar.DAY_OF_YEAR)) {
+								factor = -1;
+							}
+							age = cal2.get(Calendar.YEAR) - cal1.get(Calendar.YEAR) + factor;
 
-						int treatmentID = patientListRS.getInt("TreatmentID");
+							chartAge.setAgeChart(age);
+						}
 
-						ResultSet treatmentRS = SQLOperationsBaseline.getTreatment(treatmentID, connection);
-						treatmentRS.first();
-						int modeOfTreatmentID = treatmentRS.getInt("ModeOfTreatmentID");
-						ResultSet modeOfTreatmentRS = SQLOperationsBaseline.getModeOfTreatment(modeOfTreatmentID, connection);
-						modeOfTreatmentRS.first();
+						if (modeOfTreatmentPass == 1) {
+							System.out.println("p2");
+							int treatmentID = patientListRS.getInt("TreatmentID");
 
-						String modeOfTreatmentValue = modeOfTreatmentRS.getString("ModeOfTreatment");
+							ResultSet treatmentRS = SQLOperationsBaseline.getTreatment(treatmentID, connection);
+							treatmentRS.first();
+							int modeOfTreatmentID = treatmentRS.getInt("ModeOfTreatmentID");
+							ResultSet modeOfTreatmentRS = SQLOperationsBaseline.getModeOfTreatment(modeOfTreatmentID,
+									connection);
+							modeOfTreatmentRS.first();
 
-						//logic for mode of treatment
+							String modeOfTreatmentValue = modeOfTreatmentRS.getString("ModeOfTreatment");
+							chartModeOfTreatmentBean.setModeOfTreatment(modeOfTreatmentValue);
+						}
 
-						int diseaseStatusID = patientListRS.getInt("DiseaseStatusID");
-						ResultSet diseaseStatusRS = SQLOperationsBaseline.getDiseaseStatus(diseaseStatusID, connection);
-						diseaseStatusRS.first();
+						if (baselinePass == 1) {
+							System.out.println("p3");
+							diseaseStatusID = patientListRS.getInt("DiseaseStatusID");
+							diseaseStatusRS = SQLOperationsBaseline.getDiseaseStatus(diseaseStatusID, connection);
+							diseaseStatusRS.first();
 
-						String diseaseStatusBaselineValue = diseaseStatusRS.getString("DiseaseStatus");
+							String diseaseStatusBaselineValue = diseaseStatusRS.getString("DiseaseStatus");
+							chartStatusBaseline.setDiseaseStatus(diseaseStatusBaselineValue);
+						}
+					}
+				}
 
-						//logic for disease status baseline
+				if (followupPass == 1) {
+					System.out.println("p4");
+					ResultSet followupRS = null;
 
-						ResultSet followupRS = SQLOperations.getChartFollowup(patientID, connection);
-						followupRS.last();
+					// logic for sort
+					if (sortFromStat && sortToStat) {
+						followupRS = SQLOperations.getChartFollowup(action, connection, sortFrom, sortTo);
+					}
+					if (!sortFromStat && !sortToStat) {
+						followupRS = SQLOperations.getChartFollowupAll(action, connection);
+					}
+					if (sortFromStat && !sortToStat) {
+						followupRS = SQLOperations.getChartFollowupFrom(action, connection, sortFrom);
+					}
+					if (!sortFromStat && sortToStat) {
+						followupRS = SQLOperations.getChartFollowupTo(action, connection, sortTo);
+					}
+
+					while (followupRS.next()) {
 						diseaseStatusID = followupRS.getInt("DiseaseStatusID");
 						diseaseStatusRS = SQLOperationsBaseline.getDiseaseStatus(diseaseStatusID, connection);
 						diseaseStatusRS.first();
 						String diseaseStatusFollowupValue = diseaseStatusRS.getString("DiseaseStatus");
+						chartStatusFollowup.setDiseaseStatus(diseaseStatusFollowupValue);
 					}
 				}
 
-				if (action == 2) {
-					patientListRS = SQLOperations.getChartPatients(2, connection);
-				}
-				if (action == 3) {
-					patientListRS = SQLOperations.getChartPatients(3, connection);
-				}
-				if (action == 4) {
-					patientListRS = SQLOperations.getChartPatients(4, connection);
-				}
-				if (action == 5) {
-					patientListRS = SQLOperations.getChartPatients(5, connection);
-				}
-				if (action == 6) {
-					patientListRS = SQLOperations.getChartPatients(6, connection);
-				}
-				if (action == 7) {
-					patientListRS = SQLOperations.getChartPatients(7, connection);
-				}
-
-				HttpSession session = request.getSession(true);
-
-				AuditBean auditBean = new AuditBean("Dashboard", (String) session.getAttribute("name"), (String) session.getAttribute("name"),
-						Integer.parseInt((String) session.getAttribute("accountID")));
-				SQLOperations.addAudit(auditBean, connection);
+				dashboardData = new ChartModel(maleChart, femaleChart, chartAge, chartModeOfTreatmentBean,
+						chartStatusBaseline, chartStatusFollowup);
+				String json = new Gson().toJson(dashboardData);
+				response.getWriter().write(json);
 
 			} else {
 				System.out.println("Invalid Connection resource");

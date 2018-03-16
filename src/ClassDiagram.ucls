@@ -121,7 +121,7 @@
   </class>  
   <class id="14" language="java" name="controller.LoginServlet" project="USTHBiobank" 
     file="/USTHBiobank/src/controller/LoginServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="4193" y="68"/>    
+    <position height="-1" width="-1" x="4335" y="148"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -131,15 +131,6 @@
   <class id="15" language="java" name="controller.DashboardDataServlet" project="USTHBiobank" 
     file="/USTHBiobank/src/controller/DashboardDataServlet.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="171" width="288" x="4521" y="68"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="16" language="java" name="controller.GenerateReportServlet_JAS" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/GenerateReportServlet_JAS.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="288" x="4849" y="68"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

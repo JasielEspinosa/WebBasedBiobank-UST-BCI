@@ -23,7 +23,6 @@
 <script src="js/jquery-git.js"></script>
 <script src="js/sweetalert.min.js"></script>
 </head>
-
 <body>
   <!-- MAIN CONTAINER -->
   <section class="login__section">
@@ -50,7 +49,7 @@
           <input class="login__userinput" type="password" name="password" id="password" placeholder="Password" size="38">
           <br>
           <input type="submit" id="loginButton" value="LOGIN" class="login__loginbuttonstyle">
-          <a class="login__forgotpasswordlink" data-target="#genaudrep" data-toggle="modal">Forgot Password?</a>
+          <a class="login__forgotpasswordlink" data-target="#forgotPass" data-toggle="modal">Forgot Password?</a>
         </form>
 
         <div id="invalid-login" class="alert alert-warning alert-block fade">
@@ -64,7 +63,7 @@
   <!-- END OF MAIN CONTAINER -->
 
   <!-- FORGOT PASSWORD MODAL  -->
-  <div class="modal fade centered-modal" id="genaudrep" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  <div class="modal fade centered-modal" id="forgotPass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true" data-backdrop="static">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
@@ -75,7 +74,7 @@
             id="forgotpasswordEmail" placeholder="E-mail Address" size="40">
         </div>
         <div class="modal-footer">
-          <button type="submit" onclick="sendMail();" class="btn btn-success">Send</button>
+          <button type="submit" id='sendForgotPassword' class="btn btn-success">Send</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
@@ -88,6 +87,6 @@
   <script src="css/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="js/jquery-git.js"></script>
   <script src="js/login.js"></script>
-  
+  <script src="js/forgotpassword.js"></script>
 </body>
 </html>

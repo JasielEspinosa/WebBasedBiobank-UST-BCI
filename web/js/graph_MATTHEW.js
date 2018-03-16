@@ -61,8 +61,9 @@ var coagulationChartFollowupDiseaseStatus;
 var coagulationSummarizedBaselineStatistics;
 var coagulationSummarizedFollowupStatistics;
 
+
 $( document ).ready(function() {
-	
+
 	//LEUKEMIA
 	
 	// LEUKEMIA AGE CHART
@@ -102,6 +103,8 @@ $( document ).ready(function() {
 			  type: 'doughnut',
 			  data: pieData
 	});
+	
+
 	//END OF AGE CHART
 
 	// LEUKEMIA GENDER CHART
@@ -127,7 +130,7 @@ $( document ).ready(function() {
 	
 	// LEUKEMIA MODE OF TREATMENT BASELINE
 	var ctx = document.getElementById("leukemiaChartModeOfTreatment").getContext('2d');
-	leukemiaChartModeOfTreatment = new Chart(ctx, {
+    leukemiaChartModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
@@ -152,7 +155,7 @@ $( document ).ready(function() {
 				},
 				{
 				  label: 'Others',
-				  data: [ 25 ],
+				  data: [ 300 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 				}
 		  ],
@@ -168,7 +171,7 @@ $( document ).ready(function() {
 		            yAxes: [{
 		            	ticks: {
 		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+			                suggestedMax: 30,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -271,7 +274,7 @@ $( document ).ready(function() {
 		            yAxes: [{
 		            	ticks: {
 		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+			                suggestedMax: 30,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -384,8 +387,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -600,8 +604,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -661,8 +666,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -734,8 +740,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -787,8 +794,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 80,
+		            		min: 0,
+			                max: 80,
+			                stepSize: 10,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -838,8 +846,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 80,
+		            		min: 0,
+			                max: 80,
+			                stepSize: 10,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -955,8 +964,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1033,8 +1043,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1119,8 +1130,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1172,8 +1184,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 80,
+		            		min: 0,
+			                max: 80,
+			                stepSize: 10,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1223,8 +1236,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 80,
+		            		min: 0,
+			                max: 80,
+			                stepSize: 10,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1358,8 +1372,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1377,8 +1392,8 @@ $( document ).ready(function() {
 	//END OF PLASMA CELL MODE OF TREATMENT
 	
 	// PLASMA CELL BASELINE DISEASE STATUS
-	var ctx = document.getElementById("plasmaCellChartBaselineDiseaseStatus").getContext('2d');
-	plasmaCellChartBaselineDiseaseStatus = new Chart(ctx, {
+	var ctx = document.getElementById("plasmaCellBaselineDiseaseStatus").getContext('2d');
+	plasmaCellBaselineDiseaseStatus = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
@@ -1467,8 +1482,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1486,8 +1502,8 @@ $( document ).ready(function() {
 	//END OF PLASMA CELL BASELINE DISEASE STATUS
 	
 	// PLASMA CELL FOLLOWUP DISEASE STATUS
-	var ctx = document.getElementById("plasmaCellChartFollowupDiseaseStatus").getContext('2d');
-	plasmaCellChartFollowupDiseaseStatus = new Chart(ctx, {
+	var ctx = document.getElementById("plasmaCellFollowupDiseaseStatus").getContext('2d');
+	plasmaCellFollowupDiseaseStatus = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
@@ -1582,8 +1598,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1811,8 +1828,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1830,7 +1848,7 @@ $( document ).ready(function() {
 	//END OF AA PNH MDS MODE OF TREATMENT
 	
 	// AA PNH MDS BASELINE DISEASE STATUS
-	var ctx = document.getElementById("aapnhmdsChartBaselineDiseaseStatus").getContext('2d');
+	var ctx = document.getElementById("aapnhmdsBaselineDiseaseStatus").getContext('2d');
 	aapnhmdsBaselineDiseaseStatus = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
@@ -1868,8 +1886,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -1887,8 +1906,8 @@ $( document ).ready(function() {
 	//END OF AA PNH MDS BASELINE DISEASE STATUS
 	
 	// AA PNH MDS FOLLOWUP DISEASE STATUS
-	var ctx = document.getElementById("aapnhmdsChartFollowupDiseaseStatus").getContext('2d');
-	aapnhmdsChartFollowupDiseaseStatus = new Chart(ctx, {
+	var ctx = document.getElementById("aapnhmdsFollowupDiseaseStatus").getContext('2d');
+	aapnhmdsFollowupDiseaseStatus = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
@@ -1931,8 +1950,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -2166,8 +2186,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -2185,37 +2206,37 @@ $( document ).ready(function() {
 	//END OF PLATELET MODE OF TREATMENT
 	
 	// PLATELET BASELINE DISEASE STATUS
-	var ctx = document.getElementById("plateletChartBaselineDiseaseStatus").getContext('2d');
-	plateletChartBaselineDiseaseStatus = new Chart(ctx, {
+	var ctx = document.getElementById("plateletBaselineDiseaseStatus").getContext('2d');
+	plateletBaselineDiseaseStatus = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
 		    	{
-		          label: 'Newly Diagnosed ITP',
+		          label: 'Hematologic Response',
 		          data: [ 2 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, 
 		        {
-			      label: 'Persistetnt ITP',
+			      label: 'Stable Disease',
 			      data: [ 4 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 				{
-				  label: 'Chronic ITP',
+				  label: 'Relapsed',
 				  data: [ 6 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
-			      label: 'Severe ITP',
+			      label: 'Others',
 			      data: [ 8 ],
 			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 			    }
 			],
 		    labels: [
-		      'Newly Diagnosed ITP',
-      	      'Persistetnt ITP', 
-      	      'Chronic ITP', 
-      	      'Severe ITP'
+		      'Hematologic Response',
+      	      'Stable Disease ', 
+      	      'Relapsed', 
+      	      'Others'
       	   ],
       	    borderWidth: 1
 		  },
@@ -2223,8 +2244,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -2242,61 +2264,43 @@ $( document ).ready(function() {
 	//END OF PLATELET BASELINE DISEASE STATUS
 	
 	// PLATELET FOLLOWUP DISEASE STATUS
-	var ctx = document.getElementById("plateletChartFollowupDiseaseStatus").getContext('2d');
-	plateletChartFollowupDiseaseStatus = new Chart(ctx, {
+	var ctx = document.getElementById("plateletFollowupDiseaseStatus").getContext('2d');
+	plateletFollowupDiseaseStatus = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
 		    		{
-			          label: 'CR',
+			          label: 'Hematologic Response',
 			          data: [ 2 ],
 			          backgroundColor: 'rgba(139,69,19, 0.8)'
 			        }, 
 			        {
-				      label: 'R',
+				      label: 'Stable Disease',
 				      data: [ 4 ],
 				      backgroundColor: 'rgba(255, 143, 131, 1)'
 				    },
 					{
-					  label: 'NR',
+					  label: 'Relapsed',
 					  data: [ 6 ],
 					  backgroundColor: 'rgba(6, 124, 209, 1)'
 					},
 					{
-					  label: 'Loss of CR or R',
+					  label: 'Dead',
 					  data: [ 8 ],
 					  backgroundColor: 'rgba(255, 99, 132, 0.2)'
 					},
 					{
-				      label: 'Refractory ITP',
+				      label: 'Others',
 				      data: [ 8 ],
 				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
-				    },
-				    {
-					   label: 'Stable Disease',
-					   data: [ 8 ],
-					   backgroundColor: 'rgba(255, 99, 132, 0.2)'
-					},
-					{
-						label: 'Dead',
-						data: [ 8 ],
-						backgroundColor: 'rgba(255, 99, 132, 0.2)'
-					},
-					{
-						label: 'Others',
-						data: [ 8 ],
-						backgroundColor: 'rgba(255, 99, 132, 0.2)'
-					}
+				    }
 			],
 		    labels: [
-		    	  'CR',
-	      	      'R', 
-	      	      'NR',
-	      	      'Loss of CR or R',
-	      	      'Refractory ITP',
-	      	      'Stable Disease',
+		    	  'Hematologic Response',
+	      	      'Stable Disease', 
+	      	      'Relapsed',
 	      	      'Dead',
-	      	      'Otherss'
+	      	      'Others'
 	      	],
       	    borderWidth: 1
 		  },
@@ -2304,8 +2308,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -2521,8 +2526,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -2540,19 +2546,37 @@ $( document ).ready(function() {
 	//END OF COAGULATION MODE OF TREATMENT
 	
 	// COAGULATION BASELINE DISEASE STATUS
-	var ctx = document.getElementById("coagulationChartBaselineDiseaseStatus").getContext('2d');
-	coagulationChartBaselineDiseaseStatus = new Chart(ctx, {
+	var ctx = document.getElementById("coagulationBaselineDiseaseStatus").getContext('2d');
+	coagulationBaselineDiseaseStatus = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
+		    	{
+		          label: 'Hematologic Response',
+		          data: [ 2 ],
+		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		        }, 
 		        {
 			      label: 'Stable Disease',
 			      data: [ 4 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			    },
+				{
+				  label: 'Relapsed',
+				  data: [ 6 ],
+				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				},
+				{
+			      label: 'Others',
+			      data: [ 8 ],
+			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 			    }
 			],
 		    labels: [
+		      'Hematologic Response',
       	      'Stable Disease ', 
+      	      'Relapsed', 
+      	      'Others'
       	   ],
       	    borderWidth: 1
 		  },
@@ -2560,8 +2584,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-			                suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -2579,19 +2604,43 @@ $( document ).ready(function() {
 	//END OF COAGULATION BASELINE DISEASE STATUS
 	
 	// COAGULATION FOLLOWUP DISEASE STATUS
-	var ctx = document.getElementById("coagulationChartFollowupDiseaseStatus").getContext('2d');
-	coagulationChartFollowupDiseaseStatus = new Chart(ctx, {
+	var ctx = document.getElementById("coagulationFollowupDiseaseStatus").getContext('2d');
+	coagulationFollowupDiseaseStatus = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
+		    		{
+			          label: 'Hematologic Response',
+			          data: [ 2 ],
+			          backgroundColor: 'rgba(139,69,19, 0.8)'
+			        }, 
 			        {
 				      label: 'Stable Disease',
 				      data: [ 4 ],
 				      backgroundColor: 'rgba(255, 143, 131, 1)'
+				    },
+					{
+					  label: 'Relapsed',
+					  data: [ 6 ],
+					  backgroundColor: 'rgba(6, 124, 209, 1)'
+					},
+					{
+					  label: 'Dead',
+					  data: [ 8 ],
+					  backgroundColor: 'rgba(255, 99, 132, 0.2)'
+					},
+					{
+				      label: 'Others',
+				      data: [ 8 ],
+				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				    }
 			],
 		    labels: [
+		    	  'Hematologic Response',
 	      	      'Stable Disease', 
+	      	      'Relapsed',
+	      	      'Dead',
+	      	      'Others'
 	      	],
       	    borderWidth: 1
 		  },
@@ -2599,8 +2648,9 @@ $( document ).ready(function() {
 		        scales: {
 		            yAxes: [{
 		            	ticks: {
-		            		suggestedMin: 0,
-		            		suggestedMax: 30,
+		            		min: 0,
+			                max: 30,
+			                stepSize: 5,
 			                beginAtZero:true
 		            	}
 		            }],
@@ -2725,7 +2775,7 @@ $( document ).ready(function() {
 //END OF CODE
 
 
-function addData(chart, data) {
+function addData(chart,data) {
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);
     });
@@ -2733,9 +2783,10 @@ function addData(chart, data) {
 }
 
 function removeData(chart) {
-    chart.data.labels.pop();
     chart.data.datasets.forEach((dataset) => {
         dataset.data.pop();
     });
     chart.update();
 }
+
+

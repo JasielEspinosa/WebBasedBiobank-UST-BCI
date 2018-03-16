@@ -26,48 +26,128 @@ public interface SQLCommands {
 	String GET_VISITS = "Select *, CONVERT(AES_DECRYPT(DateOfVisit,'" + key
 			+ "'), DATE) as DateOfVisitDec FROM FollowupTable where PatientID = ?";
 
-	//Generate Report
+	// Generate Report
 	String GENERATE_REPORT_GET_PATIENTS = "SELECT PT.*, CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key
 			+ "'), DATE) as DateOfEntryDec FROM PatientTable PT JOIN GeneralDataTable GD ON (GD.GeneralDataID = PT.GeneralDataID) "
-			+ "AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key + "'), DATE) >= ? AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key
-			+ "'), DATE) <= ? " + "WHERE PT.DiseaseID = ? ORDER BY CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key + "'), DATE) ASC";
+			+ "AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key
+			+ "'), DATE) >= ? AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key + "'), DATE) <= ? "
+			+ "WHERE PT.DiseaseID = ? ORDER BY CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key + "'), DATE) ASC";
 	String GENERATE_REPORT_GET_PATIENTS_ALL = "SELECT PT.*, CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key
 			+ "'), DATE) as DateOfEntryDec FROM PatientTable PT JOIN GeneralDataTable GD ON (GD.GeneralDataID = PT.GeneralDataID) AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'"
 			+ key + "'), DATE) >= ? AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key
 			+ "'), DATE) <= ? ORDER BY PT.DiseaseID ASC, CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key + "'), DATE) ASC";
-	String GENERATE_REPORT_GET_FOLLOWUP = "SELECT PT.*, CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key + "'), DATE) as DateOfEntryDec, "
+	String GENERATE_REPORT_GET_FOLLOWUP = "SELECT PT.*, CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec, "
 			+ "FT.* FROM PatientTable PT JOIN GeneralDataTable GD ON (GD.GeneralDataID = PT.GeneralDataID) "
-			+ "AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key + "'), DATE) >= ? AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key
-			+ "'), DATE) <= ? "
+			+ "AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key
+			+ "'), DATE) >= ? AND CONVERT(AES_DECRYPT(GD.DateOfEntry,'" + key + "'), DATE) <= ? "
 			+ "LEFT JOIN FollowupTable FT ON (PT.PatientID = FT.PatientID) WHERE PT.PatientID = ? ORDER BY CONVERT(AES_DECRYPT(GD.DateOfEntry,'"
 			+ key + "'), DATE) ASC, CONVERT(AES_DECRYPT(FT.DateOfVisit,'" + key + "'), DATE) ASC";
 
 	String GET_DISEASE_NAME = "SELECT * FROM DiseaseTable WHERE DiseaseID = ?";
 
-	//audit
+	// audit
 	String AUDIT = "INSERT INTO AuditTable VALUES (NULL,?,?,?,AES_ENCRYPT(?, '" + key + "'),?,?)";
 
-	String GET_AUDIT = "SELECT *, AES_DECRYPT(Date, '" + key + "') as DateDec FROM AuditTable WHERE UserID = ? ORDER BY AES_DECRYPT(Date,'"
-			+ key + "') ASC";
+	String GET_AUDIT = "SELECT *, AES_DECRYPT(Date, '" + key
+			+ "') as DateDec FROM AuditTable WHERE UserID = ? ORDER BY AES_DECRYPT(Date,'" + key + "') ASC";
 
-	String GET_AUDIT_FROM = "SELECT *, AES_DECRYPT(Date, '" + key + "') as DateDec FROM AuditTable WHERE UserID = ? AND AES_DECRYPT(Date,'"
-			+ key + "') >= ? ORDER BY AES_DECRYPT(Date,'" + key + "') ASC";
-	String GET_AUDIT_TO = "SELECT *, AES_DECRYPT(Date, '" + key + "') as DateDec FROM AuditTable WHERE UserID = ? AND AES_DECRYPT(Date,'"
-			+ key + "') <= ? ORDER BY AES_DECRYPT(Date,'" + key + "') ASC";
-	String GET_AUDIT_FROMTO = "SELECT *, AES_DECRYPT(Date, '" + key
-			+ "') as DateDec FROM AuditTable WHERE UserID = ? AND AES_DECRYPT(Date,'" + key + "') >= ? AND AES_DECRYPT(Date,'" + key
+	String GET_AUDIT_FROM = "SELECT *, AES_DECRYPT(Date, '" + key
+			+ "') as DateDec FROM AuditTable WHERE UserID = ? AND AES_DECRYPT(Date,'" + key
+			+ "') >= ? ORDER BY AES_DECRYPT(Date,'" + key + "') ASC";
+	String GET_AUDIT_TO = "SELECT *, AES_DECRYPT(Date, '" + key
+			+ "') as DateDec FROM AuditTable WHERE UserID = ? AND AES_DECRYPT(Date,'" + key
 			+ "') <= ? ORDER BY AES_DECRYPT(Date,'" + key + "') ASC";
+	String GET_AUDIT_FROMTO = "SELECT *, AES_DECRYPT(Date, '" + key
+			+ "') as DateDec FROM AuditTable WHERE UserID = ? AND AES_DECRYPT(Date,'" + key
+			+ "') >= ? AND AES_DECRYPT(Date,'" + key + "') <= ? ORDER BY AES_DECRYPT(Date,'" + key + "') ASC";
 
 	String GET_AUDIT_ALL = "SELECT *, AES_DECRYPT(Date, '" + key + "') as DateDec FROM AuditTable ORDER BY Date ASC";
 
-	String GET_AUDIT_ALL_FROM = "SELECT *, AES_DECRYPT(Date, '" + key + "') as DateDec FROM AuditTable WHERE AES_DECRYPT(Date,'" + key
-			+ "') >= ? ORDER BY AES_DECRYPT(Date,'" + key + "') ASC";
-	String GET_AUDIT_ALL_TO = "SELECT *, AES_DECRYPT(Date, '" + key + "') as DateDec FROM AuditTable WHERE AES_DECRYPT(Date,'" + key
+	String GET_AUDIT_ALL_FROM = "SELECT *, AES_DECRYPT(Date, '" + key
+			+ "') as DateDec FROM AuditTable WHERE AES_DECRYPT(Date,'" + key + "') >= ? ORDER BY AES_DECRYPT(Date,'"
+			+ key + "') ASC";
+	String GET_AUDIT_ALL_TO = "SELECT *, AES_DECRYPT(Date, '" + key
+			+ "') as DateDec FROM AuditTable WHERE AES_DECRYPT(Date,'" + key + "') <= ? ORDER BY AES_DECRYPT(Date,'"
+			+ key + "') ASC";
+	String GET_AUDIT_ALL_FROMTO = "SELECT *, AES_DECRYPT(Date, '" + key
+			+ "') as DateDec FROM AuditTable WHERE AES_DECRYPT(Date,'" + key + "') >= ? AND AES_DECRYPT(Date,'" + key
 			+ "') <= ? ORDER BY AES_DECRYPT(Date,'" + key + "') ASC";
-	String GET_AUDIT_ALL_FROMTO = "SELECT *, AES_DECRYPT(Date, '" + key + "') as DateDec FROM AuditTable WHERE AES_DECRYPT(Date,'" + key
-			+ "') >= ? AND AES_DECRYPT(Date,'" + key + "') <= ? ORDER BY AES_DECRYPT(Date,'" + key + "') ASC";
 
-	//charts
-	String CHART_GET_PATIENTS = "Select * from PatientTable where DiseaseID = ?";
-	String CHART_GET_FOLLOWUP = "Select * from FollowupTable where PatientID = ?";
+	// charts
+	String CHART_GET_PATIENTS = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from PatientTable inner join generaldatatable "
+			+ "on patienttable.GeneralDataID=generaldatatable.GeneralDataID where PatientTable.DiseaseID = ? and CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'"
+			+ key + "'), DATE) >= ? and CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'" + key + "'), DATE) <= ?";
+	String CHART_GET_PATIENTS_ALL = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from PatientTable inner join generaldatatable "
+			+ "on patienttable.GeneralDataID=generaldatatable.GeneralDataID where PatientTable.DiseaseID = ?";
+	String CHART_GET_PATIENTS_FROM = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from PatientTable inner join generaldatatable "
+			+ "on patienttable.GeneralDataID=generaldatatable.GeneralDataID where PatientTable.DiseaseID = ? and CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'"
+			+ key + "'), DATE) >= ?";
+	String CHART_GET_PATIENTS_TO = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from PatientTable inner join generaldatatable "
+			+ "on patienttable.GeneralDataID=generaldatatable.GeneralDataID where PatientTable.DiseaseID = ? and CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'"
+			+ key + "'), DATE) <= ?";
+
+	String CHART_GET_FOLLOWUP = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
+			+ "PatientTable.DiseaseID = ? and CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key
+			+ "'), DATE) >= ? and CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key + "'), DATE) <= ?";
+	String CHART_GET_FOLLOWUP_ALL = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
+			+ "PatientTable.DiseaseID = ?";
+	String CHART_GET_FOLLOWUP_FROM = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
+			+ "PatientTable.DiseaseID = ? and CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key + "'), DATE) >= ?";
+	String CHART_GET_FOLLOWUP_TO = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
+			+ "PatientTable.DiseaseID = ? and CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key + "'), DATE) <= ?";
+
+	String CHART_GET_GENERAL_DATA = "SELECT * FROM GeneralDataTable WHERE GeneralDataID = ?";
+
+	// forgot pass
+	String GET_FORGOTPASS_EMAIL = "Select AccountID from AccountTable where UserName = ?";
+	String GET_TOKEN = "Select *,DATE_FORMAT(`expiration`, '%Y-%m-%d %H:%i:%S') AS `expirationNoMili` from TokenTable where Token = ?";
+	String UPDATE_PASSWORD = "Update AccountTable set Password = ? where AccountID = ?";
+	String INSERT_TOKEN = "Insert into TokenTable values(?,?,?)";
+
+	String PATIENT_STATS = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from PatientTable inner join generaldatatable "
+			+ "on patienttable.GeneralDataID=generaldatatable.GeneralDataID where PatientTable.PatientID = ? and CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'"
+			+ key + "'), DATE) >= ? and CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'" + key + "'), DATE) <= ? "
+			+ "order by CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'" + key + "'), DATE) asc";
+	String PATIENT_STATS_ALL = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from PatientTable inner join generaldatatable "
+			+ "on patienttable.GeneralDataID=generaldatatable.GeneralDataID where PatientTable.PatientID = ? "
+			+ "order by CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'" + key + "'), DATE) asc";
+	String PATIENT_STATS_FROM = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from PatientTable inner join generaldatatable "
+			+ "on patienttable.GeneralDataID=generaldatatable.GeneralDataID where PatientTable.PatientID = ? and CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'"
+			+ key + "'), DATE) >= ? " + "order by CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'" + key
+			+ "'), DATE) asc";
+	String PATIENT_STATS_TO = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from PatientTable inner join generaldatatable "
+			+ "on patienttable.GeneralDataID=generaldatatable.GeneralDataID where PatientTable.PatientID = ? and CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'"
+			+ key + "'), DATE) <= ? " + "order by CONVERT(AES_DECRYPT(GeneralDataTable.DateOfEntry,'" + key
+			+ "'), DATE) asc";
+
+	String PATIENT_STATS_FOLLOWUP = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
+			+ "PatientTable.PatientID = ? and CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key
+			+ "'), DATE) >= ? and CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key
+			+ "'), DATE) <= ? order by CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key + "'), DATE) asc";
+	String PATIENT_STATS_FOLLOWUP_ALL = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
+			+ "PatientTable.PatientID = ? order by CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key
+			+ "'), DATE) asc";
+	String PATIENT_STATS_FOLLOWUP_FROM = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
+			+ "PatientTable.PatientID = ? and CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key
+			+ "'), DATE) >= ? order by CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key + "'), DATE) asc";
+	String PATIENT_STATS_FOLLOWUP_TO = "Select *, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
+			+ "'), DATE) as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
+			+ "PatientTable.PatientID = ? and CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key
+			+ "'), DATE) <= ? order by CONVERT(AES_DECRYPT(FollowupTable.DateOfEntry,'" + key + "'), DATE) asc";
 }

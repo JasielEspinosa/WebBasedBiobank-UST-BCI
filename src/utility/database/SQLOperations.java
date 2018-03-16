@@ -400,10 +400,24 @@ public class SQLOperations implements SQLCommands {
 		return rs;
 	}
 	
-	public static ResultSet getChartPatients(int diseaseID,Connection connection) {
+	public static ResultSet getChartPatients(int diseaseID,Connection connection,String sortFrom, String sortTo) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_PATIENTS);
+			pstmt.setInt(1, diseaseID);
+			pstmt.setString(2, sortFrom);
+			pstmt.setString(3, sortTo);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getChartPatientsAll(int diseaseID,Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_PATIENTS_ALL);
 			pstmt.setInt(1, diseaseID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
@@ -412,16 +426,251 @@ public class SQLOperations implements SQLCommands {
 		return rs;
 	}
 	
-	public static ResultSet getChartFollowup(int patientID, Connection connection) {
+	public static ResultSet getChartPatientsFrom(int diseaseID,Connection connection,String sortFrom) {
 		ResultSet rs = null;
 		try {
-			PreparedStatement pstmt = connection.prepareStatement(GENERATE_REPORT_GET_FOLLOWUP);
-			pstmt.setInt(1, patientID);
+			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_PATIENTS_FROM);
+			pstmt.setInt(1, diseaseID);
+			pstmt.setString(2, sortFrom);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getChartPatientsTo(int diseaseID,Connection connection,String sortTo) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_PATIENTS_TO);
+			pstmt.setInt(1, diseaseID);
+			pstmt.setString(2, sortTo);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getChartGeneralData(int generalDataID, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_GENERAL_DATA);
+			pstmt.setInt(1, generalDataID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException - getGeneralData: " + sqle.getMessage());
+			return rs;
+		}
+		return rs;
+	}
+	
+	public static ResultSet getChartFollowup(int action, Connection connection,String sortFrom, String sortTo) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_FOLLOWUP);
+			pstmt.setInt(1, action);
+			pstmt.setString(2, sortFrom);
+			pstmt.setString(3, sortTo);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
 		}
 		return rs;
 	}
+	
+	public static ResultSet getChartFollowupAll(int action, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_FOLLOWUP_ALL);
+			pstmt.setInt(1, action);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getChartFollowupFrom(int action, Connection connection,String sortFrom) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_FOLLOWUP_FROM);
+			pstmt.setInt(1, action);
+			pstmt.setString(2, sortFrom);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getChartFollowupTo(int action, Connection connection,String sortTo) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_FOLLOWUP);
+			pstmt.setInt(1, action);
+			pstmt.setString(2, sortTo);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getAccountID(String username, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_FORGOTPASS_EMAIL);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Old Account ID: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getToken(String token, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_TOKEN);
+			pstmt.setString(1, token);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Old Password: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static boolean updatePassword(int accountID,String password, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(UPDATE_PASSWORD);
+			pstmt.setString(1, password);
+			pstmt.setInt(2, accountID);
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- updatepass: " + sqle.getMessage());
+			return false;
+		}
 
+		return true;
+	}
+	
+	public static boolean insertToken(int accountID,String token,String expiration, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(INSERT_TOKEN);
+			pstmt.setInt(1, accountID);
+			pstmt.setString(2, token);
+			pstmt.setString(3, expiration);
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- insertToken: " + sqle.getMessage());
+			return false;
+		}
+
+		return true;
+	}
+	public static ResultSet getStatus(int patientID,Connection connection,String sortFrom, String sortTo) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS);
+			pstmt.setInt(1, patientID);
+			pstmt.setString(2, sortFrom);
+			pstmt.setString(3, sortTo);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getStatusAll(int patientID,Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_ALL);
+			pstmt.setInt(1, patientID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getStatusFrom(int patientID,Connection connection,String sortFrom) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FROM);
+			pstmt.setInt(1, patientID);
+			pstmt.setString(2, sortFrom);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getStatusTo(int patientID,Connection connection,String sortTo) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_TO);
+			pstmt.setInt(1, patientID);
+			pstmt.setString(2, sortTo);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getFollowupStatus(int patientID,Connection connection,String sortFrom, String sortTo) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FOLLOWUP);
+			pstmt.setInt(1, patientID);
+			pstmt.setString(2, sortFrom);
+			pstmt.setString(3, sortTo);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getFollowupStatusAll(int patientID,Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FOLLOWUP_ALL);
+			pstmt.setInt(1, patientID);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getFollowupStatusFrom(int patientID,Connection connection,String sortFrom) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FOLLOWUP_FROM);
+			pstmt.setInt(1, patientID);
+			pstmt.setString(2, sortFrom);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getFollowupStatusTo(int patientID,Connection connection,String sortTo) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FOLLOWUP_TO);
+			pstmt.setInt(1, patientID);
+			pstmt.setString(2, sortTo);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- getAudit: " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
 }
