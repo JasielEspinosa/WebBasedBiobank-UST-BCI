@@ -7,7 +7,7 @@ var leukemiaChartFollowupDiseaseStatus;
 var leukemiaSummarizedBaselineStatistics;
 var leukemiaSummarizedFollowupStatistics;
 
-//LYMPHOMA
+// LYMPHOMA
 var lymphomaChartAge;
 var lymphomaChartGender;
 var lymphomaModeOfTreatment;
@@ -16,7 +16,7 @@ var lymphomaChartFollowupDiseaseStatus;
 var lymphomaSummarizedBaselineStatistics;
 var lymphomaSummarizedFollowupStatistics;
 
-//MYELOPROLFERATIVE
+// MYELOPROLFERATIVE
 var myeloChartAge;
 var myeloChartGender;
 var myeloModeOfTreatment;
@@ -25,7 +25,7 @@ var myeloChartFollowupDiseaseStatus;
 var myeloSummarizedBaselineStatistics;
 var myeloSummarizedFollowupStatistics;
 
-//PLASMA CELL
+// PLASMA CELL
 var plasmaCellChartAge;
 var plasmaCellChartGender;
 var plasmaCellModeOfTreatment;
@@ -34,7 +34,7 @@ var plasmaCellChartFollowupDiseaseStatus;
 var plasmaCellSummarizedBaselineStatistics;
 var plasmaCellSummarizedFollowupStatistics;
 
-//AA PNH MDS
+// AA PNH MDS
 var aapnhmdsChartAge;
 var aapnhmdsChartGender;
 var aapnhmdsModeOfTreatment;
@@ -43,7 +43,7 @@ var aapnhmdsChartFollowupDiseaseStatus;
 var aapnhmdsSummarizedBaselineStatistics;
 var aapnhmdsSummarizedFollowupStatistics;
 
-//PLATELET DISORDER
+// PLATELET DISORDER
 var plateletChartAge;
 var plateletChartGender;
 var plateletModeOfTreatment;
@@ -52,7 +52,7 @@ var plateletChartFollowupDiseaseStatus;
 var plateletSummarizedBaselineStatistics;
 var plateletSummarizedFollowupStatistics;
 
-//COAGULATION
+// COAGULATION
 var coagulationChartAge;
 var coagulationChartGender;
 var coagulationModeOfTreatment;
@@ -63,7 +63,7 @@ var coagulationSummarizedFollowupStatistics;
 
 $( document ).ready(function() {
 	
-	//LEUKEMIA
+	// LEUKEMIA
 	
 	// LEUKEMIA AGE CHART
 	var pieData = {
@@ -81,7 +81,7 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
 		                'rgba(42, 58, 84, 1)',
 		                'rgba(56, 96, 147, 1)',
@@ -102,7 +102,7 @@ $( document ).ready(function() {
 			  type: 'doughnut',
 			  data: pieData
 	});
-	//END OF AGE CHART
+	// END OF AGE CHART
 
 	// LEUKEMIA GENDER CHART
 	var pieData = {
@@ -111,7 +111,7 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      data: [50, 50],
+		      //data: [50, 50],
 		      backgroundColor: [
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 99, 132, 0.2)'
@@ -123,7 +123,7 @@ $( document ).ready(function() {
 		  type: 'doughnut',
 		  data: pieData
 	});
-	//END OF GENDER CHART
+	// END OF GENDER CHART
 	
 	// LEUKEMIA MODE OF TREATMENT BASELINE
 	var ctx = document.getElementById("leukemiaChartModeOfTreatment").getContext('2d');
@@ -133,26 +133,26 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic 1st Line',
-		          data: [ 5 ],
+		          //data: [ 5 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Pharmacologic 2nd Line / Salvage',
-		          data: [ 10 ],
+		          //data: [ 10 ],
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Supportive / Palliative Only',
-			      data: [ 15 ],
+			      //data: [ 15 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Watch and Wait',
-				  data: [ 20 ],
+				  //data: [ 20 ],
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 				  label: 'Others',
-				  data: [ 25 ],
+				  //data: [ 25 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 				}
 		  ],
@@ -183,7 +183,7 @@ $( document ).ready(function() {
 		        }
 		    }
 		});
-	//END OF LEUKEMIA MODE OF TREATMENT
+	// END OF LEUKEMIA MODE OF TREATMENT
 	
 	// LEUKEMIA BASELINE DISEASE STATUS
 	var ctx = document.getElementById("leukemiaChartBaselineDiseaseStatus").getContext('2d');
@@ -193,61 +193,61 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Newly Diagnosed',
-		          data: [ 2 ],
+		          //data: [ 2 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        },
 		        {
 			      label: 'CR',
-			      data: [ 6 ],
+			      //data: [ 6 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'nCR',
-				  data: [ 8 ],
+				  //data: [ 8 ],
 			      backgroundColor: 'rgba(245, 245, 220, 1)'
 				},
 				{
 				  label: 'PR',
-				  data: [ 10 ],
+				  //data: [ 10 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 			      label: 'PD',
-			      data: [ 12 ],
+			      //data: [ 12 ],
 			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 			    }, {
 			      label: 'SD',
-			      data: [ 14 ],
+			      //data: [ 14 ],
 			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 			    },
 			    {
 				  label: 'Complete Hematologic Response',
-				  data: [ 16 ],
+				  //data: [ 16 ],
 				  backgroundColor:'rgba(255, 206, 86, 0.2)'
 				},
 				{
 				  label: 'Complete Cytogenetic Response',
-				  data: [ 18 ],
+				  //data: [ 18 ],
 				  backgroundColor: 'rgba(75, 192, 192, 0.2)'
 				},
 				{
 				  label: 'Major Molecular Response',
-				  data: [ 20 ],
+				  //data: [ 20 ],
 				  backgroundColor: 'rgba(153, 102, 255, 0.2)'
 				},
 				{
 				  label: 'Spleen Response',
-				  data: [ 18 ],
+				  //data: [ 18 ],
 				  backgroundColor: 'rgba(255, 159, 64, 0.2)'
 			    },
 				{
 				  label: 'Symptom Response',
-				  data: [ 16 ],
+				  //data: [ 16 ],
 				  backgroundColor: 'rgba(206, 224, 158, 1)'
 				},
 				{
 				  label: 'Others',
-				  data: [ 12 ],
+				  //data: [ 12 ],
 				  backgroundColor: 'rgba(145, 219, 216, 1)'
 				}
 			],
@@ -286,7 +286,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END
+	// END
 	
 	// LEUKEMIA BASELINE FOLLOWUP DISEASE
 	var ctx = document.getElementById("leukemiaChartFollowupDiseaseStatus").getContext('2d');
@@ -296,70 +296,70 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Relapsed',
-		          data: [ 2 ],
+		          //data: [ 2 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Refractory Disease',
-		          data: [ 4 ],
+		          //data: [ 4 ],
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'CR',
-			      data: [ 6 ],
+			      //data: [ 6 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'nCR',
-				  data: [ 8 ],
+				  //data: [ 8 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 				},
 				{
 				  label: 'PR',
-				  data: [ 10 ],
+				  //data: [ 10 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 			      label: 'PD',
-			      data: [ 12 ],
+			      //data: [ 12 ],
 			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 			    }, {
 			      label: 'SD',
-			      data: [ 14 ],
+			      //data: [ 14 ],
 			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  	  
 			    },
 			    {
 				  label: 'Complete Hematologic Response',
-				  data: [ 16 ],
+				  //data: [ 16 ],
 				  backgroundColor:'rgba(255, 206, 86, 0.2)'
 				},
 				{
 				  label: 'Complete Cytogenetic Response',
-				  data: [ 18 ],
+				  //data: [ 18 ],
 				  backgroundColor: 'rgba(75, 192, 192, 0.2)'
 				},
 				{
 				  label: 'Major Molecular Response',
-				  data: [ 20 ],
+				  //data: [ 20 ],
 				  backgroundColor: 'rgba(153, 102, 255, 0.2)'
 				},
 				{
 				  label: 'Spleen Response',
-				  data: [ 18 ],
+				  //data: [ 18 ],
 				  backgroundColor: 'rgba(255, 159, 64, 0.2)'
 			    },
 				{
 				  label: 'Symptom Response',
-				  data: [ 16 ],
+				  //data: [ 16 ],
 				  backgroundColor: 'rgba(206, 224, 158, 1)'
 				},
 				{
 				  label: 'Dead',
-				  data: [ 14 ],
+				  //data: [ 14 ],
 				  backgroundColor: 'rgba(147, 184, 149, 1)'
 				},
 				{
 				  label: 'Others',
-				  data: [ 14 ],
+				  //data: [ 14 ],
 				  backgroundColor: 'rgba(147, 184, 149, 1)'
 		       }
 			],
@@ -400,9 +400,9 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END
+	// END
 	
-	//LEUKEMIA SUMMARIZED BASELINE STATISTICS
+	// LEUKEMIA SUMMARIZED BASELINE STATISTICS
 	var ctx = document.getElementById("leukemiaSummarizedBaselineStatistics").getContext('2d');
 	leukemiaSummarizedBaselineStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -410,23 +410,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -454,7 +454,7 @@ $( document ).ready(function() {
 		});
 	// END
 	
-	//LEUKEMIA SUMMARIZED FOLLOWUP STATISTICS
+	// LEUKEMIA SUMMARIZED FOLLOWUP STATISTICS
 	var ctx = document.getElementById("leukemiaSummarizedFollowupStatistics").getContext('2d');
 	leukemiaSummarizedFollowupStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -462,23 +462,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -506,13 +506,13 @@ $( document ).ready(function() {
 		});
 	// END
 	
-//LYMPHOMA
+// LYMPHOMA
 	
 	// LYMPHOMA AGE CHART
 	var pieData = {
 			  labels: [
-				  "Below 1",			  
-				  "1-10", 
+				 			  
+				  "0-10", 
 				  "11-20", 
 				  "21-30", 
 				  "31-40",
@@ -525,7 +525,7 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
 		                'rgba(182, 186, 215, 1)',
 		                'rgba(42, 58, 84, 1)',
@@ -547,7 +547,7 @@ $( document ).ready(function() {
 			  type: 'doughnut',
 			  data: pieData
 	});
-	//END OF AGE CHART
+	// END OF AGE CHART
 
 	// LYMPHOMA GENDER CHART
 	var pieData = {
@@ -556,7 +556,7 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      data: [50, 50],
+		      //data: [50, 50],
 		      backgroundColor: [
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 99, 132, 0.2)'
@@ -568,7 +568,7 @@ $( document ).ready(function() {
 		  type: 'doughnut',
 		  data: pieData
 	});
-	//END OF GENDER CHART
+	// END OF GENDER CHART
 	
 	// LYMPHOMA MODE OF TREATMENT BASELINE
 	var ctx = document.getElementById("lymphomaModeOfTreatment").getContext('2d');
@@ -578,16 +578,16 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic 1st Line',
-		          data: [ 5 ],
+		          //data: [ 5 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Pharmacologic 2nd Line / Salvage',
-		          data: [ 10 ],
+		          //data: [ 10 ],
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Supportive / Palliative Only',
-			      data: [ 15 ],
+			      //data: [ 15 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    }
 		  ],
@@ -616,7 +616,7 @@ $( document ).ready(function() {
 		        }
 		    }
 		});
-	//END OF LYMPHOMA MODE OF TREATMENT
+	// END OF LYMPHOMA MODE OF TREATMENT
 	
 	// LYMPHOMA BASELINE DISEASE STATUS
 	var ctx = document.getElementById("lymphomaChartBaselineDiseaseStatus").getContext('2d');
@@ -626,26 +626,26 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Newly Diagnosed',
-		          data: [ 2 ],
+		          //data: [ 2 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, 
 		        {
 			      label: 'CR',
-			      data: [ 6 ],
+			      //data: [ 6 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 				{
 				  label: 'PR',
-				  data: [ 10 ],
+				  //data: [ 10 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 			      label: 'NR or SD',
-			      data: [ 12 ],
+			      //data: [ 12 ],
 			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 			    }, {
 			      label: 'PD',
-			      data: [ 14 ],
+			      //data: [ 14 ],
 			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 			    }
 			],
@@ -677,7 +677,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END
+	// END
 	
 	// LYMPHOMA FOLLOWUP DISEASE STATUS
 	var ctx = document.getElementById("lymphomaChartFollowupDiseaseStatus").getContext('2d');
@@ -687,35 +687,35 @@ $( document ).ready(function() {
 		    datasets: [
 			        {
 				      label: 'CR',
-				      data: [ 6 ],
+				      //data: [ 6 ],
 				      backgroundColor: 'rgba(255, 143, 131, 1)'
 				    },
 					{
 					  label: 'PR',
-					  data: [ 10 ],
+					  //data: [ 10 ],
 					  backgroundColor: 'rgba(6, 124, 209, 1)'
 					},
 					{
 				      label: 'NR or SD',
-				      data: [ 12 ],
+				      //data: [ 12 ],
 				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				    }, {
 				      label: 'PD',
-				      data: [ 14 ],
+				      //data: [ 14 ],
 				      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				    },
 				    {
 					  label: 'RR',
-					  data: [ 10 ],
+					  //data: [ 10 ],
 					  backgroundColor: 'rgba(6, 124, 209, 1)'
 					},
 					{
 					   label: 'Dead',
-					   data: [ 12 ],
+					   //data: [ 12 ],
 					   backgroundColor: 'rgba(255, 99, 132, 0.2)'
 					}, {
 					   label: 'Others',
-					   data: [ 14 ],
+					   //data: [ 14 ],
 					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 					}
 			],
@@ -750,9 +750,9 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END
+	// END
 	
-	//LYMPHOMA SUMMARIZED BASELINE STATISTICS
+	// LYMPHOMA SUMMARIZED BASELINE STATISTICS
 	var ctx = document.getElementById("lymphomaSummarizedBaselineStatistics").getContext('2d');
 	lymphomaSummarizedBaselineStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -760,23 +760,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -803,7 +803,7 @@ $( document ).ready(function() {
 		});
 	// END
 	
-	//LYMPHOMA SUMMARIZED FOLLOWUP STATISTICS
+	// LYMPHOMA SUMMARIZED FOLLOWUP STATISTICS
 	var ctx = document.getElementById("lymphomaSummarizedFollowupStatistics").getContext('2d');
 	lymphomaSummarizedFollowupStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -811,23 +811,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -854,13 +854,13 @@ $( document ).ready(function() {
 		});
 	// END
 	
-//MYELOPROLIFERATIVE
+// MYELOPROLIFERATIVE
 	
 	// MYELOPROLIFERATIVE AGE CHART
 	var pieData = {
 			  labels: [
-				  "Below 1",			  
-				  "1-10", 
+				 			  
+				  "0-10", 
 				  "11-20", 
 				  "21-30", 
 				  "31-40",
@@ -873,7 +873,7 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
 		                'rgba(182, 186, 215, 1)',
 		                'rgba(42, 58, 84, 1)',
@@ -895,7 +895,7 @@ $( document ).ready(function() {
 			  type: 'doughnut',
 			  data: pieData
 	});
-	//END OF MYELOPROLIFERATIVE AGE CHART
+	// END OF MYELOPROLIFERATIVE AGE CHART
 
 	// MYELOPROLIFERATIVE GENDER CHART
 	var pieData = {
@@ -904,7 +904,7 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      data: [50, 50],
+		      //data: [50, 50],
 		      backgroundColor: [
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 99, 132, 0.2)'
@@ -916,9 +916,9 @@ $( document ).ready(function() {
 		  type: 'doughnut',
 		  data: pieData
 	});
-	//END OF GENDER CHART
+	// END OF GENDER CHART
 	
-	// MYELOPROLIFERATIVE MODE OF TREATMENT 
+	// MYELOPROLIFERATIVE MODE OF TREATMENT
 	var ctx = document.getElementById("myeloModeOfTreatment").getContext('2d');
 	myeloModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
@@ -926,22 +926,22 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic Treatment',
-		          data: [ 10 ],
+		          //data: [ 10 ],
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Supportive / Palliative',
-			      data: [ 15 ],
+			      //data: [ 15 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 		        {
 				  label: 'Watch and Wait',
-				  data: [ 15 ],
+				  //data: [ 15 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 				  label: 'Others',
-				  data: [ 15 ],
+				  //data: [ 15 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 				}
 		  ],
@@ -971,7 +971,7 @@ $( document ).ready(function() {
 		        }
 		    }
 		});
-	//END OF MYELOPROLIFERATIVE MODE OF TREATMENT
+	// END OF MYELOPROLIFERATIVE MODE OF TREATMENT
 	
 	// MYELOPROLIFERATIVE BASELINE DISEASE STATUS
 	var ctx = document.getElementById("myeloChartBaselineDiseaseStatus").getContext('2d');
@@ -981,40 +981,40 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'CR',
-		          data: [ 2 ],
+		          //data: [ 2 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, 
 		        {
 			      label: 'PR',
-			      data: [ 6 ],
+			      //data: [ 6 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 				{
 				  label: 'PD',
-				  data: [ 10 ],
+				  //data: [ 10 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 			      label: 'SD',
-			      data: [ 12 ],
+			      //data: [ 12 ],
 			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 			    }, {
 			      label: 'Hematologic Response',
-			      data: [ 14 ],
+			      //data: [ 14 ],
 			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 			    },
 				{
 				   label: 'Spleen Response ',
-				   data: [ 16 ],
+				   //data: [ 16 ],
 				   backgroundColor: 'rgba(6, 124, 209, 1)'
 			    },
 			    {
 				   label: 'Symptom Response',
-				   data: [ 18 ],
+				   //data: [ 18 ],
 				   backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				}, {
 				   label: 'Others',
-				   data: [ 20 ],
+				   //data: [ 20 ],
 				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				}
 			],
@@ -1049,7 +1049,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END
+	// END
 	
 	// MYELOPROLIFERATIVE FOLLOWUP DISEASE STATUS
 	var ctx = document.getElementById("myeloChartFollowupDiseaseStatus").getContext('2d');
@@ -1059,46 +1059,46 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 			          label: 'CR',
-			          data: [ 2 ],
+			          //data: [ 2 ],
 			          backgroundColor: 'rgba(139,69,19, 0.8)'
 			        }, 
 			        {
 				      label: 'PR',
-				      data: [ 6 ],
+				      //data: [ 6 ],
 				      backgroundColor: 'rgba(255, 143, 131, 1)'
 				    },
 					{
 					  label: 'PD',
-					  data: [ 10 ],
+					  //data: [ 10 ],
 					  backgroundColor: 'rgba(6, 124, 209, 1)'
 					},
 					{
 				      label: 'SD',
-				      data: [ 12 ],
+				      //data: [ 12 ],
 				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				    }, {
 				      label: 'Hematologic Response',
-				      data: [ 14 ],
+				      //data: [ 14 ],
 				      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				    },
 					{
 					   label: 'Spleen Response ',
-					   data: [ 16 ],
+					   //data: [ 16 ],
 					   backgroundColor: 'rgba(6, 124, 209, 1)'
 				    },
 				    {
 					   label: 'Symptom Response',
-					   data: [ 18 ],
+					   //data: [ 18 ],
 					   backgroundColor: 'rgba(255, 99, 132, 0.2)'
 					},
 					{
 					  label: 'Dead',
-				      data: [ 18 ],
+				      //data: [ 18 ],
 					  backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				    },
 					{
 					   label: 'Others',
-					   data: [ 20 ],
+					   //data: [ 20 ],
 					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 					}
 			],
@@ -1135,9 +1135,9 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END
+	// END
 	
-	//MYELOPROLIFERATIVE SUMMARIZED BASELINE STATISTICS
+	// MYELOPROLIFERATIVE SUMMARIZED BASELINE STATISTICS
 	var ctx = document.getElementById("myeloSummarizedBaselineStatistics").getContext('2d');
 	myeloSummarizedBaselineStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -1145,23 +1145,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -1188,7 +1188,7 @@ $( document ).ready(function() {
 		});
 	// END
 	
-	//MYELOPROLIFERATIVE SUMMARIZED FOLLOWUP STATISTICS
+	// MYELOPROLIFERATIVE SUMMARIZED FOLLOWUP STATISTICS
 	var ctx = document.getElementById("myeloSummarizedFollowupStatistics").getContext('2d');
 	myeloSummarizedFollowupStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -1196,23 +1196,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -1239,13 +1239,13 @@ $( document ).ready(function() {
 		});
 	// END OF MYELOPROLIFERATIVE
 	
-//PLASMA CELL
+// PLASMA CELL
 	
 	// PLASMA CELL AGE CHART
 	var pieData = {
 			  labels: [
-				  "Below 1",			  
-				  "1-10", 
+				 			  
+				  "0-10", 
 				  "11-20", 
 				  "21-30", 
 				  "31-40",
@@ -1258,7 +1258,7 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
 		                'rgba(182, 186, 215, 1)',
 		                'rgba(42, 58, 84, 1)',
@@ -1280,7 +1280,7 @@ $( document ).ready(function() {
 			  type: 'doughnut',
 			  data: pieData
 	});
-	//END OF PLASMA CELL AGE CHART
+	// END OF PLASMA CELL AGE CHART
 
 	// PLASMA CELL GENDER CHART
 	var pieData = {
@@ -1289,7 +1289,7 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      data: [50, 50],
+		      //data: [50, 50],
 		      backgroundColor: [
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 99, 132, 0.2)'
@@ -1301,9 +1301,9 @@ $( document ).ready(function() {
 		  type: 'doughnut',
 		  data: pieData
 	});
-	//END OF PLASMA CELL GENDER CHART
+	// END OF PLASMA CELL GENDER CHART
 	
-	// PLASMA CELL MODE OF TREATMENT 
+	// PLASMA CELL MODE OF TREATMENT
 	var ctx = document.getElementById("plasmaCellModeOfTreatment").getContext('2d');
 	plasmaCellModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
@@ -1311,37 +1311,37 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic For Transplant Candidate',
-		          data: [ 10 ],
+		          //data: [ 10 ],
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Pharmacologic For Non-Transplant Candidate',
-			      data: [ 15 ],
+			      //data: [ 15 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 		        {
 				  label: 'Maintenance',
-				  data: [ 17 ],
+				  //data: [ 17 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 				  label: 'Radiotherapy',
-				  data: [ 19 ],
+				  //data: [ 19 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 				},
 				{
 				  label: 'Supportive',
-				  data: [ 21 ],
+				  //data: [ 21 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 			    },
 			    {
 				  label: 'Watch and Wait',
-				  data: [ 23 ],
+				  //data: [ 23 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 			    },
 				{
 				  label: 'Others',
-				  data: [ 25 ],
+				  //data: [ 25 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 				}
 		  ],
@@ -1374,7 +1374,7 @@ $( document ).ready(function() {
 		        }
 		    }
 		});
-	//END OF PLASMA CELL MODE OF TREATMENT
+	// END OF PLASMA CELL MODE OF TREATMENT
 	
 	// PLASMA CELL BASELINE DISEASE STATUS
 	var ctx = document.getElementById("plasmaCellChartBaselineDiseaseStatus").getContext('2d');
@@ -1384,65 +1384,65 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'CR',
-		          data: [ 2 ],
+		          //data: [ 2 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, 
 		        {
 			      label: 'sCR',
-			      data: [ 4 ],
+			      //data: [ 4 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 				{
 				  label: 'Immunophenotypic CR',
-				  data: [ 6 ],
+				  //data: [ 6 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 			      label: 'Molecular CR',
-			      data: [ 8 ],
+			      //data: [ 8 ],
 			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 			    }, {
 			      label: 'VGPR',
-			      data: [ 10 ],
+			      //data: [ 10 ],
 			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 			    },
 				{
 				   label: 'PR',
-				   data: [ 12 ],
+				   //data: [ 12 ],
 				   backgroundColor: 'rgba(6, 124, 209, 1)'
 			    },
 			    {
 				   label: 'MR',
-				   data: [ 14 ],
+				   //data: [ 14 ],
 				   backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				}, {
 				   label: 'SD',
-				   data: [ 16 ],
+				   //data: [ 16 ],
 				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				},
 				{
 				   label: 'PD',
-				   data: [ 18 ],
+				   //data: [ 18 ],
 				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				},
 				{
 				   label: 'Relapse',
-				   data: [ 20 ],
+				   //data: [ 20 ],
 				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				},
 				{
 				   label: 'Clinical Relapse',
-				   data: [ 16 ],
+				   //data: [ 16 ],
 				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 			    },
 				{
 				   label: 'Relapse from CR',
-				   data: [ 18 ],
+				   //data: [ 18 ],
 				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				},
 				{
 				   label: 'Others',
-				   data: [ 20 ],
+				   //data: [ 20 ],
 				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				}
 			],
@@ -1483,7 +1483,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END OF PLASMA CELL BASELINE DISEASE STATUS
+	// END OF PLASMA CELL BASELINE DISEASE STATUS
 	
 	// PLASMA CELL FOLLOWUP DISEASE STATUS
 	var ctx = document.getElementById("plasmaCellChartFollowupDiseaseStatus").getContext('2d');
@@ -1493,70 +1493,70 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 			          label: 'CR',
-			          data: [ 2 ],
+			          //data: [ 2 ],
 			          backgroundColor: 'rgba(139,69,19, 0.8)'
 			        }, 
 			        {
 				      label: 'sCR',
-				      data: [ 4 ],
+				      //data: [ 4 ],
 				      backgroundColor: 'rgba(255, 143, 131, 1)'
 				    },
 					{
 					  label: 'Immunophenotypic CR',
-					  data: [ 6 ],
+					  //data: [ 6 ],
 					  backgroundColor: 'rgba(6, 124, 209, 1)'
 					},
 					{
 				      label: 'Molecular CR',
-				      data: [ 8 ],
+				      //data: [ 8 ],
 				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				    }, {
 				      label: 'VGPR',
-				      data: [ 10 ],
+				      //data: [ 10 ],
 				      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				    },
 					{
 					   label: 'PR',
-					   data: [ 12 ],
+					   //data: [ 12 ],
 					   backgroundColor: 'rgba(6, 124, 209, 1)'
 				    },
 				    {
 					   label: 'MR',
-					   data: [ 14 ],
+					   //data: [ 14 ],
 					   backgroundColor: 'rgba(255, 99, 132, 0.2)'
 					}, {
 					   label: 'SD',
-					   data: [ 16 ],
+					   //data: [ 16 ],
 					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 					},
 					{
 					   label: 'PD',
-					   data: [ 18 ],
+					   //data: [ 18 ],
 					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 					},
 					{
 					   label: 'Relapse',
-					   data: [ 20 ],
+					   //data: [ 20 ],
 					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 					},
 					{
 					   label: 'Clinical Relapse',
-					   data: [ 16 ],
+					   //data: [ 16 ],
 					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 					},
 					{
 					   label: 'Relapse from CR',
-					   data: [ 18 ],
+					   //data: [ 18 ],
 					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 				    },
 				    {
 					   label: 'Dead',
-					   data: [ 20 ],
+					   //data: [ 20 ],
 					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 					},
 				    {
 					   label: 'Others',
-					   data: [ 20 ],
+					   //data: [ 20 ],
 					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
 					}
 			],
@@ -1598,7 +1598,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END OF PLASMA CELL FOLLOWUP DISEASE STATUS
+	// END OF PLASMA CELL FOLLOWUP DISEASE STATUS
 	
 	// PLASMA CELL SUMMARIZED BASELINE STATISTICS
 	var ctx = document.getElementById("plasmaCellSummarizedBaselineStatistics").getContext('2d');
@@ -1608,23 +1608,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -1652,7 +1652,7 @@ $( document ).ready(function() {
 		});
 	// END OF PLASMA CELL SUMMARIZED BASELINE STATISTICS
 	
-	//PLASMA CELL SUMMARIZED FOLLOWUP STATISTICS
+	// PLASMA CELL SUMMARIZED FOLLOWUP STATISTICS
 	var ctx = document.getElementById("plasmaCellSummarizedFollowupStatistics").getContext('2d');
 	plasmaCellSummarizedFollowupStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -1660,23 +1660,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -1704,13 +1704,13 @@ $( document ).ready(function() {
 		});
 	// END OF PLASMA CELL SUMMARIZED FOLLOWUP STATISTICS
 	
-//AA PNH MDS
+// AA PNH MDS
 	
 	// AA PNH MDS AGE CHART
 	var pieData = {
 			  labels: [
-				  "Below 1",			  
-				  "1-10", 
+				 			  
+				  "0-10", 
 				  "11-20", 
 				  "21-30", 
 				  "31-40",
@@ -1723,7 +1723,7 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
 		                'rgba(182, 186, 215, 1)',
 		                'rgba(42, 58, 84, 1)',
@@ -1745,7 +1745,7 @@ $( document ).ready(function() {
 			  type: 'doughnut',
 			  data: pieData
 	});
-	//END OF AA PNH MDS AGE CHART
+	// END OF AA PNH MDS AGE CHART
 
 	// AA PNH MDS GENDER CHART
 	var pieData = {
@@ -1754,7 +1754,7 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      data: [50, 50],
+		      //data: [50, 50],
 		      backgroundColor: [
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 99, 132, 0.2)'
@@ -1766,9 +1766,9 @@ $( document ).ready(function() {
 		  type: 'doughnut',
 		  data: pieData
 	});
-	//END OF AA PNH MDS GENDER CHART
+	// END OF AA PNH MDS GENDER CHART
 	
-	// AA PNH MDS MODE OF TREATMENT 
+	// AA PNH MDS MODE OF TREATMENT
 	var ctx = document.getElementById("aapnhmdsModeOfTreatment").getContext('2d');
 	aapnhmdsModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
@@ -1776,27 +1776,27 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Hematopoietic Stem Cell Transplantation',
-		          data: [ 10 ],
+		          //data: [ 10 ],
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Pharmacologic Treatment ',
-			      data: [ 15 ],
+			      //data: [ 15 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 		        {
 				  label: 'Supportive',
-				  data: [ 17 ],
+				  //data: [ 17 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 				  label: 'Both Pharmacologic and Supportive',
-				  data: [ 19 ],
+				  //data: [ 19 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 				},
 				{
 				  label: 'Watch and Wait ',
-				  data: [ 21 ],
+				  //data: [ 21 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 			    },
 		  ],
@@ -1827,7 +1827,7 @@ $( document ).ready(function() {
 		        }
 		    }
 		});
-	//END OF AA PNH MDS MODE OF TREATMENT
+	// END OF AA PNH MDS MODE OF TREATMENT
 	
 	// AA PNH MDS BASELINE DISEASE STATUS
 	var ctx = document.getElementById("aapnhmdsChartBaselineDiseaseStatus").getContext('2d');
@@ -1837,22 +1837,22 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Hematologic Response',
-		          data: [ 2 ],
+		          //data: [ 2 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, 
 		        {
 			      label: 'Stable Disease',
-			      data: [ 4 ],
+			      //data: [ 4 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 				{
 				  label: 'Relapsed',
-				  data: [ 6 ],
+				  //data: [ 6 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 			      label: 'Others',
-			      data: [ 8 ],
+			      //data: [ 8 ],
 			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 			    }
 			],
@@ -1884,7 +1884,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END OF AA PNH MDS BASELINE DISEASE STATUS
+	// END OF AA PNH MDS BASELINE DISEASE STATUS
 	
 	// AA PNH MDS FOLLOWUP DISEASE STATUS
 	var ctx = document.getElementById("aapnhmdsChartFollowupDiseaseStatus").getContext('2d');
@@ -1894,27 +1894,27 @@ $( document ).ready(function() {
 		    datasets: [
 		    		{
 			          label: 'Hematologic Response',
-			          data: [ 2 ],
+			          //data: [ 2 ],
 			          backgroundColor: 'rgba(139,69,19, 0.8)'
 			        }, 
 			        {
 				      label: 'Stable Disease',
-				      data: [ 4 ],
+				      //data: [ 4 ],
 				      backgroundColor: 'rgba(255, 143, 131, 1)'
 				    },
 					{
 					  label: 'Relapsed',
-					  data: [ 6 ],
+					  //data: [ 6 ],
 					  backgroundColor: 'rgba(6, 124, 209, 1)'
 					},
 					{
 					  label: 'Dead',
-					  data: [ 8 ],
+					  //data: [ 8 ],
 					  backgroundColor: 'rgba(255, 99, 132, 0.2)'
 					},
 					{
 				      label: 'Others',
-				      data: [ 8 ],
+				      //data: [ 8 ],
 				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				    }
 			],
@@ -1947,7 +1947,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END OF AA PNH MDS FOLLOWUP DISEASE STATUS
+	// END OF AA PNH MDS FOLLOWUP DISEASE STATUS
 	
 	// AA PNH MDS SUMMARIZED BASELINE STATISTICS
 	var ctx = document.getElementById("aapnhmdsSummarizedBaselineStatistics").getContext('2d');
@@ -1957,23 +1957,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2001,7 +2001,7 @@ $( document ).ready(function() {
 		});
 	// END OF AA PNH MDS SUMMARIZED BASELINE STATISTICS
 	
-	//AA PNH MDS SUMMARIZED FOLLOWUP STATISTICS
+	// AA PNH MDS SUMMARIZED FOLLOWUP STATISTICS
 	var ctx = document.getElementById("aapnhmdsSummarizedFollowupStatistics").getContext('2d');
 	aapnhmdsSummarizedFollowupStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -2009,23 +2009,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2053,13 +2053,13 @@ $( document ).ready(function() {
 		});
 	// END OF AA PNH MDS SUMMARIZED FOLLOWUP STATISTICS
 	
-//PLATELET
+// PLATELET
 	
 	// PLATELET AGE CHART
 	var pieData = {
 			  labels: [
-				  "Below 1",			  
-				  "1-10", 
+				 			  
+				  "0-10", 
 				  "11-20", 
 				  "21-30", 
 				  "31-40",
@@ -2072,7 +2072,7 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
 		                'rgba(182, 186, 215, 1)',
 		                'rgba(42, 58, 84, 1)',
@@ -2094,16 +2094,16 @@ $( document ).ready(function() {
 			  type: 'doughnut',
 			  data: pieData
 	});
-	//END OF PLATELET AGE CHART
+	// END OF PLATELET AGE CHART
 
-	//PLATELET GENDER CHART
+	// PLATELET GENDER CHART
 	var pieData = {
 		  labels: [
 		  "Male", 
 		  "Female"],
 		  datasets: [
 		    {
-		      data: [50, 50],
+		      //data: [50, 50],
 		      backgroundColor: [
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 99, 132, 0.2)'
@@ -2115,9 +2115,9 @@ $( document ).ready(function() {
 		  type: 'doughnut',
 		  data: pieData
 	});
-	//END OF PLATELET GENDER CHART
+	// END OF PLATELET GENDER CHART
 	
-	// PLATELET MODE OF TREATMENT 
+	// PLATELET MODE OF TREATMENT
 	var ctx = document.getElementById("plateletModeOfTreatment").getContext('2d');
 	plateletModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
@@ -2125,32 +2125,32 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic 1st Line',
-		          data: [ 10 ],
+		          //data: [ 10 ],
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Pharmacologic 2nd Line',
-			      data: [ 15 ],
+			      //data: [ 15 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 		        {
 				  label: 'Supportive',
-				  data: [ 17 ],
+				  //data: [ 17 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 				  label: 'Both Pharmacologic and Supportive',
-				  data: [ 19 ],
+				  //data: [ 19 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 				},
 				{
 				  label: 'Watch and Wait ',
-				  data: [ 21 ],
+				  //data: [ 21 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 			    },
 			    {
 				  label: 'Others',
-				  data: [ 21 ],
+				  //data: [ 21 ],
 				  backgroundColor: 'rgba(245, 245, 220, 1)'
 				}
 		  ],
@@ -2182,7 +2182,7 @@ $( document ).ready(function() {
 		        }
 		    }
 		});
-	//END OF PLATELET MODE OF TREATMENT
+	// END OF PLATELET MODE OF TREATMENT
 	
 	// PLATELET BASELINE DISEASE STATUS
 	var ctx = document.getElementById("plateletChartBaselineDiseaseStatus").getContext('2d');
@@ -2192,22 +2192,22 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Newly Diagnosed ITP',
-		          data: [ 2 ],
+		          //data: [ 2 ],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, 
 		        {
 			      label: 'Persistetnt ITP',
-			      data: [ 4 ],
+			      //data: [ 4 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 				{
 				  label: 'Chronic ITP',
-				  data: [ 6 ],
+				  //data: [ 6 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				},
 				{
 			      label: 'Severe ITP',
-			      data: [ 8 ],
+			      //data: [ 8 ],
 			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 			    }
 			],
@@ -2239,7 +2239,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END OF PLATELET BASELINE DISEASE STATUS
+	// END OF PLATELET BASELINE DISEASE STATUS
 	
 	// PLATELET FOLLOWUP DISEASE STATUS
 	var ctx = document.getElementById("plateletChartFollowupDiseaseStatus").getContext('2d');
@@ -2249,42 +2249,42 @@ $( document ).ready(function() {
 		    datasets: [
 		    		{
 			          label: 'CR',
-			          data: [ 2 ],
+			          //data: [ 2 ],
 			          backgroundColor: 'rgba(139,69,19, 0.8)'
 			        }, 
 			        {
 				      label: 'R',
-				      data: [ 4 ],
+				      //data: [ 4 ],
 				      backgroundColor: 'rgba(255, 143, 131, 1)'
 				    },
 					{
 					  label: 'NR',
-					  data: [ 6 ],
+					  //data: [ 6 ],
 					  backgroundColor: 'rgba(6, 124, 209, 1)'
 					},
 					{
 					  label: 'Loss of CR or R',
-					  data: [ 8 ],
+					  //data: [ 8 ],
 					  backgroundColor: 'rgba(255, 99, 132, 0.2)'
 					},
 					{
 				      label: 'Refractory ITP',
-				      data: [ 8 ],
+				      //data: [ 8 ],
 				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
 				    },
 				    {
 					   label: 'Stable Disease',
-					   data: [ 8 ],
+					   //data: [ 8 ],
 					   backgroundColor: 'rgba(255, 99, 132, 0.2)'
 					},
 					{
 						label: 'Dead',
-						data: [ 8 ],
+						//data: [ 8 ],
 						backgroundColor: 'rgba(255, 99, 132, 0.2)'
 					},
 					{
 						label: 'Others',
-						data: [ 8 ],
+						//data: [ 8 ],
 						backgroundColor: 'rgba(255, 99, 132, 0.2)'
 					}
 			],
@@ -2320,7 +2320,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END OF PLATELET FOLLOWUP DISEASE STATUS
+	// END OF PLATELET FOLLOWUP DISEASE STATUS
 	
 	// PLATELET SUMMARIZED BASELINE STATISTICS
 	var ctx = document.getElementById("plateletSummarizedBaselineStatistics").getContext('2d');
@@ -2330,23 +2330,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2374,7 +2374,7 @@ $( document ).ready(function() {
 		});
 	// END OF PLATELET SUMMARIZED BASELINE STATISTICS
 	
-	//PLATELET SUMMARIZED FOLLOWUP STATISTICS
+	// PLATELET SUMMARIZED FOLLOWUP STATISTICS
 	var ctx = document.getElementById("plateletSummarizedFollowupStatistics").getContext('2d');
 	plateletSummarizedFollowupStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -2382,23 +2382,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2426,13 +2426,12 @@ $( document ).ready(function() {
 		});
 	// END OF PLATELET SUMMARIZED FOLLOWUP STATISTICS
 	
-//COAGULATION
+// COAGULATION
 	
 	// COAGULATION AGE CHART
 	var pieData = {
-			  labels: [
-				  "Below 1",			  
-				  "1-10", 
+			  labels: [		  
+				  "0-10", 
 				  "11-20", 
 				  "21-30", 
 				  "31-40",
@@ -2445,9 +2444,8 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      data: [10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
+			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
-		                'rgba(182, 186, 215, 1)',
 		                'rgba(42, 58, 84, 1)',
 		                'rgba(56, 96, 147, 1)',
 		                'rgba(88, 138, 189, 1)',
@@ -2467,16 +2465,16 @@ $( document ).ready(function() {
 			  type: 'doughnut',
 			  data: pieData
 	});
-	//END OF COAGULATION AGE CHART
+	// END OF COAGULATION AGE CHART
 
-	//COAGULATION GENDER CHART
+	// COAGULATION GENDER CHART
 	var pieData = {
 		  labels: [
 		  "Male", 
 		  "Female"],
 		  datasets: [
 		    {
-		      data: [50, 50],
+		      //data: [50, 50],
 		      backgroundColor: [
 	                'rgba(54, 162, 235, 0.2)',
 	                'rgba(255, 99, 132, 0.2)'
@@ -2488,9 +2486,9 @@ $( document ).ready(function() {
 		  type: 'doughnut',
 		  data: pieData
 	});
-	//END OF COAGULATION GENDER CHART
+	// END OF COAGULATION GENDER CHART
 	
-	// COAGULATION MODE OF TREATMENT 
+	// COAGULATION MODE OF TREATMENT
 	var ctx = document.getElementById("coagulationModeOfTreatment").getContext('2d');
 	coagulationModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
@@ -2498,17 +2496,17 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Factor Concentrates',
-		          data: [ 10 ],
+		          //data: [ 10 ],
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Blood Component',
-			      data: [ 15 ],
+			      //data: [ 15 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 		        {
 				  label: 'Others',
-				  data: [ 17 ],
+				  //data: [ 17 ],
 				  backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
 		  ],
@@ -2537,7 +2535,7 @@ $( document ).ready(function() {
 		        }
 		    }
 		});
-	//END OF COAGULATION MODE OF TREATMENT
+	// END OF COAGULATION MODE OF TREATMENT
 	
 	// COAGULATION BASELINE DISEASE STATUS
 	var ctx = document.getElementById("coagulationChartBaselineDiseaseStatus").getContext('2d');
@@ -2547,7 +2545,7 @@ $( document ).ready(function() {
 		    datasets: [
 		        {
 			      label: 'Stable Disease',
-			      data: [ 4 ],
+			      //data: [ 4 ],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    }
 			],
@@ -2576,7 +2574,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END OF COAGULATION BASELINE DISEASE STATUS
+	// END OF COAGULATION BASELINE DISEASE STATUS
 	
 	// COAGULATION FOLLOWUP DISEASE STATUS
 	var ctx = document.getElementById("coagulationChartFollowupDiseaseStatus").getContext('2d');
@@ -2586,7 +2584,7 @@ $( document ).ready(function() {
 		    datasets: [
 			        {
 				      label: 'Stable Disease',
-				      data: [ 4 ],
+				      //data: [ 4 ],
 				      backgroundColor: 'rgba(255, 143, 131, 1)'
 				    }
 			],
@@ -2615,7 +2613,7 @@ $( document ).ready(function() {
 		        },
 		    }
 		});
-	//END OF COAGULATION FOLLOWUP DISEASE STATUS
+	// END OF COAGULATION FOLLOWUP DISEASE STATUS
 	
 	// COAGULATION SUMMARIZED BASELINE STATISTICS
 	var ctx = document.getElementById("coagulationSummarizedBaselineStatistics").getContext('2d');
@@ -2625,23 +2623,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2669,7 +2667,7 @@ $( document ).ready(function() {
 		});
 	// END OF COAGULATION SUMMARIZED BASELINE STATISTICS
 	
-	//COAGULATION SUMMARIZED FOLLOWUP STATISTICS
+	// COAGULATION SUMMARIZED FOLLOWUP STATISTICS
 	var ctx = document.getElementById("coagulationSummarizedFollowupStatistics").getContext('2d');
 	coagulationSummarizedFollowupStatistics = new Chart(ctx, {
 		  type: 'bar',
@@ -2677,23 +2675,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          data: [2, 4, 6, 8],
+		          //data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          data: [5, 10, 15, 20],
+		          //data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      data: [10, 40],
+			      //data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  data: [7, 14, 21, 38],
+				  //data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2722,7 +2720,7 @@ $( document ).ready(function() {
 	// END OF COAGULATION SUMMARIZED FOLLOWUP STATISTICS
 	
 });
-//END OF CODE
+// END OF CODE
 
 
 function addData(chart, data) {
