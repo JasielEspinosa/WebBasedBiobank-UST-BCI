@@ -596,7 +596,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="lymphomaModeOfTreatment" width="600" height="700"></canvas>
+                      <canvas id="lymphomaChartModeOfTreatment" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -840,7 +840,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="myeloModeOfTreatment" width="600" height="700"></canvas>
+                      <canvas id="myeloChartModeOfTreatment" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -1085,7 +1085,7 @@
                         <!-- End of To and From Date -->
                       </div>
                       <div class="col-md-6 col-md-offset-3">
-                        <canvas id="plasmaCellModeOfTreatment" width="600" height="700"></canvas>
+                        <canvas id="plasmaCellChartModeOfTreatment" width="600" height="700"></canvas>
                       </div>
                     </div>
                     <div class="item">
@@ -1110,7 +1110,7 @@
                         <!-- End of To and From Date -->
                       </div>
                       <div class="col-md-6 col-md-offset-3">
-                        <canvas id="plasmaCellBaselineDiseaseStatus" width="600" height="700"></canvas>
+                        <canvas id="plasmaCellChartBaselineDiseaseStatus" width="600" height="700"></canvas>
                       </div>
                     </div>
                     <div class="item">
@@ -1135,7 +1135,7 @@
                         <!-- End of To and From Date -->
                       </div>
                       <div class="col-md-6 col-md-offset-3">
-                        <canvas id="plasmaCellFollowupDiseaseStatus" width="600" height="700"></canvas>
+                        <canvas id="plasmaCellChartFollowupDiseaseStatus" width="600" height="700"></canvas>
                       </div>
                     </div>
                     <div class="item">
@@ -1331,7 +1331,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="aapnhmdsModeOfTreatment" width="600" height="700"></canvas>
+                      <canvas id="aapnhmdsChartModeOfTreatment" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -1356,7 +1356,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="aapnhmdsBaselineDiseaseStatus" width="600" height="700"></canvas>
+                      <canvas id="aapnhmdsChartBaselineDiseaseStatus" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -1381,7 +1381,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="aapnhmdsFollowupDiseaseStatus" width="600" height="700"></canvas>
+                      <canvas id="aapnhmdsChartFollowupDiseaseStatus" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -1578,7 +1578,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="plateletModeOfTreatment" width="600" height="700"></canvas>
+                      <canvas id="plateletChartModeOfTreatment" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -1603,7 +1603,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="plateletBaselineDiseaseStatus" width="600" height="700"></canvas>
+                      <canvas id="plateletChartBaselineDiseaseStatus" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -1628,7 +1628,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="plateletFollowupDiseaseStatus" width="600" height="700"></canvas>
+                      <canvas id="plateletChartFollowupDiseaseStatus" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -1827,7 +1827,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="coagulationModeOfTreatment" width="600" height="700"></canvas>
+                      <canvas id="coagulationChartModeOfTreatment" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -1852,7 +1852,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="coagulationBaselineDiseaseStatus" width="600" height="700"></canvas>
+                      <canvas id="coagulationChartBaselineDiseaseStatus" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">
@@ -1877,7 +1877,7 @@
                       <!-- End of To and From Date -->
                     </div>
                     <div class="col-md-6 col-md-offset-3">
-                      <canvas id="coagulationFollowupDiseaseStatus" width="600" height="700"></canvas>
+                      <canvas id="coagulationChartFollowupDiseaseStatus" width="600" height="700"></canvas>
                     </div>
                   </div>
                   <div class="item">

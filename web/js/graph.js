@@ -10,7 +10,7 @@ var leukemiaSummarizedFollowupStatistics;
 // LYMPHOMA
 var lymphomaChartAge;
 var lymphomaChartGender;
-var lymphomaModeOfTreatment;
+var lymphomaChartModeOfTreatment;
 var lymphomaChartBaselineDiseaseStatus;
 var lymphomaChartFollowupDiseaseStatus;
 var lymphomaSummarizedBaselineStatistics;
@@ -19,7 +19,7 @@ var lymphomaSummarizedFollowupStatistics;
 // MYELOPROLFERATIVE
 var myeloChartAge;
 var myeloChartGender;
-var myeloModeOfTreatment;
+var myeloChartModeOfTreatment;
 var myeloChartBaselineDiseaseStatus;
 var myeloChartFollowupDiseaseStatus;
 var myeloSummarizedBaselineStatistics;
@@ -28,7 +28,7 @@ var myeloSummarizedFollowupStatistics;
 // PLASMA CELL
 var plasmaCellChartAge;
 var plasmaCellChartGender;
-var plasmaCellModeOfTreatment;
+var plasmaCellChartModeOfTreatment;
 var plasmaCellChartBaselineDiseaseStatus;
 var plasmaCellChartFollowupDiseaseStatus;
 var plasmaCellSummarizedBaselineStatistics;
@@ -37,7 +37,7 @@ var plasmaCellSummarizedFollowupStatistics;
 // AA PNH MDS
 var aapnhmdsChartAge;
 var aapnhmdsChartGender;
-var aapnhmdsModeOfTreatment;
+var aapnhmdsChartModeOfTreatment;
 var aapnhmdsChartBaselineDiseaseStatus;
 var aapnhmdsChartFollowupDiseaseStatus;
 var aapnhmdsSummarizedBaselineStatistics;
@@ -46,7 +46,7 @@ var aapnhmdsSummarizedFollowupStatistics;
 // PLATELET DISORDER
 var plateletChartAge;
 var plateletChartGender;
-var plateletModeOfTreatment;
+var plateletChartModeOfTreatment;
 var plateletChartBaselineDiseaseStatus;
 var plateletChartFollowupDiseaseStatus;
 var plateletSummarizedBaselineStatistics;
@@ -55,7 +55,7 @@ var plateletSummarizedFollowupStatistics;
 // COAGULATION
 var coagulationChartAge;
 var coagulationChartGender;
-var coagulationModeOfTreatment;
+var coagulationChartModeOfTreatment;
 var coagulationChartBaselineDiseaseStatus;
 var coagulationChartFollowupDiseaseStatus;
 var coagulationSummarizedBaselineStatistics;
@@ -571,8 +571,8 @@ $( document ).ready(function() {
 	// END OF GENDER CHART
 	
 	// LYMPHOMA MODE OF TREATMENT BASELINE
-	var ctx = document.getElementById("lymphomaModeOfTreatment").getContext('2d');
-	lymphomaModeOfTreatment = new Chart(ctx, {
+	var ctx = document.getElementById("lymphomaChartModeOfTreatment").getContext('2d');
+	lymphomaChartModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
@@ -919,8 +919,8 @@ $( document ).ready(function() {
 	// END OF GENDER CHART
 	
 	// MYELOPROLIFERATIVE MODE OF TREATMENT
-	var ctx = document.getElementById("myeloModeOfTreatment").getContext('2d');
-	myeloModeOfTreatment = new Chart(ctx, {
+	var ctx = document.getElementById("myeloChartModeOfTreatment").getContext('2d');
+	myeloChartModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
@@ -1304,8 +1304,8 @@ $( document ).ready(function() {
 	// END OF PLASMA CELL GENDER CHART
 	
 	// PLASMA CELL MODE OF TREATMENT
-	var ctx = document.getElementById("plasmaCellModeOfTreatment").getContext('2d');
-	plasmaCellModeOfTreatment = new Chart(ctx, {
+	var ctx = document.getElementById("plasmaCellChartModeOfTreatment").getContext('2d');
+	plasmaCellChartModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
@@ -1769,8 +1769,8 @@ $( document ).ready(function() {
 	// END OF AA PNH MDS GENDER CHART
 	
 	// AA PNH MDS MODE OF TREATMENT
-	var ctx = document.getElementById("aapnhmdsModeOfTreatment").getContext('2d');
-	aapnhmdsModeOfTreatment = new Chart(ctx, {
+	var ctx = document.getElementById("aapnhmdsChartModeOfTreatment").getContext('2d');
+	aapnhmdsChartModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
@@ -2118,8 +2118,8 @@ $( document ).ready(function() {
 	// END OF PLATELET GENDER CHART
 	
 	// PLATELET MODE OF TREATMENT
-	var ctx = document.getElementById("plateletModeOfTreatment").getContext('2d');
-	plateletModeOfTreatment = new Chart(ctx, {
+	var ctx = document.getElementById("plateletChartModeOfTreatment").getContext('2d');
+	plateletChartModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
@@ -2489,8 +2489,8 @@ $( document ).ready(function() {
 	// END OF COAGULATION GENDER CHART
 	
 	// COAGULATION MODE OF TREATMENT
-	var ctx = document.getElementById("coagulationModeOfTreatment").getContext('2d');
-	coagulationModeOfTreatment = new Chart(ctx, {
+	var ctx = document.getElementById("coagulationChartModeOfTreatment").getContext('2d');
+	coagulationChartModeOfTreatment = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
