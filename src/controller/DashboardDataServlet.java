@@ -133,7 +133,7 @@ public class DashboardDataServlet extends HttpServlet {
 
 						if (agePass == 1) {
 							System.out.println("p1");
-							String dateOfBirth = generalDataRS.getString("DateOfBirth");
+							String dateOfBirth = generalDataRS.getString("DateOfBirthDec");
 
 							DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 							LocalDateTime getLocalTime = LocalDateTime.now();
