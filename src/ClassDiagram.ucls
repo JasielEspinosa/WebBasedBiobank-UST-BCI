@@ -2,141 +2,1258 @@
 <class-diagram version="1.2.2" icons="true" automaticImage="JPEG" always-add-relationships="false" 
   generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
   router="FAN">  
-  <class id="1" language="java" name="controller.LoadProfileServlet" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/LoadProfileServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="-71" y="68"/>    
+  <class id="1" language="java" name="model.ChartStatusFollowup" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ChartStatusFollowup.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1611" width="234" x="24481" y="1368"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="controller.DeleteFollowUpServlet" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/DeleteFollowUpServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="257" y="68"/>    
+  <class id="2" language="java" name="controller.followup.add.AddLymphomaFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/add/AddLymphomaFollowUpServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="25452" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="controller.ProfileProcessServlet" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/ProfileProcessServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="585" y="68"/>    
+  <class id="3" language="java" name="controller.baseline.edit.EditLeukemiaBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/edit/EditLeukemiaBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="25780" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="controller.LoadVisitsServlet" project="USTHBiobank" 
+  <class id="4" language="java" name="controller.followup.load.LoadLymphomaFollowupServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/load/LoadLymphomaFollowupServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="62" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="model.ImagingStudiesBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ImagingStudiesBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="141" x="390" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="controller.LoadVisitsServlet" project="USTHBiobank" 
     file="/USTHBiobank/src/controller/LoadVisitsServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="913" y="68"/>    
+    <position height="171" width="288" x="571" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="controller.AuditServlet" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/AuditServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="1241" y="68"/>    
+  <class id="7" language="java" name="controller.baseline.edit.EditPlateletDisorderBaselineServlet" 
+    project="USTHBiobank" file="/USTHBiobank/src/controller/baseline/edit/EditPlateletDisorderBaselineServlet.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="26108" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="controller.UnarchivePatientServlet" project="USTHBiobank" 
+  <class id="8" language="java" name="controller.UnarchivePatientServlet" project="USTHBiobank" 
     file="/USTHBiobank/src/controller/UnarchivePatientServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="1569" y="68"/>    
+    <position height="171" width="288" x="899" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="controller.GenerateReportServlet" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/GenerateReportServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="1897" y="68"/>    
+  <class id="9" language="java" name="controller.PatientStatisticsServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/PatientStatisticsServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="1227" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="controller.LoadPatientsServlet" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/LoadPatientsServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="2225" y="68"/>    
+  <class id="10" language="java" name="controller.followup.edit.EditPlasmaCellFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/edit/EditPlasmaCellFollowUpServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="26436" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="controller.LogoutServlet" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/LogoutServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="2553" y="68"/>    
+  <class id="11" language="java" name="model.CytogeneticMolecularBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/CytogeneticMolecularBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="176" x="1555" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="controller.SessionHandlerServlet" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/SessionHandlerServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="2881" y="68"/>    
+  <class id="12" language="java" name="controller.ForgotPassword" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/ForgotPassword.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="288" x="1771" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="controller.UserManagementServlet" project="USTHBiobank" 
-    file="/USTHBiobank/src/controller/UserManagementServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="3209" y="68"/>    
+  <class id="13" language="java" name="model.BoneMarrowAspirateBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/BoneMarrowAspirateBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="174" x="2099" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="controller.GenerateAuditServlet" project="USTHBiobank" 
+  <class id="14" language="java" name="controller.baseline.edit.EditLymphomaBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/edit/EditLymphomaBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="26764" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="controller.followup.load.LoadLeukemiaFollowupServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/load/LoadLeukemiaFollowupServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="2313" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="controller.followup.load.LoadPlasmaCellFollowupServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/load/LoadPlasmaCellFollowupServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="2641" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="controller.LoadProfileServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/LoadProfileServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="2969" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="model.CoagulationTestingBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/CoagulationTestingBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="175" x="3297" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="controller.followup.add.AddLeukemiaFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/add/AddLeukemiaFollowUpServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="27092" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="model.AccountBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/AccountBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="459" width="249" x="3512" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="model.SearchBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/SearchBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="198" x="3801" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="controller.baseline.add.AddLymphomaBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/add/AddLymphomaBaselineServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="27420" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="model.SerumImmunofixationBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/SerumImmunofixationBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="179" x="4039" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="24" language="java" name="utility.database.SQLCommandsFollowUp" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/database/SQLCommandsFollowUp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1341" width="339" x="35156" y="1368"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="25" language="java" name="model.RegimenNonTransplantBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/RegimenNonTransplantBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="185" x="4258" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="controller.GenerateAuditServlet" project="USTHBiobank" 
     file="/USTHBiobank/src/controller/GenerateAuditServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="3537" y="68"/>    
+    <position height="225" width="288" x="4483" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="controller.ArchivePatientServlet" project="USTHBiobank" 
+  <class id="27" language="java" name="controller.baseline.edit.EditAAPNHMDSBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/edit/EditAAPNHMDSBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="27748" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="model.AddressBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/AddressBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="171" x="4811" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="model.PhysicalExamBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/PhysicalExamBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="729" width="266" x="5022" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="controller.ArchivePatientServlet" project="USTHBiobank" 
     file="/USTHBiobank/src/controller/ArchivePatientServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="3865" y="68"/>    
+    <position height="171" width="288" x="5328" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="controller.LoginServlet" project="USTHBiobank" 
+  <class id="31" language="java" name="model.PatientBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/PatientBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="513" width="166" x="5656" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="model.SerumProteinBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/SerumProteinBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="132" x="5862" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="controller.followup.add.AddMyeloFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/add/AddMyeloFollowUpServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="28076" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="security.TokenGenerator" project="USTHBiobank" 
+    file="/USTHBiobank/src/security/TokenGenerator.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="164" x="6034" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="security.SendEmail" project="USTHBiobank" 
+    file="/USTHBiobank/src/security/SendEmail.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="272" x="6238" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="utility.database.DatabaseConnection" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/database/DatabaseConnection.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="174" x="6550" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="controller.followup.edit.EditCoagulationDiseaseFollowUpServlet" 
+    project="USTHBiobank" file="/USTHBiobank/src/controller/followup/edit/EditCoagulationDiseaseFollowUpServlet.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="28404" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="model.ChartStatusBaseline" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ChartStatusBaseline.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1449" width="234" x="24755" y="1368"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="controller.baseline.add.AddLeukemiaBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/add/AddLeukemiaBaselineServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="28732" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="model.ChartModel" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ChartModel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="333" width="507" x="24905" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="controller.baseline.edit.EditCoagulationBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/edit/EditCoagulationBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="29060" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="controller.baseline.edit.EditMyeloBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/edit/EditMyeloBaselineServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="29388" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="controller.LoadPatientsServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/LoadPatientsServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="6764" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="controller.followup.edit.EditLymphomaFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/edit/EditLymphomaFollowUpServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="29716" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="model.AuditBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/AuditBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="236" x="7092" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="model.CytogeneticMolecularMDSBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/CytogeneticMolecularMDSBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="202" x="7368" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="model.ChemotherapyMedicationsBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ChemotherapyMedicationsBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="205" x="7610" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="model.TissueSpecimenBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/TissueSpecimenBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="206" x="7855" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="model.ModeOfTreatmentBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ModeOfTreatmentBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="187" x="8101" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="controller.LoginServlet" project="USTHBiobank" 
     file="/USTHBiobank/src/controller/LoginServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="4335" y="148"/>    
+    <position height="171" width="288" x="8328" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="controller.DashboardDataServlet" project="USTHBiobank" 
+  <class id="51" language="java" name="controller.baseline.load.LoadMyeloBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/load/LoadMyeloBaselineServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="8656" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="model.RegimenBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/RegimenBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="168" x="8984" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="model.ImmunohistochemistryBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ImmunohistochemistryBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="184" x="9192" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="model.DiseaseStatusBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/DiseaseStatusBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="178" x="9416" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="utility.database.Security" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/database/Security.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="130" x="9634" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="controller.baseline.load.LoadPlasmaCellBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/load/LoadPlasmaCellBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="9804" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="model.FamilyCancerBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/FamilyCancerBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="201" x="10132" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="controller.GenerateReportServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/GenerateReportServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="288" x="10373" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="model.MaintenanceTherapyBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/MaintenanceTherapyBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="228" x="10701" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="controller.followup.add.AddPlateletDisorderFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/add/AddPlateletDisorderFollowUpServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="30044" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="model.RiskScoreBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/RiskScoreBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="182" x="10969" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="model.MedicationsBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/MedicationsBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="165" x="11191" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="model.ArchivedPatientBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ArchivedPatientBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="153" width="177" x="11396" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="controller.followup.edit.EditAAPNHMDSFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/edit/EditAAPNHMDSFollowUpServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="30372" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="model.FollowUpBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/FollowUpBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="297" width="159" x="11613" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="controller.ResetPassword" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/ResetPassword.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="288" x="11812" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="controller.ProfileProcessServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/ProfileProcessServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="12140" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="controller.AuditServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/AuditServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="12468" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="model.ClinicalDataBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ClinicalDataBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1053" width="241" x="12796" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="model.OtherTreatmentBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/OtherTreatmentBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="184" x="13077" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="71" language="java" name="model.ISSStagingBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ISSStagingBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="177" x="13301" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="72" language="java" name="model.SerumFreeBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/SerumFreeBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="130" x="13518" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="73" language="java" name="controller.SessionHandlerServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/SessionHandlerServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="13688" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="74" language="java" name="model.HematopathologyBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/HematopathologyBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="172" x="14016" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="75" language="java" name="controller.baseline.load.LoadAAPNHMDSBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/load/LoadAAPNHMDSBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="14228" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="76" language="java" name="controller.followup.load.LoadPlateletDisorderFollowupServlet" 
+    project="USTHBiobank" file="/USTHBiobank/src/controller/followup/load/LoadPlateletDisorderFollowupServlet.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="14556" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="77" language="java" name="model.UpperGIEndoscopyBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/UpperGIEndoscopyBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="172" x="14884" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="78" language="java" name="model.ChartModeOfTreatmentBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ChartModeOfTreatmentBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="963" width="287" x="25029" y="1368"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="79" language="java" name="utility.database.SQLQueries" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/database/SQLQueries.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="93" x="15096" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="80" language="java" name="model.ChartAge" project="USTHBiobank" file="/USTHBiobank/src/model/ChartAge.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="129" x="25356" y="1368"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="81" language="java" name="controller.baseline.load.LoadErrorHandlingTestServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/load/LoadErrorHandlingTestServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="15229" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="82" language="java" name="model.HematologyBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/HematologyBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="729" width="182" x="15557" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="83" language="java" name="utility.database.SQLOperationsBaseline" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/database/SQLOperationsBaseline.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="2385" width="480" x="34636" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="84" language="java" name="controller.AdminHandler" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/AdminHandler.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="15779" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="85" language="java" name="controller.followup.edit.EditLeukemiaFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/edit/EditLeukemiaFollowUpServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="30700" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="86" language="java" name="controller.followup.load.LoadAAPNHMDSFollowupServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/load/LoadAAPNHMDSFollowupServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="16107" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="87" language="java" name="utility.database.SQLCommandsBaseline" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/database/SQLCommandsBaseline.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="3951" width="351" x="34636" y="1368"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="88" language="java" name="controller.LogoutServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/LogoutServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="16435" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="89" language="java" name="model.GeneralDataBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/GeneralDataBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="405" width="159" x="16763" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="90" language="java" name="controller.followup.load.LoadMyeloFollowupServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/load/LoadMyeloFollowupServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="16962" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="91" language="java" name="controller.baseline.load.LoadLeukemiaBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/load/LoadLeukemiaBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="17290" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="92" language="java" name="controller.baseline.add.AddAAPNHMDSBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/add/AddAAPNHMDSBaselineServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="31028" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="93" language="java" name="controller.baseline.add.AddCoagulationBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/add/AddCoagulationBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="31356" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="94" language="java" name="model.SeverityBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/SeverityBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="167" x="17618" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="95" language="java" name="utility.pdf.GenerateReport" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/pdf/GenerateReport.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="375" x="17825" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="96" language="java" name="controller.baseline.load.LoadCoagulationBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/load/LoadCoagulationBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="18240" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="97" language="java" name="controller.followup.add.AddCoagulationFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/add/AddCoagulationFollowUpServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="31684" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="98" language="java" name="controller.followup.add.AddAAPNHMDSFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/add/AddAAPNHMDSFollowUpServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="32012" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="99" language="java" name="controller.baseline.load.LoadLymphomaBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/load/LoadLymphomaBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="18568" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="100" language="java" name="controller.followup.edit.EditMyeloFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/edit/EditMyeloFollowUpServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="32340" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="101" language="java" name="model.OtherDiseasesBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/OtherDiseasesBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="166" x="18896" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="102" language="java" name="controller.DeleteFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/DeleteFollowUpServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="19102" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="103" language="java" name="model.RegimenTransplantBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/RegimenTransplantBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="168" x="19430" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="104" language="java" name="controller.baseline.edit.EditPlasmaCellBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/edit/EditPlasmaCellBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="32668" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="105" language="java" name="utility.database.SQLOperationsFollowUp" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/database/SQLOperationsFollowUp.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1071" width="426" x="35156" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="106" language="java" name="model.CytogeneticMolecularAAPNHBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/CytogeneticMolecularAAPNHBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="216" x="19638" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="107" language="java" name="controller.baseline.add.AddPlasmaCellBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/add/AddPlasmaCellBaselineServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="32996" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="108" language="java" name="model.FlowCytometryBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/FlowCytometryBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="137" x="19894" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="109" language="java" name="controller.UserManagementServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/UserManagementServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="20071" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="110" language="java" name="utility.factory.BeanFactory" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/factory/BeanFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="873" width="984" x="20399" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="111" language="java" name="controller.followup.edit.EditPlateletDisorderFollowUpServlet" 
+    project="USTHBiobank" file="/USTHBiobank/src/controller/followup/edit/EditPlateletDisorderFollowUpServlet.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="33324" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="112" language="java" name="controller.baseline.add.AddPlateletDisorderBaselineServlet" 
+    project="USTHBiobank" file="/USTHBiobank/src/controller/baseline/add/AddPlateletDisorderBaselineServlet.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="33652" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="113" language="java" name="model.UrineProteinBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/UrineProteinBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="130" x="21423" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="114" language="java" name="controller.CheckToken" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/CheckToken.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="288" x="21593" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="115" language="java" name="model.MedicalEventsBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/MedicalEventsBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="459" width="219" x="21921" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="116" language="java" name="controller.followup.load.LoadCoagulationDiseaseFollowupServlet" 
+    project="USTHBiobank" file="/USTHBiobank/src/controller/followup/load/LoadCoagulationDiseaseFollowupServlet.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="22180" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="117" language="java" name="model.StatisticsValueBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/StatisticsValueBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="189" x="22508" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="118" language="java" name="utility.database.SQLOperations" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/database/SQLOperations.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="999" width="312" x="35622" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="119" language="java" name="controller.baseline.add.AddMyeloBaselineServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/baseline/add/AddMyeloBaselineServlet.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="33980" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="120" language="java" name="model.OtherLaboratoriesBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/OtherLaboratoriesBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="999" width="273" x="22737" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="121" language="java" name="model.LaboratoryProfileBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/LaboratoryProfileBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="207" x="23050" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="122" language="java" name="utility.database.SQLCommands" project="USTHBiobank" 
+    file="/USTHBiobank/src/utility/database/SQLCommands.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="945" width="263" x="35622" y="1368"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="123" language="java" name="model.ClassificationBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/ClassificationBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="191" x="23297" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="124" language="java" name="model.PrognosticRiskScoringBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/PrognosticRiskScoringBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="241" x="23528" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="125" language="java" name="model.TreatmentBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/TreatmentBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="166" x="23809" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="126" language="java" name="model.BloodChemistryBean" project="USTHBiobank" 
+    file="/USTHBiobank/src/model/BloodChemistryBean.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1215" width="194" x="24015" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="127" language="java" name="controller.followup.add.AddPlasmaCellFollowUpServlet" project="USTHBiobank" 
+    file="/USTHBiobank/src/controller/followup/add/AddPlasmaCellFollowUpServlet.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="34308" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="128" language="java" name="controller.DashboardDataServlet" project="USTHBiobank" 
     file="/USTHBiobank/src/controller/DashboardDataServlet.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="288" x="4521" y="68"/>    
+    <position height="171" width="288" x="24249" y="-1057"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
+  <class id="129" language="java" name="controller.baseline.load.LoadPlateletDisorderBaselineServlet" 
+    project="USTHBiobank" file="/USTHBiobank/src/controller/baseline/load/LoadPlateletDisorderBaselineServlet.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="288" x="24577" y="-1057"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="130">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="131" name="chartStatusBaseline">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="132" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="133">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="134" name="chartStatusFollowup">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="135" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="136">    
+    <end type="SOURCE" refId="118"/>    
+    <end type="TARGET" refId="122"/>  
+  </realization>  
+  <realization id="137">    
+    <end type="SOURCE" refId="105"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <association id="138">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="139" name="chartAge">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="140" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="80" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="141">    
+    <end type="SOURCE" refId="40" navigable="false">      
+      <attribute id="142" name="chartModeOfTreatmentBean">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="143" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="78" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="144">    
+    <end type="SOURCE" refId="83"/>    
+    <end type="TARGET" refId="87"/>  
+  </realization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
