@@ -110,8 +110,7 @@ public interface SQLCommands {
 
 	String CHART_GET_GENERAL_DATA = "SELECT *, AES_DECRYPT(DateOfBirth,'" + key + "') as DateOfBirthDec FROM GeneralDataTable WHERE GeneralDataID = ?";
 
-	
-	
+
 	// forgot pass
 	String GET_FORGOTPASS_EMAIL = "Select AccountID from AccountTable where UserName = ?";
 	String GET_TOKEN = "Select *,DATE_FORMAT(`expiration`, '%Y-%m-%d %H:%i:%S') AS `expirationNoMili` from TokenTable where Token = ?";
@@ -145,8 +144,7 @@ public interface SQLCommands {
 			+ "') <= ? order by AES_DECRYPT(FollowupTable.DateOfEntry,'" + key + "') asc";
 	String PATIENT_STATS_FOLLOWUP_ALL = "Select *, AES_DECRYPT(DateOfEntry,'" + key
 			+ "') as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
-			+ "PatientTable.PatientID = ? order by AES_DECRYPT(FollowupTable.DateOfEntry,'" + key
-			+ "') asc";
+			+ "PatientTable.PatientID = ? order by AES_DECRYPT(FollowupTable.DateOfEntry,'" + key + "') asc";
 	String PATIENT_STATS_FOLLOWUP_FROM = "Select *, AES_DECRYPT(DateOfEntry,'" + key
 			+ "') as DateOfEntryDec from FollowupTable inner join PatientTable on FollowupTable.PatientID=PatientTable.PatientID where "
 			+ "PatientTable.PatientID = ? and AES_DECRYPT(FollowupTable.DateOfEntry,'" + key

@@ -1191,7 +1191,7 @@
    <!-- Patient Statistics Modal  -->
    <div class="modal fade centered-modal" id="patstats" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
       data-backdrop="static">
-      <div class="modal-dialog modal-sm">
+      <div class="modal-dialog modal-md">
          <div class="modal-content">
             <div class="modal-header">
                Patient Statistics:

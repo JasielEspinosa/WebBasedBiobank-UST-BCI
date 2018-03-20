@@ -47,13 +47,11 @@ public class DashboardDataServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// params from js
 		int agePass = Integer.parseInt(request.getParameter("agePass"));
@@ -162,8 +160,7 @@ public class DashboardDataServlet extends HttpServlet {
 							ResultSet treatmentRS = SQLOperationsBaseline.getTreatment(treatmentID, connection);
 							treatmentRS.first();
 							int modeOfTreatmentID = treatmentRS.getInt("ModeOfTreatmentID");
-							ResultSet modeOfTreatmentRS = SQLOperationsBaseline.getModeOfTreatment(modeOfTreatmentID,
-									connection);
+							ResultSet modeOfTreatmentRS = SQLOperationsBaseline.getModeOfTreatment(modeOfTreatmentID, connection);
 							modeOfTreatmentRS.first();
 
 							String modeOfTreatmentValue = modeOfTreatmentRS.getString("ModeOfTreatment");
@@ -174,10 +171,13 @@ public class DashboardDataServlet extends HttpServlet {
 							System.out.println("p3");
 							diseaseStatusID = patientListRS.getInt("DiseaseStatusID");
 							diseaseStatusRS = SQLOperationsBaseline.getDiseaseStatus(diseaseStatusID, connection);
-							diseaseStatusRS.first();
+							//diseaseStatusRS.first();
 
-							String diseaseStatusBaselineValue = diseaseStatusRS.getString("DiseaseStatus");
-							chartStatusBaseline.setDiseaseStatus(diseaseStatusBaselineValue);
+							if (diseaseStatusRS.first()) {
+								String diseaseStatusBaselineValue = diseaseStatusRS.getString("DiseaseStatus");
+								chartStatusBaseline.setDiseaseStatus(diseaseStatusBaselineValue);
+							}
+
 						}
 					}
 				}
@@ -203,14 +203,16 @@ public class DashboardDataServlet extends HttpServlet {
 					while (followupRS.next()) {
 						diseaseStatusID = followupRS.getInt("DiseaseStatusID");
 						diseaseStatusRS = SQLOperationsBaseline.getDiseaseStatus(diseaseStatusID, connection);
-						diseaseStatusRS.first();
-						String diseaseStatusFollowupValue = diseaseStatusRS.getString("DiseaseStatus");
-						chartStatusFollowup.setDiseaseStatus(diseaseStatusFollowupValue);
+						//diseaseStatusRS.first();
+						if (diseaseStatusRS.first()) {
+							String diseaseStatusBaselineValue = diseaseStatusRS.getString("DiseaseStatus");
+							chartStatusBaseline.setDiseaseStatus(diseaseStatusBaselineValue);
+						}
 					}
 				}
 
-				dashboardData = new ChartModel(maleChart, femaleChart, chartAge, chartModeOfTreatmentBean,
-						chartStatusBaseline, chartStatusFollowup);
+				dashboardData = new ChartModel(maleChart, femaleChart, chartAge, chartModeOfTreatmentBean, chartStatusBaseline,
+						chartStatusFollowup);
 				String json = new Gson().toJson(dashboardData);
 				response.getWriter().write(json);
 

@@ -399,8 +399,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getChartPatients(int diseaseID,Connection connection,String sortFrom, String sortTo) {
+
+	public static ResultSet getChartPatients(int diseaseID, Connection connection, String sortFrom, String sortTo) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_PATIENTS);
@@ -413,8 +413,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getChartPatientsAll(int diseaseID,Connection connection) {
+
+	public static ResultSet getChartPatientsAll(int diseaseID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_PATIENTS_ALL);
@@ -425,8 +425,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getChartPatientsFrom(int diseaseID,Connection connection,String sortFrom) {
+
+	public static ResultSet getChartPatientsFrom(int diseaseID, Connection connection, String sortFrom) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_PATIENTS_FROM);
@@ -438,8 +438,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getChartPatientsTo(int diseaseID,Connection connection,String sortTo) {
+
+	public static ResultSet getChartPatientsTo(int diseaseID, Connection connection, String sortTo) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_PATIENTS_TO);
@@ -451,7 +451,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getChartGeneralData(int generalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -464,8 +464,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getChartFollowup(int action, Connection connection,String sortFrom, String sortTo) {
+
+	public static ResultSet getChartFollowup(int action, Connection connection, String sortFrom, String sortTo) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_FOLLOWUP);
@@ -478,7 +478,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getChartFollowupAll(int action, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -490,8 +490,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getChartFollowupFrom(int action, Connection connection,String sortFrom) {
+
+	public static ResultSet getChartFollowupFrom(int action, Connection connection, String sortFrom) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_FOLLOWUP_FROM);
@@ -503,8 +503,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getChartFollowupTo(int action, Connection connection,String sortTo) {
+
+	public static ResultSet getChartFollowupTo(int action, Connection connection, String sortTo) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(CHART_GET_FOLLOWUP);
@@ -516,7 +516,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getAccountID(String username, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -528,7 +528,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
+
 	public static ResultSet getToken(String token, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -540,8 +540,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static boolean updatePassword(int accountID,String password, Connection connection) {
+
+	public static boolean updatePassword(int accountID, String password, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(UPDATE_PASSWORD);
 			pstmt.setString(1, password);
@@ -554,8 +554,8 @@ public class SQLOperations implements SQLCommands {
 
 		return true;
 	}
-	
-	public static boolean insertToken(int accountID,String token,String expiration, Connection connection) {
+
+	public static boolean insertToken(int accountID, String token, String expiration, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(INSERT_TOKEN);
 			pstmt.setInt(1, accountID);
@@ -569,7 +569,8 @@ public class SQLOperations implements SQLCommands {
 
 		return true;
 	}
-	public static ResultSet getStatus(int patientID,Connection connection,String sortFrom, String sortTo) {
+
+	public static ResultSet getStatus(int patientID, Connection connection, String sortFrom, String sortTo) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS);
@@ -582,8 +583,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getStatusAll(int patientID,Connection connection) {
+
+	public static ResultSet getStatusAll(int patientID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_ALL);
@@ -594,8 +595,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getStatusFrom(int patientID,Connection connection,String sortFrom) {
+
+	public static ResultSet getStatusFrom(int patientID, Connection connection, String sortFrom) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FROM);
@@ -607,8 +608,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getStatusTo(int patientID,Connection connection,String sortTo) {
+
+	public static ResultSet getStatusTo(int patientID, Connection connection, String sortTo) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_TO);
@@ -620,8 +621,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getFollowupStatus(int patientID,Connection connection,String sortFrom, String sortTo) {
+
+	public static ResultSet getFollowupStatus(int patientID, Connection connection, String sortFrom, String sortTo) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FOLLOWUP);
@@ -634,8 +635,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getFollowupStatusAll(int patientID,Connection connection) {
+
+	public static ResultSet getFollowupStatusAll(int patientID, Connection connection) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FOLLOWUP_ALL);
@@ -646,8 +647,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getFollowupStatusFrom(int patientID,Connection connection,String sortFrom) {
+
+	public static ResultSet getFollowupStatusFrom(int patientID, Connection connection, String sortFrom) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FOLLOWUP_FROM);
@@ -659,8 +660,8 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
-	public static ResultSet getFollowupStatusTo(int patientID,Connection connection,String sortTo) {
+
+	public static ResultSet getFollowupStatusTo(int patientID, Connection connection, String sortTo) {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(PATIENT_STATS_FOLLOWUP_TO);
@@ -672,5 +673,5 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-	
+
 }
