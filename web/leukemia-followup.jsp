@@ -140,7 +140,7 @@
                               class="fas fa-wrench dropdown-icons--margin"></i> Settings
                         </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="login.jsp"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                        <li><a style="font-weight: bold;" onclick="logout()"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
                               Logout
                         </a></li>
                      </ul></li>

@@ -87,7 +87,7 @@
                               class="fas fa-wrench dropdown-icons--margin"></i> Settings
                         </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="login.jsp"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                        <li><a style="font-weight: bold;" onclick="logout()"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
                               Logout
                         </a></li>
                      </ul></li>
@@ -177,11 +177,11 @@
                                  </div>
                                  <div class="form-group">
                                     <label for="message-text" class="control-label">Password:</label> <input type="password"
-                                       class="form-control" id="password" required> <span class="hint" id="pwdHint"></span>
+                                       class="form-control" id="password"> <span class="hint" id="pwdHint"></span>
                                  </div>
                                  <div class="form-group">
                                     <label for="message-text" class="control-label">Confirm Password:</label> <input type="password"
-                                       class="form-control" id="confirmPassword" required>
+                                       class="form-control" id="confirmPassword">
                                  </div>
                                  <div class="form-group">
                                     <label for="message-text" class="control-label">Last Name:</label> <input type="text"
@@ -245,5 +245,6 @@
          </div>
       </div>
    </div>
+   <script src="js/logout.js"></script>
 </body>
 </html>

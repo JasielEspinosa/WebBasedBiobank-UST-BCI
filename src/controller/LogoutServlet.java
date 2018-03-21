@@ -46,9 +46,14 @@ public class LogoutServlet extends HttpServlet {
 
 		HttpSession session = request.getSession(true);
 
-		AuditBean auditBean = new AuditBean("Logout", (String) session.getAttribute("name"), (String) session.getAttribute("name"),
-				Integer.parseInt((String) session.getAttribute("accountID")));
-		SQLOperations.addAudit(auditBean, connection);
+		try {
+
+			AuditBean auditBean = new AuditBean("Logout", (String) session.getAttribute("name"), (String) session.getAttribute("name"),
+					Integer.parseInt((String) session.getAttribute("accountID")));
+			SQLOperations.addAudit(auditBean, connection);
+		} catch (Exception e) {
+
+		}
 
 		session.invalidate();
 

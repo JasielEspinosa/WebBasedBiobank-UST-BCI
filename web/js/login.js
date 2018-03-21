@@ -30,3 +30,11 @@ $('#loginForm').submit(function() {
 $('.close').click(function () {
     $(this).parent().removeClass('in'); 
 });
+
+$('document').ready(function() {
+	if (localStorage.getItem("autoLogout") != "") {
+		// alert(localStorage.getItem("id1"));
+		swal("Hey!", "You have been automatically logged out due to exceeding the session time limit", "info");
+		localStorage.setItem("autoLogout", "");
+	}
+});

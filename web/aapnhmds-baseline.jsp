@@ -101,7 +101,7 @@
                               class="fas fa-wrench dropdown-icons--margin"></i> Settings
                         </a></li>
                         <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="login.jsp"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
+                        <li><a style="font-weight: bold;" onclick="logout()"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
                               Logout
                         </a></li>
                      </ul></li>
@@ -1227,8 +1227,7 @@
 																var leukemiaFollowPatStatsChart = new Chart(ctx, {
 																	type : 'line',
 																	data : {
-																		xLabels : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
-																				'Sept', 'Oct', 'Nov', 'Dec' ],
+																		xLabels : [ ],
 																		yLabels : [ 'Hematologic Response', 'Stable Disease', 'Relapsed',
 																				'Dead', 'Others' ],
 																		datasets : [ {
@@ -1236,8 +1235,7 @@
 																			backgroundColor : 'rgba(6, 124, 209, 1)',
 																			fill : false
 																		} ],
-																		labels : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
-																				'Sept', 'Oct', 'Nov', 'Dec' ],
+																		labels : [ ],
 																		borderWidth : 1,
 																	},
 																	options : {

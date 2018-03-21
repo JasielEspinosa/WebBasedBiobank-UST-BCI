@@ -44,7 +44,7 @@ $('document').ready(function() {
 	$("#editPatientBtn").click(function() {
 		if (upperActionState == true) {
 			editBind();
-			alert('edit triggered')
+			alert('Patient ready to edit')
 		}
 	});
 	$("#archPatientBtn").click(function() {

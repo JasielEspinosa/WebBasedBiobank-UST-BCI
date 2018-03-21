@@ -33,13 +33,13 @@ $('document').ready(function() {
 	});
 	$("#patientStatistics").click(function() {
 		if (upperActionState == true) {
-
+			
 		}
 	});
 	$("#editPatientBtn").click(function() {
 		if (upperActionState == true) {
 			editBind();
-			alert('edit triggered')
+			alert('Patient ready to edit')
 		}
 	});
 	$("#archPatientBtn").click(function() {

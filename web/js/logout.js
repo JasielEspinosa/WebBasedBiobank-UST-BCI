@@ -3,6 +3,7 @@ $('document').ready(function(){
     $( document ).on( "idle.idleTimer", function(event, elem, obj){
     	$.post('LogoutServlet', function (response) {
     		if(response.redirect){
+    			localStorage.setItem("autoLogout", "val");
  		       window.location = response.redirect;
  		       return;
  		}

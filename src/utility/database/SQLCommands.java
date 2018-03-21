@@ -18,7 +18,7 @@ public interface SQLCommands {
 	String DELETE_USER = "DELETE FROM AccountTable where AccountID = ?";
 	String GET_PATIENT_LIST = "SELECT * FROM PatientTable inner join generaldatatable on patienttable.GeneralDataID=generaldatatable.GeneralDataID"
 			+ " where PatientTable.PatientID = ? or GeneralDataTable."
-			+ "LastName = ? or GeneralDataTable.FirstName = ? or GeneralDataTable.MiddleName = ? and PatientTable.DiseaseID = ? and PatientTable.Active = 1";
+			+ "LastName = ?  or GeneralDataTable.FirstName = ? or GeneralDataTable.MiddleName = ?  and PatientTable.DiseaseID = ? and PatientTable.Active = 1";
 	String GET_ARCHIVED_PATIENT_LIST = "Select * from PatientTable where Active = 0";
 	String ARCHIVE_PATIENT = "Update PatientTable set Active = 0 where PatientID = ?";
 	String UNARCHIVE_PATIENT = "Update PatientTable set Active = 1 where PatientID = ?";
