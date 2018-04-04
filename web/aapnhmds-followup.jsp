@@ -326,7 +326,7 @@
                         <div class="form-group" id="specifyOtherDiseaseMedication" style="display: none;">
                           <label class="control-label col-sm-6">Result</label>
                           <div class="col-sm-6">
-                            <input type="text" class="form-control" name="specifyOtherDiseaseMedication">
+                            <textarea rows="4" name="specifyOtherDiseaseMedication"></textarea>
                           </div>
                         </div>
                         <br />
@@ -693,13 +693,13 @@
                         <div class="form-group" id="diseaseStatusOthers" style="display: none;">
                           <label class="control-label col-lg-5">Others</label>
                           <div class="col-lg-5">
-                            <input type="text" class="form-control" name="diseaseStatusOthers" />
+                            <textarea rows="4" class="form-control" name="diseaseStatusOthers"></textarea>
                           </div>
                         </div>
                         <div class="form-group">
                           <label class="control-label col-lg-5">Special Notes</label>
                           <div class="col-lg-5">
-                            <input type="text" class="form-control" name="specialNotes" />
+                            <textarea rows="4" cols="50" class="form-control" name="specialNotes" ></textarea>
                           </div>
                         </div>
                       </div>

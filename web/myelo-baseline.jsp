@@ -376,7 +376,7 @@
                                     <div class="form-group" id="diagnosisOthers" style="display: none;">
                                        <label class="control-label col-sm-3">Others Please Specify</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="diagnosisOthers">
+                                          <textarea rows="4" class="form-control" name="diagnosisOthers"></textarea>
                                        </div>
                                     </div>
                                     <!-- Prognostic Risk Scoring Used -->
@@ -395,7 +395,7 @@
                                     <div class="form-group" id="prognosticRiskScoringothers" style="display: none;">
                                        <label class="control-label col-sm-3">Others Please Specify</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="prognosticRiskScoringothers">
+                                          <textarea rows="4" class="form-control" name="prognosticRiskScoringothers"></textarea>
                                        </div>
                                     </div>
                                     <!-- Risk Score -->
@@ -416,7 +416,7 @@
                                     <div class="form-group" id="riskScoreOthers" style="display: none;">
                                        <label class="control-label col-sm-3">Others Please Specify</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="riskScoreOthers">
+                                          <textarea rows="4" class="form-control" name="riskScoreOthers"></textarea>
                                        </div>
                                     </div>
                                     <!-- Chief Complaint -->
@@ -442,7 +442,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Other Symptoms</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherSymptoms">
+                                          <textarea rows="4" class="form-control" name="otherSymptoms"></textarea>
                                        </div>
                                     </div>
                                     <!-- Family History of Cancer -->
@@ -478,7 +478,7 @@
                                     <div class="form-group" id="otherDiseasesInTheFamily" style="display: none;">
                                        <label class="control-label col-sm-3">Other Diseases in the Family</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherDiseasesInTheFamily">
+                                          <textarea rows="4" class="form-control" name="otherDiseasesInTheFamily"></textarea>
                                        </div>
                                     </div>
                                     <!-- Comorbidities -->
@@ -677,7 +677,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-lg-3">Other findings</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherFindings" />
+                                          <textarea rows="4" class="form-control" name="otherFindings"></textarea>
                                        </div>
                                     </div>
                                  </div>
@@ -943,7 +943,7 @@
                                     <div class="form-group" id="diseaseStatusOthers" style="display: none;">
                                        <label class="control-label col-sm-4">Others Please Specify</label>
                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="diseaseStatusOthers">
+                                          <textarea rows="4" class="form-control" name="diseaseStatusOthers"></textarea>
                                        </div>
                                     </div>
                                     <!-- End of Disease Status -->

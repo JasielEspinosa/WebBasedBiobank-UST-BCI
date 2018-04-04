@@ -201,7 +201,7 @@ function loadPatientData(id) {
 
 		$("[name='dateOfBloodCollection']").val(response["dateOfBloodCollection"])
 
-		$("[name='hemoglobin']").val(response["hemoglobin"])
+		$("[name='hemoglobin']").val(response["hemoglobin"])		
 		$("[name='hematocrit']").val(response["hematocrit"])
 		$("[name='whiteBloodCells']").val(response["whiteBloodCells"])
 		$("[name='neutrophils']").val(response["neutrophils"])

@@ -414,7 +414,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Other Symptoms</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherSymptoms">
+                                          <textarea rows="4" class="form-control" name="otherSymptoms"></textarea>
                                        </div>
                                     </div>
                                     <!-- Family History of Cancer -->
@@ -451,7 +451,7 @@
                                     <div class="form-group" id="otherDiseasesInTheFamily" style="display: none;">
                                        <label class="control-label col-sm-3">Other Diseases in the Family</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherDiseasesInTheFamily">
+                                          <textarea rows="4" class="form-control" name="otherDiseasesInTheFamily"></textarea>
                                        </div>
                                     </div>
                                     <!-- Comorbidities -->
@@ -585,7 +585,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-lg-3">Other pertinent findings</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherFindings" />
+                                          <textarea rows="4" class="form-control" name="otherFindings"></textarea>
                                        </div>
                                     </div>
                                     <!-- End of form -->
@@ -999,7 +999,7 @@
                                     <div class="form-group" id="otherRegimens" style="display: none;">
                                        <label class="control-label col-lg-4">Other Regimens</label>
                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="otherRegimens" />
+                                          <textarea rows="4" class="form-control" name="otherRegimens"></textarea>
                                        </div>
                                     </div>
                                     <!-- Regimen/ Protocol (For transplant candidates) -->
@@ -1029,7 +1029,7 @@
                                     <div class="form-group" id="otherRegimensTransplant" style="display: none;">
                                        <label class="control-label col-lg-4">Other Regimens</label>
                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="otherRegimensTransplant" />
+                                          <textarea rows="4" class="form-control" name="otherRegimensTransplant"></textarea>
                                        </div>
                                     </div>
                                     <!-- Regimen/ Protocol (For nontransplant candidates) -->
@@ -1062,7 +1062,7 @@
                                     <div class="form-group" id="otherRegimensNonTransplant" style="display: none;">
                                        <label class="control-label col-lg-4">Other Regimens</label>
                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="otherRegimensNonTransplant" />
+                                          <textarea rows="4" class="form-control" name="otherRegimensNonTransplant"></textarea>
                                        </div>
                                     </div>
                                     <!-- Maintenance Therapy -->
@@ -1086,7 +1086,7 @@
                                     <div class="form-group" id="otherRegimensMaintenanceTherapy" style="display: none;">
                                        <label class="control-label col-lg-4">Other Regimens</label>
                                        <div class="col-sm-8">
-                                          <input type="text" class="form-control" name="otherRegimensMaintenanceTherapy" />
+                                          <textarea rows="4" class="form-control" name="otherRegimensMaintenanceTherapy"></textarea>
                                        </div>
                                     </div>
                                     <!-- Cycle Number -->
@@ -1159,7 +1159,7 @@
                                     <div class="form-group" id="otherMedications" style="display: none">
                                        <label class="control-label col-sm-4">Other Medications</label>
                                        <div class="col-lg-8">
-                                          <input type="text" class="form-control" name="otherMedications" />
+                                          <textarea rows="4" class="form-control" name="otherMedications"></textarea>
                                        </div>
                                     </div>
                                     <!-- Date Started -->
@@ -1215,7 +1215,7 @@
                                           <div class="form-group" id="diseaseStatusOthers" style="display: none;">
                                              <label class="control-label col-lg-4">Others</label>
                                              <div class="col-lg-5">
-                                                <input type="text" class="form-control" name="diseaseStatusOthers" />
+                                                <textarea rows="4" class="form-control" name="diseaseStatusOthers"></textarea>
                                              </div>
                                           </div>
                                        </div>

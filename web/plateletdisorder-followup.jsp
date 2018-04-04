@@ -500,13 +500,13 @@
                                     <div class="form-group" id="diseaseStatusOthers" style="display: none;">
                                        <label class="control-label col-lg-5">Other Please Specify</label>
                                        <div class="col-lg-5">
-                                          <input type="text" class="form-control" name="diseaseStatusOthers" />
+                                          <textarea rows="4"  class="form-control" name="diseaseStatusOthers"></textarea>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-lg-5">Special Notes</label>
                                        <div class="col-lg-5">
-                                          <input type="text" class="form-control" name="specialNotes" />
+                                          <textarea rows="4" class="form-control" name="specialNotes"></textarea>
                                        </div>
                                     </div>
                                  </div>

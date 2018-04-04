@@ -337,7 +337,7 @@
                                     <div class="form-group" id="diagnosisOthers" style="display: none;">
                                        <label class="control-label col-sm-3">Others please specify</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="diagnosisOthers">
+                                          <textarea rows="4" class="form-control" name="diagnosisOthers"></textarea>
                                        </div>
                                     </div>
                                     <!-- Chief Complaint -->
@@ -362,7 +362,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Other Symptoms</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherSymptoms">
+                                          <textarea rows="4"  class="form-control" name="otherSymptoms"></textarea>
                                        </div>
                                     </div>
                                     <!-- Family History of Cancer -->
@@ -399,7 +399,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Other Diseases in the Family</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherDiseasesInTheFamily">
+                                          <textarea rows="4"  class="form-control" name="otherDiseasesInTheFamily"></textarea>
                                        </div>
                                     </div>
                                     <!-- Comorbidities -->
@@ -547,7 +547,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-lg-3">Other findings</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherFindings" />
+                                          <textarea rows="4"  class="form-control" name="otherFindings"></textarea>
                                        </div>
                                     </div>
                                     <!-- End of form -->

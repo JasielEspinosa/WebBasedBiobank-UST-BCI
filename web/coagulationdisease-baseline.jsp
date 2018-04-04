@@ -343,7 +343,7 @@
                                     <div class="form-group" id="diagnosisOthers" style="display: none;">
                                        <label class="control-label col-sm-3">Others Please Specify</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="diagnosisOthers">
+                                          <textarea rows="4" cols="50" class="form-control" name="diagnosisOthers"></textarea>
                                        </div>
                                     </div>
                                     <!-- Severity -->
@@ -370,7 +370,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-3">Other Symptoms</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherSymptoms">
+                                          <textarea rows="4" class="form-control" name="otherSymptoms"></textarea>
                                        </div>
                                     </div>
                                     <!-- Family History of Bleeding Diathesis -->
@@ -407,7 +407,7 @@
                                     <div class="form-group" id="otherDiseasesInTheFamily" style="display: none;">
                                        <label class="control-label col-sm-3">Other Diseases in the Family</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherDiseasesInTheFamily">
+                                          <textarea rows="4" class="form-control" name="otherDiseasesInTheFamily"></textarea>
                                        </div>
                                     </div>
                                     <!-- Comorbidities -->
@@ -566,7 +566,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-lg-3">Other findings</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="otherFindings" />
+                                          <textarea rows="4" class="form-control" name="otherFindings"></textarea>
                                        </div>
                                     </div>
                                  </div>
@@ -798,7 +798,7 @@
                                     <div class="form-group" id="treatmentSpecify" style="display: none;">
                                        <label class="control-label col-lg-3">Others Please Specify</label>
                                        <div class="col-sm-9">
-                                          <input type="text" class="form-control" name="treatmentSpecify" />
+                                          <textarea rows="4" class="form-control" name="treatmentSpecify"></textarea>
                                        </div>
                                     </div>
                                  </div>

@@ -263,6 +263,7 @@
                     Platelets help your blood clot. When you have leukemia, the bone marrow starts to make a lot of
                     abnormal white blood cells, called leukemia cells. They don't do the work of normal white blood
                     cells. They grow faster than normal cells, and they don't stop growing when they should.</p>
+                  <p class="pull-right"><b>( MedicalNewsToday, 2017 )</b></p>  
                 </div>
               </div>
               <!-- General Statistics Carousel -->
@@ -504,6 +505,7 @@
                     includes a large, diverse group of cancers of immune system cells. Non-Hodgkin lymphomas can be
                     further divided into cancers that have an indolent (slow-growing) course and those that have an
                     aggressive (fast-growing) course.</p>
+                    <p class="pull-right"><b>( WebMD, 2015 )</b></p>
                 </div>
               </div>
               <!-- General Statistics Carousel -->
@@ -744,6 +746,7 @@
                     syndromes, and myelodysplastic/myeloproliferative neoplasms. Chronic myeloproliferative neoplasms
                     are diseases in which the bone marrow makes too many red blood cells, platelets, or certain white
                     blood cells.</p>
+                    <p class="pull-right"><b>( eMedicineHealth, 2014 )</b></p>
                 </div>
               </div>
 
@@ -988,6 +991,7 @@
                     gammopathies in which a clone or multiple clones of pre-malignant or malignant plasma cells
                     (sometimes in association with lymphoplasmacytoid cells or B lymphocytes) over-produce and secrete
                     into the blood stream a myeloma protein, i.e. an abnormal monoclonal antibody or portion thereof.</p>
+                    <p class="pull-right"><b>( MedicineNet, 2016 )</b></p>
                 </div>
 
                 <!-- General Statistics Carousel -->
@@ -1235,6 +1239,7 @@
                     hematopoietic stem cells that reside there are damaged. This causes a deficiency of all three blood
                     cell types (pancytopenia): red blood cells (anemia), white blood cells (leukopenia), and platelets
                     (thrombocytopenia).</p>
+                    <p class="pull-right"><b>( HealthLine, 2013 )</b></p>
                 </div>
               </div>
 
@@ -1479,6 +1484,7 @@
                     heal and prevent bleeding by forming blood clots. Problems can result from having too few or too
                     many platelets, or from platelets that do not work properly. If your blood has a low number of
                     platelets, it is called thrombocytopenia.</p>
+                    <p class="pull-right"><b>( MedicinePlus, 2017 )</b></p>
                 </div>
               </div>
 
@@ -1729,6 +1735,7 @@
                     disorders. (PT results are typically reported as INR.) Occasionally, decompensated liver disease
                     also causes excessive fibrinolysis and bleeding due to decreased hepatic synthesis of alpha
                     2-antiplasmin.</p>
+                    <p class="pull-right"><b>( Haemotologica, 2014 )</b></p>
                 </div>
               </div>
 

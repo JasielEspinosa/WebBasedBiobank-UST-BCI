@@ -345,7 +345,7 @@
                         <div class="form-group">
                           <label class="control-label col-sm-6">Special Notes</label>
                           <div class="col-sm-6">
-                            <input type="text" class="form-control" name="specialNotes">
+                            <textarea rows="4" class="form-control" name="specialNotes"></textarea>
                           </div>
                         </div>
                       </div>
