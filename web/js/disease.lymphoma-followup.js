@@ -262,11 +262,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddLymphomaFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditLymphomaFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

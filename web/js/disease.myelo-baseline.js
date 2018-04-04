@@ -352,11 +352,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddMyeloBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditMyeloBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

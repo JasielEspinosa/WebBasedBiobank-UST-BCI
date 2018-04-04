@@ -131,6 +131,17 @@ public class EditAAPNHMDSFollowUpServlet extends HttpServlet implements DefaultV
 		if (diseaseStatus.equalsIgnoreCase("Others")) {
 			otherDisease = request.getParameter("diseaseStatusOthers");
 		}
+		
+
+		if (diseaseStatus.contains("&#40;") || diseaseStatus.contains("&#41;")) {
+			diseaseStatus = diseaseStatus.replaceAll("&#40;", "(");
+			diseaseStatus = diseaseStatus.replaceAll("&#41;", ")");
+		}
+
+		if (otherDisease.contains("&#40;") || otherDisease.contains("&#41;")) {
+			otherDisease = otherDisease.replaceAll("&#40;", "(");
+			otherDisease = otherDisease.replaceAll("&#41;", ")");
+		}
 
 		String notes = request.getParameter("specialNotes");
 

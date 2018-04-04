@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import model.AuditBean;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
-import utility.database.Security;
 
 @WebServlet("/DeleteFollowUpServlet")
 public class DeleteFollowUpServlet extends HttpServlet {
@@ -62,9 +61,8 @@ public class DeleteFollowUpServlet extends HttpServlet {
 					HttpSession session = request.getSession(true);
 
 					AuditBean auditBean = new AuditBean("Delete Follow Up Patient",
-							Security.decrypt(generalDataRS.getString("LastName")) + ", "
-									+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
-									+ Security.decrypt(generalDataRS.getString("MiddleName")),
+							generalDataRS.getString("LastNameDec") + ", " + generalDataRS.getString("FirstNameDec") + " " + generalDataRS
+									.getString("MiddleNameDec"),
 							(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 					SQLOperations.addAudit(auditBean, connection);
 

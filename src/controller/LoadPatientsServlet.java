@@ -19,7 +19,6 @@ import com.google.gson.Gson;
 import model.AuditBean;
 import model.SearchBean;
 import utility.database.SQLOperations;
-import utility.database.Security;
 
 @WebServlet("/LoadPatientsServlet")
 public class LoadPatientsServlet extends HttpServlet {
@@ -54,27 +53,26 @@ public class LoadPatientsServlet extends HttpServlet {
 		List<SearchBean> list = new ArrayList<>();
 
 		String action = request.getParameter("action");
-		String search = request.getParameter("search");
+		String search = request.getParameter("search").toUpperCase();
 
 		if (connection != null) {
-			ResultSet patientListRS = SQLOperations.getPatientList(action, search, connection);
+			ResultSet patientListRS = SQLOperations.getPatientList(action, "%"+search+"%", connection);
 			try {
+
 				while (patientListRS.next()) {
 
-					SearchBean sb = new SearchBean(patientListRS.getInt("PatientTable.PatientID"),
-							Security.decrypt(patientListRS.getString("GeneralDataTable.LastName")),
-							Security.decrypt(patientListRS.getString("GeneralDataTable.FirstName")),
-							Security.decrypt(patientListRS.getString("GeneralDataTable.MiddleName")));
+					SearchBean sb = new SearchBean(patientListRS.getInt("PatientTable.PatientID"), patientListRS.getString("LastNameDec"),
+							patientListRS.getString("FirstNameDec"), patientListRS.getString("MiddleNameDec"));
 
 					list.add(sb);
 				}
-				
+
 				HttpSession session = request.getSession(true);
 
 				AuditBean auditBean = new AuditBean("Load Patients", (String) session.getAttribute("name"),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
-				
+
 				String json = new Gson().toJson(list);
 				response.getWriter().write(json);
 			} catch (SQLException e) {

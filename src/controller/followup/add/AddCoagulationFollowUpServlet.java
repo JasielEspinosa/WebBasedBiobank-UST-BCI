@@ -102,8 +102,8 @@ public class AddCoagulationFollowUpServlet extends HttpServlet implements Defaul
 			HttpSession session = request.getSession(true);
 
 			AuditBean auditBean = new AuditBean("Add Follow Up patient in Coagulation Disorder",
-					Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(generalDataRS.getString("FirstName"))
-							+ " " + Security.decrypt(generalDataRS.getString("MiddleName")),
+					Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security
+							.decrypt(generalDataRS.getString("FirstName")) + " " + Security.decrypt(generalDataRS.getString("MiddleName")),
 					(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 			SQLOperations.addAudit(auditBean, connection);
 

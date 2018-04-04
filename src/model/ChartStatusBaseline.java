@@ -1,10 +1,10 @@
 package model;
 
 public class ChartStatusBaseline {
-	
+
 	int hematologicResponse = 0;
-	int relapsed  = 0;
-	int others  = 0;
+	int relapsed = 0;
+	int others = 0;
 	int newlyDiagnosed = 0;
 	int cr = 0;
 	int nCR = 0;
@@ -27,83 +27,83 @@ public class ChartStatusBaseline {
 	int persistentITP = 0;
 	int chronicITP = 0;
 	int severeITP = 0;
-	
+
 	public void setDiseaseStatus(String diseaseStatus) {
-		if(diseaseStatus.equals("Hematologic response")) {
+		if (diseaseStatus.equals("Hematologic response")) {
 			hematologicResponse++;
 		}
-		if(diseaseStatus.equals("Relapsed")) {
+		if (diseaseStatus.equals("Relapsed")) {
 			relapsed++;
 		}
-		if(diseaseStatus.equals("Others")) {
+		if (diseaseStatus.equals("Others")) {
 			others++;
 		}
-		if(diseaseStatus.equals("Newly Diagnosed")) {
+		if (diseaseStatus.equals("Newly Diagnosed")) {
 			newlyDiagnosed++;
 		}
-		if(diseaseStatus.equals("CR (Complete Remission)") || diseaseStatus.equals("CR (Complete Response)") || diseaseStatus.contains("Complete Remission")) {
+		if (diseaseStatus.equals("CR (Complete Remission)") || diseaseStatus.equals("CR (Complete Response)") || diseaseStatus
+				.contains("Complete Remission")) {
 			cr++;
 		}
-		if(diseaseStatus.equals("nCR (near CR)")) {
+		if (diseaseStatus.equals("nCR (near CR)")) {
 			nCR++;
 		}
-		if(diseaseStatus.equals("PR (Partial Response)")) {
+		if (diseaseStatus.equals("PR (Partial Response)")) {
 			pr++;
 		}
-		if(diseaseStatus.equals("PD (Progressive Disease)")) {
+		if (diseaseStatus.equals("PD (Progressive Disease)")) {
 			pd++;
 		}
-		if(diseaseStatus.equals("SD (Stable Disease)") || diseaseStatus.equals("NR (No Response) or SD (Stable Disease)") || diseaseStatus.equals("Stable Disease")) {
+		if (diseaseStatus.equals("SD (Stable Disease)") || diseaseStatus.equals("NR (No Response) or SD (Stable Disease)") || diseaseStatus
+				.equals("Stable Disease")) {
 			sd++;
 		}
-		if(diseaseStatus.equals("Complete Hematologic response")) {
+		if (diseaseStatus.equals("Complete Hematologic Response")) {
 			completeHematologicResponse++;
 		}
-		if(diseaseStatus.equals("Complete Cytogenetic Response")) {
+		if (diseaseStatus.equals("Complete Cytogenetic Response")) {
 			completeCytogeneticResponse++;
 		}
-		if(diseaseStatus.equals("Major Molecular Response")) {
+		if (diseaseStatus.equals("Major Molecular Response")) {
 			majorMolecularResponse++;
 		}
-		if(diseaseStatus.equals("Spleen response")) {
+		if (diseaseStatus.equals("Spleen Response")) {
 			spleenResponse++;
 		}
-		if(diseaseStatus.equals("Symptom response")) {
+		if (diseaseStatus.equals("Symptom Response")) {
 			symptomResponse++;
 		}
-		if(diseaseStatus.equals("sCR (stringent complete remission)")) {
+		if (diseaseStatus.equals("sCR (stringent complete remission)")) {
 			sCR++;
 		}
-		if(diseaseStatus.equals("immunophenotypic CR")) {
+		if (diseaseStatus.equals("Immunophenotypic CR") || diseaseStatus.equals("Immunophenotypic")) {
 			symptomResponse++;
 		}
-		if(diseaseStatus.equals("VGPR (Very Good Partial Response)")) {
+		if (diseaseStatus.equals("VGPR (Very Good Partial Response)")) {
 			vgpr++;
 		}
-		if(diseaseStatus.equals("MR (minimal response for relapsed refractory myeloma only)")) {
+		if (diseaseStatus.equals("MR (minimal response for relapsed refractory myeloma only)")) {
 			mr++;
 		}
-		if(diseaseStatus.equals("Clinical Relapse")) {
+		if (diseaseStatus.equals("Clinical Relapse")) {
 			clinicalRelapse++;
 		}
-		if(diseaseStatus.equals("Relapse from CR")) {
+		if (diseaseStatus.equals("Relapse from CR")) {
 			relapseFromCR++;
 		}
-		if(diseaseStatus.contains("Newly Diagnosed ITP")) {
+		if (diseaseStatus.contains("Newly Diagnosed ITP")) {
 			newlyDiagnosedITP++;
 		}
-		if(diseaseStatus.contains("Persistent ITP")) {
+		if (diseaseStatus.contains("Persistent ITP")) {
 			persistentITP++;
 		}
-		if(diseaseStatus.contains("Chronic ITP")) {
+		if (diseaseStatus.contains("Chronic ITP")) {
 			chronicITP++;
 		}
-		if(diseaseStatus.contains("Severe ITP")) {
+		if (diseaseStatus.contains("Severe ITP")) {
 			severeITP++;
 		}
-		
-		
-		
+
 	}
 
 	public int getHematologicResponse() {
@@ -305,7 +305,5 @@ public class ChartStatusBaseline {
 	public void setSevereITP(int severeITP) {
 		this.severeITP = severeITP;
 	}
-	
-	
 
 }

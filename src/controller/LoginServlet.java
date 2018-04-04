@@ -76,6 +76,11 @@ public class LoginServlet extends HttpServlet {
 
 					session.setAttribute("accountID", rs.getString("AccountID"));
 					session.setAttribute("name", rs.getString("LastName") + ", " + rs.getString("FirstName") + " " + middleName);
+
+					session.setAttribute("lastName", rs.getString("LastName"));
+					session.setAttribute("firstName", rs.getString("FirstName"));
+					session.setAttribute("middleName", middleName);
+
 					session.setAttribute("role", rs.getInt("RoleID"));
 
 					String redirectURL = "dashboard-main.jsp";
@@ -88,8 +93,8 @@ public class LoginServlet extends HttpServlet {
 					response.getWriter().write(json);
 					System.out.println("Successful login");
 
-					AuditBean auditBean = new AuditBean("Login", (String) session.getAttribute("name"), (String) session.getAttribute("name"),
-							Integer.parseInt((String) session.getAttribute("accountID")));
+					AuditBean auditBean = new AuditBean("Login", (String) session.getAttribute("name"),
+							(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 					SQLOperations.addAudit(auditBean, connection);
 
 				} else {

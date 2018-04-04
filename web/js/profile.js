@@ -18,6 +18,9 @@ var elemPW = document.getElementById("password");
 var success = false;
 
 function fnValidatePassword(evt) {
+
+	var emptyPassword;
+
 	// enter your regular expression to check for at least 8 characters here
 	var regexPasswordLength = /.{8,}/; // test for at least 8 characters
 	// enter your regular expression to check for an uppercase letter here
@@ -31,35 +34,39 @@ function fnValidatePassword(evt) {
 
 	success = true;
 
-	if (!regexPasswordLength.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must be at least 8 characters.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}
+	if (elemPW.value != "") {
 
-	if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must contain an uppercase character.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}
+		if (!regexPasswordLength.test(elemPW.value)) {
+			pwdHint.innerHTML = 'Password must be at least 8 characters.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}
 
-	if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must contain an lowercase character.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}
+		if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
+			pwdHint.innerHTML = 'Password must contain an uppercase character.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}
 
-	if (!regexPasswordContainsNumber.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must contain a number.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}
+		if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
+			pwdHint.innerHTML = 'Password must contain an lowercase character.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}
 
-/*	if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must contain a special character.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}*/
+		if (!regexPasswordContainsNumber.test(elemPW.value)) {
+			pwdHint.innerHTML = 'Password must contain a number.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}
+
+		/*	if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
+				pwdHint.innerHTML = 'Password must contain a special character.';
+				pwdHint.style.display = "inline";
+				success = false;
+			}*/
+
+	}
 
 	if (success) {
 		// looks goood

@@ -51,9 +51,9 @@ public class EditMyeloBaselineServlet extends HttpServlet implements DefaultValu
 		int disease = 5;
 
 		// GENERAL DATA
-		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
-		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
-		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
+		String lastName = request.getParameter("lastName").trim().toUpperCase();
+		String firstName = request.getParameter("firstName").trim().toUpperCase();
+		String middleInitial = request.getParameter("middleInitial").trim().toUpperCase();
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
@@ -176,11 +176,26 @@ public class EditMyeloBaselineServlet extends HttpServlet implements DefaultValu
 		String modeOfTreatment = request.getParameter("treatment");
 		String medications = request.getParameter("medications");
 		String dateStarted = request.getParameter("dateStarted");
-		
+
 		String diseaseStatus = request.getParameter("diseaseStatus");
 		String diseaseStatusOthers = noValue;
 		if (diseaseStatus.equalsIgnoreCase("Others")) {
 			diseaseStatusOthers = request.getParameter("diseaseStatusOthers");
+		}
+
+		if (modeOfTreatment.contains("&#40;") || modeOfTreatment.contains("&#41;")) {
+			modeOfTreatment = modeOfTreatment.replaceAll("&#40;", "(");
+			modeOfTreatment = modeOfTreatment.replaceAll("&#41;", ")");
+		}
+
+		if (diseaseStatus.contains("&#40;") || diseaseStatus.contains("&#41;")) {
+			diseaseStatus = diseaseStatus.replaceAll("&#40;", "(");
+			diseaseStatus = diseaseStatus.replaceAll("&#41;", ")");
+		}
+
+		if (diseaseStatusOthers.contains("&#40;") || diseaseStatusOthers.contains("&#41;")) {
+			diseaseStatusOthers = diseaseStatusOthers.replaceAll("&#40;", "(");
+			diseaseStatusOthers = diseaseStatusOthers.replaceAll("&#41;", ")");
 		}
 
 		String addressArray[] = address.split(",");
@@ -223,11 +238,12 @@ public class EditMyeloBaselineServlet extends HttpServlet implements DefaultValu
 
 				int modeOfTreatmentID = treatment.getInt("ModeOfTreatmentID");
 				int chemoMedicationID = treatment.getInt("ChemoMedicationID");
-				
+
 				int diseaseStatusID = patientInfo.getInt("DiseaseStatusID");
 
 				//start of edit
-				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]), Security.encrypt(addressArray[2]));
+				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]).trim(),
+						Security.encrypt(addressArray[1]).trim(), Security.encrypt(addressArray[2]).trim());
 				if (connection != null) {
 					if (SQLOperationsBaseline.editAddress(ab, connection, disease, addressID)) {
 						System.out.println("Successful insert AddressBean");
@@ -260,7 +276,8 @@ public class EditMyeloBaselineServlet extends HttpServlet implements DefaultValu
 					System.out.println("Invalid connection GeneralDataBean");
 				}
 
-				PrognosticRiskScoringBean prsb = BeanFactory.getPrognosticRiskScoringBean(prognosticRiskScoring, prognosticRiskScoringOthers);
+				PrognosticRiskScoringBean prsb = BeanFactory.getPrognosticRiskScoringBean(prognosticRiskScoring,
+						prognosticRiskScoringOthers);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editPrognosticRiskScoring(prsb, connection, disease, prognosticRiskScoringID)) {
 						System.out.println("Successful insert PrognosticRiskScoringBean");
@@ -294,9 +311,9 @@ public class EditMyeloBaselineServlet extends HttpServlet implements DefaultValu
 					System.out.println("Invalid connection PhysicalExamBean");
 				}
 
-				ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, diagnosisOthers, "", chiefComplaint, "",
-						constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeSpecify, chemicalExposureSpecify,
-						"", "", otherFindings);
+				ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, diagnosisOthers, "",
+						chiefComplaint, "", constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify,
+						alchoholIntakeSpecify, chemicalExposureSpecify, "", "", otherFindings);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editClinicalData(cdb, connection, disease, clinicalDataID)) {
 						System.out.println("Successful insert ClinicalDataBean");
@@ -430,7 +447,7 @@ public class EditMyeloBaselineServlet extends HttpServlet implements DefaultValu
 				} else {
 					System.out.println("Invalid connection TreatmentBean");
 				}
-				
+
 				DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, "", diseaseStatusOthers);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editDiseaseStatus(dsb, connection, disease, diseaseStatusID)) {
@@ -441,12 +458,12 @@ public class EditMyeloBaselineServlet extends HttpServlet implements DefaultValu
 				} else {
 					System.out.println("Invalid connection DiseaseStatusBean");
 				}
-				
+
 				HttpSession session = request.getSession(true);
 
 				AuditBean auditBean = new AuditBean("Edit patient in Myeloproliferative Neoplasm Disease Baseline",
-						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
-								+ request.getParameter("middleInitial").trim().toUpperCase(),
+						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim()
+								.toUpperCase() + " " + request.getParameter("middleInitial").trim().toUpperCase(),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
 

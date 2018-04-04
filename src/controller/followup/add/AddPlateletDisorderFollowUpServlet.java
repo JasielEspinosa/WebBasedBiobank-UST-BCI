@@ -104,6 +104,16 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 				otherDisease = request.getParameter("diseaseStatusOthers");
 			}
 
+			if (qualityOfResponse.contains("&#40;") || qualityOfResponse.contains("&#41;")) {
+				qualityOfResponse = qualityOfResponse.replaceAll("&#40;", "(");
+				qualityOfResponse = qualityOfResponse.replaceAll("&#41;", ")");
+			}
+
+			if (otherDisease.contains("&#40;") || otherDisease.contains("&#41;")) {
+				otherDisease = otherDisease.replaceAll("&#40;", "(");
+				otherDisease = otherDisease.replaceAll("&#41;", ")");
+			}
+
 			String notes = request.getParameter("specialNotes");
 
 			MedicalEventsBean meb = BeanFactory.getMedicalEventsBean("", otherDiseaseMedication, "", "", 0.0, procedureIntervention,
@@ -209,8 +219,8 @@ public class AddPlateletDisorderFollowUpServlet extends HttpServlet implements D
 			HttpSession session = request.getSession(true);
 
 			AuditBean auditBean = new AuditBean("Add Follow Up patient in Platelet Disorder",
-					Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(generalDataRS.getString("FirstName"))
-							+ " " + Security.decrypt(generalDataRS.getString("MiddleName")),
+					Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security
+							.decrypt(generalDataRS.getString("FirstName")) + " " + Security.decrypt(generalDataRS.getString("MiddleName")),
 					(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 			SQLOperations.addAudit(auditBean, connection);
 

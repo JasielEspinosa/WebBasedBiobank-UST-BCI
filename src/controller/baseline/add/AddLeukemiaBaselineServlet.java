@@ -46,9 +46,9 @@ public class AddLeukemiaBaselineServlet extends HttpServlet implements DefaultVa
 		int disease = 3;
 
 		// GENERAL DATA
-		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
-		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
-		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
+		String lastName = request.getParameter("lastName").trim().toUpperCase();
+		String firstName = request.getParameter("firstName").trim().toUpperCase();
+		String middleInitial = request.getParameter("middleInitial").trim().toUpperCase();
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
@@ -177,10 +177,25 @@ public class AddLeukemiaBaselineServlet extends HttpServlet implements DefaultVa
 			diseaseStatusOthers = request.getParameter("diseaseStatusOthers");
 		}
 
+		if (modeOfTreatment.contains("&#40;") || modeOfTreatment.contains("&#41;")) {
+			modeOfTreatment = modeOfTreatment.replaceAll("&#40;", "(");
+			modeOfTreatment = modeOfTreatment.replaceAll("&#41;", ")");
+		}
+
+		if (diseaseStatus.contains("&#40;") || diseaseStatus.contains("&#41;")) {
+			diseaseStatus = diseaseStatus.replaceAll("&#40;", "(");
+			diseaseStatus = diseaseStatus.replaceAll("&#41;", ")");
+		}
+
+		if (diseaseStatusOthers.contains("&#40;") || diseaseStatusOthers.contains("&#41;")) {
+			diseaseStatusOthers = diseaseStatusOthers.replaceAll("&#40;", "(");
+			diseaseStatusOthers = diseaseStatusOthers.replaceAll("&#41;", ")");
+		}
+
 		String addressArray[] = address.split(",");
 
-		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]),
-				Security.encrypt(addressArray[2]));
+		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]).trim(), Security.encrypt(addressArray[1]).trim(),
+				Security.encrypt(addressArray[2]).trim());
 		if (connection != null) {
 			if (SQLOperationsBaseline.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert Address");
@@ -430,8 +445,8 @@ public class AddLeukemiaBaselineServlet extends HttpServlet implements DefaultVa
 		HttpSession session = request.getSession(true);
 
 		AuditBean auditBean = new AuditBean("Add patient in Leukemia Baseline",
-				request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
-						+ request.getParameter("middleInitial").trim().toUpperCase(),
+				request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim()
+						.toUpperCase() + " " + request.getParameter("middleInitial").trim().toUpperCase(),
 				(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 		SQLOperations.addAudit(auditBean, connection);
 

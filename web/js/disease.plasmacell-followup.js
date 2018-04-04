@@ -330,11 +330,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddPlasmaCellFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditPlasmaCellFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

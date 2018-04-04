@@ -51,9 +51,9 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 		int disease = 7;
 
 		// GENERAL DATA
-		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
-		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
-		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
+		String lastName = request.getParameter("lastName").trim().toUpperCase();
+		String firstName = request.getParameter("firstName").trim().toUpperCase();
+		String middleInitial = request.getParameter("middleInitial").trim().toUpperCase();
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
@@ -172,11 +172,21 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 		if (modeOfTreatment.equalsIgnoreCase("Others")) {
 			otherTreatment = request.getParameter("treatmentSpecify");
 		}*/
-		
+
 		String regimenProtocol = request.getParameter("regimenProtocol");
 		String dateStarted = request.getParameter("dateStarted");
 		String complications = request.getParameter("complications");
 		String diseaseStatus = request.getParameter("diseaseStatus");
+
+		if (modeOfTreatment.contains("&#40;") || modeOfTreatment.contains("&#41;")) {
+			modeOfTreatment = modeOfTreatment.replaceAll("&#40;", "(");
+			modeOfTreatment = modeOfTreatment.replaceAll("&#41;", ")");
+		}
+
+		if (diseaseStatus.contains("&#40;") || diseaseStatus.contains("&#41;")) {
+			diseaseStatus = diseaseStatus.replaceAll("&#40;", "(");
+			diseaseStatus = diseaseStatus.replaceAll("&#41;", ")");
+		}
 
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
@@ -221,7 +231,8 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 				int diseaseID = patientInfo.getInt("DiseaseID");
 
 				//start of edit
-				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]), Security.encrypt(addressArray[2]));
+				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]).trim(),
+						Security.encrypt(addressArray[1]).trim(), Security.encrypt(addressArray[2]).trim());
 				if (connection != null) {
 					if (SQLOperationsBaseline.editAddress(ab, connection, disease, addressID)) {
 						System.out.println("Successful insert AddressBean");
@@ -266,9 +277,9 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 					System.out.println("Invalid connection PhysicalExamBean");
 				}
 
-				ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, otherDiagnosis, "", chiefComplaint, "", constitutionalSymptoms,
-						otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeSpecify, chemicalExposureSpecify, "", "",
-						otherFindings);
+				ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, otherDiagnosis, "", chiefComplaint, "",
+						constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeSpecify,
+						chemicalExposureSpecify, "", "", otherFindings);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editClinicalData(cdb, connection, disease, clinicalDataID)) {
 						System.out.println("Successful insert ClinicalDataBean");
@@ -425,12 +436,12 @@ public class EditPlateletDisorderBaselineServlet extends HttpServlet implements 
 				} else {
 					System.out.println("Invalid connection DiseaseStatusBean");
 				}
-				
+
 				HttpSession session = request.getSession(true);
 
 				AuditBean auditBean = new AuditBean("Add patient in Platelet Disorder Baseline",
-						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
-								+ request.getParameter("middleInitial").trim().toUpperCase(),
+						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim()
+								.toUpperCase() + " " + request.getParameter("middleInitial").trim().toUpperCase(),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
 

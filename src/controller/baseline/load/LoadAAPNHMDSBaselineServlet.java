@@ -64,9 +64,9 @@ public class LoadAAPNHMDSBaselineServlet extends HttpServlet {
 				int generalDataID = patientInfoRS.getInt("GeneralDataID");
 				ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 				generalDataRS.first();
-				patientData.put("lastName", Security.decrypt(generalDataRS.getString("LastName")));
-				patientData.put("firstName", Security.decrypt(generalDataRS.getString("FirstName")));
-				patientData.put("middleInitial", Security.decrypt(generalDataRS.getString("MiddleName")));
+				patientData.put("lastName", generalDataRS.getString("LastNameDec"));
+				patientData.put("firstName", generalDataRS.getString("FirstNameDec"));
+				patientData.put("middleInitial", generalDataRS.getString("MiddleNameDec"));
 				patientData.put("gender", generalDataRS.getString("Gender"));
 				patientData.put("dateOfBirth", generalDataRS.getString("DateOfBirthDec"));
 
@@ -250,9 +250,8 @@ public class LoadAAPNHMDSBaselineServlet extends HttpServlet {
 				HttpSession session = request.getSession(true);
 
 				AuditBean auditBean = new AuditBean("Load patient in AA PNH MDS Baseline",
-						Security.decrypt(generalDataRS.getString("LastName")) + ", "
-								+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
-								+ Security.decrypt(generalDataRS.getString("MiddleName")),
+						generalDataRS.getString("LastNameDec") + ", " + generalDataRS.getString("FirstNameDec") + " " + generalDataRS
+								.getString("MiddleNameDec"),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
 

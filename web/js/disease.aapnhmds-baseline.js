@@ -201,7 +201,7 @@ function loadPatientData(id) {
 
 		$("[name='dateOfBloodCollection']").val(response["dateOfBloodCollection"])
 
-		$("[name='hemoglobin']").val(response["hemoglobin"])		
+		$("[name='hemoglobin']").val(response["hemoglobin"])
 		$("[name='hematocrit']").val(response["hematocrit"])
 		$("[name='whiteBloodCells']").val(response["whiteBloodCells"])
 		$("[name='neutrophils']").val(response["neutrophils"])
@@ -346,11 +346,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddAAPNHMDSBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditAAPNHMDSBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

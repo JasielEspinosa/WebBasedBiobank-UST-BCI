@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import model.AuditBean;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
-import utility.database.Security;
 
 @WebServlet("/ArchivePatientServlet")
 public class ArchivePatientServlet extends HttpServlet {
@@ -62,10 +61,9 @@ public class ArchivePatientServlet extends HttpServlet {
 
 					HttpSession session = request.getSession(true);
 
-					AuditBean auditBean = new AuditBean("Archived Patient",
-							Security.decrypt(generalDataRS.getString("LastName")) + ", "
-									+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
-									+ Security.decrypt(generalDataRS.getString("MiddleName")),
+					AuditBean auditBean = new AuditBean("Patient archived",
+							generalDataRS.getString("LastNameDec") + ", " + generalDataRS.getString("FirstNameDec") + " " + generalDataRS
+									.getString("MiddleNameDec"),
 							(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 					SQLOperations.addAudit(auditBean, connection);
 

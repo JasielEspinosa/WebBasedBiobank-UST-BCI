@@ -80,35 +80,39 @@ function fnValidatePassword(evt) {
 
 	success = true;
 
-	if (!regexPasswordLength.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must be at least 8 characters.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}
+	if (elemPW.value != "") {
 
-	if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must contain an uppercase character.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}
+		if (!regexPasswordLength.test(elemPW.value)) {
+			pwdHint.innerHTML = 'Password must be at least 8 characters.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}
 
-	if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must contain an lowercase character.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}
+		if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
+			pwdHint.innerHTML = 'Password must contain an uppercase character.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}
 
-	if (!regexPasswordContainsNumber.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must contain a number.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}
+		if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
+			pwdHint.innerHTML = 'Password must contain an lowercase character.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}
 
-/*	if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
-		pwdHint.innerHTML = 'Password must contain a special character.';
-		pwdHint.style.display = "inline";
-		success = false;
-	}*/
+		if (!regexPasswordContainsNumber.test(elemPW.value)) {
+			pwdHint.innerHTML = 'Password must contain a number.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}
+
+		/*	if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
+				pwdHint.innerHTML = 'Password must contain a special character.';
+				pwdHint.style.display = "inline";
+				success = false;
+			}*/
+
+	}
 
 	if (success) {
 		// looks goood

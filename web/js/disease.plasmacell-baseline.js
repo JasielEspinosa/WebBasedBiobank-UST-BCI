@@ -435,11 +435,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddPlasmaCellBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditPlasmaCellBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

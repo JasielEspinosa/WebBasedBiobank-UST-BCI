@@ -15,9 +15,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
+import model.AuditBean;
 import model.ChartAge;
 import model.ChartModeOfTreatmentBean;
 import model.ChartModel;
@@ -215,6 +217,12 @@ public class DashboardDataServlet extends HttpServlet {
 						chartStatusFollowup);
 				String json = new Gson().toJson(dashboardData);
 				response.getWriter().write(json);
+				
+				HttpSession session = request.getSession(true);
+				
+				AuditBean auditBean = new AuditBean("Dashboard page - Viewing of diseases accessed", (String) session.getAttribute("name"),
+						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+				SQLOperations.addAudit(auditBean, connection);
 
 			} else {
 				System.out.println("Invalid Connection resource");

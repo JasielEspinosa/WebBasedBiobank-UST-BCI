@@ -17,15 +17,10 @@ public interface SQLCommandsBaseline {
 	String UPDATE_TISSUE_SPECIMEN = "UPDATE TissueSpecimenTable SET TissueSpecimenName = ? WHERE TissueSpecimenID = ?";
 
 	//GENERAL DATA
-	String INSERT_GENERAL_DATA = "INSERT INTO GeneralDataTable VALUES(NULL,?,?,?,?,AES_ENCRYPT(?, '" + key + "'),AES_ENCRYPT(?, '" + key
-			+ "'),(SELECT MAX(AddressID) FROM AddressTable),(SELECT MAX(TissueSpecimenID) FROM TissueSpecimenTable))";
-	String INSERT_GENERAL_DATA_NO_TISSUE = "INSERT INTO GeneralDataTable (GeneralDataID,LastName,FirstName,MiddleName,Gender,DateOfBirth,DateOfEntry,AddressID) "
-			+ "VALUES (NULL,?,?,?,?,AES_ENCRYPT(?, '" + key + "'),AES_ENCRYPT(?, '" + key + "'),(SELECT MAX(AddressID) FROM AddressTable))";
-	String GET_GENERAL_DATA = "SELECT *, CONVERT(AES_DECRYPT(DateOfBirth, '" + key
-			+ "'), DATE) as DateOfBirthDec, CONVERT(AES_DECRYPT(DateOfEntry,'" + key
-			+ "'), DATE) as DateOfEntryDec FROM GeneralDataTable WHERE GeneralDataID = ?";
-	String UPDATE_GENERAL_DATA = "UPDATE GeneralDataTable SET LastName = ? , FirstName = ?, MiddleName = ?, Gender = ?, DateOfBirth = AES_ENCRYPT(?, '"
-			+ key + "'), DateOfEntry = AES_ENCRYPT(?, '" + key + "') WHERE GeneralDataID = ?";
+	String INSERT_GENERAL_DATA = "INSERT INTO GeneralDataTable VALUES(NULL,HEX(AES_ENCRYPT(?, '" + key + "')),HEX(AES_ENCRYPT(?, '" + key + "')),HEX(AES_ENCRYPT(?, '" + key + "')),?,HEX(AES_ENCRYPT(?, '" + key + "')),HEX(AES_ENCRYPT(?, '" + key + "')),(SELECT MAX(AddressID) FROM AddressTable),(SELECT MAX(TissueSpecimenID) FROM TissueSpecimenTable))";
+	String INSERT_GENERAL_DATA_NO_TISSUE = "INSERT INTO GeneralDataTable (GeneralDataID,LastName,FirstName,MiddleName,Gender,DateOfBirth,DateOfEntry,AddressID) " + "VALUES (NULL,HEX(AES_ENCRYPT(?, '" + key + "')),HEX(AES_ENCRYPT(?, '" + key + "')),HEX(AES_ENCRYPT(?, '" + key + "')),?,HEX(AES_ENCRYPT(?, '" + key + "')),HEX(AES_ENCRYPT(?, '" + key + "')),(SELECT MAX(AddressID) FROM AddressTable))";
+	String GET_GENERAL_DATA = "SELECT *, AES_DECRYPT(UNHEX(LastName), '" + key + "') as LastNameDec, AES_DECRYPT(UNHEX(FirstName), '" + key + "') as FirstNameDec, AES_DECRYPT(UNHEX(MiddleName), '" + key + "') as MiddleNameDec, CONVERT(AES_DECRYPT(UNHEX(DateOfBirth), '" + key + "'), DATE) as DateOfBirthDec, CONVERT(AES_DECRYPT(UNHEX(DateOfEntry), '" + key + "'), DATE) as DateOfEntryDec FROM GeneralDataTable WHERE GeneralDataID = ?";
+	String UPDATE_GENERAL_DATA = "UPDATE GeneralDataTable SET LastName = HEX(AES_ENCRYPT(?, '" + key + "')) , FirstName = HEX(AES_ENCRYPT(?, '" + key + "')), MiddleName = HEX(AES_ENCRYPT(?, '" + key + "')), Gender = ?, DateOfBirth = HEX(AES_ENCRYPT(?, '" + key + "')), DateOfEntry = HEX(AES_ENCRYPT(?, '" + key + "')) WHERE GeneralDataID = ?";
 
 	//PROGNOSTIC RISK SCORING
 	String INSERT_PROGNOSTIC_RISK_SCORING = "INSERT INTO PrognosticRiskScoringTable VALUES (NULL,?,?)";
@@ -72,50 +67,23 @@ public interface SQLCommandsBaseline {
 	String UPDATE_PHYSICAL_EXAM_PLATELETCELL = "UPDATE PhysicalExamTable SET Height = ?, Weight = ?, Splenomegaly = ?, Skin = ?, OtherFindings = ? WHERE PhysicalExamID = ?";
 
 	//CLINICAL DATA
-	String INSERT_CLINICAL_DATA_AAPHSMDS = "INSERT INTO ClinicalDataTable "
-			+ "(ClinicalDataID,DateOfVisit,Diagnosis,ClassificationID,ChiefComplaint,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PreviousInfection,PreviousHematologicDisorder,PhysicalExamID) "
-			+ "VALUES (NULL, AES_ENCRYPT(?, '" + key
-			+ "'), ?, (SELECT MAX(ClassificationID) FROM ClassificationTable), ?, ?, ?, ?, ?, ?, ?, ?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable))";
-	String INSERT_CLINICAL_DATA_COAGULATION = "INSERT INTO ClinicalDataTable "
-			+ "(ClinicalDataID,DateOfVisit,Diagnosis,OtherDiagnosis,SeverityID,ChiefComplaint,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) "
-			+ "VALUES (NULL,AES_ENCRYPT(?, '" + key
-			+ "'),?,?,(SELECT MAX(SeverityID) FROM SeverityTable),?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
-	String INSERT_CLINICAL_DATA_LEUKEMIA = "INSERT INTO ClinicalDataTable "
-			+ "(ClinicalDataID,DateOfVisit,Diagnosis,RiskScoreID,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PreviousInfection,PreviousHematologicDisorder,PhysicalExamID) "
-			+ "VALUES (NULL,AES_ENCRYPT(?, '" + key
-			+ "'),?,(SELECT MAX(RiskScoreID) FROM RiskScoreTable),?,?,?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable))";
-	String INSERT_CLINICAL_DATA_LYMPHOMA = "INSERT INTO ClinicalDataTable "
-			+ "(ClinicalDataID,DateOfVisit,Diagnosis,StageOfDisease,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) "
-			+ "VALUES (NULL,AES_ENCRYPT(?, '" + key + "'),?,?,?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
-	String INSERT_CLINICAL_DATA_MYELOPROLIFERATIVE = "INSERT INTO ClinicalDataTable "
-			+ "(ClinicalDataID,DateOfVisit,Diagnosis,OtherDiagnosis,PrognosticRiskScoringID,RiskScoreID,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) "
-			+ "VALUES (NULL,AES_ENCRYPT(?, '" + key
-			+ "'),?,?,(SELECT MAX(PrognosticRiskScoringID) FROM PrognosticRiskScoringTable),(SELECT MAX(RiskScoreID) FROM RiskScoreTable),?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
-	String INSERT_CLINICAL_DATA_PLASMACELL = "INSERT INTO ClinicalDataTable "
-			+ "(ClinicalDataID,DateOfVisit,Diagnosis,ISSStagingID,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) "
-			+ "VALUES (NULL,AES_ENCRYPT(?, '" + key
-			+ "'),?,(SELECT MAX(ISSStagingID) FROM ISSStagingTable),?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
-	String INSERT_CLINICAL_DATA_PLATELETCELL = "INSERT INTO ClinicalDataTable "
-			+ "(ClinicalDataID,DateOfVisit,Diagnosis,OtherDiagnosis,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) "
-			+ "VALUES (NULL,AES_ENCRYPT(?, '" + key + "'),?,?,?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
+	String INSERT_CLINICAL_DATA_AAPHSMDS = "INSERT INTO ClinicalDataTable " + "(ClinicalDataID,DateOfVisit,Diagnosis,ClassificationID,ChiefComplaint,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PreviousInfection,PreviousHematologicDisorder,PhysicalExamID) " + "VALUES (NULL, HEX(AES_ENCRYPT(?, '" + key + "')), ?, (SELECT MAX(ClassificationID) FROM ClassificationTable), ?, ?, ?, ?, ?, ?, ?, ?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable))";
+	String INSERT_CLINICAL_DATA_COAGULATION = "INSERT INTO ClinicalDataTable " + "(ClinicalDataID,DateOfVisit,Diagnosis,OtherDiagnosis,SeverityID,ChiefComplaint,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) " + "VALUES (NULL,HEX(AES_ENCRYPT(?, '" + key + "')),?,?,(SELECT MAX(SeverityID) FROM SeverityTable),?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
+	String INSERT_CLINICAL_DATA_LEUKEMIA = "INSERT INTO ClinicalDataTable " + "(ClinicalDataID,DateOfVisit,Diagnosis,RiskScoreID,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PreviousInfection,PreviousHematologicDisorder,PhysicalExamID) " + "VALUES (NULL,HEX(AES_ENCRYPT(?, '" + key + "')),?,(SELECT MAX(RiskScoreID) FROM RiskScoreTable),?,?,?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable))";
+	String INSERT_CLINICAL_DATA_LYMPHOMA = "INSERT INTO ClinicalDataTable " + "(ClinicalDataID,DateOfVisit,Diagnosis,StageOfDisease,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) " + "VALUES (NULL,HEX(AES_ENCRYPT(?, '" + key + "')),?,?,?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
+	String INSERT_CLINICAL_DATA_MYELOPROLIFERATIVE = "INSERT INTO ClinicalDataTable " + "(ClinicalDataID,DateOfVisit,Diagnosis,OtherDiagnosis,PrognosticRiskScoringID,RiskScoreID,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) " + "VALUES (NULL,HEX(AES_ENCRYPT(?, '" + key + "')),?,?,(SELECT MAX(PrognosticRiskScoringID) FROM PrognosticRiskScoringTable),(SELECT MAX(RiskScoreID) FROM RiskScoreTable),?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
+	String INSERT_CLINICAL_DATA_PLASMACELL = "INSERT INTO ClinicalDataTable " + "(ClinicalDataID,DateOfVisit,Diagnosis,ISSStagingID,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) " + "VALUES (NULL,HEX(AES_ENCRYPT(?, '" + key + "')),?,(SELECT MAX(ISSStagingID) FROM ISSStagingTable),?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
+	String INSERT_CLINICAL_DATA_PLATELETCELL = "INSERT INTO ClinicalDataTable " + "(ClinicalDataID,DateOfVisit,Diagnosis,OtherDiagnosis,ChiefComplaint,ConstitutionalSymptoms,OtherSymptoms,Comorbidities,SmokingHistory,AlcoholIntakeHistory,ChemicalExposure,PhysicalExamID,OtherFindings) " + "VALUES (NULL,HEX(AES_ENCRYPT(?, '" + key + "')),?,?,?,?,?,?,?,?,?,(SELECT MAX(PhysicalExamID) FROM PhysicalExamTable),?)";
 
-	String GET_CLINICAL_DATA_BASELINE = "SELECT *, CONVERT(AES_DECRYPT(DateOfVisit,'" + key
-			+ "'), DATE) as DateOfVisitDec FROM ClinicalDataTable WHERE ClinicalDataID = ?";
+	String GET_CLINICAL_DATA_BASELINE = "SELECT *, CONVERT(AES_DECRYPT(UNHEX(DateOfVisit), '" + key + "'), DATE) as DateOfVisitDec FROM ClinicalDataTable WHERE ClinicalDataID = ?";
 
-	String UPDATE_CLINICAL_DATA_AAPHSMDS = "UPDATE ClinicalDataTable SET DateOfVisit = AES_ENCRYPT(?, '" + key
-			+ "') , Diagnosis = ?, ChiefComplaint = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, PreviousInfection= ?, PreviousHematologicDisorder = ? WHERE ClinicalDataID = ? ";
-	String UPDATE_CLINICAL_DATA_COAGULATION = "UPDATE ClinicalDataTable SET DateOfVisit = AES_ENCRYPT(?, '" + key
-			+ "') , Diagnosis = ?, OtherDiagnosis = ?, ChiefComplaint = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings = ? WHERE ClinicalDataID = ? ";
-	String UPDATE_CLINICAL_DATA_LEUKEMIA = "UPDATE ClinicalDataTable SET DateOfVisit = AES_ENCRYPT(?, '" + key
-			+ "') , Diagnosis = ?, ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, PreviousInfection= ?, PreviousHematologicDisorder = ? WHERE ClinicalDataID = ? ";
-	String UPDATE_CLINICAL_DATA_LYMPHOMA = "UPDATE ClinicalDataTable SET DateOfVisit = AES_ENCRYPT(?, '" + key
-			+ "') , Diagnosis = ?, StageOfDisease = ? ,ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings= ? WHERE ClinicalDataID = ? ";
-	String UPDATE_CLINICAL_DATA_MYELOPROLIFERATIVE = "UPDATE ClinicalDataTable SET DateOfVisit = AES_ENCRYPT(?, '" + key
-			+ "') , Diagnosis = ?, OtherDiagnosis = ?, ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings= ? WHERE ClinicalDataID = ? ";
-	String UPDATE_CLINICAL_DATA_PLASMACELL = "UPDATE ClinicalDataTable SET DateOfVisit = AES_ENCRYPT(?, '" + key
-			+ "') , Diagnosis = ?, ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings= ? WHERE ClinicalDataID = ? ";
-	String UPDATE_CLINICAL_DATA_PLATELETCELL = "UPDATE ClinicalDataTable SET DateOfVisit = AES_ENCRYPT(?, '" + key
-			+ "'), Diagnosis = ?, OtherDiagnosis = ?, ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings= ? WHERE ClinicalDataID = ? ";
+	String UPDATE_CLINICAL_DATA_AAPHSMDS = "UPDATE ClinicalDataTable SET DateOfVisit = HEX(AES_ENCRYPT(?, '" + key + "')) , Diagnosis = ?, ChiefComplaint = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, PreviousInfection= ?, PreviousHematologicDisorder = ? WHERE ClinicalDataID = ? ";
+	String UPDATE_CLINICAL_DATA_COAGULATION = "UPDATE ClinicalDataTable SET DateOfVisit = HEX(AES_ENCRYPT(?, '" + key + "')) , Diagnosis = ?, OtherDiagnosis = ?, ChiefComplaint = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings = ? WHERE ClinicalDataID = ? ";
+	String UPDATE_CLINICAL_DATA_LEUKEMIA = "UPDATE ClinicalDataTable SET DateOfVisit = HEX(AES_ENCRYPT(?, '" + key + "')) , Diagnosis = ?, ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, PreviousInfection= ?, PreviousHematologicDisorder = ? WHERE ClinicalDataID = ? ";
+	String UPDATE_CLINICAL_DATA_LYMPHOMA = "UPDATE ClinicalDataTable SET DateOfVisit = HEX(AES_ENCRYPT(?, '" + key + "')) , Diagnosis = ?, StageOfDisease = ? ,ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings= ? WHERE ClinicalDataID = ? ";
+	String UPDATE_CLINICAL_DATA_MYELOPROLIFERATIVE = "UPDATE ClinicalDataTable SET DateOfVisit = HEX(AES_ENCRYPT(?, '" + key + "')) , Diagnosis = ?, OtherDiagnosis = ?, ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings= ? WHERE ClinicalDataID = ? ";
+	String UPDATE_CLINICAL_DATA_PLASMACELL = "UPDATE ClinicalDataTable SET DateOfVisit = HEX(AES_ENCRYPT(?, '" + key + "')) , Diagnosis = ?, ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings= ? WHERE ClinicalDataID = ? ";
+	String UPDATE_CLINICAL_DATA_PLATELETCELL = "UPDATE ClinicalDataTable SET DateOfVisit = HEX(AES_ENCRYPT(?, '" + key + "')), Diagnosis = ?, OtherDiagnosis = ?, ChiefComplaint = ?, ConstitutionalSymptoms = ?, OtherSymptoms = ?, Comorbidities = ?, SmokingHistory = ?, AlcoholIntakeHistory = ?, ChemicalExposure = ?, OtherFindings= ? WHERE ClinicalDataID = ? ";
 
 	//FAMILY CANCER
 	String INSERT_FAMILY_CANCER = "INSERT INTO FamilyCancerTable VALUES (NULL, (SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),?,?)";
@@ -143,20 +111,13 @@ public interface SQLCommandsBaseline {
 
 	String GET_HEMATOLOGY = "SELECT * FROM HematologyTable WHERE HematologyID = ?";
 
-	String UPDATE_HEMATOLOGY_AAPHSMDS = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?,"
-			+ " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
-	String UPDATE_HEMATOLOGY_COAGULATION = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?,"
-			+ " Monocytes = ?, Eosinophils = ? , Basophils = ? , PlateletCount = ? WHERE HematologyID = ?";
-	String UPDATE_HEMATOLOGY_LEUKEMIA = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?,"
-			+ " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
-	String UPDATE_HEMATOLOGY_LYMPHOMA = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?,"
-			+ " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
-	String UPDATE_HEMATOLOGY_MYELOPROLIFERATIVE = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?,"
-			+ " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
-	String UPDATE_HEMATOLOGY_PLASMACELL = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?,"
-			+ " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
-	String UPDATE_HEMATOLOGY_PLATELETCELL = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?,"
-			+ " Monocytes = ?, Eosinophils = ? , Basophils = ? , PlateletCount = ? WHERE HematologyID = ?";
+	String UPDATE_HEMATOLOGY_AAPHSMDS = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?," + " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
+	String UPDATE_HEMATOLOGY_COAGULATION = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?," + " Monocytes = ?, Eosinophils = ? , Basophils = ? , PlateletCount = ? WHERE HematologyID = ?";
+	String UPDATE_HEMATOLOGY_LEUKEMIA = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?," + " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
+	String UPDATE_HEMATOLOGY_LYMPHOMA = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?," + " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
+	String UPDATE_HEMATOLOGY_MYELOPROLIFERATIVE = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?," + " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
+	String UPDATE_HEMATOLOGY_PLASMACELL = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?," + " Monocytes = ?, Eosinophils = ? , Basophils = ? , Myelocytes = ? , Metamyelocytes = ? , Blasts = ? , PlateletCount = ? WHERE HematologyID = ?";
+	String UPDATE_HEMATOLOGY_PLATELETCELL = "UPDATE HematologyTable SET Hemoglobin = ?, Hematocrit = ? , WhiteBloodCells = ?, Neutrophils = ?, Lymphocytes = ?," + " Monocytes = ?, Eosinophils = ? , Basophils = ? , PlateletCount = ? WHERE HematologyID = ?";
 
 	//COAGULATION
 	String INSERT_COAGULATION_TESTING = "INSERT INTO CoagulationTestingTable VALUES (NULL,?,?,?,?)";
@@ -175,19 +136,15 @@ public interface SQLCommandsBaseline {
 
 	String UPDATE_BLOOD_CHEMISTRY_COAGULATION = "UPDATE BloodChemistryTable SET Creatinine = ?, UricAcid = ?, SGOT = ?, SGPT = ?, LDH = ? , Na = ?, K = ? WHERE BloodChemistryID = ? ";
 	String UPDATE_BLOOD_CHEMISTRY_LEUKEMIA = "UPDATE BloodChemistryTable SET Creatinine = ?, UricAcid = ?, SGOT = ?, SGPT = ?, LDH = ? , Na = ?, K = ? WHERE BloodChemistryID = ? ";
-	String UPDATE_BLOOD_CHEMISTRY_LYMPHOMA = "UPDATE BloodChemistryTable SET Creatinine = ?, UricAcid = ?, SGOT = ?, SGPT = ?, LDH = ? , Na = ?, K = ?,"
-			+ " BilirubinTotal = ?, BilirubinDirect = ?, BilirubinIndirect = ?, Beta2Microglobulin = ?, HepatitisBTesting = ?, ESR = ? WHERE BloodChemistryID = ? ";
+	String UPDATE_BLOOD_CHEMISTRY_LYMPHOMA = "UPDATE BloodChemistryTable SET Creatinine = ?, UricAcid = ?, SGOT = ?, SGPT = ?, LDH = ? , Na = ?, K = ?," + " BilirubinTotal = ?, BilirubinDirect = ?, BilirubinIndirect = ?, Beta2Microglobulin = ?, HepatitisBTesting = ?, ESR = ? WHERE BloodChemistryID = ? ";
 	String UPDATE_BLOOD_CHEMISTRY_MYELOPROLIFERATIVE = "UPDATE BloodChemistryTable SET Creatinine = ?, UricAcid = ?, SGOT = ?, SGPT = ?, LDH = ? , EPOLevel = ? WHERE BloodChemistryID = ? ";
-	String UPDATE_BLOOD_CHEMISTRY_PLASMACELL = "UPDATE BloodChemistryTable SET BloodUreaNitrogen = ?, Creatinine = ?, UricAcid = ?, LDH = ? , Na = ?, K = ?,"
-			+ "  Beta2Microglobulin = ?, iCa = ?, TotalProtein = ? , Albumin = ? , Globulin = ? WHERE BloodChemistryID = ? ";
+	String UPDATE_BLOOD_CHEMISTRY_PLASMACELL = "UPDATE BloodChemistryTable SET BloodUreaNitrogen = ?, Creatinine = ?, UricAcid = ?, LDH = ? , Na = ?, K = ?," + "  Beta2Microglobulin = ?, iCa = ?, TotalProtein = ? , Albumin = ? , Globulin = ? WHERE BloodChemistryID = ? ";
 	String UPDATE_BLOOD_CHEMISTRY_PLATELETCELL = "UPDATE BloodChemistryTable SET Creatinine = ?, UricAcid = ?, SGOT = ?, SGPT = ?, LDH = ? , EPOLevel = ? WHERE BloodChemistryID = ? ";
 
 	//OTHER LABORATORIES
 	String INSERT_OTHER_LABORATORIES_AAPHSMDS = "INSERT INTO OtherLaboratoriesTable VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	String GET_OTHER_LABORATORIES_AAPNHMDS = "SELECT * FROM OtherLaboratoriesTable WHERE OtherLaboratoriesID = ?";
-	String UPDATE_OTHER_LABORATORIES_AAPHSMDS = "UPDATE OtherLaboratoriesTable SET Creatinine = ?, UricAcid = ? , ReticulocyteCount = ?, SerumIron = ? , IronBindingCapacity = ?, "
-			+ "SerumFerritin = ?, DirectAntiglobulin = ?, IndirectAntiglobulin = ?, SGOT = ?, SGPT = ?, LDH = ?, ScreenTestHepatitis = ?, ScreenTestEBVCytomegalovirusHIV = ?, ErythropeitinLevel = ?,"
-			+ " SerumFolicAcid = ?, SerumFolicAcid = ?, TSH = ? WHERE OtherLaboratoriesID = ? ";
+	String UPDATE_OTHER_LABORATORIES_AAPHSMDS = "UPDATE OtherLaboratoriesTable SET Creatinine = ?, UricAcid = ? , ReticulocyteCount = ?, SerumIron = ? , IronBindingCapacity = ?, " + "SerumFerritin = ?, DirectAntiglobulin = ?, IndirectAntiglobulin = ?, SGOT = ?, SGPT = ?, LDH = ?, ScreenTestHepatitis = ?, ScreenTestEBVCytomegalovirusHIV = ?, ErythropeitinLevel = ?," + " SerumFolicAcid = ?, SerumFolicAcid = ?, TSH = ? WHERE OtherLaboratoriesID = ? ";
 
 	//BONE MARROW ASPIRATE
 	String INSERT_BONE_MARROW_ASPIRATE = "INSERT INTO BoneMarrowAspirateTable VALUES (NULL,?,?)";
@@ -254,46 +211,13 @@ public interface SQLCommandsBaseline {
 	String UPDATE_URINEPROTEIN = "UPDATE UrineProteinTable SET Result = ? WHERE UrineProteinID = ?";
 
 	//LABORATORY PROFILE
-	String INSERT_LABORATORY_PROFILE_AAPHSMDS = "INSERT INTO LaboratoryProfileTable "
-			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,OtherLaboratoriesID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularAAPNHID, CytogeneticMolecularMDSID) "
-			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),"
-			+ "(SELECT MAX(OtherLaboratoriesID) FROM OtherLaboratoriesTable),"
-			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),"
-			+ "(SELECT MAX(CytogeneticMolecularAAPNHID) FROM CytogeneticMolecularAAPNHTable),"
-			+ "(SELECT MAX(CytogeneticMolecularMDSID) FROM CytogeneticMolecularMDSTable))";
-	String INSERT_LABORATORY_PROFILE_COAGULATION = "INSERT INTO LaboratoryProfileTable "
-			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,CoagulationTestingID,BloodChemistryID,ImagingStudiesID) "
-			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),"
-			+ "(SELECT MAX(CoagulationTestingID) FROM CoagulationTestingTable),"
-			+ "(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable))";
-	String INSERT_LABORATORY_PROFILE_LEUKEMIA = "INSERT INTO LaboratoryProfileTable "
-			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularID, ImagingStudiesID) "
-			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),"
-			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),"
-			+ "(SELECT MAX(CytogeneticMolecularID) FROM CytogeneticMolecularTable),"
-			+ "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable))";
-	String INSERT_LABORATORY_PROFILE_LYMPHOMA = "INSERT INTO LaboratoryProfileTable "
-			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularAAPNHID,ImagingStudiesID, HematopathologyID, ImmunohistochemistryID) "
-			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),"
-			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable),"
-			+ "(SELECT MAX(CytogeneticMolecularAAPNHID) FROM CytogeneticMolecularAAPNHTable),"
-			+ "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable),(SELECT MAX(HematopathologyID) FROM HematopathologyTable),"
-			+ "(SELECT MAX(ImmunohistochemistryID) FROM ImmunohistochemistryTable))";
-	String INSERT_LABORATORY_PROFILE_MYELOPROLIFERATIVE = "INSERT INTO LaboratoryProfileTable "
-			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,CytogeneticMolecularID) "
-			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),"
-			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),"
-			+ "(SELECT MAX(CytogeneticMolecularID) FROM CytogeneticMolecularTable))";
-	String INSERT_LABORATORY_PROFILE_PLASMACELL = "INSERT INTO LaboratoryProfileTable "
-			+ "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,CytogeneticMolecularID,ImagingStudiesID,SerumFreeID,SerumProteinID,SerumImmunofixationID,UrineProteinID) "
-			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),"
-			+ "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),"
-			+ "(SELECT MAX(CytogeneticMolecularID) FROM CytogeneticMolecularTable),"
-			+ "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable),(SELECT MAX(SerumFreeID) FROM SerumFreeTable),"
-			+ "(SELECT MAX(SerumProteinID) FROM SerumProteinTable),(SELECT MAX(SerumImmunofixationID) FROM SerumImmunofixationTable),"
-			+ "(SELECT MAX(UrineProteinID) FROM UrineProteinTable))";
-	String INSERT_LABORATORY_PROFILE_PLATELETCELL = "INSERT INTO LaboratoryProfileTable(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,ImagingStudiesID,UpperGIEndoscopyID,ITP) "
-			+ "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable),(SELECT MAX(UpperGIEndoscopyID) FROM UpperGIEndoscopyTable),?) ";
+	String INSERT_LABORATORY_PROFILE_AAPHSMDS = "INSERT INTO LaboratoryProfileTable " + "(LaboratoryID,DateOfBloodCollection,HematologyID,OtherLaboratoriesID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularAAPNHID, CytogeneticMolecularMDSID) " + "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable)," + "(SELECT MAX(OtherLaboratoriesID) FROM OtherLaboratoriesTable)," + "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable)," + "(SELECT MAX(CytogeneticMolecularAAPNHID) FROM CytogeneticMolecularAAPNHTable)," + "(SELECT MAX(CytogeneticMolecularMDSID) FROM CytogeneticMolecularMDSTable))";
+	String INSERT_LABORATORY_PROFILE_COAGULATION = "INSERT INTO LaboratoryProfileTable " + "(LaboratoryID,DateOfBloodCollection,HematologyID,CoagulationTestingID,BloodChemistryID,ImagingStudiesID) " + "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable)," + "(SELECT MAX(CoagulationTestingID) FROM CoagulationTestingTable)," + "(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable))";
+	String INSERT_LABORATORY_PROFILE_LEUKEMIA = "INSERT INTO LaboratoryProfileTable " + "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularID, ImagingStudiesID) " + "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable)," + "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable)," + "(SELECT MAX(CytogeneticMolecularID) FROM CytogeneticMolecularTable)," + "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable))";
+	String INSERT_LABORATORY_PROFILE_LYMPHOMA = "INSERT INTO LaboratoryProfileTable " + "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,FlowCytometryID,CytogeneticMolecularAAPNHID,ImagingStudiesID, HematopathologyID, ImmunohistochemistryID) " + "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable)," + "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(FlowCytometryID) FROM FlowCytometryTable)," + "(SELECT MAX(CytogeneticMolecularAAPNHID) FROM CytogeneticMolecularAAPNHTable)," + "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable),(SELECT MAX(HematopathologyID) FROM HematopathologyTable)," + "(SELECT MAX(ImmunohistochemistryID) FROM ImmunohistochemistryTable))";
+	String INSERT_LABORATORY_PROFILE_MYELOPROLIFERATIVE = "INSERT INTO LaboratoryProfileTable " + "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,CytogeneticMolecularID) " + "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable)," + "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable)," + "(SELECT MAX(CytogeneticMolecularID) FROM CytogeneticMolecularTable))";
+	String INSERT_LABORATORY_PROFILE_PLASMACELL = "INSERT INTO LaboratoryProfileTable " + "(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,CytogeneticMolecularID,ImagingStudiesID,SerumFreeID,SerumProteinID,SerumImmunofixationID,UrineProteinID) " + "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable)," + "(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable)," + "(SELECT MAX(CytogeneticMolecularID) FROM CytogeneticMolecularTable)," + "(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable),(SELECT MAX(SerumFreeID) FROM SerumFreeTable)," + "(SELECT MAX(SerumProteinID) FROM SerumProteinTable),(SELECT MAX(SerumImmunofixationID) FROM SerumImmunofixationTable)," + "(SELECT MAX(UrineProteinID) FROM UrineProteinTable))";
+	String INSERT_LABORATORY_PROFILE_PLATELETCELL = "INSERT INTO LaboratoryProfileTable(LaboratoryID,DateOfBloodCollection,HematologyID,BloodChemistryID,BoneMarrowAspirateID,ImagingStudiesID,UpperGIEndoscopyID,ITP) " + "VALUES (NULL,?,(SELECT MAX(HematologyID) FROM HematologyTable),(SELECT MAX(BloodChemistryID) FROM BloodChemistryTable),(SELECT MAX(BoneMarrowAspirateID) FROM BoneMarrowAspirateTable),(SELECT MAX(ImagingStudiesID) FROM ImagingStudiesTable),(SELECT MAX(UpperGIEndoscopyID) FROM UpperGIEndoscopyTable),?) ";
 
 	String GET_LABORATORY_PROFILE = "SELECT * FROM LaboratoryProfileTable WHERE LaboratoryID = ?";
 
@@ -341,23 +265,13 @@ public interface SQLCommandsBaseline {
 	String UPDATE_DISEASE_STATUS = "UPDATE DiseaseStatusTable SET DiseaseStatus = ?, RelapseDisease = ?, OtherDisease = ? WHERE DiseaseStatusID = ?";
 
 	//TREATMENT
-	String INSERT_TREATMENT_AAPHSMDS = "INSERT INTO TreatmentTable (TreatmentID,Transplant,ModeOfTreatmentID,ChemoMedicationID,DateStarted) "
-			+ "VALUES (NULL,?,(SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable),(SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable),?)";
-	String INSERT_TREATMENT_COAGULATION = "INSERT INTO TreatmentTable (TreatmentID, ModeOfTreatmentID) "
-			+ "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable))";
-	String INSERT_TREATMENT_LEUKEMIA = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,ChemoMedicationID,DateStarted,RegimenID,CycleNumber) "
-			+ "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable), ?, (SELECT MAX(RegimenID) FROM RegimenTable), ?)";
-	String INSERT_TREATMENT_LYMPHOMA = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,ChemoMedicationID,DateStarted,RegimenID,CycleNumber,Complications) "
-			+ "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable), ?, (SELECT MAX(RegimenID) FROM RegimenTable), ?, ?)";
-	String INSERT_TREATMENT_MYELOPROLIFERATIVE = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,ChemoMedicationID,DateStarted) "
-			+ "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable), ?)";
-	String INSERT_TREATMENT_PLASMACELL = "INSERT INTO TreatmentTable(TreatmentID,Transplant,ModeOfTreatmentID,MaintenanceTherapyID,RegimenID,RegimenTransplantID,RegimenNonTransplantID,DateStarted,CycleNumber,Complications) "
-			+ "VALUES (NULL, ?, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), "
-			+ "(SELECT MAX(MaintenanceTherapyID) FROM MaintenanceTherapyTable), (SELECT MAX(RegimenID) FROM RegimenTable), "
-			+ "(SELECT MAX(RegimenTransplantID) FROM RegimenTransplantTable),"
-			+ "(SELECT MAX(RegimenNonTransplantID) FROM RegimenNonTransplantTable),?,?,?)";
-	String INSERT_TREATMENT_PLATELETCELL = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,RegimenID,DateStarted,Complications) "
-			+ "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(RegimenID) FROM RegimenTable), ?, ?)";
+	String INSERT_TREATMENT_AAPHSMDS = "INSERT INTO TreatmentTable (TreatmentID,Transplant,ModeOfTreatmentID,ChemoMedicationID,DateStarted) " + "VALUES (NULL,?,(SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable),(SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable),?)";
+	String INSERT_TREATMENT_COAGULATION = "INSERT INTO TreatmentTable (TreatmentID, ModeOfTreatmentID) " + "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable))";
+	String INSERT_TREATMENT_LEUKEMIA = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,ChemoMedicationID,DateStarted,RegimenID,CycleNumber) " + "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable), ?, (SELECT MAX(RegimenID) FROM RegimenTable), ?)";
+	String INSERT_TREATMENT_LYMPHOMA = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,ChemoMedicationID,DateStarted,RegimenID,CycleNumber,Complications) " + "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable), ?, (SELECT MAX(RegimenID) FROM RegimenTable), ?, ?)";
+	String INSERT_TREATMENT_MYELOPROLIFERATIVE = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,ChemoMedicationID,DateStarted) " + "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(ChemoMedicationID) FROM ChemoMedicationsTable), ?)";
+	String INSERT_TREATMENT_PLASMACELL = "INSERT INTO TreatmentTable(TreatmentID,Transplant,ModeOfTreatmentID,MaintenanceTherapyID,RegimenID,RegimenTransplantID,RegimenNonTransplantID,DateStarted,CycleNumber,Complications) " + "VALUES (NULL, ?, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), " + "(SELECT MAX(MaintenanceTherapyID) FROM MaintenanceTherapyTable), (SELECT MAX(RegimenID) FROM RegimenTable), " + "(SELECT MAX(RegimenTransplantID) FROM RegimenTransplantTable)," + "(SELECT MAX(RegimenNonTransplantID) FROM RegimenNonTransplantTable),?,?,?)";
+	String INSERT_TREATMENT_PLATELETCELL = "INSERT INTO TreatmentTable(TreatmentID,ModeOfTreatmentID,RegimenID,DateStarted,Complications) " + "VALUES (NULL, (SELECT MAX(ModeOfTreatmentID) FROM ModeOfTreatmentTable), (SELECT MAX(RegimenID) FROM RegimenTable), ?, ?)";
 
 	String GET_TREATMENT = "SELECT * FROM TreatmentTable WHERE TreatmentID = ?";
 
@@ -370,33 +284,18 @@ public interface SQLCommandsBaseline {
 	String UPDATE_TREATMENT_PLATELETCELL = "UPDATE TreatmentTable SET DateStarted = ?, Complications = ? WHERE TreatmentID = ?";
 
 	//OTHER TREATMENT
-	String INSERT_OTHERTREATMENT = "INSERT INTO OtherTreatmentTable(OtherTreatmentID, Bisphosphonates, Radiotherapy, OtherMedications, Complications) "
-			+ "VALUES (NULL, ?, ?, ?, ?)";
+	String INSERT_OTHERTREATMENT = "INSERT INTO OtherTreatmentTable(OtherTreatmentID, Bisphosphonates, Radiotherapy, OtherMedications, Complications) " + "VALUES (NULL, ?, ?, ?, ?)";
 	String GET_OTHERTREATMENT = "SELECT * FROM OtherTreatmentTable WHERE OtherTreatmentID = ?";
 	String UPDATE_OTHERTREATMENT = "UPDATE OtherTreatmentTable SET Bisphosphonates = ?, Radiotherapy = ?, OtherMedications = ?, Complications = ? WHERE OtherTreatmentID = ?";
 
 	//PATIENT
-	String INSERT_PATIENT_AAPHSMDS = "INSERT INTO PatientTable VALUES (NULL,1,(SELECT MAX(GeneralDataID) FROM GeneralDataTable),"
-			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),"
-			+ "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
-	String INSERT_PATIENT_COAGULATION = "INSERT INTO PatientTable VALUES (NULL,2,(SELECT MAX(GeneralDataID) FROM GeneralDataTable),"
-			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),"
-			+ "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,NULL)";
-	String INSERT_PATIENT_LEUKEMIA = "INSERT INTO PatientTable VALUES (NULL,3,(SELECT MAX(GeneralDataID) FROM GeneralDataTable),"
-			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),"
-			+ "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
-	String INSERT_PATIENT_LYMPHOMA = "INSERT INTO PatientTable VALUES (NULL,4,(SELECT MAX(GeneralDataID) FROM GeneralDataTable),"
-			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),"
-			+ "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
-	String INSERT_PATIENT_MYELOPROLIFERATIVE = "INSERT INTO PatientTable VALUES (NULL,5,"
-			+ "(SELECT MAX(GeneralDataID) FROM GeneralDataTable),(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),"
-			+ "(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,NULL)";
-	String INSERT_PATIENT_PLASMACELL = "INSERT INTO PatientTable VALUES (NULL,6,(SELECT MAX(GeneralDataID) FROM GeneralDataTable),"
-			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),"
-			+ "(SELECT MAX(TreatmentID) FROM TreatmentTable),(SELECT MAX(OtherTreatmentID) FROM OtherTreatmentTable),1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
-	String INSERT_PATIENT_PLATELETCELL = "INSERT INTO PatientTable VALUES (NULL,7,(SELECT MAX(GeneralDataID) FROM GeneralDataTable),"
-			+ "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),"
-			+ "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
+	String INSERT_PATIENT_AAPHSMDS = "INSERT INTO PatientTable VALUES (NULL,1,(SELECT MAX(GeneralDataID) FROM GeneralDataTable)," + "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable)," + "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
+	String INSERT_PATIENT_COAGULATION = "INSERT INTO PatientTable VALUES (NULL,2,(SELECT MAX(GeneralDataID) FROM GeneralDataTable)," + "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable)," + "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,NULL)";
+	String INSERT_PATIENT_LEUKEMIA = "INSERT INTO PatientTable VALUES (NULL,3,(SELECT MAX(GeneralDataID) FROM GeneralDataTable)," + "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable)," + "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
+	String INSERT_PATIENT_LYMPHOMA = "INSERT INTO PatientTable VALUES (NULL,4,(SELECT MAX(GeneralDataID) FROM GeneralDataTable)," + "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable)," + "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
+	String INSERT_PATIENT_MYELOPROLIFERATIVE = "INSERT INTO PatientTable VALUES (NULL,5," + "(SELECT MAX(GeneralDataID) FROM GeneralDataTable),(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable)," + "(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable),(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,NULL)";
+	String INSERT_PATIENT_PLASMACELL = "INSERT INTO PatientTable VALUES (NULL,6,(SELECT MAX(GeneralDataID) FROM GeneralDataTable)," + "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable)," + "(SELECT MAX(TreatmentID) FROM TreatmentTable),(SELECT MAX(OtherTreatmentID) FROM OtherTreatmentTable),1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
+	String INSERT_PATIENT_PLATELETCELL = "INSERT INTO PatientTable VALUES (NULL,7,(SELECT MAX(GeneralDataID) FROM GeneralDataTable)," + "(SELECT MAX(ClinicalDataID) FROM ClinicalDataTable),(SELECT MAX(LaboratoryID) FROM LaboratoryProfileTable)," + "(SELECT MAX(TreatmentID) FROM TreatmentTable),NULL,1,(SELECT MAX(DiseaseStatusID) FROM DiseaseStatusTable))";
 
 	String GET_PATIENT_BASELINE = "SELECT * FROM PatientTable WHERE PATIENTID = ?";
 

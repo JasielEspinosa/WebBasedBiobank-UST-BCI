@@ -283,11 +283,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddCoagulationBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditCoagulationBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

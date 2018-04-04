@@ -51,9 +51,9 @@ public class EditAAPNHMDSBaselineServlet extends HttpServlet implements DefaultV
 		int disease = 1;
 
 		// GENERAL DATA
-		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
-		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
-		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
+		String lastName = request.getParameter("lastName").trim().toUpperCase();
+		String firstName = request.getParameter("firstName").trim().toUpperCase();
+		String middleInitial = request.getParameter("middleInitial").trim().toUpperCase();
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
@@ -199,6 +199,21 @@ public class EditAAPNHMDSBaselineServlet extends HttpServlet implements DefaultV
 		if (diseaseStatus.equalsIgnoreCase("Others")) {
 			diseaseStatusOthers = request.getParameter("diseaseStatusOthers");
 		}
+		
+		if (modeOfTreatment.contains("&#40;") || modeOfTreatment.contains("&#41;")) {
+			modeOfTreatment = modeOfTreatment.replaceAll("&#40;", "(");
+			modeOfTreatment = modeOfTreatment.replaceAll("&#41;", ")");
+		}
+		
+		if (diseaseStatus.contains("&#40;") || diseaseStatus.contains("&#41;")) {
+			diseaseStatus = diseaseStatus.replaceAll("&#40;", "(");
+			diseaseStatus = diseaseStatus.replaceAll("&#41;", ")");
+		}
+
+		if (diseaseStatusOthers.contains("&#40;") || diseaseStatusOthers.contains("&#41;")) {
+			diseaseStatusOthers = diseaseStatusOthers.replaceAll("&#40;", "(");
+			diseaseStatusOthers = diseaseStatusOthers.replaceAll("&#41;", ")");
+		}
 
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
@@ -246,8 +261,8 @@ public class EditAAPNHMDSBaselineServlet extends HttpServlet implements DefaultV
 				int diseaseStatusID = patientInfo.getInt("DiseaseStatusID");
 
 				//start of edit
-				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]),
-						Security.encrypt(addressArray[2]));
+				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]).trim(), Security.encrypt(addressArray[1]).trim(),
+						Security.encrypt(addressArray[2]).trim());
 				if (connection != null) {
 					if (SQLOperationsBaseline.editAddress(ab, connection, disease, addressID)) {
 						System.out.println("Successful insert AddressBean");

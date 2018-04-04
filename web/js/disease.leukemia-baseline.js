@@ -346,11 +346,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddLeukemiaBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditLeukemiaBaselineServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

@@ -259,11 +259,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddMyeloFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditMyeloFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

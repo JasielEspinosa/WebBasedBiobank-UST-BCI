@@ -286,11 +286,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddAAPNHMDSFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditAAPNHMDSFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

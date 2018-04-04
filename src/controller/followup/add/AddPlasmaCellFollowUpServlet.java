@@ -123,6 +123,16 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet implements Default
 				relapseDisease = request.getParameter("relapseDisease");
 			}
 
+			if (diseaseStatus.contains("&#40;") || diseaseStatus.contains("&#41;")) {
+				diseaseStatus = diseaseStatus.replaceAll("&#40;", "(");
+				diseaseStatus = diseaseStatus.replaceAll("&#41;", ")");
+			}
+
+			if (otherDisease.contains("&#40;") || otherDisease.contains("&#41;")) {
+				otherDisease = otherDisease.replaceAll("&#40;", "(");
+				otherDisease = otherDisease.replaceAll("&#41;", ")");
+			}
+
 			String notes = request.getParameter("specialNotes");
 
 			MedicalEventsBean meb = BeanFactory.getMedicalEventsBean(hematologicMalignancy, otherDiseaseMedication, "", "", 0.0,
@@ -296,8 +306,8 @@ public class AddPlasmaCellFollowUpServlet extends HttpServlet implements Default
 			HttpSession session = request.getSession(true);
 
 			AuditBean auditBean = new AuditBean("Add Follow Up patient in Plasma Cell ",
-					Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(generalDataRS.getString("FirstName"))
-							+ " " + Security.decrypt(generalDataRS.getString("MiddleName")),
+					Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security
+							.decrypt(generalDataRS.getString("FirstName")) + " " + Security.decrypt(generalDataRS.getString("MiddleName")),
 					(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 			SQLOperations.addAudit(auditBean, connection);
 

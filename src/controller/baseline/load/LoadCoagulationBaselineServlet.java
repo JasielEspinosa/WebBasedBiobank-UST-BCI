@@ -65,9 +65,9 @@ public class LoadCoagulationBaselineServlet extends HttpServlet {
 				int generalDataID = patientInfoRS.getInt("GeneralDataID");
 				ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 				generalDataRS.first();
-				patientData.put("lastName", Security.decrypt(generalDataRS.getString("LastName")));
-				patientData.put("firstName", Security.decrypt(generalDataRS.getString("FirstName")));
-				patientData.put("middleInitial", Security.decrypt(generalDataRS.getString("MiddleName")));
+				patientData.put("lastName", generalDataRS.getString("LastNameDec"));
+				patientData.put("firstName", generalDataRS.getString("FirstNameDec"));
+				patientData.put("middleInitial", generalDataRS.getString("MiddleNameDec"));
 				patientData.put("gender", generalDataRS.getString("Gender"));
 				patientData.put("dateOfBirth", generalDataRS.getString("DateOfBirthDec"));
 
@@ -191,7 +191,7 @@ public class LoadCoagulationBaselineServlet extends HttpServlet {
 					modeOfTreatment = modeOfTreatment.replaceAll("&#40;", "(");
 					modeOfTreatment = modeOfTreatment.replaceAll("&#41;", ")");
 				}
-				
+
 				if (nameOfTreatment.contains("&#40;") || nameOfTreatment.contains("&#41;")) {
 					nameOfTreatment = nameOfTreatment.replaceAll("&#40;", "(");
 					nameOfTreatment = nameOfTreatment.replaceAll("&#41;", ")");
@@ -199,13 +199,12 @@ public class LoadCoagulationBaselineServlet extends HttpServlet {
 
 				patientData.put("modeOfTreatment", modeOfTreatment);
 				patientData.put("nameOfTreatment", nameOfTreatment);
-				
+
 				HttpSession session = request.getSession(true);
 
 				AuditBean auditBean = new AuditBean("Load patient in Coagulation Disease Baseline",
-						Security.decrypt(generalDataRS.getString("LastName")) + ", "
-								+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
-								+ Security.decrypt(generalDataRS.getString("MiddleName")),
+						generalDataRS.getString("LastNameDec") + ", " + generalDataRS.getString("FirstNameDec") + " " + generalDataRS
+								.getString("MiddleNameDec"),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
 

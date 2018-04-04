@@ -72,7 +72,7 @@ public class AuditServlet extends HttpServlet {
 
 					HttpSession session = request.getSession(true);
 
-					AuditBean auditBean = new AuditBean("Audit", (String) session.getAttribute("name"),
+					AuditBean auditBean = new AuditBean("Audit page accessed", (String) session.getAttribute("name"),
 							(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 					SQLOperations.addAudit(auditBean, connection);
 

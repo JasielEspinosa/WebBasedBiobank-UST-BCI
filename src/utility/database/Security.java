@@ -5,7 +5,7 @@ import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.*;
 
 public class Security {
-	
+
 	public static void main(String args[]) {
 		System.out.println(encrypt("asd"));
 	}
@@ -20,7 +20,7 @@ public class Security {
 			cipher.init(Cipher.ENCRYPT_MODE, secretKey);
 			encryptedString = Base64.encodeBase64String(cipher.doFinal(strToEncrypt.getBytes()));
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			System.err.println("TEST EN " + e.getMessage());
 		}
 		return encryptedString;
 	}
@@ -33,7 +33,7 @@ public class Security {
 			cipher.init(Cipher.DECRYPT_MODE, secretKey);
 			decryptedString = new String(cipher.doFinal(Base64.decodeBase64(codeDecrypt)));
 		} catch (Exception e) {
-			System.err.println(e.getMessage());
+			System.err.println("TEST DEC " + e.getMessage());
 		}
 		return decryptedString;
 	}

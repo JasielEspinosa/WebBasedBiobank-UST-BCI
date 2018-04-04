@@ -281,11 +281,13 @@ function actionBind() {
 		if (editState == false) {
 			$.post('AddLeukemiaFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient added")
+				cancelEdit();
 			}).fail(function() {
 			});
 		} else {
 			$.post('EditLeukemiaFollowUpServlet', $form.serialize(), function(response) {
 				alert("Patient edited")
+				cancelEdit();
 			}).fail(function() {
 			});
 		}

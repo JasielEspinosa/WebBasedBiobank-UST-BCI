@@ -125,6 +125,21 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 			relapseDisease = request.getParameter("relapseDisease");
 		}
 
+		if (diseaseStatus.contains("&#40;") || diseaseStatus.contains("&#41;")) {
+			diseaseStatus = diseaseStatus.replaceAll("&#40;", "(");
+			diseaseStatus = diseaseStatus.replaceAll("&#41;", ")");
+		}
+
+		if (otherDisease.contains("&#40;") || otherDisease.contains("&#41;")) {
+			otherDisease = otherDisease.replaceAll("&#40;", "(");
+			otherDisease = otherDisease.replaceAll("&#41;", ")");
+		}
+
+		if (relapseDisease.contains("&#40;") || relapseDisease.contains("&#41;")) {
+			relapseDisease = relapseDisease.replaceAll("&#40;", "(");
+			relapseDisease = relapseDisease.replaceAll("&#41;", ")");
+		}
+
 		String notes = request.getParameter("specialNotes");
 
 		//load
@@ -168,7 +183,8 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 					System.out.println("Invalid connection MedicalEventsBean");
 				}
 
-				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", pertinentFindings, "");
+				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(0.0, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "",
+						pertinentFindings, "");
 				if (connection != null) {
 					if (SQLOperationsFollowUp.updatePhysicalExam(peb, connection, disease, physicalExamId)) {
 						System.out.println("Successful insert PhysicalExamBean");
@@ -314,7 +330,7 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection FollowUpBean");
 				}
-				
+
 				//int patientID = Integer.parseInt(request.getParameter("patientID"));
 				ResultSet patientInfoRS = SQLOperationsBaseline.getPatient(patientID, connection);
 				patientInfoRS.first();
@@ -326,8 +342,8 @@ public class EditPlasmaCellFollowUpServlet extends HttpServlet implements Defaul
 				HttpSession session = request.getSession(true);
 
 				AuditBean auditBean = new AuditBean("Edit Follow Up patient in DISORDER",
-						Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(generalDataRS.getString("FirstName"))
-								+ " " + Security.decrypt(generalDataRS.getString("MiddleName")),
+						Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(
+								generalDataRS.getString("FirstName")) + " " + Security.decrypt(generalDataRS.getString("MiddleName")),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
 

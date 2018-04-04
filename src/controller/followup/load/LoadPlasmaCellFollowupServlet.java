@@ -19,7 +19,6 @@ import model.AuditBean;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
-import utility.database.Security;
 
 @WebServlet("/LoadPlasmaCellFollowUpServlet")
 public class LoadPlasmaCellFollowupServlet extends HttpServlet {
@@ -191,21 +190,20 @@ public class LoadPlasmaCellFollowupServlet extends HttpServlet {
 				followupData.put("diseaseStatus", diseaseStatus);
 				followupData.put("relapseDisease", relapseDisease);
 				followupData.put("diseaseStatusOthers", diseaseStatusOthers);
-				
+
 				int patientID = Integer.parseInt(request.getParameter("patientID"));
 				ResultSet patientInfoRS = SQLOperationsBaseline.getPatient(patientID, connection);
 				patientInfoRS.first();
-				
+
 				int generalDataID = patientInfoRS.getInt("GeneralDataID");
 				ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 				generalDataRS.first();
-				
+
 				HttpSession session = request.getSession(true);
 
 				AuditBean auditBean = new AuditBean("Load patient in Plasma Cell Follow Up",
-						Security.decrypt(generalDataRS.getString("LastName")) + ", "
-								+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
-								+ Security.decrypt(generalDataRS.getString("MiddleName")),
+						generalDataRS.getString("LastNameDec") + ", " + generalDataRS.getString("FirstNameDec") + " " + generalDataRS
+								.getString("MiddleNameDec"),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
 

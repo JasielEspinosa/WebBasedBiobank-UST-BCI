@@ -106,6 +106,16 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet implements 
 			otherDisease = request.getParameter("diseaseStatusOthers");
 		}
 
+		if (qualityOfResponse.contains("&#40;") || qualityOfResponse.contains("&#41;")) {
+			qualityOfResponse = qualityOfResponse.replaceAll("&#40;", "(");
+			qualityOfResponse = qualityOfResponse.replaceAll("&#41;", ")");
+		}
+
+		if (otherDisease.contains("&#40;") || otherDisease.contains("&#41;")) {
+			otherDisease = otherDisease.replaceAll("&#40;", "(");
+			otherDisease = otherDisease.replaceAll("&#41;", ")");
+		}
+
 		String notes = request.getParameter("specialNotes");
 
 		//load
@@ -233,8 +243,8 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet implements 
 				HttpSession session = request.getSession(true);
 
 				AuditBean auditBean = new AuditBean("Edit Follow Up patient in DISORDER",
-						Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(generalDataRS.getString("FirstName"))
-								+ " " + Security.decrypt(generalDataRS.getString("MiddleName")),
+						Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(
+								generalDataRS.getString("FirstName")) + " " + Security.decrypt(generalDataRS.getString("MiddleName")),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
 

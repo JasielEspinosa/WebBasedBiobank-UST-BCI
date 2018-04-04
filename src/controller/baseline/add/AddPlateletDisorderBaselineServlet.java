@@ -45,9 +45,9 @@ public class AddPlateletDisorderBaselineServlet extends HttpServlet implements D
 		int disease = 7;
 
 		// GENERAL DATA
-		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
-		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
-		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
+		String lastName = request.getParameter("lastName").trim().toUpperCase();
+		String firstName = request.getParameter("firstName").trim().toUpperCase();
+		String middleInitial = request.getParameter("middleInitial").trim().toUpperCase();
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
@@ -175,7 +175,8 @@ public class AddPlateletDisorderBaselineServlet extends HttpServlet implements D
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
 
-		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]), Security.encrypt(addressArray[2]));
+		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]).trim(), Security.encrypt(addressArray[1]).trim(),
+				Security.encrypt(addressArray[2]).trim());
 		if (connection != null) {
 			if (SQLOperationsBaseline.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert AddressBean");

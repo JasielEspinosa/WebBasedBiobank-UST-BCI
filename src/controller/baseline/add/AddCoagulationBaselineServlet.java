@@ -46,9 +46,9 @@ public class AddCoagulationBaselineServlet extends HttpServlet implements Defaul
 		int disease = 2;
 
 		// GENERAL DATA
-		String lastName = Security.encrypt(request.getParameter("lastName").trim().toUpperCase());
-		String firstName = Security.encrypt(request.getParameter("firstName").trim().toUpperCase());
-		String middleInitial = Security.encrypt(request.getParameter("middleInitial").trim().toUpperCase());
+		String lastName = request.getParameter("lastName").trim().toUpperCase();
+		String firstName = request.getParameter("firstName").trim().toUpperCase();
+		String middleInitial = request.getParameter("middleInitial").trim().toUpperCase();
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
@@ -156,11 +156,21 @@ public class AddCoagulationBaselineServlet extends HttpServlet implements Defaul
 			treatmentSpecify = request.getParameter("treatmentSpecify");
 		}
 
+		if (treatment.contains("&#40;") || treatment.contains("&#41;")) {
+			treatment = treatment.replaceAll("&#40;", "(");
+			treatment = treatment.replaceAll("&#41;", ")");
+		}
+
+		if (treatmentSpecify.contains("&#40;") || treatmentSpecify.contains("&#41;")) {
+			treatmentSpecify = treatment.replaceAll("&#40;", "(");
+			treatmentSpecify = treatment.replaceAll("&#41;", ")");
+		}
+
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
 
-		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]), Security.encrypt(addressArray[1]),
-				Security.encrypt(addressArray[2]));
+		AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]).trim(), Security.encrypt(addressArray[1]).trim(),
+				Security.encrypt(addressArray[2]).trim());
 		if (connection != null) {
 			if (SQLOperationsBaseline.addAddress(ab, connection, disease)) {
 				System.out.println("Successful insert AddressBean");
@@ -365,8 +375,8 @@ public class AddCoagulationBaselineServlet extends HttpServlet implements Defaul
 		HttpSession session = request.getSession(true);
 
 		AuditBean auditBean = new AuditBean("Add patient in Coagulation Disease Baseline",
-				request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim().toUpperCase() + " "
-						+ request.getParameter("middleInitial").trim().toUpperCase(),
+				request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim()
+						.toUpperCase() + " " + request.getParameter("middleInitial").trim().toUpperCase(),
 				(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 		SQLOperations.addAudit(auditBean, connection);
 
