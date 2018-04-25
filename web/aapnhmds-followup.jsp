@@ -326,7 +326,7 @@
                         <div class="form-group" id="specifyOtherDiseaseMedication" style="display: none;">
                           <label class="control-label col-sm-6">Result</label>
                           <div class="col-sm-6">
-                            <textarea rows="4" name="specifyOtherDiseaseMedication"></textarea>
+                            <input type="text" class="form-control" name="specifyOtherDiseaseMedication">
                           </div>
                         </div>
                         <br />

@@ -16,6 +16,12 @@ INSERT INTO diseasetable VALUES(5,"MYELOPROLIFERATIVE NEOPLASM");
 INSERT INTO diseasetable VALUES(6,"PLASMA CELL DISORDER");
 INSERT INTO diseasetable VALUES(7,"PLATELET DISORDER");
 
+CREATE TABLE TokenTable (
+	AccountID int NOT NULL,
+	Token varchar(500) NOT NULL,
+	Expiration TimeStamp NOT NULL
+);
+
 CREATE TABLE PatientTable (
 	PatientID int NOT NULL AUTO_INCREMENT,
 	DiseaseID int NOT NULL,

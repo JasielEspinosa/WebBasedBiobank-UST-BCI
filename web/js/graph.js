@@ -153,7 +153,7 @@ $( document ).ready(function() {
 				{
 				  label: 'Others',
 				  //data: [ 25 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 				}
 		  ],
 		    labels: [
@@ -177,8 +177,8 @@ $( document ).ready(function() {
 	                    barPercentage: 1.0,
 	                    categoryPercentage: 1.0,
 		            	ticks: {
-		            	autoSkip: false
-		            }
+		            		autoSkip: false
+		            	}
 		            }]
 		        }
 		    }
@@ -204,7 +204,7 @@ $( document ).ready(function() {
 			    {
 				  label: 'nCR',
 				  //data: [ 8 ],
-			      backgroundColor: 'rgba(245, 245, 220, 1)'
+			      backgroundColor: 'rgba(218, 255, 19, 1)'
 				},
 				{
 				  label: 'PR',
@@ -311,7 +311,7 @@ $( document ).ready(function() {
 			    {
 				  label: 'nCR',
 				  //data: [ 8 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 				},
 				{
 				  label: 'PR',
@@ -511,7 +511,6 @@ $( document ).ready(function() {
 	// LYMPHOMA AGE CHART
 	var pieData = {
 			  labels: [
-				 			  
 				  "0-10", 
 				  "11-20", 
 				  "21-30", 
@@ -942,7 +941,7 @@ $( document ).ready(function() {
 				{
 				  label: 'Others',
 				  //data: [ 15 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 				}
 		  ],
 		    labels: [
@@ -1327,22 +1326,22 @@ $( document ).ready(function() {
 				{
 				  label: 'Radiotherapy',
 				  //data: [ 19 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 				},
 				{
 				  label: 'Supportive',
 				  //data: [ 21 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 			    },
 			    {
 				  label: 'Watch and Wait',
 				  //data: [ 23 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 			    },
 				{
 				  label: 'Others',
 				  //data: [ 25 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 				}
 		  ],
 		    labels: [
@@ -1792,12 +1791,12 @@ $( document ).ready(function() {
 				{
 				  label: 'Both Pharmacologic and Supportive',
 				  //data: [ 19 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 				},
 				{
 				  label: 'Watch and Wait ',
 				  //data: [ 21 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 			    },
 		  ],
 		    labels: [
@@ -2141,17 +2140,17 @@ $( document ).ready(function() {
 				{
 				  label: 'Both Pharmacologic and Supportive',
 				  //data: [ 19 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 				},
 				{
 				  label: 'Watch and Wait ',
 				  //data: [ 21 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 			    },
 			    {
 				  label: 'Others',
 				  //data: [ 21 ],
-				  backgroundColor: 'rgba(245, 245, 220, 1)'
+				  backgroundColor: 'rgba(218, 255, 19, 1)'
 				}
 		  ],
 		    labels: [

@@ -102,20 +102,15 @@
    <!-- End of header -->
    <!-- Sidebar -->
    <div class="row-offcanvas row-offcanvas-left">
-      <div id="sidebar" class="sidebar-offcanvas">
+      <!--       <div id="sidebar" class="sidebar-offcanvas">
          <div class="col-md-12">
             <ul class="nav nav-pills nav-stacked nav-stacked__usermngmt sidebar__searchbox--border">
             </ul>
-            <!-- Add box -->
-            <div class="row">
-               <div class="col-sm-12 add-box">
-                  <button id="addEncoder" type="button" class="btn bg-yellow button-border" data-toggle="modal"
-                     data-target="#usermanagement__popup" data-whatever="@mdo">Add Encoder</button>
-               </div>
-            </div>
-            <!-- End of Add box -->
+            Add box
+            <div class="row"></div>
+            End of Add box
          </div>
-      </div>
+      </div> -->
       <div id="main">
          <div class="col-md-12">
             <p class="visible-xs">
@@ -129,34 +124,39 @@
                <div class="col-sm-10 offset-sm-2 settings__buttons--position">
                   <!-- Buttons Container -->
                   <div class="row button-container">
+                     <div class="col-sm-1"></div>
                      <div class="col-sm-8">
                         <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive button-border usrmgmt--text"> <span>User
                               Management</span>
                         </a> <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive button-border archpat--text">
                            <span>Archived Patients</span>
                         </a>
+                        <button id="addEncoder" type="button" class="btn bg-yellow button-border" data-toggle="modal"
+                           data-target="#usermanagement__popup" data-whatever="@mdo">Add Encoder</button>
                      </div>
                   </div>
                   <!-- End of buttons container -->
                   <!-- Table -->
-                  <h3 style="background-color: #ffce00; font-weight: bold;" class="button-border">
-                     <i class="fas fa-users"></i> User Management
-                  </h3>
-                  <form>
-                     <table id="usersTable">
-                        <thead>
-                           <tr>
-                              <th></th>
-                              <th></th>
-                              <th onclick="sortTable(0)">Username</th>
-                              <th onclick="sortTable(1)">Name</th>
-                              <th onclick="sortTable(1)">Account Type</th>
-                           </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                     </table>
-                  </form>
+                  <div class="col-md-12 col-md-offset-1">
+                     <h3 style="background-color: #ffce00; font-weight: bold;" class="button-border">
+                        <i class="fas fa-users"></i> User Management
+                     </h3>
+                     <form>
+                        <table id="usersTable">
+                           <thead>
+                              <tr>
+                                 <th></th>
+                                 <th></th>
+                                 <th onclick="sortTable(0)">Username</th>
+                                 <th onclick="sortTable(1)">Name</th>
+                                 <th onclick="sortTable(1)">Account Type</th>
+                              </tr>
+                           </thead>
+                           <tbody>
+                           </tbody>
+                        </table>
+                     </form>
+                  </div>
                   <!-- End of Table -->
                   <!-- User Information Pop-Up -->
                   <form role="form" name="addUser" action="" id="addUser" method="post">
@@ -196,16 +196,12 @@
                                        class="form-control" id="middleName">
                                  </div>
                                  <div class="form-group">
-                                    <div class="col-sm-1 col-sm-offset-7 form-horizontal" style="text-align: right;">
-                                       <label for="message-text" class="control-label">Role:</label>
-                                    </div>
-                                    <div class="col-sm-4" style="padding-right: 0px !important">
-                                       <select class="form-control" name="role" id="role" required>
-                                          <option value="" selected="selected" disabled="disabled">Select</option>
-                                          <option value="1">Admin</option>
-                                          <option value="2">Encoder</option>
-                                       </select>
-                                    </div>
+                                    <label for="message-text" class="control-label">Role:</label> <select class="form-control" name="role"
+                                       id="role" required>
+                                       <option value="" selected="selected" disabled="disabled">Select</option>
+                                       <option value="1">Admin</option>
+                                       <option value="2">Encoder</option>
+                                    </select>
                                  </div>
                                  <div class="modal-footer">
                                     <button type="submit" class="btn btn-primary" data-toggle="modal" id="submitBtn"></button>

@@ -27,6 +27,7 @@ import model.ChartStatusBaseline;
 import model.ChartStatusFollowup;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
+import utility.database.SQLOperationsFollowUp;
 
 @WebServlet("/DashboardDataServlet")
 public class DashboardDataServlet extends HttpServlet {
@@ -110,11 +111,11 @@ public class DashboardDataServlet extends HttpServlet {
 
 				System.out.println(patientListRS.getFetchSize());
 
-				int diseaseStatusID;
+				int diseaseStatusBaselineID;
 				ResultSet diseaseStatusRS = null;
 
 				while (patientListRS.next()) {
-					System.out.println("aaaaaaaaaaaaaaaa");
+					System.out.println("Dashboard Data - Patient Retrieved");
 					int generalDataID = patientListRS.getInt("GeneralDataID");
 
 					ResultSet generalDataRS = SQLOperations.getChartGeneralData(generalDataID, connection);
@@ -122,7 +123,7 @@ public class DashboardDataServlet extends HttpServlet {
 					while (generalDataRS.next()) {
 
 						if (genderPass == 1) {
-							System.out.println("p0");
+							System.out.println("Dashboard Data - Patient Gender Retrieved");
 							int gender = generalDataRS.getInt("Gender");
 							if (gender == 1) {
 								maleChart += 1;
@@ -132,7 +133,7 @@ public class DashboardDataServlet extends HttpServlet {
 						}
 
 						if (agePass == 1) {
-							System.out.println("p1");
+							System.out.println("Dashboard Data - Patient Date of Birth Retrieved");
 							String dateOfBirth = generalDataRS.getString("DateOfBirthDec");
 
 							DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -156,7 +157,7 @@ public class DashboardDataServlet extends HttpServlet {
 						}
 
 						if (modeOfTreatmentPass == 1) {
-							System.out.println("p2");
+							System.out.println("Dashboard Data - Patient Mode of Treatment Retrieved");
 							int treatmentID = patientListRS.getInt("TreatmentID");
 
 							ResultSet treatmentRS = SQLOperationsBaseline.getTreatment(treatmentID, connection);
@@ -170,9 +171,9 @@ public class DashboardDataServlet extends HttpServlet {
 						}
 
 						if (baselinePass == 1) {
-							System.out.println("p3");
-							diseaseStatusID = patientListRS.getInt("DiseaseStatusID");
-							diseaseStatusRS = SQLOperationsBaseline.getDiseaseStatus(diseaseStatusID, connection);
+							System.out.println("Dashboard Data - Patient Disease Status Retrieved");
+							diseaseStatusBaselineID = patientListRS.getInt("DiseaseStatusID");
+							diseaseStatusRS = SQLOperationsBaseline.getDiseaseStatus(diseaseStatusBaselineID, connection);
 							//diseaseStatusRS.first();
 
 							if (diseaseStatusRS.first()) {
@@ -181,11 +182,12 @@ public class DashboardDataServlet extends HttpServlet {
 							}
 
 						}
+
 					}
 				}
 
 				if (followupPass == 1) {
-					System.out.println("p4");
+					System.out.println("Dashboard Data - Patient Follow Up Retrieved");
 					ResultSet followupRS = null;
 
 					// logic for sort
@@ -203,12 +205,12 @@ public class DashboardDataServlet extends HttpServlet {
 					}
 
 					while (followupRS.next()) {
-						diseaseStatusID = followupRS.getInt("DiseaseStatusID");
-						diseaseStatusRS = SQLOperationsBaseline.getDiseaseStatus(diseaseStatusID, connection);
+						int diseaseStatusFollowupID = followupRS.getInt("DiseaseStatusID");
+						diseaseStatusRS = SQLOperationsFollowUp.getDiseaseStatus(diseaseStatusFollowupID, connection);
 						//diseaseStatusRS.first();
 						if (diseaseStatusRS.first()) {
-							String diseaseStatusBaselineValue = diseaseStatusRS.getString("DiseaseStatus");
-							chartStatusBaseline.setDiseaseStatus(diseaseStatusBaselineValue);
+							String diseaseStatusFollowupValue = diseaseStatusRS.getString("DiseaseStatus");
+							chartStatusFollowup.setDiseaseStatus(diseaseStatusFollowupValue);
 						}
 					}
 				}
@@ -217,9 +219,9 @@ public class DashboardDataServlet extends HttpServlet {
 						chartStatusFollowup);
 				String json = new Gson().toJson(dashboardData);
 				response.getWriter().write(json);
-				
+
 				HttpSession session = request.getSession(true);
-				
+
 				AuditBean auditBean = new AuditBean("Dashboard page - Viewing of diseases accessed", (String) session.getAttribute("name"),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);

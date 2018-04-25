@@ -208,7 +208,7 @@ function loadFollowUpData(followupID) {
 
 		// disease status
 		$("[name='diseaseStatus']").val(response["diseaseStatus"])
-		$("[name='diseaseStatusOthers']").val(response["diseaseStatusOthers"])
+		$("[textarea='diseaseStatusOthers']").val(response["diseaseStatusOthers"])
 
 		if (response["diseaseStatus"] === "Others") {
 			$.diseaseStatusOthers();

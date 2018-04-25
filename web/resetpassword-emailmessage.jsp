@@ -14,15 +14,15 @@
   <title>USTH | Reset Password</title>
   
   <!-- CSS -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
   <link rel="stylesheet" href="fonts/open-sans.css">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="icon" href="images/usthlogo.png">
+  <link rel="icon" href="https://i.imgur.com/bwbWypp.png">
   <!-- END OF CSS -->
   </head>
     <body style="color: #023564;" class="container-fluid">   
     <div class="col-md-4 col-md-offset-4 forgotpassword__tabcontent">
-      <img class="login__logo" alt="USTH Logo" src="images/usthlogo.png">
+      <img class="login__logo" alt="USTH Logo" src="https://i.imgur.com/bwbWypp.png">
         <h5 class="login__logotext login__logotext--position" style="margin-bottom: 10px; font-weight: bold;">
           UST BENAVIDES<br>CANCER<br>INSTITUTE
         </h5>
@@ -37,6 +37,6 @@
     </div>
     </body>
   <!-- JS -->
-  <script src="js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <!-- END OF JS -->
 </html>

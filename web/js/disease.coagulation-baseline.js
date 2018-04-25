@@ -110,6 +110,14 @@ function loadPatientData(id) {
 
 		$("[name='dateOfVisit']").val(response["dateOfVisit"])
 		$("[name='diagnosis']").val(response["diagnosis"])
+		$("[name='diagnosisOthers']").val(response["diagnosisOthers"])
+		
+		if (response["diagnosis"] === "Others") {
+			$.diagnosisOthers();
+		} else {
+			$.diagnosisNull();
+		}
+		
 		$("[name='severity']").val(response["severity"])
 		$("[name='chiefComplaint']").val(response["chiefComplaint"])
 		$("[name='otherSymptoms']").val(response["otherSymptoms"])

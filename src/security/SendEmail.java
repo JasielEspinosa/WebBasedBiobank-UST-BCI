@@ -46,15 +46,15 @@ public class SendEmail {
             		"  <title>USTH | Reset Password</title>\r\n" + 
             		"  \r\n" + 
             		"  <!-- CSS -->\r\n" + 
-            		"  <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\">\r\n" + 
+            		"<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css\">\r\n" + 
             		"  <link rel=\"stylesheet\" href=\"fonts/open-sans.css\">\r\n" + 
             		"  <link rel=\"stylesheet\" href=\"css/style.css\">\r\n" + 
-            		"  <link rel=\"icon\" href=\"images/usthlogo.png\">\r\n" + 
+            		"  <link rel=\"icon\" href=\"https://i.imgur.com/bwbWypp.png\">\r\n" + 
             		"  <!-- END OF CSS -->\r\n" + 
             		"  </head>\r\n" + 
             		"    <body style=\"color: #023564;\" class=\"container-fluid\">   \r\n" + 
             		"    <div class=\"col-md-4 col-md-offset-4 forgotpassword__tabcontent\">\r\n" + 
-            		"      <img class=\"login__logo\" alt=\"USTH Logo\" src=\"images/usthlogo.png\">\r\n" + 
+            		"      <img class=\"login__logo\" alt=\"USTH Logo\" src=\"https://i.imgur.com/bwbWypp.png\">\r\n" + 
             		"        <h5 class=\"login__logotext login__logotext--position\" style=\"margin-bottom: 10px; font-weight: bold;\">\r\n" + 
             		"          UST BENAVIDES<br>CANCER<br>INSTITUTE\r\n" + 
             		"        </h5>\r\n" + 
@@ -69,7 +69,7 @@ public class SendEmail {
             		"    </div>\r\n" + 
             		"    </body>\r\n" + 
             		"  <!-- JS -->\r\n" + 
-            		"  <script src=\"js/bootstrap.min.js\"></script>\r\n" + 
+            		"<script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js\"></script>\r\n" + 
             		"  <!-- END OF JS -->\r\n" + 
             		"</html>", "text/html");
             //send message  

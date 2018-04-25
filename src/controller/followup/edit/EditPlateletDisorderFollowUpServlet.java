@@ -15,7 +15,6 @@ import model.*;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
 import utility.database.SQLOperationsFollowUp;
-import utility.database.Security;
 import utility.factory.BeanFactory;
 import utility.values.DefaultValues;
 
@@ -243,10 +242,10 @@ public class EditPlateletDisorderFollowUpServlet extends HttpServlet implements 
 				HttpSession session = request.getSession(true);
 
 				AuditBean auditBean = new AuditBean("Edit Follow Up patient in DISORDER",
-						Security.decrypt(generalDataRS.getString("LastName")) + ", " + Security.decrypt(
-								generalDataRS.getString("FirstName")) + " " + Security.decrypt(generalDataRS.getString("MiddleName")),
-						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
-				SQLOperations.addAudit(auditBean, connection);
+						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim()
+						.toUpperCase() + " " + request.getParameter("middleInitial").trim().toUpperCase(),
+				(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+		SQLOperations.addAudit(auditBean, connection);
 
 			} else {
 				System.out.println("Invalid Connection resource");

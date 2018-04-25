@@ -76,7 +76,7 @@ public class ForgotPassword extends HttpServlet {
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				Calendar cal = Calendar.getInstance();
 				cal.setTime(Calendar.getInstance().getTime());
-				cal.add(Calendar.DATE, 1);
+				//cal.add(Calendar.DATE, 1);
 
 				String expiration = dateFormat.format(cal.getTime());
 

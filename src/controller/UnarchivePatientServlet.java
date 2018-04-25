@@ -20,7 +20,6 @@ import model.ArchivedPatientBean;
 import model.AuditBean;
 import utility.database.SQLOperations;
 import utility.database.SQLOperationsBaseline;
-import utility.database.Security;
 
 @WebServlet("/UnarchivePatientServlet")
 public class UnarchivePatientServlet extends HttpServlet {
@@ -82,17 +81,15 @@ public class UnarchivePatientServlet extends HttpServlet {
 						ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 						generalDataRS.first();
 
-						String patientName = Security.decrypt(generalDataRS.getString("FirstName")) + " "
-								+ Security.decrypt(generalDataRS.getString("MiddleName")) + " "
-								+ Security.decrypt(generalDataRS.getString("LastName"));
+						String patientName = generalDataRS.getString("FirstNameDec") + " " + generalDataRS
+								.getString("MiddleNameDec") + " " + generalDataRS.getString("LastNameDec");
 
 						ArchivedPatientBean apb = new ArchivedPatientBean(patientID, patientName);
 						archivedPatientList.add(apb);
 
 						AuditBean auditBean = new AuditBean("Unarchived patient",
-								Security.decrypt(generalDataRS.getString("LastName")) + ", "
-										+ Security.decrypt(generalDataRS.getString("FirstName")) + " "
-										+ Security.decrypt(generalDataRS.getString("MiddleName")),
+								generalDataRS.getString("LastNameDec") + ", " + generalDataRS
+										.getString("FirstNameDec") + " " + generalDataRS.getString("MiddleNameDec"),
 								(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 						SQLOperations.addAudit(auditBean, connection);
 

@@ -639,7 +639,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Other findings</label>
                                        <div class="col-sm-8">
-                                          <textarea rows="4" class="form-control" name="otherFindings" ></textarea>
+                                          <textarea rows="4" class="form-control" name="otherFindings"></textarea>
                                        </div>
                                     </div>
                                     <!-- End of form -->
@@ -786,7 +786,8 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Iron-binding capacity</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="ironBindingCapacity" />
+                                          <input type="number" Required="required" step="any" class="form-control"
+                                             name="ironBindingCapacity" />
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -804,7 +805,8 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Indirect antiglobulin (Coombs) test(+/++/+++/-)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="indirectAntiglobulin" />
+                                          <input type="number" Required="required" step="any" class="form-control"
+                                             name="indirectAntiglobulin" />
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -828,20 +830,23 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Screening tests for hepatitis viruses A, B, and C (+/-)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="screeningTestsForHepatitisVirusesABC" />
+                                          <input type="number" Required="required" step="any" class="form-control"
+                                             name="screeningTestsForHepatitisVirusesABC" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Screening tests for EBV, cytomegalovirus (CMV), and HIV
                                           (+/-)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="screeningTestsForEBVCMVHIV" />
+                                          <input type="number" Required="required" step="any" class="form-control"
+                                             name="screeningTestsForEBVCMVHIV" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Erythropoeitin level</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="erythropoeitinLevel" />
+                                          <input type="number" Required="required" step="any" class="form-control"
+                                             name="erythropoeitinLevel" />
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -1009,7 +1014,7 @@
                                        </div>
                                     </div>
                                     <!-- Treatment -->
-                                    <div class="form-group" id="modeOfTreatment" >
+                                    <div class="form-group" id="modeOfTreatment">
                                        <label for="severity" class="control-label col-sm-4">Mode of Treatment</label>
                                        <div class="col-sm-8">
                                           <select required class="form-control" name="modeOfTreatment">
@@ -1023,14 +1028,14 @@
                                        </div>
                                     </div>
                                     <!-- Medications -->
-                                    <div class="form-group" id="medications" >
+                                    <div class="form-group" id="medications">
                                        <label class="control-label col-lg-4">Medications</label>
                                        <div class="col-sm-8">
                                           <input type="text" class="form-control" name="medications" />
                                        </div>
                                     </div>
                                     <!-- Date Started -->
-                                    <div class="form-group" id="dateStarted" >
+                                    <div class="form-group" id="dateStarted">
                                        <label class="control-label col-sm-4">Date Started</label>
                                        <div class="col-lg-8">
                                           <input required type="date" class="form-control" name="dateStarted" />
@@ -1227,18 +1232,21 @@
 																var leukemiaFollowPatStatsChart = new Chart(ctx, {
 																	type : 'line',
 																	data : {
-																		xLabels : [ ],
+																		xLabels : [ 'Jan 2017', 'Mar 2017', 'Jun 2017', 'Oct 2017', 'Jan 2018' ],
 																		yLabels : [ 'Hematologic Response', 'Stable Disease', 'Relapsed',
 																				'Dead', 'Others' ],
 																		datasets : [ {
-																			label : 'Leukemia Disease Status',
+																			label : '',
+																			data : [ 'Hematologic Response', 'Stable Disease', 'Relapsed',
+																					'Dead', 'Others' ],
 																			backgroundColor : 'rgba(6, 124, 209, 1)',
 																			fill : false
 																		} ],
-																		labels : [ ],
+																		labels : [],
 																		borderWidth : 1,
 																	},
 																	options : {
+
 																		responsive : true,
 																		data : {
 																			display : false
@@ -1259,8 +1267,10 @@
 																				}
 																			} ]
 																		},
+
 																	}
 																});
+																
 															</script>
             </div>
             <div class="modal-footer">

@@ -15,11 +15,11 @@ public interface SQLCommands {
 	String GET_USERS = "SELECT * FROM AccountTable";
 	String DELETE_USER = "DELETE FROM AccountTable where AccountID = ?";
 	String GET_PATIENT_LIST = "SELECT *, AES_DECRYPT(UNHEX(GeneralDataTable.LastName), '" + key + "') as LastNameDec, AES_DECRYPT(UNHEX(GeneralDataTable.FirstName), '" + key + "') as FirstNameDec, AES_DECRYPT(UNHEX(GeneralDataTable.MiddleName), '" + key + "') as MiddleNameDec FROM PatientTable inner join generaldatatable on patienttable.GeneralDataID=generaldatatable.GeneralDataID  where PatientTable.PatientID LIKE ? or AES_DECRYPT(UNHEX(GeneralDataTable.LastName), '" + key + "') LIKE ?  or AES_DECRYPT(UNHEX(GeneralDataTable.FirstName), '" + key + "') LIKE ? or AES_DECRYPT(UNHEX(GeneralDataTable.MiddleName), '" + key + "') LIKE ?  and PatientTable.DiseaseID LIKE ? and PatientTable.Active = 1";
-	String GET_ARCHIVED_PATIENT_LIST = "Select * from PatientTable where Active = 0";
+	String GET_ARCHIVED_PATIENT_LIST = "Select *, AES_DECRYPT(UNHEX(GeneralDataTable.LastName), '" + key + "') as LastNameDec, AES_DECRYPT(UNHEX(GeneralDataTable.FirstName), '" + key + "') as FirstNameDec, AES_DECRYPT(UNHEX(GeneralDataTable.MiddleName), '" + key + "') as MiddleNameDec from PatientTable inner join generaldatatable on patienttable.GeneralDataID=generaldatatable.GeneralDataID where Active = 0";
 	String ARCHIVE_PATIENT = "Update PatientTable set Active = 0 where PatientID = ?";
 	String UNARCHIVE_PATIENT = "Update PatientTable set Active = 1 where PatientID = ?";
 	String DELETE_FOLLOWUP = "DELETE FROM FollowupTable where FollowUpID = ?";
-	String GET_VISITS = "Select *, CONVERT(AES_DECRYPT(UNHEX(DateOfVisit,'" + key + "')), DATE) as DateOfVisitDec FROM FollowupTable where PatientID = ?";
+	String GET_VISITS = "Select *, CONVERT(AES_DECRYPT(UNHEX(DateOfVisit),'" + key + "'), DATE) as DateOfVisitDec FROM FollowupTable where PatientID = ?";
 
 	// Generate Report
 	String GENERATE_REPORT_GET_PATIENTS = "SELECT PT.*, CONVERT(AES_DECRYPT(UNHEX(GD.DateOfEntry),'" + key + "'), DATE) as DateOfEntryDec FROM PatientTable PT JOIN GeneralDataTable GD ON (GD.GeneralDataID = PT.GeneralDataID) " + "AND CONVERT(AES_DECRYPT(UNHEX(GD.DateOfEntry),'" + key + "'), DATE) >= ? AND CONVERT(AES_DECRYPT(UNHEX(GD.DateOfEntry),'" + key + "'), DATE) <= ? " + "WHERE PT.DiseaseID = ? ORDER BY CONVERT(AES_DECRYPT(UNHEX(GD.DateOfEntry),'" + key + "'), DATE) ASC";

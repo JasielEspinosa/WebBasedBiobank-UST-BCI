@@ -104,7 +104,7 @@ public class GenerateAuditServlet extends HttpServlet {
 				Document document = new Document();
 				PdfWriter.getInstance(document, response.getOutputStream());
 
-				document.addTitle("GenerateReportServlet");
+				document.addTitle("Generate Report Audit List");
 				document.addAuthor("Cancer Developers");
 				document.addCreationDate();
 				document.addProducer();
