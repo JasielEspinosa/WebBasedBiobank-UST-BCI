@@ -40,8 +40,15 @@ $('#addEncoder').click(function() {
 function deleteUser(id) {
 	params.action = 'delete';
 	params.accountID = id;
-	$("#modalHeader").text("Confirm delete")
-	$("#modalBody").text("Are you sure you want to delete user?")
+	$("#modalHeader").text("Confirm archive")
+	$("#modalBody").text("Are you sure you want to arhive this user?")
+};
+
+function restoreUser(id) {
+	params.action = 'restore';
+	params.accountID = id;
+	$("#modalHeader").text("Confirm restore")
+	$("#modalBody").text("Are you sure you want to restore this user?")
 };
 
 function editUser(id) {
@@ -167,19 +174,28 @@ function loadUsers() {
 
 		$.each(responseJson, function(index, user) {
 			roleVal = ''
+			delOrRes = ''
 			if (user.roleId == 1) {
 				roleVal = 'Admin'
 			} else {
 				roleVal = 'Encoder'
 			}
-
+			console.log(user.active);
+			if(user.active == 0){
+				delOrRes = 	"<td><button type='button' value='" + user.accountId + "' onClick=\"restoreUser(this.value)\""
+				+ "data-toggle=\"modal\" data-target=\"#confirm-submit\">Restore</button></td>"
+			}
+			if(user.active == 1){
+				delOrRes = 	"<td><button type='button' value='" + user.accountId + "' onClick=\"deleteUser(this.value)\""
+				+ "data-toggle=\"modal\" data-target=\"#confirm-submit\">Archive</button></td>"
+			}
+			
+			
 			$("<tr>").appendTo('#usersTable').append(
 					"<td><button type='button' value='" + user.accountId + "' onClick=\"editUser(this.value)\""
-							+ "data-toggle=\"modal\" data-target=\"#usermanagement__popup\">Edit</button></td>").append(
-					"<td><button type='button' value='" + user.accountId + "' onClick=\"deleteUser(this.value)\""
-							+ "data-toggle=\"modal\" data-target=\"#confirm-submit\">Delete</button></td>")
+							+ "data-toggle=\"modal\" data-target=\"#usermanagement__popup\">Edit</button></td>").append(delOrRes)
 			// .append("<td><input type='checkbox' name='deleteUsers[]' value='"+user.accountId +"'/></td>")
-			.append($("<td>").text(user.username)).append($("<td>").text(user.firstName + " " + user.middleName + " " + user.lastName))
+			.append($("<td>").text(user.username)).append($("<td>").text(user.active + " " +user.firstName + " " + user.middleName + " " + user.lastName))
 					.append($("<td>").text(roleVal));
 		});
 		$('#usersTable').dataTable({});

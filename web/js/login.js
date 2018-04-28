@@ -37,4 +37,10 @@ $('document').ready(function() {
 		swal("Hey!", "You have been automatically logged out due to exceeding the session time limit", "info");
 		localStorage.setItem("autoLogout", "");
 	}
+	$.post('SessionTerminateServlet', function (response) {
+		if(response.redirect){
+		       return;
+		}
+	}).fail(function(){
+		});
 });

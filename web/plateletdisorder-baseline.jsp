@@ -275,6 +275,12 @@
                                           <input required type="date" class="form-control" name="dateOfBirth">
                                        </div>
                                     </div>
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-5">Age</label>
+                                       <div class="col-sm-7">
+                                          <input type="text" class="form-control" id='age' readonly="readonly">
+                                       </div>
+                                    </div>
                                     <!-- Address -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Address</label>
@@ -1100,5 +1106,7 @@
    <script src="js/disease.platelet-baseline.js"></script>
    <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>
+   <script src="js/age-compute.js"></script>
+   
 </body>
 </html>

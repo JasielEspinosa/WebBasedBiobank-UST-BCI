@@ -105,10 +105,11 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 
-	public static boolean deleteUser(int accountID, Connection connection) {
+	public static boolean deleteUser(int active,int accountID, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(DELETE_USER);
-			pstmt.setInt(1, accountID);
+			pstmt.setInt(1, active);
+			pstmt.setInt(2, accountID);
 			pstmt.executeUpdate();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- deleteUser: " + sqle.getMessage());

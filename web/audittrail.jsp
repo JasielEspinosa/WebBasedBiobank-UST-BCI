@@ -162,11 +162,9 @@
                                        <label for="message-text" class="control-label">Doctor:</label>
                                     </div>
                                     <div class="col-sm-5">
-                                       <select required class="form-control" name="doctor">
+                                       <select required class="form-control" name="doctor" id="doctor">
                                           <option value="" selected="selected" disabled="disabled">Select User</option>
                                           <option value="All">All</option>
-                                          <option value="Dr. Mesina">Dr. Mesina</option>
-                                          <option value="Encoder">Encoder</option>
                                        </select>
                                     </div>
                                  </div>

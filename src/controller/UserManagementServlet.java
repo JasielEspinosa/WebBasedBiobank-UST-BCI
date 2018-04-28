@@ -100,9 +100,10 @@ public class UserManagementServlet extends HttpServlet {
 						String firstName = usersRS.getString("FirstName").trim().toUpperCase();
 						String middleName = usersRS.getString("MiddleName").trim().toUpperCase();
 						int roleID = usersRS.getInt("RoleID");
+						int active = usersRS.getInt("Active");
 						System.out.println(username);
 
-						AccountBean ab = new AccountBean(accountID, username, lastName, middleName, firstName, roleID);
+						AccountBean ab = new AccountBean(accountID, username, lastName, middleName, firstName, roleID, active);
 
 						accountList.add(ab);
 
@@ -131,7 +132,27 @@ public class UserManagementServlet extends HttpServlet {
 			String responseText = "";
 			if (connection != null) {
 				for (int pointer = 0; pointer < accountID.length; pointer++) {
-					if (SQLOperations.deleteUser(Integer.parseInt(accountID[pointer]), connection)) {
+					if (SQLOperations.deleteUser(0,Integer.parseInt(accountID[pointer]), connection)) {
+						responseText = "Success";
+						System.out.println("Success delete");
+					} else {
+						responseText = "Failed";
+						System.out.println("Failed");
+					}
+
+				}
+				response.getWriter().write(responseText);
+			} else {
+				System.out.println("Invalid connection");
+			}
+		}
+		
+		if (action.equals("restore")) {
+			String[] accountID = request.getParameterValues("accountID");
+			String responseText = "";
+			if (connection != null) {
+				for (int pointer = 0; pointer < accountID.length; pointer++) {
+					if (SQLOperations.deleteUser(1,Integer.parseInt(accountID[pointer]), connection)) {
 						responseText = "Success";
 						System.out.println("Success delete");
 					} else {

@@ -9,6 +9,7 @@ public class AccountBean {
 	private String middleName;
 	private String firstName;
 	private int roleId;
+	private int active;
 	
 	
 	public AccountBean() {
@@ -33,6 +34,21 @@ public class AccountBean {
 		this.middleName = middleName;
 		this.firstName = firstName;
 		this.roleId = roleId;
+	}
+	
+	
+
+
+	public AccountBean(int accountId, String username,String lastName, String middleName,
+			String firstName, int roleId, int active) {
+		super();
+		this.accountId = accountId;
+		this.username = username;
+		this.lastName = lastName;
+		this.middleName = middleName;
+		this.firstName = firstName;
+		this.roleId = roleId;
+		this.active = active;
 	}
 
 
@@ -72,4 +88,11 @@ public class AccountBean {
 	public void setRoleId(int roleId) {
 		this.roleId = roleId;
 	}
+	public int getActive() {
+		return active;
+	}
+	public void setActive(int active) {
+		this.active = active;
+	}
+	
 }

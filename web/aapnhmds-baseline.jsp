@@ -1,4 +1,4 @@
-<%-- <jsp:useBean id="aapnhmdsPatientsList" type="java.sql.ResultSet" scope="request"/> --%>	
+<%-- <jsp:useBean id="aapnhmdsPatientsList" type="java.sql.ResultSet" scope="request"/> --%>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -285,6 +285,12 @@
                                        <label class="control-label col-sm-5">Date of Birth</label>
                                        <div class="col-sm-7">
                                           <input required type="date" class="form-control" name="dateOfBirth">
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-5">Age</label>
+                                       <div class="col-sm-7">
+                                          <input type="text" class="form-control" id='age' readonly="readonly">
                                        </div>
                                     </div>
                                     <!-- Address -->
@@ -1348,5 +1354,6 @@
    <script src="js/disease.aapnhmds-baseline.js"></script>
    <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>
+   <script src="js/age-compute.js"></script>
 </body>
 </html>

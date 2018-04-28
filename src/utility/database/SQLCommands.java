@@ -13,7 +13,7 @@ public interface SQLCommands {
 	String UPDATE_PROFILE_NOPASS = "Update AccountTable set Username = ?, LastName = ?, FirstName = ?, MiddleName = ?" + " where AccountID = ?";
 	String INSERT_USER = "INSERT INTO AccountTable VALUES (NULL,?,?,?,?,?,?,?)";
 	String GET_USERS = "SELECT * FROM AccountTable";
-	String DELETE_USER = "DELETE FROM AccountTable where AccountID = ?";
+	String DELETE_USER = "Update AccountTable set Active = ? where AccountID = ?";
 	String GET_PATIENT_LIST = "SELECT *, AES_DECRYPT(UNHEX(GeneralDataTable.LastName), '" + key + "') as LastNameDec, AES_DECRYPT(UNHEX(GeneralDataTable.FirstName), '" + key + "') as FirstNameDec, AES_DECRYPT(UNHEX(GeneralDataTable.MiddleName), '" + key + "') as MiddleNameDec FROM PatientTable inner join generaldatatable on patienttable.GeneralDataID=generaldatatable.GeneralDataID  where PatientTable.PatientID LIKE ? or AES_DECRYPT(UNHEX(GeneralDataTable.LastName), '" + key + "') LIKE ?  or AES_DECRYPT(UNHEX(GeneralDataTable.FirstName), '" + key + "') LIKE ? or AES_DECRYPT(UNHEX(GeneralDataTable.MiddleName), '" + key + "') LIKE ?  and PatientTable.DiseaseID LIKE ? and PatientTable.Active = 1";
 	String GET_ARCHIVED_PATIENT_LIST = "Select *, AES_DECRYPT(UNHEX(GeneralDataTable.LastName), '" + key + "') as LastNameDec, AES_DECRYPT(UNHEX(GeneralDataTable.FirstName), '" + key + "') as FirstNameDec, AES_DECRYPT(UNHEX(GeneralDataTable.MiddleName), '" + key + "') as MiddleNameDec from PatientTable inner join generaldatatable on patienttable.GeneralDataID=generaldatatable.GeneralDataID where Active = 0";
 	String ARCHIVE_PATIENT = "Update PatientTable set Active = 0 where PatientID = ?";

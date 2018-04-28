@@ -4,6 +4,13 @@ var params = {
 
 $('document').ready(function() {
 	loadUsers();
+	$.post("UserManagementServlet", $.param(params), function(responseJson) {
+		$.each(responseJson, function(index, user) {
+			var option = new Option(user.firstName + " " + user.middleName + " " + user.lastName, user.accountId); 
+			$('#doctor').append($(option));
+		});
+	});
+	
 });
 
 function loadUsers() {
