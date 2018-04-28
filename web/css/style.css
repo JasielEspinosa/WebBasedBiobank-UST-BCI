@@ -759,4 +759,13 @@ a.login__forgotpasswordlink:hover {
    background-position: center;
 }
 
-/* END OF MAIN CSS */
+.status {
+	display:inline;
+	visibility:hidden;
+	font-weight: bold;
+	padding-left: 10px;
+}
+
+.status-position {
+	padding-top: 5px;
+}

@@ -1,4 +1,4 @@
-<%-- <jsp:useBean id="aapnhmdsPatientsList" type="java.sql.ResultSet" scope="request"/> --%>
+<%-- <jsp:useBean id="aapnhmdsPatientsList" type="java.sql.ResultSet" scope="request"/> --%>	
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/pure-min.css">
+<link rel="stylesheet" href="css/jBox.css">
+<link rel="stylesheet" href="css/TooltipDark.css">
 <link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="fontawesome-free-5.0.8/web-fonts-with-css/css/fontawesome-all.min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
@@ -46,6 +48,9 @@
 <script src="js/loadEditingFields.js" type="text/javascript"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
+<script src="js/normalrange.js"></script>
+<script src="js/rangetooltip.js"></script>
+<script src="js/jBox.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
 </head>
@@ -266,11 +271,11 @@
                                        <label class="control-label col-sm-5">Gender</label>
                                        <div class="col-sm-7">
                                           <div class="radio">
-                                             <label> <input type="radio" name="gender" value="1" Required="Required"> Male
+                                             <label> <input type="radio" name="gender" value="1" Required="Required" onclick="checkCheckValue();"> Male
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label> <input type="radio" name="gender" value="2"> Female
+                                             <label> <input type="radio" name="gender" value="2" onclick="checkCheckValue();"> Female
                                              </label>
                                           </div>
                                        </div>
@@ -671,77 +676,134 @@
                                        </div>
                                     </div>
                                     <!-- End of Labels -->
+                                    
                                     <!-- Fields -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Hemoglobin (g/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="hemoglobin" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="hemoglobin" 
+                                          	id="hemoglobin" onchange="checkCheckValue();"/>
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                        <span class="tooltipPointer1" title="Normal Hemoglobin Value ( g/L ): <br/> Male: 138 - 172 <br/> Female: 121 - 151
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="hemoglobinStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Hematocrit (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="hematocrit" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="hematocrit" 
+                                          id="hematocrit"/>
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Hematocrit Value ( g/L ): <br/> Male: 40 - 54 <br/> Female: 36 - 48
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="hematocritStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">White blood cells (x10 ^9/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="whiteBloodCells" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="whiteBloodCells"
+                                          id="whiteBloodCells"/>
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="whiteBloodCellsStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Neutrophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="neutrophils" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="neutrophils" 
+                                          	id="neutrophils"/>
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="neutrophilsStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Lymphocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="lymphocytes" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="lymphocytes" 
+                                          id="lymphocytes"/>
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="lymphocytesStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Monocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="monocytes" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="monocytes" 
+                                          id="monocytes" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="monocytesStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Eosinophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="eosinophils" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="eosinophils"
+                                          id="eosinophils" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="eosinophilsStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Basophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="basophils" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="basophils"
+                                          id="basophils" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="basophilsStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Myelocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="myelocytes" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="myelocytes" 
+                                          id="myelocytes" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="myelocytesStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Metamyelocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="metamyelocytes" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="metamyelocytes" 
+                                          id="metamyelocytes" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="metamyelocytesStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Blasts (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="blasts" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="blasts" 
+                                          id="blasts"/>
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="blastsStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Platelet count (x 10^9/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="plateletCount" />
+                                          <input type="number" Required="required" step="any" class="form-control" name="plateletCount" 
+                                          id="plateletCount" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       	<span id="plateletCountStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <!-- End of Fields -->
