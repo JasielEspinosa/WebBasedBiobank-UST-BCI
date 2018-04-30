@@ -301,6 +301,9 @@ function loadPatientData(id) {
 		}
 
 		bindEvents();
+		
+		//value range
+		whiteBloodCellsFunc();
 
 	})
 };

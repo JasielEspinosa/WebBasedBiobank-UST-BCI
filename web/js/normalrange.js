@@ -206,7 +206,6 @@ window.onload = function() {
 		} else if ($(this).attr("value") == "2") {
 			FemaleCheckValue();
 		}
-		whiteBloodCellsFunc();
 	});
 	
 	function checkGenderVal(){
@@ -240,7 +239,7 @@ window.onload = function() {
 		whiteBloodCellsFunc();
 	};
 	
-	function whiteBloodCellsFunc(){
+	function whiteBloodCellsFunc() {
 		if (this.value != '' && this.value < 4.0) {
 			document.getElementById('whiteBloodCellsStatus').innerHTML = 'Low';
 			document.getElementById('whiteBloodCellsStatus').style.color = '#023564';

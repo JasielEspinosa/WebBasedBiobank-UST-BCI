@@ -47,7 +47,6 @@
 <script src="js/loadEditingFields.js" type="text/javascript"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
-<script src="js/normalrangeleuk.js"></script>
 <script src="js/rangetooltip.js"></script>
 <script src="js/jBox.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
@@ -716,7 +715,7 @@
                                        <label class="control-label col-sm-4">Hemoglobin (g/L)</label>
                                        <div class="col-lg-4">
                                           <input type="number" Required="required" step=".1" min="0"
-                                             onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hemoglobin" id="hemoglobin" />
+                                             onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hemoglobin" id="hemoglobin"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
                                           <span class="tooltipPointer1"
@@ -745,7 +744,7 @@
                                        <div class="col-lg-4">
                                           <input type="number" Required="required" step=".1" min="0"
                                              onfocusout="setThreeNumberDecimal(this)" class="form-control" name="whiteBloodCells"
-                                             id="whiteBloodCells" />
+                                             id="whiteBloodCells"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
                                           <span class="tooltipPointer1"
@@ -1588,6 +1587,7 @@
    <!-- End of Main Container -->
    <script src="js/JsBarcode.barcodePrint.js"></script>
    <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+   <script src="js/normalrangeleuk.js"></script>
    <script src="js/disease.leukemia-baseline.js"></script>
    <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>

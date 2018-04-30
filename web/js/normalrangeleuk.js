@@ -1,5 +1,6 @@
 window.onload = function() {
 
+
 	function MaleCheckValue(){
 		  
 		   if ( hemoglobin.value != '' && hemoglobin.value < 138 ) {
@@ -175,25 +176,9 @@ window.onload = function() {
 		}
 
 	});
-
+	
 	whiteBloodCells.oninput = function() {
-
-		if (this.value != '' && this.value < 4.0) {
-			document.getElementById('whiteBloodCellsStatus').innerHTML = 'Low';
-			document.getElementById('whiteBloodCellsStatus').style.color = '#023564';
-			whiteBloodCellsStatus.style.visibility = 'visible';
-		} else if (this.value != '' && this.value >= 4.0 && this.value <= 11.0) {
-			document.getElementById('whiteBloodCellsStatus').innerHTML = 'Normal';
-			document.getElementById('whiteBloodCellsStatus').style.color = '#008000';
-			whiteBloodCellsStatus.style.visibility = 'visible';
-		} else if (this.value != '' && this.value > 11.0) {
-			document.getElementById('whiteBloodCellsStatus').innerHTML = 'High';
-			document.getElementById('whiteBloodCellsStatus').style.color = '#F00';
-			whiteBloodCellsStatus.style.visibility = 'visible';
-		} else {
-			document.getElementById('whiteBloodCellsStatus').innerHTML = '';
-		}
-
+		whiteBloodCellsFunc();
 	};
 
 	neutrophils.oninput = function() {
@@ -478,4 +463,22 @@ window.onload = function() {
 
 };
 
+function whiteBloodCellsFunc() {
 
+	if (whiteBloodCells.value != '' && whiteBloodCells.value < 4.0) {
+		document.getElementById('whiteBloodCellsStatus').innerHTML = 'Low';
+		document.getElementById('whiteBloodCellsStatus').style.color = '#023564';
+		whiteBloodCellsStatus.style.visibility = 'visible';
+	} else if (whiteBloodCells.value != '' && this.value >= 4.0 && whiteBloodCells.value <= 11.0) {
+		document.getElementById('whiteBloodCellsStatus').innerHTML = 'Normal';
+		document.getElementById('whiteBloodCellsStatus').style.color = '#008000';
+		whiteBloodCellsStatus.style.visibility = 'visible';
+	} else if (whiteBloodCells.value != '' && whiteBloodCells.value > 11.0) {
+		document.getElementById('whiteBloodCellsStatus').innerHTML = 'High';
+		document.getElementById('whiteBloodCellsStatus').style.color = '#F00';
+		whiteBloodCellsStatus.style.visibility = 'visible';
+	} else {
+		document.getElementById('whiteBloodCellsStatus').innerHTML = '';
+	}
+
+};
