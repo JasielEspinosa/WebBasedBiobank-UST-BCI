@@ -1822,6 +1822,7 @@
    </div>
    <!-- End of main container -->
    <script src="js/dashboard-data.js"></script>
+   <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>
 </body>
 </html>

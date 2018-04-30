@@ -67,6 +67,7 @@ public class GenerateReportServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession(true);
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
 		String fromDateGR = request.getParameter("fromDateGenerateReport");
@@ -199,6 +200,9 @@ public class GenerateReportServlet extends HttpServlet {
 				document.add(table_header);
 				String timeStamp = new SimpleDateFormat("yyyy MMMM dd - HH:mm").format(Calendar.getInstance().getTime());
 				anchor = new Anchor(timeStamp + " PH Time", font_tnr_8_b);
+				document.add(anchor);
+				document.add(Chunk.NEWLINE);
+				anchor = new Anchor("Printed by: " + (String) session.getAttribute("name"), font_tnr_8_b);
 				//anchor.setReference("#" + "Sample".trim());
 				document.add(anchor);
 				document.add(Chunk.NEWLINE);
@@ -451,7 +455,6 @@ public class GenerateReportServlet extends HttpServlet {
 				}
 				document.add(paragraph);
 				document.close();
-				HttpSession session = request.getSession(true);
 				AuditBean auditBean = new AuditBean("Generate Patient Report", (String) session.getAttribute("name"),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
