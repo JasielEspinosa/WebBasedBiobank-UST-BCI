@@ -44,6 +44,7 @@ CREATE TABLE GeneralDataTable (
 	DateOfBirth varchar(500) NULL,
 	DateOfEntry varchar(500) NOT NULL,
 	AddressID int NOT NULL,
+	CivilStatus varchar(100),
 	TissueSpecimenID int,
 	PRIMARY KEY (GeneralDataID)
 );

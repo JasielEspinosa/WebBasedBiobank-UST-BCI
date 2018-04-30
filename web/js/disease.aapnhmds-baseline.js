@@ -9,6 +9,10 @@ var params = {
 var editState = false;
 var upperActionState = false;
 
+function setThreeNumberDecimal(num) {
+	num.value = parseFloat(num.value).toFixed(3);
+};
+
 $("#AAPNHMDSBaseline").submit(function(e) {
 	e.preventDefault();
 });
@@ -33,7 +37,7 @@ $('document').ready(function() {
 	});
 	$("#patientStatistics").click(function() {
 		if (upperActionState == true) {
-			
+
 		}
 	});
 	$("#editPatientBtn").click(function() {
@@ -104,6 +108,7 @@ function loadPatientData(id) {
 
 		$("[name='dateOfBirth']").val(response["dateOfBirth"])
 		$("[name='address']").val(response["address"])
+		$("[name='civilStatus']").val(response["civilStatus"])
 		$("[name='dateOfEntry']").val(response["dateOfEntry"])
 
 		$("[name='specimenType']").val(response["specimenType"])

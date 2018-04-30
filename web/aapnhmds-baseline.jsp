@@ -512,7 +512,7 @@
                                              <input type="text" class="form-control" name="genericName">
                                           </div>
                                           <div class="col-sm-2" id="dose" style="display: none;">
-                                             <input type="number" Required="required" step="any" class="form-control" name="dose">
+                                             <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="dose">
                                           </div>
                                           <div class="col-sm-2" id="frequency" style="display: none;">
                                              <input type="text" class="form-control" name="frequency">
@@ -632,19 +632,19 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Height</label>
                                        <div class="col-sm-8">
-                                          <input type="number" Required="required" step="any" class="form-control" name="height" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="height" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Weight</label>
                                        <div class="col-sm-8">
-                                          <input type="number" Required="required" step="any" class="form-control" name="weight" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="weight" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">ECOG</label>
                                        <div class="col-sm-8">
-                                          <input type="number" Required="required" step="any" class="form-control" name="ecog" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="ecog" />
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -687,7 +687,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Hemoglobin (g/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="hemoglobin" 
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hemoglobin" 
                                           	id="hemoglobin" onchange="checkCheckValue();"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -701,7 +701,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Hematocrit (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="hematocrit" 
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hematocrit" 
                                           id="hematocrit"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -715,7 +715,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">White blood cells (x10 ^9/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="whiteBloodCells"
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="whiteBloodCells"
                                           id="whiteBloodCells"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -725,7 +725,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Neutrophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="neutrophils" 
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="neutrophils" 
                                           	id="neutrophils"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -735,7 +735,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Lymphocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="lymphocytes" 
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="lymphocytes" 
                                           id="lymphocytes"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -745,7 +745,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Monocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="monocytes" 
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="monocytes" 
                                           id="monocytes" />
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -755,7 +755,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Eosinophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="eosinophils"
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="eosinophils"
                                           id="eosinophils" />
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -765,7 +765,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Basophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="basophils"
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="basophils"
                                           id="basophils" />
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -775,7 +775,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Myelocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="myelocytes" 
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="myelocytes" 
                                           id="myelocytes" />
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -785,7 +785,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Metamyelocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="metamyelocytes" 
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="metamyelocytes" 
                                           id="metamyelocytes" />
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -795,7 +795,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Blasts (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="blasts" 
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="blasts" 
                                           id="blasts"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -805,7 +805,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Platelet count (x 10^9/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="plateletCount" 
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="plateletCount" 
                                           id="plateletCount" />
                                        </div>
                                        <div class="col-sm-4 status-position">
@@ -830,75 +830,75 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Creatinine (mg/dl)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="creatinine" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="creatinine" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Uric acid mg/dl</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="uricAcid" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="uricAcid" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Reticulocyte Count</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="reticulocyteCount" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="reticulocyteCount" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum iron</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="serumIron" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumIron" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Iron-binding capacity</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control"
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
                                              name="ironBindingCapacity" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum Ferritin</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="serumFerritin" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumFerritin" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Direct antiglobulin (Coombs) test (+/++/+++/-)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="directAntiglobulin" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="directAntiglobulin" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Indirect antiglobulin (Coombs) test(+/++/+++/-)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control"
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
                                              name="indirectAntiglobulin" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">SGOT (U/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="sgot" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="sgot" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">SGPT (U/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="sgpt" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="sgpt" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">LDH (U/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="ldh" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="ldh" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Screening tests for hepatitis viruses A, B, and C (+/-)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control"
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
                                              name="screeningTestsForHepatitisVirusesABC" />
                                        </div>
                                     </div>
@@ -906,33 +906,33 @@
                                        <label class="control-label col-sm-4">Screening tests for EBV, cytomegalovirus (CMV), and HIV
                                           (+/-)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control"
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
                                              name="screeningTestsForEBVCMVHIV" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Erythropoeitin level</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control"
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
                                              name="erythropoeitinLevel" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum folic acid</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="serumFolicAcid" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumFolicAcid" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum B12</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="serumB12" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumB12" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">TSH</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="tsh" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="tsh" />
                                        </div>
                                     </div>
                                     <!-- End of fields -->

@@ -21,12 +21,11 @@ import utility.values.DefaultValues;
 @WebServlet("/EditPlasmaCellBaselineServlet")
 public class EditPlasmaCellBaselineServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
-
+	
 	private Connection connection;
-
+	
 	public void init() throws ServletException {
 		connection = SQLOperationsBaseline.getConnection();
-
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
 			System.out.println("connection is READY.");
@@ -34,22 +33,19 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 			System.err.println("connection is NULL.");
 		}
 	}
-
+	
 	public EditPlasmaCellBaselineServlet() {
 		super();
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//get form data
-
 		getServletContext().log("EditPlasmaCellBaselineServlet insert test");
-
 		int disease = 6;
-
 		// GENERAL DATA
 		String lastName = request.getParameter("lastName").trim().toUpperCase();
 		String firstName = request.getParameter("firstName").trim().toUpperCase();
@@ -57,22 +53,19 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
+		String civilStatus = request.getParameter("civilStatus");
 		String dateOfEntry = request.getParameter("dateOfEntry");
-
 		String specimenType = noValue;
 		if (Integer.parseInt(request.getParameter("tissueSpecimenCollected")) == 1) {
 			specimenType = request.getParameter("specimenType");
 		}
-
 		// CLINICAL DATA
 		String dateOfInitialDiagnosis = request.getParameter("dateOfInitialDiagnosis");
 		String diagnosis = request.getParameter("diagnosis");
 		String issStagingName = request.getParameter("issStaging");
-
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String constitutionalSymptoms = request.getParameter("constitutionalSymptoms");
 		String otherSymptoms = request.getParameter("otherSymptoms");
-
 		String relationshipToPatient = noValue;
 		String cancerName = noValue;
 		String otherDiseasesInTheFamily = noValue;
@@ -81,9 +74,7 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 			cancerName = request.getParameter("specifyCancer");
 			otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
 		}
-
 		String comorbidities = request.getParameter("comorbidities");
-
 		String genericName = noValue;
 		Double dose = 0.0;
 		String frequency = noValue;
@@ -92,17 +83,14 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 			dose = Double.parseDouble(request.getParameter("dose"));
 			frequency = request.getParameter("frequency");
 		}
-
 		String smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
 		String alchoholIntakeHistorySpecify = request.getParameter("alcoholIntakeSpecify");
 		String chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
-
 		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
 		double ecog = Double.parseDouble(request.getParameter("ecog"));
 		String otherFindings = request.getParameter("otherFindings");
-
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
 		////// Hematology
@@ -118,7 +106,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 		double metamyelocytes = Double.parseDouble(request.getParameter("metamyelocytes"));
 		double blasts = Double.parseDouble(request.getParameter("blasts"));
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
-
 		////// Other Laboratories / Blood Chemistry
 		double bun = Double.parseDouble(request.getParameter("bun"));
 		double creatinine = Double.parseDouble(request.getParameter("creatinine"));
@@ -131,12 +118,10 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 		double globulin = Double.parseDouble(request.getParameter("globulin"));
 		double beta2Microglobulin = Double.parseDouble(request.getParameter("beta2Microglobulin"));
 		double ldh = Double.parseDouble(request.getParameter("ldh"));
-
 		String imagingStudiesResult = noValue;
 		if (Integer.parseInt(request.getParameter("imagingStudies")) == 1) {
 			imagingStudiesResult = request.getParameter("imagingStudiesResult");
 		}
-
 		String boneMarrowAspirateDatePerformed = noValue;
 		String boneMarrowAspirateDescription = noValue;
 		// Part boneMarrowAspirateAttachScannedDocument;
@@ -145,84 +130,70 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 			boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
 			//boneMarrowAspirateAttachScannedDocument = request.getPart("boneMarrowAspirateAttachScannedDocument");
 		}
-
 		String serumFree = noValue;
 		// Part serumFreeAttachScannedDocument;
 		if (Integer.parseInt(request.getParameter("serumFreeLightChainAsssay")) == 1) {
 			serumFree = request.getParameter("serumFreeLightChainAsssayResult");
 			//serumFreeAttachScannedDocument = request.getPart("serumFreeLightChainAsssayAttachScannedDocument");
 		}
-
 		String serumProteinElectrophoresisResult = noValue;
 		// Part serumProteinElectrophoresisAttachScannedDocument;
 		if (Integer.parseInt(request.getParameter("serumProteinElectrophoresis")) == 1) {
 			serumProteinElectrophoresisResult = request.getParameter("serumProteinElectrophoresisResult");
 			//serumProteinElectrophoresisAttachScannedDocument = request.getPart("serumProteinElectrophoresisAttachScannedDocument");
 		}
-
 		String serumImmunofixationResult = noValue;
 		// Part serumImmunofixationAttachScannedDocument;
 		if (Integer.parseInt(request.getParameter("serumImmunofixation")) == 1) {
 			serumImmunofixationResult = request.getParameter("serumImmunofixationResult");
 			//serumImmunofixationAttachScannedDocument = request.getPart("serumImmunofixationAttachScannedDocument");
 		}
-
 		String urineProteinResult = noValue;
 		// Part urineProteinAttachScannedDocument;
 		if (Integer.parseInt(request.getParameter("urineProtein")) == 1) {
 			urineProteinResult = request.getParameter("urineProteinResult");
 			//urineProteinAttachScannedDocument = request.getPart("urineProteinAttachScannedDocument");
 		}
-
 		String cytogeneticAndMolecularAnalysisResult = noValue;
 		// Part cytogeneticAndMolecularAnalysisAttachScannedDocument;
 		if (Integer.parseInt(request.getParameter("cytogeneticAndMolecularAnalysis")) == 1) {
 			cytogeneticAndMolecularAnalysisResult = request.getParameter("cytogeneticAndMolecularAnalysisResult");
 			//cytogeneticAndMolecularAnalysisAttachScannedDocument = request.getPart("cytogeneticAndMolecularAnalysisAttachScannedDocument");
 		}
-
 		// TREATMENT / THERAPHY AND RESPONSE
-
 		boolean transplantCandidate;
 		if (Integer.parseInt(request.getParameter("transplantCandidate")) != 0) {
 			transplantCandidate = true;
 		} else {
 			transplantCandidate = false;
 		}
-
 		String modeOfTreatment = request.getParameter("treatment");
 		String otherRegimen = noValue;
 		if (modeOfTreatment.equalsIgnoreCase("Others")) {
 			otherRegimen = request.getParameter("otherRegimens");
 		}
-
 		String regimenTransplant = request.getParameter("regimenProtocolTransplant");
 		String otherRegimenTransplant = noValue;
 		if (regimenTransplant.equalsIgnoreCase("Others")) {
 			otherRegimenTransplant = request.getParameter("otherRegimensTransplant");
 		}
-
 		String regimenNonTransplant = request.getParameter("regimenProtocolNonTransplant");
 		String otherRegimenNonTransplant = noValue;
 		if (regimenNonTransplant.equalsIgnoreCase("Others")) {
 			otherRegimenNonTransplant = request.getParameter("otherRegimensNonTransplant");
 		}
-
 		String regimenMaintenanceTherapy = request.getParameter("regimenProtocolMaintenanceTherapy");
 		String otherRegimenMaintenanceTherapy = noValue;
 		if (regimenMaintenanceTherapy.equalsIgnoreCase("Others")) {
 			otherRegimenMaintenanceTherapy = request.getParameter("otherRegimensMaintenanceTherapy");
 		}
-
 		int cycleNumber = Integer.parseInt(request.getParameter("cycleNumber"));
-
 		// Other Treatment Modalities/Adjunctive treatment
 		String bisphosphonates = request.getParameter("bisphosphonatesSpecify");
 		String radiotherapy = request.getParameter("radiotherapyDoseAndFrequency");
 		String otherMedications = request.getParameter("otherMedications");
 		String dateStarted = request.getParameter("dateStarted");
 		String complications = request.getParameter("complications");
-
 		String diseaseStatus = request.getParameter("diseaseStatus");
 		String relapseDisease = noValue;
 		String otherDisease = noValue;
@@ -231,75 +202,57 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 		} else if (diseaseStatus.equalsIgnoreCase("Relapse")) {
 			relapseDisease = request.getParameter("relapseDisease");
 		}
-
 		if (modeOfTreatment.contains("&#40;") || modeOfTreatment.contains("&#41;")) {
 			modeOfTreatment = modeOfTreatment.replaceAll("&#40;", "(");
 			modeOfTreatment = modeOfTreatment.replaceAll("&#41;", ")");
 		}
-
 		if (diseaseStatus.contains("&#40;") || diseaseStatus.contains("&#41;")) {
 			diseaseStatus = diseaseStatus.replaceAll("&#40;", "(");
 			diseaseStatus = diseaseStatus.replaceAll("&#41;", ")");
 		}
-
 		if (relapseDisease.contains("&#40;") || relapseDisease.contains("&#41;")) {
 			relapseDisease = relapseDisease.replaceAll("&#40;", "(");
 			relapseDisease = relapseDisease.replaceAll("&#41;", ")");
 		}
-
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
-
 		//get all id
 		int patientID = Integer.parseInt(request.getParameter("patientIDNumber"));
 		try {
 			if (connection != null) {
 				ResultSet patientInfo = SQLOperationsBaseline.getPatient(patientID, connection);
 				patientInfo.first();
-
 				int generalDataID = patientInfo.getInt("GeneralDataID");
 				int clinicalDataID = patientInfo.getInt("ClinicalDataID");
 				int laboratoryID = patientInfo.getInt("LaboratoryID");
 				int treatmentID = patientInfo.getInt("TreatmentID");
-
 				ResultSet generalData = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 				generalData.first();
-
 				int addressID = generalData.getInt("AddressID");
 				int tissueSpecimenID = generalData.getInt("TissueSpecimenID");
-
 				ResultSet clinicalData = SQLOperationsBaseline.getClinicalData(clinicalDataID, connection);
 				clinicalData.first();
-
 				int issStagingID = clinicalData.getInt("ISSStagingID");
-
 				int physicalExamID = clinicalData.getInt("PhysicalExamID");
-
 				ResultSet laboratoryProfile = SQLOperationsBaseline.getLaboratoryProfile(laboratoryID, connection);
 				laboratoryProfile.first();
-
 				int hematologyID = laboratoryProfile.getInt("HematologyID");
 				int bloodChemistryID = laboratoryProfile.getInt("BloodChemistryID");
 				int boneMarrowAspirateID = laboratoryProfile.getInt("BoneMarrowAspirateID");
 				int cytogeneticMolecularID = laboratoryProfile.getInt("CytogeneticMolecularID");
 				int imagingStudiesID = laboratoryProfile.getInt("ImagingStudiesID");
-
 				int serumFreeID = laboratoryProfile.getInt("SerumFreeID");
 				int serumProteinID = laboratoryProfile.getInt("SerumProteinID");
 				int serumImmunofixationID = laboratoryProfile.getInt("SerumImmunofixationID");
 				int urineProteinID = laboratoryProfile.getInt("UrineProteinID");
-
 				ResultSet treatment = SQLOperationsBaseline.getTreatment(treatmentID, connection);
 				treatment.first();
-
 				int modeOfTreatmentID = treatment.getInt("ModeOfTreatmentID");
 				int regimenID = treatment.getInt("RegimenID");
 				int regimenTransplantID = treatment.getInt("RegimenTransplantID");
 				int regimenNonTransplantID = treatment.getInt("RegimenNonTransplantID");
 				int maintenanceTherapyID = treatment.getInt("MaintenanceTherapyID");
-
 				int otherTreatmentID = patientInfo.getInt("OtherTreatmentID");
-
 				//start of edit
 				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]).trim(),
 						Security.encrypt(addressArray[1]).trim(), Security.encrypt(addressArray[2]).trim());
@@ -312,7 +265,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection AddressBean");
 				}
-
 				TissueSpecimenBean tsb = BeanFactory.getTissueSpecimenBean(specimenType);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editTissueSpecimenData(tsb, connection, disease, tissueSpecimenID)) {
@@ -323,8 +275,8 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection TissueSpecimenBean");
 				}
-
-				GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, firstName, middleInitial, gender, dateOfBirth, dateOfEntry);
+				GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, firstName, middleInitial, gender, dateOfBirth, dateOfEntry,
+						civilStatus);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editGeneralData(gdb, connection, disease, generalDataID)) {
 						System.out.println("Successful insert GeneralDataBean");
@@ -334,7 +286,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection GeneralDataBean");
 				}
-
 				ISSStagingBean issb = BeanFactory.getISSStagingBean(issStagingName);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editISSStaging(issb, connection, disease, issStagingID)) {
@@ -345,7 +296,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection ISSStagingBean");
 				}
-
 				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, 0.0, 0.0, 0.0, false, false, "", "", false,
 						otherFindings);
 				if (connection != null) {
@@ -357,7 +307,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection PhysicalExamBean");
 				}
-
 				ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, "", "", chiefComplaint, "",
 						constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeHistorySpecify,
 						chemicalExposureSpecify, "", "", otherFindings);
@@ -370,7 +319,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection ClinicalDataBean");
 				}
-
 				FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, cancerName);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editFamilyCancer(famcb, connection, disease, clinicalDataID)) {
@@ -381,7 +329,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection FamilyCancerBean");
 				}
-
 				OtherDiseasesBean odb = BeanFactory.getOtherDiseasesBean(otherDiseasesInTheFamily);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editOtherDiseases(odb, connection, disease, clinicalDataID)) {
@@ -392,7 +339,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection OtherDiseasesBean");
 				}
-
 				MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editMedications(mb, connection, disease, clinicalDataID)) {
@@ -403,7 +349,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection MedicationsBean");
 				}
-
 				HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils, lymphocytes,
 						monocytes, eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
 				if (connection != null) {
@@ -415,7 +360,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection HematologyBean");
 				}
-
 				BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(bun, creatinine, uricAcid, 0.0, 0.0, ldh, 0.0, na, k, 0.0, 0.0,
 						0.0, beta2Microglobulin, 0.0, 0.0, iCa, totalProtein, albumin, globulin, 0.0, 0.0);
 				if (connection != null) {
@@ -427,7 +371,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection BloodChemistryBean");
 				}
-
 				BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed,
 						boneMarrowAspirateDescription);
 				if (connection != null) {
@@ -439,7 +382,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection BoneMarrowAspirateBean");
 				}
-
 				CytogeneticMolecularBean cmb = BeanFactory.getCytogeneticMolecularBean(cytogeneticAndMolecularAnalysisResult);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editCytogeneticMolecular(cmb, connection, disease, cytogeneticMolecularID)) {
@@ -450,7 +392,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection CytogeneticMolecularBean");
 				}
-
 				ImagingStudiesBean isb = BeanFactory.getImagingStudiesBean(imagingStudiesResult.getBytes());
 				if (connection != null) {
 					if (SQLOperationsBaseline.editImagingStudies(isb, connection, disease, imagingStudiesID)) {
@@ -461,7 +402,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection ImagingStudiesBean");
 				}
-
 				SerumFreeBean sfb = BeanFactory.getSerumFreeBean(serumFree);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editSerumFree(sfb, connection, disease, serumFreeID)) {
@@ -472,7 +412,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection SerumFreeBean");
 				}
-
 				SerumImmunofixationBean sifb = BeanFactory.getSerumImmunofixationBean(serumImmunofixationResult);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editSerumImmunofixation(sifb, connection, disease, serumImmunofixationID)) {
@@ -483,7 +422,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection SerumImmunofixationBean");
 				}
-
 				SerumProteinBean spb = BeanFactory.getSerumProteinBean(serumProteinElectrophoresisResult);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editSerumProtein(spb, connection, disease, serumProteinID)) {
@@ -494,7 +432,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection SerumProteinBean");
 				}
-
 				UrineProteinBean upb = BeanFactory.getUrineProteinBean(urineProteinResult);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editUrineProtein(upb, connection, disease, urineProteinID)) {
@@ -505,7 +442,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection UrineProteinBean");
 				}
-
 				LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editLaboratoryProfile(lpb, connection, disease, laboratoryID)) {
@@ -516,7 +452,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection LaboratoryProfileBean");
 				}
-
 				ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, modeOfTreatment);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editModeOfTreatment(motb, connection, disease, modeOfTreatmentID)) {
@@ -527,7 +462,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection ModeOfTreatmentBean");
 				}
-
 				RegimenBean rb = BeanFactory.getRegimenBean(otherRegimen, otherRegimen);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editRegimen(rb, connection, disease, regimenID)) {
@@ -538,7 +472,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection RegimenBean");
 				}
-
 				RegimenTransplantBean rtb = BeanFactory.getRegimenTransplantBean(regimenTransplant, otherRegimenTransplant);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editRegimenTransplant(rtb, connection, disease, regimenTransplantID)) {
@@ -549,7 +482,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection RegimenTransplantBean");
 				}
-
 				RegimenNonTransplantBean rntb = BeanFactory.getRegimenNonTransplantBean(regimenNonTransplant, otherRegimenNonTransplant);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editRegimenNonTransplant(rntb, connection, disease, regimenNonTransplantID)) {
@@ -560,7 +492,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection RegimenNonTransplantBean");
 				}
-
 				MaintenanceTherapyBean mtb = BeanFactory.getMaintenanceTherapyBean(regimenMaintenanceTherapy,
 						otherRegimenMaintenanceTherapy);
 				if (connection != null) {
@@ -572,7 +503,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection MaintenanceTherapyBean");
 				}
-
 				TreatmentBean tb = BeanFactory.getTreatmentBean(transplantCandidate, dateStarted, cycleNumber, complications, "");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editTreatment(tb, connection, disease, treatmentID)) {
@@ -583,7 +513,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection TreatmentBean");
 				}
-
 				OtherTreatmentBean otb = BeanFactory.getOtherTreatmentBean(bisphosphonates, radiotherapy, true, otherMedications,
 						complications);
 				if (connection != null) {
@@ -595,7 +524,6 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection OtherTreatmentBean");
 				}
-
 				DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, relapseDisease, otherDisease);
 				if (connection != null) {
 					if (SQLOperationsBaseline.addDiseaseStatus(dsb, connection, disease)) {
@@ -606,15 +534,12 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 				} else {
 					System.out.println("Invalid connection DiseaseStatusBean");
 				}
-
 				HttpSession session = request.getSession(true);
-
 				AuditBean auditBean = new AuditBean("Add patient in Plasma Cell Baseline",
 						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim()
 								.toUpperCase() + " " + request.getParameter("middleInitial").trim().toUpperCase(),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
-
 			} else {
 				System.out.println("Invalid Connection resource");
 			}
@@ -623,7 +548,5 @@ public class EditPlasmaCellBaselineServlet extends HttpServlet implements Defaul
 		} catch (Exception e) {
 			System.err.println("Exception - " + e.getMessage());
 		}
-
 	}
-
 }

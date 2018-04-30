@@ -32,12 +32,11 @@ import utility.database.SQLOperationsFollowUp;
 @WebServlet("/DashboardDataServlet")
 public class DashboardDataServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	private Connection connection;
-
+	
 	public void init() throws ServletException {
 		connection = SQLOperations.getConnection();
-
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
 			System.out.println("connection is READY.");
@@ -45,56 +44,46 @@ public class DashboardDataServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-
+	
 	public DashboardDataServlet() {
 		super();
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		// params from js
 		int agePass = Integer.parseInt(request.getParameter("agePass"));
 		int genderPass = Integer.parseInt(request.getParameter("genderPass"));
 		int modeOfTreatmentPass = Integer.parseInt(request.getParameter("modeOfTreatmentPass"));
 		int baselinePass = Integer.parseInt(request.getParameter("baselinePass"));
 		int followupPass = Integer.parseInt(request.getParameter("followupPass"));
-
 		String sortFrom = request.getParameter("sortFrom");
 		String sortTo = request.getParameter("sortTo");
-
 		Boolean sortFromStat = true;
 		Boolean sortToStat = true;
-
 		if (sortFrom.equals("")) {
 			sortFromStat = false;
 		}
 		if (sortTo.equals("")) {
 			sortToStat = false;
 		}
-
 		int action = Integer.parseInt(request.getParameter("action"));
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-
 		ChartModel dashboardData;
 		ResultSet patientListRS = null;
-
 		ChartAge chartAge = new ChartAge();
 		ChartModeOfTreatmentBean chartModeOfTreatmentBean = new ChartModeOfTreatmentBean();
 		ChartStatusBaseline chartStatusBaseline = new ChartStatusBaseline();
 		ChartStatusFollowup chartStatusFollowup = new ChartStatusFollowup();
-
 		int maleChart = 0;
 		int femaleChart = 0;
-
 		try {
 			if (connection != null) {
 				System.out.println(action);
-
 				// logic for sort
 				if (sortFromStat && sortToStat) {
 					patientListRS = SQLOperations.getChartPatients(action, connection, sortFrom, sortTo);
@@ -108,20 +97,14 @@ public class DashboardDataServlet extends HttpServlet {
 				if (!sortFromStat && sortToStat) {
 					patientListRS = SQLOperations.getChartPatientsTo(action, connection, sortTo);
 				}
-
 				System.out.println(patientListRS.getFetchSize());
-
 				int diseaseStatusBaselineID;
 				ResultSet diseaseStatusRS = null;
-
 				while (patientListRS.next()) {
 					System.out.println("Dashboard Data - Patient Retrieved");
 					int generalDataID = patientListRS.getInt("GeneralDataID");
-
 					ResultSet generalDataRS = SQLOperations.getChartGeneralData(generalDataID, connection);
-
 					while (generalDataRS.next()) {
-
 						if (genderPass == 1) {
 							System.out.println("Dashboard Data - Patient Gender Retrieved");
 							int gender = generalDataRS.getInt("Gender");
@@ -131,17 +114,13 @@ public class DashboardDataServlet extends HttpServlet {
 								femaleChart += 1;
 							}
 						}
-
 						if (agePass == 1) {
 							System.out.println("Dashboard Data - Patient Date of Birth Retrieved");
 							String dateOfBirth = generalDataRS.getString("DateOfBirthDec");
-
 							DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 							LocalDateTime getLocalTime = LocalDateTime.now();
-
 							Calendar cal1 = new GregorianCalendar();
 							Calendar cal2 = new GregorianCalendar();
-
 							int age = 0;
 							int factor = 0;
 							Date date1 = new SimpleDateFormat("yyyy-MM-dd").parse(dateOfBirth);
@@ -152,44 +131,34 @@ public class DashboardDataServlet extends HttpServlet {
 								factor = -1;
 							}
 							age = cal2.get(Calendar.YEAR) - cal1.get(Calendar.YEAR) + factor;
-
 							chartAge.setAgeChart(age);
 						}
-
 						if (modeOfTreatmentPass == 1) {
 							System.out.println("Dashboard Data - Patient Mode of Treatment Retrieved");
 							int treatmentID = patientListRS.getInt("TreatmentID");
-
 							ResultSet treatmentRS = SQLOperationsBaseline.getTreatment(treatmentID, connection);
 							treatmentRS.first();
 							int modeOfTreatmentID = treatmentRS.getInt("ModeOfTreatmentID");
 							ResultSet modeOfTreatmentRS = SQLOperationsBaseline.getModeOfTreatment(modeOfTreatmentID, connection);
 							modeOfTreatmentRS.first();
-
 							String modeOfTreatmentValue = modeOfTreatmentRS.getString("ModeOfTreatment");
 							chartModeOfTreatmentBean.setModeOfTreatment(modeOfTreatmentValue);
 						}
-
 						if (baselinePass == 1) {
 							System.out.println("Dashboard Data - Patient Disease Status Retrieved");
 							diseaseStatusBaselineID = patientListRS.getInt("DiseaseStatusID");
 							diseaseStatusRS = SQLOperationsBaseline.getDiseaseStatus(diseaseStatusBaselineID, connection);
 							//diseaseStatusRS.first();
-
 							if (diseaseStatusRS.first()) {
 								String diseaseStatusBaselineValue = diseaseStatusRS.getString("DiseaseStatus");
 								chartStatusBaseline.setDiseaseStatus(diseaseStatusBaselineValue);
 							}
-
 						}
-
 					}
 				}
-
 				if (followupPass == 1) {
 					System.out.println("Dashboard Data - Patient Follow Up Retrieved");
 					ResultSet followupRS = null;
-
 					// logic for sort
 					if (sortFromStat && sortToStat) {
 						followupRS = SQLOperations.getChartFollowup(action, connection, sortFrom, sortTo);
@@ -203,7 +172,6 @@ public class DashboardDataServlet extends HttpServlet {
 					if (!sortFromStat && sortToStat) {
 						followupRS = SQLOperations.getChartFollowupTo(action, connection, sortTo);
 					}
-
 					while (followupRS.next()) {
 						int diseaseStatusFollowupID = followupRS.getInt("DiseaseStatusID");
 						diseaseStatusRS = SQLOperationsFollowUp.getDiseaseStatus(diseaseStatusFollowupID, connection);
@@ -214,27 +182,21 @@ public class DashboardDataServlet extends HttpServlet {
 						}
 					}
 				}
-
 				dashboardData = new ChartModel(maleChart, femaleChart, chartAge, chartModeOfTreatmentBean, chartStatusBaseline,
 						chartStatusFollowup);
 				String json = new Gson().toJson(dashboardData);
 				response.getWriter().write(json);
-
 				HttpSession session = request.getSession(true);
-
 				AuditBean auditBean = new AuditBean("Dashboard page - Viewing of diseases accessed", (String) session.getAttribute("name"),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
-
 			} else {
 				System.out.println("Invalid Connection resource");
 			}
-
 		} catch (NullPointerException npe) {
 			System.err.println("Invalid Connection resource - " + npe.getMessage());
 		} catch (Exception e) {
 			System.err.println("Exception - " + e.getMessage());
 		}
 	}
-
 }

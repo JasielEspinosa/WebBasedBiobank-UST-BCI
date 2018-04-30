@@ -9,12 +9,12 @@ import model.*;
 
 public class SQLOperations implements SQLCommands {
 	private static Connection connection;
-
+	
 	private static Connection getDBConnection() {
 		try {
 			InitialContext context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/BCI-DS");
-
+			
 			if (dataSource != null) {
 				connection = dataSource.getConnection();
 			}
@@ -25,11 +25,11 @@ public class SQLOperations implements SQLCommands {
 		}
 		return connection;
 	}
-
+	
 	public static Connection getConnection() {
 		return (connection != null) ? connection : getDBConnection();
 	}
-
+	
 	public static ResultSet login(AccountBean ab, Connection connection) {
 		ResultSet loginSet = null;
 		try {
@@ -42,7 +42,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return loginSet;
 	}
-
+	
 	public static ResultSet getProfile(int accountID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -54,7 +54,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getOldPassword(int accountID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -66,7 +66,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static boolean updateProfile(AccountBean ab, int accountID, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(UPDATE_PROFILE);
@@ -81,10 +81,10 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- updateProfile: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	public static boolean addUser(AccountBean ab, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(INSERT_USER);
@@ -101,11 +101,11 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- updateProfile: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
-	public static boolean deleteUser(int active,int accountID, Connection connection) {
+	
+	public static boolean deleteUser(int active, int accountID, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(DELETE_USER);
 			pstmt.setInt(1, active);
@@ -115,10 +115,10 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- deleteUser: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	public static boolean updateProfileNoPass(AccountBean ab, int accountID, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(UPDATE_PROFILE_NOPASS);
@@ -132,10 +132,10 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- updateProfileNoPass: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	public static ResultSet getUsers(Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -146,9 +146,9 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	// Get Result Sets
-
+	
 	public static ResultSet getPatientList(String action, String search, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -164,7 +164,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getArchivedPatientList(Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -175,7 +175,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static boolean archivePatient(int patientID, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(ARCHIVE_PATIENT);
@@ -185,10 +185,10 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- archivePatient: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	public static boolean unarchivePatient(int patientID, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(UNARCHIVE_PATIENT);
@@ -198,10 +198,10 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- uarchivePatient: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	public static boolean deleteFollowup(int followupId, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(DELETE_FOLLOWUP);
@@ -211,10 +211,10 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- deleteFollowup: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	public static ResultSet getVisits(int patientId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -226,7 +226,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getDiseaseName(int diseaseID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -238,7 +238,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	//Generate Report
 	public static ResultSet grGetPatients(int diseaseID, String fromDateGenerateReport, String toDateGenerateReport,
 			Connection connection) {
@@ -254,7 +254,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet grGetPatientsAll(String fromDateGenerateReport, String toDateGenerateReport, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -267,7 +267,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet grGetFollowup(int patientID, String fromDateGenerateReport, String toDateGenerateReport,
 			Connection connection) {
 		ResultSet rs = null;
@@ -282,7 +282,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static boolean addAudit(AuditBean ab, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(AUDIT);
@@ -297,10 +297,10 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- addAudit: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	public static ResultSet getAudit(int userID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -312,7 +312,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getAuditFrom(int userID, String fromDateGenerateReport, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -325,7 +325,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getAuditTo(int userID, String toDateGenerateReport, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -338,7 +338,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getAuditFromTo(int userID, String fromDateGenerateReport, String toDateGenerateReport, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -352,7 +352,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getAuditAll(Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -363,7 +363,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getAuditAllFrom(String fromDateGenerateReport, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -375,7 +375,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getAuditAllTo(String toDateGenerateReport, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -387,7 +387,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getAuditAllFromTo(String fromDateGenerateReport, String toDateGenerateReport, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -400,7 +400,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChartPatients(int diseaseID, Connection connection, String sortFrom, String sortTo) {
 		ResultSet rs = null;
 		try {
@@ -414,7 +414,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChartPatientsAll(int diseaseID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -426,7 +426,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChartPatientsFrom(int diseaseID, Connection connection, String sortFrom) {
 		ResultSet rs = null;
 		try {
@@ -439,7 +439,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChartPatientsTo(int diseaseID, Connection connection, String sortTo) {
 		ResultSet rs = null;
 		try {
@@ -452,7 +452,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChartGeneralData(int generalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -465,7 +465,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChartFollowup(int action, Connection connection, String sortFrom, String sortTo) {
 		ResultSet rs = null;
 		try {
@@ -479,7 +479,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChartFollowupAll(int action, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -491,7 +491,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChartFollowupFrom(int action, Connection connection, String sortFrom) {
 		ResultSet rs = null;
 		try {
@@ -504,7 +504,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChartFollowupTo(int action, Connection connection, String sortTo) {
 		ResultSet rs = null;
 		try {
@@ -517,7 +517,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getAccountID(String username, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -529,7 +529,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getToken(String token, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -541,7 +541,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static boolean updatePassword(int accountID, String password, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(UPDATE_PASSWORD);
@@ -552,10 +552,10 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- updatepass: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	public static boolean insertToken(int accountID, String token, String expiration, Connection connection) {
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(INSERT_TOKEN);
@@ -567,10 +567,10 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- insertToken: " + sqle.getMessage());
 			return false;
 		}
-
+		
 		return true;
 	}
-
+	
 	public static ResultSet getStatus(int patientID, Connection connection, String sortFrom, String sortTo) {
 		ResultSet rs = null;
 		try {
@@ -584,7 +584,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getStatusAll(int patientID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -596,7 +596,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getStatusFrom(int patientID, Connection connection, String sortFrom) {
 		ResultSet rs = null;
 		try {
@@ -609,7 +609,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getStatusTo(int patientID, Connection connection, String sortTo) {
 		ResultSet rs = null;
 		try {
@@ -622,7 +622,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getFollowupStatus(int patientID, Connection connection, String sortFrom, String sortTo) {
 		ResultSet rs = null;
 		try {
@@ -636,7 +636,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getFollowupStatusAll(int patientID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -648,7 +648,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getFollowupStatusFrom(int patientID, Connection connection, String sortFrom) {
 		ResultSet rs = null;
 		try {
@@ -661,7 +661,7 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getFollowupStatusTo(int patientID, Connection connection, String sortTo) {
 		ResultSet rs = null;
 		try {
@@ -674,5 +674,5 @@ public class SQLOperations implements SQLCommands {
 		}
 		return rs;
 	}
-
+	
 }

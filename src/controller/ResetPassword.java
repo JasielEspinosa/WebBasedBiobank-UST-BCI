@@ -18,20 +18,19 @@ import com.google.gson.Gson;
 
 import utility.database.SQLOperations;
 
-/**
- * Servlet implementation class ResetPasswod
- */
+/** Servlet implementation class ResetPasswod */
 @WebServlet("/ResetPassword")
 public class ResetPassword extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	
 	private Connection connection;
+	
 	String redirectLink = "";
+	
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
 		connection = SQLOperations.getConnection();
 		redirectLink = getServletContext().getInitParameter("LoginRedirectLink");
-
 		if (connection != null) {
 			//getServletContext().setAttribute("dbConnection", connection);
 			System.out.println("connection is READY.");
@@ -40,31 +39,21 @@ public class ResetPassword extends HttpServlet {
 		}
 	}
 	
-    public ResetPassword() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	public ResetPassword() {
+		super();
+	}
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String newPassword = request.getParameter("newPassword");
 		String token = request.getParameter("token");
 		Map<String, String> data = new HashMap<>();
-		
 		ResultSet resetPasswordRS = SQLOperations.getToken(token, connection);
 		try {
-			if(resetPasswordRS.next()) {
+			if (resetPasswordRS.next()) {
 				SQLOperations.updatePassword(resetPasswordRS.getInt("AccountID"), newPassword, connection);
 				data.put("redirect", redirectLink);
 				data.put("noLink", "");
@@ -72,14 +61,7 @@ public class ResetPassword extends HttpServlet {
 				response.getWriter().write(json);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-
-		
-		
 	}
-
 }

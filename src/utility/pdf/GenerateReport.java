@@ -1,16 +1,16 @@
 package utility.pdf;
 
 public class GenerateReport {
-
+	
 	String fromDateGenerateReport;
 	String toDateGenerateReport;
-
+	
 	boolean age;
 	boolean gender;
 	boolean modeOfTreatment;
 	boolean diseaseStatusBaseline;
 	boolean diseaseStatusFollowup;
-
+	
 	public GenerateReport(String fromDateGenerateReport, String toDateGenerateReport, boolean age, boolean gender, boolean modeOfTreatment,
 			boolean diseaseStatusBaseline, boolean diseaseStatusFollowup) {
 		super();

@@ -11,6 +11,10 @@ var params = {
 var editState = false;
 var upperActionState = false;
 
+function setThreeNumberDecimal(num) {
+	num.value = parseFloat(num.value).toFixed(3);
+};
+
 $("#AAPNHMDSFollowUp").submit(function(e) {
 	e.preventDefault();
 });

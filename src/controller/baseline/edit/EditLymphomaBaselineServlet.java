@@ -21,12 +21,11 @@ import utility.values.DefaultValues;
 @WebServlet("/EditLymphomaBaselineServlet")
 public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
-
+	
 	private Connection connection;
-
+	
 	public void init() throws ServletException {
 		connection = SQLOperationsBaseline.getConnection();
-
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
 			System.out.println("connection is READY.");
@@ -34,22 +33,19 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 			System.err.println("connection is NULL.");
 		}
 	}
-
+	
 	public EditLymphomaBaselineServlet() {
 		super();
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//get form data
-
 		getServletContext().log("EditLymphomaBaselineServlet insert test");
-
 		int disease = 4;
-
 		// GENERAL DATA
 		String lastName = request.getParameter("lastName").trim().toUpperCase();
 		String firstName = request.getParameter("firstName").trim().toUpperCase();
@@ -57,13 +53,12 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
+		String civilStatus = request.getParameter("civilStatus");
 		String dateOfEntry = request.getParameter("dateOfEntry");
-
 		String specimenType = noValue;
 		if (Integer.parseInt(request.getParameter("tissueSpecimenCollected")) == 1) {
 			specimenType = request.getParameter("specimenType");
 		}
-
 		// CLINICAL DATA
 		String dateOfInitialDiagnosis = request.getParameter("dateOfInitialDiagnosis");
 		String diagnosis = request.getParameter("diagnosis");
@@ -71,7 +66,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String constitutionalSymptoms = request.getParameter("constitutionalSymptoms");
 		String otherSymptoms = request.getParameter("otherSymptoms");
-
 		String relationshipToPatient = noValue;
 		String cancerName = noValue;
 		String otherDiseasesInTheFamily = noValue;
@@ -80,9 +74,7 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 			cancerName = request.getParameter("specifyCancer");
 			otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
 		}
-
 		String comorbidities = request.getParameter("comorbidities");
-
 		String genericName = noValue;
 		Double dose = 0.0;
 		String frequency = noValue;
@@ -91,22 +83,18 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 			dose = Double.parseDouble(request.getParameter("dose"));
 			frequency = request.getParameter("frequency");
 		}
-
 		String smokingHistorySpecify = noValue;
 		if (Integer.parseInt(request.getParameter("smokingHistory")) == 1) {
 			smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
 		}
-
 		String alchoholIntakeSpecify = noValue;
 		if (Integer.parseInt(request.getParameter("alcoholIntakeHistory")) == 1) {
 			alchoholIntakeSpecify = request.getParameter("alcoholIntakeSpecify");
 		}
-
 		String chemicalExposureSpecify = noValue;
 		if (Integer.parseInt(request.getParameter("chemicalExposureHistory")) == 1) {
 			chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
 		}
-
 		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
@@ -115,7 +103,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 		double hepatomegaly = Double.parseDouble(request.getParameter("presenceOfHepatomegaly"));
 		double lymphadenopathies = Double.parseDouble(request.getParameter("presenceOfLymphadenopathies"));
 		String otherFindings = request.getParameter("otherFindings");
-
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
 		////// Hematology
@@ -131,7 +118,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 		double metamyelocytes = Double.parseDouble(request.getParameter("metamyelocytes"));
 		double blasts = Double.parseDouble(request.getParameter("blasts"));
 		double plateletCount = Double.parseDouble(request.getParameter("plateletCount"));
-
 		////// Other Laboratories
 		double creatinine = Double.parseDouble(request.getParameter("creatinine"));
 		double uricAcid = Double.parseDouble(request.getParameter("uricAcid"));
@@ -147,7 +133,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 		double hepatitisBTesting = Double.parseDouble(request.getParameter("hepatitisBTesting"));
 		double ldh = Double.parseDouble(request.getParameter("ldh"));
 		double esr = Double.parseDouble(request.getParameter("esr"));
-
 		String hematopathologyDatePerformed = noValue;
 		String hematopathologyDescription = noValue;
 		//Part hematopathologAttachScannedDocument;
@@ -156,7 +141,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 			hematopathologyDescription = request.getParameter("hematopathologyDescription");
 			//hematopathologAttachScannedDocument = request.getPart("hematopathologAttachScannedDocument");
 		}
-
 		String immunohistochemistryOfTissueDatePerformed = noValue;
 		String immunohistochemistryOfTissueDescription = noValue;
 		//Part immunohistochemistryOfTissueAttachScannedDocument;
@@ -165,12 +149,10 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 			immunohistochemistryOfTissueDescription = request.getParameter("immunohistochemistryDescription");
 			//immunohistochemistryOfTissueAttachScannedDocument = request.getPart("immunohistochemistryOfTissueAttachScannedDocument");
 		}
-
 		String imagingStudiesResult = noValue;
 		if (Integer.parseInt(request.getParameter("imagingStudies")) == 1) {
 			imagingStudiesResult = request.getParameter("imagingStudiesResult");
 		}
-
 		String boneMarrowAspirateDatePerformed = noValue;
 		String boneMarrowAspirateDescription = noValue;
 		//Part boneMarrowAspirateAndBiopsyOfTissueAttachScannedDocument;
@@ -179,14 +161,12 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 			boneMarrowAspirateDescription = request.getParameter("boneMarrowAspirateDescription");
 			//boneMarrowAspirateAndBiopsyOfTissueAttachScannedDocument = request.getPart("boneMarrowAspirateAndBiopsyOfTissueAttachScannedDocument");
 		}
-
 		String flowCytometryResult = noValue;
 		// Part flowCytometryAttachScannedDocument;
 		if (Integer.parseInt(request.getParameter("flowCytometry")) == 1) {
 			flowCytometryResult = request.getParameter("flowCytometryResult");
 			// flowCytometryAttachScannedDocument = request.getPart("flowCytometryAttachScannedDocument");
 		}
-
 		// TREATMENT / THERAPHY AND RESPONSE
 		String modeOfTreatment = request.getParameter("treatment");
 		String regimenProtocol = request.getParameter("regimenProtocol");
@@ -195,44 +175,33 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 		String dateStarted = request.getParameter("dateStarted");
 		String complications = request.getParameter("complications");
 		String diseaseStatus = request.getParameter("diseaseStatus");
-
 		if (modeOfTreatment.contains("&#40;") || modeOfTreatment.contains("&#41;")) {
 			modeOfTreatment = modeOfTreatment.replaceAll("&#40;", "(");
 			modeOfTreatment = modeOfTreatment.replaceAll("&#41;", ")");
 		}
-
 		if (diseaseStatus.contains("&#40;") || diseaseStatus.contains("&#41;")) {
 			diseaseStatus = diseaseStatus.replaceAll("&#40;", "(");
 			diseaseStatus = diseaseStatus.replaceAll("&#41;", ")");
 		}
-
 		String addressArray[] = address.split(",");
-
 		//get all id
 		int patientID = Integer.parseInt(request.getParameter("patientIDNumber"));
 		try {
 			if (connection != null) {
-
 				ResultSet patientInfo = SQLOperationsBaseline.getPatient(patientID, connection);
 				patientInfo.first();
-
 				int generalDataID = patientInfo.getInt("GeneralDataID");
 				ResultSet generalData = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 				generalData.first();
-
 				int addressID = generalData.getInt("AddressID");
 				int tissueSpecimenID = generalData.getInt("TissueSpecimenID");
-
 				int clinicalDataID = patientInfo.getInt("ClinicalDataID");
 				ResultSet clinicalData = SQLOperationsBaseline.getClinicalData(clinicalDataID, connection);
 				clinicalData.first();
-
 				int physicalExamID = clinicalData.getInt("PhysicalExamID");
-
 				int laboratoryID = patientInfo.getInt("LaboratoryID");
 				ResultSet laboratoryProfile = SQLOperationsBaseline.getLaboratoryProfile(laboratoryID, connection);
 				laboratoryProfile.first();
-
 				int hematologyID = laboratoryProfile.getInt("HematologyID");
 				int bloodChemistryID = laboratoryProfile.getInt("BloodChemistryID");
 				int hematopathologyID = laboratoryProfile.getInt("HematopathologyID");
@@ -240,17 +209,13 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				int boneMarrowAspirateID = laboratoryProfile.getInt("BoneMarrowAspirateID");
 				int flowCytometryID = laboratoryProfile.getInt("FlowCytometryID");
 				int immunohistochemistryID = laboratoryProfile.getInt("ImmunohistochemistryID");
-
 				int treatmentID = patientInfo.getInt("TreatmentID");
 				ResultSet treatment = SQLOperationsBaseline.getTreatment(treatmentID, connection);
 				treatment.first();
-
 				int modeOfTreatmentID = treatment.getInt("ModeOfTreatmentID");
 				int chemoMedicationID = treatment.getInt("ChemoMedicationID");
 				int regimenID = treatment.getInt("RegimenID");
-
 				int diseaseStatusID = patientInfo.getInt("DiseaseStatusID");
-
 				//start of edit
 				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]).trim(),
 						Security.encrypt(addressArray[1]).trim(), Security.encrypt(addressArray[2]).trim());
@@ -263,7 +228,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection AddressBean");
 				}
-
 				TissueSpecimenBean tsb = BeanFactory.getTissueSpecimenBean(specimenType);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editTissueSpecimenData(tsb, connection, disease, tissueSpecimenID)) {
@@ -274,8 +238,8 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection TissueSpecimenBean");
 				}
-
-				GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, firstName, middleInitial, gender, dateOfBirth, dateOfEntry);
+				GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, firstName, middleInitial, gender, dateOfBirth, dateOfEntry,
+						civilStatus);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editGeneralData(gdb, connection, disease, generalDataID)) {
 						System.out.println("Successful insert GeneralDataBean");
@@ -285,7 +249,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection GeneralDataBean");
 				}
-
 				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, ecog, splenomegaly, hepatomegaly, lymphadenopathies,
 						false, false, "", "", false, otherFindings);
 				if (connection != null) {
@@ -297,7 +260,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection PhysicalExamBean");
 				}
-
 				ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfInitialDiagnosis, diagnosis, "", stageOfDisease,
 						chiefComplaint, "", constitutionalSymptoms, otherSymptoms, comorbidities, smokingHistorySpecify,
 						alchoholIntakeSpecify, chemicalExposureSpecify, "", "", otherFindings);
@@ -310,7 +272,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection ClinicalDataBean");
 				}
-
 				FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, cancerName);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editFamilyCancer(famcb, connection, disease, clinicalDataID)) {
@@ -321,7 +282,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection FamilyCancerBean");
 				}
-
 				OtherDiseasesBean odb = BeanFactory.getOtherDiseasesBean(otherDiseasesInTheFamily);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editOtherDiseases(odb, connection, disease, clinicalDataID)) {
@@ -332,7 +292,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection OtherDiseasesBean");
 				}
-
 				MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editMedications(mb, connection, disease, clinicalDataID)) {
@@ -343,7 +302,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection MedicationsBean");
 				}
-
 				HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils, lymphocytes,
 						monocytes, eosinophils, basophils, myelocytes, metamyelocytes, blasts, plateletCount);
 				if (connection != null) {
@@ -355,7 +313,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection HematologyBean");
 				}
-
 				BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0.0, creatinine, uricAcid, sgot, sgpt, ldh, 0.0, na, k,
 						bilirubinTotal, bilirubinDirect, bilirubinIndirect, microglobulin, hepatitisBTesting, esr, 0.0, 0.0, 0.0, 0.0, 0.0,
 						0.0);
@@ -368,7 +325,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection BloodChemistryBean");
 				}
-
 				BoneMarrowAspirateBean bmab = BeanFactory.getBoneMarrowAspirateBean(boneMarrowAspirateDatePerformed,
 						boneMarrowAspirateDescription);
 				if (connection != null) {
@@ -380,7 +336,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection BoneMarrowAspirateBean");
 				}
-
 				FlowCytometryBean fcb = BeanFactory.getFlowCytometryBean(flowCytometryResult);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editFlowCytometry(fcb, connection, disease, flowCytometryID)) {
@@ -391,7 +346,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection FlowCytometryBean");
 				}
-
 				HematopathologyBean hpb = BeanFactory.getHematopathologyBean(hematopathologyDatePerformed, hematopathologyDescription);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editHematopathology(hpb, connection, disease, hematopathologyID)) {
@@ -402,7 +356,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection HematopathologyBean");
 				}
-
 				ImagingStudiesBean isb = BeanFactory.getImagingStudiesBean(imagingStudiesResult.getBytes());
 				if (connection != null) {
 					if (SQLOperationsBaseline.editImagingStudies(isb, connection, disease, imagingStudiesID)) {
@@ -413,7 +366,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection ImagingStudiesBean");
 				}
-
 				ImmunohistochemistryBean ihcb = BeanFactory.getImmunohistochemistryBean(immunohistochemistryOfTissueDatePerformed,
 						immunohistochemistryOfTissueDescription);
 				if (connection != null) {
@@ -425,7 +377,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection ImmunohistochemistryBean");
 				}
-
 				LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editLaboratoryProfile(lpb, connection, disease, laboratoryID)) {
@@ -436,7 +387,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection LaboratoryProfileBean");
 				}
-
 				ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(modeOfTreatment, modeOfTreatment);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editModeOfTreatment(motb, connection, disease, modeOfTreatmentID)) {
@@ -447,7 +397,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection ModeOfTreatmentBean");
 				}
-
 				ChemotherapyMedicationsBean cmb = BeanFactory.getChemotherapyMedicationsBean(chemotherapyMedications);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editChemotherapyMedications(cmb, connection, disease, chemoMedicationID)) {
@@ -458,7 +407,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection ChemotherapyMedicationsBean");
 				}
-
 				RegimenBean rb = BeanFactory.getRegimenBean(regimenProtocol, "");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editRegimen(rb, connection, disease, regimenID)) {
@@ -469,7 +417,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection RegimenBean");
 				}
-
 				TreatmentBean tb = BeanFactory.getTreatmentBean(true, dateStarted, cycleNumber, complications, "");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editTreatment(tb, connection, disease, treatmentID)) {
@@ -480,7 +427,6 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection TreatmentBean");
 				}
-
 				DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean(diseaseStatus, "", "");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editDiseaseStatus(dsb, connection, disease, diseaseStatusID)) {
@@ -491,15 +437,12 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 				} else {
 					System.out.println("Invalid connection DiseaseStatusBean");
 				}
-
 				HttpSession session = request.getSession(true);
-
 				AuditBean auditBean = new AuditBean("Edit patient in Lymphoma Disease Baseline",
 						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim()
 								.toUpperCase() + " " + request.getParameter("middleInitial").trim().toUpperCase(),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
-
 			} else {
 				System.out.println("Invalid Connection resource");
 			}
@@ -508,7 +451,5 @@ public class EditLymphomaBaselineServlet extends HttpServlet implements DefaultV
 		} catch (Exception e) {
 			System.err.println("Exception - " + e.getMessage());
 		}
-
 	}
-
 }

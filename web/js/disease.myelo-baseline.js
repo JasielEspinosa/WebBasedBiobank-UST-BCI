@@ -9,6 +9,10 @@ var params = {
 var editState = false;
 var upperActionState = false;
 
+function setThreeNumberDecimal(num) {
+	num.value = parseFloat(num.value).toFixed(3);
+};
+
 $("#MyeloBaseline").submit(function(e) {
 	e.preventDefault();
 });
@@ -52,7 +56,7 @@ $('document').ready(function() {
 	});
 
 	if (localStorage.getItem("fromFollowUp5") != "") {
-		//alert(localStorage.getItem("id5"));
+		// alert(localStorage.getItem("id5"));
 		loadPatientData(localStorage.getItem("id5"));
 		localStorage.setItem("fromFollowUp5", "");
 	}
@@ -64,10 +68,10 @@ function loadPatientData(id) {
 
 	params.patientID = id;
 	$.post('LoadMyeloBaselineServlet', $.param(params), function(response) {
-		
+
 		$.loadUneditableFields();
 		$("#submitQuery").hide();
-		
+
 		// barcode
 		setBarcode(response["patientIDNumber"])
 
@@ -104,6 +108,7 @@ function loadPatientData(id) {
 
 		$("[name='dateOfBirth']").val(response["dateOfBirth"])
 		$("[name='address']").val(response["address"])
+		$("[name='civilStatus']").val(response["civilStatus"])
 		$("[name='dateOfEntry']").val(response["dateOfEntry"])
 
 		$("[name='specimenType']").val(response["specimenType"])
@@ -176,7 +181,7 @@ function loadPatientData(id) {
 		$("[name='genericName']").val(response["genericName"])
 		$("[name='dose']").val(response["dose"])
 		$("[name='frequency']").val(response["frequency"])
-		if (response["genericName"] !== "" || response["dose"] !== ""  || response["frequency"] !== "") {
+		if (response["genericName"] !== "" || response["dose"] !== "" || response["frequency"] !== "") {
 			$("[name='concomitantMedications'][value='1']").prop('checked', true);
 			$.concomitantMedicationsChecked();
 		} else {

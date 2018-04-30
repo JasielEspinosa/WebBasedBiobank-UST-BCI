@@ -5,33 +5,33 @@ var params = {
 	modeOfTreatmentPass : '0',
 	baselinePass : '0',
 	followupPass : '0',
-	sortFrom: '',
-	sortTo: '',
+	sortFrom : '',
+	sortTo : '',
 };
 
 $('#leukemiaImg').click(function() {
 	loadAll()
 	params.action = '3'
-		
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			leukemiaChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		leukemiaChartAge.update()
-		
+
 		leukemiaChartGender.data.datasets[0].data[0] = response.maleChart;
 		leukemiaChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		leukemiaChartGender.update()
-		
+
 		leukemiaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
 		leukemiaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
 		leukemiaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
 		leukemiaChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.watchAndWait
 		leukemiaChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.others
-		
+
 		leukemiaChartModeOfTreatment.update()
-		
+
 		leukemiaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
 		leukemiaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
 		leukemiaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.nCR
@@ -44,24 +44,24 @@ $('#leukemiaImg').click(function() {
 		leukemiaChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.spleenResponse
 		leukemiaChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.symptomResponse
 		leukemiaChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.others
-		
+
 		leukemiaChartBaselineDiseaseStatus.update()
-		
-		leukemiaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.relapsed
-		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.refractoryDisease
-		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.cr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.nCR
-		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.pd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.sd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.completeHematologicResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.completeCytogeneticResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.majorMolecularResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.spleenResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.symptomResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.dead
-		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusBaseline.others
-		
+
+		leukemiaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.relapsed
+		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.refractoryDisease
+		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.cr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nCR
+		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.pr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.completeHematologicResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.completeCytogeneticResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.majorMolecularResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.spleenResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.symptomResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusFollowup.dead
+		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusFollowup.others
+
 		leukemiaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -70,40 +70,40 @@ $('#leukemiaImg').click(function() {
 $('#lymphomaImg').click(function() {
 	loadAll()
 	params.action = '4'
-		
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			lymphomaChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		lymphomaChartAge.update()
-		
+
 		lymphomaChartGender.data.datasets[0].data[0] = response.maleChart;
 		lymphomaChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		lymphomaChartGender.update()
-		
+
 		lymphomaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
 		lymphomaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
 		lymphomaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		
+
 		lymphomaChartModeOfTreatment.update()
-		
+
 		lymphomaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
 		lymphomaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
 		lymphomaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pr
 		lymphomaChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
 		lymphomaChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pd
-		
+
 		lymphomaChartBaselineDiseaseStatus.update()
-		
-		lymphomaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.sd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.pd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.rr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.dead
-		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.others
-		
+
+		lymphomaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.sd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.pd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.rr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.dead
+		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.others
+
 		lymphomaChartFollowupDiseaseStatus.update()
 	});
 });
@@ -111,25 +111,25 @@ $('#lymphomaImg').click(function() {
 $('#myeloproliferativeImg').click(function() {
 	loadAll()
 	params.action = '5'
-		
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			myeloChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		myeloChartAge.update()
-		
+
 		myeloChartGender.data.datasets[0].data[0] = response.maleChart;
 		myeloChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		myeloChartGender.update()
-		
-		myeloChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.pharmacologicTreatment
-		myeloChartModeOfTreatment.data.datasets[0].data[1] = response.chartStatusBaseline.supportivePalliativeOnly
-		myeloChartModeOfTreatment.data.datasets[0].data[2] = response.chartStatusBaseline.watchAndWait
-		myeloChartModeOfTreatment.data.datasets[0].data[3] = response.chartStatusBaseline.others
-		
+
+		myeloChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
+		myeloChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		myeloChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		myeloChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.others
+
 		myeloChartModeOfTreatment.update()
-		
+
 		myeloChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
 		myeloChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
 		myeloChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pd
@@ -138,50 +138,48 @@ $('#myeloproliferativeImg').click(function() {
 		myeloChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.spleenResponse
 		myeloChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.symptomResponse
 		myeloChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.others
-		
-		myeloChartBaselineDiseaseStatus.update()
-		
-		myeloChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		myeloChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
-		myeloChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pd
-		myeloChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
-		myeloChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.hematologicResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.spleenResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.symptomResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.dead
-		myeloChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.others
 
-		
+		myeloChartBaselineDiseaseStatus.update()
+
+		myeloChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		myeloChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
+		myeloChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.pd
+		myeloChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.sd
+		myeloChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.hematologicResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.spleenResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.symptomResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
+		myeloChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+
 		myeloChartFollowupDiseaseStatus.update()
-});
+	});
 });
 
 $('#plasmaCellImg').click(function() {
 	loadAll()
 	params.action = '6'
-		
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			plasmaCellChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		plasmaCellChartAge.update()
-		
+
 		plasmaCellChartGender.data.datasets[0].data[0] = response.maleChart;
 		plasmaCellChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
-		plasmaCellChartGender.update()
-		
-		plasmaCellChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.pharmacologicForTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.pharmacologicForNonTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.maintenance
-		plasmaCellChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.radiotherapy
-		plasmaCellChartModeOfTreatment.data.datasets[4].data[0] = response.chartStatusBaseline.supportive
-		plasmaCellChartModeOfTreatment.data.datasets[5].data[0] = response.chartStatusBaseline.watchAndWait
-		plasmaCellChartModeOfTreatment.data.datasets[6].data[0] = response.chartStatusBaseline.others
 
-		
+		plasmaCellChartGender.update()
+
+		plasmaCellChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicForTransplantCandidate
+		plasmaCellChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicForNonTransplantCandidate
+		plasmaCellChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.maintenance
+		plasmaCellChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.radiotherapy
+		plasmaCellChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.supportive
+		plasmaCellChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		plasmaCellChartModeOfTreatment.data.datasets[6].data[0] = response.chartModeOfTreatmentBean.others
+
 		plasmaCellChartModeOfTreatment.update()
-		
+
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sCR
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.immunophenotypicCR
@@ -192,191 +190,185 @@ $('#plasmaCellImg').click(function() {
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.sd
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.pd
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.relapsed
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.others
-		
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.others
+
 		plasmaCellChartBaselineDiseaseStatus.update()
-		
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.immunophenotypicCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.molecularCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.vgpr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.pr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.mr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.sd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.pd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.relapsed
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.others
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.dead
-		
+
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.immunophenotypicCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.molecularCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.vgpr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.mr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.sd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.pd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.relapsed
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.clinicalRelapse
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.relapseFromCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.dead
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.others
+
 		plasmaCellChartFollowupDiseaseStatus.update()
-});
+	});
 });
 
 $('#aapnhmdsImg').click(function() {
 	loadAll()
 	params.action = '1'
-		
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			aapnhmdsChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		aapnhmdsChartAge.update()
-		
+
 		aapnhmdsChartGender.data.datasets[0].data[0] = response.maleChart;
 		aapnhmdsChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
-		aapnhmdsChartGender.update()
-		
-		aapnhmdsChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.hematopoieticStemCellTransplantation
-		aapnhmdsChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.pharmacologicTreatment
-		aapnhmdsChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.supportive
-		aapnhmdsChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.bothPharmacologicAndSupportive
-		aapnhmdsChartModeOfTreatment.data.datasets[4].data[0] = response.chartStatusBaseline.watchAndWait
 
-		
+		aapnhmdsChartGender.update()
+
+		aapnhmdsChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.hematopoieticStemCellTransplantation
+		aapnhmdsChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
+		aapnhmdsChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportive
+		aapnhmdsChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		aapnhmdsChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+
 		aapnhmdsChartModeOfTreatment.update()
-		
+
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.hematologicResponse
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sd
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.relapsed
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.others
-		
+
 		aapnhmdsChartBaselineDiseaseStatus.update()
-		
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.hematologicResponse
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sd
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.relapsed
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.dead
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.others
-		
+
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.hematologicResponse
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sd
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.relapsed
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.dead
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.others
+
 		aapnhmdsChartFollowupDiseaseStatus.update()
-});
+	});
 });
 
 $('#plateletDisorderImg').click(function() {
 	loadAll()
 	params.action = '7'
-		
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			plateletChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		plateletChartAge.update()
-		
+
 		plateletChartGender.data.datasets[0].data[0] = response.maleChart;
 		plateletChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
-		plateletChartGender.update()
-		
-		plateletChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.pharmacologic1stLine
-		plateletChartModeOfTreatment.data.datasets[0].data[1] = response.chartStatusBaseline.pharmacologic2ndLine
-		plateletChartModeOfTreatment.data.datasets[0].data[2] = response.chartStatusBaseline.supportivePalliativeOnly
-		plateletChartModeOfTreatment.data.datasets[0].data[3] = response.chartStatusBaseline.bothPharmacologicAndSupportive
-		plateletChartModeOfTreatment.data.datasets[0].data[4] = response.chartStatusBaseline.watchAndWait
-		plateletChartModeOfTreatment.data.datasets[0].data[5] = response.chartStatusBaseline.others
 
-		
+		plateletChartGender.update()
+
+		plateletChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
+		plateletChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLine
+		plateletChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportive
+		plateletChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		plateletChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		plateletChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.others
+
 		plateletChartModeOfTreatment.update()
-		
+
 		plateletChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosedITP
 		plateletChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.persistentITP
 		plateletChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.chronicITP
 		plateletChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.severeITP
-		
-		plateletChartBaselineDiseaseStatus.update()
-		
-		plateletChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		plateletChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.remission
-		plateletChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.timeToResponse
-		plateletChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.nr
-		plateletChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.lossofCR
-		plateletChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.refractoryITP
-		plateletChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.sd
-		plateletChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.dead
-		plateletChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.others
 
-		
+		plateletChartBaselineDiseaseStatus.update()
+
+		plateletChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		plateletChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.remission
+		plateletChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.timeToResponse
+		plateletChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nr
+		plateletChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.lossofCR
+		plateletChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.refractoryITP
+		plateletChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
+		plateletChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
+		plateletChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+
 		plateletChartFollowupDiseaseStatus.update()
-});
+	});
 });
 
 $('#coagulationDiseaseImg').click(function() {
 	loadAll()
 	params.action = '2'
-		
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			coagulationChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		coagulationChartAge.update()
-		
+
 		coagulationChartGender.data.datasets[0].data[0] = response.maleChart;
 		coagulationChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		coagulationChartGender.update()
-		
-		coagulationChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.factorConcentrates
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.blooComponent
-		coagulationChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.others
-		
+
+		coagulationChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.factorConcentrates
+		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.bloodComponent
+		coagulationChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.others
+
 		coagulationChartModeOfTreatment.update()
-		
+
 		coagulationChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.sd
 
 		coagulationChartBaselineDiseaseStatus.update()
-		
-		coagulationChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.sd
-		
+
+		coagulationChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.sd
+
 		coagulationChartFollowupDiseaseStatus.update()
-});
+	});
 });
 
-function restoreValues(){
+function restoreValues() {
 	params.agePass = '0'
 	params.genderPass = '0'
 	params.modeOfTreatmentPass = '0'
 	params.baselinePass = '0'
 	params.followupPass = '0'
-	params.sortFrom= ''
-	params.sortTo= ''	
+	params.sortFrom = ''
+	params.sortTo = ''
 };
 
-function loadAll(){
+function loadAll() {
 	params.agePass = '1'
 	params.genderPass = '1'
 	params.modeOfTreatmentPass = '1'
 	params.baselinePass = '1'
 	params.followupPass = '1'
-	params.sortFrom= ''
-	params.sortTo= ''	
+	params.sortFrom = ''
+	params.sortTo = ''
 };
 
-
-
-//leukemia
-//from and to
-//age
+// leukemia
+// from and to
+// age
 $("#ageStatisticsFromLeukemia").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
 	params.action = '3'
 	params.sortFrom = $("#ageStatisticsFromLeukemia").val()
 	params.sortTo = $("#ageStatisticsFromLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			leukemiaChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		leukemiaChartAge.update()
 	}).fail(function() {
 	});
-	
-	
+
 });
 $("#ageStatisticsToLeukemia").on('input', function() {
 	restoreValues()
@@ -384,9 +376,9 @@ $("#ageStatisticsToLeukemia").on('input', function() {
 	params.action = '3'
 	params.sortFrom = $("#ageStatisticsFromLeukemia").val()
 	params.sortTo = $("#ageStatisticsFromLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			leukemiaChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		leukemiaChartAge.update()
@@ -394,18 +386,18 @@ $("#ageStatisticsToLeukemia").on('input', function() {
 	});
 });
 
-//gender
+// gender
 $("#genderStatisticsFromLeukemia").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
 	params.action = '3'
 	params.sortFrom = $("#genderStatisticsFromLeukemia").val()
 	params.sortTo = $("#genderStatisticsToLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartGender.data.datasets[0].data[0] = response.maleChart;
 		leukemiaChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		leukemiaChartGender.update()
 	}).fail(function() {
 	});
@@ -413,34 +405,34 @@ $("#genderStatisticsFromLeukemia").on('input', function() {
 $("#genderStatisticsToLeukemia").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '3'
+	params.action = '3'
 	params.sortFrom = $("#genderStatisticsFromLeukemia").val()
 	params.sortTo = $("#genderStatisticsToLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartGender.data.datasets[0].data[0] = response.maleChart;
 		leukemiaChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		leukemiaChartGender.update()
 	}).fail(function() {
 	});
 });
 
-//mode
+// mode
 $("#modeOfTreatmentStatisticsFromLeukemia").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '3'
+	params.action = '3'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromLeukemia").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
 		leukemiaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
 		leukemiaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
 		leukemiaChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.watchAndWait
 		leukemiaChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.others
-		
+
 		leukemiaChartModeOfTreatment.update()
 	}).fail(function() {
 	});
@@ -448,31 +440,30 @@ $("#modeOfTreatmentStatisticsFromLeukemia").on('input', function() {
 $("#modeOfTreatmentStatisticsToLeukemia").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '3'
+	params.action = '3'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromLeukemia").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
 		leukemiaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
 		leukemiaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
 		leukemiaChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.watchAndWait
 		leukemiaChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.others
-		
+
 		leukemiaChartModeOfTreatment.update()
 	}).fail(function() {
 	});
 });
 
-
-//baseline
+// baseline
 $("#baselineStatisticsFromLeukemia").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '3'
+	params.action = '3'
 	params.sortFrom = $("#baselineStatisticsFromLeukemia").val()
 	params.sortTo = $("#baselineStatisticsToLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
 		leukemiaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
@@ -486,7 +477,7 @@ $("#baselineStatisticsFromLeukemia").on('input', function() {
 		leukemiaChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.spleenResponse
 		leukemiaChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.symptomResponse
 		leukemiaChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.others
-		
+
 		leukemiaChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -494,10 +485,10 @@ $("#baselineStatisticsFromLeukemia").on('input', function() {
 $("#baselineStatisticsToLeukemia").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '3'
+	params.action = '3'
 	params.sortFrom = $("#baselineStatisticsFromLeukemia").val()
 	params.sortTo = $("#baselineStatisticsToLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
 		leukemiaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
@@ -511,36 +502,36 @@ $("#baselineStatisticsToLeukemia").on('input', function() {
 		leukemiaChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.spleenResponse
 		leukemiaChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.symptomResponse
 		leukemiaChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.others
-		
+
 		leukemiaChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//followup
+// followup
 $("#followupStatisticsFromLeukemia").on('input', function() {
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '3'
+	params.action = '3'
 	params.sortFrom = $("#followupStatisticsFromLeukemia").val()
 	params.sortTo = $("#followupStatisticsToLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		leukemiaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.relapsed
-		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.refractoryDisease
-		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.cr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.nCR
-		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.pd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.sd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.completeHematologicResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.completeCytogeneticResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.majorMolecularResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.spleenResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.symptomResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.dead
-		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusBaseline.others
-		
+		leukemiaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.relapsed
+		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.refractoryDisease
+		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.cr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nCR
+		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.pr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.completeHematologicResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.completeCytogeneticResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.majorMolecularResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.spleenResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.symptomResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusFollowup.dead
+		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusFollowup.others
+
 		leukemiaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -549,44 +540,43 @@ $("#followupStatisticsToLeukemia").on('input', function() {
 	alert("asd")
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '3'
+	params.action = '3'
 	params.sortFrom = $("#followupStatisticsFromLeukemia").val()
 	params.sortTo = $("#followupStatisticsToLeukemia").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		leukemiaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.relapsed
-		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.refractoryDisease
-		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.cr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.nCR
-		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.pd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.sd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.completeHematologicResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.completeCytogeneticResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.majorMolecularResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.spleenResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.symptomResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.dead
-		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusBaseline.others
-		
+		leukemiaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.relapsed
+		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.refractoryDisease
+		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.cr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nCR
+		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.pr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.completeHematologicResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.completeCytogeneticResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.majorMolecularResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.spleenResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.symptomResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusFollowup.dead
+		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusFollowup.others
+
 		leukemiaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//lymphoma
-//from and to
-//age
+// lymphoma
+// from and to
+// age
 $("#ageStatisticsFromLymphoma").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#ageStatisticsFromLymphoma").val()
 	params.sortTo = $("#ageStatisticsFromLymphoma").val()
-	
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			lymphomaChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		lymphomaChartAge.update()
@@ -596,12 +586,12 @@ $("#ageStatisticsFromLymphoma").on('input', function() {
 $("#ageStatisticsToLymphoma").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#ageStatisticsFromLymphoma").val()
 	params.sortTo = $("#ageStatisticsFromLymphoma").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			lymphomaChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		lymphomaChartAge.update()
@@ -609,18 +599,18 @@ $("#ageStatisticsToLymphoma").on('input', function() {
 	});
 });
 
-//gender
+// gender
 $("#genderStatisticsFromLymphoma").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#genderStatisticsFromLymphoma").val()
 	params.sortTo = $("#genderStatisticsToLymphoma").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartGender.data.datasets[0].data[0] = response.maleChart;
 		lymphomaChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		lymphomaChartGender.update()
 	}).fail(function() {
 	});
@@ -628,32 +618,32 @@ $("#genderStatisticsFromLymphoma").on('input', function() {
 $("#genderStatisticsToLymphoma").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#genderStatisticsFromLymphoma").val()
 	params.sortTo = $("#genderStatisticsToLymphoma").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartGender.data.datasets[0].data[0] = response.maleChart;
 		lymphomaChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		lymphomaChartGender.update()
 	}).fail(function() {
 	});
 });
 
-//mode
+// mode
 $("#modeOfTreatmentStatisticsFromLymphoma").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromLymphoma").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToLymphoma").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
 		lymphomaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
 		lymphomaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		
+
 		lymphomaChartModeOfTreatment.update()
 	}).fail(function() {
 	});
@@ -661,36 +651,35 @@ $("#modeOfTreatmentStatisticsFromLymphoma").on('input', function() {
 $("#modeOfTreatmentStatisticsToLymphoma").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromLymphoma").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToLymphoma").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
 		lymphomaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
 		lymphomaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		
+
 		lymphomaChartModeOfTreatment.update()
 	}).fail(function() {
 	});
 });
 
-
-//baseline
+// baseline
 $("#baselineStatisticsFromLymphoma").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#baselineStatisticsFromLymphoma").val()
 	params.sortTo = $("#baselineStatisticsToLymphoma").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
 		lymphomaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
 		lymphomaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pr
 		lymphomaChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
 		lymphomaChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pd
-		
+
 		lymphomaChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -698,39 +687,39 @@ $("#baselineStatisticsFromLymphoma").on('input', function() {
 $("#baselineStatisticsToLymphoma").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#baselineStatisticsFromLymphoma").val()
 	params.sortTo = $("#baselineStatisticsToLymphoma").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
 		lymphomaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
 		lymphomaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pr
 		lymphomaChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
 		lymphomaChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pd
-		
+
 		lymphomaChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//followup
+// followup
 $("#followupStatisticsFromLymphoma").on('input', function() {
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#followupStatisticsFromLymphoma").val()
 	params.sortTo = $("#followupStatisticsToLymphoma").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		lymphomaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.sd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.pd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.rr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.dead
-		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.others
-		
+		lymphomaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.sd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.pd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.rr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.dead
+		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.others
+
 		lymphomaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -739,54 +728,53 @@ $("#followupStatisticsToLymphoma").on('input', function() {
 	alert("asd")
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '4'
+	params.action = '4'
 	params.sortFrom = $("#followupStatisticsFromLymphoma").val()
 	params.sortTo = $("#followupStatisticsToLymphoma").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		lymphomaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.sd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.pd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.rr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.dead
-		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.others
-		
+		lymphomaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.sd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.pd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.rr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.dead
+		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.others
+
 		lymphomaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//myelo
+// myelo
 
-//from and to
-//age
+// from and to
+// age
 $("#ageStatisticsFromMyeloproliferative").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#ageStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#ageStatisticsFromMyeloproliferative").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			myeloChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		myeloChartAge.update()
 	}).fail(function() {
 	});
-	
-	
+
 });
 $("#ageStatisticsToMyeloproliferative").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#ageStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#ageStatisticsFromMyeloproliferative").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			myeloChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		myeloChartAge.update()
@@ -794,18 +782,18 @@ $("#ageStatisticsToMyeloproliferative").on('input', function() {
 	});
 });
 
-//gender
+// gender
 $("#genderStatisticsFromMyeloproliferative").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#genderStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#genderStatisticsToMyeloproliferative").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartGender.data.datasets[0].data[0] = response.maleChart;
 		myeloChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		myeloChartGender.update()
 	}).fail(function() {
 	});
@@ -813,33 +801,33 @@ $("#genderStatisticsFromMyeloproliferative").on('input', function() {
 $("#genderStatisticsToMyeloproliferative").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#genderStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#genderStatisticsToMyeloproliferative").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartGender.data.datasets[0].data[0] = response.maleChart;
 		myeloChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		myeloChartGender.update()
 	}).fail(function() {
 	});
 });
 
-//mode
+// mode
 $("#modeOfTreatmentStatisticsFromMyeloproliferative").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToMyeloproliferative").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		myeloChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.pharmacologicTreatment
-		myeloChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.supportivePalliativeOnly
-		myeloChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.watchAndWait
-		myeloChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.others
-		
+		myeloChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
+		myeloChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		myeloChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		myeloChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.others
+
 		myeloChartModeOfTreatment.update()
 	}).fail(function() {
 	});
@@ -847,30 +835,29 @@ $("#modeOfTreatmentStatisticsFromMyeloproliferative").on('input', function() {
 $("#modeOfTreatmentStatisticsToMyeloproliferative").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToMyeloproliferative").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		myeloChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.pharmacologicTreatment
-		myeloChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.supportivePalliativeOnly
-		myeloChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.watchAndWait
-		myeloChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.others
-		
+		myeloChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
+		myeloChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		myeloChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		myeloChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.others
+
 		myeloChartModeOfTreatment.update()
 	}).fail(function() {
 	});
 });
 
-
-//baseline
+// baseline
 $("#baselineStatisticsFromMyeloproliferative").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#baselineStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#baselineStatisticsToMyeloproliferative").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
 		myeloChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
@@ -880,7 +867,7 @@ $("#baselineStatisticsFromMyeloproliferative").on('input', function() {
 		myeloChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.spleenResponse
 		myeloChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.symptomResponse
 		myeloChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.others
-		
+
 		myeloChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -888,10 +875,10 @@ $("#baselineStatisticsFromMyeloproliferative").on('input', function() {
 $("#baselineStatisticsToMyeloproliferative").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#baselineStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#baselineStatisticsToMyeloproliferative").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
 		myeloChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
@@ -901,32 +888,31 @@ $("#baselineStatisticsToMyeloproliferative").on('input', function() {
 		myeloChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.spleenResponse
 		myeloChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.symptomResponse
 		myeloChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.others
-		
+
 		myeloChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//followup
+// followup
 $("#followupStatisticsFromMyeloproliferative").on('input', function() {
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#followupStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#followupStatisticsToMyeloproliferative").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		myeloChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		myeloChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
-		myeloChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pd
-		myeloChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
-		myeloChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.hematologicResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.spleenResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.symptomResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.dead
-		myeloChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.others
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		myeloChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		myeloChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
+		myeloChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.pd
+		myeloChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.sd
+		myeloChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.hematologicResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.spleenResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.symptomResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
+		myeloChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+
 		myeloChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -935,56 +921,54 @@ $("#followupStatisticsToMyeloproliferative").on('input', function() {
 	alert("asd")
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '5'
+	params.action = '5'
 	params.sortFrom = $("#followupStatisticsFromMyeloproliferative").val()
 	params.sortTo = $("#followupStatisticsToMyeloproliferative").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		myeloChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		myeloChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
-		myeloChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pd
-		myeloChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
-		myeloChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.hematologicResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.spleenResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.symptomResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.dead
-		myeloChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.others
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		myeloChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		myeloChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
+		myeloChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.pd
+		myeloChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.sd
+		myeloChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.hematologicResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.spleenResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.symptomResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
+		myeloChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+
 		myeloChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//plasmacell
-//from and to
-//age
+// plasmacell
+// from and to
+// age
 $("#ageStatisticsFromPlasmacell").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#ageStatisticsFromPlasmacell").val()
 	params.sortTo = $("#ageStatisticsFromPlasmacell").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			plasmaCellChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		plasmaCellChartAge.update()
 	}).fail(function() {
 	});
-	
-	
+
 });
 $("#ageStatisticsToPlasmacell").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#ageStatisticsFromPlasmacell").val()
 	params.sortTo = $("#ageStatisticsFromPlasmacell").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			plasmaCellChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		plasmaCellChartAge.update()
@@ -992,18 +976,18 @@ $("#ageStatisticsToPlasmacell").on('input', function() {
 	});
 });
 
-//gender
+// gender
 $("#genderStatisticsFromPlasmacell").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#genderStatisticsFromPlasmacell").val()
 	params.sortTo = $("#genderStatisticsToPlasmacell").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartGender.data.datasets[0].data[0] = response.maleChart;
 		plasmaCellChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		plasmaCellChartGender.update()
 	}).fail(function() {
 	});
@@ -1011,37 +995,36 @@ $("#genderStatisticsFromPlasmacell").on('input', function() {
 $("#genderStatisticsToPlasmacell").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#genderStatisticsFromPlasmacell").val()
 	params.sortTo = $("#genderStatisticsToPlasmacell").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartGender.data.datasets[0].data[0] = response.maleChart;
 		plasmaCellChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		plasmaCellChartGender.update()
 	}).fail(function() {
 	});
 });
 
-//mode
+// mode
 $("#modeOfTreatmentStatisticsFromPlasmacell").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromPlasmacell").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToPlasmacell").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		plasmaCellChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.pharmacologicForTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.pharmacologicForNonTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.maintenance
-		plasmaCellChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.radiotherapy
-		plasmaCellChartModeOfTreatment.data.datasets[4].data[0] = response.chartStatusBaseline.supportive
-		plasmaCellChartModeOfTreatment.data.datasets[5].data[0] = response.chartStatusBaseline.watchAndWait
-		plasmaCellChartModeOfTreatment.data.datasets[6].data[0] = response.chartStatusBaseline.others
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		plasmaCellChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicForTransplantCandidate
+		plasmaCellChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicForNonTransplantCandidate
+		plasmaCellChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.maintenance
+		plasmaCellChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.radiotherapy
+		plasmaCellChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.supportive
+		plasmaCellChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		plasmaCellChartModeOfTreatment.data.datasets[6].data[0] = response.chartModeOfTreatmentBean.others
+
 		plasmaCellChartModeOfTreatment.update()
 	}).fail(function() {
 	});
@@ -1049,34 +1032,32 @@ $("#modeOfTreatmentStatisticsFromPlasmacell").on('input', function() {
 $("#modeOfTreatmentStatisticsToPlasmacell").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromPlasmacell").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToPlasmacell").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		plasmaCellChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.pharmacologicForTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.pharmacologicForNonTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.maintenance
-		plasmaCellChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.radiotherapy
-		plasmaCellChartModeOfTreatment.data.datasets[4].data[0] = response.chartStatusBaseline.supportive
-		plasmaCellChartModeOfTreatment.data.datasets[5].data[0] = response.chartStatusBaseline.watchAndWait
-		plasmaCellChartModeOfTreatment.data.datasets[6].data[0] = response.chartStatusBaseline.others
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		plasmaCellChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicForTransplantCandidate
+		plasmaCellChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicForNonTransplantCandidate
+		plasmaCellChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.maintenance
+		plasmaCellChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.radiotherapy
+		plasmaCellChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.supportive
+		plasmaCellChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		plasmaCellChartModeOfTreatment.data.datasets[6].data[0] = response.chartModeOfTreatmentBean.others
+
 		plasmaCellChartModeOfTreatment.update()
 	}).fail(function() {
 	});
 });
 
-
-//baseline
+// baseline
 $("#baselineStatisticsFromPlasmacell").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#baselineStatisticsFromPlasmacell").val()
 	params.sortTo = $("#baselineStatisticsToPlasmacell").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sCR
@@ -1088,10 +1069,10 @@ $("#baselineStatisticsFromPlasmacell").on('input', function() {
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.sd
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.pd
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.relapsed
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.others
-		
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.others
+
 		plasmaCellChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -1099,10 +1080,10 @@ $("#baselineStatisticsFromPlasmacell").on('input', function() {
 $("#baselineStatisticsToPlasmacell").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#baselineStatisticsFromPlasmacell").val()
 	params.sortTo = $("#baselineStatisticsToPlasmacell").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sCR
@@ -1114,39 +1095,39 @@ $("#baselineStatisticsToPlasmacell").on('input', function() {
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.sd
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.pd
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.relapsed
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.others
-		
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.others
+
 		plasmaCellChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//followup
+// followup
 $("#followupStatisticsFromPlasmacell").on('input', function() {
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#followupStatisticsFromPlasmacell").val()
 	params.sortTo = $("#followupStatisticsToPlasmacell").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.immunophenotypicCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.molecularCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.vgpr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.pr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.mr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.sd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.pd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.relapsed
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.others
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusBaseline.dead
-		
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.immunophenotypicCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.molecularCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.vgpr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.mr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.sd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.pd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.relapsed
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.clinicalRelapse
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.relapseFromCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.others
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.dead
+
 		plasmaCellChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -1155,61 +1136,60 @@ $("#followupStatisticsToPlasmacell").on('input', function() {
 	alert("asd")
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '6'
+	params.action = '6'
 	params.sortFrom = $("#followupStatisticsFromPlasmacell").val()
 	params.sortTo = $("#followupStatisticsToPlasmacell").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.immunophenotypicCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.molecularCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.vgpr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.pr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.mr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.sd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.pd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.relapsed
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusBaseline.others
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusBaseline.dead
-		
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.immunophenotypicCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.molecularCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.vgpr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.mr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.sd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.pd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.relapsed
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.clinicalRelapse
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.relapseFromCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.others
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.dead
+
 		plasmaCellChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//aap
+// aap
 
-//from and to
-//age
+// from and to
+// age
 $("#ageStatisticsFromAAPNHMDS").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#ageStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#ageStatisticsFromAAPNHMDS").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			aapnhmdsChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		aapnhmdsChartAge.update()
 	}).fail(function() {
 	});
-	
-	
+
 });
 $("#ageStatisticsToAAPNHMDS").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#ageStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#ageStatisticsFromAAPNHMDS").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			aapnhmdsChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		aapnhmdsChartAge.update()
@@ -1217,18 +1197,18 @@ $("#ageStatisticsToAAPNHMDS").on('input', function() {
 	});
 });
 
-//gender
+// gender
 $("#genderStatisticsFromAAPNHMDS").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#genderStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#genderStatisticsToAAPNHMDS").val()
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartGender.data.datasets[0].data[0] = response.maleChart;
 		aapnhmdsChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		aapnhmdsChartGender.update()
 	}).fail(function() {
 	});
@@ -1236,35 +1216,34 @@ $("#genderStatisticsFromAAPNHMDS").on('input', function() {
 $("#genderStatisticsToAAPNHMDS").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#genderStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#genderStatisticsToAAPNHMDS").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartGender.data.datasets[0].data[0] = response.maleChart;
 		aapnhmdsChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		aapnhmdsChartGender.update()
 	}).fail(function() {
 	});
 });
 
-//mode
+// mode
 $("#modeOfTreatmentStatisticsFromAAPNHMDS").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToAAPNHMDS").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		aapnhmdsChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.hematopoieticStemCellTransplantation
-		aapnhmdsChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.pharmacologicTreatment
-		aapnhmdsChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.supportive
-		aapnhmdsChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.bothPharmacologicAndSupportive
-		aapnhmdsChartModeOfTreatment.data.datasets[4].data[0] = response.chartStatusBaseline.watchAndWait
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		aapnhmdsChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.hematopoieticStemCellTransplantation
+		aapnhmdsChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
+		aapnhmdsChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportive
+		aapnhmdsChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		aapnhmdsChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+
 		aapnhmdsChartModeOfTreatment.update()
 	}).fail(function() {
 	});
@@ -1272,38 +1251,36 @@ $("#modeOfTreatmentStatisticsFromAAPNHMDS").on('input', function() {
 $("#modeOfTreatmentStatisticsToAAPNHMDS").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToAAPNHMDS").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		aapnhmdsChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.hematopoieticStemCellTransplantation
-		aapnhmdsChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.pharmacologicTreatment
-		aapnhmdsChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.supportive
-		aapnhmdsChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.bothPharmacologicAndSupportive
-		aapnhmdsChartModeOfTreatment.data.datasets[4].data[0] = response.chartStatusBaseline.watchAndWait
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		aapnhmdsChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.hematopoieticStemCellTransplantation
+		aapnhmdsChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
+		aapnhmdsChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportive
+		aapnhmdsChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		aapnhmdsChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+
 		aapnhmdsChartModeOfTreatment.update()
 	}).fail(function() {
 	});
 });
 
-
-//baseline
+// baseline
 $("#baselineStatisticsFromAAPNHMDS").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#baselineStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#baselineStatisticsToAAPNHMDS").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.hematologicResponse
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sd
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.relapsed
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.others
-		
+
 		aapnhmdsChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -1311,36 +1288,36 @@ $("#baselineStatisticsFromAAPNHMDS").on('input', function() {
 $("#baselineStatisticsToAAPNHMDS").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#baselineStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#baselineStatisticsToAAPNHMDS").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.hematologicResponse
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sd
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.relapsed
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.others
-		
+
 		aapnhmdsChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//followup
+// followup
 $("#followupStatisticsFromAAPNHMDS").on('input', function() {
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#followupStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#followupStatisticsToAAPNHMDS").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.hematologicResponse
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sd
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.relapsed
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.dead
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.others
-		
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.hematologicResponse
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sd
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.relapsed
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.dead
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.others
+
 		aapnhmdsChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -1349,51 +1326,50 @@ $("#followupStatisticsToAAPNHMDS").on('input', function() {
 	alert("asd")
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '1'
+	params.action = '1'
 	params.sortFrom = $("#followupStatisticsFromAAPNHMDS").val()
 	params.sortTo = $("#followupStatisticsToAAPNHMDS").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.hematologicResponse
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sd
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.relapsed
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.dead
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.others
-		
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.hematologicResponse
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sd
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.relapsed
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.dead
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.others
+
 		aapnhmdsChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//platelet
-//from and to
-//age
+// platelet
+// from and to
+// age
 $("#ageStatisticsFromPlateletDisorder").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#ageStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#ageStatisticsFromPlateletDisorder").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			plateletChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		plateletChartAge.update()
 	}).fail(function() {
 	});
-	
-	
+
 });
 $("#ageStatisticsToPlateletDisorder").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#ageStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#ageStatisticsFromPlateletDisorder").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			plateletChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		plateletChartAge.update()
@@ -1401,18 +1377,18 @@ $("#ageStatisticsToPlateletDisorder").on('input', function() {
 	});
 });
 
-//gender
+// gender
 $("#genderStatisticsFromPlateletDisorder").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#genderStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#genderStatisticsToPlateletDisorder").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartGender.data.datasets[0].data[0] = response.maleChart;
 		plateletChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		plateletChartGender.update()
 	}).fail(function() {
 	});
@@ -1420,36 +1396,35 @@ $("#genderStatisticsFromPlateletDisorder").on('input', function() {
 $("#genderStatisticsToPlateletDisorder").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#genderStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#genderStatisticsToPlateletDisorder").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartGender.data.datasets[0].data[0] = response.maleChart;
 		plateletChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		plateletChartGender.update()
 	}).fail(function() {
 	});
 });
 
-//mode
+// mode
 $("#modeOfTreatmentStatisticsFromPlateletDisorder").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToPlateletDisorder").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		plateletChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.pharmacologic1stLine
-		plateletChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.pharmacologic2ndLine
-		plateletChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.supportivePalliativeOnly
-		plateletChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.bothPharmacologicAndSupportive
-		plateletChartModeOfTreatment.data.datasets[4].data[0] = response.chartStatusBaseline.watchAndWait
-		plateletChartModeOfTreatment.data.datasets[5].data[0] = response.chartStatusBaseline.others
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		plateletChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
+		plateletChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLine
+		plateletChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		plateletChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		plateletChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		plateletChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.others
+
 		plateletChartModeOfTreatment.update()
 	}).fail(function() {
 	});
@@ -1457,39 +1432,37 @@ $("#modeOfTreatmentStatisticsFromPlateletDisorder").on('input', function() {
 $("#modeOfTreatmentStatisticsToPlateletDisorder").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToPlateletDisorder").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		plateletChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.pharmacologic1stLine
-		plateletChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.pharmacologic2ndLine
-		plateletChartModeOfTreatment.data.datasets[2].data[0] = response.chartStatusBaseline.supportivePalliativeOnly
-		plateletChartModeOfTreatment.data.datasets[3].data[0] = response.chartStatusBaseline.bothPharmacologicAndSupportive
-		plateletChartModeOfTreatment.data.datasets[4].data[0] = response.chartStatusBaseline.watchAndWait
-		plateletChartModeOfTreatment.data.datasets[5].data[0] = response.chartStatusBaseline.others
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		plateletChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
+		plateletChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLine
+		plateletChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		plateletChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		plateletChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		plateletChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.others
+
 		plateletChartModeOfTreatment.update()
 	}).fail(function() {
 	});
 });
 
-
-//baseline
+// baseline
 $("#baselineStatisticsFromPlateletDisorder").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#baselineStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#baselineStatisticsToPlateletDisorder").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosedITP
 		plateletChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.persistentITP
 		plateletChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.chronicITP
 		plateletChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.severeITP
-		
+
 		plateletChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -1497,41 +1470,40 @@ $("#baselineStatisticsFromPlateletDisorder").on('input', function() {
 $("#baselineStatisticsToPlateletDisorder").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#baselineStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#baselineStatisticsToPlateletDisorder").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosedITP
 		plateletChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.persistentITP
 		plateletChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.chronicITP
 		plateletChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.severeITP
-		
+
 		plateletChartBaselineDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//followup
+// followup
 $("#followupStatisticsFromPlateletDisorder").on('input', function() {
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#followupStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#followupStatisticsToPlateletDisorder").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		plateletChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		plateletChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.remission
-		plateletChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.timeToResponse
-		plateletChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.nr
-		plateletChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.lossofCR
-		plateletChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.refractoryITP
-		plateletChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.sd
-		plateletChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.dead
-		plateletChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.others
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		plateletChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		plateletChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.remission
+		plateletChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.timeToResponse
+		plateletChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nr
+		plateletChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.lossofCR
+		plateletChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.refractoryITP
+		plateletChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
+		plateletChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
+		plateletChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+
 		plateletChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -1540,56 +1512,54 @@ $("#followupStatisticsToPlateletDisorder").on('input', function() {
 	alert("asd")
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '7'
+	params.action = '7'
 	params.sortFrom = $("#followupStatisticsFromPlateletDisorder").val()
 	params.sortTo = $("#followupStatisticsToPlateletDisorder").val()
-	
-	$.post('DashboardDataServlet', $.param(params), function(response) {
-		plateletChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		plateletChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.remission
-		plateletChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.timeToResponse
-		plateletChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.nr
-		plateletChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.lossofCR
-		plateletChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.refractoryITP
-		plateletChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.sd
-		plateletChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.dead
-		plateletChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.others
 
-		
+	$.post('DashboardDataServlet', $.param(params), function(response) {
+		plateletChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
+		plateletChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.remission
+		plateletChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.timeToResponse
+		plateletChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nr
+		plateletChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.lossofCR
+		plateletChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.refractoryITP
+		plateletChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
+		plateletChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
+		plateletChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+
 		plateletChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
 });
 
-//coag
-//from and to
-//age
+// coag
+// from and to
+// age
 $("#ageStatisticsFromCoagulation").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#ageStatisticsFromCoagulation").val()
 	params.sortTo = $("#ageStatisticsFromCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			coagulationChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		coagulationChartAge.update()
 	}).fail(function() {
 	});
-	
-	
+
 });
 $("#ageStatisticsToCoagulation").on('input', function() {
 	restoreValues()
 	params.agePass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#ageStatisticsFromCoagulation").val()
 	params.sortTo = $("#ageStatisticsFromCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		for(var i = 0; i < response.chartAge.ageChart.length; i++){
+		for (var i = 0; i < response.chartAge.ageChart.length; i++) {
 			coagulationChartAge.data.datasets[0].data[i] = response.chartAge.ageChart[i];
 		}
 		coagulationChartAge.update()
@@ -1597,18 +1567,18 @@ $("#ageStatisticsToCoagulation").on('input', function() {
 	});
 });
 
-//gender
+// gender
 $("#genderStatisticsFromCoagulation").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#genderStatisticsFromCoagulation").val()
 	params.sortTo = $("#genderStatisticsToCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		coagulationChartGender.data.datasets[0].data[0] = response.maleChart;
 		coagulationChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		coagulationChartGender.update()
 	}).fail(function() {
 	});
@@ -1616,32 +1586,32 @@ $("#genderStatisticsFromCoagulation").on('input', function() {
 $("#genderStatisticsToCoagulation").on('input', function() {
 	restoreValues()
 	params.genderPass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#genderStatisticsFromCoagulation").val()
 	params.sortTo = $("#genderStatisticsToCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		coagulationChartGender.data.datasets[0].data[0] = response.maleChart;
 		coagulationChartGender.data.datasets[0].data[1] = response.femaleChart;
-		
+
 		coagulationChartGender.update()
 	}).fail(function() {
 	});
 });
 
-//mode
+// mode
 $("#modeOfTreatmentStatisticsFromCoagulation").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromCoagulation").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		coagulationChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.factorConcentrates
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.blooComponent
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.others
-		
+		coagulationChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.factorConcentrates
+		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.bloodComponent
+		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.others
+
 		coagulationChartModeOfTreatment.update()
 	}).fail(function() {
 	});
@@ -1649,29 +1619,28 @@ $("#modeOfTreatmentStatisticsFromCoagulation").on('input', function() {
 $("#modeOfTreatmentStatisticsToCoagulation").on('input', function() {
 	restoreValues()
 	params.modeOfTreatmentPass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#modeOfTreatmentStatisticsFromCoagulation").val()
 	params.sortTo = $("#modeOfTreatmentStatisticsToCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		coagulationChartModeOfTreatment.data.datasets[0].data[0] = response.chartStatusBaseline.factorConcentrates
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.blooComponent
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartStatusBaseline.others
-		
+		coagulationChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.factorConcentrates
+		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.bloodComponent
+		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.others
+
 		coagulationChartModeOfTreatment.update()
 	}).fail(function() {
 	});
 });
 
-
-//baseline
+// baseline
 $("#baselineStatisticsFromCoagulation").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#baselineStatisticsFromCoagulation").val()
 	params.sortTo = $("#baselineStatisticsToCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		coagulationChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.sd
 
@@ -1682,10 +1651,10 @@ $("#baselineStatisticsFromCoagulation").on('input', function() {
 $("#baselineStatisticsToCoagulation").on('input', function() {
 	restoreValues()
 	params.baselinePass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#baselineStatisticsFromCoagulation").val()
 	params.sortTo = $("#baselineStatisticsToCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		coagulationChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.sd
 
@@ -1694,17 +1663,17 @@ $("#baselineStatisticsToCoagulation").on('input', function() {
 	});
 });
 
-//followup
+// followup
 $("#followupStatisticsFromCoagulation").on('input', function() {
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#followupStatisticsFromCoagulation").val()
 	params.sortTo = $("#followupStatisticsToCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		coagulationChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.sd
-		
+		coagulationChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.sd
+
 		coagulationChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});
@@ -1713,13 +1682,13 @@ $("#followupStatisticsToCoagulation").on('input', function() {
 	alert("asd")
 	restoreValues()
 	params.followupPass = '1'
-		params.action = '2'
+	params.action = '2'
 	params.sortFrom = $("#followupStatisticsFromCoagulation").val()
 	params.sortTo = $("#followupStatisticsToCoagulation").val()
-	
+
 	$.post('DashboardDataServlet', $.param(params), function(response) {
-		coagulationChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.sd
-		
+		coagulationChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.sd
+
 		coagulationChartFollowupDiseaseStatus.update()
 	}).fail(function() {
 	});

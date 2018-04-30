@@ -7,6 +7,7 @@ public class GeneralDataBean {
 	private int gender;
 	private String dateOfBirth;
 	private String dateOfEntry;
+	private String civilStatus;
 
 	public String getLastName() {
 		return lastName;
@@ -55,4 +56,13 @@ public class GeneralDataBean {
 	public void setDateOfEntry(String dateOfEntry) {
 		this.dateOfEntry = dateOfEntry;
 	}
+
+	public String getCivilStatus() {
+		return civilStatus;
+	}
+
+	public void setCivilStatus(String civilStatus) {
+		this.civilStatus = civilStatus;
+	}
+
 }

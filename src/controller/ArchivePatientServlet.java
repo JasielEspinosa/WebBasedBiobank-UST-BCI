@@ -19,12 +19,11 @@ import utility.database.SQLOperationsBaseline;
 @WebServlet("/ArchivePatientServlet")
 public class ArchivePatientServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	private Connection connection;
-
+	
 	public void init() throws ServletException {
 		connection = SQLOperations.getConnection();
-
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
 			System.out.println("connection is READY.");
@@ -32,41 +31,33 @@ public class ArchivePatientServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-
+	
 	public ArchivePatientServlet() {
 		super();
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain");
-
 		int patientID = Integer.parseInt(request.getParameter("patientID"));
-
 		try {
 			if (connection != null) {
 				if (SQLOperations.archivePatient(patientID, connection)) {
-
 					ResultSet patientInfoRS = SQLOperationsBaseline.getPatient(patientID, connection);
 					patientInfoRS.first();
-
 					int generalDataID = patientInfoRS.getInt("GeneralDataID");
 					ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 					generalDataRS.first();
-
 					HttpSession session = request.getSession(true);
-
 					AuditBean auditBean = new AuditBean("Patient archived",
 							generalDataRS.getString("LastNameDec") + ", " + generalDataRS.getString("FirstNameDec") + " " + generalDataRS
 									.getString("MiddleNameDec"),
 							(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 					SQLOperations.addAudit(auditBean, connection);
-
 					System.out.println("Successful delete");
 					response.getWriter().write("Success");
 				} else {
@@ -78,7 +69,5 @@ public class ArchivePatientServlet extends HttpServlet {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-
 	}
-
 }

@@ -338,13 +338,13 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Weight</label>
                                        <div class="col-sm-8">
-                                          <input type="number" Required="required" step="any" class="form-control" name="weight" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="weight" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">ECOG</label>
                                        <div class="col-sm-8">
-                                          <input type="number" Required="required" step="any" class="form-control" name="ecog" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="ecog" />
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -393,73 +393,73 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Hemoglobin (g/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="hemoglobin" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hemoglobin" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Hematocrit (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="hematocrit" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hematocrit" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">White blood cells (x10 ^9/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="whiteBloodCells" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="whiteBloodCells" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Neutrophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="neutrophils" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="neutrophils" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Lymphocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="lymphocytes" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="lymphocytes" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Monocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="monocytes" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="monocytes" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Eosinophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="eosinophils" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="eosinophils" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Basophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="basophils" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="basophils" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Myelocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="myelocytes" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="myelocytes" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Metamyelocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="metamyelocytes" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="metamyelocytes" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Blasts (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="blasts" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="blasts" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Platelet count (x 10^9/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step="any" class="form-control" name="plateletCount" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="plateletCount" />
                                        </div>
                                     </div>
                                     <!-- End of Fields -->
@@ -514,9 +514,9 @@
                                              <option value="PR (Partial Response)">PR (Partial Response)</option>
                                              <option value="PD (Progressive Disease)">PD (Progressive Disease)</option>
                                              <option value="SD (Stable Disease)">SD (Stable Disease)</option>
-                                             <option value="Hematologic response">Hematologic response</option>
-                                             <option value="Spleen response">Spleen response</option>
-                                             <option value="Symptom response">Symptom response</option>
+                                             <option value="Hematologic response">Hematologic Response</option>
+                                             <option value="Spleen response">Spleen Response</option>
+                                             <option value="Symptom response">Symptom Response</option>
                                              <option value="Dead">Dead</option>
                                              <option value="Others">Others</option>
                                           </select>

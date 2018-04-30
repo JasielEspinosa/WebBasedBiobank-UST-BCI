@@ -22,12 +22,11 @@ import utility.database.SQLOperations;
 @WebServlet("/AuditServlet")
 public class AuditServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	
 	private Connection connection;
-
+	
 	public void init() throws ServletException {
 		connection = SQLOperations.getConnection();
-
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
 			System.out.println("connection is READY.");
@@ -35,47 +34,38 @@ public class AuditServlet extends HttpServlet {
 			System.err.println("connection is NULL.");
 		}
 	}
-
+	
 	public AuditServlet() {
 		super();
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		response.setCharacterEncoding("UTF-8");
 		String action = request.getParameter("action");
-
 		if (action.equals("load")) {
 			System.out.println("test load");
 			response.setContentType("application/json");
 			List<AuditBean> auditList = new ArrayList<AuditBean>();
 			if (connection != null) {
 				try {
-
 					ResultSet auditRS = SQLOperations.getAuditAll(connection);
-
 					while (auditRS.next()) {
-
 						String actionValue = auditRS.getString("action");
 						String performedOn = auditRS.getString("performedOn");
 						String performedBy = auditRS.getString("performedBy");
 						String date = auditRS.getString("dateDec");
 						String time = auditRS.getString("time");
-
 						AuditBean ab = new AuditBean(actionValue, performedOn, performedBy, date, time);
 						auditList.add(ab);
 					}
-
 					HttpSession session = request.getSession(true);
-
 					AuditBean auditBean = new AuditBean("Audit page accessed", (String) session.getAttribute("name"),
 							(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 					SQLOperations.addAudit(auditBean, connection);
-
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -84,5 +74,4 @@ public class AuditServlet extends HttpServlet {
 			response.getWriter().write(json);
 		}
 	}
-
 }

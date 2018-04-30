@@ -9,6 +9,10 @@ var params = {
 var editState = false;
 var upperActionState = false;
 
+function setThreeNumberDecimal(num) {
+	num.value = parseFloat(num.value).toFixed(3);
+};
+
 $("#CoagulationBaseline").submit(function(e) {
 	e.preventDefault();
 });
@@ -52,7 +56,7 @@ $('document').ready(function() {
 	});
 
 	if (localStorage.getItem("fromFollowUp2") != "") {
-		//alert(localStorage.getItem("id2"));
+		// alert(localStorage.getItem("id2"));
 		loadPatientData(localStorage.getItem("id2"));
 		localStorage.setItem("fromFollowUp2", "");
 	}
@@ -64,10 +68,10 @@ function loadPatientData(id) {
 
 	params.patientID = id;
 	$.post('LoadCoagulationBaselineServlet', $.param(params), function(response) {
-		
+
 		$.loadUneditableFields();
 		$("#submitQuery").hide();
-		
+
 		// barcode
 		setBarcode(response["patientIDNumber"])
 
@@ -104,6 +108,7 @@ function loadPatientData(id) {
 
 		$("[name='dateOfBirth']").val(response["dateOfBirth"])
 		$("[name='address']").val(response["address"])
+		$("[name='civilStatus']").val(response["civilStatus"])
 		$("[name='dateOfEntry']").val(response["dateOfEntry"])
 
 		// clinical data
@@ -111,13 +116,13 @@ function loadPatientData(id) {
 		$("[name='dateOfVisit']").val(response["dateOfVisit"])
 		$("[name='diagnosis']").val(response["diagnosis"])
 		$("[name='diagnosisOthers']").val(response["diagnosisOthers"])
-		
+
 		if (response["diagnosis"] === "Others") {
 			$.diagnosisOthers();
 		} else {
 			$.diagnosisNull();
 		}
-		
+
 		$("[name='severity']").val(response["severity"])
 		$("[name='chiefComplaint']").val(response["chiefComplaint"])
 		$("[name='otherSymptoms']").val(response["otherSymptoms"])

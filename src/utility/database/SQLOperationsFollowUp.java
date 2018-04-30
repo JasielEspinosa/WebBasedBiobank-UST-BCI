@@ -9,12 +9,12 @@ import model.*;
 
 public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 	private static Connection connection;
-
+	
 	private static Connection getDBConnection() {
 		try {
 			InitialContext context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/BCI-DS");
-
+			
 			if (dataSource != null) {
 				connection = dataSource.getConnection();
 			}
@@ -25,11 +25,11 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return connection;
 	}
-
+	
 	public static Connection getConnection() {
 		return (connection != null) ? connection : getDBConnection();
 	}
-
+	
 	public static boolean addMedicalEvents(MedicalEventsBean meb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -132,7 +132,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addPhysicalExam(PhysicalExamBean peb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -218,7 +218,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addClinicalData(ClinicalDataBean cdb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -292,7 +292,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addHematology(HematologyBean hb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -432,7 +432,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addOtherLaboratories(OtherLaboratoriesBean olb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -464,7 +464,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addBloodChemistry(BloodChemistryBean bcb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -507,7 +507,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addBoneMarrowAspirate(BoneMarrowAspirateBean bmab, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -567,7 +567,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addFlowCytometry(FlowCytometryBean fcb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -582,7 +582,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 				break;
 			}
 			case (2): {
-
+				
 			}
 			case (3): {
 				try {
@@ -606,7 +606,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addCytogeneticMolecular(CytogeneticMolecularBean cmb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -644,7 +644,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addImagingStudies(ImagingStudiesBean isb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -691,7 +691,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addSerumFree(SerumFreeBean sfb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -720,7 +720,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addSerumImmunofixation(SerumImmunofixationBean sifb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -749,7 +749,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addSerumProtein(SerumProteinBean spb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -778,7 +778,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addUrineProtein(UrineProteinBean upb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -807,7 +807,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addLaboratoryProfile(LaboratoryProfileBean lpb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -881,7 +881,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addDiseaseStatus(DiseaseStatusBean dsb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -897,6 +897,16 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 				break;
 			}
 			case (2): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(INSERT_DISEASE_STATUS);
+					pstmt.setString(1, dsb.getDiseaseStatus());
+					pstmt.setString(2, dsb.getOtherDisease());
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- addDiseaseStatus: " + sqle.getMessage());
+					return false;
+				}
+				break;
 			}
 			case (3): {
 				try {
@@ -962,7 +972,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean addFollowUp(FollowUpBean fub, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1066,7 +1076,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updatePatient(Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1086,9 +1096,9 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	//get statements
-
+	
 	public static ResultSet getMedicalEvents(int chemoMedicationId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1101,7 +1111,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getPhysicalExam(int patientId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1114,7 +1124,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getClinicalData(int clinicalDataId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1127,7 +1137,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getHematology(int hematologyId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1140,7 +1150,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getOtherLaboratories(int otherLaboratoriesId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1153,7 +1163,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getBloodChemistry(int bloodChemistryId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1166,7 +1176,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getBoneMarrowAspirate(int boneMarrowAspirateId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1179,7 +1189,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getFlowCytometry(int flowCytometryId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1192,7 +1202,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getCytogeneticMolecular(int cytogeneticMolecularId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1205,7 +1215,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getImagingStudies(int imagingStudiesId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1218,7 +1228,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getSerumFree(int serumFreeId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1231,7 +1241,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getSerumImmunofixation(int serumImmunofixationId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1244,7 +1254,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getSerumProtein(int serumProteinId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1257,7 +1267,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getUrineProtein(int urineProteinId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1270,7 +1280,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getLaboratoryProfile(int laboratoryProfileId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1283,7 +1293,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getDiseaseStatus(int diseaseStatusId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1296,7 +1306,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getFollowup(int followupId, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -1309,7 +1319,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return rs;
 	}
-
+	
 	//update statements
 	public static boolean updateMedicalEvents(MedicalEventsBean meb, Connection connection, int disease, int medicalEventsId) {
 		switch (disease) {
@@ -1420,7 +1430,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updatePhysicalExam(PhysicalExamBean peb, Connection connection, int disease, int physicalExamId) {
 		switch (disease) {
 			case (1): {
@@ -1512,7 +1522,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateClinicalData(ClinicalDataBean cdb, Connection connection, int disease, int clinicaldDataId) {
 		switch (disease) {
 			case (1): {
@@ -1592,7 +1602,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateHematology(HematologyBean hb, Connection connection, int disease, int hemtologyId) {
 		switch (disease) {
 			case (1): {
@@ -1738,7 +1748,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateOtherLaboratories(OtherLaboratoriesBean olb, Connection connection, int disease, int otherLaboratoriesId) {
 		switch (disease) {
 			case (1): {
@@ -1771,7 +1781,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateBloodChemistry(BloodChemistryBean bcb, Connection connection, int disease, int bloodChemistryId) {
 		switch (disease) {
 			case (1): {
@@ -1816,7 +1826,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateBoneMarrowAspirate(BoneMarrowAspirateBean bmab, Connection connection, int disease,
 			int boneMarrowAspirateId) {
 		switch (disease) {
@@ -1881,7 +1891,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateFlowCytometry(FlowCytometryBean fcb, Connection connection, int disease, int flowCytometryId) {
 		switch (disease) {
 			case (1): {
@@ -1897,7 +1907,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 				break;
 			}
 			case (2): {
-
+				
 			}
 			case (3): {
 				try {
@@ -1922,7 +1932,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateCytogeneticMolecular(CytogeneticMolecularBean cmb, Connection connection, int disease,
 			int cytogenicMolecularId) {
 		switch (disease) {
@@ -1963,7 +1973,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateImagingStudies(ImagingStudiesBean isb, Connection connection, int disease, int imagingStudiesId) {
 		switch (disease) {
 			case (1): {
@@ -2013,7 +2023,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateSerumFree(SerumFreeBean sfb, Connection connection, int disease, int serumFreeId) {
 		switch (disease) {
 			case (1): {
@@ -2043,7 +2053,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateSerumImmunofixation(SerumImmunofixationBean sifb, Connection connection, int disease,
 			int serumImmunofixationId) {
 		switch (disease) {
@@ -2074,7 +2084,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateSerumProtein(SerumProteinBean spb, Connection connection, int disease, int serumProteinId) {
 		switch (disease) {
 			case (1): {
@@ -2104,7 +2114,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateUrineProtein(UrineProteinBean upb, Connection connection, int disease, int urineProteinId) {
 		switch (disease) {
 			case (1): {
@@ -2134,7 +2144,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateLaboratoryProfile(LaboratoryProfileBean lpb, Connection connection, int disease, int laboratoryProfileId) {
 		switch (disease) {
 			case (1): {
@@ -2214,7 +2224,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateDiseaseStatus(DiseaseStatusBean dsb, Connection connection, int disease, int diseaseStatusId) {
 		switch (disease) {
 			case (1): {
@@ -2231,6 +2241,17 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 				break;
 			}
 			case (2): {
+				try {
+					PreparedStatement pstmt = connection.prepareStatement(UPDATE_DISEASE_STATUS);
+					pstmt.setString(1, dsb.getDiseaseStatus());
+					pstmt.setString(2, dsb.getOtherDisease());
+					pstmt.setInt(3, diseaseStatusId);
+					pstmt.executeUpdate();
+				} catch (SQLException sqle) {
+					System.out.println("SQLException -- updateDiseaseStatus: " + sqle.getMessage());
+					return false;
+				}
+				break;
 			}
 			case (3): {
 				try {
@@ -2301,7 +2322,7 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 	public static boolean updateFollowUp(FollowUpBean fub, Connection connection, int disease, int followUpId) {
 		switch (disease) {
 			case (1): {
@@ -2405,5 +2426,5 @@ public class SQLOperationsFollowUp implements SQLCommandsFollowUp {
 		}
 		return true;
 	}
-
+	
 }

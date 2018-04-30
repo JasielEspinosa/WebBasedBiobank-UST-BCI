@@ -12,6 +12,7 @@ $(document).ready(function() {
 		$("[name='gender']").prop('readonly', true);
 		$("[name='dateOfBirth']").prop('readonly', true);
 		$("[name='address']").prop('readonly', true);
+		$("[name='civilStatus']").prop('readonly', true);
 		$("[name='dateOfEntry']").prop('readonly', true);
 		$("[name='specimenType']").prop('disabled', true);
 		$("[name='tissueSpecimenCollected']").prop('readonly', true);
@@ -202,13 +203,23 @@ $(document).ready(function() {
 
 		$("[name='specialNotes']").prop('readonly', true);
 
+		$("[name='specifyReasonFactorConcentrate']").prop('readonly', true);
+		$("[name='datesOfAdministrationFactorConcentrate']").prop('readonly', true);
+		$("[name='doseOfFactorConcentrate']").prop('readonly', true);
+
 	}
 
 	$.loadEditableFields = function() {
 
 		// general data
 
+		$("[name='lastName']").prop('readonly', false);
+		$("[name='firstName']").prop('readonly', false);
+		$("[name='middleInitial']").prop('readonly', false);
+		$("[name='gender']").prop('readonly', false);
+		$("[name='dateOfBirth']").prop('readonly', false);
 		$("[name='address']").prop('readonly', false);
+		$("[name='civilStatus']").prop('readonly', false);
 		$("[name='dateOfEntry']").prop('readonly', false);
 		$("[name='specimenType']").prop('disabled', false);
 		$("[name='tissueSpecimenCollected']").prop('readonly', false);
@@ -398,6 +409,10 @@ $(document).ready(function() {
 		$("[name='relapseDisease']").prop('disabled', false);
 
 		$("[name='specialNotes']").prop('readonly', false);
+
+		$("[name='specifyReasonFactorConcentrate']").prop('readonly', false);
+		$("[name='datesOfAdministrationFactorConcentrate']").prop('readonly', false);
+		$("[name='doseOfFactorConcentrate']").prop('readonly', false);
 
 	}
 

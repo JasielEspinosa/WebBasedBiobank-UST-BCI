@@ -21,12 +21,11 @@ import utility.values.DefaultValues;
 @WebServlet("/EditCoagulationBaselineServlet")
 public class EditCoagulationBaselineServlet extends HttpServlet implements DefaultValues {
 	private static final long serialVersionUID = 1L;
-
+	
 	private Connection connection;
-
+	
 	public void init() throws ServletException {
 		connection = SQLOperationsBaseline.getConnection();
-
 		if (connection != null) {
 			getServletContext().setAttribute("dbConnection", connection);
 			System.out.println("connection is READY.");
@@ -34,22 +33,19 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 			System.err.println("connection is NULL.");
 		}
 	}
-
+	
 	public EditCoagulationBaselineServlet() {
 		super();
 	}
-
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//get form data
-
 		getServletContext().log("EditCoagulationBaselineServlet insert test");
-
 		int disease = 2;
-
 		// GENERAL DATA
 		String lastName = request.getParameter("lastName").trim().toUpperCase();
 		String firstName = request.getParameter("firstName").trim().toUpperCase();
@@ -57,8 +53,8 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 		int gender = Integer.parseInt(request.getParameter("gender"));
 		String dateOfBirth = request.getParameter("dateOfBirth");
 		String address = request.getParameter("address");
+		String civilStatus = request.getParameter("civilStatus");
 		String dateOfEntry = request.getParameter("dateOfEntry");
-
 		// CLINICAL DATA
 		String dateOfVisit = request.getParameter("dateOfVisit");
 		String diagnosis = request.getParameter("diagnosis");
@@ -66,7 +62,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 		String severity = request.getParameter("severity");
 		String chiefComplaint = request.getParameter("chiefComplaint");
 		String otherSymptoms = request.getParameter("otherSymptoms");
-
 		String relationshipToPatient = noValue;
 		String cancerName = noValue;
 		String otherDiseasesInTheFamily = noValue;
@@ -75,9 +70,7 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 			cancerName = request.getParameter("specifyCancer");
 			otherDiseasesInTheFamily = request.getParameter("otherDiseasesInTheFamily");
 		}
-
 		String comorbidities = request.getParameter("comorbidities");
-
 		String genericName = noValue;
 		Double dose = 0.0;
 		String frequency = noValue;
@@ -86,42 +79,34 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 			dose = Double.parseDouble(request.getParameter("dose"));
 			frequency = request.getParameter("frequency");
 		}
-
 		String smokingHistorySpecify = noValue;
 		if (Integer.parseInt(request.getParameter("smokingHistory")) == 1) {
 			smokingHistorySpecify = request.getParameter("smokingHistorySpecify");
 		}
-
 		String alchoholIntakeSpecify = noValue;
 		if (Integer.parseInt(request.getParameter("alcoholIntakeHistory")) == 1) {
 			alchoholIntakeSpecify = request.getParameter("alcoholIntakeSpecify");
 		}
-
 		String chemicalExposureSpecify = noValue;
 		if (Integer.parseInt(request.getParameter("chemicalExposureHistory")) == 1) {
 			chemicalExposureSpecify = request.getParameter("chemicalExposureSpecify");
 		}
-
 		////// Physical Exam
 		double height = Double.parseDouble(request.getParameter("height"));
 		double weight = Double.parseDouble(request.getParameter("weight"));
-
 		boolean presenceOfHemarthroses;
 		if (Integer.parseInt(request.getParameter("presenceOfHemarthroses")) != 0) {
 			presenceOfHemarthroses = true;
 		} else {
 			presenceOfHemarthroses = false;
 		}
-
 		boolean presenceOfContracturesAndMuscleAtrophy;
 		if (Integer.parseInt(request.getParameter("presenceOfContracturesAndMuscleAtrophy")) != 0) {
 			presenceOfContracturesAndMuscleAtrophy = true;
 		} else {
 			presenceOfContracturesAndMuscleAtrophy = false;
 		}
-
 		String otherFindings = request.getParameter("otherFindings");
-
 		// LABORATORY
 		String dateOfBloodCollection = request.getParameter("dateOfBloodCollection");
 		////// Hematology
@@ -147,34 +132,27 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 		double sgot = Double.parseDouble(request.getParameter("sgot"));
 		double sgpt = Double.parseDouble(request.getParameter("sgpt"));
 		double ldh = Double.parseDouble(request.getParameter("ldh"));
-
 		String imagingStudiesResult = noValue;
 		if (Integer.parseInt(request.getParameter("imagingStudies")) == 1) {
 			imagingStudiesResult = request.getParameter("imagingStudiesResult");
 		}
-
 		// TREATMENT / THERAPHY AND RESPONSE
-
 		String treatment = request.getParameter("treatment");
 		String treatmentSpecify = noValue;
 		System.out.println(treatment);
 		if (treatment.equalsIgnoreCase("Others")) {
 			treatmentSpecify = request.getParameter("treatmentSpecify");
 		}
-
 		if (treatment.contains("&#40;") || treatment.contains("&#41;")) {
 			treatment = treatment.replaceAll("&#40;", "(");
 			treatment = treatment.replaceAll("&#41;", ")");
 		}
-
 		if (treatmentSpecify.contains("&#40;") || treatmentSpecify.contains("&#41;")) {
 			treatmentSpecify = treatment.replaceAll("&#40;", "(");
 			treatmentSpecify = treatment.replaceAll("&#41;", ")");
 		}
-
 		// INSERT VALUES
 		String addressArray[] = address.split(",");
-
 		/////TO EDIT
 		//get all id
 		int patientId = Integer.parseInt(request.getParameter("patientIDNumber"));
@@ -182,38 +160,28 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 			if (connection != null) {
 				ResultSet patientInfoRS = SQLOperationsBaseline.getPatient(patientId, connection);
 				patientInfoRS.first();
-
 				int generalDataID = patientInfoRS.getInt("GeneralDataId");
 				int clinicalDataID = patientInfoRS.getInt("ClinicalDataId");
 				int laboratoryId = patientInfoRS.getInt("LaboratoryId");
 				int treatmentID = patientInfoRS.getInt("TreatmentId");
-
 				ResultSet generalDataRS = SQLOperationsBaseline.getGeneralData(generalDataID, connection);
 				generalDataRS.first();
-
 				int addressID = generalDataRS.getInt("AddressID");
 				int tissueSpecimenID = generalDataRS.getInt("TissueSpecimenID");
-
 				ResultSet clinicalDataRS = SQLOperationsBaseline.getClinicalData(clinicalDataID, connection);
 				clinicalDataRS.first();
-
 				int physicalExamID = clinicalDataRS.getInt("PhysicalExamId");
 				int severityID = clinicalDataRS.getInt("SeverityID");
-
 				ResultSet laboratoryProfile = SQLOperationsBaseline.getLaboratoryProfile(laboratoryId, connection);
 				laboratoryProfile.first();
-
 				int hematologyID = laboratoryProfile.getInt("HematologyId");
 				int coagulationTestingID = laboratoryProfile.getInt("CoagulationTestingID");
 				int bloodChemistryID = laboratoryProfile.getInt("BloodChemistryID");
 				int imagingStudiesID = laboratoryProfile.getInt("ImagingStudiesID");
 				int diseaseStatusID = laboratoryProfile.getInt("DiseaseStatusID");
-
 				ResultSet treatmentRS = SQLOperationsBaseline.getTreatment(treatmentID, connection);
 				treatmentRS.first();
-
 				int modeOfTreatmentID = treatmentRS.getInt("ModeOfTreatmentID");
-
 				//start of edit
 				AddressBean ab = BeanFactory.getAddressBean(Security.encrypt(addressArray[0]).trim(),
 						Security.encrypt(addressArray[1]).trim(), Security.encrypt(addressArray[2]).trim());
@@ -226,7 +194,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection AddressBean");
 				}
-
 				TissueSpecimenBean tsb = BeanFactory.getTissueSpecimenBean("");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editTissueSpecimenData(tsb, connection, disease, tissueSpecimenID)) {
@@ -237,8 +204,8 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection TissueSpecimenBean");
 				}
-
-				GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, firstName, middleInitial, gender, dateOfBirth, dateOfEntry);
+				GeneralDataBean gdb = BeanFactory.getGeneralDataBean(lastName, firstName, middleInitial, gender, dateOfBirth, dateOfEntry,
+						civilStatus);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editGeneralData(gdb, connection, disease, generalDataID)) {
 						System.out.println("Successful insert GeneralDataBean");
@@ -248,7 +215,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection GeneralDataBean");
 				}
-
 				PhysicalExamBean peb = BeanFactory.getPhysicalExamBean(height, weight, 0.0, 0.0, 0.0, 0.0, presenceOfHemarthroses,
 						presenceOfContracturesAndMuscleAtrophy, "", "", false, otherFindings);
 				if (connection != null) {
@@ -260,7 +226,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection PhysicalExamBean");
 				}
-
 				SeverityBean sb = BeanFactory.getSeverityBean(severity);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editSeverity(sb, connection, disease, severityID)) {
@@ -271,7 +236,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection SeverityBean");
 				}
-
 				ClinicalDataBean cdb = BeanFactory.getClinicalDataBean(dateOfVisit, diagnosis, otherDiagnosis, "", chiefComplaint, "", "",
 						otherSymptoms, comorbidities, smokingHistorySpecify, alchoholIntakeSpecify, chemicalExposureSpecify, "", "",
 						otherFindings);
@@ -284,7 +248,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection ClinicalDataBean");
 				}
-
 				FamilyCancerBean famcb = BeanFactory.getFamilyCancerBean(relationshipToPatient, cancerName);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editFamilyCancer(famcb, connection, disease, clinicalDataID)) {
@@ -295,7 +258,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection FamilyCancerBean");
 				}
-
 				OtherDiseasesBean odb = BeanFactory.getOtherDiseasesBean(otherDiseasesInTheFamily);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editOtherDiseases(odb, connection, disease, clinicalDataID)) {
@@ -306,7 +268,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection OtherDiseasesBean");
 				}
-
 				MedicationsBean mb = BeanFactory.getMedicationsBean(genericName, dose, frequency);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editMedications(mb, connection, disease, clinicalDataID)) {
@@ -317,7 +278,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection MedicationsBean");
 				}
-
 				HematologyBean hb = BeanFactory.getHematologyBean(hemoglobin, hematocrit, whiteBloodCells, neutrophils, lymphocytes,
 						monocytes, eosinophils, basophils, 0, 0, 0, plateletCount);
 				if (connection != null) {
@@ -329,7 +289,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection HematologyBean");
 				}
-
 				CoagulationTestingBean ctb = BeanFactory.getCoagulationTestingBean(factorVIIILevel, factorIXLevel, inhibitorAssay,
 						bethesdaUnits);
 				if (connection != null) {
@@ -341,7 +300,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection CoagulationTestingBean");
 				}
-
 				BloodChemistryBean bcb = BeanFactory.getBloodChemistryBean(0, creatinine, uricAcid, sgot, sgpt, ldh, 0, na, k, 0, 0, 0, 0,
 						0, 0, 0, 0, 0, 0, 0, 0);
 				if (connection != null) {
@@ -353,7 +311,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection BloodChemistryBean");
 				}
-
 				ImagingStudiesBean isb = BeanFactory.getImagingStudiesBean(imagingStudiesResult.getBytes());
 				if (connection != null) {
 					if (SQLOperationsBaseline.editImagingStudies(isb, connection, disease, imagingStudiesID)) {
@@ -364,7 +321,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection ImagingStudiesBean");
 				}
-
 				LaboratoryProfileBean lpb = BeanFactory.getLaboratoryProfileBean(dateOfBloodCollection, "");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editLaboratoryProfile(lpb, connection, disease, laboratoryId)) {
@@ -375,7 +331,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection LaboratoryProfileBean");
 				}
-
 				ModeOfTreatmentBean motb = BeanFactory.getModeOfTreatmentBean(treatment, treatmentSpecify);
 				if (connection != null) {
 					if (SQLOperationsBaseline.editModeOfTreatment(motb, connection, disease, modeOfTreatmentID)) {
@@ -386,7 +341,6 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection ModeOfTreatmentBean");
 				}
-
 				TreatmentBean tb = BeanFactory.getTreatmentBean(true, "", 0, "", "");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editTreatment(tb, connection, disease, treatmentID)) {
@@ -397,8 +351,7 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection TreatmentBean");
 				}
-
-				DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("", "", "");
+				DiseaseStatusBean dsb = BeanFactory.getDiseaseStatusBean("Stable Disease", "", "");
 				if (connection != null) {
 					if (SQLOperationsBaseline.editDiseaseStatus(dsb, connection, disease, diseaseStatusID)) {
 						System.out.println("Successful insert DiseaseStatusBean");
@@ -408,15 +361,12 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 				} else {
 					System.out.println("Invalid connection DiseaseStatusBean");
 				}
-
 				HttpSession session = request.getSession(true);
-
 				AuditBean auditBean = new AuditBean("Edit patient in Coagulation Disease Baseline",
 						request.getParameter("lastName").trim().toUpperCase() + ", " + request.getParameter("firstName").trim()
 								.toUpperCase() + " " + request.getParameter("middleInitial").trim().toUpperCase(),
 						(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
 				SQLOperations.addAudit(auditBean, connection);
-
 			} else {
 				System.out.println("Invalid Connection resource");
 			}
@@ -425,7 +375,5 @@ public class EditCoagulationBaselineServlet extends HttpServlet implements Defau
 		} catch (Exception e) {
 			System.err.println("Exception - " + e.getMessage());
 		}
-
 	}
-
 }

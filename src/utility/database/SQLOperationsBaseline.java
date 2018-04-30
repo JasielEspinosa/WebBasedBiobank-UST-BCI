@@ -9,12 +9,12 @@ import model.*;
 
 public class SQLOperationsBaseline implements SQLCommandsBaseline {
 	private static Connection connection;
-
+	
 	private static Connection getDBConnection() {
 		try {
 			InitialContext context = new InitialContext();
 			DataSource dataSource = (DataSource) context.lookup("java:comp/env/jdbc/BCI-DS");
-
+			
 			if (dataSource != null) {
 				connection = dataSource.getConnection();
 			}
@@ -25,13 +25,13 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return connection;
 	}
-
+	
 	public static Connection getConnection() {
 		return (connection != null) ? connection : getDBConnection();
 	}
-
+	
 	// BASELINE ADD
-
+	
 	public static boolean addAddress(AddressBean ab, Connection connection, int disease) {
 		switch (disease) {
 			case (1):
@@ -55,7 +55,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addTissueSpecimenData(TissueSpecimenBean tsb, Connection connection, int disease) {
 		switch (disease) {
 			case (1):
@@ -77,7 +77,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addGeneralData(GeneralDataBean gdb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -89,6 +89,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setString(7, gdb.getCivilStatus());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
@@ -105,6 +106,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setString(7, gdb.getCivilStatus());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
@@ -121,6 +123,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setString(7, gdb.getCivilStatus());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
@@ -137,6 +140,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setString(7, gdb.getCivilStatus());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
@@ -153,6 +157,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setString(7, gdb.getCivilStatus());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
@@ -169,6 +174,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setString(7, gdb.getCivilStatus());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
@@ -185,6 +191,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
+					pstmt.setString(7, gdb.getCivilStatus());
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- addGeneralData: " + sqle.getMessage());
@@ -195,7 +202,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addPrognosticRiskScoring(PrognosticRiskScoringBean prsb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -222,11 +229,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 			case (7): {
 			}
-
+			
 		}
 		return true;
 	}
-
+	
 	public static boolean addRiskScore(RiskScoreBean rsb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -266,7 +273,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addClassification(ClassificationBean classbean, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -295,7 +302,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addISSStaging(ISSStagingBean issb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -321,11 +328,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 			case (7): {
 			}
-
+			
 		}
 		return true;
 	}
-
+	
 	public static boolean addSeverity(SeverityBean sb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -354,7 +361,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addPhysicalExam(PhysicalExamBean peb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -469,9 +476,9 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 		}
 		return true;
-
+		
 	}
-
+	
 	public static boolean addClinicalData(ClinicalDataBean cdb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -621,7 +628,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addFamilyCancer(FamilyCancerBean fcb, Connection connection, int disease) {
 		switch (disease) {
 			case (1):
@@ -644,7 +651,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addOtherDiseases(OtherDiseasesBean odb, Connection connection, int disease) {
 		switch (disease) {
 			case (1):
@@ -666,7 +673,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addMedications(MedicationsBean mb, Connection connection, int disease) {
 		switch (disease) {
 			case (1):
@@ -690,7 +697,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addHematology(HematologyBean hb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -844,11 +851,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addCoagulationTesting(CoagulationTestingBean ctb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
-
+				
 			}
 			case (2): {
 				try {
@@ -877,11 +884,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addBloodChemistry(BloodChemistryBean bcb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
-
+				
 			}
 			case (2): {
 				try {
@@ -999,7 +1006,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addOtherLaboratories(OtherLaboratoriesBean olb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1044,7 +1051,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addBoneMarrowAspirate(BoneMarrowAspirateBean bmab, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1121,11 +1128,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				}
 				break;
 			}
-
+			
 		}
 		return true;
 	}
-
+	
 	public static boolean addFlowCytometry(FlowCytometryBean fcb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1140,7 +1147,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				break;
 			}
 			case (2): {
-
+				
 			}
 			case (3): {
 				try {
@@ -1173,7 +1180,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addCytogeneticMolecular(CytogeneticMolecularBean cmb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1220,7 +1227,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addCytogeneticMolecularAAPNH(CytogeneticMolecularAAPNHBean cmaapnhb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1235,7 +1242,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				break;
 			}
 			case (2): {
-
+				
 			}
 			case (3): {
 				try {
@@ -1259,7 +1266,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addCytogeneticMolecularMDS(CytogeneticMolecularMDSBean cmmdsb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1288,11 +1295,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addImagingStudies(ImagingStudiesBean isb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
-
+				
 			}
 			case (2): {
 				try {
@@ -1354,7 +1361,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addUpperGIEndoscopy(UpperGIEndoscopyBean ugeb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1385,7 +1392,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addHematopathology(HematopathologyBean hpb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1415,7 +1422,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addImmunohistochemistry(ImmunohistochemistryBean ihcb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1445,7 +1452,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addSerumFree(SerumFreeBean sfb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1474,7 +1481,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addSerumImmunofixation(SerumImmunofixationBean sifb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1503,7 +1510,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addSerumProtein(SerumProteinBean spb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1532,7 +1539,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addUrineProtein(UrineProteinBean upb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1561,7 +1568,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addLaboratoryProfile(LaboratoryProfileBean lpb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1645,7 +1652,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addModeOfTreatment(ModeOfTreatmentBean motb, Connection connection, int disease) {
 		switch (disease) {
 			case (1):
@@ -1668,7 +1675,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addChemotherapyMedications(ChemotherapyMedicationsBean cmb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1683,7 +1690,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				break;
 			}
 			case (2): {
-
+				
 			}
 			case (3): {
 				try {
@@ -1725,7 +1732,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addRegimen(RegimenBean rb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1775,7 +1782,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addRegimenTransplant(RegimenTransplantBean rtb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1805,7 +1812,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addRegimenNonTransplant(RegimenNonTransplantBean rntb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1835,7 +1842,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addMaintenanceTherapy(MaintenanceTherapyBean mtb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1865,7 +1872,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addTreatment(TreatmentBean tb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1955,7 +1962,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addOtherTreatment(OtherTreatmentBean otb, Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -1987,7 +1994,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addDiseaseStatus(DiseaseStatusBean dsb, Connection connection, int disease) {
 		switch (disease) {
 			case (1):
@@ -2011,7 +2018,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean addPatient(Connection connection, int disease) {
 		switch (disease) {
 			case (1): {
@@ -2087,7 +2094,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	//RETRIEVES
 	public static ResultSet getAAPHSMDSBaselinePatients(Connection connection) {
 		ResultSet rs = null;
@@ -2100,7 +2107,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getCoagulationBaselinePatients(Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2112,7 +2119,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getLeukemiaBaselinePatients(Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2124,7 +2131,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getPatient(int patientID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2137,7 +2144,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getGeneralData(int generalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2150,7 +2157,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getAddress(int addressID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2163,7 +2170,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getTissueSpecimen(int tissueSpecimenID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2176,7 +2183,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getClinicalData(int clinicalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2189,7 +2196,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getPrognosticRiskScoring(int prognosticRiskScoringID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2202,7 +2209,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getRiskScore(int riskScoreID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2215,7 +2222,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getClassification(int classificationID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2228,7 +2235,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getISSStaging(int issStagingID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2241,7 +2248,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getSeverity(int severityID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2254,7 +2261,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getPhysicalExam(int physicalExamID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2267,7 +2274,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getFamilyCancer(int clinicalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2280,7 +2287,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getOtherDiseases(int clinicalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2293,7 +2300,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getMedications(int clinicalDataID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2306,7 +2313,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getLaboratoryProfile(int laboratoryID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2319,7 +2326,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getHematology(int hematologyID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2332,7 +2339,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getOtherLaboratoriesAAPNHMDS(int otherLaboratoriesID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2345,7 +2352,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getBoneMarrowAspirate(int boneMarrowAspirateID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2358,7 +2365,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getFlowCytometry(int flowCytometryID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2371,7 +2378,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getSerumFree(int serumFreeID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2384,7 +2391,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getSerumProtein(int serumProteinID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2397,7 +2404,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getSerumImmunofixation(int serumImmunofixationID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2410,7 +2417,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getUrineProtein(int urineProteinID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2423,7 +2430,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getCytogeneticMolecular(int cytogeneticMolecularID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2436,7 +2443,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getCytogeneticMolecularAAPNH(int cytogeneticMolecularAAPNHID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2449,7 +2456,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getCytogeneticMolecularMDSAAPNH(int cytogeneticMolecularMDSID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2462,7 +2469,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getCoagulationTesting(int coagulationTestingID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2475,7 +2482,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getBloodChemistry(int bloodChemistryID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2488,7 +2495,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getImagingStudies(int imagingStudiesID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2501,7 +2508,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getHematopathology(int hematopathologyID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2514,7 +2521,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getImmunohistochemistry(int immunohistochemistryID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2527,7 +2534,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getUpperGIEndoscopy(int upperGIEndoscopyID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2540,7 +2547,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getTreatment(int treatmentID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2553,7 +2560,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getChemoMedication(int chemoMedicationID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2566,7 +2573,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getModeOfTreatment(int modeOfTreatmentID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2579,7 +2586,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getRegimen(int regimenID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2592,7 +2599,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getRegimenTransplant(int regimenTransplantID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2605,7 +2612,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getRegimenNonTransplant(int regimenNonTransplantID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2618,7 +2625,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getMaintenanceTherapy(int maintenanceTherapyID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2631,7 +2638,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getOtherTreatment(int otherTreatmentID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2644,7 +2651,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	public static ResultSet getDiseaseStatus(int diseaseStatusID, Connection connection) {
 		ResultSet rs = null;
 		try {
@@ -2657,7 +2664,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return rs;
 	}
-
+	
 	//BASELINE EDIT
 	public static boolean editAddress(AddressBean ab, Connection connection, int disease, int id) {
 		switch (disease) {
@@ -2683,7 +2690,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editTissueSpecimenData(TissueSpecimenBean tsb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1):
@@ -2706,7 +2713,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editGeneralData(GeneralDataBean gdb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -2718,7 +2725,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
-					pstmt.setInt(7, id);
+					pstmt.setString(7, gdb.getCivilStatus());
+					pstmt.setInt(8, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
@@ -2735,7 +2743,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
-					pstmt.setInt(7, id);
+					pstmt.setString(7, gdb.getCivilStatus());
+					pstmt.setInt(8, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
@@ -2752,7 +2761,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
-					pstmt.setInt(7, id);
+					pstmt.setString(7, gdb.getCivilStatus());
+					pstmt.setInt(8, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
@@ -2769,7 +2779,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
-					pstmt.setInt(7, id);
+					pstmt.setString(7, gdb.getCivilStatus());
+					pstmt.setInt(8, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
@@ -2786,7 +2797,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
-					pstmt.setInt(7, id);
+					pstmt.setString(7, gdb.getCivilStatus());
+					pstmt.setInt(8, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
@@ -2803,7 +2815,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
-					pstmt.setInt(7, id);
+					pstmt.setString(7, gdb.getCivilStatus());
+					pstmt.setInt(8, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
@@ -2820,7 +2833,8 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 					pstmt.setInt(4, gdb.getGender());
 					pstmt.setString(5, gdb.getDateOfBirth());
 					pstmt.setString(6, gdb.getDateOfEntry());
-					pstmt.setInt(7, id);
+					pstmt.setString(7, gdb.getCivilStatus());
+					pstmt.setInt(8, id);
 					pstmt.executeUpdate();
 				} catch (SQLException sqle) {
 					System.out.println("SQLException -- editGeneralData: " + sqle.getMessage());
@@ -2831,7 +2845,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editPrognosticRiskScoring(PrognosticRiskScoringBean prsb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -2859,11 +2873,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 			case (7): {
 			}
-
+			
 		}
 		return true;
 	}
-
+	
 	public static boolean editRiskScore(RiskScoreBean rsb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -2904,7 +2918,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editClassification(ClassificationBean classbean, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -2934,7 +2948,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editISSStaging(ISSStagingBean issb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -2961,11 +2975,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 			case (7): {
 			}
-
+			
 		}
 		return true;
 	}
-
+	
 	public static boolean editSeverity(SeverityBean sb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -2995,7 +3009,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editPhysicalExam(PhysicalExamBean peb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -3118,9 +3132,9 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 			}
 		}
 		return true;
-
+		
 	}
-
+	
 	public static boolean editClinicalData(ClinicalDataBean cdb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -3277,7 +3291,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editFamilyCancer(FamilyCancerBean fcb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1):
@@ -3301,7 +3315,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editOtherDiseases(OtherDiseasesBean odb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1):
@@ -3324,7 +3338,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editMedications(MedicationsBean mb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1):
@@ -3349,7 +3363,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editHematology(HematologyBean hb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -3510,11 +3524,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editCoagulationTesting(CoagulationTestingBean ctb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
-
+				
 			}
 			case (2): {
 				try {
@@ -3544,11 +3558,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editBloodChemistry(BloodChemistryBean bcb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
-
+				
 			}
 			case (2): {
 				try {
@@ -3669,7 +3683,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editOtherLaboratories(OtherLaboratoriesBean olb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -3715,7 +3729,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editBoneMarrowAspirate(BoneMarrowAspirateBean bmab, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -3798,11 +3812,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				}
 				break;
 			}
-
+			
 		}
 		return true;
 	}
-
+	
 	public static boolean editFlowCytometry(FlowCytometryBean fcb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -3818,7 +3832,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				break;
 			}
 			case (2): {
-
+				
 			}
 			case (3): {
 				try {
@@ -3853,7 +3867,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editCytogeneticMolecular(CytogeneticMolecularBean cmb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -3893,7 +3907,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editCytogeneticMolecularAAPNH(CytogeneticMolecularAAPNHBean cmaapnhb, Connection connection, int disease,
 			int id) {
 		switch (disease) {
@@ -3910,7 +3924,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				break;
 			}
 			case (2): {
-
+				
 			}
 			case (3): {
 				try {
@@ -3935,7 +3949,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editCytogeneticMolecularMDS(CytogeneticMolecularMDSBean cmmdsb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -3965,11 +3979,11 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editImagingStudies(ImagingStudiesBean isb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
-
+				
 			}
 			case (2): {
 				try {
@@ -4036,7 +4050,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editUpperGIEndoscopy(UpperGIEndoscopyBean ugeb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4068,7 +4082,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editHematopathology(HematopathologyBean hpb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4099,7 +4113,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editImmunohistochemistry(ImmunohistochemistryBean ihcb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4130,7 +4144,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editSerumFree(SerumFreeBean sfb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4160,7 +4174,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editSerumImmunofixation(SerumImmunofixationBean sifb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4190,7 +4204,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editSerumProtein(SerumProteinBean spb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4220,7 +4234,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editUrineProtein(UrineProteinBean upb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4250,7 +4264,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editLaboratoryProfile(LaboratoryProfileBean lpb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4341,7 +4355,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editModeOfTreatment(ModeOfTreatmentBean motb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1):
@@ -4365,7 +4379,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editChemotherapyMedications(ChemotherapyMedicationsBean cmb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4381,7 +4395,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 				break;
 			}
 			case (2): {
-
+				
 			}
 			case (3): {
 				try {
@@ -4426,7 +4440,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editRegimen(RegimenBean rb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4479,7 +4493,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editRegimenTransplant(RegimenTransplantBean rtb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4510,7 +4524,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editRegimenNonTransplant(RegimenNonTransplantBean rntb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4541,7 +4555,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editMaintenanceTherapy(MaintenanceTherapyBean mtb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4572,7 +4586,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editTreatment(TreatmentBean tb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4668,7 +4682,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editOtherTreatment(OtherTreatmentBean otb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1): {
@@ -4701,7 +4715,7 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 	public static boolean editDiseaseStatus(DiseaseStatusBean dsb, Connection connection, int disease, int id) {
 		switch (disease) {
 			case (1):
@@ -4726,5 +4740,5 @@ public class SQLOperationsBaseline implements SQLCommandsBaseline {
 		}
 		return true;
 	}
-
+	
 }

@@ -81,19 +81,19 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			      // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
-		                'rgba(42, 58, 84, 1)',
-		                'rgba(56, 96, 147, 1)',
-		                'rgba(88, 138, 189, 1)',
-		                'rgba(128, 175, 217, 1)',
-		                'rgba(164, 203, 232, 1)',
-		                'rgba(206, 224, 158, 1)',
-		                'rgba(147, 184, 149, 1)',
-		                'rgba(145, 219, 216, 1)',
-		                'rgba(0, 180, 189, 1)',
-		                'rgba(255, 143, 131, 1)',
-		                'rgba(6, 124, 209, 1)'
+		                '#6A0000',
+		                '#F30909',
+		                '#F05E17',
+		                '#F3C218',
+		                '#A1DC23',
+		                '#1AE645',
+		                '#72C8B9',
+		                '#668CE3',
+		                '#2E20F3',
+		                '#9516F7',
+		                '#C34CB9'
 			      ]
 			    }]
 	};
@@ -111,10 +111,10 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      //data: [50, 50],
+		      // data: [50, 50],
 		      backgroundColor: [
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 99, 132, 0.2)'
+		    	 '#3465F4',
+		    	 '#F28AF3'
 		      ]
 		    }]
 	};
@@ -133,27 +133,27 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic 1st Line',
-		          //data: [ 5 ],
-		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		          // data: [ 5 ],
+		          backgroundColor: '#8A5B0A'
 		        }, {
 		          label: 'Pharmacologic 2nd Line / Salvage',
-		          //data: [ 10 ],
-		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
+		          // data: [ 10 ],
+		          backgroundColor: '#A6A422'
 		        },
 		        {
 			      label: 'Supportive / Palliative Only',
-			      //data: [ 15 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 15 ],
+			      backgroundColor: '#22BA57'
 			    },
 			    {
 				  label: 'Watch and Wait',
-				  //data: [ 20 ],
-			      backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 20 ],
+				  backgroundColor: '#2EABCF'
 				},
 				{
 				  label: 'Others',
-				  //data: [ 25 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 25 ],
+				  backgroundColor: '#FF6000'
 				}
 		  ],
 		    labels: [
@@ -193,62 +193,62 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Newly Diagnosed',
-		          //data: [ 2 ],
-		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		          // data: [ 2 ],
+		          backgroundColor: '#1C41E4'
 		        },
 		        {
 			      label: 'CR',
-			      //data: [ 6 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 6 ],
+			      backgroundColor: '#A33FF0'
 			    },
 			    {
 				  label: 'nCR',
-				  //data: [ 8 ],
-			      backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 8 ],
+				  backgroundColor: '#EA2AD5'
 				},
 				{
 				  label: 'PR',
-				  //data: [ 10 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 10 ],
+				  backgroundColor: '#FFA200'
 				},
 				{
 			      label: 'PD',
-			      //data: [ 12 ],
-			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+			      // data: [ 12 ],
+			      backgroundColor: '#76B12B'
 			    }, {
 			      label: 'SD',
-			      //data: [ 14 ],
-			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+			      // data: [ 14 ],
+			      backgroundColor: '#1EBEA5'
 			    },
 			    {
 				  label: 'Complete Hematologic Response',
-				  //data: [ 16 ],
-				  backgroundColor:'rgba(255, 206, 86, 0.2)'
+				  // data: [ 16 ],
+				  backgroundColor: '#257EDA'
 				},
 				{
 				  label: 'Complete Cytogenetic Response',
-				  //data: [ 18 ],
-				  backgroundColor: 'rgba(75, 192, 192, 0.2)'
+				  // data: [ 18 ],
+				  backgroundColor: '#9577EE'
 				},
 				{
 				  label: 'Major Molecular Response',
-				  //data: [ 20 ],
-				  backgroundColor: 'rgba(153, 102, 255, 0.2)'
+				  // data: [ 20 ],
+				  backgroundColor: '#C633E1'
 				},
 				{
 				  label: 'Spleen Response',
-				  //data: [ 18 ],
-				  backgroundColor: 'rgba(255, 159, 64, 0.2)'
+				  // data: [ 18 ],
+				  backgroundColor: '#DD148F'
 			    },
 				{
 				  label: 'Symptom Response',
-				  //data: [ 16 ],
-				  backgroundColor: 'rgba(206, 224, 158, 1)'
+				  // data: [ 16 ],
+				  backgroundColor: '#8A5B0A'
 				},
 				{
 				  label: 'Others',
-				  //data: [ 12 ],
-				  backgroundColor: 'rgba(145, 219, 216, 1)'
+				  // data: [ 12 ],
+				  backgroundColor: '#FF6000'
 				}
 			],
 		    labels: [
@@ -296,71 +296,71 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Relapsed',
-		          //data: [ 2 ],
-		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		          // data: [ 2 ],
+		          backgroundColor: '#A6A422'
 		        }, {
 		          label: 'Refractory Disease',
-		          //data: [ 4 ],
-		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
+		          // data: [ 4 ],
+		          backgroundColor: '#22BA57'
 		        },
 		        {
 			      label: 'CR',
-			      //data: [ 6 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 6 ],
+			      backgroundColor: '#2EABCF'
 			    },
 			    {
 				  label: 'nCR',
-				  //data: [ 8 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 8 ],
+				  backgroundColor: '#1C41E4'
 				},
 				{
 				  label: 'PR',
-				  //data: [ 10 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 10 ],
+				  backgroundColor: '#A33FF0'
 				},
 				{
 			      label: 'PD',
-			      //data: [ 12 ],
-			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+			      // data: [ 12 ],
+			      backgroundColor: '#EA2AD5'
 			    }, {
 			      label: 'SD',
-			      //data: [ 14 ],
-			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  	  
+			      // data: [ 14 ],
+			      backgroundColor: '#FFA200'  
 			    },
 			    {
 				  label: 'Complete Hematologic Response',
-				  //data: [ 16 ],
-				  backgroundColor:'rgba(255, 206, 86, 0.2)'
+				  // data: [ 16 ],
+				  backgroundColor: '#76B12B'
 				},
 				{
 				  label: 'Complete Cytogenetic Response',
-				  //data: [ 18 ],
-				  backgroundColor: 'rgba(75, 192, 192, 0.2)'
+				  // data: [ 18 ],
+				  backgroundColor: '#1EBEA5'
 				},
 				{
 				  label: 'Major Molecular Response',
-				  //data: [ 20 ],
-				  backgroundColor: 'rgba(153, 102, 255, 0.2)'
+				  // data: [ 20 ],
+				  backgroundColor: '#257EDA'
 				},
 				{
 				  label: 'Spleen Response',
-				  //data: [ 18 ],
-				  backgroundColor: 'rgba(255, 159, 64, 0.2)'
+				  // data: [ 18 ],
+				  backgroundColor: '#9577EE'
 			    },
 				{
 				  label: 'Symptom Response',
-				  //data: [ 16 ],
-				  backgroundColor: 'rgba(206, 224, 158, 1)'
+				  // data: [ 16 ],
+				  backgroundColor: '#C633E1'
 				},
 				{
 				  label: 'Dead',
-				  //data: [ 14 ],
-				  backgroundColor: 'rgba(147, 184, 149, 1)'
+				  // data: [ 14 ],
+				  backgroundColor: '#FF0000'
 				},
 				{
 				  label: 'Others',
-				  //data: [ 14 ],
-				  backgroundColor: 'rgba(147, 184, 149, 1)'
+				  // data: [ 14 ],
+				  backgroundColor: '#FF6000'
 		       }
 			],
 		    labels: [
@@ -410,23 +410,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -462,23 +462,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -524,20 +524,19 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			      // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
-		                'rgba(182, 186, 215, 1)',
-		                'rgba(42, 58, 84, 1)',
-		                'rgba(56, 96, 147, 1)',
-		                'rgba(88, 138, 189, 1)',
-		                'rgba(128, 175, 217, 1)',
-		                'rgba(164, 203, 232, 1)',
-		                'rgba(206, 224, 158, 1)',
-		                'rgba(147, 184, 149, 1)',
-		                'rgba(145, 219, 216, 1)',
-		                'rgba(0, 180, 189, 1)',
-		                'rgba(255, 143, 131, 1)',
-		                'rgba(6, 124, 209, 1)'
+		                '#6A0000',
+		                '#F30909',
+		                '#F05E17',
+		                '#F3C218',
+		                '#A1DC23',
+		                '#1AE645',
+		                '#72C8B9',
+		                '#668CE3',
+		                '#2E20F3',
+		                '#9516F7',
+		                '#C34CB9'
 			      ]
 			    }]
 	};
@@ -555,10 +554,10 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      //data: [50, 50],
+		      // data: [50, 50],
 		      backgroundColor: [
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 99, 132, 0.2)'
+			    	 '#3465F4',
+			    	 '#F28AF3'
 		      ]
 		    }]
 	};
@@ -577,17 +576,17 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic 1st Line',
-		          //data: [ 5 ],
-		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		          // data: [ 5 ],
+		          backgroundColor: '#DD148F'
 		        }, {
 		          label: 'Pharmacologic 2nd Line / Salvage',
-		          //data: [ 10 ],
-		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
+		          // data: [ 10 ],
+		          backgroundColor: '#8A5B0A'
 		        },
 		        {
 			      label: 'Supportive / Palliative Only',
-			      //data: [ 15 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 15 ],
+			      backgroundColor: '#A6A422'
 			    }
 		  ],
 		    labels: [
@@ -625,27 +624,27 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Newly Diagnosed',
-		          //data: [ 2 ],
-		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		          // data: [ 2 ],
+		          backgroundColor: '#22BA57'
 		        }, 
 		        {
 			      label: 'CR',
-			      //data: [ 6 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 6 ],
+			      backgroundColor: '#2EABCF'
 			    },
 				{
 				  label: 'PR',
-				  //data: [ 10 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 10 ],
+				  backgroundColor: '#1C41E4'
 				},
 				{
 			      label: 'NR or SD',
-			      //data: [ 12 ],
-			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+			      // data: [ 12 ],
+			      backgroundColor: '#A33FF0'
 			    }, {
 			      label: 'PD',
-			      //data: [ 14 ],
-			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+			      // data: [ 14 ],
+			      backgroundColor: '#EA2AD5'
 			    }
 			],
 		    labels: [
@@ -686,36 +685,36 @@ $( document ).ready(function() {
 		    datasets: [
 			        {
 				      label: 'CR',
-				      //data: [ 6 ],
-				      backgroundColor: 'rgba(255, 143, 131, 1)'
+				      // data: [ 6 ],
+				      backgroundColor: '#FFA200'
 				    },
 					{
 					  label: 'PR',
-					  //data: [ 10 ],
-					  backgroundColor: 'rgba(6, 124, 209, 1)'
+					  // data: [ 10 ],
+					  backgroundColor: '#76B12B'
 					},
 					{
 				      label: 'NR or SD',
-				      //data: [ 12 ],
-				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+				      // data: [ 12 ],
+				      backgroundColor: '#1EBEA5'
 				    }, {
 				      label: 'PD',
-				      //data: [ 14 ],
-				      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+				      // data: [ 14 ],
+				      backgroundColor: '#257EDA'
 				    },
 				    {
 					  label: 'RR',
-					  //data: [ 10 ],
-					  backgroundColor: 'rgba(6, 124, 209, 1)'
+					  // data: [ 10 ],
+					  backgroundColor: '#9577EE'
 					},
 					{
 					   label: 'Dead',
-					   //data: [ 12 ],
-					   backgroundColor: 'rgba(255, 99, 132, 0.2)'
+					   // data: [ 12 ],
+					   backgroundColor: '#FF0000'
 					}, {
 					   label: 'Others',
-					   //data: [ 14 ],
-					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+					   // data: [ 14 ],
+					   backgroundColor: '#FF6000'
 					}
 			],
 		    labels: [
@@ -759,23 +758,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -810,23 +809,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -858,7 +857,6 @@ $( document ).ready(function() {
 	// MYELOPROLIFERATIVE AGE CHART
 	var pieData = {
 			  labels: [
-				 			  
 				  "0-10", 
 				  "11-20", 
 				  "21-30", 
@@ -872,20 +870,19 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			      // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
-		                'rgba(182, 186, 215, 1)',
-		                'rgba(42, 58, 84, 1)',
-		                'rgba(56, 96, 147, 1)',
-		                'rgba(88, 138, 189, 1)',
-		                'rgba(128, 175, 217, 1)',
-		                'rgba(164, 203, 232, 1)',
-		                'rgba(206, 224, 158, 1)',
-		                'rgba(147, 184, 149, 1)',
-		                'rgba(145, 219, 216, 1)',
-		                'rgba(0, 180, 189, 1)',
-		                'rgba(255, 143, 131, 1)',
-		                'rgba(6, 124, 209, 1)'
+		                '#6A0000',
+		                '#F30909',
+		                '#F05E17',
+		                '#F3C218',
+		                '#A1DC23',
+		                '#1AE645',
+		                '#72C8B9',
+		                '#668CE3',
+		                '#2E20F3',
+		                '#9516F7',
+		                '#C34CB9'
 			      ]
 			    }]
 	};
@@ -903,10 +900,10 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      //data: [50, 50],
+		      // data: [50, 50],
 		      backgroundColor: [
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 99, 132, 0.2)'
+			    	 '#3465F4',
+			    	 '#F28AF3'
 		      ]
 		    }]
 	};
@@ -925,23 +922,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic Treatment',
-		          //data: [ 10 ],
-		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
+		          // data: [ 10 ],
+		          backgroundColor: '#C633E1'
 		        },
 		        {
 			      label: 'Supportive / Palliative',
-			      //data: [ 15 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 15 ],
+			      backgroundColor: '#DD148F'
 			    },
 		        {
 				  label: 'Watch and Wait',
-				  //data: [ 15 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 15 ],
+				  backgroundColor: '#8A5B0A'
 				},
 				{
 				  label: 'Others',
-				  //data: [ 15 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 15 ],
+				  backgroundColor: '#FF6000'
 				}
 		  ],
 		    labels: [
@@ -980,41 +977,41 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'CR',
-		          //data: [ 2 ],
-		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		          // data: [ 2 ],
+		          backgroundColor: '#A6A422'
 		        }, 
 		        {
 			      label: 'PR',
-			      //data: [ 6 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 6 ],
+			      backgroundColor: '#22BA57'
 			    },
 				{
 				  label: 'PD',
-				  //data: [ 10 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 10 ],
+				  backgroundColor: '#2EABCF'
 				},
 				{
 			      label: 'SD',
-			      //data: [ 12 ],
-			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+			      // data: [ 12 ],
+			      backgroundColor: '#1C41E4'
 			    }, {
 			      label: 'Hematologic Response',
-			      //data: [ 14 ],
-			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+			      // data: [ 14 ],
+			      backgroundColor: '#A33FF0'
 			    },
 				{
 				   label: 'Spleen Response ',
-				   //data: [ 16 ],
-				   backgroundColor: 'rgba(6, 124, 209, 1)'
+				   // data: [ 16 ],
+				   backgroundColor: '#EA2AD5'
 			    },
 			    {
 				   label: 'Symptom Response',
-				   //data: [ 18 ],
-				   backgroundColor: 'rgba(255, 99, 132, 0.2)'
+				   // data: [ 18 ],
+				   backgroundColor: '#FFA200'
 				}, {
 				   label: 'Others',
-				   //data: [ 20 ],
-				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+				   // data: [ 20 ],
+				   backgroundColor: '#FF6000'
 				}
 			],
 		    labels: [
@@ -1058,47 +1055,47 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 			          label: 'CR',
-			          //data: [ 2 ],
-			          backgroundColor: 'rgba(139,69,19, 0.8)'
+			          // data: [ 2 ],
+			          backgroundColor: '#76B12B'
 			        }, 
 			        {
 				      label: 'PR',
-				      //data: [ 6 ],
-				      backgroundColor: 'rgba(255, 143, 131, 1)'
+				      // data: [ 6 ],
+				      backgroundColor: '#1EBEA5'
 				    },
 					{
 					  label: 'PD',
-					  //data: [ 10 ],
-					  backgroundColor: 'rgba(6, 124, 209, 1)'
+					  // data: [ 10 ],
+					  backgroundColor: '#257EDA'
 					},
 					{
 				      label: 'SD',
-				      //data: [ 12 ],
-				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+				      // data: [ 12 ],
+				      backgroundColor: '#9577EE'
 				    }, {
 				      label: 'Hematologic Response',
-				      //data: [ 14 ],
-				      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+				      // data: [ 14 ],
+				      backgroundColor: '#C633E1'
 				    },
 					{
 					   label: 'Spleen Response ',
-					   //data: [ 16 ],
-					   backgroundColor: 'rgba(6, 124, 209, 1)'
+					   // data: [ 16 ],
+					   backgroundColor: '#DD148F'
 				    },
 				    {
 					   label: 'Symptom Response',
-					   //data: [ 18 ],
-					   backgroundColor: 'rgba(255, 99, 132, 0.2)'
+					   // data: [ 18 ],
+					   backgroundColor: '#FFA200'
 					},
 					{
 					  label: 'Dead',
-				      //data: [ 18 ],
-					  backgroundColor: 'rgba(255, 99, 132, 0.2)'
+				      // data: [ 18 ],
+					  backgroundColor: '#FF0000'
 				    },
 					{
 					   label: 'Others',
-					   //data: [ 20 ],
-					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+					   // data: [ 20 ],
+					   backgroundColor: '#FF6000'
 					}
 			],
 		    labels: [
@@ -1144,23 +1141,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -1195,23 +1192,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -1243,7 +1240,6 @@ $( document ).ready(function() {
 	// PLASMA CELL AGE CHART
 	var pieData = {
 			  labels: [
-				 			  
 				  "0-10", 
 				  "11-20", 
 				  "21-30", 
@@ -1257,20 +1253,19 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			      // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
-		                'rgba(182, 186, 215, 1)',
-		                'rgba(42, 58, 84, 1)',
-		                'rgba(56, 96, 147, 1)',
-		                'rgba(88, 138, 189, 1)',
-		                'rgba(128, 175, 217, 1)',
-		                'rgba(164, 203, 232, 1)',
-		                'rgba(206, 224, 158, 1)',
-		                'rgba(147, 184, 149, 1)',
-		                'rgba(145, 219, 216, 1)',
-		                'rgba(0, 180, 189, 1)',
-		                'rgba(255, 143, 131, 1)',
-		                'rgba(6, 124, 209, 1)'
+		                '#6A0000',
+		                '#F30909',
+		                '#F05E17',
+		                '#F3C218',
+		                '#A1DC23',
+		                '#1AE645',
+		                '#72C8B9',
+		                '#668CE3',
+		                '#2E20F3',
+		                '#9516F7',
+		                '#C34CB9'
 			      ]
 			    }]
 	};
@@ -1288,10 +1283,10 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      //data: [50, 50],
+		      // data: [50, 50],
 		      backgroundColor: [
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 99, 132, 0.2)'
+			    	 '#3465F4',
+			    	 '#F28AF3'
 		      ]
 		    }]
 	};
@@ -1310,38 +1305,38 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic For Transplant Candidate',
-		          //data: [ 10 ],
-		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
+		          // data: [ 10 ],
+		          backgroundColor: '#76B12B'
 		        },
 		        {
 			      label: 'Pharmacologic For Non-Transplant Candidate',
-			      //data: [ 15 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 15 ],
+			      backgroundColor: '#1EBEA5'
 			    },
 		        {
 				  label: 'Maintenance',
-				  //data: [ 17 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 17 ],
+				  backgroundColor: '#257EDA'
 				},
 				{
 				  label: 'Radiotherapy',
-				  //data: [ 19 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 19 ],
+				  backgroundColor: '#9577EE'
 				},
 				{
 				  label: 'Supportive',
-				  //data: [ 21 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 21 ],
+				  backgroundColor: '#C633E1'
 			    },
 			    {
 				  label: 'Watch and Wait',
-				  //data: [ 23 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 23 ],
+				  backgroundColor: '#DD148F'
 			    },
 				{
 				  label: 'Others',
-				  //data: [ 25 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 25 ],
+				  backgroundColor: '#FF6000'
 				}
 		  ],
 		    labels: [
@@ -1370,7 +1365,7 @@ $( document ).ready(function() {
 		            	autoSkip: false
 		            }
 		            }]
-		        }
+		        },
 		    }
 		});
 	// END OF PLASMA CELL MODE OF TREATMENT
@@ -1383,66 +1378,66 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'CR',
-		          //data: [ 2 ],
-		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		          // data: [ 2 ],
+		          backgroundColor: '#8A5B0A'
 		        }, 
 		        {
 			      label: 'sCR',
-			      //data: [ 4 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 4 ],
+			      backgroundColor: '#A6A422'
 			    },
 				{
 				  label: 'Immunophenotypic CR',
-				  //data: [ 6 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 6 ],
+				  backgroundColor: '#22BA57'
 				},
 				{
 			      label: 'Molecular CR',
-			      //data: [ 8 ],
-			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+			      // data: [ 8 ],
+			      backgroundColor: '#2EABCF'
 			    }, {
 			      label: 'VGPR',
-			      //data: [ 10 ],
-			      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+			      // data: [ 10 ],
+			      backgroundColor: '#1C41E4'
 			    },
 				{
 				   label: 'PR',
-				   //data: [ 12 ],
-				   backgroundColor: 'rgba(6, 124, 209, 1)'
+				   // data: [ 12 ],
+				   backgroundColor: '#A33FF0'
 			    },
 			    {
 				   label: 'MR',
-				   //data: [ 14 ],
-				   backgroundColor: 'rgba(255, 99, 132, 0.2)'
+				   // data: [ 14 ],
+				   backgroundColor: '#EA2AD5'
 				}, {
 				   label: 'SD',
-				   //data: [ 16 ],
-				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+				   // data: [ 16 ],
+				   backgroundColor: '#FFA200'
 				},
 				{
 				   label: 'PD',
-				   //data: [ 18 ],
-				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+				   // data: [ 18 ],
+				   backgroundColor: '#76B12B'
 				},
 				{
 				   label: 'Relapse',
-				   //data: [ 20 ],
-				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+				   // data: [ 20 ],
+				   backgroundColor: '#1EBEA5'
 				},
-				{
+				/*{
 				   label: 'Clinical Relapse',
-				   //data: [ 16 ],
-				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+				   // data: [ 16 ],
+				   backgroundColor: '#257EDA'
 			    },
 				{
 				   label: 'Relapse from CR',
-				   //data: [ 18 ],
-				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
-				},
+				   // data: [ 18 ],
+				   backgroundColor: '#9577EE'
+				},*/
 				{
 				   label: 'Others',
-				   //data: [ 20 ],
-				   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+				   // data: [ 20 ],
+				   backgroundColor: '#FF6000'
 				}
 			],
 		    labels: [
@@ -1456,8 +1451,8 @@ $( document ).ready(function() {
       	      'SD',
       	      'PD', 
     	      'Relapse',
-    	      'Clinical Relapse',
-    	      'Relapse from CR',
+    	      /*'Clinical Relapse',
+    	      'Relapse from CR',*/
     	      'Others'
       	   ],
       	    borderWidth: 1
@@ -1492,71 +1487,71 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 			          label: 'CR',
-			          //data: [ 2 ],
-			          backgroundColor: 'rgba(139,69,19, 0.8)'
+			          // data: [ 2 ],
+			          backgroundColor: '#C633E1'
 			        }, 
 			        {
 				      label: 'sCR',
-				      //data: [ 4 ],
-				      backgroundColor: 'rgba(255, 143, 131, 1)'
+				      // data: [ 4 ],
+				      backgroundColor: '#DD148F'
 				    },
 					{
 					  label: 'Immunophenotypic CR',
-					  //data: [ 6 ],
-					  backgroundColor: 'rgba(6, 124, 209, 1)'
+					  // data: [ 6 ],
+					  backgroundColor: '#8A5B0A'
 					},
 					{
 				      label: 'Molecular CR',
-				      //data: [ 8 ],
-				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+				      // data: [ 8 ],
+				      backgroundColor: '#A6A422'
 				    }, {
 				      label: 'VGPR',
-				      //data: [ 10 ],
-				      backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+				      // data: [ 10 ],
+				      backgroundColor: '#22BA57'
 				    },
 					{
 					   label: 'PR',
-					   //data: [ 12 ],
-					   backgroundColor: 'rgba(6, 124, 209, 1)'
+					   // data: [ 12 ],
+					   backgroundColor: '#2EABCF'
 				    },
 				    {
 					   label: 'MR',
-					   //data: [ 14 ],
-					   backgroundColor: 'rgba(255, 99, 132, 0.2)'
+					   // data: [ 14 ],
+					   backgroundColor: '#1C41E4'
 					}, {
 					   label: 'SD',
-					   //data: [ 16 ],
-					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+					   // data: [ 16 ],
+					   backgroundColor: '#A33FF0'
 					},
 					{
 					   label: 'PD',
-					   //data: [ 18 ],
-					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+					   // data: [ 18 ],
+					   backgroundColor: '#EA2AD5'
 					},
 					{
 					   label: 'Relapse',
-					   //data: [ 20 ],
-					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+					   // data: [ 20 ],
+					   backgroundColor: '#FFA200'
 					},
-					{
+					/*{
 					   label: 'Clinical Relapse',
-					   //data: [ 16 ],
-					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+					   // data: [ 16 ],
+					   backgroundColor: '#76B12B'
 					},
 					{
 					   label: 'Relapse from CR',
-					   //data: [ 18 ],
-					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
-				    },
+					   // data: [ 18 ],
+					   backgroundColor: '#1EBEA5'
+				    },*/
 				    {
 					   label: 'Dead',
-					   //data: [ 20 ],
-					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+					   // data: [ 20 ],
+					   backgroundColor: '#FF0000'
 					},
 				    {
 					   label: 'Others',
-					   //data: [ 20 ],
-					   backgroundColor: 'rgba(54, 162, 235, 0.2)'  
+					   // data: [ 20 ],
+					   backgroundColor: '#FF6000'
 					}
 			],
 		    labels: [
@@ -1570,8 +1565,8 @@ $( document ).ready(function() {
 	      	      'SD',
 	      	      'PD', 
 	    	      'Relapse',
-	    	      'Clinical Relapse',
-	    	      'Relapse from CR',
+	    	      /*'Clinical Relapse',
+	    	      'Relapse from CR',*/
 	    	      'Dead',
 	    	      'Others'
 	      	],
@@ -1607,23 +1602,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -1659,23 +1654,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -1708,7 +1703,6 @@ $( document ).ready(function() {
 	// AA PNH MDS AGE CHART
 	var pieData = {
 			  labels: [
-				 			  
 				  "0-10", 
 				  "11-20", 
 				  "21-30", 
@@ -1722,20 +1716,19 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			      // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
-		                'rgba(182, 186, 215, 1)',
-		                'rgba(42, 58, 84, 1)',
-		                'rgba(56, 96, 147, 1)',
-		                'rgba(88, 138, 189, 1)',
-		                'rgba(128, 175, 217, 1)',
-		                'rgba(164, 203, 232, 1)',
-		                'rgba(206, 224, 158, 1)',
-		                'rgba(147, 184, 149, 1)',
-		                'rgba(145, 219, 216, 1)',
-		                'rgba(0, 180, 189, 1)',
-		                'rgba(255, 143, 131, 1)',
-		                'rgba(6, 124, 209, 1)'
+		                '#6A0000',
+		                '#F30909',
+		                '#F05E17',
+		                '#F3C218',
+		                '#A1DC23',
+		                '#1AE645',
+		                '#72C8B9',
+		                '#668CE3',
+		                '#2E20F3',
+		                '#9516F7',
+		                '#C34CB9'
 			      ]
 			    }]
 	};
@@ -1753,10 +1746,10 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      //data: [50, 50],
+		      // data: [50, 50],
 		      backgroundColor: [
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 99, 132, 0.2)'
+			    	 '#3465F4',
+			    	 '#F28AF3'
 		      ]
 		    }]
 	};
@@ -1775,28 +1768,28 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Hematopoietic Stem Cell Transplantation',
-		          //data: [ 10 ],
-		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
+		          // data: [ 10 ],
+		          backgroundColor: '#257EDA'
 		        },
 		        {
 			      label: 'Pharmacologic Treatment ',
-			      //data: [ 15 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 15 ],
+			      backgroundColor: '#9577EE'
 			    },
 		        {
 				  label: 'Supportive',
-				  //data: [ 17 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 17 ],
+				  backgroundColor: '#C633E1'
 				},
 				{
 				  label: 'Both Pharmacologic and Supportive',
-				  //data: [ 19 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 19 ],
+				  backgroundColor: '#DD148F'
 				},
 				{
 				  label: 'Watch and Wait ',
-				  //data: [ 21 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 21 ],
+				  backgroundColor: '#8A5B0A'
 			    },
 		  ],
 		    labels: [
@@ -1830,29 +1823,29 @@ $( document ).ready(function() {
 	
 	// AA PNH MDS BASELINE DISEASE STATUS
 	var ctx = document.getElementById("aapnhmdsChartBaselineDiseaseStatus").getContext('2d');
-	aapnhmdsBaselineDiseaseStatus = new Chart(ctx, {
+	aapnhmdsChartBaselineDiseaseStatus = new Chart(ctx, {
 		  type: 'bar',
 		  data: {
 		    datasets: [
 		    	{
 		          label: 'Hematologic Response',
-		          //data: [ 2 ],
-		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		          // data: [ 2 ],
+		          backgroundColor: '#A6A422'
 		        }, 
 		        {
 			      label: 'Stable Disease',
-			      //data: [ 4 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 4 ],
+			      backgroundColor: '#22BA57'
 			    },
 				{
 				  label: 'Relapsed',
-				  //data: [ 6 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 6 ],
+				  backgroundColor: '#2EABCF'
 				},
 				{
 			      label: 'Others',
-			      //data: [ 8 ],
-			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+			      // data: [ 8 ],
+			      backgroundColor: '#FF6000'
 			    }
 			],
 		    labels: [
@@ -1893,28 +1886,28 @@ $( document ).ready(function() {
 		    datasets: [
 		    		{
 			          label: 'Hematologic Response',
-			          //data: [ 2 ],
-			          backgroundColor: 'rgba(139,69,19, 0.8)'
+			          // data: [ 2 ],
+			          backgroundColor: '#1C41E4'
 			        }, 
 			        {
 				      label: 'Stable Disease',
-				      //data: [ 4 ],
-				      backgroundColor: 'rgba(255, 143, 131, 1)'
+				      // data: [ 4 ],
+				      backgroundColor: '#A33FF0'
 				    },
 					{
 					  label: 'Relapsed',
-					  //data: [ 6 ],
-					  backgroundColor: 'rgba(6, 124, 209, 1)'
+					  // data: [ 6 ],
+					  backgroundColor: '#EA2AD5'
 					},
 					{
 					  label: 'Dead',
-					  //data: [ 8 ],
-					  backgroundColor: 'rgba(255, 99, 132, 0.2)'
+					  // data: [ 8 ],
+					  backgroundColor: '#FF0000'
 					},
 					{
 				      label: 'Others',
-				      //data: [ 8 ],
-				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+				      // data: [ 8 ],
+				      backgroundColor: '#FF6000'
 				    }
 			],
 		    labels: [
@@ -1956,23 +1949,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2008,23 +2001,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2057,7 +2050,6 @@ $( document ).ready(function() {
 	// PLATELET AGE CHART
 	var pieData = {
 			  labels: [
-				 			  
 				  "0-10", 
 				  "11-20", 
 				  "21-30", 
@@ -2071,20 +2063,19 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			      // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
-		                'rgba(182, 186, 215, 1)',
-		                'rgba(42, 58, 84, 1)',
-		                'rgba(56, 96, 147, 1)',
-		                'rgba(88, 138, 189, 1)',
-		                'rgba(128, 175, 217, 1)',
-		                'rgba(164, 203, 232, 1)',
-		                'rgba(206, 224, 158, 1)',
-		                'rgba(147, 184, 149, 1)',
-		                'rgba(145, 219, 216, 1)',
-		                'rgba(0, 180, 189, 1)',
-		                'rgba(255, 143, 131, 1)',
-		                'rgba(6, 124, 209, 1)'
+		                '#6A0000',
+		                '#F30909',
+		                '#F05E17',
+		                '#F3C218',
+		                '#A1DC23',
+		                '#1AE645',
+		                '#72C8B9',
+		                '#668CE3',
+		                '#2E20F3',
+		                '#9516F7',
+		                '#C34CB9'
 			      ]
 			    }]
 	};
@@ -2102,10 +2093,10 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      //data: [50, 50],
+		      // data: [50, 50],
 		      backgroundColor: [
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 99, 132, 0.2)'
+			    	 '#3465F4',
+			    	 '#F28AF3'
 		      ]
 		    }]
 	};
@@ -2124,33 +2115,33 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Pharmacologic 1st Line',
-		          //data: [ 10 ],
-		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
+		          // data: [ 10 ],
+		          backgroundColor: '#FFA200'
 		        },
 		        {
 			      label: 'Pharmacologic 2nd Line',
-			      //data: [ 15 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 15 ],
+			      backgroundColor: '#76B12B'
 			    },
 		        {
 				  label: 'Supportive',
-				  //data: [ 17 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 17 ],
+				  backgroundColor: '#1EBEA5'
 				},
 				{
 				  label: 'Both Pharmacologic and Supportive',
-				  //data: [ 19 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 19 ],
+				  backgroundColor: '#257EDA'
 				},
 				{
 				  label: 'Watch and Wait ',
-				  //data: [ 21 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 21 ],
+				  backgroundColor: '#9577EE'
 			    },
 			    {
 				  label: 'Others',
-				  //data: [ 21 ],
-				  backgroundColor: 'rgba(218, 255, 19, 1)'
+				  // data: [ 21 ],
+				  backgroundColor: '#FF6000'
 				}
 		  ],
 		    labels: [
@@ -2191,23 +2182,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Newly Diagnosed ITP',
-		          //data: [ 2 ],
-		          backgroundColor: 'rgba(139,69,19, 0.8)'
+		          // data: [ 2 ],
+		          backgroundColor: '#C633E1'
 		        }, 
 		        {
 			      label: 'Persistetnt ITP',
-			      //data: [ 4 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 4 ],
+			      backgroundColor: '#DD148F'
 			    },
 				{
 				  label: 'Chronic ITP',
-				  //data: [ 6 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 6 ],
+				  backgroundColor: '#8A5B0A'
 				},
 				{
 			      label: 'Severe ITP',
-			      //data: [ 8 ],
-			      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+			      // data: [ 8 ],
+			      backgroundColor: '#A6A422'
 			    }
 			],
 		    labels: [
@@ -2248,48 +2239,54 @@ $( document ).ready(function() {
 		    datasets: [
 		    		{
 			          label: 'CR',
-			          //data: [ 2 ],
-			          backgroundColor: 'rgba(139,69,19, 0.8)'
+			          // data: [ 2 ],
+			          backgroundColor: '#22BA57'
 			        }, 
 			        {
 				      label: 'R',
-				      //data: [ 4 ],
-				      backgroundColor: 'rgba(255, 143, 131, 1)'
+				      // data: [ 4 ],
+				      backgroundColor: '#2EABCF'
 				    },
 					{
+					  label: 'Time to Response',
+					  // data: [ 6 ],
+					  backgroundColor: '#257EDA'
+					},
+					{
 					  label: 'NR',
-					  //data: [ 6 ],
-					  backgroundColor: 'rgba(6, 124, 209, 1)'
+					  // data: [ 6 ],
+					  backgroundColor: '#1C41E4'
 					},
 					{
 					  label: 'Loss of CR or R',
-					  //data: [ 8 ],
-					  backgroundColor: 'rgba(255, 99, 132, 0.2)'
+					  // data: [ 8 ],
+					  backgroundColor: '#A33FF0'
 					},
 					{
 				      label: 'Refractory ITP',
-				      //data: [ 8 ],
-				      backgroundColor: 'rgba(255, 99, 132, 0.2)'
+				      // data: [ 8 ],
+				      backgroundColor: '#EA2AD5'
 				    },
 				    {
 					   label: 'Stable Disease',
-					   //data: [ 8 ],
-					   backgroundColor: 'rgba(255, 99, 132, 0.2)'
+					   // data: [ 8 ],
+					   backgroundColor: '#FFA200'
 					},
 					{
 						label: 'Dead',
-						//data: [ 8 ],
-						backgroundColor: 'rgba(255, 99, 132, 0.2)'
+						// data: [ 8 ],
+						backgroundColor: '#FF0000'
 					},
 					{
 						label: 'Others',
-						//data: [ 8 ],
-						backgroundColor: 'rgba(255, 99, 132, 0.2)'
+						// data: [ 8 ],
+						backgroundColor: '#FF6000'
 					}
 			],
 		    labels: [
 		    	  'CR',
 	      	      'R', 
+	      	      'Time to Response',
 	      	      'NR',
 	      	      'Loss of CR or R',
 	      	      'Refractory ITP',
@@ -2329,23 +2326,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2381,23 +2378,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2443,19 +2440,19 @@ $( document ).ready(function() {
 				  "101 and Above"],
 			  datasets: [
 			    {
-			      //data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+			      // data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			      backgroundColor: [
-		                'rgba(42, 58, 84, 1)',
-		                'rgba(56, 96, 147, 1)',
-		                'rgba(88, 138, 189, 1)',
-		                'rgba(128, 175, 217, 1)',
-		                'rgba(164, 203, 232, 1)',
-		                'rgba(206, 224, 158, 1)',
-		                'rgba(147, 184, 149, 1)',
-		                'rgba(145, 219, 216, 1)',
-		                'rgba(0, 180, 189, 1)',
-		                'rgba(255, 143, 131, 1)',
-		                'rgba(6, 124, 209, 1)'
+		                '#6A0000',
+		                '#F30909',
+		                '#F05E17',
+		                '#F3C218',
+		                '#A1DC23',
+		                '#1AE645',
+		                '#72C8B9',
+		                '#668CE3',
+		                '#2E20F3',
+		                '#9516F7',
+		                '#C34CB9'
 			      ]
 			    }]
 	};
@@ -2473,10 +2470,10 @@ $( document ).ready(function() {
 		  "Female"],
 		  datasets: [
 		    {
-		      //data: [50, 50],
+		      // data: [50, 50],
 		      backgroundColor: [
-	                'rgba(54, 162, 235, 0.2)',
-	                'rgba(255, 99, 132, 0.2)'
+			    	 '#3465F4',
+			    	 '#F28AF3'
 		      ]
 		    }]
 	};
@@ -2495,18 +2492,18 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Factor Concentrates',
-		          //data: [ 10 ],
-		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
+		          // data: [ 10 ],
+		          backgroundColor: '#76B12B'
 		        },
 		        {
 			      label: 'Blood Component',
-			      //data: [ 15 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 15 ],
+			      backgroundColor: '#1EBEA5'
 			    },
 		        {
 				  label: 'Others',
-				  //data: [ 17 ],
-				  backgroundColor: 'rgba(6, 124, 209, 1)'
+				  // data: [ 17 ],
+				  backgroundColor: '#FF6000'
 				}
 		  ],
 		    labels: [
@@ -2544,12 +2541,12 @@ $( document ).ready(function() {
 		    datasets: [
 		        {
 			      label: 'Stable Disease',
-			      //data: [ 4 ],
-			      backgroundColor: 'rgba(255, 143, 131, 1)'
+			      // data: [ 4 ],
+			      backgroundColor: '#257EDA'
 			    }
 			],
 		    labels: [
-      	      'Stable Disease ', 
+      	      'Stable Disease', 
       	   ],
       	    borderWidth: 1
 		  },
@@ -2583,8 +2580,8 @@ $( document ).ready(function() {
 		    datasets: [
 			        {
 				      label: 'Stable Disease',
-				      //data: [ 4 ],
-				      backgroundColor: 'rgba(255, 143, 131, 1)'
+				      // data: [ 4 ],
+				      backgroundColor: '#9577EE'
 				    }
 			],
 		    labels: [
@@ -2622,23 +2619,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Baseline Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Baseline Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Baseline Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Baseline Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
@@ -2674,23 +2671,23 @@ $( document ).ready(function() {
 		    datasets: [
 		    	{
 		          label: 'Follow-up Mode of Treatment Dataset',
-		          //data: [2, 4, 6, 8],
+		          // data: [2, 4, 6, 8],
 		          backgroundColor: 'rgba(139,69,19, 0.8)'
 		        }, {
 		          label: 'Follow-up Disease Status Dataset',
-		          //data: [5, 10, 15, 20],
+		          // data: [5, 10, 15, 20],
 		          type: 'line',
 		          backgroundColor: 'rgba(0, 180, 189, 1)' 	  
 		        },
 		        {
 			      label: 'Follow-up Age Dataset',
 			      type: 'bubble',
-			      //data: [10, 40],
+			      // data: [10, 40],
 			      backgroundColor: 'rgba(255, 143, 131, 1)'
 			    },
 			    {
 				  label: 'Follow-up Gender Dataset',
-				  //data: [7, 14, 21, 38],
+				  // data: [7, 14, 21, 38],
 			      type: 'line',
 			      backgroundColor: 'rgba(6, 124, 209, 1)'
 				}
