@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>USTH | Platelet Follow Up</title>
+<title>USTH | Plasma Cell Follow Up</title>
 <meta charset="utf-8">
 <link rel="icon" href="images/usthlogo.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,8 +20,6 @@
 <link rel="stylesheet" href="css/sidebar.css">
 <link rel="stylesheet" href="css/responsive.css">
 <link rel="stylesheet" href="css/pure-min.css">
-<link rel="stylesheet" href="css/jBox.css">
-<link rel="stylesheet" href="css/TooltipDark.css">
 <link rel="stylesheet" href="css/grids-responsive-min.css">
 <link rel="stylesheet" href="fontawesome-free-5.0.8/web-fonts-with-css/css/fontawesome-all.min.css">
 <link rel="stylesheet" href="vendor/formvalidation/dist/css/formValidation.min.css">
@@ -46,9 +44,6 @@
 <script src="js/loadEditingFields.js" type="text/javascript"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
-<script src="js/normalrangeplateletfu.js"></script>
-<script src="js/rangetooltip.js"></script>
-<script src="js/jBox.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
 <!-- <script src="js/bootstrap.js"></script>  -->
 </head>
@@ -83,9 +78,9 @@
                   <li><a href="leukemia-baseline.jsp">Leukemia</a></li>
                   <li><a href="lymphoma-baseline.jsp">Lymphoma</a></li>
                   <li><a href="myelo-baseline.jsp">Myeloproliferative Neoplasm</a></li>
-                  <li><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
+                  <li class="active"><a href="plasmacell-baseline.jsp">Plasma Cell Disorder</a></li>
                   <li><a href="aapnhmds-baseline.jsp">AA PNH MDS</a></li>
-                  <li class="active"><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
+                  <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                   <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                   <!-- Dropdown -->
                   <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
@@ -137,7 +132,7 @@
             <!-- Add Patient Button -->
             <div class="row">
                <div class="col-sm-12 add-box">
-                  <a href="plateletdisorder-baseline.jsp">
+                  <a href="plasmacell-baseline.jsp">
                      <button id="addPatient" type="button" class="btn bg-yellow sidebar__addptngenrep--border" data-toggle="modal"
                         data-target="#usermanagement__popup" data-whatever="@mdo">Add Patient</button>
                   </a>
@@ -163,22 +158,20 @@
             </p>
             <!-- End of Sidebar -->
             <!-- Forms Container -->
-            <form action="" method="post" id="PlateletFollowUp">
+            <form action="" method="post" id="PlasmaCellFollowUp">
                <div class="col-md-12">
                   <div class="col-md-12 forms">
                      <!-- Buttons Container -->
                      <div class="row button-container buttons__firsthalf--position" id="button-container">
                         <div class="col-sm-6 buttons__firsthalf-position">
-                           <a href="plateletdisorder-baseline.jsp" type="button" class="btn bg-yellow button-border baselinenbtn-text"
+                           <a href="plasmacell-baseline.jsp" type="button" class="btn bg-yellow button-border baselinenbtn-text"
                               id="baselineBtn"> <span>Baseline</span>
-                           </a> <a href="plateletdisorder-followup.jsp" type="button" class="btn bg-yellow button-border followupnbtn-text"
+                           </a> <a href="plasmacell-followup.jsp" type="button" class="btn bg-yellow button-border followupnbtn-text"
                               id="followUpBtn"> <span>FollowUp</span>
                            </a>
                         </div>
                         <div class="col-sm-6 text-right btn-toolbar">
-                           <a href="#" type="button" class="btn bg-yellow button-border patstatsbtn-text secondhalfbtns-position"
-                              id="patientStatistics" data-target="#patstats" data-toggle="modal"> <span>Patient Statistics</span>
-                           </a> <a href="#" type="button" class="btn bg-yellow button-border editfollowupbtn-text secondhalfbtns-position"
+                           <a href="#" type="button" class="btn bg-yellow button-border editfollowupbtn-text secondhalfbtns-position"
                               id="editPatientBtn"> <span>Edit FollowUp</span>
                            </a> <a href="#" type="button" class="btn bg-yellow button-border deletefollowup-text secondhalfbtns-position"
                               id="archPatientBtn"> <span>Delete FollowUp</span>
@@ -236,6 +229,28 @@
                                        </div>
                                     </div>
                                     <!-- Questions -->
+                                    <br />
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-6">Did the patient stop or start a new medication for the
+                                          hematologic malignancy?</label>
+                                       <div class="col-sm-6">
+                                          <div class="radio">
+                                             <label> <input type="radio" name="hematologicMalignancy" value="1" Required="Required">
+                                                Yes
+                                             </label>
+                                          </div>
+                                          <div class="radio">
+                                             <label> <input type="radio" name="hematologicMalignancy" value="0"> No
+                                             </label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="specifyHematologicMalignancy" style="display: none;">
+                                       <label class="control-label col-sm-6">Result</label>
+                                       <div class="col-sm-6">
+                                          <input type="text" class="form-control" name="specifyHematologicMalignancy">
+                                       </div>
+                                    </div>
                                     <br />
                                     <div class="form-group">
                                        <label class="control-label col-sm-6">Did the patient stop or start a new medication for
@@ -372,177 +387,127 @@
                                        </div>
                                     </div>
                                     <!-- End of Labels -->
-                                    
                                     <!-- Fields -->
-                                   <div class="form-group">
+                                    <div class="form-group">
                                        <label class="control-label col-sm-4">Hemoglobin (g/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hemoglobin" 
-                                          	id="hemoglobin"/>
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                        <span class="tooltipPointer1" title="Normal Hemoglobin Value ( g/L ): <br/> Male: 138 - 172 <br/> Female: 121 - 151
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="hemoglobinStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hemoglobin" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Hematocrit (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hematocrit" 
-                                          id="hematocrit"/>
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                       <span class="tooltipPointer1" title="Normal Hematocrit Value ( g/L ): <br/> Male: 40 - 54 <br/> Female: 36 - 48
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="hematocritStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hematocrit" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">White blood cells (x10 ^9/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="whiteBloodCells"
-                                          id="whiteBloodCells"/>
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                       <span class="tooltipPointer1" title="Normal White Blood Cell Value ( x 10^9/L ): <br/> Male: 4.0 - 11.0 <br/> Female: 4.0 - 11.0
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="whiteBloodCellsStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="whiteBloodCells" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Neutrophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="neutrophils" 
-                                          	id="neutrophils"/>
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                       <span class="tooltipPointer1" title="Normal Neutrophils Value ( % ): <br/> Male: 45 - 80 <br/> Female: 45 - 80
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="neutrophilsStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="neutrophils" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Lymphocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="lymphocytes" 
-                                          id="lymphocytes"/>
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                       <span class="tooltipPointer1" title="Normal Lymphocytes Value ( % ): <br/> Male: 20 - 40 <br/> Female: 20 - 40
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="lymphocytesStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="lymphocytes" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Monocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="monocytes" 
-                                          id="monocytes" />
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                        <span class="tooltipPointer1" title="Normal Monocytes Value ( % ): <br/> Male: 2 - 10 <br/> Female: 2 - 10
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="monocytesStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="monocytes" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Eosinophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="eosinophils"
-                                          id="eosinophils" />
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                        <span class="tooltipPointer1" title="Normal Eosinophils Value ( % ): <br/> Male: 1 - 6 <br/> Female: 1 - 6
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="eosinophilsStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="eosinophils" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Basophils (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="basophils"
-                                          id="basophils" />
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                        <span class="tooltipPointer1" title="Normal Basophils Value ( % ): <br/> Male: 0 - 2 <br/> Female: 0 - 2
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="basophilsStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="basophils" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Myelocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="myelocytes" 
-                                          id="myelocytes" />
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                        <span class="tooltipPointer1" title="Normal Myelocytes Value ( % ): <br/> Male: 0 <br/> Female: 0
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="myelocytesStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="myelocytes" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Metamyelocytes (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="metamyelocytes" 
-                                          id="metamyelocytes" />
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                       <span class="tooltipPointer1" title="Normal Metamyelocytes Value ( % ): <br/> Male: 0 <br/> Female: 0
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="metamyelocytesStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="metamyelocytes" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Blasts (%)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="blasts" 
-                                          id="blasts"/>
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                       <span class="tooltipPointer1" title="Normal Blasts Value ( % ): <br/> Male: 0 <br/> Female: 0
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="blastsStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="blasts" />
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Platelet count (x 10^9/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="plateletCount" 
-                                          id="plateletCount" />
-                                       </div>
-                                       <div class="col-sm-4 status-position">
-                                       <span class="tooltipPointer1" title="Normal Platelet Count Value ( x 10^9/L ): <br/> Male: 150 - 400 <br/> Female: 150 - 400
-                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
-                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
-                                        </span>
-                                       	<span id="plateletCountStatus" class="status"></span>
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="plateletCount" />
                                        </div>
                                     </div>
                                     <!-- End of Fields -->
+                                    <br />
+                                    <!-- Blood Chemistry -->
+                                    <h3 class="text-center">
+                                       <label class="control-label">Blood Chemistry</label>
+                                    </h3>
+                                    <!-- Labels -->
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Laboratory Parameter</label> <label class="col-lg-4"
+                                          style="text-align: left;">Result</label>
+                                       <div class="col-lg-4">
+                                          <input type="checkbox"> <label>Not done</label>
+                                       </div>
+                                    </div>
+                                    <!-- End of labels -->
+                                    <!-- Fields -->
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Creatinine (mg/dl)</label>
+                                       <div class="col-lg-4">
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="creatinine" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Ionized calcium (mg/dl)</label>
+                                       <div class="col-lg-4">
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="iCa" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Total Protein</label>
+                                       <div class="col-lg-4">
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="totalProtein" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Albumin</label>
+                                       <div class="col-lg-4">
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="albumin" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Globulin</label>
+                                       <div class="col-lg-4">
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="globulin" />
+                                       </div>
+                                    </div>
+                                    <!-- End of fields -->
+                                    <br />
                                     <!-- Imaging Studies -->
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Imaging Studies</label>
@@ -565,6 +530,150 @@
                                           <input type="text" class="form-control" name="imagingStudiesResult" />
                                        </div>
                                     </div>
+                                    <!-- Bone Marrow  -->
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Bone Marrow Aspirate and Biopsy result</label>
+                                       <div class="col-sm-8">
+                                          <div class="radio">
+                                             <label> <input type="radio" name="boneMarrowAspirate" value="1" Required="Required">
+                                                Yes
+                                             </label>
+                                          </div>
+                                          <div class="radio">
+                                             <label> <input type="radio" name="boneMarrowAspirate" value="0"> No
+                                             </label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="boneMarrowAspirateDatePerformed" style="display: none;">
+                                       <label class="control-label col-sm-4">Date Performed</label>
+                                       <div class="col-lg-8">
+                                          <input required type="date" class="form-control" name="boneMarrowAspirateDatePerformed" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="boneMarrowAspirateDescription" style="display: none;">
+                                       <label class="control-label col-lg-4">Description</label>
+                                       <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="boneMarrowAspirateDescription" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="boneMarrowAspirateAttachScannedDocument" style="display: none;">
+                                       <label class="control-label col-lg-4">Attach scanned document</label>
+                                       <div class="col-sm-8">
+                                          <input type="file" class="form-control" name="boneMarrowAspirateAttachScannedDocument" />
+                                       </div>
+                                    </div>
+                                    <!-- Serum free light chain assay -->
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Serum free light chain assay</label>
+                                       <div class="col-sm-8">
+                                          <div class="radio">
+                                             <label> <input type="radio" name="serumFreeLightChainAsssay" value="1"
+                                                Required="Required"> Yes
+                                             </label>
+                                          </div>
+                                          <div class="radio">
+                                             <label> <input type="radio" name="serumFreeLightChainAsssay" value="0"> No /
+                                                Not Applicable
+                                             </label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="serumFreeLightChainAsssayResult" style="display: none;">
+                                       <label class="control-label col-lg-4">Result</label>
+                                       <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="serumFreeLightChainAsssayResult" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="serumFreeLightChainAsssayAttachScannedDocument" style="display: none;">
+                                       <label class="control-label col-lg-4">Attach scanned document</label>
+                                       <div class="col-sm-8">
+                                          <input type="file" class="form-control" name="serumFreeLightChainAsssayAttachScannedDocument" />
+                                       </div>
+                                    </div>
+                                    <!-- Serum protein electrophoresis -->
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Serum protein electrophoresis</label>
+                                       <div class="col-sm-8">
+                                          <div class="radio">
+                                             <label> <input type="radio" name="serumProteinElectrophoresis" value="1"
+                                                Required="Required"> Yes
+                                             </label>
+                                          </div>
+                                          <div class="radio">
+                                             <label> <input type="radio" name="serumProteinElectrophoresis" value="0"> No /
+                                                Not Applicable
+                                             </label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="serumProteinElectrophoresisResult" style="display: none;">
+                                       <label class="control-label col-lg-4">Result</label>
+                                       <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="serumProteinElectrophoresisResult" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="serumProteinElectrophoresisAttachScannedDocument" style="display: none;">
+                                       <label class="control-label col-lg-4">Attach scanned document</label>
+                                       <div class="col-sm-8">
+                                          <input type="file" class="form-control" name="serumProteinElectrophoresisAttachScannedDocument" />
+                                       </div>
+                                    </div>
+                                    <!-- Serum Immunofixation -->
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Serum Immunofixation</label>
+                                       <div class="col-sm-8">
+                                          <div class="radio">
+                                             <label> <input type="radio" name="serumImmunofixation" value="1" Required="Required">
+                                                Yes
+                                             </label>
+                                          </div>
+                                          <div class="radio">
+                                             <label> <input type="radio" name="serumImmunofixation" value="0"> No / Not
+                                                Applicable
+                                             </label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="serumImmunofixationResult" style="display: none;">
+                                       <label class="control-label col-lg-4">Result</label>
+                                       <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="serumImmunofixationResult" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="serumImmunofixationAttachScannedDocument" style="display: none;">
+                                       <label class="control-label col-lg-4">Attach scanned document</label>
+                                       <div class="col-sm-8">
+                                          <input type="file" class="form-control" name="serumImmunofixationAttachScannedDocument" />
+                                       </div>
+                                    </div>
+                                    <!-- Urine protein electrophoresis/Immunofixation -->
+                                    <div class="form-group">
+                                       <label class="control-label col-sm-4">Urine protein electrophoresis/Immunofixation</label>
+                                       <div class="col-sm-8">
+                                          <div class="radio">
+                                             <label> <input type="radio" name="urineProtein" value="1" Required="Required">
+                                                Yes
+                                             </label>
+                                          </div>
+                                          <div class="radio">
+                                             <label> <input type="radio" name="urineProtein" value="0"> No / Not Applicable
+                                             </label>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="urineProteinResult" style="display: none;">
+                                       <label class="control-label col-lg-4">Result</label>
+                                       <div class="col-sm-8">
+                                          <input type="text" class="form-control" name="urineProteinResult" />
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="urineProteinAttachScannedDocument" style="display: none;">
+                                       <label class="control-label col-lg-4">Attach scanned document</label>
+                                       <div class="col-sm-8">
+                                          <input type="file" class="form-control" name="urineProteinAttachScannedDocument" />
+                                       </div>
+                                    </div>
                                  </div>
                                  <!-- End of Form -->
                               </div>
@@ -574,35 +683,40 @@
                                  <!-- Form -->
                                  <div class="form-horizontal">
                                     <div class="form-group">
-                                       <label class="control-label col-lg-5">Quality of Response</label>
+                                       <label class="control-label col-lg-5">Disease Status</label>
                                        <div class="col-lg-5">
-                                          <select required class="form-control" name="qualityOfResponse">
-                                             <option value="" selected="selected" disabled="disabled">Select</option>
-                                             <option
-                                                value="CR (Complete Remission): platelet count > 100 x
-                                             109/L">CR
-                                                (Complete Remission): platelet count > 100 x 109/L</option>
-                                             <option
-                                                value="R (Remission): platelet count > 30 x 109/L or at
-                                             least 2-fold increase the baseline count">R
-                                                (Remission): platelet count > 30 x 109/L or at least 2-fold increase the baseline count</option>
-                                             <option
-                                                value="NR (No Remission): platelet count < 30 x 109/L or
-                                             less than 2-fold increase the baseline count or bleeding">NR
-                                                (No Remission): platelet count &#x3C; 30 x 109/L or less than 2-fold increase the baseline
-                                                count or bleeding</option>
-                                             <option value="Loss of Response">Loss of Response</option>
-                                             <option value="Refractory ITP">Refractory ITP</option>
-                                             <option value="Stable Disease">Stable Disease</option>
+                                          <select required class="form-control" name="diseaseStatus">
+                                             <option selected="selected" disabled="disabled">Select</option>
+                                             <option value="CR (Complete Remission)">CR (Complete Remission)</option>
+                                             <option value="SCR (Stringent Complete Remission)">SCR (Stringent Complete Remission)</option>
+                                             <option value="Immunophenotypic">Immunophenotypic CR</option>
+                                             <option value="Molecular CR">Molecular CR</option>
+                                             <option value="VGPR (Very Good Partial Response)">VGPR (Very Good Partial Response)</option>
+                                             <option value="PR (Partial Response)">PR (Partial Response)</option>
+                                             <option value="MR (Minimal Response for relapsed refractory myeloma only)">MR (Minimal
+                                                Response for relapsed refractory myeloma only)</option>
+                                             <option value="SD (Stable Disease)">SD (Stable Disease)</option>
+                                             <option value="PD (Progressive Disease)">PD (Progressive Disease)</option>
+                                             <option value="Relapse">Relapse</option>
                                              <option value="Dead">Dead</option>
                                              <option value="Others">Others</option>
                                           </select>
                                        </div>
                                     </div>
-                                    <div class="form-group" id="diseaseStatusOthers" style="display: none;">
-                                       <label class="control-label col-lg-5">Other Please Specify</label>
+                                    <div class="form-group" id="relapseDisease" style="display: none;">
+                                       <label class="control-label col-lg-5">For Relapse Disease</label>
                                        <div class="col-lg-5">
-                                          <textarea rows="4"  class="form-control" name="diseaseStatusOthers"></textarea>
+                                          <select required class="form-control" name="relapseDisease">
+                                             <option selected="selected" disabled="disabled">Select</option>
+                                             <option value="Clinical Relapse">Clinical Relapse</option>
+                                             <option value="Relapse from CR">Relapse from CR</option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                    <div class="form-group" id="diseaseStatusOthers" style="display: none;">
+                                       <label class="control-label col-lg-5">Others</label>
+                                       <div class="col-lg-5">
+                                          <textarea rows="4" class="form-control" name="diseaseStatusOthers"></textarea>
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -745,93 +859,9 @@
       </div>
    </form>
    <!-- End of Generate Report Modal  -->
-   <!-- Patient Statistics Modal  -->
-   <div class="modal fade centered-modal" id="patstats" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
-      data-backdrop="static">
-      <div class="modal-dialog modal-md">
-         <div class="modal-content">
-            <div class="modal-header">
-               Patient Statistics:
-               <button type="button" class="close" data-dismiss="modal">
-                  <span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
-               </button>
-            </div>
-            <div class="modal-body">
-               <div class="row">
-                  <h3 style="text-align: center;">
-                     <b>Disease Status</b>
-                  </h3>
-                  <br>
-                  <!-- To and From Date  -->
-                  <div class="form-group col-md-offset-2">
-                     <div class="col-sm-5">
-                        <label for="message-text" class="control-label">From:</label> <input type="date" class="form-control"
-                           name="fromDateAgeStats">
-                     </div>
-                     <div class="col-sm-5">
-                        <label for="message-text" class="control-label">To:</label> <input type="date" class="form-control"
-                           name="toDateAgeStats">
-                     </div>
-                  </div>
-                  <!-- End of To and From Date -->
-                  <div class="col-md-10 col-md-offset-1">
-                     <canvas id="plateletFollowPatStatsChart" width="600" height="500"></canvas>
-                  </div>
-               </div>
-               <script>
-																var ctx = document.getElementById("plateletFollowPatStatsChart")
-																		.getContext('2d');
-																var plateletFollowPatStatsChart = new Chart(ctx, {
-																	type : 'line',
-																	data : {
-																		xLabels : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
-																				'Sept', 'Oct', 'Nov', 'Dec' ],
-																		yLabels : [ 'Newly Diagnosed ITP', 'Persistent ITP', 'Chronic ITP',
-																				'Severe ITP', 'CR', 'R', 'NR', 'Loss of CR or R',
-																				'Refractory ITP', 'Stable Disease', 'Dead', 'Others' ],
-																		datasets : [ {
-																			label : 'Platelet Disorder Disease Status',
-																			backgroundColor : 'rgba(6, 124, 209, 1)',
-																			fill : false
-																		} ],
-																		labels : [ 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug',
-																				'Sept', 'Oct', 'Nov', 'Dec' ],
-																		borderWidth : 1,
-																	},
-																	options : {
-																		data : {
-																			display : false
-																		},
-																		scales : {
-																			stacked : true,
-																			yAxes : [ {
-																				type : 'category',
-																				position : 'left',
-																				display : true,
-																				ticks : {
-																					reverse : true
-																				}
-																			} ],
-																			xAxes : [ {
-																				ticks : {
-																					autoSkip : false,
-																				}
-																			} ]
-																		},
-																	}
-																});
-															</script>
-            </div>
-            <div class="modal-footer">
-               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-         </div>
-      </div>
-   </div>
-   <!-- End of Patient Statistics Modal  -->
    <!-- End of Main Container -->
    <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
-   <script src="js/disease.platelet-followup.js"></script>
+   <script src="js/disease.plasmacell-followup.js"></script>
    <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>
 </body>

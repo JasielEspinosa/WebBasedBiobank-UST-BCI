@@ -271,11 +271,11 @@
                                        <label class="control-label col-sm-5">Gender</label>
                                        <div class="col-sm-7">
                                           <div class="radio">
-                                             <label> <input type="radio" name="gender" value="1" Required="Required" onclick="checkCheckValue();"> Male
+                                             <label> <input type="radio" name="gender" value="1" Required="Required"> Male
                                              </label>
                                           </div>
                                           <div class="radio">
-                                             <label> <input type="radio" name="gender" value="2" onclick="checkCheckValue();"> Female
+                                             <label> <input type="radio" name="gender" value="2"> Female
                                              </label>
                                           </div>
                                        </div>
@@ -290,7 +290,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Age</label>
                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" id='age' readonly="readonly">
+                                          <input type="text" class="form-control" name="age" id='age' readonly="readonly">
                                        </div>
                                     </div>
                                     <!-- Address -->
@@ -688,7 +688,7 @@
                                        <label class="control-label col-sm-4">Hemoglobin (g/L)</label>
                                        <div class="col-lg-4">
                                           <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="hemoglobin" 
-                                          	id="hemoglobin" onchange="checkCheckValue();"/>
+                                          	id="hemoglobin"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
                                         <span class="tooltipPointer1" title="Normal Hemoglobin Value ( g/L ): <br/> Male: 138 - 172 <br/> Female: 121 - 151
@@ -719,6 +719,10 @@
                                           id="whiteBloodCells"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal White Blood Cell Value ( x 10^9/L ): <br/> Male: 4.0 - 11.0 <br/> Female: 4.0 - 11.0
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="whiteBloodCellsStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -729,6 +733,10 @@
                                           	id="neutrophils"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Neutrophils Value ( % ): <br/> Male: 45 - 80 <br/> Female: 45 - 80
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="neutrophilsStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -739,6 +747,10 @@
                                           id="lymphocytes"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Lymphocytes Value ( % ): <br/> Male: 20 - 40 <br/> Female: 20 - 40
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="lymphocytesStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -749,6 +761,10 @@
                                           id="monocytes" />
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                        <span class="tooltipPointer1" title="Normal Monocytes Value ( % ): <br/> Male: 2 - 10 <br/> Female: 2 - 10
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="monocytesStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -759,6 +775,10 @@
                                           id="eosinophils" />
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                        <span class="tooltipPointer1" title="Normal Eosinophils Value ( % ): <br/> Male: 1 - 6 <br/> Female: 1 - 6
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="eosinophilsStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -769,6 +789,10 @@
                                           id="basophils" />
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                        <span class="tooltipPointer1" title="Normal Basophils Value ( % ): <br/> Male: 0 - 2 <br/> Female: 0 - 2
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="basophilsStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -779,6 +803,10 @@
                                           id="myelocytes" />
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                        <span class="tooltipPointer1" title="Normal Myelocytes Value ( % ): <br/> Male: 0 <br/> Female: 0
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="myelocytesStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -789,6 +817,10 @@
                                           id="metamyelocytes" />
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Metamyelocytes Value ( % ): <br/> Male: 0 <br/> Female: 0
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="metamyelocytesStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -799,6 +831,10 @@
                                           id="blasts"/>
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Blasts Value ( % ): <br/> Male: 0 <br/> Female: 0
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="blastsStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -809,6 +845,10 @@
                                           id="plateletCount" />
                                        </div>
                                        <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Platelet Count Value ( x 10^9/L ): <br/> Male: 150 - 400 <br/> Female: 150 - 400
+                                        <br /><br /> Reference: www.mercynorthiowa.com/cbc-normal-ranges" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
                                        	<span id="plateletCountStatus" class="status"></span>
                                        </div>
                                     </div>
@@ -830,76 +870,160 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Creatinine (mg/dl)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="creatinine" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="creatinine" id="creatinine" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Creatinine Value ( mg/dl ): <br/> Male: 0.6 - 1.2 <br/> Female: 0.5 - 1.1
+                                        <br /><br /> Reference: www.medicinenet.com/creatinine_blood_test_/article.htm" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="creatinineStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Uric acid mg/dl</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="uricAcid" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="uricAcid" id="uricAcid" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Uric Acid Value ( mg/dl ): <br/> Male: 3.4 - 7.0 <br/> Female: 2.4 - 6.0
+                                        <br /><br /> Reference: www.chemocare.com/chemotherapy/side-effects/hyperuricemia-high-uric-acid.aspx" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="uricAcidStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Reticulocyte Count</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="reticulocyteCount" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="reticulocyteCount" id="reticulocyteCount" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Reticulocyte Value ( % ): <br/> Male: 0.5 - 1.5 <br/> Female: 0.5 - 1.5
+                                        <br /><br /> Reference: www.medlineplus.gov/ency/article/003637.htm" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="reticulocyteCountStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum iron</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumIron" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumIron" id="serumIron" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Serum Iron Value ( ug/dl ): <br/> Male: 65 - 176 <br/> Female: 50 - 170
+                                        <br /><br /> Reference: http://www.irondisorders.org/iron-tests" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="serumIronStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Iron-binding capacity</label>
                                        <div class="col-lg-4">
                                           <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
-                                             name="ironBindingCapacity" />
+                                             name="ironBindingCapacity" id="ironBindingCapacity" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Iron-Binding Capacity Value ( mcg/dl ): <br/> Male: 240 - 250 <br/> Female: 240 - 450
+                                        <br /><br /> Reference: https://www.healthline.com/health/total-iron-binding-capacity" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="ironBindingCapacityStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum Ferritin</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumFerritin" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumFerritin" id="serumFerritin" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Serum Ferritin Value ( ng/ml ): <br/> Male: 12 - 300 <br/> Female: 12 - 150
+                                        <br /><br /> Reference: https://www.medicinenet.com/ferritin_blood_test/article.htm" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="serumFerritinStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Direct antiglobulin (Coombs) test (+/++/+++/-)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="directAntiglobulin" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="directAntiglobulin" id="directAntiglobulin" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Direct Anti-Globulin ( Coombs ) Test Value (+/++/++++/- ): <br/> Male:  <br/> Female: 
+                                        <br /><br /> Reference: " >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="directAntiglobulinStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Indirect antiglobulin (Coombs) test(+/++/+++/-)</label>
                                        <div class="col-lg-4">
                                           <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
-                                             name="indirectAntiglobulin" />
+                                             name="indirectAntiglobulin" id="indirectAntiglobulin" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Indirect Anti-Globulin ( Coombs ) Test Value (+/++/++++/- ): <br/> Male:  <br/> Female: 
+                                        <br /><br /> Reference: " >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="indirectAntiglobulinStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">SGOT (U/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="sgot" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="sgot" id="sgot" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal SGOT Value ( u/l ): <br/> Male: 5 - 40 <br/> Female: 5 - 40 
+                                        <br /><br /> Reference: https://www.medicinenet.com/liver_blood_tests/article.htm" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="sgotStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">SGPT (U/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="sgpt" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="sgpt" id="sgpt" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal SGPT Value ( u/l ): <br/> Male: 7 - 56 <br/> Female: 7 - 56 
+                                        <br /><br /> Reference: https://www.medicinenet.com/liver_blood_tests/article.htm" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="sgptStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">LDH (U/L)</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="ldh" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="ldh" id="ldh" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal LDH Value ( u/l ): <br/> Male: 100 - 190 <br/> Female: 100 - 190 
+                                        <br /><br /> Reference: https://www.webmd.com/a-to-z-guides/lactic-acid-dehydrogenase-test#2" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="ldhStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Screening tests for hepatitis viruses A, B, and C (+/-)</label>
                                        <div class="col-lg-4">
                                           <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
-                                             name="screeningTestsForHepatitisVirusesABC" />
+                                             name="screeningTestsForHepatitisVirusesABC" id="screeningTestsForHepatitisVirusesABC" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Screening Test for Hepatitis Viruses A,B and C Value ( +/- ): <br/> Male:  <br/> Female:  
+                                        <br /><br /> Reference: " >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="screeningTestsForHepatitisVirusesABCStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
@@ -907,32 +1031,67 @@
                                           (+/-)</label>
                                        <div class="col-lg-4">
                                           <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
-                                             name="screeningTestsForEBVCMVHIV" />
+                                             name="screeningTestsForEBVCMVHIV" id="screeningTestsForEBVCMVHIV" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Screening Test for EBV, Cytomegalovirus and HIV Value ( +/- ): <br/> Male:  <br/> Female:  
+                                        <br /><br /> Reference: " >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="screeningTestsForEBVCMVHIVStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Erythropoeitin level</label>
                                        <div class="col-lg-4">
                                           <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control"
-                                             name="erythropoeitinLevel" />
+                                             name="erythropoeitinLevel" id="erythropoeitinLevel" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Erythropoeitin Value ( mu/ml ): <br/> Male: 4.1 - 19.5 <br/> Female: 4.1 - 19.5  
+                                        <br /><br /> Reference: https://emedicine.medscape.com/article/2087846-overview" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="erythropoeitinLevelStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum folic acid</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumFolicAcid" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumFolicAcid" id="serumFolicAcid" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Serum Folic Acid Value ( ng/ml ): <br/> Male: 2 - 20 <br/> Female: 2 -20  
+                                        <br /><br /> Reference: https://emedicine.medscape.com/article/2085523-overview" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="serumFolicAcidStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">Serum B12</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumB12" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="serumB12" id="serumB12" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal Serum B12 Value ( pg/ml ): <br/> Male: 200 - 900 <br/> Female: 200 -900  
+                                        <br /><br /> Reference: https://medlineplus.gov/ency/article/003705.htm" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="serumB12Status" class="status"></span>
                                        </div>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label col-sm-4">TSH</label>
                                        <div class="col-lg-4">
-                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="tsh" />
+                                          <input type="number" Required="required" step=".1" min="0" onfocusout="setThreeNumberDecimal(this)" class="form-control" name="tsh" id="tsh" />
+                                       </div>
+                                       <div class="col-sm-4 status-position">
+                                       <span class="tooltipPointer1" title="Normal TSH Value ( mui/l ): <br/> Male: 0.4 - 4.0 <br/> Female: 0.4 - 4.0  
+                                        <br /><br /> Reference: https://www.healthline.com/health/tsh" >
+                                        	<i class="fas fa-info-circle" style="cursor: pointer;"></i>
+                                        </span>
+                                       	<span id="tshStatus" class="status"></span>
                                        </div>
                                     </div>
                                     <!-- End of fields -->

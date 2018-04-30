@@ -201,59 +201,46 @@ window.onload = function() {
 	}	
 	
 	$("input[name=gender]:radio").on('click', function() {
-
-		if ($(this).attr("value") == "1") {
-			
+		if ($(this).attr("value") == "1") {	
 			MaleCheckValue();
-
-			hemoglobin.oninput = function() {
-				MaleCheckValue();
-			};
-			hematocrit.oninput = function() {
-				MaleCheckValue();
-			};
-			creatinine.oninput = function() {
-				MaleCheckValue();
-			};
-			uricAcid.oninput = function() {
-				MaleCheckValue();
-			};
-			serumIron.oninput = function() {
-				MaleCheckValue();
-			};
-			serumFerritin.oninput = function() {
-				MaleCheckValue();
-			};
-
 		} else if ($(this).attr("value") == "2") {
-			
 			FemaleCheckValue();
-
-			hemoglobin.oninput = function() {
-				FemaleCheckValue();
-			};
-			hematocrit.oninput = function() {
-				FemaleCheckValue();
-			};
-			creatinine.oninput = function() {
-				FemaleCheckValue();
-			};
-			uricAcid.oninput = function() {
-				FemaleCheckValue();
-			};
-			serumIron.oninput = function() {
-				FemaleCheckValue();
-			};
-			serumFerritin.oninput = function() {
-				FemaleCheckValue();
-			};
-
 		}
-
+		whiteBloodCellsFunc();
 	});
+	
+	function checkGenderVal(){
+		if ($(this).attr("value") == "1") {	
+			MaleCheckValue();
+		} else if ($(this).attr("value") == "2") {
+			FemaleCheckValue();
+		}
+	}
+	
+	hemoglobin.oninput = function() {
+		checkGenderVal();
+	};
+	hematocrit.oninput = function() {
+		checkGenderVal();
+	};
+	creatinine.oninput = function() {
+		checkGenderVal();
+	};
+	uricAcid.oninput = function() {
+		checkGenderVal();
+	};
+	serumIron.oninput = function() {
+		checkGenderVal();
+	};
+	serumFerritin.oninput = function() {
+		checkGenderVal();
+	};
 
-	whiteBloodCells.oninput = function() {
-
+	whiteBloodCells.onchange = function() {
+		whiteBloodCellsFunc();
+	};
+	
+	function whiteBloodCellsFunc(){
 		if (this.value != '' && this.value < 4.0) {
 			document.getElementById('whiteBloodCellsStatus').innerHTML = 'Low';
 			document.getElementById('whiteBloodCellsStatus').style.color = '#023564';
@@ -269,8 +256,7 @@ window.onload = function() {
 		} else {
 			document.getElementById('whiteBloodCellsStatus').innerHTML = '';
 		}
-
-	};
+	}
 
 	neutrophils.oninput = function() {
 
