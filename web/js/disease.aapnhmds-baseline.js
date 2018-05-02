@@ -32,6 +32,9 @@ $('document').ready(function() {
 	});
 	$("#followUpBtn").click(function() {
 		if (upperActionState == true) {
+			//replicate
+			localStorage.setItem("gender", checkGenderVal());
+			//replicate
 			windows.location = ("aapnhmds-followup.jsp").redirect();
 		}
 	});
@@ -422,6 +425,7 @@ function cancelEdit() {
 	$("#submitCancel").hide();
 };
 
+//replicate
 $("input[name=gender]:radio").on('click', function() {
 	genderCheck();
 });

@@ -46,7 +46,6 @@
 <script src="js/loadEditingFields.js" type="text/javascript"></script>
 <script src="vendor/formvalidation/dist/js/formValidation.min.js"></script>
 <script defer src="js/fontawesome-all.js"></script>
-<script src="js/normalrangefollowup.js"></script>
 <script src="js/rangetooltip.js"></script>
 <script src="js/jBox.js"></script>
 <!-- <script src="js/jquery.min.js"></script>  -->
@@ -991,6 +990,7 @@
    <!-- End of Patient Statistics Modal  -->
    <!-- End of Main Container -->
    <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+   <script src="js/normalrange.js"></script>
    <script src="js/disease.aapnhmds-followup.js"></script>
    <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>

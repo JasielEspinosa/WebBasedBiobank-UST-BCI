@@ -1,9 +1,14 @@
 function checkGenderVal() {
-	if ($("input[name=gender][value='1']").is(':checked')) {
-		return 1;
-	} else if ($("input[name=gender][value='2']").is(':checked')) {
-		return 2;
+	if(localStorage.getItem("gender") != ""){
+		return localStorage.getItem("gender");
+	}else{
+		if ($("input[name=gender][value='1']").is(':checked')) {
+			return 1;
+		} else if ($("input[name=gender][value='2']").is(':checked')) {
+			return 2;
+		}
 	}
+
 }
 
 // different values oninput
