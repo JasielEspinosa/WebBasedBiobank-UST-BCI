@@ -189,7 +189,8 @@
    </div>
    <!-- End of main container -->
    <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+   <script src="js/inactivity.js"></script>
    <script src="js/profile.js"></script>
-    <script src="js/logout.js"></script>
+   <script src="js/logout.js"></script>
 </body>
 </html>

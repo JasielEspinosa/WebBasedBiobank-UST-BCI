@@ -241,6 +241,7 @@
          </div>
       </div>
    </div>
+   <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>
 </body>
 </html>

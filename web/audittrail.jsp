@@ -233,6 +233,7 @@
    </div>
    <!-- End of main container -->
    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+   <script src="js/inactivity.js"></script>
    <script src="js/audit.js"></script>
 </body>
 </html>

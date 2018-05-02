@@ -566,5 +566,5 @@ ALTER TABLE AccountTable ADD CONSTRAINT AccountTable_fk0 FOREIGN KEY (RoleID) RE
 INSERT INTO roletable (`RoleID`, `RoleName`) VALUES ('1', 'Admin');
 INSERT INTO roletable (`RoleID`, `RoleName`) VALUES ('2', 'Encoder');
 
-INSERT INTO AccountTable VALUES (1,'1','1','LAST NAME','ADMIN','A.',1,1),(2,'2','2','LAST NAME','ENCODER','B.',2,1),(3,'3','3','LAST NAME','ADMIN','C.',1,1);
+INSERT INTO AccountTable VALUES (1,'1','1611','TEST','ADMIN','A.',1,1),(2,'2','1611','TEST','ENCODER','B.',2,1);
 
