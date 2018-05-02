@@ -234,6 +234,7 @@
    </div>
    <!--/row-offcanvas -->
    <script type="text/javascript" src="DataTables/datatables.min.js"></script>
+   <script src="js/inactivity.js"></script>
    <script src="js/archived-patients.js"></script>
 </body>
 </html>

@@ -89,7 +89,9 @@ public class GenerateAuditServlet extends HttpServlet {
 			if (connection != null) {
 				getServletContext().log("Connection found. Start of Generate Patient Report Roll");
 				Document document = new Document();
-				PdfWriter.getInstance(document, response.getOutputStream());
+				PdfWriter writer = PdfWriter.getInstance(document, response.getOutputStream());
+				MyFooter event = new MyFooter();
+				writer.setPageEvent(event);
 				document.addTitle("Generate Report Audit List");
 				document.addAuthor("Cancer Developers");
 				document.addCreationDate();
