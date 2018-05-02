@@ -310,7 +310,8 @@ function hemoglobinFunc() {
 			document.getElementById('hemoglobinStatus').innerHTML = 'Low';
 			document.getElementById('hemoglobinStatus').style.color = '#023564';
 			hemoglobinStatus.style.visibility = 'visible';
-		} else if (hemoglobin.value != '' && hemoglobin.value >= 138 && hemoglobin.value <= 172) {
+		} else if (hemoglobin.value != '' && hemoglobin.value >= 138
+				&& hemoglobin.value <= 172) {
 			document.getElementById('hemoglobinStatus').innerHTML = 'Normal';
 			document.getElementById('hemoglobinStatus').style.color = '#008000';
 			hemoglobinStatus.style.visibility = 'visible';
@@ -327,7 +328,8 @@ function hemoglobinFunc() {
 			document.getElementById('hemoglobinStatus').innerHTML = 'Low';
 			document.getElementById('hemoglobinStatus').style.color = '#023564';
 			hemoglobinStatus.style.visibility = 'visible';
-		} else if (hemoglobin.value != '' && hemoglobin.value >= 121 && hemoglobin.value <= 151) {
+		} else if (hemoglobin.value != '' && hemoglobin.value >= 121
+				&& hemoglobin.value <= 151) {
 			document.getElementById('hemoglobinStatus').innerHTML = 'Normal';
 			document.getElementById('hemoglobinStatus').style.color = '#008000';
 			hemoglobinStatus.style.visibility = 'visible';
@@ -348,7 +350,8 @@ function hematocritFunc() {
 			document.getElementById('hematocritStatus').innerHTML = 'Low';
 			document.getElementById('hematocritStatus').style.color = '#023564';
 			hematocritStatus.style.visibility = 'visible';
-		} else if (hematocrit.value != '' && hematocrit.value >= 40 && hematocrit.value <= 54) {
+		} else if (hematocrit.value != '' && hematocrit.value >= 40
+				&& hematocrit.value <= 54) {
 			document.getElementById('hematocritStatus').innerHTML = 'Normal';
 			document.getElementById('hematocritStatus').style.color = '#008000';
 			hematocritStatus.style.visibility = 'visible';
@@ -365,7 +368,8 @@ function hematocritFunc() {
 			document.getElementById('hematocritStatus').innerHTML = 'Low';
 			document.getElementById('hematocritStatus').style.color = '#023564';
 			hematocritStatus.style.visibility = 'visible';
-		} else if (hematocrit.value != '' && hematocrit.value >= 36 && hematocrit.value <= 48) {
+		} else if (hematocrit.value != '' && hematocrit.value >= 36
+				&& hematocrit.value <= 48) {
 			document.getElementById('hematocritStatus').innerHTML = 'Normal';
 			document.getElementById('hematocritStatus').style.color = '#008000';
 			hematocritStatus.style.visibility = 'visible';
@@ -386,7 +390,8 @@ function creatinineFunc() {
 			document.getElementById('creatinineStatus').innerHTML = 'Low';
 			document.getElementById('creatinineStatus').style.color = '#023564';
 			creatinineStatus.style.visibility = 'visible';
-		} else if (creatinine.value != '' && creatinine.value >= 0.6 && creatinine.value <= 1.2) {
+		} else if (creatinine.value != '' && creatinine.value >= 0.6
+				&& creatinine.value <= 1.2) {
 			document.getElementById('creatinineStatus').innerHTML = 'Normal';
 			document.getElementById('creatinineStatus').style.color = '#008000';
 			creatinineStatus.style.visibility = 'visible';
@@ -403,7 +408,8 @@ function creatinineFunc() {
 			document.getElementById('creatinineStatus').innerHTML = 'Low';
 			document.getElementById('creatinineStatus').style.color = '#023564';
 			creatinineStatus.style.visibility = 'visible';
-		} else if (creatinine.value != '' && creatinine.value >= 0.5 && creatinine.value <= 1.1) {
+		} else if (creatinine.value != '' && creatinine.value >= 0.5
+				&& creatinine.value <= 1.1) {
 			document.getElementById('creatinineStatus').innerHTML = 'Normal';
 			document.getElementById('creatinineStatus').style.color = '#008000';
 			creatinineStatus.style.visibility = 'visible';
@@ -424,7 +430,8 @@ function uricAcidFunc() {
 			document.getElementById('uricAcidStatus').innerHTML = 'Low';
 			document.getElementById('uricAcidStatus').style.color = '#023564';
 			uricAcidStatus.style.visibility = 'visible';
-		} else if (uricAcid.value != '' && uricAcid.value >= 3.4 && uricAcid.value <= 7.0) {
+		} else if (uricAcid.value != '' && uricAcid.value >= 3.4
+				&& uricAcid.value <= 7.0) {
 			document.getElementById('uricAcidStatus').innerHTML = 'Normal';
 			document.getElementById('uricAcidStatus').style.color = '#008000';
 			uricAcidStatus.style.visibility = 'visible';
@@ -441,7 +448,8 @@ function uricAcidFunc() {
 			document.getElementById('uricAcidStatus').innerHTML = 'Low';
 			document.getElementById('uricAcidStatus').style.color = '#023564';
 			uricAcidStatus.style.visibility = 'visible';
-		} else if (uricAcid.value != '' && uricAcid.value >= 2.4 && uricAcid.value <= 6.0) {
+		} else if (uricAcid.value != '' && uricAcid.value >= 2.4
+				&& uricAcid.value <= 6.0) {
 			document.getElementById('uricAcidStatus').innerHTML = 'Normal';
 			document.getElementById('uricAcidStatus').style.color = '#008000';
 			uricAcidStatus.style.visibility = 'visible';
@@ -462,7 +470,8 @@ function serumIronFunc() {
 			document.getElementById('serumIronStatus').innerHTML = 'Low';
 			document.getElementById('serumIronStatus').style.color = '#023564';
 			serumIronStatus.style.visibility = 'visible';
-		} else if (serumIron.value != '' && serumIron.value >= 65 && serumIron.value <= 176) {
+		} else if (serumIron.value != '' && serumIron.value >= 65
+				&& serumIron.value <= 176) {
 			document.getElementById('serumIronStatus').innerHTML = 'Normal';
 			document.getElementById('serumIronStatus').style.color = '#008000';
 			serumIronStatus.style.visibility = 'visible';
@@ -479,7 +488,8 @@ function serumIronFunc() {
 			document.getElementById('serumIronStatus').innerHTML = 'Low';
 			document.getElementById('serumIronStatus').style.color = '#023564';
 			serumIronStatus.style.visibility = 'visible';
-		} else if (serumIron.value != '' && serumIron.value >= 50 && serumIron.value <= 170) {
+		} else if (serumIron.value != '' && serumIron.value >= 50
+				&& serumIron.value <= 170) {
 			document.getElementById('serumIronStatus').innerHTML = 'Normal';
 			document.getElementById('serumIronStatus').style.color = '#008000';
 			serumIronStatus.style.visibility = 'visible';
@@ -500,7 +510,8 @@ function serumFerritinFunc() {
 			document.getElementById('serumFerritinStatus').innerHTML = 'Low';
 			document.getElementById('serumFerritinStatus').style.color = '#023564';
 			serumFerritinStatus.style.visibility = 'visible';
-		} else if (serumFerritin.value != '' && serumFerritin.value >= 12 && serumFerritin.value <= 300) {
+		} else if (serumFerritin.value != '' && serumFerritin.value >= 12
+				&& serumFerritin.value <= 300) {
 			document.getElementById('serumFerritinStatus').innerHTML = 'Normal';
 			document.getElementById('serumFerritinStatus').style.color = '#008000';
 			serumFerritinStatus.style.visibility = 'visible';
@@ -517,7 +528,8 @@ function serumFerritinFunc() {
 			document.getElementById('serumFerritinStatus').innerHTML = 'Low';
 			document.getElementById('serumFerritinStatus').style.color = '#023564';
 			serumFerritinStatus.style.visibility = 'visible';
-		} else if (serumFerritin.value != '' && serumFerritin.value >= 12 && serumFerritin.value <= 150) {
+		} else if (serumFerritin.value != '' && serumFerritin.value >= 12
+				&& serumFerritin.value <= 150) {
 			document.getElementById('serumFerritinStatus').innerHTML = 'Normal';
 			document.getElementById('serumFerritinStatus').style.color = '#008000';
 			serumFerritinStatus.style.visibility = 'visible';
@@ -538,7 +550,8 @@ function whiteBloodCellsFunc() {
 		document.getElementById('whiteBloodCellsStatus').innerHTML = 'Low';
 		document.getElementById('whiteBloodCellsStatus').style.color = '#023564';
 		whiteBloodCellsStatus.style.visibility = 'visible';
-	} else if (whiteBloodCells.value != '' && whiteBloodCells.value >= 4.0 && whiteBloodCells.value <= 11.0) {
+	} else if (whiteBloodCells.value != '' && whiteBloodCells.value >= 4.0
+			&& whiteBloodCells.value <= 11.0) {
 		document.getElementById('whiteBloodCellsStatus').innerHTML = 'Normal';
 		document.getElementById('whiteBloodCellsStatus').style.color = '#008000';
 		whiteBloodCellsStatus.style.visibility = 'visible';
@@ -556,7 +569,8 @@ function neutrophilsFunc() {
 		document.getElementById('neutrophilsStatus').innerHTML = 'Low';
 		document.getElementById('neutrophilsStatus').style.color = '#023564';
 		neutrophilsStatus.style.visibility = 'visible';
-	} else if (neutrophils.value != '' && neutrophils.value >= 45 && neutrophils.value <= 80) {
+	} else if (neutrophils.value != '' && neutrophils.value >= 45
+			&& neutrophils.value <= 80) {
 		document.getElementById('neutrophilsStatus').innerHTML = 'Normal';
 		document.getElementById('neutrophilsStatus').style.color = '#008000';
 		neutrophilsStatus.style.visibility = 'visible';
@@ -574,7 +588,8 @@ function lymphocytesFunc() {
 		document.getElementById('lymphocytesStatus').innerHTML = 'Low';
 		document.getElementById('lymphocytesStatus').style.color = '#023564';
 		lymphocytesStatus.style.visibility = 'visible';
-	} else if (lymphocytes.value != '' && lymphocytes.value >= 20 && lymphocytes.value <= 40) {
+	} else if (lymphocytes.value != '' && lymphocytes.value >= 20
+			&& lymphocytes.value <= 40) {
 		document.getElementById('lymphocytesStatus').innerHTML = 'Normal';
 		document.getElementById('lymphocytesStatus').style.color = '#008000';
 		lymphocytesStatus.style.visibility = 'visible';
@@ -592,7 +607,8 @@ function monocytesFunc() {
 		document.getElementById('monocytesStatus').innerHTML = 'Low';
 		document.getElementById('monocytesStatus').style.color = '#023564';
 		monocytesStatus.style.visibility = 'visible';
-	} else if (monocytes.value != '' && monocytes.value >= 2 && monocytes.value <= 10) {
+	} else if (monocytes.value != '' && monocytes.value >= 2
+			&& monocytes.value <= 10) {
 		document.getElementById('monocytesStatus').innerHTML = 'Normal';
 		document.getElementById('monocytesStatus').style.color = '#008000';
 		monocytesStatus.style.visibility = 'visible';
@@ -610,7 +626,8 @@ function eosinophilsFunc() {
 		document.getElementById('eosinophilsStatus').innerHTML = 'Low';
 		document.getElementById('eosinophilsStatus').style.color = '#023564';
 		eosinophilsStatus.style.visibility = 'visible';
-	} else if (eosinophils.value != '' && eosinophils.value >= 1 && eosinophils.value <= 6) {
+	} else if (eosinophils.value != '' && eosinophils.value >= 1
+			&& eosinophils.value <= 6) {
 		document.getElementById('eosinophilsStatus').innerHTML = 'Normal';
 		document.getElementById('eosinophilsStatus').style.color = '#008000';
 		eosinophilsStatus.style.visibility = 'visible';
@@ -628,7 +645,8 @@ function basophilsFunc() {
 		document.getElementById('basophilsStatus').innerHTML = 'Low';
 		document.getElementById('basophilsStatus').style.color = '#023564';
 		basophilsStatus.style.visibility = 'visible';
-	} else if (basophils.value != '' && basophils.value >= 0 && basophils.value <= 2) {
+	} else if (basophils.value != '' && basophils.value >= 0
+			&& basophils.value <= 2) {
 		document.getElementById('basophilsStatus').innerHTML = 'Normal';
 		document.getElementById('basophilsStatus').style.color = '#008000';
 		basophilsStatus.style.visibility = 'visible';
@@ -700,7 +718,8 @@ function plateletCountFunc() {
 		document.getElementById('plateletCountStatus').innerHTML = 'Low';
 		document.getElementById('plateletCountStatus').style.color = '#023564';
 		plateletCountStatus.style.visibility = 'visible';
-	} else if (plateletCount.value != '' && plateletCount.value >= 150 && plateletCount.value <= 400) {
+	} else if (plateletCount.value != '' && plateletCount.value >= 150
+			&& plateletCount.value <= 400) {
 		document.getElementById('plateletCountStatus').innerHTML = 'Normal';
 		document.getElementById('plateletCountStatus').style.color = '#008000';
 		plateletCountStatus.style.visibility = 'visible';
@@ -713,7 +732,7 @@ function plateletCountFunc() {
 	}
 }
 
-function bunFunc() {
+function bunFunc(){
 	if (bun.value != '' && bun.value < 7) {
 		document.getElementById('bunStatus').innerHTML = 'Low';
 		document.getElementById('bunStatus').style.color = '#023564';
@@ -731,7 +750,7 @@ function bunFunc() {
 	}
 }
 
-function ionizedFunc() {
+function ionizedFunc(){
 	if (ionized.value != '' && ionized.value < 4.64) {
 		document.getElementById('ionizedStatus').innerHTML = 'Low';
 		document.getElementById('ionizedStatus').style.color = '#023564';
@@ -749,7 +768,7 @@ function ionizedFunc() {
 	}
 }
 
-function totalproteinFunc() {
+function totalproteinFunc(){
 	if (totalprotein.value != '' && totalprotein.value < 6) {
 		document.getElementById('totalproteinStatus').innerHTML = 'Low';
 		document.getElementById('totalproteinStatus').style.color = '#023564';
@@ -767,7 +786,7 @@ function totalproteinFunc() {
 	}
 }
 
-function albuminFunc() {
+function albuminFunc(){
 	if (albumin.value != '' && albumin.value < 3.5) {
 		document.getElementById('albuminStatus').innerHTML = 'Low';
 		document.getElementById('albuminStatus').style.color = '#023564';
@@ -785,7 +804,7 @@ function albuminFunc() {
 	}
 }
 
-function globulinFunc() {
+function globulinFunc(){
 	if (globulin.value != '' && globulin.value < 2.0) {
 		document.getElementById('globulinStatus').innerHTML = 'Low';
 		document.getElementById('globulinStatus').style.color = '#023564';
@@ -809,7 +828,8 @@ function factorVIIIFunc() {
 		document.getElementById('factorVIIIStatus').innerHTML = 'Low';
 		document.getElementById('factorVIIIStatus').style.color = '#023564';
 		factorVIIIStatus.style.visibility = 'visible';
-	} else if (factorVIII.value != '' && factorVIII.value >= 50 && factorVIII.value <= 100) {
+	} else if (factorVIII.value != '' && factorVIII.value >= 50
+			&& factorVIII.value <= 100) {
 		document.getElementById('factorVIIIStatus').innerHTML = 'Normal';
 		document.getElementById('factorVIIIStatus').style.color = '#008000';
 		factorVIIIStatus.style.visibility = 'visible';
@@ -823,7 +843,7 @@ function factorVIIIFunc() {
 
 }
 
-function factorIXFuncFunc() {
+function factorIXFuncFunc(){
 	if (factorIX.value != '' && factorIX.value < 50) {
 		document.getElementById('factorIXStatus').innerHTML = 'Low';
 		document.getElementById('factorIXStatus').style.color = '#023564';
@@ -841,7 +861,7 @@ function factorIXFuncFunc() {
 	}
 }
 
-function inhibitorAssayFunc() {
+function inhibitorAssayFunc(){
 	if (inhibitorAssay.value != '' && inhibitorAssay.value < 50) {
 		document.getElementById('inhibitorAssayStatus').innerHTML = 'Low';
 		document.getElementById('inhibitorAssayStatus').style.color = '#023564';
@@ -859,7 +879,7 @@ function inhibitorAssayFunc() {
 	}
 }
 
-function bUnitsFunc() {
+function bUnitsFunc(){
 	if (bUnits.value != '' && bUnits.value < 5) {
 		document.getElementById('bUnitsStatus').innerHTML = 'Normal';
 		document.getElementById('bUnitsStatus').style.color = '#023564';
@@ -877,7 +897,7 @@ function bUnitsFunc() {
 	}
 }
 
-function naFunc() {
+function naFunc(){
 	if (na.value != '' && na.value < 135) {
 		document.getElementById('naStatus').innerHTML = 'Low';
 		document.getElementById('naStatus').style.color = '#023564';
@@ -895,7 +915,7 @@ function naFunc() {
 	}
 }
 
-function kFunc() {
+function kFunc(){
 	if (k.value != '' && k.value < 13.65) {
 		document.getElementById('kStatus').innerHTML = 'Low';
 		document.getElementById('kStatus').style.color = '#023564';
@@ -913,8 +933,8 @@ function kFunc() {
 	}
 }
 
-function bilirubinFunc() {
-	if (bilirubin.value != '' && bilirubin.value < 0.2) {
+function bilirubinFunc(){
+	if (bilirubin.value != '' && bilirubin.value < 0.2 ) {
 		document.getElementById('bilirubinStatus').innerHTML = 'Low';
 		document.getElementById('bilirubinStatus').style.color = '#023564';
 		bilirubinStatus.style.visibility = 'visible';
@@ -931,8 +951,8 @@ function bilirubinFunc() {
 	}
 }
 
-function totalFunc() {
-	if (total.value != '' && total.value < 0.2) {
+function totalFunc(){
+	if (total.value != '' && total.value < 0.2 ) {
 		document.getElementById('totalStatus').innerHTML = 'Low';
 		document.getElementById('totalStatus').style.color = '#023564';
 		totalStatus.style.visibility = 'visible';
@@ -949,8 +969,8 @@ function totalFunc() {
 	}
 }
 
-function directFunc() {
-	if (direct.value != '' && direct.value < 0) {
+function directFunc(){
+	if (direct.value != '' && direct.value < 0 ) {
 		document.getElementById('directStatus').innerHTML = 'Low';
 		document.getElementById('directStatus').style.color = '#023564';
 		directStatus.style.visibility = 'visible';
@@ -967,8 +987,8 @@ function directFunc() {
 	}
 }
 
-function indirectFunc() {
-	if (indirect.value != '' && indirect.value < 0) {
+function indirectFunc(){
+	if (indirect.value != '' && indirect.value < 0 ) {
 		document.getElementById('indirectStatus').innerHTML = 'Low';
 		document.getElementById('indirectStatus').style.color = '#023564';
 		indirectStatus.style.visibility = 'visible';
@@ -985,7 +1005,7 @@ function indirectFunc() {
 	}
 }
 
-function beta2Func() {
+function beta2Func(){
 	if (beta2.value != '' && beta2.value < 0) {
 		document.getElementById('beta2Status').innerHTML = 'Low';
 		document.getElementById('beta2Status').style.color = '#023564';
@@ -1003,7 +1023,7 @@ function beta2Func() {
 	}
 }
 
-function hepaBFunc() {
+function hepaBFunc(){
 	if (hepaB.value != '' && hepaB.value < 1) {
 		document.getElementById('hepaBStatus').innerHTML = 'Low';
 		document.getElementById('hepaBStatus').style.color = '#023564';
@@ -1026,7 +1046,8 @@ function reticulocyteCountFunc() {
 		document.getElementById('reticulocyteCountStatus').innerHTML = 'Low';
 		document.getElementById('reticulocyteCountStatus').style.color = '#023564';
 		reticulocyteCountStatus.style.visibility = 'visible';
-	} else if (reticulocyteCount.value != '' && reticulocyteCount.value >= 0.5 && reticulocyteCount.value <= 1.5) {
+	} else if (reticulocyteCount.value != '' && reticulocyteCount.value >= 0.5
+			&& reticulocyteCount.value <= 1.5) {
 		document.getElementById('reticulocyteCountStatus').innerHTML = 'Normal';
 		document.getElementById('reticulocyteCountStatus').style.color = '#008000';
 		reticulocyteCountStatus.style.visibility = 'visible';
@@ -1044,11 +1065,14 @@ function ironBindingCapacityFunc() {
 		document.getElementById('ironBindingCapacityStatus').innerHTML = 'Low';
 		document.getElementById('ironBindingCapacityStatus').style.color = '#023564';
 		ironBindingCapacityStatus.style.visibility = 'visible';
-	} else if (ironBindingCapacity.value != '' && ironBindingCapacity.value >= 240 && ironBindingCapacity.value <= 450) {
+	} else if (ironBindingCapacity.value != ''
+			&& ironBindingCapacity.value >= 240
+			&& ironBindingCapacity.value <= 450) {
 		document.getElementById('ironBindingCapacityStatus').innerHTML = 'Normal';
 		document.getElementById('ironBindingCapacityStatus').style.color = '#008000';
 		ironBindingCapacityStatus.style.visibility = 'visible';
-	} else if (ironBindingCapacity.value != '' && ironBindingCapacity.value > 450) {
+	} else if (ironBindingCapacity.value != ''
+			&& ironBindingCapacity.value > 450) {
 		document.getElementById('ironBindingCapacityStatus').innerHTML = 'High';
 		document.getElementById('ironBindingCapacityStatus').style.color = '#F00';
 		ironBindingCapacityStatus.style.visibility = 'visible';
@@ -1111,8 +1135,8 @@ function ldhFunc() {
 	}
 }
 
-function epoFunc() {
-	if (epo.value != '' && epo.value < 3.7) {
+function epoFunc(){
+	if (epo.value != '' && epo.value < 3.7 ) {
 		document.getElementById('epoStatus').innerHTML = 'Low';
 		document.getElementById('epoStatus').style.color = '#023564';
 		epoStatus.style.visibility = 'visible';
@@ -1129,8 +1153,8 @@ function epoFunc() {
 	}
 }
 
-function esrFunc() {
-	if (esr.value != '' && esr.value < 0) {
+function esrFunc(){
+	if (esr.value != '' && esr.value < 0 ) {
 		document.getElementById('esrStatus').innerHTML = 'Low';
 		document.getElementById('esrStatus').style.color = '#023564';
 		esrStatus.style.visibility = 'visible';
@@ -1152,11 +1176,14 @@ function erythropoeitinLevelFunc() {
 		document.getElementById('erythropoeitinLevelStatus').innerHTML = 'Low';
 		document.getElementById('erythropoeitinLevelStatus').style.color = '#023564';
 		erythropoeitinLevelStatus.style.visibility = 'visible';
-	} else if (erythropoeitinLevel.value != '' && erythropoeitinLevel.value >= 4.1 && erythropoeitinLevel.value <= 19.5) {
+	} else if (erythropoeitinLevel.value != ''
+			&& erythropoeitinLevel.value >= 4.1
+			&& erythropoeitinLevel.value <= 19.5) {
 		document.getElementById('erythropoeitinLevelStatus').innerHTML = 'Normal';
 		document.getElementById('erythropoeitinLevelStatus').style.color = '#008000';
 		erythropoeitinLevelStatus.style.visibility = 'visible';
-	} else if (erythropoeitinLevel.value != '' && erythropoeitinLevel.value > 19.5) {
+	} else if (erythropoeitinLevel.value != ''
+			&& erythropoeitinLevel.value > 19.5) {
 		document.getElementById('erythropoeitinLevelStatus').innerHTML = 'High';
 		document.getElementById('erythropoeitinLevelStatus').style.color = '#F00';
 		erythropoeitinLevelStatus.style.visibility = 'visible';
@@ -1170,7 +1197,8 @@ function serumFolicAcidFunc() {
 		document.getElementById('serumFolicAcidStatus').innerHTML = 'Low';
 		document.getElementById('serumFolicAcidStatus').style.color = '#023564';
 		serumFolicAcidStatus.style.visibility = 'visible';
-	} else if (serumFolicAcid.value != '' && serumFolicAcid.value >= 2 && serumFolicAcid.value <= 20) {
+	} else if (serumFolicAcid.value != '' && serumFolicAcid.value >= 2
+			&& serumFolicAcid.value <= 20) {
 		document.getElementById('serumFolicAcidStatus').innerHTML = 'Normal';
 		document.getElementById('serumFolicAcidStatus').style.color = '#008000';
 		serumFolicAcidStatus.style.visibility = 'visible';
@@ -1188,7 +1216,8 @@ function serumB12Func() {
 		document.getElementById('serumB12Status').innerHTML = 'Low';
 		document.getElementById('serumB12Status').style.color = '#023564';
 		serumB12Status.style.visibility = 'visible';
-	} else if (serumB12.value != '' && serumB12.value >= 200 && serumB12.value <= 900) {
+	} else if (serumB12.value != '' && serumB12.value >= 200
+			&& serumB12.value <= 900) {
 		document.getElementById('serumB12Status').innerHTML = 'Normal';
 		document.getElementById('serumB12Status').style.color = '#008000';
 		serumB12Status.style.visibility = 'visible';
@@ -1219,7 +1248,7 @@ function tshFunc() {
 	}
 }
 
-function anatiterFunc() {
+function anatiterFunc(){
 	if (anatiter.value != '' && anatiter.value < 40) {
 		document.getElementById('anatiterStatus').innerHTML = 'Low';
 		document.getElementById('anatiterStatus').style.color = '#023564';
@@ -1237,7 +1266,7 @@ function anatiterFunc() {
 	}
 }
 
-function hepacrnaFunc() {
+function hepacrnaFunc(){
 	if (hepacrna.value != '' && hepacrna.value < 800000) {
 		document.getElementById('hepacrnaStatus').innerHTML = 'Low';
 		document.getElementById('hepacrnaStatus').style.color = '#023564';
