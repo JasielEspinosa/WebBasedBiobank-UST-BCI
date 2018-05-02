@@ -175,7 +175,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            		autoSkip: false
 		            	}
@@ -278,7 +278,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 15,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -392,7 +392,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -606,7 +606,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false
 		            }
@@ -667,7 +667,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -740,7 +740,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -959,7 +959,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false
 		            }
@@ -1037,7 +1037,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -1123,7 +1123,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -1360,7 +1360,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false
 		            }
@@ -1469,7 +1469,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -1584,7 +1584,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -1811,7 +1811,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false
 		            }
@@ -1868,7 +1868,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -1931,7 +1931,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -2164,7 +2164,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false
 		            }
@@ -2221,7 +2221,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -2308,7 +2308,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -2523,7 +2523,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false
 		            }
@@ -2562,7 +2562,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }
@@ -2601,7 +2601,7 @@ $( document ).ready(function() {
 		            xAxes: [{
 		            	barThickness : 20,
 	                    barPercentage: 1.0,
-	                    categoryPercentage: 1.0,
+	                    categoryPercentage: 0.0,
 		            	ticks: {
 		            	autoSkip: false,
 		            }

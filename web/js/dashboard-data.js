@@ -25,42 +25,42 @@ $('#leukemiaImg').click(function() {
 		leukemiaChartGender.update()
 
 		leukemiaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
-		leukemiaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
-		leukemiaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		leukemiaChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		leukemiaChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.others
+		leukemiaChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
+		leukemiaChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		leukemiaChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.watchAndWait
+		leukemiaChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.others
 
 		leukemiaChartModeOfTreatment.update()
 
 		leukemiaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
-		leukemiaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
-		leukemiaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.nCR
-		leukemiaChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.pr
-		leukemiaChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pd
-		leukemiaChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.sd
-		leukemiaChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.completeHematologicResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.completeCytogeneticResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.majorMolecularResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.spleenResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.symptomResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.others
+		leukemiaChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.cr
+		leukemiaChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.nCR
+		leukemiaChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.pr
+		leukemiaChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.pd
+		leukemiaChartBaselineDiseaseStatus.data.datasets[5].data[5] = response.chartStatusBaseline.sd
+		leukemiaChartBaselineDiseaseStatus.data.datasets[6].data[6] = response.chartStatusBaseline.completeHematologicResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[7].data[7] = response.chartStatusBaseline.completeCytogeneticResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[8].data[8] = response.chartStatusBaseline.majorMolecularResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[9].data[9] = response.chartStatusBaseline.spleenResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[10].data[10] = response.chartStatusBaseline.symptomResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[11].data[11] = response.chartStatusBaseline.others
 
 		leukemiaChartBaselineDiseaseStatus.update()
 
 		leukemiaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.relapsed
-		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.refractoryDisease
-		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.cr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nCR
-		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.pr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.completeHematologicResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.completeCytogeneticResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.majorMolecularResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.spleenResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.symptomResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusFollowup.dead
-		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusFollowup.others
+		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.refractoryDisease
+		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.cr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.nCR
+		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.pr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.pd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.sd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.completeHematologicResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.completeCytogeneticResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[9] = response.chartStatusFollowup.majorMolecularResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[10] = response.chartStatusFollowup.spleenResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[11] = response.chartStatusFollowup.symptomResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[12] = response.chartStatusFollowup.dead
+		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[13] = response.chartStatusFollowup.others
 
 		leukemiaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -83,26 +83,26 @@ $('#lymphomaImg').click(function() {
 		lymphomaChartGender.update()
 
 		lymphomaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
-		lymphomaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
-		lymphomaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		lymphomaChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
+		lymphomaChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
 
 		lymphomaChartModeOfTreatment.update()
 
 		lymphomaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
-		lymphomaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
-		lymphomaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pr
-		lymphomaChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
-		lymphomaChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pd
+		lymphomaChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.cr
+		lymphomaChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.pr
+		lymphomaChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.sd
+		lymphomaChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.pd
 
 		lymphomaChartBaselineDiseaseStatus.update()
 
 		lymphomaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.sd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.pd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.rr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.dead
-		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.others
+		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.pr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.sd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.pd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.rr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.dead
+		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.others
 
 		lymphomaChartFollowupDiseaseStatus.update()
 	});
@@ -124,32 +124,32 @@ $('#myeloproliferativeImg').click(function() {
 		myeloChartGender.update()
 
 		myeloChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
-		myeloChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		myeloChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		myeloChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.others
+		myeloChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		myeloChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.watchAndWait
+		myeloChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.others
 
 		myeloChartModeOfTreatment.update()
 
 		myeloChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		myeloChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
-		myeloChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pd
-		myeloChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
-		myeloChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.hematologicResponse
-		myeloChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.spleenResponse
-		myeloChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.symptomResponse
-		myeloChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.others
+		myeloChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.pr
+		myeloChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.pd
+		myeloChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.sd
+		myeloChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.hematologicResponse
+		myeloChartBaselineDiseaseStatus.data.datasets[5].data[5] = response.chartStatusBaseline.spleenResponse
+		myeloChartBaselineDiseaseStatus.data.datasets[6].data[6] = response.chartStatusBaseline.symptomResponse
+		myeloChartBaselineDiseaseStatus.data.datasets[7].data[7] = response.chartStatusBaseline.others
 
 		myeloChartBaselineDiseaseStatus.update()
 
 		myeloChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		myeloChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
-		myeloChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.pd
-		myeloChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.sd
-		myeloChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.hematologicResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.spleenResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.symptomResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
-		myeloChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+		myeloChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.pr
+		myeloChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.pd
+		myeloChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.sd
+		myeloChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.hematologicResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.spleenResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.symptomResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.dead
+		myeloChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.others
 
 		myeloChartFollowupDiseaseStatus.update()
 	});
@@ -171,45 +171,45 @@ $('#plasmaCellImg').click(function() {
 		plasmaCellChartGender.update()
 
 		plasmaCellChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicForTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicForNonTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.maintenance
-		plasmaCellChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.radiotherapy
-		plasmaCellChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.supportive
-		plasmaCellChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		plasmaCellChartModeOfTreatment.data.datasets[6].data[0] = response.chartModeOfTreatmentBean.others
+		plasmaCellChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologicForNonTransplantCandidate
+		plasmaCellChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.maintenance
+		plasmaCellChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.radiotherapy
+		plasmaCellChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.supportive
+		plasmaCellChartModeOfTreatment.data.datasets[5].data[5] = response.chartModeOfTreatmentBean.watchAndWait
+		plasmaCellChartModeOfTreatment.data.datasets[6].data[6] = response.chartModeOfTreatmentBean.others
 
 		plasmaCellChartModeOfTreatment.update()
 
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.immunophenotypicCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.molecularCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.vgpr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.pr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.mr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.sd
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.pd
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.relapsed
-		//plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
-		//plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.others
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.sCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.immunophenotypicCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.molecularCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.vgpr
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[5].data[5] = response.chartStatusBaseline.pr
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[6].data[6] = response.chartStatusBaseline.mr
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[7].data[7] = response.chartStatusBaseline.sd
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[8].data[8] = response.chartStatusBaseline.pd
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[9].data[9] = response.chartStatusBaseline.relapsed
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[10] = response.chartStatusBaseline.clinicalRelapse
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[11] = response.chartStatusBaseline.relapseFromCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[10] = response.chartStatusBaseline.others
 
 		plasmaCellChartBaselineDiseaseStatus.update()
 
 		plasmaCellChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.immunophenotypicCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.molecularCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.vgpr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.mr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.sd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.pd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.relapsed
-		//plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.clinicalRelapse
-		//plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.relapseFromCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.dead
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.others
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.sCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.immunophenotypicCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.molecularCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.vgpr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.pr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.mr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.sd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.pd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[9] = response.chartStatusFollowup.relapsed
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[10] = response.chartStatusFollowup.clinicalRelapse
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[11] = response.chartStatusFollowup.relapseFromCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[10] = response.chartStatusFollowup.dead
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[11] = response.chartStatusFollowup.others
 
 		plasmaCellChartFollowupDiseaseStatus.update()
 	});
@@ -231,25 +231,25 @@ $('#aapnhmdsImg').click(function() {
 		aapnhmdsChartGender.update()
 
 		aapnhmdsChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.hematopoieticStemCellTransplantation
-		aapnhmdsChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
-		aapnhmdsChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportive
-		aapnhmdsChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
-		aapnhmdsChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		aapnhmdsChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologicTreatment
+		aapnhmdsChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportive
+		aapnhmdsChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		aapnhmdsChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.watchAndWait
 
 		aapnhmdsChartModeOfTreatment.update()
 
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.hematologicResponse
-		aapnhmdsChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sd
-		aapnhmdsChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.relapsed
-		aapnhmdsChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.others
+		aapnhmdsChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.sd
+		aapnhmdsChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.relapsed
+		aapnhmdsChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.others
 
 		aapnhmdsChartBaselineDiseaseStatus.update()
 
 		aapnhmdsChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.hematologicResponse
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sd
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.relapsed
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.dead
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.others
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.sd
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.relapsed
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.dead
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.others
 
 		aapnhmdsChartFollowupDiseaseStatus.update()
 	});
@@ -271,30 +271,30 @@ $('#plateletDisorderImg').click(function() {
 		plateletChartGender.update()
 
 		plateletChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
-		plateletChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLine
-		plateletChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportive
-		plateletChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
-		plateletChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		plateletChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.others
+		plateletChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologic2ndLine
+		plateletChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportive
+		plateletChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		plateletChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.watchAndWait
+		plateletChartModeOfTreatment.data.datasets[5].data[5] = response.chartModeOfTreatmentBean.others
 
 		plateletChartModeOfTreatment.update()
 
 		plateletChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosedITP
-		plateletChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.persistentITP
-		plateletChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.chronicITP
-		plateletChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.severeITP
+		plateletChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.persistentITP
+		plateletChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.chronicITP
+		plateletChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.severeITP
 
 		plateletChartBaselineDiseaseStatus.update()
 
 		plateletChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		plateletChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.remission
-		plateletChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.timeToResponse
-		plateletChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nr
-		plateletChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.lossofCR
-		plateletChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.refractoryITP
-		plateletChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
-		plateletChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
-		plateletChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+		plateletChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.remission
+		plateletChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.timeToResponse
+		plateletChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.nr
+		plateletChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.lossofCR
+		plateletChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.refractoryITP
+		plateletChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.sd
+		plateletChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.dead
+		plateletChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.others
 
 		plateletChartFollowupDiseaseStatus.update()
 	});
@@ -316,8 +316,8 @@ $('#coagulationDiseaseImg').click(function() {
 		coagulationChartGender.update()
 
 		coagulationChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.factorConcentrates
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.bloodComponent
-		coagulationChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.others
+		coagulationChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.bloodComponent
+		coagulationChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.others
 
 		coagulationChartModeOfTreatment.update()
 
@@ -428,10 +428,10 @@ $("#modeOfTreatmentStatisticsFromLeukemia").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
-		leukemiaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
-		leukemiaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		leukemiaChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		leukemiaChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.others
+		leukemiaChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
+		leukemiaChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		leukemiaChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.watchAndWait
+		leukemiaChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.others
 
 		leukemiaChartModeOfTreatment.update()
 	}).fail(function() {
@@ -446,10 +446,10 @@ $("#modeOfTreatmentStatisticsToLeukemia").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
-		leukemiaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
-		leukemiaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		leukemiaChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		leukemiaChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.others
+		leukemiaChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
+		leukemiaChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		leukemiaChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.watchAndWait
+		leukemiaChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.others
 
 		leukemiaChartModeOfTreatment.update()
 	}).fail(function() {
@@ -466,17 +466,17 @@ $("#baselineStatisticsFromLeukemia").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
-		leukemiaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
-		leukemiaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.nCR
-		leukemiaChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.pr
-		leukemiaChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pd
-		leukemiaChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.sd
-		leukemiaChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.completeHematologicResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.completeCytogeneticResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.majorMolecularResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.spleenResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.symptomResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.others
+		leukemiaChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.cr
+		leukemiaChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.nCR
+		leukemiaChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.pr
+		leukemiaChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.pd
+		leukemiaChartBaselineDiseaseStatus.data.datasets[5].data[5] = response.chartStatusBaseline.sd
+		leukemiaChartBaselineDiseaseStatus.data.datasets[6].data[6] = response.chartStatusBaseline.completeHematologicResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[7].data[7] = response.chartStatusBaseline.completeCytogeneticResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[8].data[8] = response.chartStatusBaseline.majorMolecularResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[9].data[9] = response.chartStatusBaseline.spleenResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[10].data[10] = response.chartStatusBaseline.symptomResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[11].data[11] = response.chartStatusBaseline.others
 
 		leukemiaChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -491,17 +491,17 @@ $("#baselineStatisticsToLeukemia").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
-		leukemiaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
-		leukemiaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.nCR
-		leukemiaChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.pr
-		leukemiaChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pd
-		leukemiaChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.sd
-		leukemiaChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.completeHematologicResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.completeCytogeneticResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.majorMolecularResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.spleenResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.symptomResponse
-		leukemiaChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.others
+		leukemiaChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.cr
+		leukemiaChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.nCR
+		leukemiaChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.pr
+		leukemiaChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.pd
+		leukemiaChartBaselineDiseaseStatus.data.datasets[5].data[5] = response.chartStatusBaseline.sd
+		leukemiaChartBaselineDiseaseStatus.data.datasets[6].data[6] = response.chartStatusBaseline.completeHematologicResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[7].data[7] = response.chartStatusBaseline.completeCytogeneticResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[8].data[8] = response.chartStatusBaseline.majorMolecularResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[9].data[9] = response.chartStatusBaseline.spleenResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[10].data[10] = response.chartStatusBaseline.symptomResponse
+		leukemiaChartBaselineDiseaseStatus.data.datasets[11].data[11] = response.chartStatusBaseline.others
 
 		leukemiaChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -518,19 +518,19 @@ $("#followupStatisticsFromLeukemia").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.relapsed
-		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.refractoryDisease
-		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.cr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nCR
-		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.pr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.completeHematologicResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.completeCytogeneticResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.majorMolecularResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.spleenResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.symptomResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusFollowup.dead
-		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusFollowup.others
+		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.refractoryDisease
+		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.cr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.nCR
+		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.pr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.pd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.sd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.completeHematologicResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.completeCytogeneticResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[9] = response.chartStatusFollowup.majorMolecularResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[10] = response.chartStatusFollowup.spleenResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[11] = response.chartStatusFollowup.symptomResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[12] = response.chartStatusFollowup.dead
+		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[13] = response.chartStatusFollowup.others
 
 		leukemiaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -546,19 +546,19 @@ $("#followupStatisticsToLeukemia").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		leukemiaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.relapsed
-		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.refractoryDisease
-		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.cr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nCR
-		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.pr
-		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
-		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.completeHematologicResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.completeCytogeneticResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.majorMolecularResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.spleenResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.symptomResponse
-		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[0] = response.chartStatusFollowup.dead
-		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[0] = response.chartStatusFollowup.others
+		leukemiaChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.refractoryDisease
+		leukemiaChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.cr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.nCR
+		leukemiaChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.pr
+		leukemiaChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.pd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.sd
+		leukemiaChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.completeHematologicResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.completeCytogeneticResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[9].data[9] = response.chartStatusFollowup.majorMolecularResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[10].data[10] = response.chartStatusFollowup.spleenResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[11].data[11] = response.chartStatusFollowup.symptomResponse
+		leukemiaChartFollowupDiseaseStatus.data.datasets[12].data[12] = response.chartStatusFollowup.dead
+		leukemiaChartFollowupDiseaseStatus.data.datasets[13].data[13] = response.chartStatusFollowup.others
 
 		leukemiaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -641,8 +641,8 @@ $("#modeOfTreatmentStatisticsFromLymphoma").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
-		lymphomaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
-		lymphomaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		lymphomaChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
+		lymphomaChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
 
 		lymphomaChartModeOfTreatment.update()
 	}).fail(function() {
@@ -657,8 +657,8 @@ $("#modeOfTreatmentStatisticsToLymphoma").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
-		lymphomaChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
-		lymphomaChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		lymphomaChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologic2ndLineSalvage
+		lymphomaChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
 
 		lymphomaChartModeOfTreatment.update()
 	}).fail(function() {
@@ -675,10 +675,10 @@ $("#baselineStatisticsFromLymphoma").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
-		lymphomaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
-		lymphomaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pr
-		lymphomaChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
-		lymphomaChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pd
+		lymphomaChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.cr
+		lymphomaChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.pr
+		lymphomaChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.sd
+		lymphomaChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.pd
 
 		lymphomaChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -693,10 +693,10 @@ $("#baselineStatisticsToLymphoma").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosed
-		lymphomaChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.cr
-		lymphomaChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pr
-		lymphomaChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
-		lymphomaChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.pd
+		lymphomaChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.cr
+		lymphomaChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.pr
+		lymphomaChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.sd
+		lymphomaChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.pd
 
 		lymphomaChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -713,12 +713,12 @@ $("#followupStatisticsFromLymphoma").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.sd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.pd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.rr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.dead
-		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.others
+		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.pr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.sd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.pd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.rr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.dead
+		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.others
 
 		lymphomaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -734,12 +734,12 @@ $("#followupStatisticsToLymphoma").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		lymphomaChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.sd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.pd
-		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.rr
-		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.dead
-		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.others
+		lymphomaChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.pr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.sd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.pd
+		lymphomaChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.rr
+		lymphomaChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.dead
+		lymphomaChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.others
 
 		lymphomaChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -824,9 +824,9 @@ $("#modeOfTreatmentStatisticsFromMyeloproliferative").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
-		myeloChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		myeloChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		myeloChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.others
+		myeloChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		myeloChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.watchAndWait
+		myeloChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.others
 
 		myeloChartModeOfTreatment.update()
 	}).fail(function() {
@@ -841,9 +841,9 @@ $("#modeOfTreatmentStatisticsToMyeloproliferative").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
-		myeloChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		myeloChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		myeloChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.others
+		myeloChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		myeloChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.watchAndWait
+		myeloChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.others
 
 		myeloChartModeOfTreatment.update()
 	}).fail(function() {
@@ -860,13 +860,13 @@ $("#baselineStatisticsFromMyeloproliferative").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		myeloChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
-		myeloChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pd
-		myeloChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
-		myeloChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.hematologicResponse
-		myeloChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.spleenResponse
-		myeloChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.symptomResponse
-		myeloChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.others
+		myeloChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.pr
+		myeloChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.pd
+		myeloChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.sd
+		myeloChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.hematologicResponse
+		myeloChartBaselineDiseaseStatus.data.datasets[5].data[5] = response.chartStatusBaseline.spleenResponse
+		myeloChartBaselineDiseaseStatus.data.datasets[6].data[6] = response.chartStatusBaseline.symptomResponse
+		myeloChartBaselineDiseaseStatus.data.datasets[7].data[7] = response.chartStatusBaseline.others
 
 		myeloChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -881,13 +881,13 @@ $("#baselineStatisticsToMyeloproliferative").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		myeloChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.pr
-		myeloChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.pd
-		myeloChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.sd
-		myeloChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.hematologicResponse
-		myeloChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.spleenResponse
-		myeloChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.symptomResponse
-		myeloChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.others
+		myeloChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.pr
+		myeloChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.pd
+		myeloChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.sd
+		myeloChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.hematologicResponse
+		myeloChartBaselineDiseaseStatus.data.datasets[5].data[5] = response.chartStatusBaseline.spleenResponse
+		myeloChartBaselineDiseaseStatus.data.datasets[6].data[6] = response.chartStatusBaseline.symptomResponse
+		myeloChartBaselineDiseaseStatus.data.datasets[7].data[7] = response.chartStatusBaseline.others
 
 		myeloChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -904,14 +904,14 @@ $("#followupStatisticsFromMyeloproliferative").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		myeloChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
-		myeloChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.pd
-		myeloChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.sd
-		myeloChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.hematologicResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.spleenResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.symptomResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
-		myeloChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+		myeloChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.pr
+		myeloChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.pd
+		myeloChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.sd
+		myeloChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.hematologicResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.spleenResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.symptomResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.dead
+		myeloChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.others
 
 		myeloChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -927,14 +927,14 @@ $("#followupStatisticsToMyeloproliferative").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		myeloChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		myeloChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.pr
-		myeloChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.pd
-		myeloChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.sd
-		myeloChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.hematologicResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.spleenResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.symptomResponse
-		myeloChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
-		myeloChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+		myeloChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.pr
+		myeloChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.pd
+		myeloChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.sd
+		myeloChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.hematologicResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.spleenResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.symptomResponse
+		myeloChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.dead
+		myeloChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.others
 
 		myeloChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -1018,12 +1018,12 @@ $("#modeOfTreatmentStatisticsFromPlasmacell").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicForTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicForNonTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.maintenance
-		plasmaCellChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.radiotherapy
-		plasmaCellChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.supportive
-		plasmaCellChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		plasmaCellChartModeOfTreatment.data.datasets[6].data[0] = response.chartModeOfTreatmentBean.others
+		plasmaCellChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologicForNonTransplantCandidate
+		plasmaCellChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.maintenance
+		plasmaCellChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.radiotherapy
+		plasmaCellChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.supportive
+		plasmaCellChartModeOfTreatment.data.datasets[5].data[5] = response.chartModeOfTreatmentBean.watchAndWait
+		plasmaCellChartModeOfTreatment.data.datasets[6].data[6] = response.chartModeOfTreatmentBean.others
 
 		plasmaCellChartModeOfTreatment.update()
 	}).fail(function() {
@@ -1038,12 +1038,12 @@ $("#modeOfTreatmentStatisticsToPlasmacell").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologicForTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicForNonTransplantCandidate
-		plasmaCellChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.maintenance
-		plasmaCellChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.radiotherapy
-		plasmaCellChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.supportive
-		plasmaCellChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		plasmaCellChartModeOfTreatment.data.datasets[6].data[0] = response.chartModeOfTreatmentBean.others
+		plasmaCellChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologicForNonTransplantCandidate
+		plasmaCellChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.maintenance
+		plasmaCellChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.radiotherapy
+		plasmaCellChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.supportive
+		plasmaCellChartModeOfTreatment.data.datasets[5].data[5] = response.chartModeOfTreatmentBean.watchAndWait
+		plasmaCellChartModeOfTreatment.data.datasets[6].data[6] = response.chartModeOfTreatmentBean.others
 
 		plasmaCellChartModeOfTreatment.update()
 	}).fail(function() {
@@ -1060,18 +1060,18 @@ $("#baselineStatisticsFromPlasmacell").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.immunophenotypicCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.molecularCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.vgpr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.pr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.mr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.sd
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.pd
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.relapsed
-		//plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
-		//plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.others
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.sCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.immunophenotypicCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.molecularCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.vgpr
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[5].data[5] = response.chartStatusBaseline.pr
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[6].data[6] = response.chartStatusBaseline.mr
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[7].data[7] = response.chartStatusBaseline.sd
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[8].data[8] = response.chartStatusBaseline.pd
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[9].data[9] = response.chartStatusBaseline.relapsed
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[10] = response.chartStatusBaseline.clinicalRelapse
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[11] = response.chartStatusBaseline.relapseFromCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[10] = response.chartStatusBaseline.others
 
 		plasmaCellChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -1086,18 +1086,18 @@ $("#baselineStatisticsToPlasmacell").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.cr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.immunophenotypicCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.molecularCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[4].data[0] = response.chartStatusBaseline.vgpr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[5].data[0] = response.chartStatusBaseline.pr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[6].data[0] = response.chartStatusBaseline.mr
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[7].data[0] = response.chartStatusBaseline.sd
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[8].data[0] = response.chartStatusBaseline.pd
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[9].data[0] = response.chartStatusBaseline.relapsed
-		//plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.clinicalRelapse
-		//plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[0] = response.chartStatusBaseline.relapseFromCR
-		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[0] = response.chartStatusBaseline.others
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.sCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.immunophenotypicCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.molecularCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[4].data[4] = response.chartStatusBaseline.vgpr
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[5].data[5] = response.chartStatusBaseline.pr
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[6].data[6] = response.chartStatusBaseline.mr
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[7].data[7] = response.chartStatusBaseline.sd
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[8].data[8] = response.chartStatusBaseline.pd
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[9].data[9] = response.chartStatusBaseline.relapsed
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[10] = response.chartStatusBaseline.clinicalRelapse
+		//plasmaCellChartBaselineDiseaseStatus.data.datasets[11].data[11] = response.chartStatusBaseline.relapseFromCR
+		plasmaCellChartBaselineDiseaseStatus.data.datasets[10].data[10] = response.chartStatusBaseline.others
 
 		plasmaCellChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -1114,19 +1114,19 @@ $("#followupStatisticsFromPlasmacell").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.immunophenotypicCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.molecularCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.vgpr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.mr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.sd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.pd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.relapsed
-		//plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.clinicalRelapse
-		//plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.relapseFromCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.others
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.dead
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.sCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.immunophenotypicCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.molecularCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.vgpr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.pr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.mr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.sd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.pd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[9] = response.chartStatusFollowup.relapsed
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[10] = response.chartStatusFollowup.clinicalRelapse
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[11] = response.chartStatusFollowup.relapseFromCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[10] = response.chartStatusFollowup.others
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[11] = response.chartStatusFollowup.dead
 
 		plasmaCellChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -1142,19 +1142,19 @@ $("#followupStatisticsToPlasmacell").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plasmaCellChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.immunophenotypicCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.molecularCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.vgpr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.pr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.mr
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.sd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.pd
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[0] = response.chartStatusFollowup.relapsed
-		//plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.clinicalRelapse
-		//plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.relapseFromCR
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[0] = response.chartStatusFollowup.others
-		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[0] = response.chartStatusFollowup.dead
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.sCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.immunophenotypicCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.molecularCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.vgpr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.pr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.mr
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.sd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.pd
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[9].data[9] = response.chartStatusFollowup.relapsed
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[10] = response.chartStatusFollowup.clinicalRelapse
+		//plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[11] = response.chartStatusFollowup.relapseFromCR
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[10].data[10] = response.chartStatusFollowup.others
+		plasmaCellChartFollowupDiseaseStatus.data.datasets[11].data[11] = response.chartStatusFollowup.dead
 
 		plasmaCellChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -1239,10 +1239,10 @@ $("#modeOfTreatmentStatisticsFromAAPNHMDS").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.hematopoieticStemCellTransplantation
-		aapnhmdsChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
-		aapnhmdsChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportive
-		aapnhmdsChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
-		aapnhmdsChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		aapnhmdsChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologicTreatment
+		aapnhmdsChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportive
+		aapnhmdsChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		aapnhmdsChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.watchAndWait
 
 		aapnhmdsChartModeOfTreatment.update()
 	}).fail(function() {
@@ -1257,10 +1257,10 @@ $("#modeOfTreatmentStatisticsToAAPNHMDS").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.hematopoieticStemCellTransplantation
-		aapnhmdsChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologicTreatment
-		aapnhmdsChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportive
-		aapnhmdsChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
-		aapnhmdsChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
+		aapnhmdsChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologicTreatment
+		aapnhmdsChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportive
+		aapnhmdsChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		aapnhmdsChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.watchAndWait
 
 		aapnhmdsChartModeOfTreatment.update()
 	}).fail(function() {
@@ -1277,9 +1277,9 @@ $("#baselineStatisticsFromAAPNHMDS").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.hematologicResponse
-		aapnhmdsChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sd
-		aapnhmdsChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.relapsed
-		aapnhmdsChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.others
+		aapnhmdsChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.sd
+		aapnhmdsChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.relapsed
+		aapnhmdsChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.others
 
 		aapnhmdsChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -1294,9 +1294,9 @@ $("#baselineStatisticsToAAPNHMDS").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.hematologicResponse
-		aapnhmdsChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.sd
-		aapnhmdsChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.relapsed
-		aapnhmdsChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.others
+		aapnhmdsChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.sd
+		aapnhmdsChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.relapsed
+		aapnhmdsChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.others
 
 		aapnhmdsChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -1313,10 +1313,10 @@ $("#followupStatisticsFromAAPNHMDS").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.hematologicResponse
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sd
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.relapsed
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.dead
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.others
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.sd
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.relapsed
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.dead
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.others
 
 		aapnhmdsChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -1332,10 +1332,10 @@ $("#followupStatisticsToAAPNHMDS").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		aapnhmdsChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.hematologicResponse
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.sd
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.relapsed
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.dead
-		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.others
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.sd
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.relapsed
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.dead
+		aapnhmdsChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.others
 
 		aapnhmdsChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -1419,11 +1419,11 @@ $("#modeOfTreatmentStatisticsFromPlateletDisorder").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
-		plateletChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLine
-		plateletChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		plateletChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
-		plateletChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		plateletChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.others
+		plateletChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologic2ndLine
+		plateletChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		plateletChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		plateletChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.watchAndWait
+		plateletChartModeOfTreatment.data.datasets[5].data[5] = response.chartModeOfTreatmentBean.others
 
 		plateletChartModeOfTreatment.update()
 	}).fail(function() {
@@ -1438,11 +1438,11 @@ $("#modeOfTreatmentStatisticsToPlateletDisorder").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.pharmacologic1stLine
-		plateletChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.pharmacologic2ndLine
-		plateletChartModeOfTreatment.data.datasets[2].data[0] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
-		plateletChartModeOfTreatment.data.datasets[3].data[0] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
-		plateletChartModeOfTreatment.data.datasets[4].data[0] = response.chartModeOfTreatmentBean.watchAndWait
-		plateletChartModeOfTreatment.data.datasets[5].data[0] = response.chartModeOfTreatmentBean.others
+		plateletChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.pharmacologic2ndLine
+		plateletChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.supportivePalliativeOnly
+		plateletChartModeOfTreatment.data.datasets[3].data[3] = response.chartModeOfTreatmentBean.bothPharmacologicAndSupportive
+		plateletChartModeOfTreatment.data.datasets[4].data[4] = response.chartModeOfTreatmentBean.watchAndWait
+		plateletChartModeOfTreatment.data.datasets[5].data[5] = response.chartModeOfTreatmentBean.others
 
 		plateletChartModeOfTreatment.update()
 	}).fail(function() {
@@ -1459,9 +1459,9 @@ $("#baselineStatisticsFromPlateletDisorder").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosedITP
-		plateletChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.persistentITP
-		plateletChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.chronicITP
-		plateletChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.severeITP
+		plateletChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.persistentITP
+		plateletChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.chronicITP
+		plateletChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.severeITP
 
 		plateletChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -1476,9 +1476,9 @@ $("#baselineStatisticsToPlateletDisorder").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartBaselineDiseaseStatus.data.datasets[0].data[0] = response.chartStatusBaseline.newlyDiagnosedITP
-		plateletChartBaselineDiseaseStatus.data.datasets[1].data[0] = response.chartStatusBaseline.persistentITP
-		plateletChartBaselineDiseaseStatus.data.datasets[2].data[0] = response.chartStatusBaseline.chronicITP
-		plateletChartBaselineDiseaseStatus.data.datasets[3].data[0] = response.chartStatusBaseline.severeITP
+		plateletChartBaselineDiseaseStatus.data.datasets[1].data[1] = response.chartStatusBaseline.persistentITP
+		plateletChartBaselineDiseaseStatus.data.datasets[2].data[2] = response.chartStatusBaseline.chronicITP
+		plateletChartBaselineDiseaseStatus.data.datasets[3].data[3] = response.chartStatusBaseline.severeITP
 
 		plateletChartBaselineDiseaseStatus.update()
 	}).fail(function() {
@@ -1495,14 +1495,14 @@ $("#followupStatisticsFromPlateletDisorder").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		plateletChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.remission
-		plateletChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.timeToResponse
-		plateletChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nr
-		plateletChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.lossofCR
-		plateletChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.refractoryITP
-		plateletChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
-		plateletChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
-		plateletChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+		plateletChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.remission
+		plateletChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.timeToResponse
+		plateletChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.nr
+		plateletChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.lossofCR
+		plateletChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.refractoryITP
+		plateletChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.sd
+		plateletChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.dead
+		plateletChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.others
 
 		plateletChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -1518,14 +1518,14 @@ $("#followupStatisticsToPlateletDisorder").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		plateletChartFollowupDiseaseStatus.data.datasets[0].data[0] = response.chartStatusFollowup.cr
-		plateletChartFollowupDiseaseStatus.data.datasets[1].data[0] = response.chartStatusFollowup.remission
-		plateletChartFollowupDiseaseStatus.data.datasets[2].data[0] = response.chartStatusFollowup.timeToResponse
-		plateletChartFollowupDiseaseStatus.data.datasets[3].data[0] = response.chartStatusFollowup.nr
-		plateletChartFollowupDiseaseStatus.data.datasets[4].data[0] = response.chartStatusFollowup.lossofCR
-		plateletChartFollowupDiseaseStatus.data.datasets[5].data[0] = response.chartStatusFollowup.refractoryITP
-		plateletChartFollowupDiseaseStatus.data.datasets[6].data[0] = response.chartStatusFollowup.sd
-		plateletChartFollowupDiseaseStatus.data.datasets[7].data[0] = response.chartStatusFollowup.dead
-		plateletChartFollowupDiseaseStatus.data.datasets[8].data[0] = response.chartStatusFollowup.others
+		plateletChartFollowupDiseaseStatus.data.datasets[1].data[1] = response.chartStatusFollowup.remission
+		plateletChartFollowupDiseaseStatus.data.datasets[2].data[2] = response.chartStatusFollowup.timeToResponse
+		plateletChartFollowupDiseaseStatus.data.datasets[3].data[3] = response.chartStatusFollowup.nr
+		plateletChartFollowupDiseaseStatus.data.datasets[4].data[4] = response.chartStatusFollowup.lossofCR
+		plateletChartFollowupDiseaseStatus.data.datasets[5].data[5] = response.chartStatusFollowup.refractoryITP
+		plateletChartFollowupDiseaseStatus.data.datasets[6].data[6] = response.chartStatusFollowup.sd
+		plateletChartFollowupDiseaseStatus.data.datasets[7].data[7] = response.chartStatusFollowup.dead
+		plateletChartFollowupDiseaseStatus.data.datasets[8].data[8] = response.chartStatusFollowup.others
 
 		plateletChartFollowupDiseaseStatus.update()
 	}).fail(function() {
@@ -1609,8 +1609,8 @@ $("#modeOfTreatmentStatisticsFromCoagulation").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		coagulationChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.factorConcentrates
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.bloodComponent
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.others
+		coagulationChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.bloodComponent
+		coagulationChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.others
 
 		coagulationChartModeOfTreatment.update()
 	}).fail(function() {
@@ -1625,8 +1625,8 @@ $("#modeOfTreatmentStatisticsToCoagulation").on('input', function() {
 
 	$.post('DashboardDataServlet', $.param(params), function(response) {
 		coagulationChartModeOfTreatment.data.datasets[0].data[0] = response.chartModeOfTreatmentBean.factorConcentrates
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.bloodComponent
-		coagulationChartModeOfTreatment.data.datasets[1].data[0] = response.chartModeOfTreatmentBean.others
+		coagulationChartModeOfTreatment.data.datasets[1].data[1] = response.chartModeOfTreatmentBean.bloodComponent
+		coagulationChartModeOfTreatment.data.datasets[2].data[2] = response.chartModeOfTreatmentBean.others
 
 		coagulationChartModeOfTreatment.update()
 	}).fail(function() {
