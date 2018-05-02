@@ -60,7 +60,6 @@ $('document').ready(function() {
 		loadPatientData(localStorage.getItem("id1"));
 		localStorage.setItem("fromFollowUp1", "");
 	}
-
 });
 
 // load patient data
@@ -300,6 +299,32 @@ function loadPatientData(id) {
 		}
 
 		bindEvents();
+		
+		//checking
+		
+		//different values func
+		genderCheck()
+
+		//same values func
+		whiteBloodCellsFunc()
+		neutrophilsFunc()
+		lymphocytesFunc()
+		monocytesFunc()
+		eosinophilsFunc()
+		basophilsFunc()
+		myelocytesFunc()
+		metamyelocytesFunc()
+		blastsFunc()
+		plateletCountFunc()
+		reticulocyteCountFunc()
+		ironBindingCapacityFunc()
+		sgotFunc()
+		sgptFunc()
+		ldhFunc()
+		erythropoeitinLevelFunc()
+		serumFolicAcidFunc()
+		tshFunc()
+		serumB12Func()
 
 	})
 };
@@ -397,3 +422,15 @@ function cancelEdit() {
 	$("#submitCancel").hide();
 };
 
+$("input[name=gender]:radio").on('click', function() {
+	genderCheck();
+});
+
+function genderCheck(){
+	hemoglobinFunc()
+	hematocritFunc()
+	creatinineFunc()
+	uricAcidFunc()
+	serumIronFunc()
+	serumFerritinFunc()
+};
