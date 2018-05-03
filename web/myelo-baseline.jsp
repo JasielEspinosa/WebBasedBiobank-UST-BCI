@@ -1330,6 +1330,7 @@
    <!-- End of Main Container -->
    <script src="js/JsBarcode.barcodePrint.js"></script>
    <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+   <script src="js/normalrange.js"></script>
    <script src="js/disease.myelo-baseline.js"></script>
    <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>

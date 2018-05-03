@@ -32,6 +32,7 @@ $('document').ready(function() {
 	});
 	$("#followUpBtn").click(function() {
 		if (upperActionState == true) {
+			localStorage.setItem("gender", checkGenderVal());
 			windows.location = ("lymphoma-followup.jsp").redirect();
 		}
 	});
@@ -302,6 +303,33 @@ function loadPatientData(id) {
 		$("[name='diseaseStatus']").val(response["diseaseStatus"])
 
 		bindEvents();
+		
+		localStorage.setItem("gender", "");
+		genderCheck()
+		
+		whiteBloodCellsFunc()
+		neutrophilsFunc()
+		lymphocytesFunc()
+		monocytesFunc()
+		eosinophilsFunc()
+		basophilsFunc()
+		myelocytesFunc()
+		metamyelocytesFunc()
+		blastsFunc()
+		plateletCountFunc()
+		naFunc()
+		kFunc()
+		sgotFunc()
+		sgptFunc()
+		ldhFunc()
+		bilirubinFunc()
+		totalFunc()
+		directFunc()
+		kFunc()
+		indirectFunc()
+		beta2Func()
+		hepaBFunc()
+		esrFunc()
 
 	})
 };
@@ -398,3 +426,15 @@ function cancelEdit() {
 	$("#submitQuery").hide();
 	$("#submitCancel").hide();
 };
+
+$("input[name=gender]:radio").on('click', function() {
+	genderCheck();
+});
+
+function genderCheck(){
+	hemoglobinFunc()
+	hematocritFunc()
+	creatinineFunc()
+	uricAcidFunc()
+};
+

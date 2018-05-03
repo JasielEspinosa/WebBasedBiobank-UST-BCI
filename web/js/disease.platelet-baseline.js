@@ -32,6 +32,7 @@ $('document').ready(function() {
 	});
 	$("#followUpBtn").click(function() {
 		if (upperActionState == true) {
+			localStorage.setItem("gender", checkGenderVal());
 			windows.location = ("plasmacell-followup.jsp").redirect();
 		}
 	});
@@ -275,7 +276,28 @@ function loadPatientData(id) {
 		$("[name='diseaseStatus']").val(response["diseaseStatus"])
 
 		bindEvents();
-
+		
+		localStorage.setItem("gender", "");
+		genderCheck()
+		
+		whiteBloodCellsFunc()
+		neutrophilsFunc()
+		lymphocytesFunc()
+		monocytesFunc()
+		eosinophilsFunc()
+		basophilsFunc()
+		myelocytesFunc()
+		metamyelocytesFunc()
+		blastsFunc()
+		plateletCountFunc()
+		naFunc()
+		kFunc()
+		sgotFunc()
+		sgptFunc()
+		ldhFunc()
+		anatiterFunc()
+		hepacrnaFunc()
+		
 	})
 };
 
@@ -370,4 +392,15 @@ function cancelEdit() {
 	$.loadUneditableFields();
 	$("#submitQuery").hide();
 	$("#submitCancel").hide();
+};
+
+$("input[name=gender]:radio").on('click', function() {
+	genderCheck();
+});
+
+function genderCheck(){
+	hemoglobinFunc()
+	hematocritFunc()
+	creatinineFunc()
+	uricAcidFunc()
 };

@@ -236,8 +236,7 @@ function loadFollowUpData(followupID) {
 		plateletCountFunc()
 		reticulocyteCountFunc()
 		ldhFunc()
-		
-		
+			
 	})
 };
 

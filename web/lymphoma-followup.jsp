@@ -884,6 +884,7 @@
    <!-- End of Patient Statistics Modal  -->
    <!-- End of Main Container -->
    <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
+   <script src="js/normalrange.js"></script>
    <script src="js/disease.lymphoma-followup.js"></script>
    <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>

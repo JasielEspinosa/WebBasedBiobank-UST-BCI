@@ -265,6 +265,23 @@ function loadFollowUpData(followupID) {
 		}
 
 		bindEvents();
+		
+		genderCheck()
+		
+		whiteBloodCellsFunc()
+		neutrophilsFunc()
+		lymphocytesFunc()
+		monocytesFunc()
+		eosinophilsFunc()
+		basophilsFunc()
+		myelocytesFunc()
+		metamyelocytesFunc()
+		blastsFunc()
+		plateletCountFunc()
+		ionizedFunc()
+		totalproteinFunc()
+		albuminFunc()	
+		globulinFunc()
 
 	})
 };
@@ -363,4 +380,10 @@ function cancelEdit() {
 	$.loadUneditableFields();
 	$("#submitQuery").hide();
 	$("#submitCancel").hide();
+};
+
+function genderCheck(){
+	hemoglobinFunc()
+	hematocritFunc()
+	creatinineFunc()
 };

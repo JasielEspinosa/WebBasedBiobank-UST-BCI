@@ -306,6 +306,7 @@ function loadPatientData(id) {
 		//checking
 		
 		//different values func
+		localStorage.setItem("gender", "");
 		genderCheck()
 
 		//same values func

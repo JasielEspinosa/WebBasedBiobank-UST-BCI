@@ -32,6 +32,7 @@ $('document').ready(function() {
 	});
 	$("#followUpBtn").click(function() {
 		if (upperActionState == true) {
+			localStorage.setItem("gender", checkGenderVal());
 			windows.location = ("leukemia-followup.jsp").redirect();
 		}
 	});
@@ -299,11 +300,27 @@ function loadPatientData(id) {
 		} else {
 			$.diseaseStatusNull();
 		}
-
+		
 		bindEvents();
 		
-		//value range
-		whiteBloodCellsFunc();
+		localStorage.setItem("gender", "");
+		genderCheck()
+		
+		whiteBloodCellsFunc()
+		neutrophilsFunc()
+		lymphocytesFunc()
+		monocytesFunc()
+		eosinophilsFunc()
+		basophilsFunc()
+		myelocytesFunc()
+		metamyelocytesFunc()
+		blastsFunc()
+		plateletCountFunc()
+		naFunc()
+		kFunc()
+		sgotFunc()
+		sgptFunc()
+		ldhFunc()
 
 	})
 };
@@ -399,3 +416,16 @@ function cancelEdit() {
 	$("#submitQuery").hide();
 	$("#submitCancel").hide();
 };
+
+$("input[name=gender]:radio").on('click', function() {
+	genderCheck();
+});
+
+function genderCheck(){
+	hemoglobinFunc()
+	hematocritFunc()
+	creatinineFunc()
+	uricAcidFunc()
+};
+
+
