@@ -244,6 +244,7 @@ public class UserManagementServlet extends HttpServlet {
 						int roleOld = usersRS.getInt("RoleID");
 						String username = request.getParameter("username");
 						String password = request.getParameter("password");
+						String confirmPassword = request.getParameter("confirmPassword");
 						String lastName = request.getParameter("lastName").trim().toUpperCase();
 						String firstName = request.getParameter("firstName").trim().toUpperCase();
 						String middleName = request.getParameter("middleName").trim().toUpperCase();
@@ -304,25 +305,37 @@ public class UserManagementServlet extends HttpServlet {
 						if (roleString != roleStringOld) {
 							text6 = "Role changed to " + roleString;
 						}
-						AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleName, firstName, role);
-						if (SQLOperations.updateProfile(ab, Integer.parseInt((String) request.getParameter("accountID")), connection)) {
-							System.out.println(username);
-							System.out.println(usernameOld);
-							auditBean = new AuditBean(
-									"User Management - User edited " + "(" + text1 + text2 + text3 + text4 + text5 + text6 + ")",
+						
+						if (!password.equals(confirmPassword)) {
+							auditBean = new AuditBean("User Management - Attempt change password failed",
 									(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
 									Integer.parseInt((String) session.getAttribute("accountID")));
 							SQLOperations.addAudit(auditBean, connection);
-							response.getWriter().write("Success");
-							System.out.println("Success Edit profile");
+							response.getWriter().write("New Password and confirm password does not match.");
+							System.out.println("Failed New Password and confirm password does not match.");
 						} else {
-							auditBean = new AuditBean("User Management - Attempt user edit failed",
-									(String) lastName + ", " + firstName + " " + middleName + " (" + roleString + ")",
-									(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
-							SQLOperations.addAudit(auditBean, connection);
-							response.getWriter().write("Failed");
-							System.out.println("Failed");
+							AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleName, firstName, role);
+							if (SQLOperations.updateProfile(ab, Integer.parseInt((String) request.getParameter("accountID")), connection)) {
+								System.out.println(username);
+								System.out.println(usernameOld);
+								auditBean = new AuditBean(
+										"User Management - User edited " + "(" + text1 + text2 + text3 + text4 + text5 + text6 + ")",
+										(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
+										Integer.parseInt((String) session.getAttribute("accountID")));
+								SQLOperations.addAudit(auditBean, connection);
+								response.getWriter().write("Success");
+								System.out.println("Success Edit profile");
+							} else {
+								auditBean = new AuditBean("User Management - Attempt user edit failed",
+										(String) lastName + ", " + firstName + " " + middleName + " (" + roleString + ")",
+										(String) session.getAttribute("name"),
+										Integer.parseInt((String) session.getAttribute("accountID")));
+								SQLOperations.addAudit(auditBean, connection);
+								response.getWriter().write("Failed");
+								System.out.println("Failed");
+							}
 						}
+						
 					}
 				} else {
 					System.out.println("Invalid connection");

@@ -71,6 +71,7 @@ function editUser(id) {
 
 var formPasswordForm = document.forms["addUser"];
 var elemPW = document.getElementById("password");
+var elemCPW = document.getElementById("confirmPassword");
 var success = false;
 
 function fnValidatePassword(evt) {
@@ -112,6 +113,12 @@ function fnValidatePassword(evt) {
 			pwdHint.style.display = "inline";
 			success = false;
 		}
+
+/*		if (elemCPW.value == "") {
+			pwdHint.innerHTML = 'Confirm Password must be filled.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}*/
 
 		/*	if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
 				pwdHint.innerHTML = 'Password must contain a special character.';
@@ -181,22 +188,22 @@ function loadUsers() {
 				roleVal = 'Encoder'
 			}
 			console.log(user.active);
-			if(user.active == 0){
-				delOrRes = 	"<td><button type='button' value='" + user.accountId + "' onClick=\"restoreUser(this.value)\""
-				+ "data-toggle=\"modal\" data-target=\"#confirm-submit\">Restore</button></td>"
+			if (user.active == 0) {
+				delOrRes = "<td><button type='button' value='" + user.accountId + "' onClick=\"restoreUser(this.value)\""
+						+ "data-toggle=\"modal\" data-target=\"#confirm-submit\">Restore</button></td>"
 			}
-			if(user.active == 1){
-				delOrRes = 	"<td><button type='button' value='" + user.accountId + "' onClick=\"deleteUser(this.value)\""
-				+ "data-toggle=\"modal\" data-target=\"#confirm-submit\">Archive</button></td>"
+			if (user.active == 1) {
+				delOrRes = "<td><button type='button' value='" + user.accountId + "' onClick=\"deleteUser(this.value)\""
+						+ "data-toggle=\"modal\" data-target=\"#confirm-submit\">Archive</button></td>"
 			}
-			
-			
+
 			$("<tr>").appendTo('#usersTable').append(
 					"<td><button type='button' value='" + user.accountId + "' onClick=\"editUser(this.value)\""
 							+ "data-toggle=\"modal\" data-target=\"#usermanagement__popup\">Edit</button></td>").append(delOrRes)
 			// .append("<td><input type='checkbox' name='deleteUsers[]' value='"+user.accountId +"'/></td>")
-			.append($("<td>").text(user.username)).append($("<td>").text(user.active + " " +user.firstName + " " + user.middleName + " " + user.lastName))
-					.append($("<td>").text(roleVal));
+			.append($("<td>").text(user.username)).append(
+					$("<td>").text(user.active + " " + user.firstName + " " + user.middleName + " " + user.lastName)).append(
+					$("<td>").text(roleVal));
 		});
 		$('#usersTable').dataTable({});
 	});
