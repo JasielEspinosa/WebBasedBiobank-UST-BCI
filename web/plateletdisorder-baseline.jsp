@@ -9,7 +9,7 @@
 <head>
 <title>USTH | Platelet Baseline</title>
 <meta charset="utf-8">
-<link rel="icon" href="images/usthlogo.png">
+<link rel="icon" href="images/logo_usth.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- CSS -->
@@ -59,7 +59,7 @@
       <!-- Banner -->
       <div class="row header bg-navyblue">
          <div class="col-sm-1">
-            <img src="images/usthlogo.png" class="header__logo--size header__logo--position">
+            <img src="images/logo_bcihema.png" class="header__logo--size header__logo--position">
          </div>
          <div class="col-sm-11 header__bannertitle--visibility header__bannertitle--position header__bannertitle--spacing">
             <h4>UST-BCI Section of Clinical Hematology</h4>

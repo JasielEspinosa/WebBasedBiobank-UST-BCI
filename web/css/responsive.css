@@ -2,99 +2,100 @@
 
 /* Banner Responsiveness: Web View at 767px */
 @media ( max-width : 767px ) {
-	/*  Centered Header Logo Position at 768px */
-	.header__logo--position {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	/* Hide Banner Title */
-	.header__bannertitle--visibility {
-		display: none;
-	}
-	/* Optimal Logo Width for Mobile Devices */
-	.header__logo--size {
-		width: 50px;
-		height: 50px;
-	}
-	
-	/* FOLLOWUP BUTTONS */
-	/* FONTAWESOME INITIALIZATION FOR BASELINE AND FOLLOWUP BUTTONS */
-	.baselinenbtn-text span {
-		display: none;
-	}
-	a.baselinenbtn-text:after {
-		content: "\f007";
-		font-family: FontAwesome;
-	}
-	.followupnbtn-text span {
-		display: none;
-	}
-	a.followupnbtn-text:after {
-		content: "\f2bd";
-		font-family: FontAwesome;
-	}
-	.patstatsbtn-text span {
-		display: none;
-	}
-	a.patstatsbtn-text:after {
-		content: "\f080";
-		font-family: FontAwesome;
-		margin-top: -67px;
-	}
-	.editfollowupbtn-text span {
-		display: none;
-	}
-	a.editfollowupbtn-text:after {
-		content: "\f044";
-		font-family: FontAwesome;
-	}
-	.deletefollowup-text span {
-		display: none;
-	}
-	a.deletefollowup-text:after {
-		content: "\f1f8";
-		font-family: FontAwesome;
-	}
-	/* END OF FONTAWESOME INITIALIZATION FOR BASELINE AND FOLLOWUP BUTTONS*/
-	
-	/* SECOND HALF BUTTONS POSITION */
-	.secondhalfbtns-position {
-		margin-top: -67px;
-	}
-	/* END OF SECOND HALF BUTTONS POSITION */
-	/* END OF FOLLOWUP BUTTONS */
-	
-	/* LOGIN RESPONSIVENESS CSS */
-	.login__lefthalf {
-		display: none;
-	}
-	.login__righthalf {
-		width: 100%;
-	}
-	/* END OF LOGIN RESPONSIVENESS CSS */
-	
-	/* FONT AWESOME INITIALIZATION FOR  USER MGMT AND ARCH PAT BUTTONS*/
-	.usrmgmt--text span {
-		display: none;
-	}
-	a.usrmgmt--text:after {
-		content: "\f0c0";
-		font-family: FontAwesome;
-	}
-	.archpat--text span {
-		display: none;
-	}
-	a.archpat--text:after {
-		content: "\f187";
-		font-family: FontAwesome;
-	}
-	/* END OF FONT AWESOME INITIALIZATION FOR  USER MGMT AND ARCH PAT BUTTONS*/
+   /*  Centered Header Logo Position at 768px */
+   .header__logo--position {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+   }
+
+   /* Hide Banner Title */
+   .header__bannertitle--visibility {
+      display: none;
+   }
+   /* Optimal Logo Width for Mobile Devices */
+   .header__logo--size {
+      width: auto;
+      height: 50px;
+   }
+
+   /* FOLLOWUP BUTTONS */
+   /* FONTAWESOME INITIALIZATION FOR BASELINE AND FOLLOWUP BUTTONS */
+   .baselinenbtn-text span {
+      display: none;
+   }
+   a.baselinenbtn-text:after {
+      content: "\f007";
+      font-family: FontAwesome;
+   }
+   .followupnbtn-text span {
+      display: none;
+   }
+   a.followupnbtn-text:after {
+      content: "\f2bd";
+      font-family: FontAwesome;
+   }
+   .patstatsbtn-text span {
+      display: none;
+   }
+   a.patstatsbtn-text:after {
+      content: "\f080";
+      font-family: FontAwesome;
+      margin-top: -67px;
+   }
+   .editfollowupbtn-text span {
+      display: none;
+   }
+   a.editfollowupbtn-text:after {
+      content: "\f044";
+      font-family: FontAwesome;
+   }
+   .deletefollowup-text span {
+      display: none;
+   }
+   a.deletefollowup-text:after {
+      content: "\f1f8";
+      font-family: FontAwesome;
+   }
+   /* END OF FONTAWESOME INITIALIZATION FOR BASELINE AND FOLLOWUP BUTTONS*/
+
+   /* SECOND HALF BUTTONS POSITION */
+   .secondhalfbtns-position {
+      margin-top: -67px;
+   }
+   /* END OF SECOND HALF BUTTONS POSITION */
+   /* END OF FOLLOWUP BUTTONS */
+
+   /* LOGIN RESPONSIVENESS CSS */
+   .login__lefthalf {
+      display: none;
+   }
+   .login__righthalf {
+      width: 100%;
+   }
+   /* END OF LOGIN RESPONSIVENESS CSS */
+
+   /* FONT AWESOME INITIALIZATION FOR  USER MGMT AND ARCH PAT BUTTONS*/
+   .usrmgmt--text span {
+      display: none;
+   }
+   a.usrmgmt--text:after {
+      content: "\f0c0";
+      font-family: FontAwesome;
+   }
+   .archpat--text span {
+      display: none;
+   }
+   a.archpat--text:after {
+      content: "\f187";
+      font-family: FontAwesome;
+   }
+   /* END OF FONT AWESOME INITIALIZATION FOR  USER MGMT AND ARCH PAT BUTTONS*/
 }
 
 /* Web View at 768px */
 @media ( min-width : 768px ) {
-	.header__bannertitle--spacing {
-		padding-left: 10px;
-	}
+   .header__bannertitle--spacing {
+      padding-left: 10px;
+   }
 }

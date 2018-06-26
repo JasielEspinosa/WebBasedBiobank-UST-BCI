@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <title>USTH Biobank</title>
-<link rel="icon" href="images/usthlogo.png">
+<link rel="icon" href="images/logo_usth.png">
 
 <!-- REQUIRED META TAGS -->
 <meta charset="utf-8">
@@ -27,7 +27,7 @@
   <!-- MAIN CONTAINER -->
   <section class="login__section">
     <div class="login__lefthalf">
-      <img class="login__logo" alt="USTH Logo" src="images/usthlogo.png">
+      <img class="login__logo" alt="USTH Logo" src="images/logo_bcihema.png">
       <h5 class="login__logotext login__logotext--position">
         UST BENAVIDES<br>CANCER<br>INSTITUTE
       </h5>

@@ -102,9 +102,9 @@ public class GenerateAuditServlet extends HttpServlet {
 				Paragraph paragraph;
 				Anchor anchor;
 				ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-				String img_ustlogo = classLoader.getResource("/images/ustlogo.png").getPath();
+				String img_ustlogo = classLoader.getResource("/images/logo_bci.png").getPath();
 				//Image image_ustlogo = Image.getInstance(img_ustlogo);
-				String img_usthlogo = classLoader.getResource("/images/usthlogo.png").getPath();
+				String img_usthlogo = classLoader.getResource("/images/logo_hematology.png").getPath();
 				//Image image_usthlogo = Image.getInstance(img_usthlogo);
 				//document.add(image);
 				float[] header_col = { 1f, 5f, 1f };
