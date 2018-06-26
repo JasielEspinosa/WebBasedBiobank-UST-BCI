@@ -1,9 +1,9 @@
-DROP DATABASE usthbiobank2018;
-CREATE DATABASE  IF NOT EXISTS `usthbiobank2018` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `usthbiobank2018`;
+DROP DATABASE usthbiobank;
+CREATE DATABASE  IF NOT EXISTS `usthbiobank` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `usthbiobank`;
 -- MySQL dump 10.13  Distrib 5.7.12, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: usthbiobank2018
+-- Host: 127.0.0.1    Database: usthbiobank
 -- ------------------------------------------------------
 -- Server version	5.6.21
 

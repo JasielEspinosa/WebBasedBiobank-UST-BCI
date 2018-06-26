@@ -1,6 +1,6 @@
-DROP DATABASE usthbiobank2018;
-CREATE DATABASE usthbiobank2018;
-USE usthbiobank2018;
+DROP DATABASE usthbiobank;
+CREATE DATABASE usthbiobank;
+USE usthbiobank;
 
 CREATE TABLE DiseaseTable (
 	DiseaseID int NOT NULL,
