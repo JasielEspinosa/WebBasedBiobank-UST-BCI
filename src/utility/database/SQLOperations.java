@@ -105,17 +105,29 @@ public class SQLOperations implements SQLCommands {
 		return true;
 	}
 	
-	public static boolean deleteUser(int active, int accountID, Connection connection) {
+	public static boolean archiveUser(int active, int accountID, Connection connection) {
 		try {
-			PreparedStatement pstmt = connection.prepareStatement(DELETE_USER);
-			pstmt.setInt(1, active);
-			pstmt.setInt(2, accountID);
+			PreparedStatement pstmt = connection.prepareStatement(ARCHIVE_USER);
+			//pstmt.setInt(1, active);
+			pstmt.setInt(1, accountID);
 			pstmt.executeUpdate();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- deleteUser: " + sqle.getMessage());
 			return false;
 		}
-		
+		return true;
+	}
+	
+	public static boolean unarchiveUser(int active, int accountID, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(UNARCHIVE_USER);
+			//pstmt.setInt(1, active);
+			pstmt.setInt(1, accountID);
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- deleteUser: " + sqle.getMessage());
+			return false;
+		}
 		return true;
 	}
 	

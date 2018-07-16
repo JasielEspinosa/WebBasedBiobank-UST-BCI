@@ -111,14 +111,14 @@
                                  <div class="form-group">
                                     <label class="control-label col-sm-5">Username</label>
                                     <div class="col-sm-7">
-                                       <input type="text" class="form-control" name="username" id="username">
+                                       <input type="text" class="form-control" name="username" id="username" required>
                                     </div>
                                  </div>
                                  <!--  Old Password -->
                                  <div class="form-group">
-                                    <label class="control-label col-sm-5">Old Password</label>
+                                    <label class="control-label col-sm-5">*Present Password</label>
                                     <div class="col-sm-7">
-                                       <input type="password" class="form-control" name="oldPassword" id="oldPassword">
+                                       <input type="password" class="form-control" name="oldPassword" id="oldPassword" required>
                                     </div>
                                  </div>
                                  <!-- Password -->
@@ -133,7 +133,8 @@
                                  <div class="form-group">
                                     <label class="control-label col-sm-5">Confirm Password</label>
                                     <div class="col-sm-7">
-                                       <input type="password" class="form-control" name="confirmPassword" id="confirmPassword">
+                                       <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"> <span
+                                          class="hint" id="confPwdHint"></span>
                                     </div>
                                  </div>
                                  <!-- Last Name -->

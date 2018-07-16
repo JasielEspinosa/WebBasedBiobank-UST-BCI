@@ -41,7 +41,7 @@ function deleteUser(id) {
 	params.action = 'delete';
 	params.accountID = id;
 	$("#modalHeader").text("Confirm archive")
-	$("#modalBody").text("Are you sure you want to arhive this user?")
+	$("#modalBody").text("Are you sure you want to archive this user?")
 };
 
 function restoreUser(id) {
@@ -58,7 +58,7 @@ function editUser(id) {
 	$("#modalBody").text("Are you sure you want to edit user?");
 	$("#submitBtn").text("Edit")
 	$.post('UserManagementServlet', $.param(params), function(response) {
-		alert(response["Username"]);
+		// alert(response["Username"]);
 		$("#username").val(response["Username"])
 		$("#lastName").val(response["Lastname"])
 		$("#firstName").val(response["Firstname"])
@@ -88,33 +88,39 @@ function fnValidatePassword(evt) {
 
 	success = true;
 
+/*	if (elemUSER.value != "") {
+		usernameHint.innerHTML = 'Username must not be empty';
+		usernameHint.style.display = "inline";
+		success = false;
+	} else {
+		usernameHint.innerHTML = '';
+		usernameHint.style.display = "inline";
+	}*/
+
 	if (elemPW.value != "") {
 
 		if (!regexPasswordLength.test(elemPW.value)) {
 			pwdHint.innerHTML = 'Password must be at least 8 characters.';
 			pwdHint.style.display = "inline";
 			success = false;
-		}
-
-		if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
+		} else if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
 			pwdHint.innerHTML = 'Password must contain an uppercase character.';
 			pwdHint.style.display = "inline";
 			success = false;
-		}
-
-		if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
+		} else if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
 			pwdHint.innerHTML = 'Password must contain an lowercase character.';
 			pwdHint.style.display = "inline";
 			success = false;
-		}
-
-		if (!regexPasswordContainsNumber.test(elemPW.value)) {
+		} else if (!regexPasswordContainsNumber.test(elemPW.value)) {
 			pwdHint.innerHTML = 'Password must contain a number.';
 			pwdHint.style.display = "inline";
 			success = false;
+		} else {
+			pwdHint.innerHTML = '';
+			pwdHint.style.display = "inline";
 		}
 
-/*		if (elemCPW.value == "") {
+		/*	if (elemCPW.value == "") {
 			pwdHint.innerHTML = 'Confirm Password must be filled.';
 			pwdHint.style.display = "inline";
 			success = false;
@@ -128,10 +134,20 @@ function fnValidatePassword(evt) {
 
 	}
 
+	if (elemCPW.value != "") {
+		if (elemCPW.value != elemPW.value) {
+			confPwdHint.innerHTML = 'Password does not match the confirm password';
+			confPwdHint.style.display = "inline";
+			success = false;
+		} else {
+			confPwdHint.innerHTML = '';
+			confPwdHint.style.display = "inline";
+		}
+	}
+
 	if (success) {
 		// looks goood
 		pwdHint.innerHTML = '';
-
 		$("#confirm-submit").modal('show');
 	}
 	evt.preventDefault();
@@ -141,19 +157,60 @@ formPasswordForm.addEventListener("submit", fnValidatePassword);
 
 $('#submitAction').click(function() {
 	alert(params.action);
-	alert(params.accountID)
+	// alert(params.accountID)
 	assignValues();
+
 	$.post('UserManagementServlet', $.param(params), function(response) {
-		if (response == "Success") {
-			alert(response);
-			$('#usersTable').DataTable().destroy();
-			loadUsers();
-			closeModal();
-		} else {
-			alert(response);
+
+		if (params.action == "add") {
+			if (response == "Success") {
+				// alert(response);
+				alert("User added successfully");
+				$('#usersTable').DataTable().destroy();
+				loadUsers();
+				closeModal();
+			} else {
+				alert("User add failed. Recheck the fields again");
+				$("#confirm-submit").modal('hide');
+			}
+		} else if (params.action == "edit") {
+			if (response == "Success") {
+				// alert(response);
+				alert("User edited successfully");
+				$('#usersTable').DataTable().destroy();
+				loadUsers();
+				closeModal();
+			} else {
+				alert("User edit failed. Recheck the fields again");
+				$("#confirm-submit").modal('hide');
+			}
+		} else if (params.action == "delete") {
+			if (response == "Success") {
+				// alert(response);
+				alert("User archived successfully");
+				$('#usersTable').DataTable().destroy();
+				loadUsers();
+				closeModal();
+			} else {
+				alert("User archive failed. Contact administrator");
+				$("#confirm-submit").modal('hide');
+			}
+		} else if (params.action == "restore") {
+			if (response == "Success") {
+				// alert(response);
+				alert("User restored successfully");
+				$('#usersTable').DataTable().destroy();
+				loadUsers();
+				closeModal();
+			} else {
+				alert("User restore failed. Contact administrator");
+				$("#confirm-submit").modal('hide');
+			}
 		}
+
 	}).fail(function() {
 	});
+
 });
 
 function clearFields() {
@@ -173,10 +230,10 @@ function closeModal() {
 };
 
 function loadUsers() {
-	alert("loading data!");
+	// alert("loading data!");
 	$("#usersTable").find("tr:gt(0)").remove();
 	params.action = 'load';
-	alert("test load");
+	// alert("test load");
 	$.post("UserManagementServlet", $.param(params), function(responseJson) {
 
 		$.each(responseJson, function(index, user) {
@@ -202,7 +259,7 @@ function loadUsers() {
 							+ "data-toggle=\"modal\" data-target=\"#usermanagement__popup\">Edit</button></td>").append(delOrRes)
 			// .append("<td><input type='checkbox' name='deleteUsers[]' value='"+user.accountId +"'/></td>")
 			.append($("<td>").text(user.username)).append(
-					$("<td>").text(user.active + " " + user.firstName + " " + user.middleName + " " + user.lastName)).append(
+					$("<td>").text(/*user.active + " " + */user.firstName + " " + user.middleName + " " + user.lastName)).append(
 					$("<td>").text(roleVal));
 		});
 		$('#usersTable').dataTable({});

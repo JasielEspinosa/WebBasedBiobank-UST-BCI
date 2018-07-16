@@ -136,7 +136,7 @@ public class UserManagementServlet extends HttpServlet {
 					String responseText = "";
 					if (connection != null) {
 						for (int pointer = 0; pointer < accountID.length; pointer++) {
-							if (SQLOperations.deleteUser(1, Integer.parseInt(accountID[pointer]), connection)) {
+							if (SQLOperations.archiveUser(1, Integer.parseInt(accountID[pointer]), connection)) {
 								auditBean = new AuditBean("User Management - " + roleString + " user deleted",
 										(String) lastName + ", " + firstName + " " + middleName + " (" + roleString + ")",
 										(String) session.getAttribute("name"),
@@ -182,14 +182,14 @@ public class UserManagementServlet extends HttpServlet {
 					String responseText = "";
 					if (connection != null) {
 						for (int pointer = 0; pointer < accountID.length; pointer++) {
-							if (SQLOperations.deleteUser(1, Integer.parseInt(accountID[pointer]), connection)) {
+							if (SQLOperations.unarchiveUser(1, Integer.parseInt(accountID[pointer]), connection)) {
 								auditBean = new AuditBean("User Management - " + roleString + " user restored",
 										(String) lastName + ", " + firstName + " " + middleName + " (" + roleString + ")",
 										(String) session.getAttribute("name"),
 										Integer.parseInt((String) session.getAttribute("accountID")));
 								SQLOperations.addAudit(auditBean, connection);
 								responseText = "Success";
-								System.out.println("Success delete");
+								System.out.println("Success restore");
 							} else {
 								auditBean = new AuditBean("User Management - " + roleString + " user restoration failed",
 										(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),

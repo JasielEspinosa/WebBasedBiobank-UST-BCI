@@ -177,11 +177,11 @@
                                  </div>
                                  <div class="form-group">
                                     <label for="message-text" class="control-label">Password:</label> <input type="password"
-                                       class="form-control" id="password"> <span class="hint" id="pwdHint"></span>
+                                       class="form-control" id="password" required> <span class="hint" id="pwdHint"></span>
                                  </div>
                                  <div class="form-group">
                                     <label for="message-text" class="control-label">Confirm Password:</label> <input type="password"
-                                       class="form-control" id="confirmPassword">
+                                       class="form-control" id="confirmPassword" required> <span class="hint" id="confPwdHint"></span>
                                  </div>
                                  <div class="form-group">
                                     <label for="message-text" class="control-label">Last Name:</label> <input type="text"

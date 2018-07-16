@@ -14,7 +14,9 @@ $('document').ready(function() {
 });
 
 var formPasswordForm = document.forms["profileForm"];
+var elemOPW = document.getElementById("oldPassword");
 var elemPW = document.getElementById("password");
+var elemCPW = document.getElementById("confirmPassword");
 var success = false;
 
 function fnValidatePassword(evt) {
@@ -40,32 +42,40 @@ function fnValidatePassword(evt) {
 			pwdHint.innerHTML = 'Password must be at least 8 characters.';
 			pwdHint.style.display = "inline";
 			success = false;
-		}
-
-		if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
+		} else if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
 			pwdHint.innerHTML = 'Password must contain an uppercase character.';
 			pwdHint.style.display = "inline";
 			success = false;
-		}
-
-		if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
+		} else if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
 			pwdHint.innerHTML = 'Password must contain an lowercase character.';
 			pwdHint.style.display = "inline";
 			success = false;
-		}
-
-		if (!regexPasswordContainsNumber.test(elemPW.value)) {
+		} else if (!regexPasswordContainsNumber.test(elemPW.value)) {
 			pwdHint.innerHTML = 'Password must contain a number.';
 			pwdHint.style.display = "inline";
 			success = false;
+		} else {
+			pwdHint.innerHTML = '';
+			pwdHint.style.display = "inline";
 		}
 
-		/*	if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
-				pwdHint.innerHTML = 'Password must contain a special character.';
-				pwdHint.style.display = "inline";
-				success = false;
-			}*/
+/*		if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
+			pwdHint.innerHTML = 'Password must contain a special character.';
+			pwdHint.style.display = "inline";
+			success = false;
+		}*/
 
+	}
+
+	if (elemCPW.value != "") {
+		if (elemCPW.value != elemPW.value) {
+			confPwdHint.innerHTML = 'Password does not match the confirm password';
+			confPwdHint.style.display = "inline";
+			success = false;
+		} else {
+			confPwdHint.innerHTML = '';
+			confPwdHint.style.display = "inline";
+		}
 	}
 
 	if (success) {
@@ -75,13 +85,13 @@ function fnValidatePassword(evt) {
 		var $form = $(this);
 		$.post('ProfileProcessServlet', $form.serialize(), function(response) {
 			if (response == "Success") {
-				alert(response);
+				alert("Profile successfully updated");
 				$("oldPassword").val("");
 				$("password").val("");
 				$("confirmPassword").val("");
 				$("#confirm-submit").modal('hide');
 			} else {
-				alert(response);
+				alert("Profile update failed. Recheck the fields again");
 			}
 		}).fail(function() {
 		});
