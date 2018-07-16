@@ -13,9 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 
-import model.AuditBean;
-import utility.database.SQLOperations;
-
 @WebServlet("/SessionTerminateServlet")
 public class SessionTerminateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

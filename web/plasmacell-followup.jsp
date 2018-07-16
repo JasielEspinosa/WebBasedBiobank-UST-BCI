@@ -89,18 +89,18 @@
                      aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i> <span class="caret"></span>
                   </a>
                      <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li><a style="font-weight: bold;" href="audittrail.jsp"> <i class="fas fa-file-alt dropdown-icons--margin"></i>
+                        <li class="role2"><a style="font-weight: bold;" href="audittrail.jsp"> <i class="fas fa-file-alt dropdown-icons--margin"></i>
                               Audit Trail
                         </a></li>
-                        <li class="divider" style="background-color: #000000;"></li>
+                        <li class="divider role2" style="background-color: #000000;"></li>
                         <li><a style="font-weight: bold;" href="profile.jsp"> <i class="fas fa-user-md dropdown-icons--margin"></i>
                               Profile
                         </a></li>
-                        <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="usermanagement.jsp"> <i
+                        <li class="divider role2" style="background-color: #000000;"></li>
+                        <li class="role2"><a style="font-weight: bold;" href="usermanagement.jsp"> <i
                               class="fas fa-wrench dropdown-icons--margin"></i> Settings
                         </a></li>
-                        <li class="divider" style="background-color: #000000;"></li>
+                        <li class="divider role2" style="background-color: #000000;"></li>
                         <li><a style="font-weight: bold;" onclick="logout()"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
                               Logout
                         </a></li>
@@ -142,7 +142,7 @@
             </div>
             <!-- End of Add Patient Button -->
             <!-- Generate Report Button -->
-            <div class="row">
+            <div class="row role2">
                <div class="col-sm-12 add-box">
                   <button id="generateReport" type="button" class="btn bg-yellow sidebar__addptngenrep--border" data-target="#genrep"
                      data-toggle="modal" data-whatever="@mdo">Generate Report</button>
@@ -971,6 +971,8 @@
    </form>
    <!-- End of Generate Report Modal  -->
    <!-- End of Main Container -->
+      <input type="hidden" id="roleSession" data-value="${sessionScope.role}" />
+   <script src="js/user-restrictions.js"></script>
    <script src="bootstrap/jquery/jquery-3.3.1.min.js"></script>
    <script src="js/normalrange.js"></script>
    <script src="js/disease.plasmacell-followup.js"></script>

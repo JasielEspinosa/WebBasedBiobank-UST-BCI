@@ -75,18 +75,18 @@
                      aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i> <span class="caret"></span>
                   </a>
                      <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li><a style="font-weight: bold;" href="audittrail.jsp"> <i class="fas fa-file-alt dropdown-icons--margin"></i>
+                        <li class="role2"><a style="font-weight: bold;" href="audittrail.jsp"> <i class="fas fa-file-alt dropdown-icons--margin"></i>
                               Audit Trail
                         </a></li>
-                        <li class="divider" style="background-color: #000000;"></li>
+                        <li class="divider role2" style="background-color: #000000;"></li>
                         <li><a style="font-weight: bold;" href="profile.jsp"> <i class="fas fa-user-md dropdown-icons--margin"></i>
                               Profile
                         </a></li>
-                        <li class="divider" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="usermanagement.jsp"> <i
+                        <li class="divider role2" style="background-color: #000000;"></li>
+                        <li class="role2"><a style="font-weight: bold;" href="usermanagement.jsp"> <i
                               class="fas fa-wrench dropdown-icons--margin"></i> Settings
                         </a></li>
-                        <li class="divider" style="background-color: #000000;"></li>
+                        <li class="divider role2" style="background-color: #000000;"></li>
                         <li><a style="font-weight: bold;" onclick="logout()"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
                               Logout
                         </a></li>
@@ -241,6 +241,8 @@
          </div>
       </div>
    </div>
+      <input type="hidden" id="roleSession" data-value="${sessionScope.role}" />
+   <script src="js/user-restrictions.js"></script>
    <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>
 </body>
