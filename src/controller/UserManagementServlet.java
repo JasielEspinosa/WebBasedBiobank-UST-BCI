@@ -69,31 +69,61 @@ public class UserManagementServlet extends HttpServlet {
 					roleString = "Encoder";
 				}
 				System.out.println("Role: " + roleString);
-				if (SQLOperations.addUser(ab, connection)) {
-					auditBean = new AuditBean("User Management - New " + roleString + " added",
-							(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
-							Integer.parseInt((String) session.getAttribute("accountID")));
-					SQLOperations.addAudit(auditBean, connection);
-					response.getWriter().write("Success");
-					System.out.println("Success");
-				} else {
-					auditBean = new AuditBean("User Management - Adding new user failed",
-							(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
-							Integer.parseInt((String) session.getAttribute("accountID")));
-					SQLOperations.addAudit(auditBean, connection);
-					response.getWriter().write("Failed");
-					System.out.println("Failed");
+				
+				ResultSet checkExistingUserRS = SQLOperations.getUsernames(username, connection);
+				
+				try {
+					if (checkExistingUserRS.next()) {
+						
+						String usernameStored = checkExistingUserRS.getString("Username");
+						response.getWriter().write("userExists");
+						
+						if (!usernameStored.equals(username)) {
+							auditBean = new AuditBean("User Management - attempt to add username " + username + " but already existed",
+									(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
+									Integer.parseInt((String) session.getAttribute("accountID")));
+							SQLOperations.addAudit(auditBean, connection);
+						}
+						
+					} else {
+						
+						if (SQLOperations.addUser(ab, connection)) {
+							auditBean = new AuditBean("User Management - New user " + roleString + " added",
+									(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
+									Integer.parseInt((String) session.getAttribute("accountID")));
+							SQLOperations.addAudit(auditBean, connection);
+							response.getWriter().write("Success");
+							System.out.println("Success");
+						} else {
+							auditBean = new AuditBean("User Management - Adding new user failed",
+									(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
+									Integer.parseInt((String) session.getAttribute("accountID")));
+							SQLOperations.addAudit(auditBean, connection);
+							response.getWriter().write("Failed");
+							System.out.println("Failed");
+						}
+						
+					}
+				} catch (NumberFormatException | SQLException e) {
+					e.printStackTrace();
 				}
+				
 			} else {
 				System.out.println("Invalid connection");
 			}
 		}
+		
 		if (action.equals("load")) {
+			
+			auditBean = new AuditBean("User Management accessed", (String) session.getAttribute("name"),
+					(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+			SQLOperations.addAudit(auditBean, connection);
+			
 			response.setContentType("application/json");
 			List<AccountBean> accountList = new ArrayList<AccountBean>();
 			if (connection != null) {
+				ResultSet usersRS = SQLOperations.getUsers(connection);
 				try {
-					ResultSet usersRS = SQLOperations.getUsers(connection);
 					while (usersRS.next()) {
 						int accountID = usersRS.getInt("AccountID");
 						String username = usersRS.getString("Username");
@@ -110,15 +140,13 @@ public class UserManagementServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			}
-			auditBean = new AuditBean("User Management accessed", (String) session.getAttribute("name"),
-					(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
-			SQLOperations.addAudit(auditBean, connection);
 			String json = new Gson().toJson(accountList);
 			response.getWriter().write(json);
 		}
+		
 		if (action.equals("delete")) {
+			ResultSet usersRS = SQLOperations.getProfile(Integer.parseInt((String) request.getParameter("accountID")), connection);
 			try {
-				ResultSet usersRS = SQLOperations.getProfile(Integer.parseInt((String) request.getParameter("accountID")), connection);
 				while (usersRS.next()) {
 					String username = usersRS.getString("Username");
 					String lastName = usersRS.getString("LastName").trim().toUpperCase();
@@ -159,12 +187,14 @@ public class UserManagementServlet extends HttpServlet {
 					}
 				}
 			} catch (NumberFormatException | SQLException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+		
 		if (action.equals("restore")) {
+			ResultSet usersRS = SQLOperations.getProfile(Integer.parseInt((String) request.getParameter("accountID")), connection);
 			try {
-				ResultSet usersRS = SQLOperations.getProfile(Integer.parseInt((String) request.getParameter("accountID")), connection);
 				while (usersRS.next()) {
 					String username = usersRS.getString("Username");
 					String lastName = usersRS.getString("LastName").trim().toUpperCase();
@@ -208,6 +238,7 @@ public class UserManagementServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
 		if (action.equals("editLoad")) {
 			response.setContentType("application/json");
 			if (connection != null) {
@@ -217,6 +248,7 @@ public class UserManagementServlet extends HttpServlet {
 					if (profileInfoRs.next()) {
 						Map<String, String> profile = new LinkedHashMap<>();
 						profile.put("Username", profileInfoRs.getString("Username"));
+						profile.put("Password", profileInfoRs.getString("Password"));
 						profile.put("Lastname", profileInfoRs.getString("Lastname"));
 						profile.put("Firstname", profileInfoRs.getString("Firstname"));
 						profile.put("MiddleName", profileInfoRs.getString("MiddleName"));
@@ -232,116 +264,138 @@ public class UserManagementServlet extends HttpServlet {
 			}
 		}
 		if (action.equals("edit")) {
-			try {
-				if (connection != null) {
-					ResultSet usersRS = SQLOperations.getProfile(Integer.parseInt((String) request.getParameter("accountID")), connection);
+			
+			if (connection != null) {
+				ResultSet usersRS = SQLOperations.getProfile(Integer.parseInt((String) request.getParameter("accountID")), connection);
+				try {
 					while (usersRS.next()) {
-						String usernameOld = usersRS.getString("Username");
-						String passwordOld = usersRS.getString("Password");
-						String lastNameOld = usersRS.getString("LastName").trim().toUpperCase();
-						String firstNameOld = usersRS.getString("FirstName").trim().toUpperCase();
-						String middleNameOld = usersRS.getString("MiddleName").trim().toUpperCase();
-						int roleOld = usersRS.getInt("RoleID");
+						
+						String usernameStored = usersRS.getString("Username");
+						String passwordStored = usersRS.getString("Password");
+						String lastNameStored = usersRS.getString("LastName").trim().toUpperCase();
+						String firstNameStored = usersRS.getString("FirstName").trim().toUpperCase();
+						String middleNameStored = usersRS.getString("MiddleName").trim().toUpperCase();
+						int roleStored = usersRS.getInt("RoleID");
+						
 						String username = request.getParameter("username");
-						String password = request.getParameter("password");
-						String confirmPassword = request.getParameter("confirmPassword");
+						String newPassword = request.getParameter("password");
+						//String confirmPassword = request.getParameter("confirmPassword");
 						String lastName = request.getParameter("lastName").trim().toUpperCase();
 						String firstName = request.getParameter("firstName").trim().toUpperCase();
 						String middleName = request.getParameter("middleName").trim().toUpperCase();
 						int role = Integer.parseInt(request.getParameter("role"));
+						
 						roleString = null;
-						String roleStringOld = null;
-						if (roleOld == 1) {
+						
+						/*String roleStringOld = null;
+						
+						if (roleStored == 1) {
 							roleStringOld = "Admin";
-						} else if (roleOld == 2) {
+						} else if (roleStored == 2) {
 							roleStringOld = "Encoder";
-						}
+						}*/
+						
 						if (role == 1) {
 							roleString = "Admin";
 						} else if (role == 2) {
 							roleString = "Encoder";
 						}
-						if (password == "") {
-							password = passwordOld;
-						}
-						String text1 = "";
-						String text2 = "";
-						String text3 = "";
-						String text4 = "";
-						String text5 = "";
-						String text6 = "";
-						if (!username.equals(usernameOld)) {
-							text1 = "Username";
-							if (!password.equals(passwordOld) || !lastName.equals(lastNameOld) || !firstName
-									.equals(firstNameOld) || !middleName.equals(middleNameOld) || roleString != roleStringOld) {
-								text1 = "Username, ";
-							}
-						}
-						if (!password.equals(passwordOld)) {
-							text2 = "Password";
-							if (!lastName.equals(lastNameOld) || !firstName.equals(firstNameOld) || !middleName
-									.equals(middleNameOld) || roleString != roleStringOld) {
-								text2 = "Password, ";
-							}
-						}
-						if (!lastName.equals(lastNameOld)) {
-							text3 = "Last Name";
-							if (!firstName.equals(firstNameOld) || !middleName.equals(middleNameOld) || roleString != roleStringOld) {
-								text3 = "Last Name, ";
-							}
-						}
-						if (!firstName.equals(firstNameOld)) {
-							text4 = "First Name";
-							if (!middleName.equals(middleNameOld) || roleString != roleStringOld) {
-								text4 = "First Name, ";
-							}
-						}
-						if (!middleName.equals(middleNameOld)) {
-							text5 = "Middle Name";
-							if (roleString != roleStringOld) {
-								text5 = "Middle Name, ";
-							}
-						}
-						if (roleString != roleStringOld) {
-							text6 = "Role changed to " + roleString;
-						}
 						
-						if (!password.equals(confirmPassword)) {
-							auditBean = new AuditBean("User Management - Attempt change password failed",
-									(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
-									Integer.parseInt((String) session.getAttribute("accountID")));
-							SQLOperations.addAudit(auditBean, connection);
-							response.getWriter().write("New Password and confirm password does not match.");
-							System.out.println("Failed New Password and confirm password does not match.");
+						//No changes occured
+						if (username.equals(usernameStored) && lastName.equals(lastNameStored) && firstName
+								.equals(firstNameStored) && middleName
+										.equals(middleNameStored) && newPassword.equals(passwordStored) && role == roleStored) {
+							System.out.println("No changes occured");
+							response.getWriter().write("noChange");
+							
 						} else {
-							AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleName, firstName, role);
-							if (SQLOperations.updateProfile(ab, Integer.parseInt((String) request.getParameter("accountID")), connection)) {
-								System.out.println(username);
-								System.out.println(usernameOld);
-								auditBean = new AuditBean(
-										"User Management - User edited " + "(" + text1 + text2 + text3 + text4 + text5 + text6 + ")",
-										(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
-										Integer.parseInt((String) session.getAttribute("accountID")));
-								SQLOperations.addAudit(auditBean, connection);
-								response.getWriter().write("Success");
-								System.out.println("Success Edit profile");
+							
+							ResultSet checkExistingUserRS = SQLOperations.getUsernames(username, connection);
+							if (checkExistingUserRS.next()) {
+								
+								response.getWriter().write("userExists");
+								
+								if (!usernameStored.equals(username)) {
+									auditBean = new AuditBean(
+											"User Management - username attempt change to " + username + " but already existed",
+											(String) lastName + ", " + firstName + " " + middleName, (String) session.getAttribute("name"),
+											Integer.parseInt((String) session.getAttribute("accountID")));
+									SQLOperations.addAudit(auditBean, connection);
+								}
+								
 							} else {
-								auditBean = new AuditBean("User Management - Attempt user edit failed",
-										(String) lastName + ", " + firstName + " " + middleName + " (" + roleString + ")",
-										(String) session.getAttribute("name"),
-										Integer.parseInt((String) session.getAttribute("accountID")));
-								SQLOperations.addAudit(auditBean, connection);
-								response.getWriter().write("Failed");
-								System.out.println("Failed");
+								
+								AccountBean ab = BeanFactory.getAccountBean(username, newPassword, lastName, middleName, firstName, role);
+								if (SQLOperations.updateUser(ab, Integer.parseInt((String) request.getParameter("accountID")),
+										connection)) {
+									
+									response.getWriter().write("Success");
+									System.out.println("Success Edit profile");
+									
+									if (!usernameStored.equals(username)) {
+										auditBean = new AuditBean("User Management - username updated to " + username,
+												(String) lastName + ", " + firstName + " " + middleName,
+												(String) session.getAttribute("name"),
+												Integer.parseInt((String) session.getAttribute("accountID")));
+										SQLOperations.addAudit(auditBean, connection);
+									}
+									if (!lastNameStored.equals(lastName) || !firstNameStored.equals(firstName) || !middleNameStored
+											.equals(middleName)) {
+										auditBean = new AuditBean(
+												"User Management - user " + username + " updated the name to " + lastName + ", " + firstName + " " + middleName,
+												(String) lastName + ", " + firstName + " " + middleName,
+												(String) session.getAttribute("name"),
+												Integer.parseInt((String) session.getAttribute("accountID")));
+										SQLOperations.addAudit(auditBean, connection);
+									}
+									if (roleStored != role) {
+										auditBean = new AuditBean("User Management - user " + username + "'s role changed to " + roleString,
+												(String) lastName + ", " + firstName + " " + middleName,
+												(String) session.getAttribute("name"),
+												Integer.parseInt((String) session.getAttribute("accountID")));
+										SQLOperations.addAudit(auditBean, connection);
+									}
+									
+								} else {
+									
+									if (!usernameStored.equals(username)) {
+										auditBean = new AuditBean("User Management - username update to " + username + " failed",
+												(String) lastName + ", " + firstName + " " + middleName,
+												(String) session.getAttribute("name"),
+												Integer.parseInt((String) session.getAttribute("accountID")));
+										SQLOperations.addAudit(auditBean, connection);
+									}
+									if (!lastNameStored.equals(lastName) || !firstNameStored.equals(firstName) || !middleNameStored
+											.equals(middleName)) {
+										auditBean = new AuditBean(
+												"User Management - user " + username + " failed to update the name to " + lastName + ", " + firstName + " " + middleName,
+												(String) lastName + ", " + firstName + " " + middleName,
+												(String) session.getAttribute("name"),
+												Integer.parseInt((String) session.getAttribute("accountID")));
+										SQLOperations.addAudit(auditBean, connection);
+									}
+									if (roleStored != role) {
+										auditBean = new AuditBean(
+												"User Management - user " + username + "'s role failed to change to " + roleString,
+												(String) lastName + ", " + firstName + " " + middleName,
+												(String) session.getAttribute("name"),
+												Integer.parseInt((String) session.getAttribute("accountID")));
+										SQLOperations.addAudit(auditBean, connection);
+									}
+									
+								}
+								
 							}
+							
 						}
-						
 					}
-				} else {
-					System.out.println("Invalid connection");
+				} catch (NumberFormatException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-			} catch (NumberFormatException | SQLException e) {
-				e.printStackTrace();
+				
+			} else {
+				System.out.println("Invalid connection");
 			}
 		}
 	}

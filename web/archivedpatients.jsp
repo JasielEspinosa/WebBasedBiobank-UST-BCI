@@ -127,9 +127,10 @@
                      <div class="col-sm-8">
                         <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive button-border usrmgmt--text"> <span>User
                               Management</span>
-                        </a> <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive button-border archpat--text">
-                           <span>Archived Patients</span>
                         </a>
+                        <!-- <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive button-border archpat--text">
+                           <span>Archived Patients</span>
+                        </a> -->
                      </div>
                   </div>
                   <!-- End of buttons container -->

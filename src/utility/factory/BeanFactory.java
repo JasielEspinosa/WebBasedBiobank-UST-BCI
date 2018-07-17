@@ -13,6 +13,7 @@ public class BeanFactory {
 		ab.setMiddleName(middleName);
 		ab.setFirstName(firstName);
 		ab.setRoleId(roleId);
+		//ab.setActive(active);
 		return ab;
 	}
 	

@@ -75,8 +75,8 @@
                      aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i> <span class="caret"></span>
                   </a>
                      <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li class="role2"><a style="font-weight: bold;" href="audittrail.jsp"> <i class="fas fa-file-alt dropdown-icons--margin"></i>
-                              Audit Trail
+                        <li class="role2"><a style="font-weight: bold;" href="audittrail.jsp"> <i
+                              class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail
                         </a></li>
                         <li class="divider role2" style="background-color: #000000;"></li>
                         <li><a style="font-weight: bold;" href="profile.jsp"> <i class="fas fa-user-md dropdown-icons--margin"></i>
@@ -126,10 +126,11 @@
                   <div class="row button-container">
                      <div class="col-sm-1"></div>
                      <div class="col-sm-8">
-                        <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive button-border usrmgmt--text"> <span>User
+                        <!-- <a href="usermanagement.jsp" type="button" class="btn bg-yellow btn-responsive button-border usrmgmt--text"> <span>User
                               Management</span>
-                        </a> <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive button-border archpat--text">
-                           <span>Archived Patients</span>
+                        </a> -->
+                        <a href="archivedpatients.jsp" type="button" class="btn bg-yellow btn-responsive button-border archpat--text"> <span>Archived
+                              Patients</span>
                         </a>
                         <button id="addEncoder" type="button" class="btn bg-yellow button-border" data-toggle="modal"
                            data-target="#usermanagement__popup" data-whatever="@mdo">Add Encoder</button>
@@ -173,7 +174,7 @@
                               <div class="modal-body">
                                  <div class="form-group">
                                     <label for="recipient-name" class="control-label">Username:</label> <input type="text"
-                                       class="form-control" id="username" required>
+                                       class="form-control" id="username" required><span class="hint" id="usernameHint"></span>
                                  </div>
                                  <div class="form-group">
                                     <label for="message-text" class="control-label">Password:</label> <input type="password"
@@ -241,7 +242,7 @@
          </div>
       </div>
    </div>
-      <input type="hidden" id="roleSession" data-value="${sessionScope.role}" />
+   <input type="hidden" id="roleSession" data-value="${sessionScope.role}" />
    <script src="js/user-restrictions.js"></script>
    <script src="js/inactivity.js"></script>
    <script src="js/logout.js"></script>

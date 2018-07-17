@@ -3,32 +3,34 @@ var params = {
 	password : ''
 };
 
-function assignValues(){
+function assignValues() {
 	params.username = $("#username").val();
 	params.password = $("#password").val();
 };
 
 var response;
 $("#loginForm").submit(function(e) {
-   e.preventDefault();
-	});
-	
-$('#loginForm').submit(function() {
-	assignValues();
-	$.post('LoginServlet', $.param(params), function (response) {
-		if(response.redirect){
-		       window.location = response.redirect;
-		       return;
-		}
-		if(response == "Failed"){
-			swal("Failed!", "The username or password that you entered is incorrect", "error");
-		}
-	}).fail(function(){
-		});	
+	e.preventDefault();
 });
 
-$('.close').click(function () {
-    $(this).parent().removeClass('in'); 
+$('#loginForm').submit(function() {
+	assignValues();
+	$.post('LoginServlet', $.param(params), function(response) {
+		if (response.redirect) {
+			window.location = response.redirect;
+			return;
+		}
+		if (response == "Failed") {
+			swal("Failed!", "The username or password that you entered is incorrect", "error");
+		} else if (response == "Archived") {
+			swal("Failed!", "Your account has been disabled. Please contact the administrator", "error");
+		}
+	}).fail(function() {
+	});
+});
+
+$('.close').click(function() {
+	$(this).parent().removeClass('in');
 });
 
 $('document').ready(function() {
@@ -37,10 +39,10 @@ $('document').ready(function() {
 		swal("Hey!", "You have been automatically logged out due to exceeding the session time limit", "info");
 		localStorage.setItem("autoLogout", "");
 	}
-	$.post('SessionTerminateServlet', function (response) {
-		if(response.redirect){
-		       return;
+	$.post('SessionTerminateServlet', function(response) {
+		if (response.redirect) {
+			return;
 		}
-	}).fail(function(){
-		});
+	}).fail(function() {
+	});
 });

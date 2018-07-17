@@ -60,6 +60,8 @@ function editUser(id) {
 	$.post('UserManagementServlet', $.param(params), function(response) {
 		// alert(response["Username"]);
 		$("#username").val(response["Username"])
+		$("#password").val(response["Password"])
+		$("#confirmPassword").val(response["Password"])
 		$("#lastName").val(response["Lastname"])
 		$("#firstName").val(response["Firstname"])
 		$("#middleName").val(response["MiddleName"])
@@ -70,6 +72,7 @@ function editUser(id) {
 }
 
 var formPasswordForm = document.forms["addUser"];
+var username = document.getElementById("username");
 var elemPW = document.getElementById("password");
 var elemCPW = document.getElementById("confirmPassword");
 var success = false;
@@ -100,55 +103,42 @@ function fnValidatePassword(evt) {
 	if (elemPW.value != "") {
 
 		if (!regexPasswordLength.test(elemPW.value)) {
-			pwdHint.innerHTML = 'Password must be at least 8 characters.';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "Password must be at least 8 characters.";
 			success = false;
 		} else if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
-			pwdHint.innerHTML = 'Password must contain an uppercase character.';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "Password must contain an uppercase character.";
 			success = false;
 		} else if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
-			pwdHint.innerHTML = 'Password must contain an lowercase character.';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "Password must contain an lowercase character.";
 			success = false;
 		} else if (!regexPasswordContainsNumber.test(elemPW.value)) {
-			pwdHint.innerHTML = 'Password must contain a number.';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "Password must contain a number.";
 			success = false;
 		} else {
-			pwdHint.innerHTML = '';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "";
 		}
 
-		/*	if (elemCPW.value == "") {
-			pwdHint.innerHTML = 'Confirm Password must be filled.';
-			pwdHint.style.display = "inline";
-			success = false;
-		}*/
-
 		/*	if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
-				pwdHint.innerHTML = 'Password must contain a special character.';
-				pwdHint.style.display = "inline";
+				pwdHint.innerHTML = "Password must contain a special character.";
 				success = false;
 			}*/
 
-	}
-
-	if (elemCPW.value != "") {
 		if (elemCPW.value != elemPW.value) {
-			confPwdHint.innerHTML = 'Password does not match the confirm password';
-			confPwdHint.style.display = "inline";
+			confPwdHint.innerHTML = "Password does not match the confirm password";
 			success = false;
 		} else {
-			confPwdHint.innerHTML = '';
-			confPwdHint.style.display = "inline";
+			confPwdHint.innerHTML = "";
 		}
+
+	} else {
+		elemCPW.value = "";
 	}
 
 	if (success) {
-		// looks goood
-		pwdHint.innerHTML = '';
 		$("#confirm-submit").modal('show');
+		usernameHint.innerHTML = "";
+		pwdHint.innerHTML = "";
+		confPwdHint.innerHTML = "";
 	}
 	evt.preventDefault();
 }
@@ -156,7 +146,7 @@ function fnValidatePassword(evt) {
 formPasswordForm.addEventListener("submit", fnValidatePassword);
 
 $('#submitAction').click(function() {
-	alert(params.action);
+	// alert(params.action);
 	// alert(params.accountID)
 	assignValues();
 
@@ -169,8 +159,11 @@ $('#submitAction').click(function() {
 				$('#usersTable').DataTable().destroy();
 				loadUsers();
 				closeModal();
+			} else if (response == "userExists") {
+				usernameHint.innerHTML = "User already existed. Please choose another username";
+				$("#confirm-submit").modal('hide');
 			} else {
-				alert("User add failed. Recheck the fields again");
+				alert("User add failed. Recheck the fields again or contact administrator");
 				$("#confirm-submit").modal('hide');
 			}
 		} else if (params.action == "edit") {
@@ -180,13 +173,17 @@ $('#submitAction').click(function() {
 				$('#usersTable').DataTable().destroy();
 				loadUsers();
 				closeModal();
-			} else {
-				alert("User edit failed. Recheck the fields again");
+			} else if (response == "userExists") {
+				usernameHint.innerHTML = "User already existed. Please choose another username";
 				$("#confirm-submit").modal('hide');
+			} else if (response == "noChange") {
+				alert("No changes occured");
+				$("#confirm-submit").modal('hide');
+			} else {
+				alert("User edit failed. Recheck the fields again or contact administrator");
 			}
 		} else if (params.action == "delete") {
 			if (response == "Success") {
-				// alert(response);
 				alert("User archived successfully");
 				$('#usersTable').DataTable().destroy();
 				loadUsers();

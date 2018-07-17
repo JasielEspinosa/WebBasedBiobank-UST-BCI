@@ -14,6 +14,7 @@ $('document').ready(function() {
 });
 
 var formPasswordForm = document.forms["profileForm"];
+var username = document.getElementById("username");
 var elemOPW = document.getElementById("oldPassword");
 var elemPW = document.getElementById("password");
 var elemCPW = document.getElementById("confirmPassword");
@@ -39,61 +40,77 @@ function fnValidatePassword(evt) {
 	if (elemPW.value != "") {
 
 		if (!regexPasswordLength.test(elemPW.value)) {
-			pwdHint.innerHTML = 'Password must be at least 8 characters.';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "Password must be at least 8 characters.";
 			success = false;
 		} else if (!regexPasswordContainsUpperCase.test(elemPW.value)) {
-			pwdHint.innerHTML = 'Password must contain an uppercase character.';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "Password must contain an uppercase character.";
 			success = false;
 		} else if (!regexPasswordContainsLowerCase.test(elemPW.value)) {
-			pwdHint.innerHTML = 'Password must contain an lowercase character.';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "Password must contain an lowercase character.";
 			success = false;
 		} else if (!regexPasswordContainsNumber.test(elemPW.value)) {
-			pwdHint.innerHTML = 'Password must contain a number.';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "Password must contain a number.";
 			success = false;
 		} else {
-			pwdHint.innerHTML = '';
-			pwdHint.style.display = "inline";
+			pwdHint.innerHTML = "";
 		}
 
-/*		if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
-			pwdHint.innerHTML = 'Password must contain a special character.';
+		/*	if (!regexPasswordContainsSpecialChar.test(elemPW.value)) {
+			pwdHint.innerHTML = "Password must contain a special character.";
 			pwdHint.style.display = "inline";
 			success = false;
 		}*/
 
-	}
-
-	if (elemCPW.value != "") {
 		if (elemCPW.value != elemPW.value) {
-			confPwdHint.innerHTML = 'Password does not match the confirm password';
-			confPwdHint.style.display = "inline";
+			confPwdHint.innerHTML = "Password does not match the confirm password";
 			success = false;
 		} else {
-			confPwdHint.innerHTML = '';
-			confPwdHint.style.display = "inline";
+			confPwdHint.innerHTML = "";
 		}
+
+	} else {
+		elemCPW.value = "";
 	}
 
 	if (success) {
 		// looks goood
-		pwdHint.innerHTML = '';
+
+		usernameHint.innerHTML = "";
+		oldPwdHint.innerHTML = "";
+		pwdHint.innerHTML = "";
+		confPwdHint.innerHTML = "";
 
 		var $form = $(this);
-		$.post('ProfileProcessServlet', $form.serialize(), function(response) {
-			if (response == "Success") {
-				alert("Profile successfully updated");
-				$("oldPassword").val("");
-				$("password").val("");
-				$("confirmPassword").val("");
-				$("#confirm-submit").modal('hide');
-			} else {
-				alert("Profile update failed. Recheck the fields again");
-			}
-		}).fail(function() {
+		$.post(
+				'ProfileProcessServlet',
+				$form.serialize(),
+				function(response) {
+
+					if (response == "Success") {
+						alert("Profile successfully updated");
+						elemOPW.value = "";
+						elemPW.value = "";
+						elemCPW.value = "";
+					} else if (response == "noChange") {
+						alert("No changes occured");
+						elemOPW.value = "";
+						elemCPW.value = "";
+					} else if (response == "userExists") {
+						// alert("User already existed. Please choose another username");
+						usernameHint.innerHTML = "User already existed. Please choose another username";
+					} else if (response == "confirmOldPass") {
+						oldPwdHint.innerHTML = 'Enter your current/old password to validate changes';
+					} else if (response == "incorrectPass") {
+						oldPwdHint.innerHTML = "Your current password does not match in the database. Please try again";
+						elemCPW.value = '';
+					} else if (response == "noPassChange") {
+						pwdHint.innerHTML = "Your new and current/old password was not changed. "
+								+ "Recheck your input if you wish to change your password "
+								+ "or remove the new password to retain your old password.";
+					} else {
+						alert("Profile update failed. Recheck the fields again or contact administrator");
+					}
+				}).fail(function() {
 		});
 
 	}

@@ -36,6 +36,7 @@ public class SQLOperations implements SQLCommands {
 			PreparedStatement pstmt = connection.prepareStatement(LOGIN);
 			pstmt.setString(1, ab.getUsername());
 			pstmt.setString(2, ab.getPassword());
+			//pstmt.setInt(3, ab.getActive());
 			loginSet = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- login: " + sqle.getMessage());
@@ -50,7 +51,7 @@ public class SQLOperations implements SQLCommands {
 			pstmt.setInt(1, accountID);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
-			System.out.println("SQLException -- get Old Password: " + sqle.getMessage());
+			System.out.println("SQLException -- get Profile: " + sqle.getMessage());
 		}
 		return rs;
 	}
@@ -81,7 +82,24 @@ public class SQLOperations implements SQLCommands {
 			System.out.println("SQLException -- updateProfile: " + sqle.getMessage());
 			return false;
 		}
-		
+		return true;
+	}
+	
+	public static boolean updateUser(AccountBean ab, int accountID, Connection connection) {
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(UPDATE_USER);
+			pstmt.setString(1, ab.getUsername());
+			pstmt.setString(2, ab.getPassword());
+			pstmt.setString(3, ab.getLastName());
+			pstmt.setString(4, ab.getFirstName());
+			pstmt.setString(5, ab.getMiddleName());
+			pstmt.setInt(6, ab.getRoleId());
+			pstmt.setInt(7, accountID);
+			pstmt.executeUpdate();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- updateProfile: " + sqle.getMessage());
+			return false;
+		}
 		return true;
 	}
 	
@@ -154,7 +172,19 @@ public class SQLOperations implements SQLCommands {
 			PreparedStatement pstmt = connection.prepareStatement(GET_USERS);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
-			System.out.println("SQLException -- get Old Password: " + sqle.getMessage());
+			System.out.println("SQLException -- get Users; " + sqle.getMessage());
+		}
+		return rs;
+	}
+	
+	public static ResultSet getUsernames(String username, Connection connection) {
+		ResultSet rs = null;
+		try {
+			PreparedStatement pstmt = connection.prepareStatement(GET_USERNAMES);
+			pstmt.setString(1, username);
+			rs = pstmt.executeQuery();
+		} catch (SQLException sqle) {
+			System.out.println("SQLException -- get Usernames: " + sqle.getMessage());
 		}
 		return rs;
 	}
@@ -183,7 +213,7 @@ public class SQLOperations implements SQLCommands {
 			PreparedStatement pstmt = connection.prepareStatement(GET_ARCHIVED_PATIENT_LIST);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
-			System.out.println("SQLException -- get  Archived Patient List: " + sqle.getMessage());
+			System.out.println("SQLException -- get Archived Patient List: " + sqle.getMessage());
 		}
 		return rs;
 	}

@@ -43,102 +43,184 @@ public class ProfileProcessServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession(true);
-		String username = request.getParameter("username");//.toUpperCase().trim();
-		String oldPassword = request.getParameter("oldPassword");
-		String password = request.getParameter("password");
-		String confirmPassword = request.getParameter("confirmPassword");
-		String lastName = request.getParameter("lastName").toUpperCase().trim();
-		String firstName = request.getParameter("firstName").toUpperCase().trim();
-		String middleInitial = request.getParameter("middleInitial").toUpperCase().trim();
 		response.setCharacterEncoding("UTF-8");
 		response.setContentType("text/plain");
-		String dbOldPassword = "";
+		AuditBean auditBean;
 		System.out.println(session.getAttribute("name"));
-		if (connection != null) {
-			ResultSet oldPassRs = SQLOperations.getOldPassword(Integer.parseInt((String) session.getAttribute("accountID")), connection);
-			try {
-				if (oldPassword.equals("") && password.equals("") && confirmPassword.equals("")) {
-					AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleInitial, firstName, 0);
-					if (SQLOperations.updateProfileNoPass(ab, Integer.parseInt((String) session.getAttribute("accountID")), connection)) {
-						response.getWriter().write("Success");
-						System.out.println("Success");
-						AuditBean auditBean = new AuditBean("User profile - username updated", (String) session.getAttribute("name"),
-								(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
-						SQLOperations.addAudit(auditBean, connection);
+		
+		try {
+			if (connection != null) {
+				ResultSet userRS = SQLOperations.getProfile(Integer.parseInt((String) session.getAttribute("accountID")), connection);
+				while (userRS.next()) {
+					
+					String usernameStored = userRS.getString("Username");
+					String passwordStored = userRS.getString("Password");
+					String lastNameStored = userRS.getString("LastName").trim().toUpperCase();
+					String firstNameStored = userRS.getString("FirstName").trim().toUpperCase();
+					String middleNameStored = userRS.getString("MiddleName").trim().toUpperCase();
+					
+					String username = request.getParameter("username");
+					String currentPassword = request.getParameter("oldPassword");
+					String newPassword = request.getParameter("password");
+					//String confirmPassword = request.getParameter("confirmPassword");
+					String lastName = request.getParameter("lastName").trim().toUpperCase();
+					String firstName = request.getParameter("firstName").trim().toUpperCase();
+					String middleName = request.getParameter("middleInitial").trim().toUpperCase();
+					
+					//No changes occured
+					if (username.equals(usernameStored) && lastName.equals(lastNameStored) && firstName
+							.equals(firstNameStored) && middleName.equals(middleNameStored) && newPassword.equals("")) {
+						System.out.println("No changes occured");
+						
+						response.getWriter().write("noChange");
+						
 					} else {
-						response.getWriter().write("Failed change names");
-						System.out.println("Failed change names");
-						AuditBean auditBean = new AuditBean("User profile - username change attempt failed",
-								(String) session.getAttribute("name"), (String) session.getAttribute("name"),
-								Integer.parseInt((String) session.getAttribute("accountID")));
-						SQLOperations.addAudit(auditBean, connection);
-					}
-				} else {
-					if (oldPassRs.next()) {
-						dbOldPassword = oldPassRs.getString("Password");
-					}
-					if (!dbOldPassword.equals(oldPassword)) {
-						AuditBean auditBean = new AuditBean("User profile - incorrect old password input",
-								(String) session.getAttribute("name"), (String) session.getAttribute("name"),
-								Integer.parseInt((String) session.getAttribute("accountID")));
-						SQLOperations.addAudit(auditBean, connection);
-						response.getWriter().write("Old Password is incorrect.");
-						System.out.println("Failed Old Password is incorrect.");
-					} else if (!password.equals(confirmPassword)) {
-						AuditBean auditBean = new AuditBean("User profile - attempt password change failed",
-								(String) session.getAttribute("name"), (String) session.getAttribute("name"),
-								Integer.parseInt((String) session.getAttribute("accountID")));
-						SQLOperations.addAudit(auditBean, connection);
-						response.getWriter().write("New Password and confirm password does not match.");
-						System.out.println("Failed New Password and confirm password does not match.");
-					} else {
-						AccountBean ab = BeanFactory.getAccountBean(username, password, lastName, middleInitial, firstName, 0);
-						if (SQLOperations.updateProfile(ab, Integer.parseInt((String) session.getAttribute("accountID")), connection)) {
-							response.getWriter().write("Success");
-							System.out.println("Success");
-							AuditBean auditBean = new AuditBean("User profile - password updated", (String) session.getAttribute("name"),
-									(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
-							SQLOperations.addAudit(auditBean, connection);
+						
+						ResultSet checkExistingUserRS = SQLOperations.getUsernames(username, connection);
+						if (checkExistingUserRS.next() && !username.equals(usernameStored)) {
+							
+							response.getWriter().write("userExists");
+							
+							if (!usernameStored.equals(username)) {
+								auditBean = new AuditBean("User Profile - username attempt change to " + username + " but already existed",
+										(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+										Integer.parseInt((String) session.getAttribute("accountID")));
+								SQLOperations.addAudit(auditBean, connection);
+							}
+							
 						} else {
-							AuditBean auditBean = new AuditBean("User profile - attempt password update failed",
-									(String) session.getAttribute("name"), (String) session.getAttribute("name"),
-									Integer.parseInt((String) session.getAttribute("accountID")));
-							SQLOperations.addAudit(auditBean, connection);
-							response.getWriter().write("Failed change password");
-							System.out.println("Failed change password");
+							
+							if (currentPassword.equals("")) {
+								
+								response.getWriter().write("confirmOldPass");
+								
+							} else {
+								
+								if (!currentPassword.equals(passwordStored)) {
+									response.getWriter().write("incorrectPass");
+									
+									auditBean = new AuditBean("User Profile - password change attempt failed",
+											(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+											Integer.parseInt((String) session.getAttribute("accountID")));
+									SQLOperations.addAudit(auditBean, connection);
+									
+								} else {
+									
+									if (newPassword.equals("")) {
+										
+										//update no password change
+										AccountBean ab = BeanFactory.getAccountBean(username, passwordStored, lastName, middleName,
+												firstName, 0);
+										if (SQLOperations.updateProfileNoPass(ab,
+												Integer.parseInt((String) session.getAttribute("accountID")), connection)) {
+											response.getWriter().write("Success");
+											System.out.println("Success");
+											
+											if (!usernameStored.equals(username)) {
+												auditBean = new AuditBean("User Profile - username updated to " + username,
+														(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+														Integer.parseInt((String) session.getAttribute("accountID")));
+												SQLOperations.addAudit(auditBean, connection);
+											}
+											if (!lastNameStored.equals(lastName) || !firstNameStored.equals(firstName) || !middleNameStored
+													.equals(middleName)) {
+												auditBean = new AuditBean(
+														"User profile - user " + username + " updated the name to " + lastName + ", " + firstName + " " + middleName,
+														(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+														Integer.parseInt((String) session.getAttribute("accountID")));
+												SQLOperations.addAudit(auditBean, connection);
+												
+											}
+											
+										} else {
+											
+											if (!usernameStored.equals(username)) {
+												auditBean = new AuditBean("User Profile - username update to " + username + " failed",
+														(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+														Integer.parseInt((String) session.getAttribute("accountID")));
+												SQLOperations.addAudit(auditBean, connection);
+											}
+											if (!lastNameStored.equals(lastName) || !firstNameStored.equals(firstName) || !middleNameStored
+													.equals(middleName)) {
+												auditBean = new AuditBean(
+														"User profile - user " + username + " failed to update the name to " + lastName + ", " + firstName + " " + middleName,
+														(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+														Integer.parseInt((String) session.getAttribute("accountID")));
+												SQLOperations.addAudit(auditBean, connection);
+											}
+											
+										}
+										
+									} else if (!newPassword.equals("")) {
+										
+										if (newPassword.equals(passwordStored)) {
+											response.getWriter().write("noPassChange");
+										} else {
+											
+											//update with password change
+											AccountBean ab = BeanFactory.getAccountBean(username, newPassword, lastName, middleName,
+													firstName, 0);
+											if (SQLOperations.updateProfile(ab,
+													Integer.parseInt((String) session.getAttribute("accountID")), connection)) {
+												response.getWriter().write("Success");
+												System.out.println("Success");
+												
+												if (!usernameStored.equals(username)) {
+													auditBean = new AuditBean("User Profile - username updated to " + username,
+															(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+															Integer.parseInt((String) session.getAttribute("accountID")));
+													SQLOperations.addAudit(auditBean, connection);
+												}
+												if (!lastNameStored.equals(lastName) || !firstNameStored
+														.equals(firstName) || !middleNameStored.equals(middleName)) {
+													auditBean = new AuditBean(
+															"User profile - user " + username + " updated the name to " + lastName + ", " + firstName + " " + middleName,
+															(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+															Integer.parseInt((String) session.getAttribute("accountID")));
+													SQLOperations.addAudit(auditBean, connection);
+												}
+												auditBean = new AuditBean("User Profile - password updated",
+														(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+														Integer.parseInt((String) session.getAttribute("accountID")));
+												SQLOperations.addAudit(auditBean, connection);
+												
+											} else {
+												
+												if (!usernameStored.equals(username)) {
+													auditBean = new AuditBean("User Profile - username update to " + username + " failed",
+															(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+															Integer.parseInt((String) session.getAttribute("accountID")));
+													SQLOperations.addAudit(auditBean, connection);
+												}
+												if (!lastNameStored.equals(lastName) || !firstNameStored
+														.equals(firstName) || !middleNameStored.equals(middleName)) {
+													auditBean = new AuditBean(
+															"User profile - user " + username + " failed to update the name to " + lastName + ", " + firstName + " " + middleName,
+															(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+															Integer.parseInt((String) session.getAttribute("accountID")));
+													SQLOperations.addAudit(auditBean, connection);
+												}
+												auditBean = new AuditBean("User Profile - password update failed",
+														(String) session.getAttribute("name"), (String) session.getAttribute("name"),
+														Integer.parseInt((String) session.getAttribute("accountID")));
+												SQLOperations.addAudit(auditBean, connection);
+												
+											}
+											
+										}
+									}
+								}
+							}
+							
 						}
+						
 					}
 				}
-				// if name changed
-				//String oldFullName = (String) session.getAttribute("name");
-				String oldLastName = (String) session.getAttribute("lastName");
-				String oldFirstName = (String) session.getAttribute("firstName");
-				String oldMiddleName = (String) session.getAttribute("middleName");
-				//String newFullName = lastName + ", " + firstName + " " + middleInitial;
-				if (!oldLastName.equals(lastName)) {
-					AuditBean auditBean = new AuditBean("User profile - last name updated to " + lastName,
-							(String) session.getAttribute("name"), (String) session.getAttribute("name"),
-							Integer.parseInt((String) session.getAttribute("accountID")));
-					SQLOperations.addAudit(auditBean, connection);
-				}
-				if (!oldFirstName.equals(firstName)) {
-					AuditBean auditBean = new AuditBean("User profile - first name updated to " + firstName,
-							(String) session.getAttribute("name"), (String) session.getAttribute("name"),
-							Integer.parseInt((String) session.getAttribute("accountID")));
-					SQLOperations.addAudit(auditBean, connection);
-				}
-				if (!oldMiddleName.equals(middleInitial)) {
-					AuditBean auditBean = new AuditBean("User profile - middle name updated to " + middleInitial,
-							(String) session.getAttribute("name"), (String) session.getAttribute("name"),
-							Integer.parseInt((String) session.getAttribute("accountID")));
-					SQLOperations.addAudit(auditBean, connection);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} else {
+				System.out.println("Invalid connection");
 			}
-		} else {
-			System.out.println("Invalid connection");
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		//AccountBean ab = BeanFactory.getAccountBean(username, confirmPassword, lastName, middleInitial, firstName, roleId)
 	}
 }

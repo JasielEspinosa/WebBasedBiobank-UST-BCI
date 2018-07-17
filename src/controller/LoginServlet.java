@@ -57,46 +57,60 @@ public class LoginServlet extends HttpServlet {
 		AccountBean ab = BeanFactory.getAccountBean(username, password, "", "", "", 0);
 		ResultSet rs = SQLOperations.login(ab, connection);
 		if (connection != null) {
+			
 			try {
+				
 				if (rs.next()) {
 					
-					String middleName = rs.getString("MiddleName");
+					int active = rs.getInt("active");
 					
-					if (middleName == null) {
-						middleName = "";
+					if (active == 1) {
+						
+						String middleName = rs.getString("MiddleName");
+						
+						if (middleName == null) {
+							middleName = "";
+						}
+						
+						session.setAttribute("accountID", rs.getString("AccountID"));
+						session.setAttribute("name", rs.getString("LastName") + ", " + rs.getString("FirstName") + " " + middleName);
+						
+						session.setAttribute("lastName", rs.getString("LastName"));
+						session.setAttribute("firstName", rs.getString("FirstName"));
+						session.setAttribute("middleName", middleName);
+						
+						session.setAttribute("role", rs.getInt("RoleID"));
+						
+						String redirectURL = "dashboard-main.jsp";
+						
+						Map<String, String> data = new HashMap<>();
+						data.put("redirect", redirectURL);
+						String json = new Gson().toJson(data);
+						
+						response.setContentType("application/json");
+						response.getWriter().write(json);
+						System.out.println("Successful login");
+						
+						AuditBean auditBean = new AuditBean("Login", (String) session.getAttribute("name"),
+								(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
+						SQLOperations.addAudit(auditBean, connection);
+						
+					} else if (active == 0) {
+						response.setContentType("text/plain");
+						response.getWriter().write("Archived");
+						System.out.println("Failed Login, Archived User");
 					}
-					
-					session.setAttribute("accountID", rs.getString("AccountID"));
-					session.setAttribute("name", rs.getString("LastName") + ", " + rs.getString("FirstName") + " " + middleName);
-					
-					session.setAttribute("lastName", rs.getString("LastName"));
-					session.setAttribute("firstName", rs.getString("FirstName"));
-					session.setAttribute("middleName", middleName);
-					
-					session.setAttribute("role", rs.getInt("RoleID"));
-					
-					String redirectURL = "dashboard-main.jsp";
-					
-					Map<String, String> data = new HashMap<>();
-					data.put("redirect", redirectURL);
-					String json = new Gson().toJson(data);
-					
-					response.setContentType("application/json");
-					response.getWriter().write(json);
-					System.out.println("Successful login");
-					
-					AuditBean auditBean = new AuditBean("Login", (String) session.getAttribute("name"),
-							(String) session.getAttribute("name"), Integer.parseInt((String) session.getAttribute("accountID")));
-					SQLOperations.addAudit(auditBean, connection);
-					
 				} else {
 					response.setContentType("text/plain");
 					response.getWriter().write("Failed");
-					System.out.println("Failed login");
+					System.out.println("Failed Login");
 				}
-			} catch (SQLException e) {
+				
+			} catch (NumberFormatException | SQLException e) {
+				
 				e.printStackTrace();
 			}
+			
 		} else {
 			System.out.println("Invalid connection login");
 		}

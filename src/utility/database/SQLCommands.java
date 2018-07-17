@@ -10,10 +10,12 @@ public interface SQLCommands {
 	String OLD_PASSWORD = "Select Password from accounttable where AccountID = ?";
 	//String GET_PROFILE = "Select Username, LastName, FirstName, MiddleName, RoleID from accounttable where AccountID = ?";
 	String GET_PROFILE = "Select * from accounttable where AccountID = ?";
-	String UPDATE_PROFILE = "Update accounttable set Username = ?, Password = ?, LastName = ?, FirstName = ?, MiddleName = ?" + " where AccountID = ?";
+	String UPDATE_USER = "Update accounttable set Username = ?, Password = ?, LastName = ?, FirstName = ?, MiddleName = ?, RoleID = ? where AccountID = ?";
+	String UPDATE_PROFILE = "Update accounttable set Username = ?, Password = ?, LastName = ?, FirstName = ?, MiddleName = ? where AccountID = ?";
 	String UPDATE_PROFILE_NOPASS = "Update accounttable set Username = ?, LastName = ?, FirstName = ?, MiddleName = ?" + " where AccountID = ?";
 	String INSERT_USER = "INSERT INTO accounttable VALUES (NULL,?,?,?,?,?,?,?)";
 	String GET_USERS = "SELECT * FROM accounttable";
+	String GET_USERNAMES = "SELECT * FROM accounttable where Username = ?";
 	String ARCHIVE_USER = "Update accounttable set Active = 0 where AccountID = ?";
 	String UNARCHIVE_USER = "Update accounttable set Active = 1 where AccountID = ?";
 	String GET_PATIENT_LIST = "SELECT *, AES_DECRYPT(UNHEX(generaldatatable.LastName), '" + key + "') as LastNameDec, AES_DECRYPT(UNHEX(generaldatatable.FirstName), '" + key + "') as FirstNameDec, AES_DECRYPT(UNHEX(generaldatatable.MiddleName), '" + key + "') as MiddleNameDec FROM patienttable inner join generaldatatable on patienttable.GeneralDataID=generaldatatable.GeneralDataID  where patienttable.PatientID LIKE ? or AES_DECRYPT(UNHEX(generaldatatable.LastName), '" + key + "') LIKE ?  or AES_DECRYPT(UNHEX(generaldatatable.FirstName), '" + key + "') LIKE ? or AES_DECRYPT(UNHEX(generaldatatable.MiddleName), '" + key + "') LIKE ?  and patienttable.DiseaseID LIKE ? and patienttable.Active = 1";

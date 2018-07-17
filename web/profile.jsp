@@ -62,26 +62,26 @@
                      <li><a href="plateletdisorder-baseline.jsp">Platelet Disorder</a></li>
                      <li><a href="coagulationdisease-baseline.jsp">Coagulation Disease</a></li>
                      <!-- Dropdown -->
-                  <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                     aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i> <span class="caret"></span>
-                  </a>
-                     <ul class="dropdown-menu dropdown-menu__text" role="menu">
-                        <li class="role2"><a style="font-weight: bold;" href="audittrail.jsp"> <i class="fas fa-file-alt dropdown-icons--margin"></i>
-                              Audit Trail
-                        </a></li>
-                        <li class="divider role2" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" href="profile.jsp"> <i class="fas fa-user-md dropdown-icons--margin"></i>
-                              Profile
-                        </a></li>
-                        <li class="divider role2" style="background-color: #000000;"></li>
-                        <li class="role2"><a style="font-weight: bold;" href="usermanagement.jsp"> <i
-                              class="fas fa-wrench dropdown-icons--margin"></i> Settings
-                        </a></li>
-                        <li class="divider role2" style="background-color: #000000;"></li>
-                        <li><a style="font-weight: bold;" onclick="logout()"> <i class="fas fa-sign-out-alt dropdown-icons--margin"></i>
-                              Logout
-                        </a></li>
-                     </ul></li>
+                     <li class="dropdown pull-right"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                        aria-expanded="false"> <i class="fa fa-cog fa-lg" aria-hidden="true"></i> <span class="caret"></span>
+                     </a>
+                        <ul class="dropdown-menu dropdown-menu__text" role="menu">
+                           <li class="role2"><a style="font-weight: bold;" href="audittrail.jsp"> <i
+                                 class="fas fa-file-alt dropdown-icons--margin"></i> Audit Trail
+                           </a></li>
+                           <li class="divider role2" style="background-color: #000000;"></li>
+                           <li><a style="font-weight: bold;" href="profile.jsp"> <i class="fas fa-user-md dropdown-icons--margin"></i>
+                                 Profile
+                           </a></li>
+                           <li class="divider role2" style="background-color: #000000;"></li>
+                           <li class="role2"><a style="font-weight: bold;" href="usermanagement.jsp"> <i
+                                 class="fas fa-wrench dropdown-icons--margin"></i> Settings
+                           </a></li>
+                           <li class="divider role2" style="background-color: #000000;"></li>
+                           <li><a style="font-weight: bold;" onclick="logout()"> <i
+                                 class="fas fa-sign-out-alt dropdown-icons--margin"></i> Logout
+                           </a></li>
+                        </ul></li>
                      <!-- End of Dropdown -->
                   </ul>
                </div>
@@ -111,14 +111,16 @@
                                  <div class="form-group">
                                     <label class="control-label col-sm-5">Username</label>
                                     <div class="col-sm-7">
-                                       <input type="text" class="form-control" name="username" id="username" required>
+                                       <input type="text" class="form-control" name="username" id="username" required> <span
+                                          class="hint" id="usernameHint"></span>
                                     </div>
                                  </div>
                                  <!--  Old Password -->
                                  <div class="form-group">
-                                    <label class="control-label col-sm-5">*Present Password</label>
+                                    <label class="control-label col-sm-5">Current Password</label>
                                     <div class="col-sm-7">
-                                       <input type="password" class="form-control" name="oldPassword" id="oldPassword" required>
+                                       <input type="password" class="form-control" name="oldPassword" id="oldPassword"> <span
+                                          class="hint" id="oldPwdHint"></span>
                                     </div>
                                  </div>
                                  <!-- Password -->
@@ -162,7 +164,7 @@
                            </div>
                         </div>
                         <!-- End of General Tab Content -->
-                        <input type="submit" id="submit" class="btn bg-yellow col-sm-4 pull-right button-border">
+                        <input value="UPDATE" type="submit" id="submit" class="btn bg-yellow col-sm-4 pull-right button-border">
                      </div>
                   </div>
                </div>
