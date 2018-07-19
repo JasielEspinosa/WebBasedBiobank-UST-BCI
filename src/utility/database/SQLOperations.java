@@ -195,11 +195,11 @@ public class SQLOperations implements SQLCommands {
 		ResultSet rs = null;
 		try {
 			PreparedStatement pstmt = connection.prepareStatement(GET_PATIENT_LIST);
-			pstmt.setString(1, search);
+			pstmt.setString(1, action);
 			pstmt.setString(2, search);
 			pstmt.setString(3, search);
 			pstmt.setString(4, search);
-			pstmt.setString(5, action);
+			pstmt.setString(5, search);
 			rs = pstmt.executeQuery();
 		} catch (SQLException sqle) {
 			System.out.println("SQLException -- get Patient List: " + sqle.getMessage());

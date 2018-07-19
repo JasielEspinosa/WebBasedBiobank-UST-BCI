@@ -292,7 +292,7 @@
                                     <div class="form-group">
                                        <label class="control-label col-sm-5">Address</label>
                                        <div class="col-sm-7">
-                                          <input type="text" class="form-control" name="address">
+                                          <input type="text" class="form-control" name="address" placeholder="Line 1, Line 2, Line 3">
                                        </div>
                                     </div>
                                     <!-- Civil Status -->
